@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
+	default-lazy-init="true">
+	<description>Restful Service Bean的配置文件 </description>
+
+	<bean class="com.server.cx.webservice.rs.server.DepartmentResouceService" />
+	<bean class="com.server.cx.webservice.rs.server.DishOrderResource" />
+	<bean class="com.server.cx.webservice.rs.server.TableResource" />
+	<bean class="com.server.cx.webservice.rs.server.MenuCategoryResource" />
+	<bean class="com.server.cx.webservice.rs.server.DishResource" />
+	<bean class="com.server.cx.webservice.rs.server.AppraisalResource" />
+	<bean class="com.server.cx.webservice.rs.server.UserResouceService" />
+	<bean class="com.server.cx.webservice.rs.server.RegistrationResource" />
+	<bean class="com.server.cx.webservice.rs.server.TasteResource" />
+    <bean class="com.server.cx.webservice.rs.server.ShiroExceptionMapper" scope="singleton"/>
+</beans>
