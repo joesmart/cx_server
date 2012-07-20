@@ -1,8 +1,6 @@
 package com.server.cx.service.cx.impl;
 
-import com.server.cx.dao.cx.CXInfoDao;
-import com.server.cx.dao.cx.GenericDaoHibernate;
-import com.server.cx.dao.cx.SignatureDao;
+import com.server.cx.dao.cx.*;
 import com.server.cx.entity.cx.CXInfo;
 import com.server.cx.entity.cx.Signature;
 import com.server.cx.exception.SystemException;
@@ -21,9 +19,9 @@ public class CXInfoManagerServiceImpl implements CXInfoManagerService {
     @Autowired
 	private CXInfoDao cxInfoDao;
     @Autowired
-    private GenericDaoHibernate<Signature, Long> genericSignatureDao;
+    private GenericSignatureDao genericSignatureDao;
     @Autowired
-    private GenericDaoHibernate<CXInfo, Long> genericCXInfoDao;
+    private GenericCXInfoDao genericCXInfoDao;
     
     @Autowired
 	private SignatureDao signatureDao;
@@ -77,9 +75,9 @@ public class CXInfoManagerServiceImpl implements CXInfoManagerService {
         cxInfo.setFileData(null);
         cxInfo.setPath(filePath);
         cxInfo.setThumbnailPath(thumbnailFilePath);
-        //WORKAROUND 级联添加
+        //TODO WORKAROUND 级联添加
         if(cxInfo.getSignature() == null){
-            Signature signature = genericSignatureDao.getById(1L);
+            Signature signature = genericSignatureDao.findOne(1L);
             cxInfo.setSignature(signature);
         }else if(cxInfo.getSignature().getId() == null){
             Signature tempSignature = signatureDao.findSignatureByContent(cxInfo.getSignature().getContent());

@@ -3,9 +3,7 @@ package com.server.cx.service.cx.impl;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.GenericDaoHibernate;
-import com.server.cx.dao.cx.UserFavoritesDao;
-import com.server.cx.dao.cx.UserInfoDao;
+import com.server.cx.dao.cx.*;
 import com.server.cx.entity.cx.CXInfo;
 import com.server.cx.entity.cx.UserFavorites;
 import com.server.cx.entity.cx.UserInfo;
@@ -28,9 +26,9 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
     @Autowired
     private UserInfoDao userInfoDao;
     @Autowired
-    private GenericDaoHibernate<CXInfo, Long> genericCXInfoDao;
+    private GenericCXInfoDao genericCXInfoDao;
     @Autowired
-    GenericDaoHibernate<UserFavorites,Long> genericUserFavoritesDao;
+    GenericUserFavoritesDao genericUserFavoritesDao;
     @Autowired
     private UserFavoritesDao userFavoritesDao;
    
@@ -53,7 +51,7 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
             return dealResult;
         }
         
-        CXInfo cxInfo = genericCXInfoDao.getById(Long.parseLong(cxInfoId));
+        CXInfo cxInfo = genericCXInfoDao.findOne(Long.parseLong(cxInfoId));
         if(cxInfo == null){
             dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "该彩像彩像已经被删除");
             return dealResult;
@@ -107,8 +105,10 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
         String splitString = ",";
         
         List<Long> userFavoritesIdLongList = UserFavoritesUtil.convertDigitStrignIntoLongList(userFavoritesId, splitString);
-        
-        genericUserFavoritesDao.removeAll(userFavoritesIdLongList);
+        //TODO need refactor to make the genericDao support batch delete ID List
+        for(Long id:userFavoritesIdLongList){
+            genericUserFavoritesDao.delete(id);
+        }
         dealResult = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "用户移除收藏成功");
         return dealResult;
     }

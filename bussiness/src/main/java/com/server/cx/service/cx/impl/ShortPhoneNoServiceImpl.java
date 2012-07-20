@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.GenericDaoHibernate;
+import com.server.cx.dao.cx.GenericShortPhoneNoDao;
 import com.server.cx.dao.cx.ShortPhoneNoDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.entity.cx.ShortPhoneNo;
@@ -25,7 +26,7 @@ import java.util.List;
 public class ShortPhoneNoServiceImpl implements ShortPhoneNoService {
 
     @Autowired
-    GenericDaoHibernate<ShortPhoneNo,Long> genericShortPhoneNoDao;
+    GenericShortPhoneNoDao genericShortPhoneNoDao;
     @Autowired
     private UserInfoDao userInfoDao;
     @Autowired

@@ -3,10 +3,7 @@ package com.server.cx.service.cx.impl;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.GenericDaoHibernate;
-import com.server.cx.dao.cx.SignatureDao;
-import com.server.cx.dao.cx.UserCXInfoDao;
-import com.server.cx.dao.cx.UserInfoDao;
+import com.server.cx.dao.cx.*;
 import com.server.cx.entity.cx.*;
 import com.server.cx.exception.InvalidParameterException;
 import com.server.cx.exception.SystemException;
@@ -38,16 +35,16 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     SignatureDao signatureDao;
     
     @Autowired
-    GenericDaoHibernate<Signature, Long> genericSignatureDao;
+    GenericSignatureDao genericSignatureDao;
     
     @Autowired
-    GenericDaoHibernate<UserCXInfo, Long> genericUserCXInfoDao;
+    GenericUserCXInfoDao genericUserCXInfoDao;
 
     @Autowired
-    GenericDaoHibernate<UserInfo, Long> genericUserInfoDao;
+    GenericUserInfoDao genericUserInfoDao;
     
     @Autowired
-    GenericDaoHibernate<UserStatus,Long> genericUserStatusDao;
+    GenericUserStatusDao genericUserStatusDao;
 
     private UserInfo userInfo;
     private Signature signature;
@@ -86,7 +83,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
             userCXInfo = new UserCXInfo();
             makeUpUserCXInfo(status);
             setupRelationship(userStatus);
-            genericUserStatusDao.persist(userStatus);
+            genericUserStatusDao.save(userStatus);
             
         }else{
             userStatus.setBegingTime(begingTime);
@@ -100,7 +97,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
             }
             makeUpUserCXInfo(status);
             setupRelationship(userStatus);
-            genericUserInfoDao.merge(userInfo);
+            genericUserInfoDao.save(userInfo);
         }
         return userStatus;
     }
@@ -203,7 +200,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
             }else{
                 userInfo.setUserStatus(null);
                 userstatus.setUser(null);
-                genericUserStatusDao.delet(userstatus);
+                genericUserStatusDao.delete(userstatus);
                 return StringUtil.generateXMLResultString("CURRENTUSERSTATUS_IS_INVALID", "上一个设定的状态已经失效");
             }
             
@@ -243,9 +240,9 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
         if(userstatus != null){
            UserCXInfo userCXInfo = userstatus.getUserCXInfo();
            if(userCXInfo != null){
-              genericUserCXInfoDao.delet(userCXInfo);
+              genericUserCXInfoDao.delete(userCXInfo);
               userstatus.setUserCXInfo(null);
-              genericUserInfoDao.merge(userInfo);
+              genericUserInfoDao.save(userInfo);
               result = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "删除成功");
            }
         }

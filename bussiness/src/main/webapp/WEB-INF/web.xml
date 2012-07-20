@@ -101,8 +101,19 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>JerseyServlet</servlet-name>
-        <url-pattern>/pim/menu/1.0/*</url-pattern>
+        <url-pattern>/cx/1.0/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <description>彩像设定</description>
+        <servlet-name>UserCXInfoAddServlet</servlet-name>
+        <servlet-class>com.server.cx.servlet.UserCXInfoAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserCXInfoAddServlet</servlet-name>
+        <url-pattern>/cx/addOrUpdateUserCXInfo/*</url-pattern>
+    </servlet-mapping>
+
 	<!-- session超时定义,单位为分钟 -->
 	<session-config>
 		<session-timeout>20</session-timeout>

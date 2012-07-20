@@ -1,26 +1,29 @@
 package com.server.cx.dao.cx.impl;
 
 import com.google.common.collect.Lists;
-import com.server.cx.dao.cx.GenericDaoHibernate;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.entity.cx.ShortPhoneNo;
 import com.server.cx.entity.cx.UserInfo;
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 
 @Repository("userInfoDao")
 @Transactional
-public class UserInfoHibernateDao extends GenericDaoHibernate<UserInfo,Long> implements UserInfoDao {
-
+public class UserInfoHibernateDao implements UserInfoDao {
     public UserInfoHibernateDao(){
-        super(UserInfo.class);
     }
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public UserInfo getUserInfoByPhoneNo(String phoneNo){
@@ -40,7 +43,7 @@ public class UserInfoHibernateDao extends GenericDaoHibernate<UserInfo,Long> imp
     private UserInfo getUserInfoByPropertyAndValue(String property, String value) {
         DetachedCriteria criteria = DetachedCriteria.forClass(UserInfo.class);
         criteria.add(Restrictions.eq(property, value));
-        List<UserInfo> list = super.getHibernateTemplate().findByCriteria(criteria);
+        List<UserInfo> list = criteria.getExecutableCriteria((Session) em.getDelegate()).list();
         if(list != null && list.size()>0){
             UserInfo userInfo = list.get(0);
             return userInfo;
@@ -55,7 +58,8 @@ public class UserInfoHibernateDao extends GenericDaoHibernate<UserInfo,Long> imp
         
         DetachedCriteria criteria = DetachedCriteria.forClass(UserInfo.class);
         criteria.add(Restrictions.in("phoneNo", phoneNos)).setProjection(Projections.property("phoneNo"));
-        List<String> mobiles = getHibernateTemplate().findByCriteria(criteria);
+
+        List<String> mobiles = criteria.getExecutableCriteria((Session) em.getDelegate()).list();
         return mobiles;
     }
 
@@ -65,7 +69,7 @@ public class UserInfoHibernateDao extends GenericDaoHibernate<UserInfo,Long> imp
         //TODO 严重的业务逻辑错误,短号码有实现的必要吗?
         DetachedCriteria criteria = DetachedCriteria.forClass(ShortPhoneNo.class);
         criteria.add(Restrictions.eq("shortPhoneNo",shortPhoneNo));
-        List<ShortPhoneNo> shortPhoneNos = super.getHibernateTemplate().findByCriteria(criteria);
+        List<ShortPhoneNo> shortPhoneNos = criteria.getExecutableCriteria((Session) em.getDelegate()).list();
         if(shortPhoneNos != null && shortPhoneNos.size()>0){
             List<UserInfo> userInfos = Lists.newArrayList();
             for(ShortPhoneNo tempShortPhoneNo:shortPhoneNos){

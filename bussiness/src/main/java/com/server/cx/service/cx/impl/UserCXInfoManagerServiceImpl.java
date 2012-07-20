@@ -2,10 +2,7 @@ package com.server.cx.service.cx.impl;
 
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.GenericDaoHibernate;
-import com.server.cx.dao.cx.SignatureDao;
-import com.server.cx.dao.cx.UserCXInfoDao;
-import com.server.cx.dao.cx.UserInfoDao;
+import com.server.cx.dao.cx.*;
 import com.server.cx.entity.cx.CXInfo;
 import com.server.cx.entity.cx.Signature;
 import com.server.cx.entity.cx.UserCXInfo;
@@ -35,15 +32,15 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
     private UserCXInfoDao userCXInfoDao;
     
     @Autowired
-    private GenericDaoHibernate<UserCXInfo, Long> genericUserCXInfoDao;
+    private GenericUserCXInfoDao genericUserCXInfoDao;
     @Autowired
-    private GenericDaoHibernate<UserInfo, Long> genericUserInfoDao;
+    private GenericUserInfoDao genericUserInfoDao;
     @Autowired
-    private GenericDaoHibernate<CXInfo, Long> genericCXInfoDao;
+    private GenericCXInfoDao genericCXInfoDao;
     @Autowired
     private CXInfoManagerService cxInfoManagerService;
     @Autowired
-    private GenericDaoHibernate<Signature, Long> genericSignatureDao;
+    private GenericSignatureDao genericSignatureDao;
     @Autowired
     private SignatureDao signatureDao;
     
@@ -98,14 +95,12 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
             setUpUserCXInfoRelationShip(userCXInfo, userInfo, cxInfo);
             updateUserCXInfoTimeStamp(userCXInfo);
             userCXInfo.setId(null);
-            genericUserCXInfoDao.persist(userCXInfo);
-            //更新模式计数
-            //genericUserInfoDao.update(userInfo);
+            genericUserCXInfoDao.save(userCXInfo);
         }
         //这是一次彩像的编辑操作
         else{
             //排除如果数据已经被
-            boolean isUserCXInfoExists = genericUserCXInfoDao.isExists(userCXInfo.getId());
+            boolean isUserCXInfoExists = genericUserCXInfoDao.exists(userCXInfo.getId());
             if(isUserCXInfoExists){
                 int oldModType = userCXInfoDao.getCurrentUserCXInfoModeType(userCXInfo.getId());
                 //WORKAROUND 因为一般模式只能有一个,编辑的时候,
@@ -119,7 +114,7 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
                 cxInfo = dealWithCXInfo(serverPath, userCXInfo);
                 setUpUserCXInfoRelationShip(userCXInfo, userInfo, cxInfo);
                 updateUserCXInfoTimeStamp(userCXInfo);
-                genericUserCXInfoDao.merge(userCXInfo);  
+                genericUserCXInfoDao.save(userCXInfo);
             }else{
                 return StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "数据不存在");
             }
@@ -154,7 +149,7 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
         hasRemovedTheSameUserCXInfo = false;
         for(Long id:ids){
             if(!id.equals(userCXInfo.getId())){
-                genericUserCXInfoDao.remove(id);
+                genericUserCXInfoDao.delete(id);
                 hasRemovedTheSameUserCXInfo = true;
             }
         }
@@ -240,7 +235,7 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
             cxInfoManagerService.addNewCXInfo(serverPath, cxInfo);
         }else{
            Long cxInfoId = cxInfo.getId();
-           cxInfo = genericCXInfoDao.getById(cxInfoId);
+           cxInfo = genericCXInfoDao.findOne(cxInfoId);
         }
         return cxInfo;
     }
@@ -266,15 +261,15 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
     public String deleteUserCXInfo(Long id, String imsi) throws SystemException {
         //String result = Preconditions.checkNotNull(imsi,"imsi为空");
         String dealwithResult = "";
-        UserCXInfo userCXInfo = genericUserCXInfoDao.getById(id);
+        UserCXInfo userCXInfo = genericUserCXInfoDao.findOne(id);
         
         if(userCXInfo != null){
             //排除默认彩像
             if(-1!=userCXInfo.getModeType()){
                 UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
-                genericUserCXInfoDao.delet(userCXInfo);
+                genericUserCXInfoDao.delete(userCXInfo);
                 dealwithResult = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "操作成功"); 
-                genericUserInfoDao.update(userInfo);
+                genericUserInfoDao.save(userInfo);
             }else{
                 dealwithResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "该彩像不是用户设定的彩像");
             }
