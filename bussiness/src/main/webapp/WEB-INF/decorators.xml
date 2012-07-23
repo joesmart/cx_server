@@ -3,7 +3,9 @@
 	<excludes>
 		<pattern>/static/*</pattern>
 	</excludes>
-	
+    <excludes>
+        <pattern>/cx/*</pattern>
+    </excludes>
 	<decorator name="default" page="default.jsp">
 		<pattern>/*</pattern>
 	</decorator>

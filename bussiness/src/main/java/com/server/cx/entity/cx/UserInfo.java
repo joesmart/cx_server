@@ -6,16 +6,7 @@ package com.server.cx.entity.cx;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.OrderBy;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 /**
  * entiry of UserInfo. Briefly describe what this class does.
@@ -126,7 +117,7 @@ public class UserInfo extends AuditableEntity{
     public void setUserStatus(UserStatus userStatus) {
         this.userStatus = userStatus;
     }
-    @OneToOne(cascade={CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE},optional=false,fetch=FetchType.LAZY)
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE},optional=false,fetch=FetchType.LAZY)
     @JoinColumn(name="statuspackage_id")
     public StatusPackage getStatusPackage() {
         return statusPackage;

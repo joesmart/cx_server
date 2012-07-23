@@ -4,5 +4,6 @@
 	default-lazy-init="true">
 	<description>Restful Service Bean的配置文件 </description>
 	<bean class="com.server.cx.webservice.rs.server.UserResouceService" />
+	<bean class="com.server.cx.webservice.rs.server.CXInfoResource" />
     <bean class="com.server.cx.webservice.rs.server.ShiroExceptionMapper" scope="singleton"/>
 </beans>

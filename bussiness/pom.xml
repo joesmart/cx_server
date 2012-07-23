@@ -451,7 +451,7 @@
 					<useTestClasspath>true</useTestClasspath>
 
 					<webAppConfig>
-						<contextPath>/${project.artifactId}</contextPath>
+						<contextPath>/CXServer</contextPath>
 					</webAppConfig>
 				</configuration>
 			</plugin>

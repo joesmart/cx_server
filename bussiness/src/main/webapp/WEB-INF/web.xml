@@ -101,6 +101,16 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>JerseyServlet</servlet-name>
+        <url-pattern>/rs/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>彩像信息浏览</description>
+        <servlet-name>DispatchServlet</servlet-name>
+        <servlet-class>com.server.cx.servlet.DispatchServiceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispatchServlet</servlet-name>
         <url-pattern>/cx/1.0/*</url-pattern>
     </servlet-mapping>
 

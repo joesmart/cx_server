@@ -1,6 +1,7 @@
-package com.server.cx.resources;
+package com.server.cx.webservice.rs.server;
 
-import com.server.cx.dao.cx.GenericDaoHibernate;
+import com.google.common.collect.Lists;
+import com.server.cx.dao.cx.GenericCXInfoDao;
 import com.server.cx.entity.cx.CXInfo;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.CXInfoManagerService;
@@ -23,14 +24,14 @@ public class CXInfoResource {
     @Context
     ServletContext servletContext;
     @Autowired
-    GenericDaoHibernate<CXInfo,Long> genericCXInfoDao;
+    GenericCXInfoDao genericCXInfoDao;
     @Autowired
     CXInfoManagerService cxInfoManagerService;
     
     @GET
     @Produces({MediaType.APPLICATION_XML})
     public List<CXInfo> getAllCXInfo(){ 
-        List<CXInfo> cxInfos = genericCXInfoDao.getAll();
+        List<CXInfo> cxInfos = Lists.newArrayList(genericCXInfoDao.findAll());
         return cxInfos;
     }
     

@@ -68,7 +68,21 @@
         </property>
     </bean>
 
-	<!-- production/local development环境 -->
+    <!-- message resource beans -->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="fallbackToSystemLocale">
+            <value>false</value>
+        </property>
+        <property name="basenames">
+            <list>
+                <value>classpath:resources/message</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- production/local development环境 -->
  	<beans profile="production,development">
  		<context:property-placeholder ignore-unresolvable="true"
 			location="classpath*:/application.properties,

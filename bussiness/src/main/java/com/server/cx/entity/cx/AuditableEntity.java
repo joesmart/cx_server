@@ -1,9 +1,9 @@
 package com.server.cx.entity.cx;
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.xml.bind.annotation.XmlTransient;
+import java.util.Date;
 
 @MappedSuperclass
 public class AuditableEntity extends BaseEntity implements Auditable {
@@ -13,7 +13,7 @@ public class AuditableEntity extends BaseEntity implements Auditable {
     private Date updatedOn;
 
     @XmlTransient
-    @Column(length = 64)
+    @Column(name = "created_by",length = 64)
     public String getCreatedBy() {
         return createdBy;
     }
@@ -23,7 +23,7 @@ public class AuditableEntity extends BaseEntity implements Auditable {
     }
 
     @XmlTransient
-    @Column(length = 64)
+    @Column(name="updated_by",length = 64)
     public String getUpdatedBy() {
         return updatedBy;
     }
@@ -33,6 +33,7 @@ public class AuditableEntity extends BaseEntity implements Auditable {
     }
 
     @XmlTransient
+    @Column(name="created_on")
     public Date getCreatedOn() {
         return createdOn;
     }
@@ -42,6 +43,7 @@ public class AuditableEntity extends BaseEntity implements Auditable {
     }
 
     @XmlTransient
+    @Column(name = "updated_on")
     public Date getUpdatedOn() {
         return updatedOn;
     }

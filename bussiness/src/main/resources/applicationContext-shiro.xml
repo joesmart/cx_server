@@ -26,7 +26,8 @@
 				/login = authc
 				/logout = logout
 				/static/** = anon
-                /pim/menu/1.0/** = anon
+                /rs/** = anon
+                /cx/1.0/** = anon
 		    	/** = user
 		 	</value>
 		</property>

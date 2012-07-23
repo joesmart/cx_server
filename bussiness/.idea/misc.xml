@@ -54,6 +54,12 @@
     <option widget="true" />
     <option windows="true" />
   </component>
+  <component name="JenkinsControlComponent">
+    <option name="passwordFile" value="F:\JetBrains\pwd" />
+    <option name="securityMode" value="BASIC" />
+    <option name="serverUrl" value="http://10.90.3.122:8080" />
+    <option name="username" value="zouyanjian" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
