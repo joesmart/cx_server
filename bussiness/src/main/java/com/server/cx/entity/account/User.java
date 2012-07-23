@@ -34,7 +34,6 @@ public class User extends IdEntity {
 	private String password;//为简化演示使用明文保存的密码
 	private String name;
 	private String email;
-	private String dimensionCode;
 	/**
 	 * indicate user is login or not
 	 */
@@ -47,14 +46,6 @@ public class User extends IdEntity {
 
 	public void setStatus(Boolean status) {
 		this.status = status;
-	}
-
-	public String getDimensionCode() {
-		return dimensionCode;
-	}
-
-	public void setDimensionCode(String dimensionCode) {
-		this.dimensionCode = dimensionCode;
 	}
 
 	private List<Group> groupList = Lists.newArrayList();//有序的关联对象集合

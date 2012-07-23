@@ -410,6 +410,31 @@
 					</additionalProjectnatures>
 				</configuration>
 			</plugin>
+            <!--jrebel plug in-->
+            <plugin>
+                <groupId>org.zeroturnaround</groupId>
+                <artifactId>jrebel-maven-plugin</artifactId>
+                <configuration>
+                    <packaging>war</packaging>
+                    <classpath>
+                        <fallback>default</fallback>
+                        <resources>
+                            <resource>
+                                <directory>target/classes</directory>
+                            </resource>
+                        </resources>
+                    </classpath>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-rebel-xml</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
 			<!-- jetty插件, 设定context path与spring profile -->
 			<plugin>

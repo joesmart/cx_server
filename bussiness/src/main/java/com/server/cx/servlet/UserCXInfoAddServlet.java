@@ -19,14 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
-/**
- * @Package com.server.cx.servlet
- * @ClassName: UserCXInfoAddServlet.java
- * @Description: 彩像添加和更新servlet类.
- * @author Joey@smart
- * @date 10:48:38 AM Oct 28, 2011 2011
- * 
- */
+
 public class UserCXInfoAddServlet extends HttpServlet {
     private static final long serialVersionUID = -4302719561778080755L;
     private Logger logger = LoggerFactory.getLogger(UserCXInfoAddServlet.class);

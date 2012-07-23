@@ -21,23 +21,6 @@
 				<li id="user-tab"><a href="${ctx}/account/user/" >用户管理</a></li>
 			</shiro:hasPermission>
 			
-			<shiro:hasPermission name="table:view">
-				<li id="table-tab"><a href="${ctx}/menu/table/">台桌管理</a></li>
-			</shiro:hasPermission>
-			
-			<shiro:hasPermission name="menu:view">
-				<li id="menu-tab"><a href="${ctx}/menu/category/">菜品种类</a></li>
-			</shiro:hasPermission>
-			
-			<shiro:hasPermission name="menucategory:view">
-				<li id="menucategory-tab"><a href="${ctx}/menu/menucategory/">种类管理</a></li>
-			</shiro:hasPermission>
-			
-			<shiro:hasPermission name="sales:view">
-			<%-- 	<li id="sales-tab"><a href="${ctx}/menu/sales/">销售情况</a></li> --%>
-				<li id="sales-tab"><a href="${ctx}/file/test/">销售情况</a></li>
-			</shiro:hasPermission>
-			
 			<li><a href="${ctx}/logout">退出登录</a></li>
 			</shiro:user>
 			<shiro:guest>
