@@ -5,9 +5,7 @@ package com.server.cx.service.cx.impl;
 
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.GenericDaoHibernate;
-import com.server.cx.dao.cx.StatusPackageDao;
 import com.server.cx.dao.cx.UserInfoDao;
-import com.server.cx.entity.cx.StatusPackage;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.RegisterService;
@@ -30,9 +28,6 @@ public class RegisterServiceImpl implements RegisterService {
   @Autowired
   private GenericDaoHibernate<UserInfo, Long> genericUserInfoDao;
 
-  @Autowired
-  private StatusPackageDao statusPackageDao;
-
   public RegisterServiceImpl() {
 
   }
@@ -46,13 +41,11 @@ public class RegisterServiceImpl implements RegisterService {
 
     if (imsi != null && !"".equals(imsi)) {
       UserInfo userinfo = userDao.getUserInfoByImsi(imsi);
-      StatusPackage statuspackage = statusPackageDao.getDefaultStatusPackage();
       if (userinfo == null) {
         userinfo = new UserInfo();
         userinfo.setImsi(imsi);
         phoneNo = dealWithPhoneNo(imsi, phoneNo);
         userinfo.setPhoneNo(phoneNo);
-        userinfo.setStatusPackage(statuspackage);
         genericUserInfoDao.persist(userinfo);
         dealResult = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "用户注册成功");
       } else {

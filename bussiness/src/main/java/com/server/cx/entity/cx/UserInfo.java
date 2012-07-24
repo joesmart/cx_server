@@ -32,8 +32,6 @@ public class UserInfo extends AuditableEntity {
     private Integer cxService;
     private List<UserFavorites> userFavorites;
     private List<ShortPhoneNo> shortPhoneNoList;
-    private UserStatus userStatus;
-    private StatusPackage statusPackage;
 
     public UserInfo() {
     }
@@ -105,25 +103,5 @@ public class UserInfo extends AuditableEntity {
 
     public void setCxService(Integer cxService) {
         this.cxService = cxService;
-    }
-
-
-    @OneToOne(optional = true, cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
-    public UserStatus getUserStatus() {
-        return userStatus;
-    }
-
-    public void setUserStatus(UserStatus userStatus) {
-        this.userStatus = userStatus;
-    }
-
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE}, optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "statuspackage_id")
-    public StatusPackage getStatusPackage() {
-        return statusPackage;
-    }
-
-    public void setStatusPackage(StatusPackage statusPackage) {
-        this.statusPackage = statusPackage;
     }
 }

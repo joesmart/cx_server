@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYSIS_IN_BACKGROUND" value="true" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="">
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\UserCXInfoModeCount.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericStatusCXInfoDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericStatusPackageDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericUserCXInfoDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericUserStatusDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\StatusPackageDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\UserCXInfoDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\impl\StatusPackageHibernateDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\impl\UserCXInfoHibernateDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\StatusCXInfo.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\StatusPackage.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\UserCXInfo.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\UserStatus.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserStatusManagerServicesImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserStatusManagerServicesImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserCXInfoUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserCXInfoUtil.java" />
     </list>
     <ignored path="bussiness.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,118 +85,113 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MessageHelp.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/MessageHelp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DateUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/DateUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="13" selection-start="71" selection-end="71" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CXInfoType.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/business/CXInfoType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="12" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MGraphicStoreModeUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/business/MGraphicStoreModeUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ModeType.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/business/ModeType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="12" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SmsMessageServiceUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/business/SmsMessageServiceUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="262" selection-end="262" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StatusType.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/business/StatusType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="12" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserCXInfo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCXInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="19" selection-start="1033" selection-end="1043" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserCXInfoHibernateDao.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/UserCXInfoHibernateDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="4" selection-start="1658" selection-end="1658" vertical-scroll-proportion="0.11732606">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="RegisterServiceImpl.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="0" selection-start="1043" selection-end="1043" vertical-scroll-proportion="0.0">
+            <state line="29" column="0" selection-start="951" selection-end="951" vertical-scroll-proportion="-0.40381992">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShortPhoneNoServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ShortPhoneNoServiceImpl.java">
+      <file leaf-file-name="Type.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Type.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="13" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0">
+            <state line="9" column="14" selection-start="195" selection-end="199" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserStatus.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserStatus.java">
+      <file leaf-file-name="IdEntity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/IdEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="13" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0">
+            <state line="18" column="22" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserFavorites.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserFavorites.java">
+      <file leaf-file-name="Category.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Category.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0">
+            <state line="9" column="13" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Contacts.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Contacts.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="13" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CXInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/CXInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="13" selection-start="870" selection-end="870" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SmsMessage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/SmsMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="13" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Signature.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Signature.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="13" selection-start="233" selection-end="233" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LongTypeIdBaseEntity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/LongTypeIdBaseEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="13" selection-start="223" selection-end="223" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserStatusManagerServicesImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserStatusManagerServicesImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="136" column="10" selection-start="5167" selection-end="5167" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2776#3544#0" expanded="true" />
+                <element signature="e#3533#3534#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MGraphicStoreModeDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/MGraphicStoreModeDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceChooseUtil.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/ServiceChooseUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="112" column="66" selection-start="5197" selection-end="5221" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -191,20 +202,11 @@
       <file leaf-file-name="UserInfo.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="1011" selection-end="1011" vertical-scroll-proportion="0.0">
+            <state line="105" column="5" selection-start="2874" selection-end="2874" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#0#3599#0" expanded="true" />
+                <element signature="e#0#2877#0" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/FileUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="787" selection-end="787" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -235,9 +237,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/CXInfoResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/MGraphicStoreModeHibernateDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/util/AuditInterceptor.java" />
         <option value="$PROJECT_DIR$/../parent/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/BaseEntity.java" />
@@ -249,7 +248,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/util/DataUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/util/FileUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/util/Base64Encoder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/UserCXInfoHibernateDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserCXInfoUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserStatusManagerServicesImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" />
       </list>
     </option>
@@ -402,10 +404,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -448,70 +446,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="business" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -707,7 +641,49 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dto" />
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -751,23 +727,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="constants" />
+              <option name="myItemId" value="logs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1260,7 +1220,11 @@
       <created>1343113529945</created>
       <updated>1343113529945</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="remove usermodecount">
+      <created>1343113803231</created>
+      <updated>1343113803231</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1298,7 +1262,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="JavaRebel" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27370688" sideWeight="0.37335092" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27370688" sideWeight="0.28759894" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8984169" sideWeight="0.49425286" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17313218" sideWeight="0.46042216" order="4" side_tool="false" content_ui="tabs" />
@@ -1313,6 +1277,7 @@
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2672414" sideWeight="0.6253298" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283046" sideWeight="0.18337731" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39973614" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
@@ -1323,7 +1288,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39939255" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -1363,7 +1327,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove usermodecount" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1381,6 +1345,7 @@
     <MESSAGE value="enable last version functions" />
     <MESSAGE value="dto_project" />
     <MESSAGE value="update" />
+    <MESSAGE value="remove usermodecount" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1424,121 +1389,109 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/RestSender.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/GenericVersionInfoDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0">
+        <state line="11" column="17" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/MGraphicStoreModeDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/ServiceChooseUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="66" selection-start="5197" selection-end="5221" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/MessageHelp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Type.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0">
+        <state line="9" column="14" selection-start="195" selection-end="199" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/FileUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/LongTypeIdBaseEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="787" selection-end="787" vertical-scroll-proportion="0.0">
+        <state line="8" column="13" selection-start="223" selection-end="223" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/DateUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/IdEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="71" selection-end="71" vertical-scroll-proportion="0.0">
+        <state line="18" column="22" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/business/CXInfoType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Category.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="12" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
+        <state line="9" column="13" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/business/MGraphicStoreModeUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Contacts.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
+        <state line="12" column="13" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/business/ModeType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/CXInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="12" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
+        <state line="23" column="13" selection-start="870" selection-end="870" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/business/SmsMessageServiceUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/SmsMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="262" selection-end="262" vertical-scroll-proportion="0.0">
+        <state line="9" column="13" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/business/StatusType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Signature.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="12" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
+        <state line="10" column="13" selection-start="233" selection-end="233" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1011" selection-end="1011" vertical-scroll-proportion="0.0">
+        <state line="105" column="5" selection-start="2874" selection-end="2874" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#3599#0" expanded="true" />
+            <element signature="e#0#2877#0" expanded="true" />
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserStatusManagerServicesImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="136" column="10" selection-start="5167" selection-end="5167" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2776#3544#0" expanded="true" />
+            <element signature="e#3533#3534#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1043" selection-end="1043" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ShortPhoneNoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="13" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserFavorites.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCXInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="19" selection-start="1033" selection-end="1043" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/UserCXInfoHibernateDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="4" selection-start="1658" selection-end="1658" vertical-scroll-proportion="0.11732606">
+        <state line="29" column="0" selection-start="951" selection-end="951" vertical-scroll-proportion="-0.40381992">
           <folding />
         </state>
       </provider>
