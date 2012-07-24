@@ -1,4 +1,4 @@
-package com.server.cx.entity.cx;
+package com.server.cx.entity.basic;
 
 public interface StringTypeIdentifiable {
   public String getId();

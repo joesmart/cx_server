@@ -3,6 +3,8 @@
  */
 package com.server.cx.entity.cx;
 
+import com.server.cx.entity.basic.AuditableEntity;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;

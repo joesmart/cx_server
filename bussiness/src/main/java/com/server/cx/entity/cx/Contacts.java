@@ -1,5 +1,7 @@
 package com.server.cx.entity.cx;
 
+import com.server.cx.entity.basic.AuditableEntity;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -8,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_catacts")
-public class Contacts extends AuditableEntity{
+public class Contacts extends AuditableEntity {
 
   private String name;
   private String phoneNo;

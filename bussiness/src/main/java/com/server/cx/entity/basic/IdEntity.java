@@ -1,11 +1,10 @@
-package com.server.cx.entity;
-
-import java.io.Serializable;
+package com.server.cx.entity.basic;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 
 /**
  * 统一定义id的entity基类.

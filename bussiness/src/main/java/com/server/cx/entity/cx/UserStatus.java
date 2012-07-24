@@ -1,5 +1,7 @@
 package com.server.cx.entity.cx;
 
+import com.server.cx.entity.basic.AuditableEntity;
+
 import java.sql.Timestamp;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

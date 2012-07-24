@@ -1,7 +1,7 @@
 package com.server.cx.util;
 
-import com.server.cx.entity.cx.Auditable;
-import com.server.cx.entity.cx.BaseEntity;
+import com.server.cx.entity.basic.Auditable;
+import com.server.cx.entity.basic.LongTypeIdBaseEntity;
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.type.Type;
 
@@ -36,7 +36,7 @@ public class AuditInterceptor extends EmptyInterceptor {
   public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState,
       String[] propertyNames, Type[] types) {
     boolean updated = false;
-    if (entity instanceof BaseEntity) {
+    if (entity instanceof LongTypeIdBaseEntity) {
       Auditable a = (Auditable) entity;
       String username = getCurrentUser();
       Date stamp = new Date();

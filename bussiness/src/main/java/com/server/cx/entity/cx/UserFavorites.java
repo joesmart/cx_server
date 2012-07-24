@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
 import com.server.cx.dto.CXInfo;
+import com.server.cx.entity.basic.AuditableEntity;
 
 
 @Entity

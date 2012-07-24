@@ -14,7 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import com.server.cx.entity.IdEntity;
+import com.server.cx.entity.basic.IdEntity;
 
 import com.google.common.collect.Lists;
 

@@ -1,4 +1,4 @@
-package com.server.cx.entity.cx;
+package com.server.cx.entity.basic;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BaseEntity implements LongTypeIdentifiable {
+public class LongTypeIdBaseEntity implements LongTypeIdentifiable {
   private Long id;
 
   @Id

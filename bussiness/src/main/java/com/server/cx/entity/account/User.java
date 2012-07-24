@@ -1,7 +1,7 @@
 package com.server.cx.entity.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.server.cx.entity.IdEntity;
+import com.server.cx.entity.basic.IdEntity;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;

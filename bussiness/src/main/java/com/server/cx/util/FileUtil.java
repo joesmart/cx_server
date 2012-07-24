@@ -27,11 +27,6 @@ public class FileUtil {
   public FileUtil() {
     thumbnailMap = Maps.newHashMap();
     ThumbnailStrategy imageStrategy = new ImageThumbnailStrategy();
-    // ThumbnailStrategy gifStrategy = new GifThumbnailStrategy();
-    // ThumbnailStrategy videoStrategy = new VideoThumbnailStrategy();
-
-    // thumbnailMap.put("3gp", videoStrategy);
-    // thumbnailMap.put("mp4", videoStrategy);
 
     thumbnailMap.put("jpg", imageStrategy);
     thumbnailMap.put("png", imageStrategy);

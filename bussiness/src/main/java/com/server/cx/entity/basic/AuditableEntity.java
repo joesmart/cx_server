@@ -1,4 +1,4 @@
-package com.server.cx.entity.cx;
+package com.server.cx.entity.basic;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 
 @MappedSuperclass
-public class AuditableEntity extends BaseEntity implements Auditable {
+public class AuditableEntity extends LongTypeIdBaseEntity implements Auditable {
   private String createdBy;
   private String updatedBy;
   private Date createdOn;

@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import com.server.cx.dto.UserCXInfo;
 import com.server.cx.dto.CXInfo;
-
+import com.server.cx.entity.basic.AuditableStringEntity;
 
 
 @Entity

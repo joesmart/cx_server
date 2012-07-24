@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.server.cx.entity.basic.AuditableEntity;
 import com.server.cx.xml.adapter.DateXMLAdapter;
 import com.server.cx.xml.adapter.SignatureXMLAdapter;
 

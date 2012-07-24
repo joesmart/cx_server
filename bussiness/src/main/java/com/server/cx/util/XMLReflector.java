@@ -1,13 +1,13 @@
 package com.server.cx.util;
 
+import org.dom4j.Element;
+
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.sql.Blob;
-
-import org.dom4j.Element;
 
 // bean --> xml
 public class XMLReflector {
@@ -30,38 +30,6 @@ public class XMLReflector {
     System.out.println(len);
   }
 
-  public String convertToXml(Object o, Element cxinfos) throws Exception {
-    StringBuffer returnValue = new StringBuffer(this.result);
-    Element cxinfo = null;
-    if (o.getClass().isAssignableFrom(sourceClass)) {
-      PropertyDescriptor[] pd = beanInfo.getPropertyDescriptors();
-      if (pd.length > 0) {
-        if (!name.equals("")) {
-          // returnValue.append("<" + name + ">");
-          cxinfo = cxinfos.addElement(name);
-        }
-        for (int i = 0; i < pd.length; i++) {
-          returnValue.append(getProp(o, pd[i], cxinfo));
-        }
-        // add image string to it
-        // TODO need fixed this
-        /*
-         * if (name.equals(Constants.CX_INFO_STR)) { if (o instanceof UserCXInfo) { int imageId =
-         * ((UserCXInfo) o).getImageId(); Element imageIdElement = cxinfo.addElement("imageId");
-         * imageIdElement.setText(String.valueOf(imageId)); returnValue
-         * .append(ImageUtil.generateImageNode(imageId, cxinfo)); // returnValue.append("<image>");
-         * // returnValue.append(ImageUtil.readImage(imageId)); // returnValue.append("</image>"); }
-         * } if (!name.equals("")) { // returnValue.append("</" + name + ">"); }
-         */
-      } else {
-        cxinfos.addElement(name);
-      }
-    } else {
-      throw new ClassCastException("Class " + o.getClass().getName() + " is not compatible with "
-          + sourceClass.getName());
-    }
-    return returnValue.toString();
-  }
 
   @SuppressWarnings("unused")
   private String getProp(Object o, PropertyDescriptor pd, Element cxinfo) throws Exception {
