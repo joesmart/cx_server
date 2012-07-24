@@ -2,44 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="">
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\BaseDao.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\Contact.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\util\Constants.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\util\DataUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\util\HibernateUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\UserCXInfoModeCount.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bussiness.iml" afterPath="$PROJECT_DIR$/bussiness.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/Group.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/Group.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/CXInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/CXInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Category.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Category.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Contacts.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Contacts.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/MGraphicStoreMode.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/MGraphicStoreMode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/ShortPhoneNo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/ShortPhoneNo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Signature.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Signature.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/SmsMessage.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/SmsMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/StatusCXInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/StatusCXInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/StatusPackage.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/StatusPackage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Type.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Type.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCXInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCXInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCXInfoModeCount.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCXInfoModeCount.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserFavorites.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserFavorites.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserStatus.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/VersionInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/VersionInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/AuditInterceptor.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/AuditInterceptor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/Base64Encoder.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/Base64Encoder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/FileUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/FileUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/XMLParser.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/XMLParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/XMLReflector.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/XMLReflector.java" />
-      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\IdEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/IdEntity.java" />
-      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\Auditable.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/Auditable.java" />
-      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\AuditableEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/AuditableEntity.java" />
-      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\AuditableStringEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/AuditableStringEntity.java" />
-      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\BaseEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/LongTypeIdBaseEntity.java" />
-      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\LongTypeIdentifiable.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/LongTypeIdentifiable.java" />
-      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\StringTypeBaseEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/StringTypeBaseEntity.java" />
-      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\entity\cx\StringTypeIdentifiable.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/StringTypeIdentifiable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" />
     </list>
     <ignored path="bussiness.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,37 +69,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SessionFactoryUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/SessionFactoryUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="13" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServiceChooseUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/ServiceChooseUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="191" column="17" selection-start="8123" selection-end="8123" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RestSender.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/RestSender.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="13" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MessageHelp.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/MessageHelp.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -200,35 +135,67 @@
       <file leaf-file-name="UserCXInfo.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCXInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="13" selection-start="1033" selection-end="1033" vertical-scroll-proportion="0.0">
+            <state line="30" column="19" selection-start="1033" selection-end="1043" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserCXInfoModeCount.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCXInfoModeCount.java">
+      <file leaf-file-name="UserCXInfoHibernateDao.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/UserCXInfoHibernateDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="13" selection-start="355" selection-end="355" vertical-scroll-proportion="0.15552524">
+            <state line="46" column="4" selection-start="1658" selection-end="1658" vertical-scroll-proportion="0.11732606">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StringUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/StringUtil.java">
+      <file leaf-file-name="RegisterServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="13" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
+            <state line="31" column="0" selection-start="1043" selection-end="1043" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Base64Encoder.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/Base64Encoder.java">
+      <file leaf-file-name="ShortPhoneNoServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ShortPhoneNoServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
+            <state line="24" column="13" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserStatus.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserStatus.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="13" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserFavorites.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserFavorites.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="13" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="0" selection-start="1011" selection-end="1011" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#3599#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -268,8 +235,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/ContactsResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/StatusUserCXInfoResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/CXInfoResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/MGraphicStoreModeHibernateDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/util/AuditInterceptor.java" />
@@ -284,6 +249,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/util/DataUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/util/FileUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/util/Base64Encoder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -574,6 +541,108 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -802,7 +871,7 @@
       <recent name="com.server.cx.webservice.rs.server" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GroupManagerIT">
+  <component name="RunManager" selected="Maven.clean_compile">
     <configuration default="false" name="Default" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console" temporary="true">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
@@ -1187,7 +1256,11 @@
       <created>1343110998618</created>
       <updated>1343110998618</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update">
+      <created>1343113529945</created>
+      <updated>1343113529945</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1351,45 +1424,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/XMLReflector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="1" selection-start="828" selection-end="828" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#491#520#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/Base64Encoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/StringUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/SessionFactoryUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/ServiceChooseUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="191" column="17" selection-start="8123" selection-end="8123" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/util/RestSender.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="13" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0">
@@ -1455,16 +1489,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCXInfo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="13" selection-start="1033" selection-end="1033" vertical-scroll-proportion="0.0">
+        <state line="35" column="0" selection-start="1011" selection-end="1011" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#3599#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="1043" selection-end="1043" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCXInfoModeCount.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ShortPhoneNoServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="355" selection-end="355" vertical-scroll-proportion="0.15552524">
+        <state line="24" column="13" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="13" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserFavorites.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="465" selection-end="465" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCXInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="19" selection-start="1033" selection-end="1043" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/UserCXInfoHibernateDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="4" selection-start="1658" selection-end="1658" vertical-scroll-proportion="0.11732606">
           <folding />
         </state>
       </provider>

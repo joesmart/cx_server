@@ -8,7 +8,6 @@ import com.server.cx.dao.cx.GenericDaoHibernate;
 import com.server.cx.dao.cx.StatusPackageDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.entity.cx.StatusPackage;
-import com.server.cx.entity.cx.UserCXInfoModeCount;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.RegisterService;
@@ -51,9 +50,6 @@ public class RegisterServiceImpl implements RegisterService {
       if (userinfo == null) {
         userinfo = new UserInfo();
         userinfo.setImsi(imsi);
-        UserCXInfoModeCount modelCount = new UserCXInfoModeCount();
-        modelCount.setUser(userinfo);
-        userinfo.setModeCount(modelCount);
         phoneNo = dealWithPhoneNo(imsi, phoneNo);
         userinfo.setPhoneNo(phoneNo);
         userinfo.setStatusPackage(statuspackage);

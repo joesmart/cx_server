@@ -26,114 +26,104 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "userinfo", uniqueConstraints = @UniqueConstraint(columnNames = {"phoneNo"}))
 public class UserInfo extends AuditableEntity {
 
-  @Column(unique = true, nullable = false)
-  private String phoneNo;
-  private String imsi;
-  private Integer cxService;
-  private List<UserFavorites> userFavorites;
-  private List<ShortPhoneNo> shortPhoneNoList;
-  private UserCXInfoModeCount modeCount;
+    @Column(unique = true, nullable = false)
+    private String phoneNo;
+    private String imsi;
+    private Integer cxService;
+    private List<UserFavorites> userFavorites;
+    private List<ShortPhoneNo> shortPhoneNoList;
+    private UserStatus userStatus;
+    private StatusPackage statusPackage;
 
-  private UserStatus userStatus;
+    public UserInfo() {
+    }
 
-  private StatusPackage statusPackage;
+    public UserInfo(String phoneNo, String imsi, int cxService, String timeStamp) {
+        super();
+        this.phoneNo = phoneNo;
+        this.imsi = imsi;
+        this.cxService = cxService;
+    }
 
-  public UserInfo() {}
+    public UserInfo(final String imsi) {
+        super();
+        this.imsi = imsi;
+    }
 
-  public UserInfo(String phoneNo, String imsi, int cxService, String timeStamp) {
-    super();
-    this.phoneNo = phoneNo;
-    this.imsi = imsi;
-    this.cxService = cxService;
-  }
+    public UserInfo(final String phoneNo, final String imsi) {
+        super();
+        this.phoneNo = phoneNo;
+        this.imsi = imsi;
+    }
 
-  public UserInfo(final String imsi) {
-    super();
-    this.imsi = imsi;
-  }
+    public UserInfo(final String phoneNo, final String imsi, final int cxService) {
+        super();
+        this.phoneNo = phoneNo;
+        this.imsi = imsi;
+        this.cxService = cxService;
+    }
 
-  public UserInfo(final String phoneNo, final String imsi) {
-    super();
-    this.phoneNo = phoneNo;
-    this.imsi = imsi;
-  }
+    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "user", fetch = FetchType.LAZY)
+    public List<UserFavorites> getUserFavorites() {
+        return userFavorites;
+    }
 
-  public UserInfo(final String phoneNo, final String imsi, final int cxService) {
-    super();
-    this.phoneNo = phoneNo;
-    this.imsi = imsi;
-    this.cxService = cxService;
-  }
+    public void setUserFavorites(List<UserFavorites> userFavorites) {
+        this.userFavorites = userFavorites;
+    }
 
-  @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "user", fetch = FetchType.LAZY)
-  public List<UserFavorites> getUserFavorites() {
-    return userFavorites;
-  }
+    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "user", fetch = FetchType.LAZY)
+    // @IndexColumn(name="id")
+    @OrderBy("id")
+    public List<ShortPhoneNo> getShortPhoneNoList() {
+        return shortPhoneNoList;
+    }
 
-  public void setUserFavorites(List<UserFavorites> userFavorites) {
-    this.userFavorites = userFavorites;
-  }
+    public void setShortPhoneNoList(List<ShortPhoneNo> shortPhoneNoList) {
+        this.shortPhoneNoList = shortPhoneNoList;
+    }
 
-  @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "user", fetch = FetchType.LAZY)
-  // @IndexColumn(name="id")
-  @OrderBy("id")
-  public List<ShortPhoneNo> getShortPhoneNoList() {
-    return shortPhoneNoList;
-  }
+    public String getPhoneNo() {
+        return phoneNo;
+    }
 
-  public void setShortPhoneNoList(List<ShortPhoneNo> shortPhoneNoList) {
-    this.shortPhoneNoList = shortPhoneNoList;
-  }
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
 
-  public String getPhoneNo() {
-    return phoneNo;
-  }
+    public String getImsi() {
+        return imsi;
+    }
 
-  public void setPhoneNo(String phoneNo) {
-    this.phoneNo = phoneNo;
-  }
+    public void setImsi(String imsi) {
+        this.imsi = imsi;
+    }
 
-  public String getImsi() {
-    return imsi;
-  }
+    public Integer getCxService() {
+        return cxService;
+    }
 
-  public void setImsi(String imsi) {
-    this.imsi = imsi;
-  }
+    public void setCxService(Integer cxService) {
+        this.cxService = cxService;
+    }
 
-  public Integer getCxService() {
-    return cxService;
-  }
 
-  public void setCxService(Integer cxService) {
-    this.cxService = cxService;
-  }
+    @OneToOne(optional = true, cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    public UserStatus getUserStatus() {
+        return userStatus;
+    }
 
-  @OneToOne(optional = true, cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
-  public UserCXInfoModeCount getModeCount() {
-    return modeCount;
-  }
+    public void setUserStatus(UserStatus userStatus) {
+        this.userStatus = userStatus;
+    }
 
-  public void setModeCount(UserCXInfoModeCount modeCount) {
-    this.modeCount = modeCount;
-  }
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE}, optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "statuspackage_id")
+    public StatusPackage getStatusPackage() {
+        return statusPackage;
+    }
 
-  @OneToOne(optional = true, cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
-  public UserStatus getUserStatus() {
-    return userStatus;
-  }
-
-  public void setUserStatus(UserStatus userStatus) {
-    this.userStatus = userStatus;
-  }
-
-  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE}, optional = false, fetch = FetchType.LAZY)
-  @JoinColumn(name = "statuspackage_id")
-  public StatusPackage getStatusPackage() {
-    return statusPackage;
-  }
-
-  public void setStatusPackage(StatusPackage statusPackage) {
-    this.statusPackage = statusPackage;
-  }
+    public void setStatusPackage(StatusPackage statusPackage) {
+        this.statusPackage = statusPackage;
+    }
 }
