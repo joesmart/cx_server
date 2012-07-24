@@ -14,5 +14,4 @@ public interface UserInfoDao {
   
   public List<UserInfo> getUserInfosByPhoneNos(List<String> phoneNos);
 
-  public List<UserInfo> getUserInfoByShortPhoneNo(String shortPhoneNo);
 }

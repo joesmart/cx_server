@@ -5,6 +5,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.GenericDaoHibernate;
+import com.server.cx.dao.cx.GenericUserFavoritesDao;
 import com.server.cx.dao.cx.UserFavoritesDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.CXInfo;
@@ -32,7 +33,7 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
   @Autowired
   private UserInfoDao userInfoDao;
   @Autowired
-  GenericDaoHibernate<UserFavorites, Long> genericUserFavoritesDao;
+  GenericUserFavoritesDao genericUserFavoritesDao;
   @Autowired
   private UserFavoritesDao userFavoritesDao;
   @Autowired
@@ -109,8 +110,10 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
     String splitString = ",";
 
     List<Long> userFavoritesIdLongList = UserFavoritesUtil.convertDigitStrignIntoLongList(userFavoritesId, splitString);
-
-    genericUserFavoritesDao.removeAll(userFavoritesIdLongList);
+    //TODO Send multi delete request need to refactor to resolve this kind issue By Joe
+    for(Long id :userFavoritesIdLongList){
+        genericUserFavoritesDao.delete(id);
+    }
     dealResult = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "用户移除收藏成功");
     return dealResult;
   }

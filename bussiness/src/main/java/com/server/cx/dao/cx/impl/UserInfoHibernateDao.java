@@ -1,9 +1,7 @@
 package com.server.cx.dao.cx.impl;
 
-import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.GenericDaoHibernate;
 import com.server.cx.dao.cx.UserInfoDao;
-import com.server.cx.entity.cx.ShortPhoneNo;
 import com.server.cx.entity.cx.UserInfo;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
@@ -57,23 +55,6 @@ public class UserInfoHibernateDao extends GenericDaoHibernate<UserInfo, Long> im
     criteria.add(Restrictions.in("phoneNo", phoneNos)).setProjection(Projections.property("phoneNo"));
     List<String> mobiles = getHibernateTemplate().findByCriteria(criteria);
     return mobiles;
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public List<UserInfo> getUserInfoByShortPhoneNo(String shortPhoneNo) {
-    // TODO 严重的业务逻辑错误,短号码有实现的必要吗?
-    DetachedCriteria criteria = DetachedCriteria.forClass(ShortPhoneNo.class);
-    criteria.add(Restrictions.eq("shortPhoneNo", shortPhoneNo));
-    List<ShortPhoneNo> shortPhoneNos = super.getHibernateTemplate().findByCriteria(criteria);
-    if (shortPhoneNos != null && shortPhoneNos.size() > 0) {
-      List<UserInfo> userInfos = Lists.newArrayList();
-      for (ShortPhoneNo tempShortPhoneNo : shortPhoneNos) {
-        userInfos.add(tempShortPhoneNo.getUser());
-      }
-      return userInfos;
-    }
-    return null;
   }
 
   @Override

@@ -3,7 +3,7 @@ package com.server.cx.service.cx.impl;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.GenericDaoHibernate;
+import com.server.cx.dao.cx.GenericMGraphicStoreModeDao;
 import com.server.cx.dao.cx.MGraphicStoreModeDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.CXInfo;
@@ -36,7 +36,7 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
   @Autowired
   private MGraphicStoreModeDao mgraphicStoreModeDao;
   @Autowired
-  private GenericDaoHibernate<MGraphicStoreMode, String> genericMGraphicStoreModeDao;
+  private GenericMGraphicStoreModeDao genericMGraphicStoreModeDao;
   @Autowired
   @Qualifier("cxinfosUploadRestSender")
   private RestSender restSender;
@@ -77,12 +77,12 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
       mGraphic.setId(null);
       CXInfo cxInfo = userCXInfo.getCxInfo();
       dealWithCXInfo(cxInfo, imsi);
-      genericMGraphicStoreModeDao.persist(mGraphic);
+      genericMGraphicStoreModeDao.save(mGraphic);
     }
     // 这是一次彩像的编辑操作
     else {
       // 排除如果数据已经被
-      MGraphicStoreMode existsMGraphicStoreMode = genericMGraphicStoreModeDao.getById(mGraphic.getId());
+      MGraphicStoreMode existsMGraphicStoreMode = genericMGraphicStoreModeDao.findOne(mGraphic.getId());
       if (existsMGraphicStoreMode != null) {
         existsMGraphicStoreMode.setName(mGraphic.getName());
         existsMGraphicStoreMode.setSignature(mGraphic.getSignature());
@@ -90,7 +90,7 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
         existsMGraphicStoreMode.setStartHour(mGraphic.getStartHour());
         existsMGraphicStoreMode.setEndHour(mGraphic.getEndHour());
         updateUserCXInfoTimeStamp(existsMGraphicStoreMode);
-        genericMGraphicStoreModeDao.merge(existsMGraphicStoreMode);
+        genericMGraphicStoreModeDao.save(existsMGraphicStoreMode);
       } else {
         return StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "数据不存在");
       }
@@ -229,10 +229,10 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
   @Override
   public String deleteMGraphicStoreMode(String id, String imsi) throws SystemException {
     String dealwithResult = "";
-    MGraphicStoreMode mGraphicStoreMode = genericMGraphicStoreModeDao.getById(id);
+    MGraphicStoreMode mGraphicStoreMode = genericMGraphicStoreModeDao.findOne(id);
     if (mGraphicStoreMode != null) {
       if (mGraphicStoreMode.getType() != 1) {
-        genericMGraphicStoreModeDao.delet(mGraphicStoreMode);
+        genericMGraphicStoreModeDao.delete(mGraphicStoreMode);
         dealwithResult = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "操作成功");
       } else {
         dealwithResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "该彩像不是用户设定的彩像");

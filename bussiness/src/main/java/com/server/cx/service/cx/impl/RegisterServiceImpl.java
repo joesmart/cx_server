@@ -4,7 +4,7 @@
 package com.server.cx.service.cx.impl;
 
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.GenericDaoHibernate;
+import com.server.cx.dao.cx.GenericUserInfoDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.SystemException;
@@ -26,7 +26,7 @@ public class RegisterServiceImpl implements RegisterService {
   @Autowired
   private UserInfoDao userDao;
   @Autowired
-  private GenericDaoHibernate<UserInfo, Long> genericUserInfoDao;
+  private GenericUserInfoDao genericUserInfoDao;
 
   public RegisterServiceImpl() {
 
@@ -46,7 +46,7 @@ public class RegisterServiceImpl implements RegisterService {
         userinfo.setImsi(imsi);
         phoneNo = dealWithPhoneNo(imsi, phoneNo);
         userinfo.setPhoneNo(phoneNo);
-        genericUserInfoDao.persist(userinfo);
+        genericUserInfoDao.save(userinfo);
         dealResult = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "用户注册成功");
       } else {
         dealResult = StringUtil.generateXMLResultString(Constants.USER_REGISTERED_FLAG, "用户已经注册");

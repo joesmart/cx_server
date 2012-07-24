@@ -11,9 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -31,7 +29,6 @@ public class UserInfo extends AuditableEntity {
     private String imsi;
     private Integer cxService;
     private List<UserFavorites> userFavorites;
-    private List<ShortPhoneNo> shortPhoneNoList;
 
     public UserInfo() {
     }
@@ -68,17 +65,6 @@ public class UserInfo extends AuditableEntity {
 
     public void setUserFavorites(List<UserFavorites> userFavorites) {
         this.userFavorites = userFavorites;
-    }
-
-    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "user", fetch = FetchType.LAZY)
-    // @IndexColumn(name="id")
-    @OrderBy("id")
-    public List<ShortPhoneNo> getShortPhoneNoList() {
-        return shortPhoneNoList;
-    }
-
-    public void setShortPhoneNoList(List<ShortPhoneNo> shortPhoneNoList) {
-        this.shortPhoneNoList = shortPhoneNoList;
     }
 
     public String getPhoneNo() {

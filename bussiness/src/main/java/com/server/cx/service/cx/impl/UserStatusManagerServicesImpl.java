@@ -4,10 +4,7 @@ import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.GenericDaoHibernate;
-import com.server.cx.dao.cx.MGraphicStoreModeDao;
-import com.server.cx.dao.cx.SignatureDao;
-import com.server.cx.dao.cx.UserInfoDao;
+import com.server.cx.dao.cx.*;
 import com.server.cx.dto.CXInfo;
 import com.server.cx.dto.Result;
 import com.server.cx.dto.UserCXInfo;
@@ -37,9 +34,9 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     @Autowired
     private MGraphicStoreModeDao mgraphicStoreModeDao;
     @Autowired
-    private GenericDaoHibernate<MGraphicStoreMode, String> genericMGraphicStoreModeDao;
+    private GenericMGraphicStoreModeDao genericMGraphicStoreModeDao;
     @Autowired
-    GenericDaoHibernate<UserInfo, Long> genericUserInfoDao;
+    GenericUserInfoDao genericUserInfoDao;
     @Autowired
     @Qualifier("statusRestSender")
     private RestSender restSender;
@@ -141,7 +138,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     public String deletCurrentUserStatus(String imsi, String userCXInfoId, String cxInfoId) throws SystemException {
         ValidationUtil.checkParametersNotNull(imsi, userCXInfoId, cxInfoId);
         isUserExists(imsi);
-        genericMGraphicStoreModeDao.remove(userCXInfoId);
+        genericMGraphicStoreModeDao.delete(userCXInfoId);
         List<CXInfo> cxInfos = requestCXInfoResourceData();
         List<UserCXInfo> userCXInfos = convertCXInfosToUserCXInfo(imsi, cxInfos);
         String xmlresult = gnerateXMLResult(userCXInfos);

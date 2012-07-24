@@ -28,8 +28,6 @@ public class ServiceChooseUtil {
   @Autowired
   private UserFavoritesService userFavoriteService;
   @Autowired
-  private ShortPhoneNoService shortPhoneNoService;
-  @Autowired
   private UserStatusManagerService userStatusManagerService;
 
   private XMLParser xmlParser = XMLParser.getInstance();
@@ -91,15 +89,6 @@ public class ServiceChooseUtil {
         String requestPageSize = mapParams.get(Constants.REQUEST_PAGE_SIZE);
         String typeId = mapParams.get(Constants.TYPE_ID);
         result = userFavoriteService.getAllUserFavorites(imsi, typeId, requestPage, requestPageSize);
-      } else if (requestUrl.equals(Constants.ADD_SHORT_PHONENO)) {
-        // 添加用户短号
-        String imsi = mapParams.get(Constants.IMSI_STR);
-        String shortPhoneNos = mapParams.get(Constants.SHORTPHONE_NOS);
-        result = shortPhoneNoService.addNewShorePhoneNo(imsi, shortPhoneNos);
-      } else if (requestUrl.equals(Constants.RETRIVE_USER_SHORTPHONENOS)) {
-        // 检索用户短号
-        String imsi = mapParams.get(Constants.IMSI_STR);
-        result = shortPhoneNoService.retriveAllShortPhoneNos(imsi);
       } else if (requestUrl.equals(Constants.ADD_NEW_USERSTATUS_USERCXINFO)) {
         // TODO 添加一个新的状态用户设定彩像.
         String imsi = mapParams.get(Constants.IMSI_STR);
