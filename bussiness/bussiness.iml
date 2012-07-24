@@ -9,14 +9,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-          <root url="file://$MODULE_DIR$/src/test/java" />
-          <root url="file://$MODULE_DIR$/src/test/resources" />
-          <root url="file://$MODULE_DIR$/target/generated-test-sources/test-annotations" />
-          <root url="file://$MODULE_DIR$/target/generated-sources/annotations" />
-        </sourceRoots>
       </configuration>
     </facet>
     <facet type="hibernate" name="Hibernate">
@@ -59,7 +51,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-test-sources/test-annotations" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/annotations" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/functional" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/tmp" />
@@ -143,7 +134,16 @@
     <orderEntry type="library" name="Maven: com.sun.jersey:jersey-servlet:1.13" level="project" />
     <orderEntry type="library" name="Maven: com.sun.jersey.contribs:jersey-spring:1.13" level="project" />
     <orderEntry type="library" name="Maven: com.sun.jersey:jersey-client:1.13" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.jersey.contribs:jersey-multipart:1.13" level="project" />
+    <orderEntry type="library" name="Maven: org.jvnet:mimepull:1.6" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.jersey:jersey-json:1.13" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jettison:jettison:1.1" level="project" />
+    <orderEntry type="library" name="Maven: stax:stax-api:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.2" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.2" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-jaxrs:1.9.2" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-xc:1.9.2" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-validator:4.3.0.Final" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
     <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.2.2" level="project" />

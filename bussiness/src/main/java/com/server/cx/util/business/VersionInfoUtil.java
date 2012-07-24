@@ -1,72 +1,80 @@
 package com.server.cx.util.business;
 
 import java.util.List;
+
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
 public class VersionInfoUtil {
 
-    private boolean isNeedToForceUpgrade = false;;
-    private boolean isNeedToUpgrade = false;
-    
-    public boolean isNeedToForceUpgrade() {
-        return isNeedToForceUpgrade;
+  private boolean isNeedToForceUpgrade = false;;
+  private boolean isNeedToUpgrade = false;
+
+  public boolean isNeedToForceUpgrade() {
+    return isNeedToForceUpgrade;
+  }
+
+  public void setNeedToForceUpgrade(boolean isNeedToForceUpgrade) {
+    this.isNeedToForceUpgrade = isNeedToForceUpgrade;
+  }
+
+  public boolean isNeedToUpgrade() {
+    return isNeedToUpgrade;
+  }
+
+  public void setNeedToUpgrade(boolean isNeedToUpgrade) {
+    this.isNeedToUpgrade = isNeedToUpgrade;
+  }
+
+
+  public VersionInfoUtil() {
+
+  }
+
+  public VersionInfoUtil(String clientVersion, String serverVersion) {
+    this.versionInfoCompare(clientVersion, serverVersion);
+  }
+
+  public void versionInfoCompare(String clientVersion, String serverVersion) {
+
+    if (serverVersion.equals(clientVersion)) {
+      this.isNeedToForceUpgrade = false;
+      this.isNeedToUpgrade = false;
+      return;
     }
-    public void setNeedToForceUpgrade(boolean isNeedToForceUpgrade) {
-        this.isNeedToForceUpgrade = isNeedToForceUpgrade;
-    }
-    public boolean isNeedToUpgrade() {
-        return isNeedToUpgrade;
-    }
-    public void setNeedToUpgrade(boolean isNeedToUpgrade) {
-        this.isNeedToUpgrade = isNeedToUpgrade;
-    }
-    
-    
-    public VersionInfoUtil(){
-        
-    }
-    
-    public VersionInfoUtil(String clientVersion,String serverVersion){
-        this.versionInfoCompare(clientVersion, serverVersion);
-    }
-    
-    public void versionInfoCompare(String clientVersion, String serverVersion) {
-        
-        if(serverVersion.equals(clientVersion)){
+
+    List<String> clientSplitedVersionStringList = changeStringToList(clientVersion);
+    List<String> serverSplitedVersionList = changeStringToList(serverVersion);
+    if (serverSplitedVersionList.size() != clientSplitedVersionStringList.size()) {
+      this.isNeedToUpgrade = true;
+      this.isNeedToForceUpgrade = true;
+    } else {
+      int i = 0;
+      for (; i < serverSplitedVersionList.size(); i++) {
+        int serverVersionNo = Integer.parseInt(serverSplitedVersionList.get(i));
+        int clientVersioNo = Integer.parseInt(clientSplitedVersionStringList.get(i));
+        if (i == 0) {
+          if (serverVersionNo > clientVersioNo) {
+            this.isNeedToForceUpgrade = true;
+            this.isNeedToUpgrade = true;
+            break;
+          }else if(serverVersionNo < clientVersioNo){
             this.isNeedToForceUpgrade = false;
             this.isNeedToUpgrade = false;
-            return;
+            break;
+          }
+        } else if (serverVersionNo > clientVersioNo) {
+          this.isNeedToForceUpgrade = false;
+          this.isNeedToUpgrade = true;
+          break;
         }
-        
-        List<String> clientSplitedVersionStringList = changeStringToList(clientVersion);
-        List<String> serverSplitedVersionList = changeStringToList(serverVersion);
-        if(serverSplitedVersionList.size() != clientSplitedVersionStringList.size() ){
-            this.isNeedToUpgrade = true;
-            this.isNeedToForceUpgrade = true;
-        }else{
-            int i = 0;
-            for(;i<serverSplitedVersionList.size();i++){
-                int serverVersionNo = Integer.parseInt(serverSplitedVersionList.get(i));
-                int clientVersioNo = Integer.parseInt(clientSplitedVersionStringList.get(i));
-                if(i == 0){
-                    if(serverVersionNo>clientVersioNo){
-                        this.isNeedToForceUpgrade = true;
-                        this.isNeedToUpgrade = true;
-                        break;
-                    }
-                }else if(serverVersionNo > clientVersioNo ){
-                    this.isNeedToForceUpgrade = false;
-                    this.isNeedToUpgrade = true;
-                    break;
-                }
-            }
-          
-        }
+      }
+
     }
-    
-    private List<String> changeStringToList(String versionString){
-        List<String> list = Lists.newArrayList(Splitter.on(".").split(versionString));
-        return list;
-    }
+  }
+
+  private List<String> changeStringToList(String versionString) {
+    List<String> list = Lists.newArrayList(Splitter.on(".").split(versionString));
+    return list;
+  }
 }

@@ -9,41 +9,41 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="status_cxinfo")
-public class StatusCXInfo extends AuditableEntity{
-    
-    @Enumerated(EnumType.ORDINAL)
-    private Integer statusType;
-    private CXInfo cxinfo;
-    private StatusPackage statuspackage;
-    
-    public Integer getStatusType() {
-        return statusType;
-    }
+@Table(name = "status_cxinfo")
+public class StatusCXInfo extends AuditableEntity {
 
-    public void setStatusType(Integer statusType) {
-        this.statusType = statusType;
-    }
+  @Enumerated(EnumType.ORDINAL)
+  private Integer statusType;
+  private CXInfo cxinfo;
+  private StatusPackage statuspackage;
 
-    @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "cx_id")
-    public CXInfo getCxinfo() {
-        return cxinfo;
-    }
-    
-    public void setCxinfo(CXInfo cxinfo) {
-        this.cxinfo = cxinfo;
-    }
-    
-    @ManyToOne( cascade = {CascadeType.PERSIST,CascadeType.REFRESH},optional = true)
-    @JoinColumn(name = "package_id")
-    public StatusPackage getStatuspackage() {
-        return statuspackage;
-    }
+  public Integer getStatusType() {
+    return statusType;
+  }
 
-    public void setStatuspackage(StatusPackage statuspackage) {
-        this.statuspackage = statuspackage;
-    }
+  public void setStatusType(Integer statusType) {
+    this.statusType = statusType;
+  }
 
-    
+  @ManyToOne(cascade = CascadeType.REFRESH)
+  @JoinColumn(name = "cx_id")
+  public CXInfo getCxinfo() {
+    return cxinfo;
+  }
+
+  public void setCxinfo(CXInfo cxinfo) {
+    this.cxinfo = cxinfo;
+  }
+
+  @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, optional = true)
+  @JoinColumn(name = "package_id")
+  public StatusPackage getStatuspackage() {
+    return statuspackage;
+  }
+
+  public void setStatuspackage(StatusPackage statuspackage) {
+    this.statuspackage = statuspackage;
+  }
+
+
 }

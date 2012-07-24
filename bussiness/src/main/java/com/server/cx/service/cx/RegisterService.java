@@ -1,6 +1,5 @@
 /*
- * Copyright (c) 2011 CieNet, Ltd.
- * Created on 2011-9-21
+ * Copyright (c) 2011 CieNet, Ltd. Created on 2011-9-21
  */
 package com.server.cx.service.cx;
 
@@ -13,6 +12,6 @@ import java.util.Map;
  */
 public interface RegisterService {
 
-    String registe(Map<String, String> paramsMap) throws SystemException;
+  String registe(Map<String, String> paramsMap) throws SystemException;
 
 }

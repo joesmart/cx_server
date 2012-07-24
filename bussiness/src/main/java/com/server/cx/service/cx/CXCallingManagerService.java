@@ -5,5 +5,5 @@ import com.server.cx.exception.SystemException;
 import java.util.Map;
 
 public interface CXCallingManagerService {
-	public String getCallingCXInfo(Map<String, String> paramsMap) throws SystemException;
+  public String getCallingCXInfo(Map<String, String> paramsMap) throws SystemException;
 }

@@ -1,9 +1,21 @@
 package com.server.cx.entity.cx;
 
-import com.server.cx.entity.IdEntity;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BaseEntity extends IdEntity {
+public class BaseEntity implements LongTypeIdentifiable {
+  private Long id;
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 }

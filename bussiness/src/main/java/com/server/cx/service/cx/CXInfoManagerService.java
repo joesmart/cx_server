@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface CXInfoManagerService {
-	public List<CXInfo> browserAllData(Map<String, String> paramsMap) throws SystemException;
-	
-	public void addNewCXInfo(final String serverPath, CXInfo cxInfo) throws SystemException;
+  public List<CXInfo> browserAllData(Map<String, String> paramsMap) throws SystemException;
+
+  public void addNewCXInfo(final String serverPath, CXInfo cxInfo) throws SystemException;
 }

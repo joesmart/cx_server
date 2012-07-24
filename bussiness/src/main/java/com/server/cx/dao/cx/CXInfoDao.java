@@ -8,7 +8,8 @@ import java.util.Map;
 
 public interface CXInfoDao {
 
-    public abstract List<CXInfo> browserAllData(Map<String, String> params) throws SystemException;
-    public List<CXInfo> getCMCCCXInfos();
+  public abstract List<CXInfo> browserAllData(Map<String, String> params) throws SystemException;
+
+  public List<CXInfo> getCMCCCXInfos();
 
 }

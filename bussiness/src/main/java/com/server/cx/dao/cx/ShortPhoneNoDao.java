@@ -4,5 +4,5 @@ import com.server.cx.exception.SystemException;
 
 public interface ShortPhoneNoDao {
 
-    public void deleteAllOldShortPhonNos(Long userId) throws SystemException;
+  public void deleteAllOldShortPhonNos(Long userId) throws SystemException;
 }
