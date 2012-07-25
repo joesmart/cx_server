@@ -1,9 +1,10 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableStringEntity;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * User: yanjianzou
@@ -13,10 +14,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "graphic_resource")
+@ToString @EqualsAndHashCode(callSuper = false)
 public class GraphicResource extends AuditableStringEntity {
     private GraphicInfo graphicInfo;
     private String resourceId;
     private String graphicId;
+
+    @Transient
+    private String thumbnailPath;
+    @Transient
+    private String sourcePath;
 
     public String getGraphicId() {
         return graphicId;
@@ -26,6 +33,8 @@ public class GraphicResource extends AuditableStringEntity {
         this.graphicId = graphicId;
     }
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, optional = true)
+    @JoinColumn(name = "user_id")
     public GraphicInfo getGraphicInfo() {
         return graphicInfo;
     }
@@ -40,5 +49,21 @@ public class GraphicResource extends AuditableStringEntity {
 
     public void setResourceId(String resourceId) {
         this.resourceId = resourceId;
+    }
+
+    public String getSourcePath() {
+        return sourcePath;
+    }
+
+    public void setSourcePath(String sourcePath) {
+        this.sourcePath = sourcePath;
+    }
+
+    public String getThumbnailPath() {
+        return thumbnailPath;
+    }
+
+    public void setThumbnailPath(String thumbnailPath) {
+        this.thumbnailPath = thumbnailPath;
     }
 }
