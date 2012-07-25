@@ -1,8 +1,6 @@
 package com.server.cx.dao.cx.impl;
 
-import com.server.cx.dao.cx.GenericDaoHibernate;
 import com.server.cx.dao.cx.SmsMessageDao;
-import com.server.cx.entity.cx.SmsMessage;
 import com.server.cx.exception.InvalidParameterException;
 import com.server.cx.exception.SystemException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -15,10 +13,9 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Repository("smsMessageDao")
-public class SmsMessageHibernateDao extends GenericDaoHibernate<SmsMessage, Long> implements SmsMessageDao {
+public class SmsMessageHibernateDao extends BasicDao implements SmsMessageDao {
 
   public SmsMessageHibernateDao() {
-    super(SmsMessage.class);
   }
 
   @Override
@@ -31,7 +28,7 @@ public class SmsMessageHibernateDao extends GenericDaoHibernate<SmsMessage, Long
     }
 
     final int size = mobiles.size();
-    super.getJdbcTemplate().batchUpdate(
+    getJdbcTemplate().batchUpdate(
         "insert into sms_message(sms,fromMobileNo,toMobileNo,isSend,createdOn) values(?,?,?,?,?)",
         new BatchPreparedStatementSetter() {
           @Override

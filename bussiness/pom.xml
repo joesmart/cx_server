@@ -277,6 +277,10 @@
             <groupId>net.coobird</groupId>
             <artifactId>thumbnailator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 		<!-- GENERAL UTILS end -->
 
 		<!-- TEST begin -->

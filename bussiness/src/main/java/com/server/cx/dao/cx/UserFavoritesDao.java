@@ -10,7 +10,5 @@ public interface UserFavoritesDao {
 
   public List<UserFavorites> getAllUserFavorites(Long userid, int requestPage, int pageSize);
 
-  public void deleteMultiUserFavorites(List<Long> userFavoritesId);
-
   public Integer getUserFavoritesTotalCount(Long userId);
 }
