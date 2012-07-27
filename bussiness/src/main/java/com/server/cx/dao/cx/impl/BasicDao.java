@@ -24,15 +24,15 @@ public class BasicDao {
     @Autowired
     protected MessageHelp messageHelp;
 
-    public Session getSession(){
+    public Session getSession() {
         return (Session) em.getDelegate();
     }
 
-    public MessageHelp getMessageHelp(){
+    public MessageHelp getMessageHelp() {
         return messageHelp;
     }
 
-    public JdbcTemplate getJdbcTemplate(){
+    public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;
     }
 }

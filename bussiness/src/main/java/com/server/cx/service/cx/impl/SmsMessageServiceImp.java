@@ -20,36 +20,36 @@ import java.util.List;
 @Transactional
 public class SmsMessageServiceImp implements SmsMessageService {
 
-  @Autowired
-  private SmsMessageDao smsMessageDao;
+    @Autowired
+    private SmsMessageDao smsMessageDao;
 
-  @Autowired
-  private UserInfoDao userInfoDao;
+    @Autowired
+    private UserInfoDao userInfoDao;
 
-  @Override
-  public String inviteFriends(String imsi, String mobiles) throws SystemException {
-    String result = "";
-    UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
-    if (userInfo == null) {
-      return StringUtil.generateXMLResultString(Constants.USER_DATA_ERROR_FLAG, "用户不存在");
+    @Override
+    public String inviteFriends(String imsi, String mobiles) throws SystemException {
+        String result = "";
+        UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
+        if (userInfo == null) {
+            return StringUtil.generateXMLResultString(Constants.USER_DATA_ERROR_FLAG, "用户不存在");
+        }
+        String phoneNo = userInfo.getPhoneNo();
+        if (phoneNo == null || "".equals(phoneNo)) {
+            result = StringUtil.generateXMLResultString(Constants.DATA_NOTFOUND_FLAG, "服务端用户的手机号码为空");
+            return result;
+        }
+
+        List<String> mobilesList = Lists.newArrayList(Splitter.on(",").split(mobiles));
+        List<String> alreadyRegisterPhoneNos = userInfoDao.getHasRegisteredPhoneNos(mobilesList);
+        List<String> notRegisteredPhoneNoList =
+                SmsMessageServiceUtil.getTheNotRegisterPhoneNoList(mobilesList, alreadyRegisterPhoneNos);
+
+        List<String> contentList = SmsMessageServiceUtil.generateSmsContent(notRegisteredPhoneNoList, phoneNo);
+        smsMessageDao.batchInsertSmsMessage(contentList, notRegisteredPhoneNoList, phoneNo);
+
+        result = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "发送邀请好友成功");
+        return result;
     }
-    String phoneNo = userInfo.getPhoneNo();
-    if (phoneNo == null || "".equals(phoneNo)) {
-      result = StringUtil.generateXMLResultString(Constants.DATA_NOTFOUND_FLAG, "服务端用户的手机号码为空");
-      return result;
-    }
-
-    List<String> mobilesList = Lists.newArrayList(Splitter.on(",").split(mobiles));
-    List<String> alreadyRegisterPhoneNos = userInfoDao.getHasRegisteredPhoneNos(mobilesList);
-    List<String> notRegisteredPhoneNoList =
-        SmsMessageServiceUtil.getTheNotRegisterPhoneNoList(mobilesList, alreadyRegisterPhoneNos);
-
-    List<String> contentList = SmsMessageServiceUtil.generateSmsContent(notRegisteredPhoneNoList, phoneNo);
-    smsMessageDao.batchInsertSmsMessage(contentList, notRegisteredPhoneNoList, phoneNo);
-
-    result = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "发送邀请好友成功");
-    return result;
-  }
 
 
 }

@@ -4,20 +4,20 @@ import java.util.Date;
 
 public interface Auditable {
 
-  String getCreatedBy();
+    String getCreatedBy();
 
-  void setCreatedBy(String username);
+    void setCreatedBy(String username);
 
-  String getUpdatedBy();
+    String getUpdatedBy();
 
-  void setUpdatedBy(String username);
+    void setUpdatedBy(String username);
 
-  Date getCreatedOn();
+    Date getCreatedOn();
 
-  void setCreatedOn(Date creationDate);
+    void setCreatedOn(Date creationDate);
 
-  Date getUpdatedOn();
+    Date getUpdatedOn();
 
-  void setUpdatedOn(Date updateDate);
+    void setUpdatedOn(Date updateDate);
 
 }

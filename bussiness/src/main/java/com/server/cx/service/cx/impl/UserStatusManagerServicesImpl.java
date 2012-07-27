@@ -4,7 +4,9 @@ import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.*;
+import com.server.cx.dao.cx.MGraphicStoreModeDao;
+import com.server.cx.dao.cx.SignatureDao;
+import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.CXInfo;
 import com.server.cx.dto.Result;
 import com.server.cx.dto.UserCXInfo;
@@ -28,15 +30,11 @@ import java.util.List;
 public class UserStatusManagerServicesImpl implements UserStatusManagerService {
 
     @Autowired
-    UserInfoDao userinfoDao;
-    @Autowired
     SignatureDao signatureDao;
     @Autowired
-    private MGraphicStoreModeDao mgraphicStoreModeDao;
+    private MGraphicStoreModeDao mGraphicStoreModeDao;
     @Autowired
-    private GenericMGraphicStoreModeDao genericMGraphicStoreModeDao;
-    @Autowired
-    GenericUserInfoDao genericUserInfoDao;
+    UserInfoDao userInfoDao;
     @Autowired
     @Qualifier("statusRestSender")
     private RestSender restSender;
@@ -51,7 +49,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
 
         ValidationUtil.checkParametersNotNull(imsi, type, signatureContent, validTime);
 
-        userInfo = userinfoDao.getUserInfoByImsi(imsi);
+        userInfo = userInfoDao.getUserInfoByImsi(imsi);
         Preconditions.checkNotNull(userInfo);
         return "";
     }
@@ -97,7 +95,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     @Override
     public UserCXInfo getCurrentValidStatusUserCXInfo() throws SystemException {
         if (userInfo != null) {
-            MGraphicStoreMode mgraphicStoreMode = mgraphicStoreModeDao.getMGraphicStoreModeByModeType(userInfo.getId(), 5);
+            MGraphicStoreMode mgraphicStoreMode = mGraphicStoreModeDao.getMGraphicStoreModeByModeType(userInfo.getId(), 5);
             if (mgraphicStoreMode != null) {
                 return mgraphicStoreMode.convertMGraphicStoreModeToUserCXInfo();
             } else {
@@ -121,7 +119,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     @Override
     public void isUserExists(String imsi) throws SystemException {
         ValidationUtil.checkParametersNotNull(imsi);
-        userInfo = userinfoDao.getUserInfoByImsi(imsi);
+        userInfo = userInfoDao.getUserInfoByImsi(imsi);
         Preconditions.checkNotNull(userInfo, "用户未注册");
     }
 
@@ -138,7 +136,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     public String deletCurrentUserStatus(String imsi, String userCXInfoId, String cxInfoId) throws SystemException {
         ValidationUtil.checkParametersNotNull(imsi, userCXInfoId, cxInfoId);
         isUserExists(imsi);
-        genericMGraphicStoreModeDao.delete(userCXInfoId);
+        mGraphicStoreModeDao.delete(userCXInfoId);
         List<CXInfo> cxInfos = requestCXInfoResourceData();
         List<UserCXInfo> userCXInfos = convertCXInfosToUserCXInfo(imsi, cxInfos);
         String xmlresult = gnerateXMLResult(userCXInfos);

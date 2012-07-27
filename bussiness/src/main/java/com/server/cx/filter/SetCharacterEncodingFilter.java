@@ -15,17 +15,17 @@ import javax.servlet.ServletResponse;
  * the following initialization parameters:</p>
  * <ul>
  * <li><strong>encoding</strong> - The character encoding to be configured
- *     for this request, either conditionally or unconditionally based on
- *     the <code>ignore</code> initialization parameter.  This parameter
- *     is required, so there is no default.</li>
+ * for this request, either conditionally or unconditionally based on
+ * the <code>ignore</code> initialization parameter.  This parameter
+ * is required, so there is no default.</li>
  * <li><strong>ignore</strong> - If set to "true", any character encoding
- *     specified by the client is ignored, and the value returned by the
- *     <code>selectEncoding()</code> method is set.  If set to "false,
- *     <code>selectEncoding()</code> is called <strong>only</strong> if the
- *     client has not already specified an encoding.  By default, this
- *     parameter is set to "true".</li>
+ * specified by the client is ignored, and the value returned by the
+ * <code>selectEncoding()</code> method is set.  If set to "false,
+ * <code>selectEncoding()</code> is called <strong>only</strong> if the
+ * client has not already specified an encoding.  By default, this
+ * parameter is set to "true".</li>
  * </ul>
- *
+ * <p/>
  * <p>Although this filter can be used unchanged, it is also easy to
  * subclass it and make the <code>selectEncoding()</code> method more
  * intelligent about what encoding to choose, based on characteristics of
@@ -82,15 +82,14 @@ public class SetCharacterEncodingFilter implements Filter {
      * interpret request parameters for this request.
      *
      * @param request The servlet request we are processing
-     * @param result The servlet response we are creating
-     * @param chain The filter chain we are processing
-     *
-     * @exception IOException if an input/output error occurs
-     * @exception ServletException if a servlet error occurs
+     * @param result  The servlet response we are creating
+     * @param chain   The filter chain we are processing
+     * @throws IOException      if an input/output error occurs
+     * @throws ServletException if a servlet error occurs
      */
     public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain)
-        throws IOException, ServletException {
+            throws IOException, ServletException {
 
         // Conditionally select and set the character encoding to be used
         if (ignore || (request.getCharacterEncoding() == null)) {
@@ -135,7 +134,7 @@ public class SetCharacterEncodingFilter implements Filter {
      * characteristics of the current request and/or filter initialization
      * parameters.  If no character encoding should be set, return
      * <code>null</code>.
-     * <p>
+     * <p/>
      * The default implementation unconditionally returns the value configured
      * by the <strong>encoding</strong> initialization parameter for this
      * filter.

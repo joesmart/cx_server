@@ -12,45 +12,45 @@ import java.io.InputStream;
 
 public class XMLUnmarshallUtil {
 
-  private JAXBContext jaxbContext;
-  private Unmarshaller unmarshaller;
+    private JAXBContext jaxbContext;
+    private Unmarshaller unmarshaller;
 
-  public XMLUnmarshallUtil(Class<?> c) {
-    try {
-      jaxbContext = JAXBContext.newInstance(c);
-      unmarshaller = jaxbContext.createUnmarshaller();
-      // unmarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-    } catch (JAXBException e) {
-      e.printStackTrace();
+    public XMLUnmarshallUtil(Class<?> c) {
+        try {
+            jaxbContext = JAXBContext.newInstance(c);
+            unmarshaller = jaxbContext.createUnmarshaller();
+            // unmarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
     }
 
-  }
+    public Result unmarshallXMLFile(File file) {
 
-  public Result unmarshallXMLFile(File file) {
+        Result xmlResult = null;
 
-    Result xmlResult = null;
+        try {
+            JAXBElement<Result> root = unmarshaller.unmarshal(new StreamSource(file), Result.class);
+            xmlResult = root.getValue();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
 
-    try {
-      JAXBElement<Result> root = unmarshaller.unmarshal(new StreamSource(file), Result.class);
-      xmlResult = root.getValue();
-    } catch (JAXBException e) {
-      e.printStackTrace();
+        return xmlResult;
     }
 
-    return xmlResult;
-  }
+    public Result unmarshallXMLFileResult(InputStream input) {
+        Result xmlResult = null;
 
-  public Result unmarshallXMLFileResult(InputStream input) {
-    Result xmlResult = null;
+        try {
+            JAXBElement<Result> root = unmarshaller.unmarshal(new StreamSource(input), Result.class);
+            xmlResult = root.getValue();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
 
-    try {
-      JAXBElement<Result> root = unmarshaller.unmarshal(new StreamSource(input), Result.class);
-      xmlResult = root.getValue();
-    } catch (JAXBException e) {
-      e.printStackTrace();
+        return xmlResult;
     }
-
-    return xmlResult;
-  }
 
 }

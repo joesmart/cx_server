@@ -1,16 +1,14 @@
 package com.server.cx.dao.cx;
 
-import com.server.cx.entity.cx.Contacts;
-import com.server.cx.exception.SystemException;
+import com.server.cx.dao.cx.custom.ContactsCustomDao;
+import com.server.cx.entity.cx.Category;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.List;
-
-public interface ContactsDao {
-  public void batchInsertContacts(final List<Contacts> contacts) throws SystemException;
-  
-  public List<Contacts> getContactsByUserId(Long userId) throws SystemException;
-  
-  public List<String> retrieveExistsMobiles(Long userId, List<String> phoneNos) throws SystemException;
-  
-  public List<Contacts> getContactsByUserIdAndSelfUserInfoNotNull(Long userId) throws SystemException;
+/**
+ * User: yanjianzou
+ * Date: 12-7-25
+ * Time: 下午4:21
+ * FileName:ContactsDao
+ */
+public interface ContactsDao extends PagingAndSortingRepository<Category, Long>, ContactsCustomDao {
 }

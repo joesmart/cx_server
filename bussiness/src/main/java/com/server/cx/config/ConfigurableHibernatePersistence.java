@@ -15,9 +15,8 @@ import java.util.Map;
  * Time: 下午1:26
  * FileName:ConfigurableHibernatePersistence
  * support interception in JPA2
- *
  */
-public class ConfigurableHibernatePersistence  extends HibernatePersistence{
+public class ConfigurableHibernatePersistence extends HibernatePersistence {
     private Interceptor interceptor;
 
     public Interceptor getInterceptor() {
@@ -31,17 +30,17 @@ public class ConfigurableHibernatePersistence  extends HibernatePersistence{
     @Override
     public EntityManagerFactory createContainerEntityManagerFactory(PersistenceUnitInfo info, Map properties) {
         Ejb3Configuration cfg = new Ejb3Configuration();
-        Ejb3Configuration configured = cfg.configure(info,properties);
+        Ejb3Configuration configured = cfg.configure(info, properties);
         postprocessConfiguration(info, properties, configured);
-        return configured !=null? configured.buildEntityManagerFactory():null;
+        return configured != null ? configured.buildEntityManagerFactory() : null;
     }
 
     private void postprocessConfiguration(PersistenceUnitInfo info, Map properties, Ejb3Configuration configured) {
-        if(this.interceptor != null){
-            if(configured.getInterceptor() == null || EmptyInterceptor.class.equals(configured.getInterceptor().getClass())){
+        if (this.interceptor != null) {
+            if (configured.getInterceptor() == null || EmptyInterceptor.class.equals(configured.getInterceptor().getClass())) {
                 configured.setInterceptor(this.interceptor);
-            }else{
-                throw new IllegalStateException("Hibernate interceptor already set in persistence.xml ("+configured.getInterceptor()+")");
+            } else {
+                throw new IllegalStateException("Hibernate interceptor already set in persistence.xml (" + configured.getInterceptor() + ")");
             }
         }
     }

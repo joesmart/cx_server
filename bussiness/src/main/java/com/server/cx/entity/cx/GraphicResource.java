@@ -14,7 +14,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "graphic_resource")
-@ToString @EqualsAndHashCode(callSuper = false)
+@ToString
+@EqualsAndHashCode(callSuper = false)
 public class GraphicResource extends AuditableStringEntity {
     private GraphicInfo graphicInfo;
     private String resourceId;

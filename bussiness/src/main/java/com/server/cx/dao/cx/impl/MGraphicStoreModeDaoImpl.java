@@ -1,7 +1,7 @@
 package com.server.cx.dao.cx.impl;
 
 import com.google.common.base.Preconditions;
-import com.server.cx.dao.cx.MGraphicStoreModeDao;
+import com.server.cx.dao.cx.custom.MGraphicStoreModeCustomDao;
 import com.server.cx.entity.cx.Contacts;
 import com.server.cx.entity.cx.MGraphicStoreMode;
 import com.server.cx.exception.CXServerBussinessException;
@@ -17,9 +17,9 @@ import java.util.List;
 
 @Repository("mgraphicStoreModeDao")
 @Transactional
-public class MGraphicStoreModeHibernateDao extends BasicDao implements MGraphicStoreModeDao {
+public class MGraphicStoreModeDaoImpl extends BasicDao implements MGraphicStoreModeCustomDao {
 
-    public MGraphicStoreModeHibernateDao() {
+    public MGraphicStoreModeDaoImpl() {
     }
 
     @Override

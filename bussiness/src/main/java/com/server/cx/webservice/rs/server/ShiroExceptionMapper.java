@@ -10,9 +10,9 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class ShiroExceptionMapper implements ExceptionMapper<UnauthorizedException> {
-	@Override
-	public Response toResponse(UnauthorizedException ex) {
-		return RsResponse.buildTextResponse(Status.UNAUTHORIZED, ex.getMessage());
-	}
+    @Override
+    public Response toResponse(UnauthorizedException ex) {
+        return RsResponse.buildTextResponse(Status.UNAUTHORIZED, ex.getMessage());
+    }
 
 }

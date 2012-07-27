@@ -1,14 +1,14 @@
 package com.server.cx.dao.cx;
 
+import com.server.cx.dao.cx.custom.UserFavoritesCustomDao;
 import com.server.cx.entity.cx.UserFavorites;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.List;
-
-public interface UserFavoritesDao {
-
-  public boolean isAlreadAddedInUserFavorites(Long userId, String resourceId);
-
-  public List<UserFavorites> getAllUserFavorites(Long userid, int requestPage, int pageSize);
-
-  public Integer getUserFavoritesTotalCount(Long userId);
+/**
+ * User: yanjianzou
+ * Date: 12-7-20
+ * Time: 下午2:24
+ * FileName:UserFavoritesDao
+ */
+public interface UserFavoritesDao extends PagingAndSortingRepository<UserFavorites, Long>, UserFavoritesCustomDao {
 }

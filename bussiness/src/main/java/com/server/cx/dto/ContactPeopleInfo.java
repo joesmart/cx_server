@@ -28,10 +28,10 @@ public class ContactPeopleInfo {
     }
 
     public UserCXInfo getUserCXInfo() {
-      return userCXInfo;
+        return userCXInfo;
     }
 
     public void setUserCXInfo(UserCXInfo userCXInfo) {
-      this.userCXInfo = userCXInfo;
+        this.userCXInfo = userCXInfo;
     }
 }

@@ -1,6 +1,6 @@
 package com.server.cx.dao.cx.impl;
 
-import com.server.cx.dao.cx.ContactsDao;
+import com.server.cx.dao.cx.custom.ContactsCustomDao;
 import com.server.cx.entity.cx.Contacts;
 import com.server.cx.exception.SystemException;
 import org.hibernate.Session;
@@ -18,9 +18,7 @@ import java.sql.Types;
 import java.util.List;
 
 @Repository("contactsDao")
-public class ContactsHibernateDao extends BasicDao implements ContactsDao {
-
-
+public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
 
     @Override
     public void batchInsertContacts(final List<Contacts> contacts) throws SystemException {

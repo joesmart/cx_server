@@ -10,16 +10,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageHelp {
 
-  private ReloadableResourceBundleMessageSource messageSource;
+    private ReloadableResourceBundleMessageSource messageSource;
 
-  @Autowired
-  public void setMessageSource(MessageSource messageSource) {
-    this.messageSource = (ReloadableResourceBundleMessageSource) messageSource;
-  }
+    @Autowired
+    public void setMessageSource(MessageSource messageSource) {
+        this.messageSource = (ReloadableResourceBundleMessageSource) messageSource;
+    }
 
-  public String getZhMessage(String messageName) {
-    String messageValue = messageSource.getMessage(messageName, null, Locale.CHINA);
-    return messageValue;
-  }
+    public String getZhMessage(String messageName) {
+        String messageValue = messageSource.getMessage(messageName, null, Locale.CHINA);
+        return messageValue;
+    }
 
 }

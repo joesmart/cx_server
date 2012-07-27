@@ -1,17 +1,14 @@
 package com.server.cx.dao.cx;
 
+import com.server.cx.dao.cx.custom.UserInfoCustomDao;
 import com.server.cx.entity.cx.UserInfo;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.List;
-
-public interface UserInfoDao {
-
-  public abstract UserInfo getUserInfoByPhoneNo(String phoneNo);
-
-  public abstract UserInfo getUserInfoByImsi(String imsi);
-
-  public List<String> getHasRegisteredPhoneNos(List<String> phoneNos);
-  
-  public List<UserInfo> getUserInfosByPhoneNos(List<String> phoneNos);
-
+/**
+ * User: yanjianzou
+ * Date: 12-7-20
+ * Time: 下午2:09
+ * FileName:UserInfoDao
+ */
+public interface UserInfoDao extends PagingAndSortingRepository<UserInfo, Long>, UserInfoCustomDao {
 }

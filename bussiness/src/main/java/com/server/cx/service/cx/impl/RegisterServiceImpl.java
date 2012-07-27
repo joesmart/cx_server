@@ -4,7 +4,6 @@
 package com.server.cx.service.cx.impl;
 
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.GenericUserInfoDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.SystemException;
@@ -23,52 +22,49 @@ import java.util.UUID;
 @Service("registerService")
 @Transactional
 public class RegisterServiceImpl implements RegisterService {
-  @Autowired
-  private UserInfoDao userDao;
-  @Autowired
-  private GenericUserInfoDao genericUserInfoDao;
+    @Autowired
+    private UserInfoDao userInfoDao;
 
-  public RegisterServiceImpl() {
+    public RegisterServiceImpl() {
 
-  }
-
-  @Override
-  public String registe(Map<String, String> paramsMap) throws SystemException {
-    String dealResult = "";
-    String imsi = paramsMap.get(Constants.IMSI_STR);
-    String phoneNo = paramsMap.get(Constants.PHONE_NO_STR);
-    // String timeStampString = paramsMap.get(Constants.TIME_STAMP_STR);
-
-    if (imsi != null && !"".equals(imsi)) {
-      UserInfo userinfo = userDao.getUserInfoByImsi(imsi);
-      if (userinfo == null) {
-        userinfo = new UserInfo();
-        userinfo.setImsi(imsi);
-        phoneNo = dealWithPhoneNo(imsi, phoneNo);
-        userinfo.setPhoneNo(phoneNo);
-        genericUserInfoDao.save(userinfo);
-        dealResult = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "用户注册成功");
-      } else {
-        dealResult = StringUtil.generateXMLResultString(Constants.USER_REGISTERED_FLAG, "用户已经注册");
-      }
-    } else {
-      dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "IMSI数据为空");
     }
 
-    return dealResult;
-  }
+    @Override
+    public String registe(Map<String, String> paramsMap) throws SystemException {
+        String dealResult = "";
+        String imsi = paramsMap.get(Constants.IMSI_STR);
+        String phoneNo = paramsMap.get(Constants.PHONE_NO_STR);
 
-  private String dealWithPhoneNo(String imsi, String phoneNo) {
-    if (phoneNo == null || "".equals(phoneNo)) {
-      phoneNo = String.valueOf(UUID.randomUUID().getMostSignificantBits());
-    } else if ("460025581509188".equals(imsi)) {
-      phoneNo = "18358163576";
-    } else if ("460025581509189".equals(imsi)) {
-      phoneNo = "18358163577";
-    } else if ("460025581509187".equals(imsi)) {
-      phoneNo = "18358163575";
+        if (imsi != null && !"".equals(imsi)) {
+            UserInfo userinfo = userInfoDao.getUserInfoByImsi(imsi);
+            if (userinfo == null) {
+                userinfo = new UserInfo();
+                userinfo.setImsi(imsi);
+                phoneNo = dealWithPhoneNo(imsi, phoneNo);
+                userinfo.setPhoneNo(phoneNo);
+                userInfoDao.save(userinfo);
+                dealResult = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "用户注册成功");
+            } else {
+                dealResult = StringUtil.generateXMLResultString(Constants.USER_REGISTERED_FLAG, "用户已经注册");
+            }
+        } else {
+            dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "IMSI数据为空");
+        }
+
+        return dealResult;
     }
-    return phoneNo;
-  }
+
+    private String dealWithPhoneNo(String imsi, String phoneNo) {
+        if (phoneNo == null || "".equals(phoneNo)) {
+            phoneNo = String.valueOf(UUID.randomUUID().getMostSignificantBits());
+        } else if ("460025581509188".equals(imsi)) {
+            phoneNo = "18358163576";
+        } else if ("460025581509189".equals(imsi)) {
+            phoneNo = "18358163577";
+        } else if ("460025581509187".equals(imsi)) {
+            phoneNo = "18358163575";
+        }
+        return phoneNo;
+    }
 
 }

@@ -16,26 +16,26 @@ import com.server.cx.service.account.AccountManager;
 @RequestMapping(value = "/account/group/")
 public class GroupDetailController {
 
-	@Autowired
-	private AccountManager accountManager;
+    @Autowired
+    private AccountManager accountManager;
 
-	@RequiresPermissions("group:edit")
-	@RequestMapping(value = "update/{id}")
-	public String updateForm(Model model) {
-		model.addAttribute("allPermissions", Permission.values());
-		return "account/groupForm";
-	}
+    @RequiresPermissions("group:edit")
+    @RequestMapping(value = "update/{id}")
+    public String updateForm(Model model) {
+        model.addAttribute("allPermissions", Permission.values());
+        return "account/groupForm";
+    }
 
-	@RequiresPermissions("group:edit")
-	@RequestMapping(value = "save/{id}")
-	public String save(@ModelAttribute("group") Group group, RedirectAttributes redirectAttributes) {
-		accountManager.saveGroup(group);
-		redirectAttributes.addFlashAttribute("message", "修改权限组" + group.getName() + "成功");
-		return "redirect:/account/group/";
-	}
+    @RequiresPermissions("group:edit")
+    @RequestMapping(value = "save/{id}")
+    public String save(@ModelAttribute("group") Group group, RedirectAttributes redirectAttributes) {
+        accountManager.saveGroup(group);
+        redirectAttributes.addFlashAttribute("message", "修改权限组" + group.getName() + "成功");
+        return "redirect:/account/group/";
+    }
 
-	@ModelAttribute("group")
-	public Group getGroup(@PathVariable("id") Long id) {
-		return accountManager.getGroup(id);
-	}
+    @ModelAttribute("group")
+    public Group getGroup(@PathVariable("id") Long id) {
+        return accountManager.getGroup(id);
+    }
 }

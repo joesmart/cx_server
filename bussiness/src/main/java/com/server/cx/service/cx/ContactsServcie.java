@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface ContactsServcie {
 
-  public String uploadContacts(List<ContactPeopleInfo> contactPeopleInfos, String imsi) throws SystemException;
-  
-  public String retrieveContactUserCXInfo(String imsi) throws SystemException;
-  
-  public String copyContactUserCXInfo(String imsi, String cxInfoId)throws SystemException;
+    public String uploadContacts(List<ContactPeopleInfo> contactPeopleInfos, String imsi) throws SystemException;
+
+    public String retrieveContactUserCXInfo(String imsi) throws SystemException;
+
+    public String copyContactUserCXInfo(String imsi, String cxInfoId) throws SystemException;
 }

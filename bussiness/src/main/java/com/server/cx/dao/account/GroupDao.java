@@ -5,7 +5,7 @@ import com.server.cx.entity.account.Group;
 
 /**
  * 权限组对象的Dao interface.
- * 
+ *
  * @author calvin
  */
 

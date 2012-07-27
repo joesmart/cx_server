@@ -1,23 +1,14 @@
 package com.server.cx.dao.cx;
 
+import com.server.cx.dao.cx.custom.MGraphicStoreModeCustomDao;
 import com.server.cx.entity.cx.MGraphicStoreMode;
-import com.server.cx.exception.SystemException;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.List;
-
-public interface MGraphicStoreModeDao {
-  public MGraphicStoreMode getDefaulModeUserCXInfo() throws SystemException;
-
-  public List<MGraphicStoreMode> getAllMGraphicStoreModeByUserId(Long userId) throws SystemException;
-
-  public MGraphicStoreMode getCurrentValidStatusMGraphicStoreMode(Long userId, Integer currentHour);
-
-  public List<String> getIdOfTheSameMGraphicStoreMode(Long userId, MGraphicStoreMode mgraphicStoreMode)
-      throws SystemException;
-  
-  public List<MGraphicStoreMode> getAllCatactsMGraphicStoreModes(Long userId);
-  
-  public void deleteUserAllStatus(Long userid);
-
-  public MGraphicStoreMode getMGraphicStoreModeByModeType(Long userId, Integer modeType);
+/**
+ * User: yanjianzou
+ * Date: 12-7-24
+ * Time: 下午3:57
+ * FileName:MGraphicStoreModeDao
+ */
+public interface MGraphicStoreModeDao extends PagingAndSortingRepository<MGraphicStoreMode, String>, MGraphicStoreModeCustomDao {
 }

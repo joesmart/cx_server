@@ -1,12 +1,14 @@
 package com.server.cx.dao.cx;
 
-import com.server.cx.exception.SystemException;
+import com.server.cx.dao.cx.custom.SmsMessageCustomDao;
+import com.server.cx.entity.cx.SmsMessage;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.List;
-
-public interface SmsMessageDao {
-  public void batchInsertSmsMessage(final List<String> content, final List<String> mobiles, String userInfoPhoneNo)
-      throws SystemException;
-
-  public void updateSmsMessageSentStatus(final Long[] ids) throws SystemException;
+/**
+ * User: yanjianzou
+ * Date: 12-7-20
+ * Time: 下午2:21
+ * FileName:SmsMessageCustomDao
+ */
+public interface SmsMessageDao extends PagingAndSortingRepository<SmsMessage, Long>, SmsMessageCustomDao {
 }

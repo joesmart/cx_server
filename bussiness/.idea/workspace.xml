@@ -4,19 +4,166 @@
     <option name="ANALYSIS_IN_BACKGROUND" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="convert the GnericHibernateDao to Spring Data style generic Dao">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml" />
+    <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/custom/ContactsCustomDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/custom/MGraphicStoreModeCustomDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/custom/SignatureCustomDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/custom/SmsMessageCustomDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/custom/UserFavoritesCustomDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/custom/UserInfoCustomDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/SignatureDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/SmsMessageDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/UserFavoritesDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/UserInfoDaoImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/CustomeMGraphicStoreMode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HolidayMGraphicStoreMode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HolidayType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/StatusMGraphicStoreMode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/StatusType.java" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\.idea\libraries\Maven__com_google_code_findbugs_jsr305_1_3_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericDaoHibernate.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericMGraphicStoreModeDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericSignatureDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\impl\SignatureHibernateDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\impl\SmsMessageHibernateDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\impl\UserFavoritesHibernateDao.java" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\impl\UserInfoHibernateDao.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/bussiness_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/bussiness_war_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bussiness.iml" afterPath="$PROJECT_DIR$/bussiness.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/config/ConfigurableHibernatePersistence.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/config/ConfigurableHibernatePersistence.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/config/JAXBContextResolver.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/config/JAXBContextResolver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/constants/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/constants/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/GroupDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/GroupDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/GroupDaoCustom.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/GroupDaoCustom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/GroupDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/GroupDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/UserDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/UserDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/ContactsDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/ContactsDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/MGraphicStoreModeDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/MGraphicStoreModeDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/SignatureDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/SignatureDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/BasicDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/BasicDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/CXInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/CXInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/ContactPeopleInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/ContactPeopleInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/Result.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/Result.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/UserCXInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/UserCXInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/JsonMapAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/JsonMapAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/MapEntryType.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/MapEntryType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/MapType.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/MapType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/XmlGenericMapAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/XmlGenericMapAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/Group.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/Group.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/Permission.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/Permission.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/Auditable.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/Auditable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/AuditableEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/AuditableEntity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/AuditableStringEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/AuditableStringEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/StringTypeBaseEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/StringTypeBaseEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/IdEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/IdEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/LongTypeIdBaseEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/LongTypeIdBaseEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/LongTypeIdentifiable.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/LongTypeIdentifiable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/StringTypeIdentifiable.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/StringTypeIdentifiable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Category.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Category.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Contacts.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Contacts.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicResource.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/MGraphicStoreMode.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/MGraphicStoreMode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Signature.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Signature.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/SmsMessage.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/SmsMessage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Type.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Type.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserFavorites.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserFavorites.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/VersionInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/VersionInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/exception/CXServerBussinessException.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/exception/CXServerBussinessException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/exception/InvalidParameterException.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/exception/InvalidParameterException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/exception/SystemException.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/exception/SystemException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/filter/SetCharacterEncodingFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/filter/SetCharacterEncodingFilter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/ServiceException.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/ServiceException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/account/AccountManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/account/AccountManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/account/ShiroDbRealm.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/account/ShiroDbRealm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/CXCallingManagerService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/CXCallingManagerService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/ContactsServcie.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/ContactsServcie.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/RegisterService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/RegisterService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/SmsMessageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/SmsMessageService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/UserCXInfoManagerService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/UserCXInfoManagerService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/UserFavoritesService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/UserFavoritesService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/UserStatusManagerService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/UserStatusManagerService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/VersionInfoService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/VersionInfoService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CXCallingManagerServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CXCallingManagerServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/SmsMessageServiceImp.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/SmsMessageServiceImp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserCXInfoManagerServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserCXInfoManagerServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserFavoritesServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserFavoritesServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserStatusManagerServicesImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserStatusManagerServicesImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/VersionInfoServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/VersionInfoServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/servlet/DispatchServiceServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/servlet/DispatchServiceServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/servlet/UserCXInfoAddServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/servlet/UserCXInfoAddServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/thumbnail/GifThumbnailStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/thumbnail/GifThumbnailStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/thumbnail/ImageThumbnailStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/thumbnail/ImageThumbnailStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/thumbnail/ThumbnailStrategy.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/thumbnail/ThumbnailStrategy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/AuditInterceptor.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/AuditInterceptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/Base64Encoder.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/Base64Encoder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/DateUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/DateUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/FileUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/FileUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/MessageHelp.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/MessageHelp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/RestSender.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/RestSender.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/ServiceChooseUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/ServiceChooseUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/SessionFactoryUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/SessionFactoryUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/StringUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/StringUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/URLParser.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/URLParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/XMLParser.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/XMLParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/XMLReflector.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/XMLReflector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/CXInfoType.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/CXInfoType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/MGraphicStoreModeUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/MGraphicStoreModeUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/ModeType.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/ModeType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/SmsMessageServiceUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/SmsMessageServiceUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/StatusType.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/StatusType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserCXInfoType.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserCXInfoType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserCXInfoUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserCXInfoUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserFavoritesUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserFavoritesUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserStatusUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserStatusUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/ValidationUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/ValidationUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/VersionInfoUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/VersionInfoUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/web/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/web/LoginController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupController.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupDetailController.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupDetailController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupListEditor.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupListEditor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/UserDetailController.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/UserDetailController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/WsConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/WsConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/dto/DepartmentDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/dto/DepartmentDTO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/dto/UserDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/dto/UserDTO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/client/AccountResourceClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/client/AccountResourceClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/ContactsResource.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/ContactsResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/ShiroExceptionMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/ShiroExceptionMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/StatusUserCXInfoResource.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/StatusUserCXInfoResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserResouceService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserResouceService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/AccountWebService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/AccountWebService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/impl/AccountWebServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/impl/AccountWebServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/response/DepartmentResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/response/DepartmentResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/response/UserListResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/response/UserListResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/response/base/IdResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/response/base/IdResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/response/base/WSResponse.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/response/base/WSResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/Result.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/Result.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/UserSetting.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/UserSetting.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/adapter/CategoryXMLAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/adapter/CategoryXMLAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/adapter/DateXMLAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/adapter/DateXMLAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/adapter/SignatureXMLAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/adapter/SignatureXMLAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/adapter/TypeXMLAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/adapter/TypeXMLAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/util/XMLMarshalUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/util/XMLMarshalUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/util/XMLUnmarshallUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/util/XMLUnmarshallUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../parent/pom.xml" afterPath="$PROJECT_DIR$/../parent/pom.xml" />
-      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\.idea\libraries\Maven__com_alibaba_fastjson_1_1_22.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_1_20.xml" />
-      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\.idea\libraries\Maven__com_google_guava_guava_13_0_rc1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_12_0.xml" />
-      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\.idea\libraries\Maven__net_sf_ehcache_ehcache_core_2_5_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_core_2_5_2.xml" />
+      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\.idea\libraries\Maven__com_alibaba_fastjson_1_1_20.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_1_22.xml" />
+      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\.idea\libraries\Maven__com_google_guava_guava_12_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_13_0_rc1.xml" />
+      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericCategoryDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/CategoryDao.java" />
+      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericSmsMessageDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/SmsMessageDao.java" />
+      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericUserFavoritesDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/UserFavoritesDao.java" />
+      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericUserInfoDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/UserInfoDao.java" />
+      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\GenericVersionInfoDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/VersionInfoDao.java" />
+      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\impl\ContactsHibernateDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/ContactsDaoImpl.java" />
+      <change type="MOVED" beforePath="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dao\cx\impl\MGraphicStoreModeHibernateDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/MGraphicStoreModeDaoImpl.java" />
     </list>
     <ignored path="bussiness.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,37 +227,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GraphicResource.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicResource.java">
+      <file leaf-file-name="Contacts.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Contacts.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="39" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuditableStringEntity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/AuditableStringEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GraphicInfo.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="9" selection-start="556" selection-end="556" vertical-scroll-proportion="-2.1792114">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StringTypeBaseEntity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/StringTypeBaseEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="21" selection-start="706" selection-end="706" vertical-scroll-proportion="0.0">
+            <state line="21" column="34" selection-start="573" selection-end="573" vertical-scroll-proportion="-0.7639836">
               <folding />
             </state>
           </provider>
@@ -142,22 +262,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/MGraphicStoreModeHibernateDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/SignatureDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/SignatureHibernateDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/BasicDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/SmsMessageHibernateDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/UserFavoritesDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/UserFavoritesHibernateDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/UserInfoHibernateDao.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/applicationContext-rs-server.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/../parent/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/StringTypeBaseEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/AuditableStringEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/custom/UserInfoCustomDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/UserInfoDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserCXInfoManagerServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/SmsMessageDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserStatusManagerServicesImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CXCallingManagerServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Category.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/StatusType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HolidayType.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/SmsMessageServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Contacts.java" />
+        <option value="$PROJECT_DIR$/../parent/pom.xml" />
       </list>
     </option>
   </component>
@@ -165,14 +285,13 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="userSettingsFile" value="D:\apache-maven-3.0.3\conf\settings.xml" />
-        <option name="workOffline" value="true" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
         <option name="importAutomatically" value="true" />
-        <option name="keepSourceFolders" value="false" />
       </MavenImportingSettings>
     </option>
   </component>
@@ -186,6 +305,20 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="Springside :: Parent" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Springside :: Example :: Mini-Web" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Dependencies" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -211,10 +344,10 @@
     <option name="vmOptions" value="-Xmx1024m -XX:MaxPermSize=656m" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="-1448" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="width" value="1456" />
+    <option name="height" value="916" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -637,7 +770,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>Abstraction issues</id>
+            <id>JpaDataSourceORMInspection</id>
           </State>
         </selected-state>
       </profile-state>
@@ -671,142 +804,12 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Default">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="bussiness">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="bussiness">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="bussiness">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="bussiness">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT=".idea">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="bussiness">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="bussiness">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="bussiness" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.projectlombok:lombok:0.11.2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lombok-0.11.2.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.projectlombok:lombok:0.11.2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lombok-0.11.2.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lombok" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -901,7 +904,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -928,6 +935,82 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -995,34 +1078,90 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Default">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bussiness">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bussiness">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bussiness">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bussiness">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT=".idea">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bussiness">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="bussiness">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1062,7 +1201,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="options.lastSelected" value="reference.settings.project.maven.repository.indices" />
+    <property name="options.lastSelected" value="http.proxy" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -1091,6 +1230,7 @@
       <recent name="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\util\business" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.server.cx.dao.cx.custom" />
       <recent name="com.server.cx.entity.basic" />
       <recent name="com.server.cx.entity" />
       <recent name="com.server.cx.webservice.rs.server" />
@@ -1501,7 +1641,11 @@
       <created>1343198962303</created>
       <updated>1343198962303</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update">
+      <created>1343202590360</created>
+      <updated>1343202590360</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1525,33 +1669,34 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-1448" y="-8" width="1456" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25644916" sideWeight="0.46042216" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.71240103" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7114094" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26455787" sideWeight="0.66490763" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24886191" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="jenkinsBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.67150396" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283046" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="jenkinsBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852808" sideWeight="0.67150396" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JavaRebel Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53957784" sideWeight="0.9468391" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30144268" sideWeight="0.6409396" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283046" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6895973" sideWeight="0.5007184" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Kahlua" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="JavaRebel" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="BuildWatcher" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="RESTClient" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27801725" sideWeight="0.2885906" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.79530203" sideWeight="0.49425286" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2602428" sideWeight="0.36409396" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53957784" sideWeight="0.9468391" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30144268" sideWeight="0.6409396" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="RESTClient" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="BuildWatcher" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.63590604" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2658046" sideWeight="0.53562003" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2579666" sideWeight="0.20469798" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25493172" sideWeight="0.20469798" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.79530203" sideWeight="0.49425286" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2579666" sideWeight="0.3104027" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
@@ -1559,8 +1704,7 @@
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="22" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6266491" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.63720316" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4966443" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39939255" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
@@ -1668,117 +1812,383 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/projectlombok/lombok/0.11.2/lombok-0.11.2.jar!/lombok/EqualsAndHashCode.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Category.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="24" selection-start="296" selection-end="313" vertical-scroll-proportion="0.034798536">
+        <state line="12" column="36" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/AuditableEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.19964974" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/StatusType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="14" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="39" selection-start="2686" selection-end="2701" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/MGraphicStoreMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="25" selection-start="647" selection-end="647" vertical-scroll-proportion="-3.8931699" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HolidayType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="36" selection-start="538" selection-end="555" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/StatusMGraphicStoreMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="36" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HolidayMGraphicStoreMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="37" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/CustomeMGraphicStoreMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="37" selection-start="132" selection-end="172" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/SmsMessageServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="47" selection-start="1709" selection-end="1709" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="13" selection-start="1503" selection-end="1503" vertical-scroll-proportion="1.2939068" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbElement:/59005d98/4a84daa6-74af-43e3-ab71-1a1a1e5fe854/BUSSINESS4.PUBLIC.USER_CATACTS">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="uml://MAVEN/com.server.cx:bussiness:1.0-SNAPSHOT">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>MAVEN</ID>
+          <OriginalElement>com.server.cx:bussiness:1.0-SNAPSHOT</OriginalElement>
+          <nodes>
+            <node x="" y="">org.hibernate:hibernate-ehcache:jar:4.1.4.Final/net.sf.ehcache:ehcache-core:jar:2.5.2</node>
+            <node x="" y="">org.slf4j:slf4j-log4j12:jar:1.6.6/org.slf4j:slf4j-api:jar:1.6.6</node>
+            <node x="" y="">org.hibernate:hibernate-ehcache:jar:4.1.4.Final/org.jboss.logging:jboss-logging:jar:3.1.0.GA</node>
+            <node x="" y="">org.hibernate:hibernate-core:jar:4.1.4.Final/org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.0.Final</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-ws-addr:jar:2.6.1</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-web:jar:3.1.2.RELEASE/org.springframework:spring-context:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.lazyluke:log4jdbc-remix:jar:0.2.7/junit:junit:jar:4.10</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/net.sourceforge.cssparser:cssparser:jar:0.9.5/org.w3c.css:sac:jar:1.3</node>
+            <node x="" y="">org.lazyluke:log4jdbc-remix:jar:0.2.7</node>
+            <node x="" y="">com.sun.jersey:jersey-server:jar:1.13/asm:asm:jar:3.3.1</node>
+            <node x="" y="">org.apache.shiro:shiro-spring:jar:1.2.0</node>
+            <node x="" y="">com.sun.jersey.contribs:jersey-spring:jar:1.13/org.springframework:spring-web:jar:3.1.2.RELEASE</node>
+            <node x="" y="">com.alibaba:fastjson:jar:1.1.22</node>
+            <node x="" y="">org.hibernate:hibernate-validator:jar:4.3.0.Final/javax.validation:validation-api:jar:1.0.0.GA</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/com.sun.jersey:jersey-core:jar:1.13</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/org.seleniumhq.selenium:selenium-api:jar:2.24.1/org.json:json:jar:20080701</node>
+            <node x="" y="">org.slf4j:jcl-over-slf4j:jar:1.6.6/org.slf4j:slf4j-api:jar:1.6.6</node>
+            <node x="" y="">org.springside:springside-test:jar:4.0.0.RC4-SNAPSHOT/org.mockito:mockito-core:jar:1.9.0</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/org.codehaus.jackson:jackson-xc:jar:1.9.2/org.codehaus.jackson:jackson-mapper-asl:jar:1.9.2</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-expression:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework.data:spring-data-commons-core:jar:1.3.0.RELEASE</node>
+            <node x="" y="">com.fasterxml.jackson.core:jackson-databind:jar:2.0.4/com.fasterxml.jackson.core:jackson-annotations:jar:2.0.4</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1/org.codehaus.woodstox:woodstox-core-asl:jar:4.1.2/org.codehaus.woodstox:stax2-api:jar:3.1.1</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-firefox-driver:jar:2.24.1/org.apache.commons:commons-exec:jar:1.1</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-context:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.webbitserver:webbit:jar:0.4.6/org.jboss.netty:netty:jar:3.2.7.Final</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-asm:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-bindings-soap:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1/wsdl4j:wsdl4j:jar:1.6.2</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1/org.codehaus.woodstox:woodstox-core-asl:jar:4.1.2</node>
+            <node x="" y="">org.powermock:powermock-module-junit4:jar:1.4.12/org.powermock:powermock-module-junit4-common:jar:1.4.12/junit:junit:jar:4.10</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/xml-resolver:xml-resolver:jar:1.2</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-bindings-soap:jar:2.6.1/org.apache.cxf:cxf-rt-databinding-jaxb:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1</node>
+            <node x="" y="">com.sun.jersey.contribs:jersey-multipart:jar:1.13</node>
+            <node x="" y="">org.springside:springside-core:jar:4.0.0.RC4-SNAPSHOT/com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.0.4</node>
+            <node x="" y="">org.apache.commons:commons-lang3:jar:3.1</node>
+            <node x="" y="">org.dbunit:dbunit:jar:2.4.8/org.slf4j:slf4j-api:jar:1.6.6</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/org.codehaus.jettison:jettison:jar:1.1</node>
+            <node x="" y="">org.springframework:spring-aop:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-expression:jar:3.1.2.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-firefox-driver:jar:2.24.1/org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/org.apache.httpcomponents:httpclient:jar:4.2.1/org.apache.httpcomponents:httpcore:jar:4.2.1</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-ws-addr:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-web:jar:3.1.2.RELEASE/org.springframework:spring-beans:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.springframework:spring-test:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.hibernate:hibernate-core:jar:4.1.4.Final/dom4j:dom4j:jar:1.6.1</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-frontend-simple:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-core:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1</node>
+            <node x="" y="">org.mockito:mockito-core:jar:1.9.0/org.hamcrest:hamcrest-core:jar:1.1</node>
+            <node x="" y="">org.springframework:spring-aop:jar:3.1.2.RELEASE/org.springframework:spring-beans:jar:3.1.2.RELEASE</node>
+            <node x="" y="">commons-dbcp:commons-dbcp:jar:1.4/commons-pool:commons-pool:jar:1.6</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/net.java.dev.jna:platform:jar:3.4.0</node>
+            <node x="" y="">javax.servlet:servlet-api:jar:2.5</node>
+            <node x="" y="">com.sun.jersey:jersey-servlet:jar:1.13</node>
+            <node x="" y="">net.sf.ehcache:ehcache-core:jar:2.5.2/org.slf4j:slf4j-api:jar:1.6.6</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-ie-driver:jar:2.24.1/net.java.dev.jna:jna:jar:3.4.0</node>
+            <node x="" y="">commons-dbcp:commons-dbcp:jar:1.4</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/com.google.guava:guava:jar:13.0-rc1</node>
+            <node x="" y="">junit:junit:jar:4.10</node>
+            <node x="" y="">org.springframework:spring-aop:jar:3.1.2.RELEASE/org.springframework:spring-asm:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/xerces:xercesImpl:jar:2.9.1</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:org.apache.taglibs.standard.glassfish:jar:1.2.0.v201112081803/org.eclipse.jetty.orbit:javax.servlet.jsp.jstl:jar:1.2.0.v201105211821</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-bindings-soap:jar:2.6.1</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-bindings-soap:jar:2.6.1/org.apache.cxf:cxf-rt-databinding-jaxb:jar:2.6.1/org.apache.cxf:cxf-rt-core:jar:2.6.1</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-support:jar:2.24.1</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-safari-driver:jar:2.24.1</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-safari-driver:jar:2.24.1/org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1</node>
+            <node x="" y="">org.springframework:spring-orm:jar:3.1.2.RELEASE/org.springframework:spring-beans:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-ws-addr:jar:2.6.1/org.apache.cxf:cxf-rt-ws-policy:jar:2.6.1/org.apache.neethi:neethi:jar:3.0.2</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-web:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-bindings-soap:jar:2.6.1/org.apache.cxf:cxf-rt-databinding-jaxb:jar:2.6.1/com.sun.xml.bind:jaxb-impl:jar:2.2.5.1</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/org.apache.commons:commons-exec:jar:1.1</node>
+            <node x="" y="">org.springframework:spring-aop:jar:3.1.2.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.hibernate:hibernate-core:jar:4.1.4.Final/org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/org.codehaus.jackson:jackson-core-asl:jar:1.9.2</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework:spring-tx:jar:3.1.2.RELEASE/org.springframework:spring-context:jar:3.1.2.RELEASE</node>
+            <node x="" y="">net.sf.dozer:dozer:jar:5.3.2</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/org.apache.httpcomponents:httpclient:jar:4.2.1/commons-logging:commons-logging:jar:1.1.1</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-transports-http:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1</node>
+            <node x="" y="">opensymphony:sitemesh:jar:2.4.2</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-web:jar:3.1.2.RELEASE/aopalliance:aopalliance:jar:1.0</node>
+            <node x="" y="">org.springframework:spring-jdbc:jar:3.1.2.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/net.sourceforge.cssparser:cssparser:jar:0.9.5</node>
+            <node x="" y="">org.apache.shiro:shiro-core:jar:1.2.0/org.slf4j:slf4j-api:jar:1.6.6</node>
+            <node x="" y="">org.apache.shiro:shiro-spring:jar:1.2.0/org.apache.shiro:shiro-web:jar:1.2.0</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/commons-lang:commons-lang:jar:2.6</node>
+            <node x="" y="">org.dbunit:dbunit:jar:2.4.8/commons-collections:commons-collections:jar:3.2.1</node>
+            <node x="" y="">org.springframework:spring-jdbc:jar:3.1.2.RELEASE/org.springframework:spring-tx:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-bindings-xml:jar:2.6.1</node>
+            <node x="" y="">com.google.guava:guava:jar:13.0-rc1</node>
+            <node x="" y="">org.mockito:mockito-core:jar:1.9.0/org.objenesis:objenesis:jar:1.0</node>
+            <node x="" y="">org.springframework:spring-aop:jar:3.1.2.RELEASE/aopalliance:aopalliance:jar:1.0</node>
+            <node x="" y="">org.springframework:spring-jdbc:jar:3.1.2.RELEASE</node>
+            <node x="" y="">com.sun.jersey.contribs:jersey-spring:jar:1.13/org.springframework:spring-context:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.apache.shiro:shiro-core:jar:1.2.0</node>
+            <node x="" y="">org.springframework:spring-aop:jar:3.1.2.RELEASE/org.springframework:spring-beans:jar:3.1.2.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework:spring-orm:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:javax.servlet.jsp.jstl:jar:1.2.0.v201105211821</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-beans:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.springframework:spring-jdbc:jar:3.1.2.RELEASE/org.springframework:spring-beans:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.slf4j:slf4j-api:jar:1.6.6</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:javax.servlet.jsp:jar:2.1.0.v201105211820/org.eclipse.jetty.orbit:javax.servlet:jar:2.5.0.v201103041518</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-bindings-soap:jar:2.6.1/org.apache.cxf:cxf-rt-databinding-jaxb:jar:2.6.1</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/asm:asm:jar:3.3.1</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-context:jar:3.1.2.RELEASE/org.springframework:spring-expression:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.slf4j:jcl-over-slf4j:jar:1.6.6</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/com.sun.xml.bind:jaxb-impl:jar:2.2.5.1</node>
+            <node x="" y="">org.hibernate:hibernate-core:jar:4.1.4.Final/antlr:antlr:jar:2.7.7</node>
+            <node x="" y="">commons-beanutils:commons-beanutils:jar:1.8.3</node>
+            <node x="" y="">org.hibernate:hibernate-entitymanager:jar:4.1.4.Final/org.hibernate:hibernate-core:jar:4.1.4.Final</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/org.apache.httpcomponents:httpmime:jar:4.1.2</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/org.apache.httpcomponents:httpclient:jar:4.2.1</node>
+            <node x="" y="">org.powermock:powermock-api-mockito:jar:1.4.12/org.powermock:powermock-api-support:jar:1.4.12/org.powermock:powermock-reflect:jar:1.4.12</node>
+            <node x="" y="">org.mockito:mockito-core:jar:1.9.0</node>
+            <node x="" y="">org.aspectj:aspectjweaver:jar:1.6.9</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework:spring-tx:jar:3.1.2.RELEASE/aopalliance:aopalliance:jar:1.0</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-context:jar:3.1.2.RELEASE/org.springframework:spring-aop:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.eclipse.jetty.aggregate:jetty-webapp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:javax.servlet:jar:2.5.0.v201103041518</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/org.codehaus.jackson:jackson-mapper-asl:jar:1.9.2</node>
+            <node x="" y="">org.powermock:powermock-module-junit4:jar:1.4.12/org.powermock:powermock-module-junit4-common:jar:1.4.12/org.powermock:powermock-core:jar:1.4.12</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/xerces:xercesImpl:jar:2.9.1/xml-apis:xml-apis:jar:1.3.04</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-context-support:jar:3.1.2.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">com.sun.jersey.contribs:jersey-spring:jar:1.13/org.springframework:spring-beans:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.apache.shiro:shiro-web:jar:1.2.0</node>
+            <node x="" y="">com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:jar:2.0.4/com.fasterxml.jackson.core:jackson-core:jar:2.0.4</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/org.codehaus.jackson:jackson-xc:jar:1.9.2</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-transports-http:jar:2.6.1/org.apache.cxf:cxf-rt-core:jar:2.6.1</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-context-support:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.powermock:powermock-api-mockito:jar:1.4.12/org.powermock:powermock-api-support:jar:1.4.12/org.powermock:powermock-core:jar:1.4.12</node>
+            <node x="" y="">org.springside:springside-test:jar:4.0.0.RC4-SNAPSHOT</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-ie-driver:jar:2.24.1</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-context:jar:3.1.2.RELEASE/org.springframework:spring-asm:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-transports-http:jar:2.6.1</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:org.eclipse.jdt.core:jar:3.7.1</node>
+            <node x="" y="">junit:junit:jar:4.10/org.hamcrest:hamcrest-core:jar:1.1</node>
+            <node x="" y="">commons-io:commons-io:jar:2.4</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/org.seleniumhq.selenium:selenium-api:jar:2.24.1</node>
+            <node x="" y="">org.slf4j:slf4j-log4j12:jar:1.6.6/log4j:log4j:jar:1.2.17</node>
+            <node x="" y="">com.server.cx:bussiness:1.0-SNAPSHOT</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-ie-driver:jar:2.24.1/net.java.dev.jna:platform:jar:3.4.0</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-core:jar:2.6.1/com.sun.xml.bind:jaxb-impl:jar:2.2.5.1</node>
+            <node x="" y="">org.hibernate:hibernate-entitymanager:jar:4.1.4.Final</node>
+            <node x="" y="">org.powermock:powermock-api-mockito:jar:1.4.12/org.powermock:powermock-api-support:jar:1.4.12</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework:spring-tx:jar:3.1.2.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:com.sun.el:jar:1.0.0.v201105211818</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/net.sourceforge.htmlunit:htmlunit-core-js:jar:2.9</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9</node>
+            <node x="" y="">org.springframework:spring-orm:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework:spring-tx:jar:3.1.2.RELEASE/org.springframework:spring-beans:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-transports-http:jar:2.6.1</node>
+            <node x="" y="">org.slf4j:slf4j-log4j12:jar:1.6.6</node>
+            <node x="" y="">org.apache.shiro:shiro-spring:jar:1.2.0/org.apache.shiro:shiro-core:jar:1.2.0</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:org.apache.taglibs.standard.glassfish:jar:1.2.0.v201112081803</node>
+            <node x="" y="">com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:jar:2.0.4</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">com.sun.jersey:jersey-client:jar:1.13/com.sun.jersey:jersey-core:jar:1.13</node>
+            <node x="" y="">net.sf.dozer:dozer:jar:5.3.2/commons-lang:commons-lang:jar:2.6</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/org.codehaus.jackson:jackson-jaxrs:jar:1.9.2/org.codehaus.jackson:jackson-core-asl:jar:1.9.2</node>
+            <node x="" y="">net.sf.dozer:dozer:jar:5.3.2/commons-beanutils:commons-beanutils:jar:1.8.3</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:javax.servlet.jsp:jar:2.1.0.v201105211820</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:org.apache.jasper.glassfish:jar:2.1.0.v201110031002/org.eclipse.jetty.orbit:javax.servlet:jar:2.5.0.v201103041518</node>
+            <node x="" y="">com.sun.jersey.contribs:jersey-spring:jar:1.13</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.aspectj:aspectjrt:jar:1.6.9</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-ws-addr:jar:2.6.1/org.apache.cxf:cxf-rt-ws-policy:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1</node>
+            <node x="" y="">org.eclipse.jetty.aggregate:jetty-webapp:jar:7.6.4.v20120524</node>
+            <node x="" y="">com.fasterxml.jackson.core:jackson-databind:jar:2.0.4/com.fasterxml.jackson.core:jackson-core:jar:2.0.4</node>
+            <node x="" y="">org.projectlombok:lombok:jar:0.11.2</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-web:jar:3.1.2.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/org.seleniumhq.selenium:selenium-api:jar:2.24.1/com.google.guava:guava:jar:13.0-rc1</node>
+            <node x="" y="">org.powermock:powermock-module-junit4:jar:1.4.12/org.powermock:powermock-module-junit4-common:jar:1.4.12/org.powermock:powermock-reflect:jar:1.4.12</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1</node>
+            <node x="" y="">org.lazyluke:log4jdbc-remix:jar:0.2.7/org.slf4j:slf4j-api:jar:1.6.6</node>
+            <node x="" y="">org.springframework:spring-aop:jar:3.1.2.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE/org.springframework:spring-asm:jar:3.1.2.RELEASE</node>
+            <node x="" y="">javax.servlet:jstl:jar:1.2</node>
+            <node x="" y="">org.hibernate:hibernate-ehcache:jar:4.1.4.Final</node>
+            <node x="" y="">org.dbunit:dbunit:jar:2.4.8/junit:junit:jar:4.10</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-support:jar:2.24.1/org.seleniumhq.selenium:selenium-api:jar:2.24.1</node>
+            <node x="" y="">org.hibernate:hibernate-validator:jar:4.3.0.Final</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:org.apache.jasper.glassfish:jar:2.1.0.v201110031002</node>
+            <node x="" y="">com.sun.jersey:jersey-server:jar:1.13</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/org.codehaus.jettison:jettison:jar:1.1/stax:stax-api:jar:1.0.1</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1/org.apache.ws.xmlschema:xmlschema-core:jar:2.0.2</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-context:jar:3.1.2.RELEASE/org.springframework:spring-beans:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/commons-collections:commons-collections:jar:3.2.1</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/xalan:xalan:jar:2.7.1/xalan:serializer:jar:2.7.1</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-chrome-driver:jar:2.24.1/org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1</node>
+            <node x="" y="">com.sun.jersey.contribs:jersey-multipart:jar:1.13/com.sun.jersey:jersey-core:jar:1.13</node>
+            <node x="" y="">org.dbunit:dbunit:jar:2.4.8</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/org.apache.httpcomponents:httpmime:jar:4.1.2/commons-logging:commons-logging:jar:1.1.1</node>
+            <node x="" y="">org.hibernate:hibernate-entitymanager:jar:4.1.4.Final/org.javassist:javassist:jar:3.15.0-GA</node>
+            <node x="" y="">org.powermock:powermock-module-junit4:jar:1.4.12</node>
+            <node x="" y="">com.fasterxml.jackson.core:jackson-databind:jar:2.0.4</node>
+            <node x="" y="">com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:jar:2.0.4/com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.0.4</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.webbitserver:webbit:jar:0.4.6</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/xalan:xalan:jar:2.7.1/xalan:serializer:jar:2.7.1/xml-apis:xml-apis:jar:1.3.04</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1</node>
+            <node x="" y="">org.hibernate:hibernate-entitymanager:jar:4.1.4.Final/org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-chrome-driver:jar:2.24.1</node>
+            <node x="" y="">org.powermock:powermock-module-junit4:jar:1.4.12/org.powermock:powermock-module-junit4-common:jar:1.4.12/org.powermock:powermock-core:jar:1.4.12/org.powermock:powermock-reflect:jar:1.4.12</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/net.java.dev.jna:jna:jar:3.4.0</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-core:jar:2.6.1</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-ws-addr:jar:2.6.1/org.apache.cxf:cxf-rt-ws-policy:jar:2.6.1</node>
+            <node x="" y="">org.powermock:powermock-module-junit4:jar:1.4.12/junit:junit:jar:4.10</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/commons-io:commons-io:jar:2.4</node>
+            <node x="" y="">org.springframework:spring-orm:jar:3.1.2.RELEASE/org.springframework:spring-jdbc:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:org.apache.jasper.glassfish:jar:2.1.0.v201110031002/org.eclipse.jetty.orbit:javax.servlet.jsp:jar:2.1.0.v201105211820</node>
+            <node x="" y="">net.sf.ehcache:ehcache-core:jar:2.5.2</node>
+            <node x="" y="">org.springside:springside-core:jar:4.0.0.RC4-SNAPSHOT</node>
+            <node x="" y="">org.hibernate:hibernate-entitymanager:jar:4.1.4.Final/org.jboss.logging:jboss-logging:jar:3.1.0.GA</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-context-support:jar:3.1.2.RELEASE/org.springframework:spring-context:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.hibernate:hibernate-core:jar:4.1.4.Final/org.hibernate.common:hibernate-commons-annotations:jar:4.0.1.Final</node>
+            <node x="" y="">com.sun.jersey.contribs:jersey-multipart:jar:1.13/org.jvnet:mimepull:jar:1.6</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/commons-logging:commons-logging:jar:1.1.1</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.slf4j:jcl-over-slf4j:jar:1.6.6</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-context-support:jar:3.1.2.RELEASE/org.springframework:spring-beans:jar:3.1.2.RELEASE</node>
+            <node x="" y="">com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:jar:2.0.4/com.fasterxml.jackson.core:jackson-databind:jar:2.0.4</node>
+            <node x="" y="">org.hibernate:hibernate-core:jar:4.1.4.Final</node>
+            <node x="" y="">com.sun.jersey:jersey-server:jar:1.13/com.sun.jersey:jersey-core:jar:1.13</node>
+            <node x="" y="">javax.activation:activation:jar:1.1.1</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/org.json:json:jar:20080701</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/org.codehaus.jackson:jackson-xc:jar:1.9.2/org.codehaus.jackson:jackson-core-asl:jar:1.9.2</node>
+            <node x="" y="">org.apache.shiro:shiro-core:jar:1.2.0/commons-beanutils:commons-beanutils:jar:1.8.3</node>
+            <node x="" y="">org.springside:springside-core:jar:4.0.0.RC4-SNAPSHOT/com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.0.4/com.fasterxml.jackson.core:jackson-databind:jar:2.0.4</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/org.apache.httpcomponents:httpclient:jar:4.2.1</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework.data:spring-data-commons-core:jar:1.3.0.RELEASE/junit:junit-dep:jar:4.8.2</node>
+            <node x="" y="">asm:asm:jar:3.3.1</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:javax.el:jar:2.1.0.v201105211819</node>
+            <node x="" y="">commons-fileupload:commons-fileupload:jar:1.2.2</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-frontend-simple:jar:2.6.1</node>
+            <node x="" y="">org.powermock:powermock-api-mockito:jar:1.4.12</node>
+            <node x="" y="">com.sun.jersey:jersey-servlet:jar:1.13/com.sun.jersey:jersey-server:jar:1.13</node>
+            <node x="" y="">org.hibernate:hibernate-ehcache:jar:4.1.4.Final/org.hibernate:hibernate-core:jar:4.1.4.Final</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1</node>
+            <node x="" y="">cglib:cglib:jar:2.2.2</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-ie-driver:jar:2.24.1/org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1</node>
+            <node x="" y="">net.sf.dozer:dozer:jar:5.3.2/org.slf4j:slf4j-api:jar:1.6.6</node>
+            <node x="" y="">log4j:log4j:jar:1.2.17</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-bindings-xml:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1</node>
+            <node x="" y="">org.springside:springside-core:jar:4.0.0.RC4-SNAPSHOT/com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.0.4/com.fasterxml.jackson.core:jackson-core:jar:2.0.4</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:javax.servlet.jsp.jstl:jar:1.2.0.v201105211821/org.eclipse.jetty.orbit:javax.servlet:jar:2.5.0.v201103041518</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-api:jar:2.6.1</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework.data:spring-data-commons-core:jar:1.3.0.RELEASE/org.springframework:spring-beans:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/org.codehaus.jackson:jackson-jaxrs:jar:1.9.2/org.codehaus.jackson:jackson-mapper-asl:jar:1.9.2</node>
+            <node x="" y="">com.sun.jersey.contribs:jersey-spring:jar:1.13/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/org.codehaus.jackson:jackson-jaxrs:jar:1.9.2</node>
+            <node x="" y="">org.eclipse.jetty:jetty-jsp:jar:7.6.4.v20120524/org.eclipse.jetty.orbit:javax.servlet.jsp.jstl:jar:1.2.0.v201105211821/org.eclipse.jetty.orbit:javax.servlet.jsp:jar:2.1.0.v201105211820</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-remote-driver:jar:2.24.1/org.apache.httpcomponents:httpclient:jar:4.2.1/commons-codec:commons-codec:jar:1.6</node>
+            <node x="" y="">org.slf4j:slf4j-api:jar:1.6.6</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-frontend-simple:jar:2.6.1/org.apache.cxf:cxf-rt-core:jar:2.6.1</node>
+            <node x="" y="">org.springframework:spring-orm:jar:3.1.2.RELEASE/org.springframework:spring-tx:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-safari-driver:jar:2.24.1/org.webbitserver:webbit:jar:0.4.6</node>
+            <node x="" y="">com.h2database:h2:jar:1.3.167</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework.data:spring-data-commons-core:jar:1.3.0.RELEASE/junit:junit-dep:jar:4.8.2/org.hamcrest:hamcrest-core:jar:1.1</node>
+            <node x="" y="">net.coobird:thumbnailator:jar:0.4.2</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-ws-addr:jar:2.6.1/org.apache.cxf:cxf-rt-bindings-soap:jar:2.6.1</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-ws-addr:jar:2.6.1/org.apache.cxf:cxf-rt-ws-policy:jar:2.6.1/org.apache.cxf:cxf-rt-core:jar:2.6.1</node>
+            <node x="" y="">org.powermock:powermock-module-junit4:jar:1.4.12/org.powermock:powermock-module-junit4-common:jar:1.4.12</node>
+            <node x="" y="">com.sun.jersey:jersey-client:jar:1.13</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework:spring-beans:jar:3.1.2.RELEASE</node>
+            <node x="" y="">com.sun.jersey.contribs:jersey-spring:jar:1.13/org.springframework:spring-aop:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.springframework:spring-orm:jar:3.1.2.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.springframework:spring-webmvc:jar:3.1.2.RELEASE/org.springframework:spring-context:jar:3.1.2.RELEASE/org.springframework:spring-core:jar:3.1.2.RELEASE</node>
+            <node x="" y="">cglib:cglib:jar:2.2.2/asm:asm:jar:3.3.1</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-core:jar:2.6.1/org.apache.ws.xmlschema:xmlschema-core:jar:2.0.2</node>
+            <node x="" y="">org.apache.shiro:shiro-web:jar:1.2.0/org.apache.shiro:shiro-core:jar:1.2.0</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/org.seleniumhq.selenium:selenium-api:jar:2.24.1</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework:spring-tx:jar:3.1.2.RELEASE</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-firefox-driver:jar:2.24.1</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/xalan:xalan:jar:2.7.1</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-firefox-driver:jar:2.24.1/commons-io:commons-io:jar:2.4</node>
+            <node x="" y="">org.hibernate:hibernate-entitymanager:jar:4.1.4.Final/dom4j:dom4j:jar:1.6.1</node>
+            <node x="" y="">org.hibernate:hibernate-core:jar:4.1.4.Final/org.javassist:javassist:jar:3.15.0-GA</node>
+            <node x="" y="">com.sun.jersey:jersey-json:jar:1.13/org.codehaus.jackson:jackson-mapper-asl:jar:1.9.2/org.codehaus.jackson:jackson-core-asl:jar:1.9.2</node>
+            <node x="" y="">org.hibernate:hibernate-entitymanager:jar:4.1.4.Final/org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.0.Final</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/commons-codec:commons-codec:jar:1.6</node>
+            <node x="" y="">org.hibernate:hibernate-entitymanager:jar:4.1.4.Final/org.hibernate.common:hibernate-commons-annotations:jar:4.0.1.Final</node>
+            <node x="" y="">org.seleniumhq.selenium:selenium-java:jar:2.24.1/org.seleniumhq.selenium:selenium-htmlunit-driver:jar:2.24.1/net.sourceforge.htmlunit:htmlunit:jar:2.9/net.sourceforge.nekohtml:nekohtml:jar:1.9.15</node>
+            <node x="" y="">org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.6.1/org.apache.cxf:cxf-rt-frontend-simple:jar:2.6.1/org.apache.cxf:cxf-rt-bindings-soap:jar:2.6.1</node>
+            <node x="" y="">org.springframework.data:spring-data-jpa:jar:1.1.0.RELEASE/org.springframework:spring-tx:jar:3.1.2.RELEASE/org.springframework:spring-aop:jar:3.1.2.RELEASE</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="375.5" y="467.5" />
+          <SelectedNodes />
+          <Categories />
+          <VISIBILITY>All</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../parent/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1033" column="10" selection-start="29153" selection-end="29153" vertical-scroll-proportion="3.1104972">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Contacts.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="314" selection-end="314" vertical-scroll-proportion="0.033274956">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/MGraphicStoreMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="51" selection-start="472" selection-end="501" vertical-scroll-proportion="0.033274956">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="199" selection-end="199" vertical-scroll-proportion="0.033274956">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/SmsMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="202" selection-end="202" vertical-scroll-proportion="0.033274956">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserFavorites.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="465" selection-end="465" vertical-scroll-proportion="0.033274956">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="13" selection-start="643" selection-end="643" vertical-scroll-proportion="0.034050178">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/Type.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="195" selection-end="195" vertical-scroll-proportion="0.033274956">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/VersionInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="332" selection-end="332" vertical-scroll-proportion="0.033274956">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="39" vertical-scroll-proportion="-1.4529412">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="533" column="47" selection-start="15534" selection-end="15727" vertical-scroll-proportion="2.164151">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../parent/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="31" selection-start="1436" selection-end="1436" vertical-scroll-proportion="1.1663367">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/StringTypeBaseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="21" selection-start="706" selection-end="706" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/basic/AuditableStringEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="39" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/GraphicInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="9" selection-start="556" selection-end="556" vertical-scroll-proportion="-2.1792114">
+        <state line="21" column="34" selection-start="573" selection-end="573" vertical-scroll-proportion="-0.7639836">
           <folding />
         </state>
       </provider>

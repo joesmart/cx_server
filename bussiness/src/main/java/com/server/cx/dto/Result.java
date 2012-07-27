@@ -11,77 +11,78 @@ import java.util.Map;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement
 public class Result {
-  private String imsi;
-  private String flag;
-  private String content;
-  private List<CXInfo> cxinfos;
-  private List<UserCXInfo> userCXInfos;
-  private Map<String, CXInfo> cxinfoMap;
-  private List<ContactPeopleInfo> contactPeopleInfos;
-  
-  @XmlElementWrapper(name = "cxInfos")
-  @XmlElement(name = "cxInfo")
-  public List<CXInfo> getCxinfos() {
-    return cxinfos;
-  }
+    private String imsi;
+    private String flag;
+    private String content;
+    private List<CXInfo> cxinfos;
+    private List<UserCXInfo> userCXInfos;
+    private Map<String, CXInfo> cxinfoMap;
+    private List<ContactPeopleInfo> contactPeopleInfos;
 
-  public void setCxinfos(List<CXInfo> cxinfos) {
-    this.cxinfos = cxinfos;
-  }
+    @XmlElementWrapper(name = "cxInfos")
+    @XmlElement(name = "cxInfo")
+    public List<CXInfo> getCxinfos() {
+        return cxinfos;
+    }
 
-  @XmlElementWrapper(name = "userCXInfos")
-  @XmlElement(name = "userCxinfo")
-  public List<UserCXInfo> getUserCXInfos() {
-    return userCXInfos;
-  }
+    public void setCxinfos(List<CXInfo> cxinfos) {
+        this.cxinfos = cxinfos;
+    }
 
-  public void setUserCXInfos(List<UserCXInfo> userCXInfos) {
-    this.userCXInfos = userCXInfos;
-  }
+    @XmlElementWrapper(name = "userCXInfos")
+    @XmlElement(name = "userCxinfo")
+    public List<UserCXInfo> getUserCXInfos() {
+        return userCXInfos;
+    }
 
-  @XmlElement
-  public String getFlag() {
-    return flag;
-  }
+    public void setUserCXInfos(List<UserCXInfo> userCXInfos) {
+        this.userCXInfos = userCXInfos;
+    }
 
-  public void setFlag(String flag) {
-    this.flag = flag;
-  }
+    @XmlElement
+    public String getFlag() {
+        return flag;
+    }
 
-  @XmlElement
-  public String getContent() {
-    return content;
-  }
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 
-  public void setContent(String content) {
-    this.content = content;
-  }
+    @XmlElement
+    public String getContent() {
+        return content;
+    }
 
-  @XmlElement
-  @XmlJavaTypeAdapter(XmlGenericMapAdapter.class)
-  public Map<String, CXInfo> getCxinfoMap() {
-    return cxinfoMap;
-  }
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-  public void setCxinfoMap(Map<String, CXInfo> cxinfoMap) {
-    this.cxinfoMap = cxinfoMap;
-  }
-  
-  @XmlElement(name = "imsi")
-  public String getImsi() {
-    return imsi;
-  }
+    @XmlElement
+    @XmlJavaTypeAdapter(XmlGenericMapAdapter.class)
+    public Map<String, CXInfo> getCxinfoMap() {
+        return cxinfoMap;
+    }
 
-  public void setImsi(String imsi) {
-    this.imsi = imsi;
-  }
-  @XmlElementWrapper(name = "contactPeopleInfos")
-  @XmlElement(name = "contactPeopleInfo")
-  public List<ContactPeopleInfo> getContactPeopleInfos() {
-    return contactPeopleInfos;
-  }
+    public void setCxinfoMap(Map<String, CXInfo> cxinfoMap) {
+        this.cxinfoMap = cxinfoMap;
+    }
 
-  public void setContactPeopleInfos(List<ContactPeopleInfo> contactPeopleInfos) {
-    this.contactPeopleInfos = contactPeopleInfos;
-  }
+    @XmlElement(name = "imsi")
+    public String getImsi() {
+        return imsi;
+    }
+
+    public void setImsi(String imsi) {
+        this.imsi = imsi;
+    }
+
+    @XmlElementWrapper(name = "contactPeopleInfos")
+    @XmlElement(name = "contactPeopleInfo")
+    public List<ContactPeopleInfo> getContactPeopleInfos() {
+        return contactPeopleInfos;
+    }
+
+    public void setContactPeopleInfos(List<ContactPeopleInfo> contactPeopleInfos) {
+        this.contactPeopleInfos = contactPeopleInfos;
+    }
 }

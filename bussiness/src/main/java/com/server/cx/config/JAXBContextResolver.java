@@ -16,20 +16,20 @@ import java.util.Set;
 
 public class JAXBContextResolver implements ContextResolver<JAXBContext> {
 
-  private final JAXBContext context;
+    private final JAXBContext context;
 
-  private final Set<Class> types;
+    private final Set<Class> types;
 
-  private final Class[] cTypes = {CXInfo.class, Result.class, UserCXInfo.class, MapEntryType.class, MapType.class};
+    private final Class[] cTypes = {CXInfo.class, Result.class, UserCXInfo.class, MapEntryType.class, MapType.class};
 
-  public JAXBContextResolver() throws Exception {
-    this.types = new HashSet(Arrays.asList(cTypes));
-    this.context = new JSONJAXBContext(JSONConfiguration.natural().build(), cTypes);
-  }
+    public JAXBContextResolver() throws Exception {
+        this.types = new HashSet(Arrays.asList(cTypes));
+        this.context = new JSONJAXBContext(JSONConfiguration.natural().build(), cTypes);
+    }
 
-  @Override
-  public JAXBContext getContext(Class<?> objectType) {
-    return (types.contains(objectType)) ? context : null;
-  }
+    @Override
+    public JAXBContext getContext(Class<?> objectType) {
+        return (types.contains(objectType)) ? context : null;
+    }
 
 }

@@ -12,6 +12,6 @@ import java.util.Map;
  */
 public interface RegisterService {
 
-  String registe(Map<String, String> paramsMap) throws SystemException;
+    String registe(Map<String, String> paramsMap) throws SystemException;
 
 }

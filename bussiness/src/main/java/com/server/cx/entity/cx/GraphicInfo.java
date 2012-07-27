@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,26 +14,20 @@ import java.util.List;
  * FileName:GraphicInfo
  */
 @Entity
-@Table(name="graphic_infos")
-@ToString @EqualsAndHashCode(callSuper = false)
+@Table(name = "graphic_infos")
+@ToString
+@EqualsAndHashCode(callSuper = false)
 public class GraphicInfo extends AuditableStringEntity {
     private String name;
     private String signature;
-    private Integer recommendLevel;
-    private Integer popularLevel;
+    private Integer level;
     private Integer useCount;
     private Float price;
     private String owner;
-    private String category;
-    private List<GraphicResource> graphicResources ;
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    private List<GraphicResource> graphicResources;
+    private Category category;
+    private StatusType statusType;
+    private HolidayType holidayType;
 
     public String getName() {
         return name;
@@ -52,28 +45,12 @@ public class GraphicInfo extends AuditableStringEntity {
         this.owner = owner;
     }
 
-    public Integer getPopularLevel() {
-        return popularLevel;
-    }
-
-    public void setPopularLevel(Integer popularLevel) {
-        this.popularLevel = popularLevel;
-    }
-
     public Float getPrice() {
         return price;
     }
 
     public void setPrice(Float price) {
         this.price = price;
-    }
-
-    public Integer getRecommendLevel() {
-        return recommendLevel;
-    }
-
-    public void setRecommendLevel(Integer recommendLevel) {
-        this.recommendLevel = recommendLevel;
     }
 
     public String getSignature() {
@@ -91,6 +68,7 @@ public class GraphicInfo extends AuditableStringEntity {
     public void setUseCount(Integer useCount) {
         this.useCount = useCount;
     }
+
     @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "graphicInfo", fetch = FetchType.LAZY)
     public List<GraphicResource> getGraphicResources() {
         return graphicResources;
@@ -98,5 +76,44 @@ public class GraphicInfo extends AuditableStringEntity {
 
     public void setGraphicResources(List<GraphicResource> graphicResources) {
         this.graphicResources = graphicResources;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, optional = true)
+    @JoinColumn(name = "category_id")
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, optional = true)
+    @JoinColumn(name = "status_type_id")
+    public StatusType getStatusType() {
+        return statusType;
+    }
+
+    public void setStatusType(StatusType statusType) {
+        this.statusType = statusType;
+    }
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, optional = true)
+    @JoinColumn(name = "holiday_type_id")
+    public HolidayType getHolidayType() {
+        return holidayType;
+    }
+
+
+    public void setHolidayType(HolidayType holidayType) {
+        this.holidayType = holidayType;
     }
 }
