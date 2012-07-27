@@ -1,19 +1,11 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableEntity;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user_catacts")
-@ToString
-@EqualsAndHashCode(callSuper = false)
 public class Contacts extends AuditableEntity {
 
     private String name;

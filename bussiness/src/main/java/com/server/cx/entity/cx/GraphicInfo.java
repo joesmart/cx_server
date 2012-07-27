@@ -15,8 +15,6 @@ import java.util.List;
  */
 @Entity
 @Table(name = "graphic_infos")
-@ToString
-@EqualsAndHashCode(callSuper = false)
 public class GraphicInfo extends AuditableStringEntity {
     private String name;
     private String signature;

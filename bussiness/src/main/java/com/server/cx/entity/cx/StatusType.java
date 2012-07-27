@@ -15,8 +15,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "status_type")
-@ToString
-@EqualsAndHashCode(callSuper = false)
 public class StatusType extends AuditableEntity {
 
     private String name;

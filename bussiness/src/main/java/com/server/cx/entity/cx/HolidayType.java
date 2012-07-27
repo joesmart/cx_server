@@ -15,8 +15,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "holiday_type")
-@ToString
-@EqualsAndHashCode(callSuper = false)
 public class HolidayType extends AuditableEntity {
     private String name;
     private Integer downloadNum;
