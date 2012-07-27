@@ -1,16 +1,12 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableEntity;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "category")
-@ToString
-@EqualsAndHashCode(callSuper = false)
 public class Category extends AuditableEntity {
 
     private String name;

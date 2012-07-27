@@ -1,16 +1,11 @@
 package com.server.cx.entity.basic;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 
 @MappedSuperclass
-@ToString
-@EqualsAndHashCode(callSuper = false)
 public class AuditableEntity extends LongTypeIdBaseEntity implements Auditable {
     private String createdBy;
     private String updatedBy;

@@ -1,8 +1,6 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableStringEntity;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -14,8 +12,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "graphic_resource")
-@ToString
-@EqualsAndHashCode(callSuper = false)
 public class GraphicResource extends AuditableStringEntity {
     private GraphicInfo graphicInfo;
     private String resourceId;
