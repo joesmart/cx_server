@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="JSHintConfiguration">
+    <option bitwise="true" />
+    <option curly="true" />
+    <option noarg="true" />
+    <option forin="true" />
+    <option strict="true" />
+    <option noempty="true" />
+    <option undef="true" />
+    <option eqeqeq="true" />
+    <option nonew="true" />
+    <option browser="true" />
+    <option indent="4" />
+    <option maxerr="50" />
+  </component>
+  <component name="JSLintConfiguration">
+    <option adsafe="true" />
+    <option bitwise="true" />
+    <option browser="true" />
+    <option cap="true" />
+    <option continue="true" />
+    <option css="true" />
+    <option debug="true" />
+    <option devel="true" />
+    <option eqeq="true" />
+    <option es5="true" />
+    <option evil="true" />
+    <option forin="true" />
+    <option fragment="true" />
+    <option indent="4" />
+    <option maxerr="50" />
+    <option newcap="true" />
+    <option node="true" />
+    <option nomen="true" />
+    <option on="true" />
+    <option passfail="true" />
+    <option plusplus="true" />
+    <option regexp="true" />
+    <option rhino="true" />
+    <option safe="true" />
+    <option sloppy="true" />
+    <option sub="true" />
+    <option undef="true" />
+    <option unparam="true" />
+    <option vars="true" />
+    <option white="true" />
+    <option widget="true" />
+    <option windows="true" />
+  </component>
+  <component name="JenkinsControlComponent">
+    <option name="enableJobAutoRefresh" value="true" />
+    <option name="enableRssAutoRefresh" value="true" />
+    <option name="jobRefreshPeriod" value="5" />
+    <option name="passwordFile" value="F:\JetBrains\pwd" />
+    <option name="rssRefreshPeriod" value="10" />
+    <option name="securityMode" value="BASIC" />
+    <option name="serverUrl" value="http://10.90.3.122:8080" />
+    <option name="username" value="zouyanjian" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../parent/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectResources">
+    <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/classes" />
+  </component>
+  <component name="WebServicesPlugin" addRequiredLibraries="true" />
+</project>
+
