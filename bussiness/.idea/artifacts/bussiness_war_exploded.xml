@@ -73,10 +73,10 @@
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-databinding-jaxb:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-bindings-xml:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-frontend-simple:2.6.1" />
-          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-transports-http:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-ws-addr:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-ws-policy:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.neethi:neethi:3.0.2" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-transports-http:2.6.1" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1.1" />
           <element id="library" level="project" name="Maven: com.sun.jersey:jersey-server:1.13" />
           <element id="library" level="project" name="Maven: com.sun.jersey:jersey-core:1.13" />
@@ -103,6 +103,9 @@
           <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.6" />
           <element id="library" level="project" name="Maven: net.coobird:thumbnailator:0.4.2" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:0.11.2" />
+          <element id="library" level="project" name="Maven: joda-time:joda-time:2.1" />
+          <element id="library" level="project" name="Maven: org.easytesting:fest-assert:1.4" />
+          <element id="library" level="project" name="Maven: org.easytesting:fest-util:1.1.6" />
         </element>
       </element>
     </root>
