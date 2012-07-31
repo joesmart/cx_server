@@ -16,6 +16,8 @@ public class GraphicResource extends AuditableStringEntity {
     private GraphicInfo graphicInfo;
     private String resourceId;
     private String graphicId;
+    private String type;
+    private Boolean auditPassed;
 
     @Transient
     private String thumbnailPath;
@@ -31,7 +33,7 @@ public class GraphicResource extends AuditableStringEntity {
     }
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, optional = true)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "graphicinfo_id")
     public GraphicInfo getGraphicInfo() {
         return graphicInfo;
     }
@@ -62,5 +64,21 @@ public class GraphicResource extends AuditableStringEntity {
 
     public void setThumbnailPath(String thumbnailPath) {
         this.thumbnailPath = thumbnailPath;
+    }
+
+    public Boolean getAuditPassed() {
+        return auditPassed;
+    }
+
+    public void setAuditPassed(Boolean auditPassed) {
+        this.auditPassed = auditPassed;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

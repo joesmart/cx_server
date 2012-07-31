@@ -1,8 +1,8 @@
 package com.server.cx.webservice.rs.server;
 
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.custom.MGraphicStoreModeCustomDao;
-import com.server.cx.dao.cx.custom.UserInfoCustomDao;
+import com.server.cx.dao.cx.MGraphicStoreModeDao;
+import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.Result;
 import com.server.cx.dto.UserCXInfo;
 import com.server.cx.entity.cx.UserInfo;
@@ -24,9 +24,9 @@ public class StatusUserCXInfoResource {
     @Autowired
     private UserCXInfoManagerService userCXInfoManagerService;
     @Autowired
-    private MGraphicStoreModeCustomDao mgraphicStoreModeCustomDao;
+    private MGraphicStoreModeDao mGraphicStoreModeDao;
     @Autowired
-    private UserInfoCustomDao userInfoCustomDao;
+    private UserInfoDao userInfoDao;
 
     @POST
     @Path("add")
@@ -36,8 +36,8 @@ public class StatusUserCXInfoResource {
         Result dealResult = new Result();
         try {
             UserCXInfo userCXInfo = result.getUserCXInfos().get(0);
-            UserInfo userinfo = userInfoCustomDao.getUserInfoByImsi(userCXInfo.getImsi());
-            mgraphicStoreModeCustomDao.deleteUserAllStatus(userinfo.getId());
+            UserInfo userinfo = userInfoDao.getUserInfoByImsi(userCXInfo.getImsi());
+            mGraphicStoreModeDao.deleteUserAllStatus(userinfo.getId());
             String xmlString = userCXInfoManagerService.dealWithUserCXInfoAdding(result);
             return Response.ok(xmlString).build();
         } catch (Exception e) {

@@ -5,8 +5,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.UserFavoritesDao;
-import com.server.cx.dao.cx.custom.UserFavoritesCustomDao;
-import com.server.cx.dao.cx.custom.UserInfoCustomDao;
+import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.CXInfo;
 import com.server.cx.entity.cx.UserFavorites;
 import com.server.cx.entity.cx.UserInfo;
@@ -30,11 +29,9 @@ import java.util.Map;
 public class UserFavoritesServiceImpl implements UserFavoritesService {
 
     @Autowired
-    private UserInfoCustomDao userInfoCustomDao;
+    private UserInfoDao userInfoDao;
     @Autowired
     UserFavoritesDao userFavoritesDao;
-    @Autowired
-    private UserFavoritesCustomDao userFavoritesCustomDao;
     @Autowired
     @Qualifier("cxinfosQueryIdRestSender")
     private RestSender restSender;
@@ -55,20 +52,20 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
         * if (!ValidationUtil.isDigit(cxInfoId)){ dealResult =
         * StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "数据输入有误"); return dealResult; }
         */
-        UserInfo userInfo = userInfoCustomDao.getUserInfoByImsi(imsi);
+        UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
         if (null == userInfo) {
             dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户未注册");
             return dealResult;
         }
 
         Long userId = userInfo.getId();
-        boolean isAlreandAddedInUserFavorites = userFavoritesCustomDao.isAlreadAddedInUserFavorites(userId, cxInfoId);
+        boolean isAlreandAddedInUserFavorites = userFavoritesDao.isAlreadAddedInUserFavorites(userId, cxInfoId);
         if (isAlreandAddedInUserFavorites) {
             dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户已经收藏该彩像");
             return dealResult;
         }
 
-        Integer totalCountOfUserFavorites = userFavoritesCustomDao.getUserFavoritesTotalCount(userId);
+        Integer totalCountOfUserFavorites = userFavoritesDao.getUserFavoritesTotalCount(userId);
         if (totalCountOfUserFavorites >= Constants.TOTAL_USERFAVORITES_COUNT) {
             dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户收藏已经超出限制的"
                     + Constants.TOTAL_USERFAVORITES_COUNT + "条!");
@@ -100,7 +97,7 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
             return dealResult;
         }
 
-        UserInfo userInfo = userInfoCustomDao.getUserInfoByImsi(imsi);
+        UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
         if (null == userInfo) {
             dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户未注册");
             return dealResult;
@@ -129,14 +126,14 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
             return dealResult;
         }
 
-        UserInfo userInfo = userInfoCustomDao.getUserInfoByImsi(imsi);
+        UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
         if (null == userInfo) {
             dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户未注册");
             return dealResult;
         }
 
         userFavoritesList =
-                userFavoritesCustomDao.getAllUserFavorites(userInfo.getId(), Integer.parseInt(requestPage),
+                userFavoritesDao.getAllUserFavorites(userInfo.getId(), Integer.parseInt(requestPage),
                         Integer.parseInt(pageSize));
 
         getResourceIdList();

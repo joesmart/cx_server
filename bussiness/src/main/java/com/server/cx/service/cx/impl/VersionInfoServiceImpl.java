@@ -2,8 +2,8 @@ package com.server.cx.service.cx.impl;
 
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
+import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.VersionInfoDao;
-import com.server.cx.dao.cx.custom.UserInfoCustomDao;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.entity.cx.VersionInfo;
 import com.server.cx.service.cx.VersionInfoService;
@@ -25,11 +25,11 @@ public class VersionInfoServiceImpl implements VersionInfoService {
     private VersionInfoDao versionInfoDao;
 
     @Autowired
-    private UserInfoCustomDao userInfoCustomDao;
+    private UserInfoDao userInfoDao;
 
     @Override
     public String checkIsTheLatestVersion(String imsi, String clientVersion) {
-        UserInfo userInfo = userInfoCustomDao.getUserInfoByImsi(imsi);
+        UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
 
         if (userInfo == null) {
             return StringUtil.generateXMLResultString(Constants.USER_DATA_ERROR_FLAG, "用户不存在");
