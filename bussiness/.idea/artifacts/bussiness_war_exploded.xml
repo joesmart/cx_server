@@ -13,7 +13,6 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.0.4" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.0.4" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.0.4" />
-          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.1.22" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:3.1.2.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Maven: org.springframework:spring-asm:3.1.2.RELEASE" />
@@ -104,6 +103,8 @@
           <element id="library" level="project" name="Maven: net.coobird:thumbnailator:0.4.2" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:0.11.2" />
           <element id="library" level="project" name="Maven: joda-time:joda-time:2.1" />
+          <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:2.0.0" />
+          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.1.22" />
           <element id="library" level="project" name="Maven: org.easytesting:fest-assert:1.4" />
           <element id="library" level="project" name="Maven: org.easytesting:fest-util:1.1.6" />
         </element>

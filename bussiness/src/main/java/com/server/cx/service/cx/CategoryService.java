@@ -1,8 +1,6 @@
 package com.server.cx.service.cx;
 
-import com.server.cx.entity.cx.Category;
-
-import java.util.List;
+import com.server.cx.dto.DataPage;
 
 /**
  * User: yanjianzou
@@ -11,5 +9,5 @@ import java.util.List;
  * FileName:CategoryService
  */
 public interface CategoryService {
-    public abstract List<Category> queryAllCategoryData();
+    public abstract DataPage queryAllCategoryData(String imsi);
 }
