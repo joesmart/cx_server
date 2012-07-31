@@ -42,6 +42,7 @@ public class CategoryServiceImpl extends BasicService implements CategoryService
                 categoryItem.setName(input.getName());
                 categoryItem.setDescription(input.getDescription());
                 categoryItem.setDownloadNumber(String.valueOf(input.getDownloadNum()));
+                categoryItem.setGraphicURL(imageShowURL+input.getGraphicResourceId());
                 categoryItem.setHref(baseHostAddress + restURL + imsi + "/categories/" + input.getId());
                 Action action = actionBuilder.buildCategoriesAction(imsi,input.getId());
                 categoryItem.setAction(action);

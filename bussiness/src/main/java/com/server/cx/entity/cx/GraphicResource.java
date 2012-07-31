@@ -16,6 +16,7 @@ public class GraphicResource extends AuditableStringEntity {
     private GraphicInfo graphicInfo;
     private String resourceId;
     private String graphicId;
+    private String type;
     private Boolean auditPassed;
 
     @Transient
@@ -71,5 +72,13 @@ public class GraphicResource extends AuditableStringEntity {
 
     public void setAuditPassed(Boolean auditPassed) {
         this.auditPassed = auditPassed;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

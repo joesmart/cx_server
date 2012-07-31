@@ -25,4 +25,5 @@ public class GraphicInfoItem extends DataItem {
     private String sourceImagePath;
     private String downloadNumber;
     private Action action;
+    private String resourceType;
 }
