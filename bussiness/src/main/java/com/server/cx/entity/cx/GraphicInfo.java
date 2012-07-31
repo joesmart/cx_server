@@ -1,8 +1,6 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableStringEntity;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,6 +24,7 @@ public class GraphicInfo extends AuditableStringEntity {
     private Category category;
     private StatusType statusType;
     private HolidayType holidayType;
+    private Boolean recommend;
 
     public String getName() {
         return name;
@@ -113,5 +112,13 @@ public class GraphicInfo extends AuditableStringEntity {
 
     public void setHolidayType(HolidayType holidayType) {
         this.holidayType = holidayType;
+    }
+
+    public Boolean getRecommend() {
+        return recommend;
+    }
+
+    public void setRecommend(Boolean recommend) {
+        this.recommend = recommend;
     }
 }

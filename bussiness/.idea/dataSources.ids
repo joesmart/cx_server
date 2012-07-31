@@ -819,7 +819,7 @@
       <column name="ID" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
     </table>
     <table name="ACCT_GROUP" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfOTI2QjhFOThfNTBBQl80RTRDXzg4REJfMjk0NkNCRDVBNEM5KQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfQzg1N0MwQkFfM0IyRV80ODdEXzhGQURfQzcwRDg1NTdBNDg3KQ==" autoIncrement="true" />
       <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
       <primary-key name="CONSTRAINT_6" columns="id" />
     </table>
@@ -829,7 +829,7 @@
       <foreign-key name="CONSTRAINT_F7" columns="GROUP_ID" ref-table="ACCT_GROUP" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
     </table>
     <table name="ACCT_USER" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfM0MzQ0VFQzVfRjI5Ml80MjhDXzhDQTNfNkMyNUZCNkE0REZFKQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfOUFGRDdCN0VfMDQ0OV80NjBGX0I5QjlfQ0EyNjNCMEFEQTEzKQ==" autoIncrement="true" />
       <column name="EMAIL" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="LOGIN_NAME" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
       <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
@@ -863,15 +863,13 @@
       <column name="CREATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="UPDATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
       <column name="UPDATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
-      <column name="CATEGORY" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="LEVEL" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
       <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="OWNER" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
-      <column name="POPULAR_LEVEL" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
       <column name="PRICE" sqlType="DOUBLE" length="17" precision="0" nullable="true" jdbcType="8" />
-      <column name="RECOMMEND_LEVEL" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="RECOMMEND" sqlType="BOOLEAN" length="1" precision="0" nullable="true" jdbcType="16" />
       <column name="SIGNATURE" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="USE_COUNT" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
-      <column name="LEVEL" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
       <column name="CATEGORY_ID" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
       <column name="HOLIDAY_TYPE_ID" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
       <column name="STATUS_TYPE_ID" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />

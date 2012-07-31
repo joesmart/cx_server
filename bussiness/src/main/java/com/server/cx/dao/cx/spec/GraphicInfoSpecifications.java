@@ -21,4 +21,22 @@ public class GraphicInfoSpecifications {
            }
        };
     }
+
+    public static Specification<GraphicInfo> hotCategoryTypeGraphicInfo(){
+        return new Specification<GraphicInfo>() {
+            @Override
+            public Predicate toPredicate(Root<GraphicInfo> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                return  cb.isNotNull(root.get("category"));
+            }
+        };
+    }
+
+    public static Specification<GraphicInfo> recommendGraphicInfo(){
+        return new Specification<GraphicInfo>() {
+            @Override
+            public Predicate toPredicate(Root<GraphicInfo> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                return cb.and(cb.isNotNull(root.get("category")),cb.equal(root.<Boolean>get("recommend"),true));
+            }
+        };
+    }
 }

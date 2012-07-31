@@ -9,5 +9,9 @@ import com.server.cx.dto.DataPage;
  * FileName:GraphicInfoService
  */
 public interface GraphicInfoService {
-    public abstract DataPage findGraphicInfoDataPageByCategoryId(final String imsi, Long categoryId,Integer offset,Integer limit);
+    public abstract DataPage findGraphicInfoDataPageByCategoryId(String imsi, Long categoryId,Integer offset,Integer limit);
+
+    public abstract DataPage findHotGraphicInfoByDownloadNum(String imsi,Integer offset,Integer limit);
+
+    public abstract DataPage findRecommendGraphicAndPagination(String imsi, Integer offset, Integer limit);
 }

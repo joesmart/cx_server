@@ -37,31 +37,7 @@ public class GraphicInfoServiceImpl extends  BasicService implements GraphicInfo
         Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.categoryTypeGraphicInfo(categoryId), pageRequest);
         List<GraphicInfo> graphicInfoList = page.getContent();
 
-        List<GraphicInfoItem> graphicInfoItemList = Lists.transform(graphicInfoList, new Function<GraphicInfo, GraphicInfoItem>() {
-            @Override
-            public GraphicInfoItem apply(@Nullable GraphicInfo input) {
-                GraphicInfoItem graphicInfoItem = new GraphicInfoItem();
-                graphicInfoItem.setId(input.getId());
-                graphicInfoItem.setName(input.getName());
-                graphicInfoItem.setSignature(input.getSignature());
-                graphicInfoItem.setDownloadNumber(String.valueOf(input.getUseCount()));
-                graphicInfoItem.setAuditPassed(true);
-                graphicInfoItem.setPrice(input.getPrice());
-                if (input.getPrice() > 0.0F) {
-                    graphicInfoItem.setPurchased(false);
-                }
-                graphicInfoItem.setCollected(false);
-                graphicInfoItem.setLevel(input.getLevel());
-                if(input.getGraphicResources().size() >0 ){
-                    graphicInfoItem.setThumbnailPath(imageShowURL+input.getGraphicResources().get(0).getResourceId()+"&"+thumbnailSize);
-                    graphicInfoItem.setSourceImagePath(imageShowURL+input.getGraphicResources().get(0).getResourceId());
-                }
-                graphicInfoItem.setHref(baseHostAddress + restURL + imsi + "/graphicInfos/" + input.getId());
-                Action action = actionBuilder.buildGraphicItemAction(imsi);
-                graphicInfoItem.setAction(action);
-                return graphicInfoItem;
-            }
-        });
+        List<GraphicInfoItem> graphicInfoItemList = transformToGraphicItemList(imsi, graphicInfoList);
 
         DataPage dataPage = new DataPage();
         dataPage.setLimit(page.getSize());
@@ -79,6 +55,85 @@ public class GraphicInfoServiceImpl extends  BasicService implements GraphicInfo
         }
         dataPage.setFirst(baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId + "&offset=0&limit=" + limit);
         dataPage.setLast(baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId + "&offset=" + (dataPage.getTotal() - 1) + "&limit=" + limit);
+        return dataPage;
+    }
+
+    private List<GraphicInfoItem> transformToGraphicItemList(final String imsi, List<GraphicInfo> graphicInfoList) {
+        return Lists.transform(graphicInfoList, new Function<GraphicInfo, GraphicInfoItem>() {
+            @Override
+            public GraphicInfoItem apply(@Nullable GraphicInfo input) {
+                GraphicInfoItem graphicInfoItem = new GraphicInfoItem();
+                graphicInfoItem.setId(input.getId());
+                graphicInfoItem.setName(input.getName());
+                graphicInfoItem.setSignature(input.getSignature());
+                graphicInfoItem.setDownloadNumber(String.valueOf(input.getUseCount()));
+                graphicInfoItem.setAuditPassed(true);
+                graphicInfoItem.setPrice(input.getPrice());
+                if (input.getPrice() > 0.0F) {
+                    graphicInfoItem.setPurchased(false);
+                }
+                graphicInfoItem.setCollected(false);
+                graphicInfoItem.setLevel(input.getLevel());
+                if (input.getGraphicResources().size() > 0) {
+                    graphicInfoItem.setThumbnailPath(imageShowURL + input.getGraphicResources().get(0).getResourceId() + "&" + thumbnailSize);
+                    graphicInfoItem.setSourceImagePath(imageShowURL + input.getGraphicResources().get(0).getResourceId());
+                }
+                graphicInfoItem.setHref(baseHostAddress + restURL + imsi + "/graphicInfos/" + input.getId());
+                Action action = actionBuilder.buildGraphicItemAction(imsi);
+                graphicInfoItem.setAction(action);
+                return graphicInfoItem;
+            }
+        });
+    }
+
+    @Override
+    public DataPage findHotGraphicInfoByDownloadNum(String imsi, Integer offset, Integer limit) {
+        final String baseHref = baseHostAddress + restURL + imsi + "/graphicInfos?hot=true&offset=" + offset + "&limit=" + limit;
+        PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "useCount","createdOn");
+        Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.hotCategoryTypeGraphicInfo(), pageRequest);
+
+        List<GraphicInfoItem> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent());
+        DataPage dataPage = new DataPage();
+        dataPage.setLimit(page.getSize());
+        dataPage.setOffset(page.getNumber());
+        dataPage.setTotal(page.getTotalPages());
+        dataPage.setItems(graphicInfoItemList);
+        dataPage.setHref(baseHref);
+        if (offset > 0) {
+            int previousOffset = offset - 1;
+            dataPage.setPrevious(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true&offset=" + previousOffset + "&limit=" + limit);
+        }
+        if (offset + 1 < page.getTotalPages()) {
+            int nextOffset = offset + 1;
+            dataPage.setNext(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true&offset=" + nextOffset + "&limit=" + limit);
+        }
+        dataPage.setFirst(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true&offset=0&limit=" + limit);
+        dataPage.setLast(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true&offset=" + (dataPage.getTotal() - 1) + "&limit=" + limit);
+        return dataPage;
+    }
+    @Override
+    public DataPage findRecommendGraphicAndPagination(String imsi, Integer offset, Integer limit){
+        final String baseHref = baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=" + offset + "&limit=" + limit;
+        PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "useCount","createdOn");
+        Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.recommendGraphicInfo(), pageRequest);
+
+        List<GraphicInfoItem> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent());
+        DataPage dataPage = new DataPage();
+        dataPage.setLimit(page.getSize());
+        dataPage.setOffset(page.getNumber());
+        dataPage.setTotal(page.getTotalPages());
+        dataPage.setItems(graphicInfoItemList);
+        dataPage.setHref(baseHref);
+        if (offset > 0) {
+            int previousOffset = offset - 1;
+            dataPage.setPrevious(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=" + previousOffset + "&limit=" + limit);
+        }
+        if (offset + 1 < page.getTotalPages()) {
+            int nextOffset = offset + 1;
+            dataPage.setNext(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=" + nextOffset + "&limit=" + limit);
+        }
+        dataPage.setFirst(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=0&limit=" + limit);
+        dataPage.setLast(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=" + (dataPage.getTotal() - 1) + "&limit=" + limit);
         return dataPage;
     }
 }
