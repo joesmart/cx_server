@@ -27,18 +27,17 @@ public class UserInfo extends AuditableEntity {
     @Column(unique = true, nullable = false)
     private String phoneNo;
     private String imsi;
-    private Integer cxService;
     private List<UserFavorites> userFavorites;
 
     public UserInfo() {
     }
 
-    public UserInfo(String phoneNo, String imsi, int cxService, String timeStamp) {
-        super();
-        this.phoneNo = phoneNo;
-        this.imsi = imsi;
-        this.cxService = cxService;
-    }
+//    public UserInfo(String phoneNo, String imsi, int cxService, String timeStamp) {
+//        super();
+//        this.phoneNo = phoneNo;
+//        this.imsi = imsi;
+//        this.cxService = cxService;
+//    }
 
     public UserInfo(final String imsi) {
         super();
@@ -50,6 +49,7 @@ public class UserInfo extends AuditableEntity {
         this.phoneNo = phoneNo;
         this.imsi = imsi;
     }
+/*
 
     public UserInfo(final String phoneNo, final String imsi, final int cxService) {
         super();
@@ -57,6 +57,7 @@ public class UserInfo extends AuditableEntity {
         this.imsi = imsi;
         this.cxService = cxService;
     }
+*/
 
     @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "user", fetch = FetchType.LAZY)
     public List<UserFavorites> getUserFavorites() {
@@ -81,13 +82,5 @@ public class UserInfo extends AuditableEntity {
 
     public void setImsi(String imsi) {
         this.imsi = imsi;
-    }
-
-    public Integer getCxService() {
-        return cxService;
-    }
-
-    public void setCxService(Integer cxService) {
-        this.cxService = cxService;
     }
 }

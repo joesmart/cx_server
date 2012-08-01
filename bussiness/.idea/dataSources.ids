@@ -1081,11 +1081,32 @@
       <index name="FK143BF46A4FD90D75" unique="false" columns="role_id" />
       <index name="FK143BF46AF503D155" unique="false" columns="user_id" />
     </table>
+    <table name="acct_group" schema="" catalog="bussiness" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="name" unique="true" columns="name" />
+    </table>
+    <table name="acct_group_permission" schema="" catalog="bussiness" type="TABLE">
+      <column name="group_id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="permission" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <index name="FK19C1023BEFE35BA9" unique="false" columns="group_id" />
+    </table>
+    <table name="acct_user" schema="" catalog="bussiness" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="email" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="login_name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="password" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="status" sqlType="BIT" length="0" precision="0" nullable="true" jdbcType="-7" />
+      <primary-key name="PRIMARY" columns="id" />
+    </table>
     <table name="acct_user_group" schema="" catalog="bussiness" type="TABLE">
       <column name="user_id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
       <column name="group_id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
       <primary-key name="PRIMARY" columns="user_id,group_id" />
-      <index name="group_id" unique="false" columns="group_id" />
+      <index name="FKD19A04B7274F65AB" unique="false" columns="user_id" />
+      <index name="FKD19A04B7EFE35BA9" unique="false" columns="group_id" />
     </table>
     <table name="category" schema="" catalog="bussiness" type="TABLE">
       <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
