@@ -1,16 +1,9 @@
 package com.server.cx.entity.cx;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.xml.bind.annotation.XmlTransient;
-
-import com.server.cx.dto.CXInfo;
 import com.server.cx.entity.basic.AuditableEntity;
+
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
@@ -18,8 +11,7 @@ import com.server.cx.entity.basic.AuditableEntity;
 public class UserFavorites extends AuditableEntity {
 
     private UserInfo user;
-    private String resourceId;
-    private CXInfo cxInfo;
+    private String graphicInfoId;
 
     @XmlTransient
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, optional = true)
@@ -32,23 +24,11 @@ public class UserFavorites extends AuditableEntity {
         this.user = user;
     }
 
-    @Column(length = 32)
-    public String getResourceId() {
-        return resourceId;
+    public String getGraphicInfoId() {
+        return graphicInfoId;
     }
 
-    public void setResourceId(String resourceId) {
-        this.resourceId = resourceId;
+    public void setGraphicInfoId(String graphicInfoId) {
+        this.graphicInfoId = graphicInfoId;
     }
-
-    @Transient
-    public CXInfo getCxInfo() {
-        return cxInfo;
-    }
-
-    public void setCxInfo(CXInfo cxInfo) {
-        this.cxInfo = cxInfo;
-    }
-
-
 }

@@ -58,7 +58,7 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
             return dealResult;
         }
 
-        Long userId = userInfo.getId();
+        String userId = userInfo.getId();
         boolean isAlreandAddedInUserFavorites = userFavoritesDao.isAlreadAddedInUserFavorites(userId, cxInfoId);
         if (isAlreandAddedInUserFavorites) {
             dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户已经收藏该彩像");
@@ -74,7 +74,6 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
 
         UserFavorites userFavorites = new UserFavorites();
         userFavorites.setUser(userInfo);
-        userFavorites.setResourceId(cxInfoId);
         userFavoritesDao.save(userFavorites);
 
         Result xmlResult = new Result();
@@ -131,7 +130,7 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
             dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户未注册");
             return dealResult;
         }
-
+//TODO need fix here since the UserInfo Id change to String typ By Joesmart
         userFavoritesList =
                 userFavoritesDao.getAllUserFavorites(userInfo.getId(), Integer.parseInt(requestPage),
                         Integer.parseInt(pageSize));
@@ -150,7 +149,7 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
         resourceIdsList = Lists.transform(userFavoritesList, new Function<UserFavorites, String>() {
             @Override
             public String apply(UserFavorites userFavorites) {
-                return userFavorites.getResourceId();
+                return "";
             }
         });
     }
@@ -161,9 +160,7 @@ public class UserFavoritesServiceImpl implements UserFavoritesService {
             Map<String, CXInfo> cxInfosMap = restSender.getCXInfoMap(resourceIdsList);
 
             if (cxInfosMap != null) {
-                for (UserFavorites temp : userFavoritesList) {
-                    temp.setCxInfo(cxInfosMap.get(temp.getResourceId()));
-                }
+
             }
         }
     }

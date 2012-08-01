@@ -496,6 +496,70 @@
 					</webAppConfig>
 				</configuration>
 			</plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>hibernate3-maven-plugin</artifactId>
+                <version>3.0</version>
+
+                <configuration>
+
+                    <hibernatetool destdir="${project.basedir}/src/main/resources/sql/">
+                        <classpath>
+                            <path location="${project.build.directory}/classes" />
+                            <path location="${project.basedir}/src/main/resources/META-INF/" />
+                        </classpath>
+                        <jpaconfiguration persistenceunit="defaultPU"
+                                          propertyfile="src/main/resources/application.properties"
+                                          >
+                                </jpaconfiguration>
+
+                        <hbm2ddl create="true" export="false" drop="true" outputfilename="schema.sql"
+                                 format="true" console="true"/>
+                    </hibernatetool>
+                </configuration>
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>Generate hbm.xml mappings</id>-->
+                        <!--<phase>generate-sources</phase>-->
+                        <!--<configuration>-->
+                            <!--<hibernatetool destdir="target/classes">-->
+                                <!--<jpaconfiguration persistenceunit="defaultPU"  propertyfile="src/main/resources/application.properties"/>-->
+
+                                <!--<classpath>-->
+                                    <!--<path location="target/classes"/>-->
+                                    <!--<path location="${project.basedir}/src/main/resources/META-INF/" />-->
+                                <!--</classpath>-->
+                                <!--<hbm2ddl export="false" create="true"-->
+                                         <!--update="true" format="format" outputfilename="schemaDiff.ddl" />-->
+                            <!--</hibernatetool>-->
+                        <!--</configuration>-->
+                        <!--<goals>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+
+                    <!--</execution>-->
+                <!--</executions>-->
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-core</artifactId>
+                        <version>3.6.8.Final</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.hibernate.javax.persistence</groupId>
+                        <artifactId>hibernate-jpa-2.0-api</artifactId>
+                        <version>1.0.1.Final</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-entitymanager</artifactId>
+                        <version>3.6.8.Final</version>
+                    </dependency>
+                </dependencies>
+
+            </plugin>
 		</plugins>
 	</build>
 	
@@ -560,7 +624,7 @@
 
 								<taskdef name="dbunit" classname="org.dbunit.ant.DbUnitTask" classpathref="maven.test.classpath" />
                 		
-                				<sql driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}" src="src/main/resources/sql/${sql.type}/schema.sql" onerror="continue">
+                				<sql driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}" src="src/main/resources/sql/schema.sql" onerror="continue">
 									<classpath refid="maven.test.classpath" />
 								</sql>
 
@@ -577,5 +641,6 @@
 				</plugins>
 			</build>
 		</profile>
+
 	</profiles>
 </project>
