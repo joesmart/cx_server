@@ -4,6 +4,7 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableEntity;
+import com.server.cx.entity.basic.AuditableStringEntity;
 
 import java.util.List;
 
@@ -22,22 +23,15 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "userinfo", uniqueConstraints = @UniqueConstraint(columnNames = {"phoneNo"}))
-public class UserInfo extends AuditableEntity {
+public class UserInfo extends AuditableStringEntity {
 
     @Column(unique = true, nullable = false)
     private String phoneNo;
+    @Column(unique = true, nullable = false)
     private String imsi;
-    private Integer cxService;
     private List<UserFavorites> userFavorites;
 
     public UserInfo() {
-    }
-
-    public UserInfo(String phoneNo, String imsi, int cxService, String timeStamp) {
-        super();
-        this.phoneNo = phoneNo;
-        this.imsi = imsi;
-        this.cxService = cxService;
     }
 
     public UserInfo(final String imsi) {
@@ -49,13 +43,6 @@ public class UserInfo extends AuditableEntity {
         super();
         this.phoneNo = phoneNo;
         this.imsi = imsi;
-    }
-
-    public UserInfo(final String phoneNo, final String imsi, final int cxService) {
-        super();
-        this.phoneNo = phoneNo;
-        this.imsi = imsi;
-        this.cxService = cxService;
     }
 
     @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "user", fetch = FetchType.LAZY)
@@ -81,13 +68,5 @@ public class UserInfo extends AuditableEntity {
 
     public void setImsi(String imsi) {
         this.imsi = imsi;
-    }
-
-    public Integer getCxService() {
-        return cxService;
-    }
-
-    public void setCxService(Integer cxService) {
-        this.cxService = cxService;
     }
 }

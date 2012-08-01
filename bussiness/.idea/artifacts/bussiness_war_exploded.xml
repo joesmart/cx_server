@@ -21,16 +21,16 @@
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.6.9" />
           <element id="library" level="project" name="Maven: cglib:cglib:2.2.2" />
           <element id="library" level="project" name="Maven: asm:asm:3.3.1" />
-          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:4.1.4.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:4.1.5.Final" />
           <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
           <element id="library" level="project" name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.0.Final" />
           <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
           <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final" />
           <element id="library" level="project" name="Maven: org.javassist:javassist:3.15.0-GA" />
           <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:4.0.1.Final" />
-          <element id="library" level="project" name="Maven: org.hibernate:hibernate-entitymanager:4.1.4.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-entitymanager:4.1.5.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.1.0.GA" />
-          <element id="library" level="project" name="Maven: org.hibernate:hibernate-ehcache:4.1.4.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-ehcache:4.1.5.Final" />
           <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache-core:2.5.2" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.6" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:1.1.0.RELEASE" />
@@ -72,10 +72,10 @@
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-databinding-jaxb:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-bindings-xml:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-frontend-simple:2.6.1" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-transports-http:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-ws-addr:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-ws-policy:2.6.1" />
           <element id="library" level="project" name="Maven: org.apache.neethi:neethi:3.0.2" />
-          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-transports-http:2.6.1" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1.1" />
           <element id="library" level="project" name="Maven: com.sun.jersey:jersey-server:1.13" />
           <element id="library" level="project" name="Maven: com.sun.jersey:jersey-core:1.13" />
