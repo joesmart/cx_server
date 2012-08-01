@@ -1,35 +1,29 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
-	<ACCT_GROUP ID="1" NAME="管理员" />
-	<ACCT_GROUP ID="2" NAME="用户" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="user:view" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="user:edit" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="group:view" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="group:edit" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="menu:view" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="menu:edit" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="sales:view" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="menucategory:view" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="menucategory:edit" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="2" PERMISSION="user:view" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="2" PERMISSION="group:view" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="table:view" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="table:edit" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="2" PERMISSION="table:view" />
-	<ACCT_GROUP_PERMISSION GROUP_ID="2" PERMISSION="table:edit" />
-	<ACCT_USER ID="1" EMAIL="admin@springside.org.cn" LOGIN_NAME="admin" NAME="Admin" PASSWORD="admin" />
-	<ACCT_USER ID="2" EMAIL="user@springside.org.cn" LOGIN_NAME="user" NAME="User" PASSWORD="user" />
-	<ACCT_USER ID="3" EMAIL="jack@springside.org.cn" LOGIN_NAME="user2" NAME="Jack" PASSWORD="user2" />
-	<ACCT_USER ID="4" EMAIL="kate@springside.org.cn" LOGIN_NAME="user3" NAME="Kate" PASSWORD="user3" />
-	<ACCT_USER ID="5" EMAIL="sawyer@springside.org.cn" LOGIN_NAME="user4" NAME="Sawyer" PASSWORD="user4" />
-	<ACCT_USER ID="6" EMAIL="ben@springside.org.cn" LOGIN_NAME="user5" NAME="Ben" PASSWORD="user5" />
-	<ACCT_USER_GROUP USER_ID="1" GROUP_ID="1" />
-	<ACCT_USER_GROUP USER_ID="1" GROUP_ID="2" />
-	<ACCT_USER_GROUP USER_ID="2" GROUP_ID="2" />
-	<ACCT_USER_GROUP USER_ID="3" GROUP_ID="2" />
-	<ACCT_USER_GROUP USER_ID="4" GROUP_ID="2" />
-	<ACCT_USER_GROUP USER_ID="5" GROUP_ID="2" />
-	<ACCT_USER_GROUP USER_ID="6" GROUP_ID="2" />
+	<acct_group id="1" name="管理员" />
+	<acct_group id="2" name="用户" />
+	<acct_group_permission group_id="1" permission="user:view" />
+	<acct_group_permission group_id="1" permission="user:edit" />
+	<acct_group_permission group_id="1" permission="group:view" />
+	<acct_group_permission group_id="1" permission="group:edit" />
+	<acct_group_permission group_id="1" permission="menu:view" />
+	<acct_group_permission group_id="1" permission="menu:edit" />
+	<acct_group_permission group_id="1" permission="sales:view" />
+	<acct_group_permission group_id="2" permission="user:view" />
+	<acct_group_permission group_id="2" permission="group:view" />
+	<acct_user id="1" email="admin@springside.org.cn" login_name="admin" name="Admin" password="admin" />
+	<acct_user id="2" email="user@springside.org.cn" login_name="user" name="User" password="user" />
+	<acct_user id="3" email="jack@springside.org.cn" login_name="user2" name="Jack" password="user2" />
+	<acct_user id="4" email="kate@springside.org.cn" login_name="user3" name="Kate" password="user3" />
+	<acct_user id="5" email="sawyer@springside.org.cn" login_name="user4" name="Sawyer" password="user4" />
+	<acct_user id="6" email="ben@springside.org.cn" login_name="user5" name="Ben" password="user5" />
+	<acct_user_group user_id="1" group_id="1" />
+	<acct_user_group user_id="1" group_id="2" />
+	<acct_user_group user_id="2" group_id="2" />
+	<acct_user_group user_id="3" group_id="2" />
+	<acct_user_group user_id="4" group_id="2" />
+	<acct_user_group user_id="5" group_id="2" />
+	<acct_user_group user_id="6" group_id="2" />
     <category id="1" name="心情物语" description="心情物语测试测试车上" download_num="1000" graphic_resource_id="50039d9ee4b09ed787af7143" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
     <category id="2" name="精品资讯" description="精品资讯测试测试车上" download_num="1000" graphic_resource_id="50039d92e4b09ed787af7107" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
     <category id="3" name="动漫天地" description="动漫天地测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>

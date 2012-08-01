@@ -378,6 +378,10 @@
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-jsp</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
 		<!-- TEST end -->
 	</dependencies>
 
@@ -438,6 +442,14 @@
 					</additionalProjectnatures>
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <warName>CXServer</warName>
+                </configuration>
+            </plugin>
             <!--jrebel plug in-->
             <plugin>
                 <groupId>org.zeroturnaround</groupId>
