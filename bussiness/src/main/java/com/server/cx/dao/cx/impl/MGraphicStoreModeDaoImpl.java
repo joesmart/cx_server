@@ -43,7 +43,7 @@ public class MGraphicStoreModeDaoImpl extends BasicDao implements MGraphicStoreM
     }
 
     @SuppressWarnings("unchecked")
-    public List<MGraphicStoreMode> getAllMGraphicStoreModeByUserId(Long userId) {
+    public List<MGraphicStoreMode> getAllMGraphicStoreModeByUserId(String userId) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(MGraphicStoreMode.class);
         detachedCriteria.add(Restrictions.eq("userInfo.id", userId))
                 .add(Restrictions.ne("modeType", 5))
@@ -56,7 +56,7 @@ public class MGraphicStoreModeDaoImpl extends BasicDao implements MGraphicStoreM
 
     @SuppressWarnings("unchecked")
     @Override
-    public MGraphicStoreMode getCurrentValidStatusMGraphicStoreMode(Long userId, Integer currentHour) {
+    public MGraphicStoreMode getCurrentValidStatusMGraphicStoreMode(String userId, Integer currentHour) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(MGraphicStoreMode.class);
         detachedCriteria.add(Restrictions.eq("type", 3)).add(Restrictions.eq("modeType", 5))
                 .add(Restrictions.eq("userInfo.id", userId)).add(Restrictions.le("startHour", currentHour))
@@ -99,7 +99,7 @@ public class MGraphicStoreModeDaoImpl extends BasicDao implements MGraphicStoreM
     }
 
     @Override
-    public List<MGraphicStoreMode> getAllCatactsMGraphicStoreModes(Long userId) {
+    public List<MGraphicStoreMode> getAllCatactsMGraphicStoreModes(String userId) {
         DetachedCriteria contactsCriteria = DetachedCriteria.forClass(Contacts.class);
         contactsCriteria.add(Restrictions.eq("userInfo.id", userId))
                 .setProjection(Property.forName("selfUserInfo.id"));
@@ -127,7 +127,7 @@ userInfoCriteria.add(Property.forName("imsi").in(contactsCriteria))
     }
 
     @Override
-    public MGraphicStoreMode getMGraphicStoreModeByModeType(Long userId, Integer modeType) {
+    public MGraphicStoreMode getMGraphicStoreModeByModeType(String userId, Integer modeType) {
         MGraphicStoreMode mgraphicStoreMode = null;
         try {
             DetachedCriteria criteria = DetachedCriteria.forClass(MGraphicStoreMode.class);

@@ -36,9 +36,9 @@ public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
                             Contacts contact = contacts.get(index);
                             ps.setString(1, contact.getName());
                             ps.setString(2, contact.getPhoneNo());
-                            ps.setLong(3, contact.getUserInfo().getId());
+                            ps.setString(3, contact.getUserInfo().getId()) ;
                             if (contact.getSelfUserInfo() != null) {
-                                ps.setLong(4, contact.getSelfUserInfo().getId());
+                                ps.setString(4, contact.getSelfUserInfo().getId());
                             } else {
                                 ps.setNull(4, Types.INTEGER);
                             }
@@ -57,7 +57,7 @@ public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
     }
 
     @Override
-    public List<Contacts> getContactsByUserId(Long userId) {
+    public List<Contacts> getContactsByUserId(String userId) {
         DetachedCriteria criteria = DetachedCriteria.forClass(Contacts.class);
         criteria.add(Restrictions.eq("userInfo.id", userId));
         Session session = (Session) em.getDelegate();
@@ -65,7 +65,7 @@ public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
         return contacts;
     }
 
-    public List<String> retrieveExistsMobiles(Long userId, List<String> phoneNos) {
+    public List<String> retrieveExistsMobiles(String userId, List<String> phoneNos) {
         DetachedCriteria criteria = DetachedCriteria.forClass(Contacts.class);
         criteria.add(Restrictions.eq("userInfo.id", userId))
                 .add(Restrictions.in("phoneNo", phoneNos)).setProjection(Projections.property("phoneNo"));

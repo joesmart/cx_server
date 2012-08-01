@@ -95,6 +95,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     @Override
     public UserCXInfo getCurrentValidStatusUserCXInfo() throws SystemException {
         if (userInfo != null) {
+            //TODO need fix here since the UserInfo Id change to String typ By Joesmart
             MGraphicStoreMode mgraphicStoreMode = mGraphicStoreModeDao.getMGraphicStoreModeByModeType(userInfo.getId(), 5);
             if (mgraphicStoreMode != null) {
                 return mgraphicStoreMode.convertMGraphicStoreModeToUserCXInfo();
