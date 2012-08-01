@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<ACCT_GROUP ID="1" NAME="管理员" />
+	<ACCT_GROUP ID="2" NAME="用户" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="user:view" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="user:edit" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="group:view" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="group:edit" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="menu:view" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="menu:edit" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="sales:view" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="menucategory:view" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="menucategory:edit" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="2" PERMISSION="user:view" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="2" PERMISSION="group:view" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="table:view" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="1" PERMISSION="table:edit" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="2" PERMISSION="table:view" />
+	<ACCT_GROUP_PERMISSION GROUP_ID="2" PERMISSION="table:edit" />
+	<ACCT_USER ID="1" EMAIL="admin@springside.org.cn" LOGIN_NAME="admin" NAME="Admin" PASSWORD="admin" />
+	<ACCT_USER ID="2" EMAIL="user@springside.org.cn" LOGIN_NAME="user" NAME="User" PASSWORD="user" />
+	<ACCT_USER ID="3" EMAIL="jack@springside.org.cn" LOGIN_NAME="user2" NAME="Jack" PASSWORD="user2" />
+	<ACCT_USER ID="4" EMAIL="kate@springside.org.cn" LOGIN_NAME="user3" NAME="Kate" PASSWORD="user3" />
+	<ACCT_USER ID="5" EMAIL="sawyer@springside.org.cn" LOGIN_NAME="user4" NAME="Sawyer" PASSWORD="user4" />
+	<ACCT_USER ID="6" EMAIL="ben@springside.org.cn" LOGIN_NAME="user5" NAME="Ben" PASSWORD="user5" />
+	<ACCT_USER_GROUP USER_ID="1" GROUP_ID="1" />
+	<ACCT_USER_GROUP USER_ID="1" GROUP_ID="2" />
+	<ACCT_USER_GROUP USER_ID="2" GROUP_ID="2" />
+	<ACCT_USER_GROUP USER_ID="3" GROUP_ID="2" />
+	<ACCT_USER_GROUP USER_ID="4" GROUP_ID="2" />
+	<ACCT_USER_GROUP USER_ID="5" GROUP_ID="2" />
+	<ACCT_USER_GROUP USER_ID="6" GROUP_ID="2" />
+    <category id="1" name="心情物语" description="心情物语测试测试车上" download_num="1000" graphic_resource_id="50039d9ee4b09ed787af7143" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
+    <category id="2" name="精品资讯" description="精品资讯测试测试车上" download_num="1000" graphic_resource_id="50039d92e4b09ed787af7107" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
+    <category id="3" name="动漫天地" description="动漫天地测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
+    <category id="4" name="健康贴士" description="健康贴士测试测试车上" download_num="1000" graphic_resource_id="50039d9ae4b09ed787af7127" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
+    <category id="5" name="节日祝福" description="节日祝福测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
+    <category id="6" name="新闻摘要" description="新闻摘要测试测试车上" download_num="1000" graphic_resource_id="50039d9de4b09ed787af7133" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800001" name="彩像11" signature="男儿当自强1" level="3" recommend="false" use_count="12" price="1.2" owner="system" category_id="1" created_by="Anonymous" created_on="2012-08-01 11:13:11.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800002" name="彩像12" signature="男儿当自强2" level="3" recommend="false" use_count="15" price="1.2" owner="system" category_id="1" created_by="Anonymous" created_on="2012-08-01 11:13:12.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800003" name="彩像13" signature="男儿当自强2" level="3" recommend="true" use_count="14" price="1.2" owner="system" category_id="1" created_by="Anonymous" created_on="2012-08-01 11:13:13.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800004" name="彩像14" signature="男儿当自强2" level="3" recommend="false" use_count="14" price="1.2" owner="system" category_id="1" created_by="Anonymous" created_on="2012-08-01 11:13:14.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800005" name="彩像15" signature="男儿当自强2" level="3" recommend="true" use_count="14" price="1.2" owner="system" category_id="1" created_by="Anonymous" created_on="2012-08-01 11:13:15.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800006" name="彩像16" signature="男儿当自强2" level="3" recommend="false" use_count="14" price="1.2" owner="system" category_id="1" created_by="Anonymous" created_on="2012-08-01 11:13:16.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800011" name="彩像21" signature="男儿当自强2" level="3" recommend="false" use_count="14" price="1.2" owner="system" category_id="2" created_by="Anonymous" created_on="2012-08-01 11:13:17.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800012" name="彩像22" signature="男儿当自强2" level="3" recommend="true" use_count="14" price="1.2" owner="system" category_id="2" created_by="Anonymous" created_on="2012-08-01 11:13:18.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800013" name="彩像23" signature="男儿当自强2" level="3" recommend="false" use_count="14" price="1.2" owner="system" category_id="2" created_by="Anonymous" created_on="2012-08-01 11:13:19.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800014" name="彩像24" signature="男儿当自强2" level="3" recommend="true" use_count="14" price="1.2" owner="system" category_id="2" created_by="Anonymous" created_on="2012-08-01 11:13:20.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800015" name="彩像25" signature="男儿当自强2" level="3" recommend="false" use_count="14" price="1.2" owner="system" category_id="2" created_by="Anonymous" created_on="2012-08-01 11:13:21.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800016" name="彩像26" signature="男儿当自强2" level="3" recommend="true" use_count="14" price="1.2" owner="system" category_id="2" created_by="Anonymous" created_on="2012-08-01 11:13:22.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800021" name="彩像31" signature="男儿当自强2" level="3" recommend="false" use_count="14" price="1.2" owner="system" category_id="3" created_by="Anonymous" created_on="2012-08-01 11:13:23.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800022" name="彩像32" signature="男儿当自强2" level="3" recommend="false" use_count="14" price="1.2" owner="system" category_id="3" created_by="Anonymous" created_on="2012-08-01 11:13:24.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800023" name="彩像33" signature="男儿当自强2" level="3" recommend="true" use_count="14" price="1.2" owner="system" category_id="3" created_by="Anonymous" created_on="2012-08-01 11:13:25.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800024" name="彩像34" signature="男儿当自强2" level="3" recommend="false" use_count="14" price="1.2" owner="system" category_id="3" created_by="Anonymous" created_on="2012-08-01 11:13:26.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800025" name="彩像35" signature="男儿当自强2" level="3" recommend="false" use_count="14" price="1.2" owner="system" category_id="3" created_by="Anonymous" created_on="2012-08-01 11:13:27.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800026" name="彩像36" signature="男儿当自强2" level="3" recommend="true" use_count="14" price="1.2" owner="system" category_id="3" created_by="Anonymous" created_on="2012-08-01 11:13:28.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
+    <graphic_resource id="4028b88138d65e360138d65e448e0000" graphicinfo_id="4028b88138d5e5e50138d5e5f2800001" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0001" graphicinfo_id="4028b88138d5e5e50138d5e5f2800002" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0002" graphicinfo_id="4028b88138d5e5e50138d5e5f2800003" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0003" graphicinfo_id="4028b88138d5e5e50138d5e5f2800004" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0004" graphicinfo_id="4028b88138d5e5e50138d5e5f2800005" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0005" graphicinfo_id="4028b88138d5e5e50138d5e5f2800006" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0006" graphicinfo_id="4028b88138d5e5e50138d5e5f2800011" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0007" graphicinfo_id="4028b88138d5e5e50138d5e5f2800012" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0008" graphicinfo_id="4028b88138d5e5e50138d5e5f2800013" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0009" graphicinfo_id="4028b88138d5e5e50138d5e5f2800014" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0010" graphicinfo_id="4028b88138d5e5e50138d5e5f2800015" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0011" graphicinfo_id="4028b88138d5e5e50138d5e5f2800016" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0012" graphicinfo_id="4028b88138d5e5e50138d5e5f2800021" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0013" graphicinfo_id="4028b88138d5e5e50138d5e5f2800022" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0014" graphicinfo_id="4028b88138d5e5e50138d5e5f2800023" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0015" graphicinfo_id="4028b88138d5e5e50138d5e5f2800024" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0016" graphicinfo_id="4028b88138d5e5e50138d5e5f2800025" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+    <graphic_resource id="4028b88138d65e360138d65e448e0017" graphicinfo_id="4028b88138d5e5e50138d5e5f2800026" resource_id="500797b7e4b06f4f79efbf5a" graphic_id="1231" audit_passed="true" ></graphic_resource>
+</dataset>
