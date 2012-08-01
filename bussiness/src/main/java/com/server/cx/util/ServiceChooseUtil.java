@@ -49,7 +49,7 @@ public class ServiceChooseUtil {
                 // 升级
                 String imsi = mapParams.get(Constants.IMSI_STR);
                 String version = mapParams.get("version");
-                result = versionInfoService.checkIsTheLatestVersion(imsi, version);
+//                result = versionInfoService.checkIsTheLatestVersion(imsi, version);
             } else if (requestUrl.equals(Constants.CALLING_USERCXINFO_URL)) {
                 // 区分主叫和被叫用户.
                 // 通话时获取主叫用户或者被叫用户的彩像信息
