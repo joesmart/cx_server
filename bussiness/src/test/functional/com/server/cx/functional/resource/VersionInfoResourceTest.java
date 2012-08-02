@@ -4,7 +4,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import javax.ws.rs.core.MediaType;
 import org.junit.Test;
 import com.server.cx.constants.Constants;
-import com.server.cx.dto.VersionInfoDTO;
+import com.cl.cx.platform.dto.VersionInfoDTO;
 import com.sun.jersey.api.client.ClientResponse;
 
 public class VersionInfoResourceTest extends BasicJerseyTest{

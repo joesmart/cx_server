@@ -7,7 +7,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 import com.server.cx.constants.Constants;
-import com.server.cx.dto.VersionInfoDTO;
+import com.cl.cx.platform.dto.VersionInfoDTO;
 
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 @ActiveProfiles(profiles = {"test"})

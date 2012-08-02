@@ -51,7 +51,7 @@ public class ActionBuilder {
         return this;
     }
 
-    public ActionBuilder userURL(String url){
+    public ActionBuilder useURL(String url){
         action.setUseURL(url);
         return  this;
     }
@@ -59,6 +59,17 @@ public class ActionBuilder {
         action.setPurchaseURL(url);
         return  this;
     }
+
+    public ActionBuilder removeURL(String url){
+        action.setRemoveURL(url);
+        return this;
+    }
+
+    public ActionBuilder disableURL(String url){
+        action.setDisableURL(url);
+        return this;
+    }
+
     public Action build(){
         return action;
     }
@@ -67,7 +78,7 @@ public class ActionBuilder {
         return  action()
                 .collectURL(baseHostAddress + restURL + imsi + "/myCollections")
                 .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
-                .userURL(baseHostAddress + restURL + imsi + "/myGraphicInfos")
+                .useURL(baseHostAddress + restURL + imsi + "/myGraphicInfos")
                 .build();
     }
 
@@ -75,6 +86,14 @@ public class ActionBuilder {
         return  action()
                 .zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId)
                 .zoneOutURL(baseHostAddress + restURL + imsi + "/categories")
+                .build();
+    }
+
+    public Action buildUserFavoriteItemAction(String imsi,String userFavoriteId){
+        return  action()
+                .removeURL(baseHostAddress + restURL + imsi + "/myCollections/"+userFavoriteId)
+                .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
+                .useURL(baseHostAddress + restURL + imsi + "/myGraphicInfos")
                 .build();
     }
 

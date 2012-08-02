@@ -6,7 +6,7 @@ import org.junit.Test;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
 import com.server.cx.data.ContactsData;
-import com.server.cx.dto.UploadContactDTO;
+import com.cl.cx.platform.dto.UploadContactDTO;
 import com.sun.jersey.api.client.ClientResponse;
 
 public class ContactsResourceTest extends BasicJerseyTest {

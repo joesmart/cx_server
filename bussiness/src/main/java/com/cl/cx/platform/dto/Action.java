@@ -17,4 +17,6 @@ public class Action {
     private String useURL;
     private String collectURL;
     private String purchaseURL;
+    private String removeURL;
+    private String disableURL;
 }
