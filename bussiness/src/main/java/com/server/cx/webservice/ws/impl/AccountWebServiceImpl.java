@@ -1,8 +1,5 @@
 package com.server.cx.webservice.ws.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.server.cx.service.account.AccountManager;
 import com.server.cx.webservice.WsConstants;
 import com.server.cx.webservice.dto.UserDTO;
@@ -10,6 +7,9 @@ import com.server.cx.webservice.ws.AccountWebService;
 import com.server.cx.webservice.ws.response.DepartmentResponse;
 import com.server.cx.webservice.ws.response.UserListResponse;
 import com.server.cx.webservice.ws.response.base.IdResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.jws.WebService;
 

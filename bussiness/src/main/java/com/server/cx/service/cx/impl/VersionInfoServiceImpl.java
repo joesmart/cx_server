@@ -1,9 +1,5 @@
 package com.server.cx.service.cx.impl;
 
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.UserInfoDao;
@@ -15,6 +11,11 @@ import com.server.cx.service.cx.VersionInfoService;
 import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
 import com.server.cx.util.business.VersionInfoUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service("versionInfoService")
 @Transactional

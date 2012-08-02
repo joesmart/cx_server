@@ -1,15 +1,15 @@
 package com.server.cx.service.account;
 
-import static org.junit.Assert.*;
-
+import com.server.cx.dao.account.UserDao;
+import com.server.cx.service.ServiceException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import com.server.cx.dao.account.UserDao;
-import com.server.cx.service.ServiceException;
 import org.springside.modules.test.security.shiro.ShiroTestUtils;
+
+import static org.junit.Assert.fail;
 
 /**
  * SecurityEntityManager的测试用例, 测试Service层的业务逻辑.

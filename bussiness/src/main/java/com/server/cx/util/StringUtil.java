@@ -1,5 +1,10 @@
 package com.server.cx.util;
 
+import com.google.common.base.CharMatcher;
+import com.server.cx.constants.Constants;
+import com.server.cx.xml.Result;
+import com.server.cx.xml.util.XMLMarshalUtil;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,11 +12,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-
-import com.google.common.base.CharMatcher;
-import com.server.cx.constants.Constants;
-import com.server.cx.xml.Result;
-import com.server.cx.xml.util.XMLMarshalUtil;
 
 public class StringUtil {
 

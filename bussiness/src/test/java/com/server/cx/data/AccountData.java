@@ -1,13 +1,12 @@
 package com.server.cx.data;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import com.server.cx.entity.account.Group;
 import com.server.cx.entity.account.Permission;
 import com.server.cx.entity.account.User;
 import org.springside.modules.test.data.RandomData;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
 /**
  * Account相关实体测试数据生成.

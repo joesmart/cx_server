@@ -1,6 +1,7 @@
 package com.server.cx.dto;
 
 import com.server.cx.dto.adapters.XmlGenericMapAdapter;
+
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.List;

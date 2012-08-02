@@ -1,8 +1,5 @@
 package com.server.cx.util.business;
 
-import java.sql.Timestamp;
-import java.util.List;
-
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
@@ -10,6 +7,9 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.server.cx.exception.InvalidParameterException;
 import com.server.cx.exception.SystemException;
+
+import java.sql.Timestamp;
+import java.util.List;
 
 public class ValidationUtil {
 

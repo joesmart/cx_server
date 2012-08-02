@@ -3,7 +3,6 @@ package com.server.cx.entity.cx;
 import com.server.cx.entity.basic.AuditableEntity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
@@ -13,7 +12,6 @@ public class UserFavorites extends AuditableEntity {
     private UserInfo user;
     private String graphicInfoId;
 
-    @XmlTransient
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, optional = true)
     @JoinColumn(name = "user_id")
     public UserInfo getUser() {

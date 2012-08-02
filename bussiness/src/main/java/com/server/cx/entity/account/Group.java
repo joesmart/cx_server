@@ -1,22 +1,14 @@
 package com.server.cx.entity.account;
 
-import java.util.List;
-
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
+import com.google.common.collect.Lists;
+import com.server.cx.entity.basic.IdEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import com.server.cx.entity.basic.IdEntity;
 
-import com.google.common.collect.Lists;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * 权限组.

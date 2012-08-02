@@ -1,8 +1,8 @@
 package com.server.cx.xml.adapter;
 
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class DateXMLAdapter extends XmlAdapter<String, Date> {
     String pattern = "yyyy-MM-dd HH:mm:ss.S";

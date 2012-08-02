@@ -1,12 +1,8 @@
 package com.server.cx.service.account;
 
-import java.io.Serializable;
-
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import com.server.cx.entity.account.Group;
+import com.server.cx.entity.account.User;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.cache.Cache;
@@ -14,8 +10,8 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.server.cx.entity.account.Group;
-import com.server.cx.entity.account.User;
+
+import java.io.Serializable;
 
 /**
  * 自实现用户与权限查询.
