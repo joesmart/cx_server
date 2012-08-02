@@ -1,4 +1,4 @@
-package com.server.cx.miniweb.functional.account;
+package com.server.cx.functional.account;
 
 import static org.junit.Assert.*;
 
@@ -11,9 +11,9 @@ import org.openqa.selenium.WebElement;
 import com.server.cx.data.AccountData;
 import com.server.cx.entity.account.Group;
 import com.server.cx.entity.account.User;
-import com.server.cx.miniweb.functional.BaseFunctionalTestCase;
-import com.server.cx.miniweb.functional.Gui;
-import com.server.cx.miniweb.functional.Gui.UserColumn;
+import com.server.cx.functional.BaseFunctionalTestCase;
+import com.server.cx.functional.Gui;
+import com.server.cx.functional.Gui.UserColumn;
 import org.springside.modules.test.category.Smoke;
 import org.springside.modules.utils.Collections3;
 
