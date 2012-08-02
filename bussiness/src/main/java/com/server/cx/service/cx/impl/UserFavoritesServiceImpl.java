@@ -1,5 +1,6 @@
 package com.server.cx.service.cx.impl;
 
+import com.cl.cx.platform.dto.*;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
@@ -7,10 +8,6 @@ import com.server.cx.dao.cx.GraphicInfoDao;
 import com.server.cx.dao.cx.UserFavoritesDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.spec.UserFavoriteSpecifications;
-import com.cl.cx.platform.dto.CollectedGraphicInfoItem;
-import com.cl.cx.platform.dto.DataPage;
-import com.cl.cx.platform.dto.IdDTO;
-import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.entity.cx.UserFavorites;
 import com.server.cx.entity.cx.UserInfo;
@@ -149,7 +146,7 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
         Page page = userFavoritesDao.findAll(UserFavoriteSpecifications.userFavoritesSpecification(userInfo),pageRequest);
         List<UserFavorites> userFavoritesList  =  page.getContent();
 
-        List<CollectedGraphicInfoItem> collectedGraphicInfoItems = Lists.transform(userFavoritesList,businessFunctions.userFavoriteTransformToCollectedGraphicInfoItem(imsi));
+        List<DataItem2> collectedGraphicInfoItems = Lists.transform(userFavoritesList,businessFunctions.userFavoriteTransformToCollectedGraphicInfoItem(imsi));
 
         DataPage dataPage = new DataPage();
         dataPage.setLimit(page.getSize());

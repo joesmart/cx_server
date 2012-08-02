@@ -22,7 +22,7 @@ public class DataPage {
     private String last;
     private String next;
     private String previous;
-    private List<? extends DataItem> items;
+    private List<DataItem2> items;
 
     public String getFirst() {
         return first;
@@ -40,11 +40,11 @@ public class DataPage {
         this.href = href;
     }
 
-    public List<? extends  DataItem> getItems() {
+    public List<DataItem2> getItems() {
         return items;
     }
 
-    public void setItems(List<? extends DataItem> items) {
+    public void setItems(List<DataItem2> items) {
         this.items = items;
     }
 
