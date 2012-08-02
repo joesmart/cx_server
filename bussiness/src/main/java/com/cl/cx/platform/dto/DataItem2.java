@@ -1,18 +1,15 @@
 package com.cl.cx.platform.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  * User: yanjianzou
- * Date: 12-7-30
- * Time: 下午5:46
- * FileName:GraphicInfoItem
+ * Date: 12-8-2
+ * Time: 下午4:20
+ * FileName:DataItem2
  */
-@ToString(callSuper = true)
-@Setter @Getter
-public class GraphicInfoItem extends DataItem {
+@Data
+public class DataItem2 extends BasicItem {
     private String id;
     private String name;
     private String signature;
@@ -26,4 +23,7 @@ public class GraphicInfoItem extends DataItem {
     private String downloadNumber;
     private Action action;
     private String resourceType;
+    private String description;
+    private String graphicURL;
+    private String favoriteId;
 }

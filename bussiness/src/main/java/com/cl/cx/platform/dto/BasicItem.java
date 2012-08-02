@@ -7,11 +7,11 @@ import lombok.ToString;
  * User: yanjianzou
  * Date: 12-7-30
  * Time: 下午4:23
- * FileName:DataItem
+ * FileName:BasicItem
  */
 @ToString
 @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property= "@type")
-public class DataItem {
+public class BasicItem {
     private String href;
     private Action action;
 

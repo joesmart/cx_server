@@ -1,9 +1,6 @@
 package com.server.cx.service.util;
 
-import com.cl.cx.platform.dto.Action;
-import com.cl.cx.platform.dto.CategoryItem;
-import com.cl.cx.platform.dto.CollectedGraphicInfoItem;
-import com.cl.cx.platform.dto.GraphicInfoItem;
+import com.cl.cx.platform.dto.*;
 import com.google.common.base.Function;
 import com.server.cx.dto.*;
 import com.server.cx.entity.cx.*;
@@ -31,11 +28,11 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
-    public Function<UserFavorites, CollectedGraphicInfoItem> userFavoriteTransformToCollectedGraphicInfoItem(final String imsi) {
-        return new Function<UserFavorites, CollectedGraphicInfoItem>() {
+    public Function<UserFavorites, DataItem2> userFavoriteTransformToCollectedGraphicInfoItem(final String imsi) {
+        return new Function<UserFavorites, DataItem2>() {
             @Override
-            public CollectedGraphicInfoItem apply(@Nullable UserFavorites input) {
-                CollectedGraphicInfoItem item = new CollectedGraphicInfoItem();
+            public DataItem2 apply(@Nullable UserFavorites input) {
+                DataItem2 item = new DataItem2();
                 GraphicInfo graphicInfo = input.getGraphicInfo();
                 item.setFavoriteId(input.getId());
                 item.setId(input.getId());
@@ -70,11 +67,11 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
-    public Function<Category, CategoryItem> categoryTransformToCategoryItem(final String imsi){
-        return  new Function<Category, CategoryItem>() {
+    public Function<Category, DataItem2> categoryTransformToCategoryItem(final String imsi){
+        return  new Function<Category, DataItem2>() {
             @Override
-            public CategoryItem apply(@javax.annotation.Nullable Category input) {
-                CategoryItem categoryItem = new CategoryItem();
+            public DataItem2 apply(@javax.annotation.Nullable Category input) {
+                DataItem2 categoryItem = new DataItem2();
                 categoryItem.setName(input.getName());
                 categoryItem.setDescription(input.getDescription());
                 categoryItem.setDownloadNumber(String.valueOf(input.getDownloadNum()));
@@ -87,11 +84,11 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
-    public Function<GraphicInfo, GraphicInfoItem> graphicInfoTransformToGraphicInfoItem(final String imsi){
-        return new Function<GraphicInfo, GraphicInfoItem>() {
+    public Function<GraphicInfo, DataItem2> graphicInfoTransformToGraphicInfoItem(final String imsi){
+        return new Function<GraphicInfo, DataItem2>() {
             @Override
-            public GraphicInfoItem apply(@Nullable GraphicInfo input) {
-                GraphicInfoItem graphicInfoItem = new GraphicInfoItem();
+            public DataItem2 apply(@Nullable GraphicInfo input) {
+                DataItem2 graphicInfoItem = new DataItem2();
                 graphicInfoItem.setId(input.getId());
                 graphicInfoItem.setName(input.getName());
                 graphicInfoItem.setSignature(input.getSignature());

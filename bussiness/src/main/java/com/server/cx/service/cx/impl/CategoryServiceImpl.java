@@ -1,10 +1,10 @@
 package com.server.cx.service.cx.impl;
 
+import com.cl.cx.platform.dto.DataItem2;
+import com.cl.cx.platform.dto.DataPage;
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.CategoryDao;
 import com.server.cx.dao.cx.GraphicInfoDao;
-import com.cl.cx.platform.dto.CategoryItem;
-import com.cl.cx.platform.dto.DataPage;
 import com.server.cx.entity.cx.Category;
 import com.server.cx.service.cx.CategoryService;
 import com.server.cx.service.util.BusinessFunctions;
@@ -37,7 +37,7 @@ public class CategoryServiceImpl extends BasicService implements CategoryService
     public DataPage queryAllCategoryData(final String imsi) {
         List<Category> categoryList = Lists.newArrayList(categoryDao.findAll());
         final String baseHref = baseHostAddress + restURL + imsi + "/categories";
-        List<CategoryItem> categoryItemList = Lists.transform(categoryList, businessFunctions.categoryTransformToCategoryItem(imsi));
+        List<DataItem2> categoryItemList = Lists.transform(categoryList, businessFunctions.categoryTransformToCategoryItem(imsi));
 
         DataPage dataPage = new DataPage();
         dataPage.setOffset(0);
