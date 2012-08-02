@@ -1,6 +1,5 @@
 package com.server.cx.service.cx.impl;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
@@ -14,6 +13,7 @@ import com.server.cx.entity.cx.MGraphicStoreMode;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.UserStatusManagerService;
+import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.RestSender;
 import com.server.cx.util.StringUtil;
 import com.server.cx.util.business.ValidationUtil;
@@ -38,6 +38,9 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     @Autowired
     @Qualifier("statusRestSender")
     private RestSender restSender;
+
+    @Autowired
+    private BusinessFunctions businessFunctions;
 
     private UserInfo userInfo;
     private UserCXInfo userCXInfo;
@@ -66,24 +69,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     }
 
     private List<UserCXInfo> convertCXInfosToUserCXInfo(final String imsi, List<CXInfo> cxInfos) {
-        List<UserCXInfo> userCXInfos = Lists.transform(cxInfos, new Function<CXInfo, UserCXInfo>() {
-            @Override
-            public UserCXInfo apply(CXInfo cxInfo) {
-                if (userCXInfo != null && userCXInfo.getCxInfo() != null && userCXInfo.getCxInfo().getId().equals(cxInfo.getId())) {
-                    userCXInfo.setImsi(imsi);
-                    return userCXInfo;
-                }
-                UserCXInfo userCXInfo = new UserCXInfo();
-                userCXInfo.setType(3);
-                userCXInfo.setModeType(5);
-                userCXInfo.setImsi(imsi);
-                userCXInfo.setCxInfo(cxInfo);
-                userCXInfo.setStartHour(0);
-                userCXInfo.setEndHour(24);
-                userCXInfo.setAuditPass(true);
-                return userCXInfo;
-            }
-        });
+        List<UserCXInfo> userCXInfos = Lists.transform(cxInfos,businessFunctions.cxInfoTransformToUserCXInfo(userCXInfo,imsi));
         return userCXInfos;
     }
 

@@ -6,5 +6,6 @@
 	<bean class="com.server.cx.webservice.rs.server.UserResouceService" />
     <bean class="com.server.cx.webservice.rs.server.CategoryResources" />
     <bean class="com.server.cx.webservice.rs.server.GraphicInfoResources" />
+    <bean class="com.server.cx.webservice.rs.server.MyCollectionsResource" />
     <bean class="com.server.cx.webservice.rs.server.ShiroExceptionMapper" scope="singleton"/>
 </beans>

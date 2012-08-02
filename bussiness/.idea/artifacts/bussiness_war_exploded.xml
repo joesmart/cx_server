@@ -5,7 +5,7 @@
       <element id="javaee-facet-resources" facet="bussiness/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="bussiness" />
+          <element id="module-output" name="business" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springside:springside-core:4.0.0.RC4-SNAPSHOT" />

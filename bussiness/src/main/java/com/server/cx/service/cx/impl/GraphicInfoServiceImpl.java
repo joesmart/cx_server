@@ -1,14 +1,13 @@
 package com.server.cx.service.cx.impl;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.GraphicInfoDao;
 import com.server.cx.dao.cx.spec.GraphicInfoSpecifications;
-import com.server.cx.dto.Action;
-import com.server.cx.dto.DataPage;
-import com.server.cx.dto.GraphicInfoItem;
+import com.cl.cx.platform.dto.DataPage;
+import com.cl.cx.platform.dto.GraphicInfoItem;
 import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.service.cx.GraphicInfoService;
+import com.server.cx.service.util.BusinessFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +15,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 /**
@@ -30,6 +28,9 @@ import java.util.List;
 public class GraphicInfoServiceImpl extends  BasicService implements GraphicInfoService {
     @Autowired
     private GraphicInfoDao graphicInfoDao;
+
+    @Autowired
+    private BusinessFunctions businessFunctions;
     @Override
     public DataPage findGraphicInfoDataPageByCategoryId(final String imsi, Long categoryId, Integer offset, Integer limit) {
         final String baseHref = baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId + "&offset=" + offset + "&limit=" + limit;
@@ -59,31 +60,7 @@ public class GraphicInfoServiceImpl extends  BasicService implements GraphicInfo
     }
 
     private List<GraphicInfoItem> transformToGraphicItemList(final String imsi, List<GraphicInfo> graphicInfoList) {
-        return Lists.transform(graphicInfoList, new Function<GraphicInfo, GraphicInfoItem>() {
-            @Override
-            public GraphicInfoItem apply(@Nullable GraphicInfo input) {
-                GraphicInfoItem graphicInfoItem = new GraphicInfoItem();
-                graphicInfoItem.setId(input.getId());
-                graphicInfoItem.setName(input.getName());
-                graphicInfoItem.setSignature(input.getSignature());
-                graphicInfoItem.setDownloadNumber(String.valueOf(input.getUseCount()));
-                graphicInfoItem.setAuditPassed(true);
-                graphicInfoItem.setPrice(input.getPrice());
-                if (input.getPrice() > 0.0F) {
-                    graphicInfoItem.setPurchased(false);
-                }
-                graphicInfoItem.setCollected(false);
-                graphicInfoItem.setLevel(input.getLevel());
-                if (input.getGraphicResources().size() > 0) {
-                    graphicInfoItem.setThumbnailPath(imageShowURL + input.getGraphicResources().get(0).getResourceId() + "&" + thumbnailSize);
-                    graphicInfoItem.setSourceImagePath(imageShowURL + input.getGraphicResources().get(0).getResourceId());
-                }
-                graphicInfoItem.setHref(baseHostAddress + restURL + imsi + "/graphicInfos/" + input.getId());
-                Action action = actionBuilder.buildGraphicItemAction(imsi);
-                graphicInfoItem.setAction(action);
-                return graphicInfoItem;
-            }
-        });
+        return Lists.transform(graphicInfoList,businessFunctions.graphicInfoTransformToGraphicInfoItem(imsi));
     }
 
     @Override

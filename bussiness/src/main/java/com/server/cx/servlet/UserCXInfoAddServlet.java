@@ -2,7 +2,7 @@ package com.server.cx.servlet;
 
 import com.server.cx.constants.Constants;
 import com.server.cx.dto.Result;
-import com.server.cx.exception.CXServerBussinessException;
+import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.UserCXInfoManagerService;
 import com.server.cx.util.StringUtil;
@@ -73,7 +73,7 @@ public class UserCXInfoAddServlet extends HttpServlet {
                 } catch (SystemException e) {
                     dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, e.getLocalMessage());
                 } catch (Exception e) {
-                    SystemException systemexception = new CXServerBussinessException(e, "系统内部错误");
+                    SystemException systemexception = new CXServerBusinessException(e, "系统内部错误");
                     dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, systemexception.getLocalMessage());
                 }
             }

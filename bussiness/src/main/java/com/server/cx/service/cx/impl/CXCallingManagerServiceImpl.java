@@ -83,7 +83,7 @@ public class CXCallingManagerServiceImpl implements CXCallingManagerService {
         // 找不到该呼叫用户,说明该呼叫的用户未开通该业务.
         // TODO 需要验证当前用户有没有订阅主题包,如果有的话显示主题包,否则显示系统默认彩像.
         if (callerUserInfo == null) {
-            resultMGraphicStoreMode = mgraphicStoreModeDao.getDefaulModeUserCXInfo();
+            resultMGraphicStoreMode = mgraphicStoreModeDao.getDefaultModeUserCXInfo();
             return generateResultByUserCXInfo(resultMGraphicStoreMode);
         }
 
@@ -103,7 +103,7 @@ public class CXCallingManagerServiceImpl implements CXCallingManagerService {
 
         // TODO 对方无设定任何彩像时,显示系统默认彩像.
         if (resultMGraphicStoreMode == null) {
-            resultMGraphicStoreMode = mgraphicStoreModeDao.getDefaulModeUserCXInfo();
+            resultMGraphicStoreMode = mgraphicStoreModeDao.getDefaultModeUserCXInfo();
         }
         // generateARandomCXInfo(userCXInfo);
         return generateResultByUserCXInfo(resultMGraphicStoreMode);

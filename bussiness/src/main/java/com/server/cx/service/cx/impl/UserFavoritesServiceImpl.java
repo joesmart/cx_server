@@ -1,167 +1,177 @@
 package com.server.cx.service.cx.impl;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
+import com.server.cx.dao.cx.GraphicInfoDao;
 import com.server.cx.dao.cx.UserFavoritesDao;
 import com.server.cx.dao.cx.UserInfoDao;
-import com.server.cx.dto.CXInfo;
+import com.server.cx.dao.cx.spec.UserFavoriteSpecifications;
+import com.cl.cx.platform.dto.CollectedGraphicInfoItem;
+import com.cl.cx.platform.dto.DataPage;
+import com.cl.cx.platform.dto.IdDTO;
+import com.cl.cx.platform.dto.OperationDescription;
+import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.entity.cx.UserFavorites;
 import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.UserFavoritesService;
+import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.RestSender;
-import com.server.cx.util.StringUtil;
-import com.server.cx.util.business.UserFavoritesUtil;
-import com.server.cx.util.business.ValidationUtil;
-import com.server.cx.xml.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 
 @Service("userFavoritesService")
 @Transactional
-public class UserFavoritesServiceImpl implements UserFavoritesService {
+public class UserFavoritesServiceImpl extends  BasicService implements UserFavoritesService {
 
     @Autowired
     private UserInfoDao userInfoDao;
+
     @Autowired
-    UserFavoritesDao userFavoritesDao;
+    private UserFavoritesDao userFavoritesDao;
+
+    @Autowired
+    private GraphicInfoDao graphicInfoDao;
+
     @Autowired
     @Qualifier("cxinfosQueryIdRestSender")
     private RestSender restSender;
+
+    @Autowired
+    private BusinessFunctions businessFunctions;
 
     private String dealResult = "";
     private List<UserFavorites> userFavoritesList;
     private List<String> resourceIdsList;
 
     @Override
-    public String addNewUserFavorites(String imsi, String cxInfoId) throws SystemException {
+    public OperationDescription addNewUserFavorites(String imsi, IdDTO idDTO) throws SystemException {
 
-        // TODO use the throws exceptions to resolve this kind issue;
-        // defense
         Preconditions.checkNotNull(imsi);
-        Preconditions.checkNotNull(cxInfoId);
-        // TODO cxInfoId 的数据输入验证需要修改
-        /*
-        * if (!ValidationUtil.isDigit(cxInfoId)){ dealResult =
-        * StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "数据输入有误"); return dealResult; }
-        */
-        UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
-        if (null == userInfo) {
-            dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户未注册");
-            return dealResult;
-        }
+        Preconditions.checkNotNull(idDTO);
+
+        UserInfo userInfo = userInfoDao.findByImsi(imsi);
+        Preconditions.checkNotNull(userInfo,"用户不存在");
 
         String userId = userInfo.getId();
-        boolean isAlreandAddedInUserFavorites = userFavoritesDao.isAlreadAddedInUserFavorites(userId, cxInfoId);
-        if (isAlreandAddedInUserFavorites) {
-            dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户已经收藏该彩像");
-            return dealResult;
+        boolean isAlreadyAddedInUserFavorites = userFavoritesDao.isAlreadAddedInUserFavorites(userId, idDTO.getId());
+
+        if (isAlreadyAddedInUserFavorites) {
+            throw new CXServerBusinessException("用户已经收藏该彩像");
         }
 
         Integer totalCountOfUserFavorites = userFavoritesDao.getUserFavoritesTotalCount(userId);
         if (totalCountOfUserFavorites >= Constants.TOTAL_USERFAVORITES_COUNT) {
-            dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户收藏已经超出限制的"
-                    + Constants.TOTAL_USERFAVORITES_COUNT + "条!");
-            return dealResult;
+            throw new CXServerBusinessException("用户收藏已经超出限制的"+Constants.TOTAL_USERFAVORITES_COUNT + "条!");
         }
 
         UserFavorites userFavorites = new UserFavorites();
         userFavorites.setUser(userInfo);
+        GraphicInfo graphicInfo = graphicInfoDao.findOne(idDTO.getId());
+        if(graphicInfo == null){
+            throw new CXServerBusinessException("找不到图库资源");
+        }
+        userFavorites.setGraphicInfo(graphicInfo);
         userFavoritesDao.save(userFavorites);
 
-        Result xmlResult = new Result();
-        List<UserFavorites> userFavoritesList = Lists.newArrayList();
-        userFavoritesList.add(userFavorites);
-        xmlResult.setFlag(Constants.SUCCESS_FLAG);
-        xmlResult.setContent("彩像收藏成功");
-        xmlResult.setUserFavorites(userFavoritesList);
-        dealResult = StringUtil.generateXMLResultFromObject(xmlResult);
-        return dealResult;
+        OperationDescription operationDescription = new OperationDescription();
+        operationDescription.setDealResult("执行成功");
+        operationDescription.setActionName("addNewUserFavorites");
+        return operationDescription;
     }
 
     @Override
-    public String deleteUserFavorites(String imsi, String userFavoritesId) {
+    public OperationDescription deleteUserFavorites(String imsi, IdDTO idDTO) throws SystemException {
 
-        Preconditions.checkNotNull(imsi);
-        Preconditions.checkNotNull(userFavoritesId);
-        if (!ValidationUtil.isMultiUserFavoritesId(userFavoritesId)) {
-            dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "数据输入有误");
-            return dealResult;
+        Preconditions.checkNotNull(imsi,"imsi为空");
+        Preconditions.checkNotNull(idDTO,"收藏ID为空");
+        if (idDTO.getIds().size()<=0) {
+            throw new CXServerBusinessException("收藏ID为空");
         }
 
         UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
         if (null == userInfo) {
-            dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户未注册");
-            return dealResult;
+            throw new CXServerBusinessException("用户未注册");
         }
 
-        String splitString = ",";
-
-        List<Long> userFavoritesIdLongList = UserFavoritesUtil.convertDigitStrignIntoLongList(userFavoritesId, splitString);
-        //TODO Send multi delete request need to refactor to resolve this kind issue By Joe
-        for (Long id : userFavoritesIdLongList) {
-            userFavoritesDao.delete(id);
+        List<UserFavorites> userFavorites =  Lists.newArrayList(userFavoritesDao.findAll(idDTO.getIds()));
+        if(userFavorites !=null && userFavorites.size() >0){
+            userFavoritesDao.deleteInBatch(userFavorites);
         }
-        dealResult = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "用户移除收藏成功");
-        return dealResult;
+
+        OperationDescription operationDescription = new OperationDescription();
+        operationDescription.setDealResult("执行成功");
+        operationDescription.setActionName("deleteUserFavorites");
+        return operationDescription;
     }
 
     @Override
-    public String getAllUserFavorites(String imsi, String typeId, String requestPage, String pageSize) {
-        Preconditions.checkNotNull(imsi);
-        Preconditions.checkNotNull(typeId);
-        Preconditions.checkNotNull(requestPage);
-        Preconditions.checkNotNull(pageSize);
-
-        if (!ValidationUtil.isDigit(typeId) || !ValidationUtil.isDigit(requestPage) || !ValidationUtil.isDigit(requestPage)) {
-            dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "数据输入有误");
-            return dealResult;
-        }
+    public OperationDescription deleteUserFavoritesById(String imsi, String userFavoriteId) throws SystemException {
+        Preconditions.checkNotNull(imsi,"imsi为空");
+        Preconditions.checkNotNull(userFavoriteId,"收藏ID为空");
 
         UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
         if (null == userInfo) {
-            dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户未注册");
-            return dealResult;
+            throw new CXServerBusinessException("用户未注册");
         }
-//TODO need fix here since the UserInfo Id change to String typ By Joesmart
-        userFavoritesList =
-                userFavoritesDao.getAllUserFavorites(userInfo.getId(), Integer.parseInt(requestPage),
-                        Integer.parseInt(pageSize));
 
-        getResourceIdList();
-        makeupUserFavoritesList(resourceIdsList);
+        userFavoritesDao.delete(userFavoriteId);
 
-        Result xmlResult = new Result();
-        xmlResult.setFlag(Constants.SUCCESS_FLAG);
-        xmlResult.setUserFavorites(userFavoritesList);
-        dealResult = StringUtil.generateXMLResultFromObject(xmlResult);
-        return dealResult;
+        OperationDescription operationDescription = new OperationDescription();
+        operationDescription.setDealResult("执行成功");
+        operationDescription.setActionName("deleteUserFavorites");
+        return operationDescription;
     }
 
-    public void getResourceIdList() {
-        resourceIdsList = Lists.transform(userFavoritesList, new Function<UserFavorites, String>() {
-            @Override
-            public String apply(UserFavorites userFavorites) {
-                return "";
-            }
-        });
-    }
+    @Override
+    public DataPage getAllUserFavorites(final String imsi, Integer offset, Integer limit) {
+        final String baseHref = baseHostAddress + restURL + imsi + "/myCollections?offset=" + offset + "&limit=" + limit;
 
-    public void makeupUserFavoritesList(List<String> resourceIdsList) {
-        if (resourceIdsList != null && resourceIdsList.size() > 0) {
-            //TODO 需要把URL地址移动到公共位置.
-            Map<String, CXInfo> cxInfosMap = restSender.getCXInfoMap(resourceIdsList);
+        Preconditions.checkNotNull(imsi);
+        Preconditions.checkNotNull(offset);
+        Preconditions.checkNotNull(limit);
 
-            if (cxInfosMap != null) {
-
-            }
+        UserInfo userInfo = userInfoDao.findByImsi(imsi);
+        if (null == userInfo) {
+            throw new CXServerBusinessException("用户未注册");
         }
+        //TODO need fix 需要一个级联查询实现.
+        PageRequest pageRequest = new PageRequest(offset,limit, Sort.Direction.DESC,"createdOn");
+        Page page = userFavoritesDao.findAll(UserFavoriteSpecifications.userFavoritesSpecification(userInfo),pageRequest);
+        List<UserFavorites> userFavoritesList  =  page.getContent();
+
+        List<CollectedGraphicInfoItem> collectedGraphicInfoItems = Lists.transform(userFavoritesList,businessFunctions.userFavoriteTransformToCollectedGraphicInfoItem(imsi));
+
+        DataPage dataPage = new DataPage();
+        dataPage.setLimit(page.getSize());
+        dataPage.setOffset(page.getNumber());
+        dataPage.setTotal(page.getTotalPages());
+        dataPage.setItems(collectedGraphicInfoItems);
+        dataPage.setHref(baseHref);
+        if (offset > 0) {
+            int previousOffset = offset - 1;
+            dataPage.setPrevious(baseHostAddress + restURL + imsi + "/myCollections?offset=" + previousOffset + "&limit=" + limit);
+        }
+        if (offset + 1 < page.getTotalPages()) {
+            int nextOffset = offset + 1;
+            dataPage.setNext(baseHostAddress + restURL + imsi + "/myCollections?offset=" + nextOffset + "&limit=" + limit);
+        }
+        dataPage.setFirst(baseHostAddress + restURL + imsi + "/myCollections?offset=0&limit=" + limit);
+        dataPage.setLast(baseHostAddress + restURL + imsi + "/myCollections?offset=" + (dataPage.getTotal() - 1) + "&limit=" + limit);
+        return dataPage;
+
     }
+
+
+
+
 }

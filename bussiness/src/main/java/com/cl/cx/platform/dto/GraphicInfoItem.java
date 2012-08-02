@@ -1,4 +1,4 @@
-package com.server.cx.dto;
+package com.cl.cx.platform.dto;
 
 import lombok.Getter;
 import lombok.Setter;

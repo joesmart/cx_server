@@ -11,5 +11,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * Time: 下午2:24
  * FileName:UserFavoritesDao
  */
-public interface UserFavoritesDao extends JpaRepository<UserFavorites, Long>,JpaSpecificationExecutor<UserFavorites>,UserFavoritesCustomDao {
+public interface UserFavoritesDao extends JpaRepository<UserFavorites, String>,JpaSpecificationExecutor<UserFavorites>,UserFavoritesCustomDao {
+
 }

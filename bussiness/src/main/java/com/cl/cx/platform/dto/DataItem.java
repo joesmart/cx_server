@@ -1,5 +1,6 @@
-package com.server.cx.dto;
+package com.cl.cx.platform.dto;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.ToString;
 
 /**
@@ -9,6 +10,7 @@ import lombok.ToString;
  * FileName:DataItem
  */
 @ToString
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property= "@type")
 public class DataItem {
     private String href;
     private Action action;

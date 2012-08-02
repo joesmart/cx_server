@@ -1,16 +1,16 @@
 package com.server.cx.entity.cx;
 
-import com.server.cx.entity.basic.AuditableEntity;
+import com.server.cx.entity.basic.AuditableStringEntity;
 
 import javax.persistence.*;
 
 
 @Entity
 @Table(name = "user_favorites")
-public class UserFavorites extends AuditableEntity {
+public class UserFavorites extends AuditableStringEntity {
 
     private UserInfo user;
-    private String graphicInfoId;
+    private GraphicInfo graphicInfo;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, optional = true)
     @JoinColumn(name = "user_id")
@@ -21,12 +21,13 @@ public class UserFavorites extends AuditableEntity {
     public void setUser(UserInfo user) {
         this.user = user;
     }
-
-    public String getGraphicInfoId() {
-        return graphicInfoId;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, optional = true)
+    @JoinColumn(name = "graphic_info_id")
+    public GraphicInfo getGraphicInfo() {
+        return graphicInfo;
     }
 
-    public void setGraphicInfoId(String graphicInfoId) {
-        this.graphicInfoId = graphicInfoId;
+    public void setGraphicInfo(GraphicInfo graphicInfo) {
+        this.graphicInfo = graphicInfo;
     }
 }
