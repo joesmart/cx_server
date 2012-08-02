@@ -1,7 +1,7 @@
 package com.server.cx.service.cx;
 
-import com.server.cx.dto.Result;
+import com.server.cx.dto.VersionInfoDTO;
 
 public interface VersionInfoService {
-    public Result checkIsTheLatestVersion(String imsi, String version);
+    public VersionInfoDTO checkIsTheLatestVersion(String imsi, String version);
 }
