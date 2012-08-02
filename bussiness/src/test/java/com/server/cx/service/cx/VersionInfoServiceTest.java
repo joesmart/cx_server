@@ -1,12 +1,12 @@
 package com.server.cx.service.cx;
 
+import com.server.cx.constants.Constants;
+import com.server.cx.dto.Result;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
-import com.server.cx.constants.Constants;
-import com.server.cx.dto.Result;
 
 import static org.fest.assertions.Assertions.assertThat;
 

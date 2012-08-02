@@ -1,15 +1,15 @@
 package com.server.cx.web.account;
 
-import java.beans.PropertyEditorSupport;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.server.cx.entity.account.Group;
+import com.server.cx.service.account.AccountManager;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.server.cx.entity.account.Group;
-import com.server.cx.service.account.AccountManager;
 import org.springside.modules.utils.Collections3;
+
+import java.beans.PropertyEditorSupport;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 用于转换用户表单中复杂对象Group的checkbox的关联。

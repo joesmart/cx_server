@@ -1,10 +1,9 @@
 package com.server.cx.dto.adapters;
 
-import java.util.Map;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import java.util.Map;
 
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class MapEntryType<K, V> {

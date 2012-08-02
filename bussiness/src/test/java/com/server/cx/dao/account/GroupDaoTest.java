@@ -1,17 +1,18 @@
 package com.server.cx.dao.account;
 
-import static org.junit.Assert.*;
+import com.server.cx.data.AccountData;
+import com.server.cx.entity.account.Group;
+import com.server.cx.entity.account.User;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springside.modules.test.spring.SpringTransactionalTestCase;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import com.server.cx.data.AccountData;
-import com.server.cx.entity.account.Group;
-import com.server.cx.entity.account.User;
-import org.springside.modules.test.spring.SpringTransactionalTestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * GroupDao的测试用例, 测试ORM映射及特殊的DAO操作.

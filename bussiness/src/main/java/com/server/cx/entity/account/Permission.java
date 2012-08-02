@@ -1,8 +1,8 @@
 package com.server.cx.entity.account;
 
-import java.util.Map;
-
 import com.google.common.collect.Maps;
+
+import java.util.Map;
 
 /**
  * Resource Base Access Control中的资源定义.

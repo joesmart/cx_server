@@ -1,5 +1,8 @@
 package com.server.cx.web.account;
 
+import com.server.cx.entity.account.Group;
+import com.server.cx.entity.account.Permission;
+import com.server.cx.service.account.AccountManager;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,9 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.server.cx.entity.account.Group;
-import com.server.cx.entity.account.Permission;
-import com.server.cx.service.account.AccountManager;
 
 @Controller
 @RequestMapping(value = "/account/group/")

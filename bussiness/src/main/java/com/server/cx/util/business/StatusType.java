@@ -1,8 +1,8 @@
 package com.server.cx.util.business;
 
-import java.util.Map;
-
 import com.google.common.collect.Maps;
+
+import java.util.Map;
 
 public enum StatusType {
     // 1:做饭,2:坐飞机,3:忙碌,4:睡觉,5:开会,6:开车,7:工作

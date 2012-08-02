@@ -1,11 +1,11 @@
 package com.server.cx.webservice.rs.client;
 
+import com.server.cx.webservice.dto.DepartmentDTO;
+import com.server.cx.webservice.dto.UserDTO;
 import com.sun.jersey.api.client.*;
 import com.sun.jersey.api.client.ClientResponse.Status;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Required;
-import com.server.cx.webservice.dto.DepartmentDTO;
-import com.server.cx.webservice.dto.UserDTO;
 
 import javax.ws.rs.core.MediaType;
 import java.net.URI;

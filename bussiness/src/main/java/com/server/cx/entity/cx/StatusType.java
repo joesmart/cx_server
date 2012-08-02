@@ -1,8 +1,6 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableEntity;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
