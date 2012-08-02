@@ -1,4 +1,4 @@
-package com.server.cx.miniweb.functional;
+package com.server.cx.functional;
 
 import org.eclipse.jetty.server.Server;
 import org.junit.BeforeClass;
@@ -44,7 +44,7 @@ public class BaseFunctionalTestCase {
 	@BeforeClass
 	public static void beforeClass() throws Exception {
 
-		baseUrl = propertiesLoader.getProperty("baseUrl", com.server.cx.miniweb.functional.MiniWebServer.BASE_URL);
+		baseUrl = propertiesLoader.getProperty("baseUrl", MiniWebServer.BASE_URL);
 
 		Boolean isEmbedded = new URL(baseUrl).getHost().equals("localhost");
 

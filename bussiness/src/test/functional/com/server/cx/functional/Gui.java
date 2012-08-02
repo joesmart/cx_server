@@ -1,4 +1,4 @@
-package com.server.cx.miniweb.functional;
+package com.server.cx.functional;
 
 import org.openqa.selenium.By;
 
