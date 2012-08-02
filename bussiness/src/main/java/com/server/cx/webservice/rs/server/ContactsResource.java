@@ -13,14 +13,14 @@ import javax.ws.rs.core.Response;
 
 @Component
 @Path("/contacts")
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 public class ContactsResource {
 
     @Autowired
     ContactsServcie contactsServcie;
 
     @POST
-    @Produces({MediaType.APPLICATION_XML})
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response uploadContacts(Result result) {
         Result xmlResult = new Result();
         try {
@@ -38,8 +38,6 @@ public class ContactsResource {
 
     @GET
     @Path("query")
-    @Produces({MediaType.APPLICATION_XML})
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response getCatactUserCXInfos(@QueryParam("imsi") String imsi) {
         Result xmlResult = new Result();
         try {
@@ -55,8 +53,6 @@ public class ContactsResource {
 
     @POST
     @Path("copy")
-    @Produces({MediaType.APPLICATION_XML})
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response copy(@QueryParam("imsi") String imsi, @QueryParam("cxInfoId") String cxInfoId) {
         Result xmlResult = new Result();
         try {
