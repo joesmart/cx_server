@@ -1,4 +1,4 @@
-package com.server.cx.miniweb.functional;
+package com.server.cx.functional;
 
 import org.eclipse.jetty.server.Server;
 import org.springside.modules.test.functional.JettyFactory;
