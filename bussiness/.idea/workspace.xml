@@ -6,57 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bussiness.iml" afterPath="$PROJECT_DIR$/bussiness.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/GroupDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/GroupDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/GroupDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/account/GroupDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/spec/GraphicInfoSpecifications.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/spec/GraphicInfoSpecifications.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/Result.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/Result.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/MapEntryType.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/MapEntryType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/XmlGenericMapAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dto/adapters/XmlGenericMapAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/Group.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/Group.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/Permission.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/Permission.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/account/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HolidayType.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HolidayType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/MGraphicStoreMode.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/MGraphicStoreMode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/StatusType.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/StatusType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserFavorites.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserFavorites.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/filter/SetCharacterEncodingFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/filter/SetCharacterEncodingFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/account/AccountManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/account/AccountManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/account/ShiroDbRealm.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/account/ShiroDbRealm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/VersionInfoServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/VersionInfoServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/MessageHelp.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/MessageHelp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/SessionFactoryUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/SessionFactoryUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/StringUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/StringUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/URLParser.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/URLParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/SmsMessageServiceUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/SmsMessageServiceUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/StatusType.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/StatusType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserCXInfoUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserCXInfoUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserFavoritesUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserFavoritesUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserStatusUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/UserStatusUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/ValidationUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/ValidationUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/VersionInfoUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/business/VersionInfoUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupController.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupDetailController.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupDetailController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupListEditor.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/GroupListEditor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/UserDetailController.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/web/account/UserDetailController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/dto/DepartmentDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/dto/DepartmentDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/client/AccountResourceClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/client/AccountResourceClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserResouceService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserResouceService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/VersionInfoResource.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/VersionInfoResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/impl/AccountWebServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/ws/impl/AccountWebServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/adapter/DateXMLAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/xml/adapter/DateXMLAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/functional/com/server/cx/functional/account/SecurityIT.java" afterPath="$PROJECT_DIR$/src/test/functional/com/server/cx/functional/account/SecurityIT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/functional/com/server/cx/functional/account/UserManagerIT.java" afterPath="$PROJECT_DIR$/src/test/functional/com/server/cx/functional/account/UserManagerIT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/functional/com/server/cx/functional/resource/BasicJerseyTest.java" afterPath="$PROJECT_DIR$/src/test/functional/com/server/cx/functional/resource/BasicJerseyTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/functional/com/server/cx/functional/resource/OnePerAppDescriptorTestContainerFactory.java" afterPath="$PROJECT_DIR$/src/test/functional/com/server/cx/functional/resource/OnePerAppDescriptorTestContainerFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/server/cx/dao/account/GroupDaoTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/server/cx/dao/account/GroupDaoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/server/cx/dao/account/JpaMappingTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/server/cx/dao/account/JpaMappingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/server/cx/dao/cx/VersionInfoDaoTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/server/cx/dao/cx/VersionInfoDaoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/server/cx/data/AccountData.java" afterPath="$PROJECT_DIR$/src/test/java/com/server/cx/data/AccountData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/server/cx/service/account/AccountManagerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/server/cx/service/account/AccountManagerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/server/cx/service/cx/VersionInfoServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/server/cx/service/cx/VersionInfoServiceTest.java" />
     </list>
     <ignored path="bussiness.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1769,7 +1718,11 @@
       <created>1343869877494</created>
       <updated>1343869877494</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="remove useless import">
+      <created>1343871372329</created>
+      <updated>1343871372329</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <option name="createChangelist" value="false" />
     <servers />
   </component>
@@ -1873,7 +1826,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove useless import" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1899,6 +1852,7 @@
     <MESSAGE value="graphicResource add type property" />
     <MESSAGE value="update project configuration" />
     <MESSAGE value="update" />
+    <MESSAGE value="remove useless import" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
