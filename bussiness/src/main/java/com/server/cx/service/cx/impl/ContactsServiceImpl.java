@@ -59,6 +59,7 @@ public class ContactsServiceImpl implements ContactsServcie {
     private List<String> mobiles;
 
     @Override
+    @Transactional(readOnly=false)
     public UploadContactDTO uploadContacts(List<ContactPeopleInfo> contactPeopleInfos, String imsi) throws SystemException {
         ValidationUtil.checkParametersNotNull(imsi, contactPeopleInfos);
         checkUserInfo(imsi);
