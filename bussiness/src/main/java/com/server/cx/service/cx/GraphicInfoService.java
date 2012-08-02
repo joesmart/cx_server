@@ -1,6 +1,6 @@
 package com.server.cx.service.cx;
 
-import com.server.cx.dto.DataPage;
+import com.cl.cx.platform.dto.DataPage;
 
 /**
  * User: yanjianzou

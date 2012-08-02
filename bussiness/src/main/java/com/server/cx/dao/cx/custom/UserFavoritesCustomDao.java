@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserFavoritesCustomDao {
 
-    public boolean isAlreadAddedInUserFavorites(String userId, String resourceId);
+    public boolean isAlreadAddedInUserFavorites(String userId, String graphicInfoId);
 
     public List<UserFavorites> getAllUserFavorites(String userid, int requestPage, int pageSize);
 

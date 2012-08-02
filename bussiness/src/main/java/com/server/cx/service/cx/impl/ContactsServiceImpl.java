@@ -1,6 +1,5 @@
 package com.server.cx.service.cx.impl;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
@@ -19,10 +18,11 @@ import com.server.cx.dto.UserCXInfo;
 import com.server.cx.entity.cx.Contacts;
 import com.server.cx.entity.cx.MGraphicStoreMode;
 import com.server.cx.entity.cx.UserInfo;
-import com.server.cx.exception.CXServerBussinessException;
+import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.ContactsServcie;
 import com.server.cx.service.cx.UserCXInfoManagerService;
+import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.RestSender;
 import com.server.cx.util.StringUtil;
 import com.server.cx.util.business.ValidationUtil;
@@ -48,6 +48,9 @@ public class ContactsServiceImpl implements ContactsServcie {
     @Autowired
     @Qualifier("cxinfosQueryIdRestSender")
     private RestSender restSender;
+
+    @Autowired
+    private BusinessFunctions businessFunctions;
 
     private UserInfo userInfo;
     private String dealResult = "";
@@ -79,12 +82,7 @@ public class ContactsServiceImpl implements ContactsServcie {
         Map<String, UserInfo> phoneNoAndImsiMap = null;
         if (mobiles != null && mobiles.size() > 0) {
             List<UserInfo> userInfos = userInfoDao.getUserInfosByPhoneNos(mobiles);
-            phoneNoAndImsiMap = Maps.uniqueIndex(userInfos, new Function<UserInfo, String>() {
-                @Override
-                public String apply(UserInfo input) {
-                    return input.getPhoneNo();
-                }
-            });
+            phoneNoAndImsiMap = Maps.uniqueIndex(userInfos, businessFunctions.getUserPhoneNoFunction());
         }
 
         if (newContacts != null && newContacts.size() > 0) {
@@ -107,7 +105,7 @@ public class ContactsServiceImpl implements ContactsServcie {
         userInfo = userInfoDao.getUserInfoByImsi(imsi);
         if (null == userInfo) {
             dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户未注册");
-            throw new CXServerBussinessException("用户未注册");
+            throw new CXServerBusinessException("用户未注册");
         }
     }
 
@@ -133,7 +131,7 @@ public class ContactsServiceImpl implements ContactsServcie {
         Preconditions.checkNotNull(imsi);
         checkUserInfo(imsi);
         List<Contacts> contactsList = contactsDao.getContactsByUserId(userInfo.getId());
-        List<MGraphicStoreMode> mGraphicStoreModes = mgraphicStoreModeDao.getAllCatactsMGraphicStoreModes(userInfo.getId());
+        List<MGraphicStoreMode> mGraphicStoreModes = mgraphicStoreModeDao.getAllContactsMGraphicStoreModes(userInfo.getId());
         Map<String, UserCXInfo> mgraphicMap = Maps.newHashMap();
         for (MGraphicStoreMode tempMgraphicStoreMode : mGraphicStoreModes) {
             if (tempMgraphicStoreMode != null)

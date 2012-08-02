@@ -1,6 +1,6 @@
 package com.server.cx.service.cx;
 
-import com.server.cx.dto.DataPage;
+import com.cl.cx.platform.dto.DataPage;
 import org.fest.assertions.Assertions;
 import org.junit.After;
 import org.junit.Before;

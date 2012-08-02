@@ -1,7 +1,7 @@
 package com.server.cx.util;
 
 import com.server.cx.constants.Constants;
-import com.server.cx.exception.CXServerBussinessException;
+import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.*;
 import com.server.cx.util.business.ValidationUtil;
@@ -76,12 +76,12 @@ public class ServiceChooseUtil {
                 // 添加用户收藏
                 String imsi = mapParams.get(Constants.IMSI_STR);
                 String cxInfoId = mapParams.get(Constants.CXINFO_ID);
-                result = userFavoriteService.addNewUserFavorites(imsi, cxInfoId);
+//                result = userFavoriteService.addNewUserFavorites(imsi, cxInfoId);
             } else if (requestUrl.equals(Constants.DELETE_USER_FAVORITES)) {
                 // 删除用户收藏
                 String imsi = mapParams.get(Constants.IMSI_STR);
                 String userFavoritesId = mapParams.get(Constants.USER_FAVORITES_ID);
-                result = userFavoriteService.deleteUserFavorites(imsi, userFavoritesId);
+//                result = userFavoriteService.deleteUserFavorites(imsi, userFavoritesId);
 
             } else if (requestUrl.equals(Constants.BROSWER_USER_FAVORITES)) {
                 // 浏览用户收藏
@@ -89,7 +89,7 @@ public class ServiceChooseUtil {
                 String requestPage = mapParams.get(Constants.REQUEST_PAGE);
                 String requestPageSize = mapParams.get(Constants.REQUEST_PAGE_SIZE);
                 String typeId = mapParams.get(Constants.TYPE_ID);
-                result = userFavoriteService.getAllUserFavorites(imsi, typeId, requestPage, requestPageSize);
+//                result = userFavoriteService.getAllUserFavorites(imsi, typeId, requestPage, requestPageSize);
             } else if (requestUrl.equals(Constants.ADD_NEW_USERSTATUS_USERCXINFO)) {
                 // TODO 添加一个新的状态用户设定彩像.
                 String imsi = mapParams.get(Constants.IMSI_STR);
@@ -117,7 +117,7 @@ public class ServiceChooseUtil {
         } catch (SystemException e) {
             result = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, e.getLocalMessage());
         } catch (Exception e) {
-            SystemException systemexception = new CXServerBussinessException(e, "系统内部错误");
+            SystemException systemexception = new CXServerBusinessException(e, "系统内部错误");
             result = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, systemexception.getLocalMessage());
         }
         return result;

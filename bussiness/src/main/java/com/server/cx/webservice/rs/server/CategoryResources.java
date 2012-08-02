@@ -1,6 +1,6 @@
 package com.server.cx.webservice.rs.server;
 
-import com.server.cx.dto.DataPage;
+import com.cl.cx.platform.dto.DataPage;
 import com.server.cx.service.cx.CategoryService;
 import com.server.cx.service.cx.GraphicInfoService;
 import org.slf4j.Logger;

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/bussiness.iml" filepath="$PROJECT_DIR$/bussiness.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business.iml" filepath="$PROJECT_DIR$/business.iml" />
       <module fileurl="file://$PROJECT_DIR$/../parent/springside-parent.iml" filepath="$PROJECT_DIR$/../parent/springside-parent.iml" />
     </modules>
   </component>

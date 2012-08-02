@@ -22,10 +22,10 @@ public class UserFavoritesDaoImpl extends BasicDao implements UserFavoritesCusto
 
     // 通过获取User的Favorites 列表去判断是否已经添加 会生成多条select语句,所以添加一个方法来判断是否已经添加.
     @Override
-    public boolean isAlreadAddedInUserFavorites(final String userId, final String resourceId) {
+    public boolean isAlreadAddedInUserFavorites(final String userId, final String graphicInfoId) {
 
         Criteria criteria = getSession().createCriteria(UserFavorites.class).add(Restrictions.eq("user.id", userId))
-                .add(Restrictions.eq("resourceId", resourceId))
+                .add(Restrictions.eq("graphicInfo.id", graphicInfoId))
                 .setProjection(Projections.projectionList().add(Projections.rowCount()));
         Integer queryResult = Integer.valueOf(((Long) criteria.uniqueResult()).intValue());
 

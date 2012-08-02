@@ -37,8 +37,7 @@ public class StatusUserCXInfoResource {
         try {
             UserCXInfo userCXInfo = result.getUserCXInfos().get(0);
             UserInfo userinfo = userInfoDao.getUserInfoByImsi(userCXInfo.getImsi());
-            //TODO need fix here since the UserInfo Id change to String typ By Joesmart
-            //mGraphicStoreModeDao.deleteUserAllStatus(userinfo.getId());
+            mGraphicStoreModeDao.deleteUserAllStatus(userinfo.getId());
             String xmlString = userCXInfoManagerService.dealWithUserCXInfoAdding(result);
             return Response.ok(xmlString).build();
         } catch (Exception e) {

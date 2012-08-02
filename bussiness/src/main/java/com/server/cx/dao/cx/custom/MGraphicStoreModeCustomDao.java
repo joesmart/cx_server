@@ -6,18 +6,17 @@ import com.server.cx.exception.SystemException;
 import java.util.List;
 
 public interface MGraphicStoreModeCustomDao {
-    public MGraphicStoreMode getDefaulModeUserCXInfo() throws SystemException;
+    public MGraphicStoreMode getDefaultModeUserCXInfo() throws SystemException;
 
     public List<MGraphicStoreMode> getAllMGraphicStoreModeByUserId(String userId) throws SystemException;
 
     public MGraphicStoreMode getCurrentValidStatusMGraphicStoreMode(String userId, Integer currentHour);
 
-    public List<String> getIdOfTheSameMGraphicStoreMode(Long userId, MGraphicStoreMode mgraphicStoreMode)
-            throws SystemException;
+    public List<String> getIdOfTheSameMGraphicStoreMode(Long userId, MGraphicStoreMode mgraphicStoreMode) throws SystemException;
 
-    public List<MGraphicStoreMode> getAllCatactsMGraphicStoreModes(String userId);
+    public List<MGraphicStoreMode> getAllContactsMGraphicStoreModes(String userId);
 
-    public void deleteUserAllStatus(Long userid);
+    public void deleteUserAllStatus(String userId);
 
     public MGraphicStoreMode getMGraphicStoreModeByModeType(String userId, Integer modeType);
 }

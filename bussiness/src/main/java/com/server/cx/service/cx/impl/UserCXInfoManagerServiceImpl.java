@@ -1,6 +1,5 @@
 package com.server.cx.service.cx.impl;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.MGraphicStoreModeDao;
@@ -10,9 +9,10 @@ import com.server.cx.dto.Result;
 import com.server.cx.dto.UserCXInfo;
 import com.server.cx.entity.cx.MGraphicStoreMode;
 import com.server.cx.entity.cx.UserInfo;
-import com.server.cx.exception.CXServerBussinessException;
+import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.UserCXInfoManagerService;
+import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.Base64Encoder;
 import com.server.cx.util.RestSender;
 import com.server.cx.util.StringUtil;
@@ -38,6 +38,9 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
     @Autowired
     @Qualifier("cxinfosUploadRestSender")
     private RestSender restSender;
+
+    @Autowired
+    private BusinessFunctions businessFunctions;
 
     private boolean hasRemovedTheSameUserCXInfo;
     private MGraphicStoreMode mGraphic;
@@ -170,12 +173,12 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
         }
 
         if (tempInt + countunit < 0) {
-            throw new CXServerBussinessException(new Exception("the time span mode count is over the limit "), modeTypeName
+            throw new CXServerBusinessException(new Exception("the time span mode count is over the limit "), modeTypeName
                     + "个数已经为空");
         }
 
         if (hasError) {
-            throw new CXServerBussinessException(new Exception("the special phoneNO mode count is over the limit "),
+            throw new CXServerBusinessException(new Exception("the special phoneNO mode count is over the limit "),
                     modeTypeName + "个数已经超过限额" + limitNumber + "个");
         }
     }
@@ -249,13 +252,7 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
         UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
         List<MGraphicStoreMode> list = mGraphicStoreModeDao.getAllMGraphicStoreModeByUserId(userInfo.getId());
 
-        List<UserCXInfo> userCXInfos = Lists.transform(list, new Function<MGraphicStoreMode, UserCXInfo>() {
-            @Override
-            public UserCXInfo apply(MGraphicStoreMode intput) {
-                return intput.convertMGraphicStoreModeToUserCXInfo();
-            }
-
-        });
+        List<UserCXInfo> userCXInfos = Lists.transform(list, businessFunctions.mGraphicStoreModeTransformToUserCXInfo());
 
         return userCXInfos;
     }

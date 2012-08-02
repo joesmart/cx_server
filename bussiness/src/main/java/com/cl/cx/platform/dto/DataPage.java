@@ -1,5 +1,6 @@
-package com.server.cx.dto;
+package com.cl.cx.platform.dto;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.ToString;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * FileName:DataPage
  */
 @ToString
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property= "@type")
 public class DataPage {
     private String href ;
     private Integer offset;

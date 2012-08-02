@@ -30,6 +30,9 @@ public class JacksonContextResolver implements ContextResolver<ObjectMapper> {
                 .configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
         this.objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         this.objectMapper.configure(SerializationFeature.INDENT_OUTPUT,true);
+        this.objectMapper.enableDefaultTyping();
+        this.objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.OBJECT_AND_NON_CONCRETE);
+//        this.objectMapper.configure(SerializationFeature.WRAP_ROOT_VALUE,true);
     }
 
     @Override

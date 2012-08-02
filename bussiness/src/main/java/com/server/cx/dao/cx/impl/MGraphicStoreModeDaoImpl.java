@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import com.server.cx.dao.cx.custom.MGraphicStoreModeCustomDao;
 import com.server.cx.entity.cx.Contacts;
 import com.server.cx.entity.cx.MGraphicStoreMode;
-import com.server.cx.exception.CXServerBussinessException;
+import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.util.business.ValidationUtil;
 import org.hibernate.Criteria;
@@ -24,7 +24,7 @@ public class MGraphicStoreModeDaoImpl extends BasicDao implements MGraphicStoreM
 
     @Override
     @SuppressWarnings("unchecked")
-    public MGraphicStoreMode getDefaulModeUserCXInfo() throws SystemException {
+    public MGraphicStoreMode getDefaultModeUserCXInfo() throws SystemException {
         MGraphicStoreMode mgraphicStoreMode = null;
         try {
             DetachedCriteria criteria = DetachedCriteria.forClass(MGraphicStoreMode.class);
@@ -35,7 +35,7 @@ public class MGraphicStoreModeDaoImpl extends BasicDao implements MGraphicStoreM
                 mgraphicStoreMode = list.get(index);
             }
         } catch (DataAccessException e) {
-            SystemException exception = new CXServerBussinessException(e, "数据存储错误");
+            SystemException exception = new CXServerBusinessException(e, "数据存储错误");
             throw exception;
         }
 
@@ -99,7 +99,7 @@ public class MGraphicStoreModeDaoImpl extends BasicDao implements MGraphicStoreM
     }
 
     @Override
-    public List<MGraphicStoreMode> getAllCatactsMGraphicStoreModes(String userId) {
+    public List<MGraphicStoreMode> getAllContactsMGraphicStoreModes(String userId) {
         DetachedCriteria contactsCriteria = DetachedCriteria.forClass(Contacts.class);
         contactsCriteria.add(Restrictions.eq("userInfo.id", userId))
                 .setProjection(Property.forName("selfUserInfo.id"));
@@ -120,9 +120,9 @@ userInfoCriteria.add(Property.forName("imsi").in(contactsCriteria))
     }
 
     @Override
-    public void deleteUserAllStatus(Long userid) {
+    public void deleteUserAllStatus(String userId) {
         //TODO need refactor to resolve the parameter depend issue; by JoeSmart
-        String hql = "delete from MGraphicStoreMode where userInfo.id=" + userid + " and modeType=5";
+        String hql = "delete from MGraphicStoreMode where userInfo.id=" + userId + " and modeType=5";
         em.createQuery(hql).executeUpdate();
     }
 
@@ -142,7 +142,7 @@ userInfoCriteria.add(Property.forName("imsi").in(contactsCriteria))
                 mgraphicStoreMode = list.get(index);
             }
         } catch (DataAccessException e) {
-            SystemException exception = new CXServerBussinessException(e, "数据检索错误");
+            SystemException exception = new CXServerBusinessException(e, "数据检索错误");
             throw exception;
         }
 
