@@ -1,5 +1,11 @@
 package com.server.cx.service.cx.impl;
 
+import java.util.List;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
@@ -14,6 +20,7 @@ import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.CXInfo;
 import com.server.cx.dto.ContactPeopleInfo;
 import com.server.cx.dto.Result;
+import com.server.cx.dto.UploadContactDTO;
 import com.server.cx.dto.UserCXInfo;
 import com.server.cx.entity.cx.Contacts;
 import com.server.cx.entity.cx.MGraphicStoreMode;
@@ -23,16 +30,10 @@ import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.ContactsServcie;
 import com.server.cx.service.cx.UserCXInfoManagerService;
 import com.server.cx.service.util.BusinessFunctions;
+import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.RestSender;
 import com.server.cx.util.StringUtil;
 import com.server.cx.util.business.ValidationUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Map;
 
 @Service("contactsServcie")
 @Transactional
@@ -58,7 +59,7 @@ public class ContactsServiceImpl implements ContactsServcie {
     private List<String> mobiles;
 
     @Override
-    public String uploadContacts(List<ContactPeopleInfo> contactPeopleInfos, String imsi) throws SystemException {
+    public UploadContactDTO uploadContacts(List<ContactPeopleInfo> contactPeopleInfos, String imsi) throws SystemException {
         ValidationUtil.checkParametersNotNull(imsi, contactPeopleInfos);
         checkUserInfo(imsi);
         convertContactPeopleListToCotactsList(contactPeopleInfos);
@@ -97,7 +98,7 @@ public class ContactsServiceImpl implements ContactsServcie {
             }
             contactsDao.batchInsertContacts(newContacts);
         }
-        return StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "操作成功");
+        return ObjectFactory.buildUploadContactDTO(Constants.SUCCESS_FLAG, "操作成功");
     }
 
     private void checkUserInfo(String imsi) {

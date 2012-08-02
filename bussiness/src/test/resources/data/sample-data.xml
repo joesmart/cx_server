@@ -70,6 +70,17 @@
 	<versioninfo id="2" version="3.0.123" url="http://www.sina.com"></versioninfo>
 	<userinfo id="1" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001000" phone_no="1512581470"></userinfo>
 	<userinfo id="2" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001001" phone_no="1512581471"></userinfo>
+	<userinfo id="3" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001003" phone_no="1512581472"></userinfo>
+	<userinfo id="4" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001004" phone_no="1512581473"></userinfo>
+	<userinfo id="5" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001005" phone_no="1512581474"></userinfo>
+	<userinfo id="6" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001006" phone_no="1512581475"></userinfo>
+	<userinfo id="7" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001007" phone_no="1512581476"></userinfo>
+	<userinfo id="8" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001008" phone_no="1512581477"></userinfo>
+	<userinfo id="9" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001009" phone_no="1512581478"></userinfo>
+	<userinfo id="10" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001010" phone_no="1512581479"></userinfo>
+    <user_catacts id="1" name="Lebron James" phone_no="1512581471" self_user_id="2" user_id="1"></user_catacts>
+    <user_catacts id="2" name="Steve Nash" phone_no="1512581472" self_user_id="3" user_id="1"></user_catacts>
+    <user_catacts id="3" name="Jordon" phone_no="1512581473" self_user_id="4" user_id="1"></user_catacts>
+    <user_catacts id="4" name="Avril" phone_no="1512581098" user_id="1"></user_catacts>
     <user_favorites id="4028b88138e5cc440138e5ccab220000" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" user_id="2" graphic_info_id="4028b88138d5e5e50138d5e5f2800001"></user_favorites>
-
 </dataset>

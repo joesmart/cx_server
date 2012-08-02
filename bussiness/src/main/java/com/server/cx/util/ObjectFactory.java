@@ -1,5 +1,6 @@
 package com.server.cx.util;
 
+import com.server.cx.dto.UploadContactDTO;
 import com.server.cx.dto.VersionInfoDTO;
 
 public class ObjectFactory {
@@ -15,5 +16,12 @@ public class ObjectFactory {
         versionInfoDTO.setForceUpdate(forceUpdate);
         versionInfoDTO.setUrl(url);
         return versionInfoDTO;
+    }
+
+    public static UploadContactDTO buildUploadContactDTO(String flag, String content) {
+        UploadContactDTO uploadContactDTO = new UploadContactDTO();
+        uploadContactDTO.setFlag(flag);
+        uploadContactDTO.setContent(content);
+        return uploadContactDTO;
     }
 }

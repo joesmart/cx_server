@@ -2,9 +2,12 @@
 
 package com.server.cx.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Briefly describe what this class does.
  */
+@XmlRootElement
 public class ContactPeopleInfo {
 
     private String contactName;

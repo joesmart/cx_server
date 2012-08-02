@@ -1,8 +1,8 @@
 package com.server.cx.dao.cx;
 
-import com.server.cx.dao.cx.custom.ContactsCustomDao;
-import com.server.cx.entity.cx.Category;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import com.server.cx.dao.cx.custom.ContactsCustomDao;
+import com.server.cx.entity.cx.Contacts;
 
 /**
  * User: yanjianzou
@@ -10,5 +10,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Time: 下午4:21
  * FileName:ContactsDao
  */
-public interface ContactsDao extends PagingAndSortingRepository<Category, Long>, ContactsCustomDao {
+public interface ContactsDao extends PagingAndSortingRepository<Contacts, Long>, ContactsCustomDao {
 }

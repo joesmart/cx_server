@@ -1,10 +1,14 @@
 package com.server.cx.dao.cx;
 
-import org.junit.After;
-import org.junit.Before;
+import static org.fest.assertions.Assertions.assertThat;
+import java.util.List;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
+import com.server.cx.data.UserInfoData;
+import com.server.cx.entity.cx.UserInfo;
 
 /**
  * User: yanjianzou
@@ -15,17 +19,27 @@ import org.springside.modules.test.spring.SpringTransactionalTestCase;
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 @ActiveProfiles(profiles = {"test"})
 public class UserInfoDaoTest extends SpringTransactionalTestCase {
-    @Before
-    public void setUp() throws Exception {
-
-    }
-
-    @After
-    public void tearDown() throws Exception {
-
-    }
-
+    @Autowired
+    private UserInfoDao userInfoDao;
+    
     public void should_get_userinfo_when_find_by_imsi(){
-
+        List<String> mobiles = UserInfoData.buildPhoneNos();
+        userInfoDao.getUserInfosByPhoneNos(mobiles);
+    }
+    
+    @Test
+    public void should_get_userinfos_by_phoneNos() {
+        List<String> phoneNos = UserInfoData.buildPhoneNos();
+        List<UserInfo> infos = userInfoDao.getUserInfosByPhoneNos(phoneNos);
+        assertThat(infos.size()).isEqualTo(2);
+        assertThat(infos.get(0).getImsi()).isEqualTo("13146001000");
+        assertThat(infos.get(1).getImsi()).isEqualTo("13146001001");
+    }
+    
+    @Test
+    public void should_get_userinfo_by_imsi() {
+        UserInfo info = userInfoDao.getUserInfoByImsi("13146001000");
+        assertThat(info.getId()).isEqualTo("1");
+        assertThat(info.getPhoneNo()).isEqualTo("1512581470");
     }
 }

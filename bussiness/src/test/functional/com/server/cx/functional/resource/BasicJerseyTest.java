@@ -15,7 +15,7 @@ public class BasicJerseyTest extends JerseyTest {
 	protected WebResource resource;
 
 	private static final AppDescriptor APP_DESCRIPTOR = new WebAppDescriptor.Builder("com.server.cx.webservice.rs.server")
-			.contextPath("business")
+			.contextPath("bussiness")
 			.contextParam(
 					"contextConfigLocation",
 					"classpath*:/applicationContext.xml\n" + "classpath*:/applicationContext-shiro.xml\n"

@@ -29,7 +29,7 @@ public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
         final int size = contacts.size();
         try {
             jdbcTemplate.batchUpdate(
-                    "insert into user_catacts(name,phoneNo,user_id,self_user_id,createdOn) values(?,?,?,?,?)",
+                    "insert into user_catacts(name,phone_no,user_id,self_user_id,created_on) values(?,?,?,?,?)",
                     new BatchPreparedStatementSetter() {
                         @Override
                         public void setValues(PreparedStatement ps, int index) throws SQLException {

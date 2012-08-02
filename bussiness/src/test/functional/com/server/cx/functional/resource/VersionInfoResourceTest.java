@@ -4,7 +4,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import javax.ws.rs.core.MediaType;
 import org.junit.Test;
 import com.server.cx.constants.Constants;
-import com.server.cx.dto.Result;
+import com.server.cx.dto.VersionInfoDTO;
 import com.sun.jersey.api.client.ClientResponse;
 
 public class VersionInfoResourceTest extends BasicJerseyTest{
@@ -14,8 +14,8 @@ public class VersionInfoResourceTest extends BasicJerseyTest{
         resource = resource.path("13146001000/upgrade").queryParam("version", "3.0.110");
         ClientResponse response = resource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
         assertThat(response.getStatus()).isEqualTo(200);
-        Result responseResult = response.getEntity(Result.class);
-        assertThat(responseResult.getFlag()).isEqualTo(Constants.SERVER_HAVE_NEWVERION);
+        VersionInfoDTO versionInfoDTO = response.getEntity(VersionInfoDTO.class);
+        assertThat(versionInfoDTO.getFlag()).isEqualTo(Constants.SERVER_HAVE_NEWVERION);
     }
     
 }

@@ -2,8 +2,12 @@ package com.server.cx.webservice.rs.server;
 
 import com.server.cx.constants.Constants;
 import com.server.cx.dto.Result;
+import com.server.cx.dto.UploadContactDTO;
 import com.server.cx.service.cx.ContactsServcie;
+import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,26 +17,28 @@ import javax.ws.rs.core.Response;
 
 @Component
 @Path("/contacts")
-@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+//@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 public class ContactsResource {
-
+    private final static Logger LOGGER = LoggerFactory.getLogger(ContactsResource.class);
+    
     @Autowired
-    ContactsServcie contactsServcie;
+    private ContactsServcie contactsServcie;
 
+    @SuppressWarnings("finally")
     @POST
-    public Response uploadContacts(Result result) {
-        Result xmlResult = new Result();
+    public Response uploadContacts(UploadContactDTO uploadContactDTO) {
+        LOGGER.info("uploadContactDTO = " + uploadContactDTO);
+        
+        UploadContactDTO responseUploadContactDTO = new UploadContactDTO();
         try {
-            ValidationUtil.checkParametersNotNull(result);
-            contactsServcie.uploadContacts(result.getContactPeopleInfos(), result.getImsi());
-            xmlResult.setFlag(Constants.SUCCESS_FLAG);
-            xmlResult.setContent("操作成功");
+            ValidationUtil.checkParametersNotNull(uploadContactDTO);
+            contactsServcie.uploadContacts(uploadContactDTO.getContactPeopleInfos(), uploadContactDTO.getImsi());
+            responseUploadContactDTO = ObjectFactory.buildUploadContactDTO(Constants.SUCCESS_FLAG, "操作成功");
         } catch (Exception e) {
-            xmlResult.setFlag(Constants.ERROR_FLAG);
-            xmlResult.setContent(e.getMessage());
+            responseUploadContactDTO = ObjectFactory.buildUploadContactDTO(Constants.ERROR_FLAG, e.getMessage());
         } finally {
-            return Response.ok(xmlResult).build();
+            return Response.ok(responseUploadContactDTO).build();
         }
     }
 

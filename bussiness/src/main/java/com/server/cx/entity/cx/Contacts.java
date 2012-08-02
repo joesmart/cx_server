@@ -3,9 +3,11 @@ package com.server.cx.entity.cx;
 import com.server.cx.entity.basic.AuditableEntity;
 
 import javax.persistence.*;
+import lombok.ToString;
 
 @Entity
 @Table(name = "user_catacts")
+@ToString
 public class Contacts extends AuditableEntity {
 
     private String name;
