@@ -1,5 +1,6 @@
 package com.server.cx.webservice.rs.server;
 
+import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
 import com.server.cx.dto.Result;
 import com.server.cx.dto.UploadContactDTO;
@@ -10,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -21,7 +22,7 @@ import javax.ws.rs.core.Response;
 @Produces({MediaType.APPLICATION_JSON})
 public class ContactsResource {
     private final static Logger LOGGER = LoggerFactory.getLogger(ContactsResource.class);
-    
+
     @Autowired
     private ContactsServcie contactsServcie;
 
@@ -29,16 +30,18 @@ public class ContactsResource {
     @POST
     public Response uploadContacts(UploadContactDTO uploadContactDTO) {
         LOGGER.info("uploadContactDTO = " + uploadContactDTO);
-        
-        UploadContactDTO responseUploadContactDTO = new UploadContactDTO();
+
+        OperationDescription operationDescription = new OperationDescription();
         try {
             ValidationUtil.checkParametersNotNull(uploadContactDTO);
             contactsServcie.uploadContacts(uploadContactDTO.getContactPeopleInfos(), uploadContactDTO.getImsi());
-            responseUploadContactDTO = ObjectFactory.buildUploadContactDTO(Constants.SUCCESS_FLAG, "操作成功");
+            operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,
+                "uploadContacts", Constants.SUCCESS_FLAG);
         } catch (Exception e) {
-            responseUploadContactDTO = ObjectFactory.buildUploadContactDTO(Constants.ERROR_FLAG, e.getMessage());
+            operationDescription = ObjectFactory.buildErrorOperationDescription(
+                HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "uploadContacts", e.getMessage());
         } finally {
-            return Response.ok(responseUploadContactDTO).build();
+            return Response.ok(operationDescription).build();
         }
     }
 

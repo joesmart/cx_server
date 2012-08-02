@@ -1,5 +1,6 @@
 package com.server.cx.util;
 
+import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.dto.UploadContactDTO;
 import com.server.cx.dto.VersionInfoDTO;
 
@@ -23,5 +24,21 @@ public class ObjectFactory {
         uploadContactDTO.setFlag(flag);
         uploadContactDTO.setContent(content);
         return uploadContactDTO;
+    }
+
+    public static OperationDescription buildOperationDescription(int statusCode, String actionName, String flag) {
+        OperationDescription operationDescription = new OperationDescription();
+        operationDescription.setStatusCode(statusCode);
+        operationDescription.setActionName(actionName);
+        operationDescription.setDealResult(flag);
+        return operationDescription;
+    }
+
+    public static OperationDescription buildErrorOperationDescription(int errorCode, String actionName, String flag) {
+        OperationDescription operationDescription = new OperationDescription();
+        operationDescription.setErrorCode(errorCode);
+        operationDescription.setActionName(actionName);
+        operationDescription.setDealResult(flag);
+        return operationDescription;
     }
 }

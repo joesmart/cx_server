@@ -3,6 +3,7 @@ package com.server.cx.functional.resource;
 import static org.fest.assertions.Assertions.assertThat;
 import javax.ws.rs.core.MediaType;
 import org.junit.Test;
+import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
 import com.server.cx.data.ContactsData;
 import com.server.cx.dto.UploadContactDTO;
@@ -17,7 +18,7 @@ public class ContactsResourceTest extends BasicJerseyTest {
         uploadContactDTO.setContactPeopleInfos(ContactsData.buildContactPeopleInfos());
         ClientResponse response = resource.accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, uploadContactDTO);
         assertThat(response.getStatus()).isEqualTo(200);
-        UploadContactDTO responseUploadContactDTO = response.getEntity(UploadContactDTO.class);
-        assertThat(responseUploadContactDTO.getFlag()).isEqualTo(Constants.SUCCESS_FLAG);
+        OperationDescription operationDescription = response.getEntity(OperationDescription.class);
+        assertThat(operationDescription.getDealResult()).isEqualTo(Constants.SUCCESS_FLAG);
     }
 }
