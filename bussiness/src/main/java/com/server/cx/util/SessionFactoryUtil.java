@@ -1,10 +1,9 @@
 package com.server.cx.util;
 
-import javax.annotation.Resource;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
+
+import javax.annotation.Resource;
 
 public class SessionFactoryUtil {
     private static SessionFactory sessionFactory;

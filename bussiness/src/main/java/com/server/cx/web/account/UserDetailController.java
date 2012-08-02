@@ -1,7 +1,7 @@
 package com.server.cx.web.account;
 
-import java.util.List;
-
+import com.server.cx.entity.account.User;
+import com.server.cx.service.account.AccountManager;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.server.cx.entity.account.User;
-import com.server.cx.service.account.AccountManager;
+
+import java.util.List;
 
 /**
  * 使用@ModelAttribute, 实现Struts2 Preparable二次绑定的效果。

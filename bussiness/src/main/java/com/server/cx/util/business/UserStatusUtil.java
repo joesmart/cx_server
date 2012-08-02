@@ -1,14 +1,14 @@
 package com.server.cx.util.business;
 
+import com.google.common.base.CharMatcher;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
+
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
-
-import com.google.common.base.CharMatcher;
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 
 public class UserStatusUtil {
 

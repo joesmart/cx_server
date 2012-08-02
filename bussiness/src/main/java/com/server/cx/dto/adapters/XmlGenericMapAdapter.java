@@ -1,9 +1,8 @@
 package com.server.cx.dto.adapters;
 
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class XmlGenericMapAdapter<K, V> extends XmlAdapter<MapType<K, V>, Map<K, V>> {
 

@@ -1,12 +1,13 @@
 package com.server.cx.functional.account;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-import org.openqa.selenium.By;
 import com.server.cx.functional.BaseFunctionalTestCase;
 import com.server.cx.functional.Gui;
 import com.server.cx.functional.Gui.UserColumn;
+import org.junit.Test;
+import org.openqa.selenium.By;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * 系统安全控制的功能测试, 测试主要用户故事.

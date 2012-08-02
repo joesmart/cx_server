@@ -1,20 +1,16 @@
 package com.server.cx.web.account;
 
-import java.util.List;
-
+import com.server.cx.entity.account.User;
+import com.server.cx.service.account.AccountManager;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.server.cx.entity.account.User;
-import com.server.cx.service.account.AccountManager;
+
+import java.util.List;
 
 /**
  * Urls:

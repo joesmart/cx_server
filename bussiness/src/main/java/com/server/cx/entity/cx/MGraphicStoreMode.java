@@ -1,18 +1,12 @@
 package com.server.cx.entity.cx;
 
 
-import java.util.Date;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import com.server.cx.dto.UserCXInfo;
 import com.server.cx.dto.CXInfo;
+import com.server.cx.dto.UserCXInfo;
 import com.server.cx.entity.basic.AuditableStringEntity;
+
+import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity

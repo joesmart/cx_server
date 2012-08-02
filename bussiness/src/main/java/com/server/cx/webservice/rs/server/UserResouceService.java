@@ -1,10 +1,10 @@
 package com.server.cx.webservice.rs.server;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import com.server.cx.entity.account.User;
 import com.server.cx.service.account.AccountManager;
 import com.server.cx.webservice.WsConstants;
 import com.server.cx.webservice.dto.UserDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springside.modules.mapper.BeanMapper;
 import org.springside.modules.rest.RsResponse;
 

@@ -1,13 +1,12 @@
 package com.server.cx.dao.account;
 
-import java.util.List;
+import com.server.cx.entity.account.Group;
+import com.server.cx.entity.account.User;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import org.springframework.stereotype.Component;
-import com.server.cx.entity.account.Group;
-import com.server.cx.entity.account.User;
+import java.util.List;
 
 /**
  * GroupDao的扩展行为实现类.

@@ -1,21 +1,21 @@
 package com.server.cx.functional.account;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
-
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import com.server.cx.data.AccountData;
 import com.server.cx.entity.account.Group;
 import com.server.cx.entity.account.User;
 import com.server.cx.functional.BaseFunctionalTestCase;
 import com.server.cx.functional.Gui;
 import com.server.cx.functional.Gui.UserColumn;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.springside.modules.test.category.Smoke;
 import org.springside.modules.utils.Collections3;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 /**
  * 用户管理的功能测试, 测试页面JavaScript及主要用户故事流程.
