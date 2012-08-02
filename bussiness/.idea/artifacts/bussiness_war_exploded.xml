@@ -108,6 +108,19 @@
           <element id="library" level="project" name="Maven: org.easytesting:fest-assert:1.4" />
           <element id="library" level="project" name="Maven: org.easytesting:fest-util:1.1.6" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.21" />
+          <element id="library" level="project" name="Maven: com.sun.jersey.jersey-test-framework:jersey-test-framework-grizzly2:1.13" />
+          <element id="library" level="project" name="Maven: com.sun.jersey.jersey-test-framework:jersey-test-framework-core:1.13" />
+          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.0.1" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-grizzly2-servlet:1.13" />
+          <element id="library" level="project" name="Maven: org.glassfish.grizzly:grizzly-http-servlet:2.2.4" />
+          <element id="library" level="project" name="Maven: org.glassfish.grizzly:grizzly-http-server:2.2.4" />
+          <element id="library" level="project" name="Maven: org.glassfish.grizzly:grizzly-http:2.2.4" />
+          <element id="library" level="project" name="Maven: org.glassfish.grizzly:grizzly-framework:2.2.4" />
+          <element id="library" level="project" name="Maven: org.glassfish.gmbal:gmbal-api-only:3.0.0-b023" />
+          <element id="library" level="project" name="Maven: org.glassfish.external:management-api:3.0.0-b012" />
+          <element id="library" level="project" name="Maven: org.glassfish.grizzly:grizzly-rcm:2.2.4" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-grizzly2:1.13" />
+          <element id="library" level="project" name="Maven: org.glassfish:javax.servlet:3.1" />
         </element>
       </element>
     </root>

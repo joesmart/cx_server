@@ -1,16 +1,15 @@
 package com.server.cx.functional.resource;
 
-import static org.fest.assertions.Assertions.assertThat;
-import javax.ws.rs.core.MediaType;
-import org.junit.Test;
 import com.server.cx.constants.Constants;
 import com.server.cx.dto.Result;
 import com.sun.jersey.api.client.ClientResponse;
+import org.junit.Test;
+
+import javax.ws.rs.core.MediaType;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 public class VersionInfoResourceTest extends BasicJerseyTest{
-    public VersionInfoResourceTest() throws TestContainerException {
-        super();
-    }
 
     @Test
     public void test_checkIsTheLatestVersion() {
