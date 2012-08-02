@@ -28,11 +28,11 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
-    public Function<UserFavorites, DataItem2> userFavoriteTransformToCollectedGraphicInfoItem(final String imsi) {
-        return new Function<UserFavorites, DataItem2>() {
+    public Function<UserFavorites, DataItem> userFavoriteTransformToCollectedGraphicInfoItem(final String imsi) {
+        return new Function<UserFavorites, DataItem>() {
             @Override
-            public DataItem2 apply(@Nullable UserFavorites input) {
-                DataItem2 item = new DataItem2();
+            public DataItem apply(@Nullable UserFavorites input) {
+                DataItem item = new DataItem();
                 GraphicInfo graphicInfo = input.getGraphicInfo();
                 item.setFavoriteId(input.getId());
                 item.setId(input.getId());
@@ -67,11 +67,11 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
-    public Function<Category, DataItem2> categoryTransformToCategoryItem(final String imsi){
-        return  new Function<Category, DataItem2>() {
+    public Function<Category, DataItem> categoryTransformToCategoryItem(final String imsi){
+        return  new Function<Category, DataItem>() {
             @Override
-            public DataItem2 apply(@javax.annotation.Nullable Category input) {
-                DataItem2 categoryItem = new DataItem2();
+            public DataItem apply(@javax.annotation.Nullable Category input) {
+                DataItem categoryItem = new DataItem();
                 categoryItem.setName(input.getName());
                 categoryItem.setDescription(input.getDescription());
                 categoryItem.setDownloadNumber(String.valueOf(input.getDownloadNum()));
@@ -84,11 +84,11 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
-    public Function<GraphicInfo, DataItem2> graphicInfoTransformToGraphicInfoItem(final String imsi){
-        return new Function<GraphicInfo, DataItem2>() {
+    public Function<GraphicInfo, DataItem> graphicInfoTransformToGraphicInfoItem(final String imsi){
+        return new Function<GraphicInfo, DataItem>() {
             @Override
-            public DataItem2 apply(@Nullable GraphicInfo input) {
-                DataItem2 graphicInfoItem = new DataItem2();
+            public DataItem apply(@Nullable GraphicInfo input) {
+                DataItem graphicInfoItem = new DataItem();
                 graphicInfoItem.setId(input.getId());
                 graphicInfoItem.setName(input.getName());
                 graphicInfoItem.setSignature(input.getSignature());

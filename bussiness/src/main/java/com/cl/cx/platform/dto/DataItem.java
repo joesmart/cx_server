@@ -6,10 +6,10 @@ import lombok.Data;
  * User: yanjianzou
  * Date: 12-8-2
  * Time: 下午4:20
- * FileName:DataItem2
+ * FileName:DataItem
  */
 @Data
-public class DataItem2 extends BasicItem {
+public class DataItem extends BasicItem {
     private String id;
     private String name;
     private String signature;

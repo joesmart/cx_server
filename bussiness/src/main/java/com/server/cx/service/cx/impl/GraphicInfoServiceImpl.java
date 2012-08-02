@@ -1,6 +1,6 @@
 package com.server.cx.service.cx.impl;
 
-import com.cl.cx.platform.dto.DataItem2;
+import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.GraphicInfoDao;
@@ -38,7 +38,7 @@ public class GraphicInfoServiceImpl extends  BasicService implements GraphicInfo
         Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.categoryTypeGraphicInfo(categoryId), pageRequest);
         List<GraphicInfo> graphicInfoList = page.getContent();
 
-        List<DataItem2> graphicInfoItemList = transformToGraphicItemList(imsi, graphicInfoList);
+        List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, graphicInfoList);
 
         DataPage dataPage = new DataPage();
         dataPage.setLimit(page.getSize());
@@ -59,7 +59,7 @@ public class GraphicInfoServiceImpl extends  BasicService implements GraphicInfo
         return dataPage;
     }
 
-    private List<DataItem2> transformToGraphicItemList(final String imsi, List<GraphicInfo> graphicInfoList) {
+    private List<DataItem> transformToGraphicItemList(final String imsi, List<GraphicInfo> graphicInfoList) {
         return Lists.transform(graphicInfoList,businessFunctions.graphicInfoTransformToGraphicInfoItem(imsi));
     }
 
@@ -69,7 +69,7 @@ public class GraphicInfoServiceImpl extends  BasicService implements GraphicInfo
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "useCount","createdOn");
         Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.hotCategoryTypeGraphicInfo(), pageRequest);
 
-        List<DataItem2> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent());
+        List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent());
         DataPage dataPage = new DataPage();
         dataPage.setLimit(page.getSize());
         dataPage.setOffset(page.getNumber());
@@ -94,7 +94,7 @@ public class GraphicInfoServiceImpl extends  BasicService implements GraphicInfo
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "useCount","createdOn");
         Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.recommendGraphicInfo(), pageRequest);
 
-        List<DataItem2> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent());
+        List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent());
         DataPage dataPage = new DataPage();
         dataPage.setLimit(page.getSize());
         dataPage.setOffset(page.getNumber());
