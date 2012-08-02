@@ -5,6 +5,7 @@ import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.VersionInfoDao;
 import com.server.cx.dto.Result;
+import com.server.cx.dto.VersionInfoDTO;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.entity.cx.VersionInfo;
 import com.server.cx.service.cx.VersionInfoService;
@@ -28,15 +29,15 @@ public class VersionInfoServiceImpl implements VersionInfoService {
     private UserInfoDao userInfoDao;
 
     @Override
-    public Result checkIsTheLatestVersion(String imsi, String clientVersion) {
+    public VersionInfoDTO checkIsTheLatestVersion(String imsi, String clientVersion) {
         UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
 
         if (userInfo == null) {
-            return ObjectFactory.buildVersionInfoResult(Constants.USER_DATA_ERROR_FLAG, "用户不存在");
+            return ObjectFactory.buildVersionInfoDTO(Constants.USER_DATA_ERROR_FLAG, "用户不存在");
         }
 
         if (!ValidationUtil.isVerionString(clientVersion)) {
-            return ObjectFactory.buildVersionInfoResult(Constants.ERROR_FLAG, "版本字符串格式不对");
+            return ObjectFactory.buildVersionInfoDTO(Constants.ERROR_FLAG, "版本字符串格式不对");
         }
 
         List<VersionInfo> versionList = Lists.newArrayList(versionInfoDao.findAll());
@@ -47,13 +48,13 @@ public class VersionInfoServiceImpl implements VersionInfoService {
             boolean isForceUpdate = versionUtil.isNeedToForceUpgrade();
 
             if (isNeedUpgrade) {
-                return ObjectFactory.buildVersionInfoResult(Constants.SERVER_HAVE_NEWVERION, "服务器端软件版本最新",
+                return ObjectFactory.buildVersionInfoDTO(Constants.SERVER_HAVE_NEWVERION, "服务器端软件版本最新",
                     String.valueOf(isForceUpdate), serverVersionInfo.getUrl());
             } else {
-                return ObjectFactory.buildVersionInfoResult(Constants.APP_IS_NEWEST, "客户端APP版本为最新版本");
+                return ObjectFactory.buildVersionInfoDTO(Constants.APP_IS_NEWEST, "客户端APP版本为最新版本");
             }
         } else {
-            return ObjectFactory.buildVersionInfoResult(Constants.ERROR_FLAG, "服务无最新APP的版本数据");
+            return ObjectFactory.buildVersionInfoDTO(Constants.ERROR_FLAG, "服务无最新APP的版本数据");
         }
 
     }
