@@ -132,6 +132,7 @@ public class ContactsServiceImpl implements ContactsServcie {
         checkUserInfo(imsi);
         List<Contacts> contactsList = contactsDao.getContactsByUserId(userInfo.getId());
         List<MGraphicStoreMode> mGraphicStoreModes = mgraphicStoreModeDao.getAllContactsMGraphicStoreModes(userInfo.getId());
+
         Map<String, UserCXInfo> mgraphicMap = Maps.newHashMap();
         for (MGraphicStoreMode tempMgraphicStoreMode : mGraphicStoreModes) {
             if (tempMgraphicStoreMode != null)

@@ -71,4 +71,5 @@
 	<userinfo id="1" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001000" phone_no="1512581470"></userinfo>
 	<userinfo id="2" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001001" phone_no="1512581471"></userinfo>
     <user_favorites id="4028b88138e5cc440138e5ccab220000" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" user_id="2" graphic_info_id="4028b88138d5e5e50138d5e5f2800001"></user_favorites>
+
 </dataset>
