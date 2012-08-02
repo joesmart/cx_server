@@ -40,6 +40,7 @@
 		<powermock.version>1.4.12</powermock.version>
 		<selenium.version>2.24.1</selenium.version>
         <lombok.version>0.11.2</lombok.version>
+        <jersey-test-framework.version>1.13</jersey-test-framework.version>
 
 		<!-- Plugin的属性定义 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -831,6 +832,11 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>5.1.21</version>
             </dependency>
+            <dependency>
+	            <groupId>com.sun.jersey.jersey-test-framework</groupId>
+				<artifactId>jersey-test-framework-grizzly2</artifactId>
+				<version>${jersey-test-framework.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
