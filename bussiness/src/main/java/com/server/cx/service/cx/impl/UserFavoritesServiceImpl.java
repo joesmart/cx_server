@@ -146,7 +146,7 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
         Page page = userFavoritesDao.findAll(UserFavoriteSpecifications.userFavoritesSpecification(userInfo),pageRequest);
         List<UserFavorites> userFavoritesList  =  page.getContent();
 
-        List<DataItem2> collectedGraphicInfoItems = Lists.transform(userFavoritesList,businessFunctions.userFavoriteTransformToCollectedGraphicInfoItem(imsi));
+        List<DataItem> collectedGraphicInfoItems = Lists.transform(userFavoritesList,businessFunctions.userFavoriteTransformToCollectedGraphicInfoItem(imsi));
 
         DataPage dataPage = new DataPage();
         dataPage.setLimit(page.getSize());
