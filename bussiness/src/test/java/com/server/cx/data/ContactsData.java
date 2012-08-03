@@ -2,7 +2,7 @@ package com.server.cx.data;
 
 import java.util.List;
 import com.google.common.collect.Lists;
-import com.server.cx.dto.ContactPeopleInfo;
+import com.cl.cx.platform.dto.ContactPeopleInfoDTO;
 import com.server.cx.entity.cx.Contacts;
 import com.server.cx.entity.cx.UserInfo;
 
@@ -43,24 +43,24 @@ public class ContactsData {
 
     }
 
-    public static ContactPeopleInfo buildContactPeopleInfo() {
-        ContactPeopleInfo info = new ContactPeopleInfo();
+    public static ContactPeopleInfoDTO buildContactPeopleInfo() {
+        ContactPeopleInfoDTO info = new ContactPeopleInfoDTO();
         info.setContactName("Steve Nash");
         info.setPhoneNumList("1512581472,1512581481");
         return info;
     }
 
-    public static ContactPeopleInfo buildContactPeopleInfo2() {
-        ContactPeopleInfo info = new ContactPeopleInfo();
+    public static ContactPeopleInfoDTO buildContactPeopleInfo2() {
+        ContactPeopleInfoDTO info = new ContactPeopleInfoDTO();
         info.setContactName("King Gavin");
         info.setPhoneNumList("1512581122,1512581111");
         return info;
     }
 
-    public static List<ContactPeopleInfo> buildContactPeopleInfos() {
-        List<ContactPeopleInfo> contactPeopleInfos = Lists.newArrayList();
-        ContactPeopleInfo info1 = buildContactPeopleInfo();
-        ContactPeopleInfo info2 = buildContactPeopleInfo2();
+    public static List<ContactPeopleInfoDTO> buildContactPeopleInfos() {
+        List<ContactPeopleInfoDTO> contactPeopleInfos = Lists.newArrayList();
+        ContactPeopleInfoDTO info1 = buildContactPeopleInfo();
+        ContactPeopleInfoDTO info2 = buildContactPeopleInfo2();
         contactPeopleInfos.add(info1);
         contactPeopleInfos.add(info2);
         return contactPeopleInfos;

@@ -1,6 +1,8 @@
 package com.server.cx.service.cx;
 
 import java.util.List;
+
+import com.cl.cx.platform.dto.ContactPeopleInfoDTO;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 import com.server.cx.constants.Constants;
 import com.server.cx.data.ContactsData;
-import com.server.cx.dto.ContactPeopleInfo;
 import com.cl.cx.platform.dto.UploadContactDTO;
 
 import static org.fest.assertions.Assertions.assertThat;
@@ -25,7 +26,7 @@ public class ContactsServcieTest extends SpringTransactionalTestCase {
     @Test
     public void should_upload_contacts() {
         String imsi = "13146001010";
-        List<ContactPeopleInfo> contactPeopleInfos = ContactsData.buildContactPeopleInfos();
+        List<ContactPeopleInfoDTO> contactPeopleInfos = ContactsData.buildContactPeopleInfos();
         UploadContactDTO uploadContactDTO = contactsServcie.uploadContacts(contactPeopleInfos, imsi);
         assertThat(uploadContactDTO.getFlag()).isEqualTo(Constants.SUCCESS_FLAG);
         
@@ -34,7 +35,7 @@ public class ContactsServcieTest extends SpringTransactionalTestCase {
     @Test
     public void should_no_exist_imsi_exception() {
         String imsi = "131460010987";
-        List<ContactPeopleInfo> contactPeopleInfos = ContactsData.buildContactPeopleInfos();
+        List<ContactPeopleInfoDTO> contactPeopleInfos = ContactsData.buildContactPeopleInfos();
         try {
             contactsServcie.uploadContacts(contactPeopleInfos, imsi);
         } catch (Exception e) {
