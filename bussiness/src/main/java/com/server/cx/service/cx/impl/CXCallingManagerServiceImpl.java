@@ -4,11 +4,11 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.MGraphicStoreModeDao;
+import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.Result;
 import com.server.cx.dto.UserCXInfo;
-import com.server.cx.entity.cx.MGraphicStoreMode;
+import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.InvalidParameterException;
 import com.server.cx.exception.SystemException;
@@ -30,7 +30,7 @@ import java.util.Map;
 public class CXCallingManagerServiceImpl implements CXCallingManagerService {
 
     @Autowired
-    private MGraphicStoreModeDao mgraphicStoreModeDao;
+    private UserCommonMGraphicDao mgraphicDaoUserCommon;
     @Autowired
     private UserInfoDao userInfoDao;
 
@@ -70,7 +70,7 @@ public class CXCallingManagerServiceImpl implements CXCallingManagerService {
 
     // WORKAROUND 临时解决方案,需要重构
     private List<UserCXInfo> getTheCanllingCXInfoList(Map<String, String> params) throws SystemException {
-        MGraphicStoreMode resultMGraphicStoreMode = null;
+        UserCommonMGraphic resultUserCommonMGraphic = null;
         callerPhoneNo = params.get(Constants.PHONE_NO_STR);
         String myselfPhoneNo = "";
         String imsi = params.get(Constants.IMSI_STR);
@@ -83,30 +83,30 @@ public class CXCallingManagerServiceImpl implements CXCallingManagerService {
         // 找不到该呼叫用户,说明该呼叫的用户未开通该业务.
         // TODO 需要验证当前用户有没有订阅主题包,如果有的话显示主题包,否则显示系统默认彩像.
         if (callerUserInfo == null) {
-            resultMGraphicStoreMode = mgraphicStoreModeDao.getDefaultModeUserCXInfo();
-            return generateResultByUserCXInfo(resultMGraphicStoreMode);
+            resultUserCommonMGraphic = mgraphicDaoUserCommon.getDefaultModeUserCXInfo();
+            return generateResultByUserCXInfo(resultUserCommonMGraphic);
         }
 
         // TODO 显示状态彩像.
         // 返回状态彩像.
-        resultMGraphicStoreMode = mgraphicStoreModeDao.getCurrentValidStatusMGraphicStoreMode(callerUserInfo.getId(), DateUtil.getCurrentHour());
-        if (resultMGraphicStoreMode != null) {
-            return generateResultByUserCXInfo(resultMGraphicStoreMode);
+        resultUserCommonMGraphic = mgraphicDaoUserCommon.getCurrentValidStatusMGraphicStoreMode(callerUserInfo.getId(), DateUtil.getCurrentHour());
+        if (resultUserCommonMGraphic != null) {
+            return generateResultByUserCXInfo(resultUserCommonMGraphic);
         }
 
         myselfPhoneNo = myselfInfo.getPhoneNo();
 
         // TODO 匹配时间模式,寻找最佳的匹配模式.
-        List<MGraphicStoreMode> callerUserCXInfos =
-                mgraphicStoreModeDao.getAllMGraphicStoreModeByUserId(callerUserInfo.getId());
-        resultMGraphicStoreMode = filterOutTheUserCXInfo(callerUserCXInfos, myselfPhoneNo);
+        List<UserCommonMGraphic> callerUserCXInfos =
+                mgraphicDaoUserCommon.getAllMGraphicStoreModeByUserId(callerUserInfo.getId());
+        resultUserCommonMGraphic = filterOutTheUserCXInfo(callerUserCXInfos, myselfPhoneNo);
 
         // TODO 对方无设定任何彩像时,显示系统默认彩像.
-        if (resultMGraphicStoreMode == null) {
-            resultMGraphicStoreMode = mgraphicStoreModeDao.getDefaultModeUserCXInfo();
+        if (resultUserCommonMGraphic == null) {
+            resultUserCommonMGraphic = mgraphicDaoUserCommon.getDefaultModeUserCXInfo();
         }
         // generateARandomCXInfo(userCXInfo);
-        return generateResultByUserCXInfo(resultMGraphicStoreMode);
+        return generateResultByUserCXInfo(resultUserCommonMGraphic);
     }
 
     private void fillInUserInfo(String imsi, String phoneNo) throws InvalidParameterException {
@@ -122,16 +122,16 @@ public class CXCallingManagerServiceImpl implements CXCallingManagerService {
         }
     }
 
-    private MGraphicStoreMode filterOutTheUserCXInfo(List<MGraphicStoreMode> userCXInfos, String specialPhoneNo) {
-        MGraphicStoreMode result = null;
-        Map<String, MGraphicStoreMode> map = Maps.newHashMap();
+    private UserCommonMGraphic filterOutTheUserCXInfo(List<UserCommonMGraphic> userCXInfos, String specialPhoneNo) {
+        UserCommonMGraphic result = null;
+        Map<String, UserCommonMGraphic> map = Maps.newHashMap();
         int maxPriority = 0;
         int tempPriority = 0;
         if (userCXInfos == null || userCXInfos.size() == 0) {
             return null;
         } else {
 
-            for (MGraphicStoreMode tempUserCXInfo : userCXInfos) {
+            for (UserCommonMGraphic tempUserCXInfo : userCXInfos) {
                 tempPriority = MGraphicStoreModeUtil.getPrioritrNumber(tempUserCXInfo, specialPhoneNo);
                 if (tempPriority >= maxPriority) {
                     maxPriority = tempPriority;
@@ -150,9 +150,9 @@ public class CXCallingManagerServiceImpl implements CXCallingManagerService {
         return result;
     }
 
-    private List<UserCXInfo> generateResultByUserCXInfo(MGraphicStoreMode mGraphicStoreMode) {
+    private List<UserCXInfo> generateResultByUserCXInfo(UserCommonMGraphic userCommonMGraphic) {
         List<UserCXInfo> result = Lists.newArrayList();
-        if (mGraphicStoreMode != null) result.add(mGraphicStoreMode.convertMGraphicStoreModeToUserCXInfo());
+        if (userCommonMGraphic != null) result.add(userCommonMGraphic.convertMGraphicStoreModeToUserCXInfo());
         return result;
     }
 

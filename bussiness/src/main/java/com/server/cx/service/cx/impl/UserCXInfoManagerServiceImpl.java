@@ -2,12 +2,12 @@ package com.server.cx.service.cx.impl;
 
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.MGraphicStoreModeDao;
+import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.CXInfo;
 import com.server.cx.dto.Result;
 import com.server.cx.dto.UserCXInfo;
-import com.server.cx.entity.cx.MGraphicStoreMode;
+import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
@@ -33,7 +33,7 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
     @Autowired
     private UserInfoDao userInfoDao;
     @Autowired
-    private MGraphicStoreModeDao mGraphicStoreModeDao;
+    private UserCommonMGraphicDao userCommonMGraphicDao;
 
     @Autowired
     @Qualifier("cxinfosUploadRestSender")
@@ -43,7 +43,7 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
     private BusinessFunctions businessFunctions;
 
     private boolean hasRemovedTheSameUserCXInfo;
-    private MGraphicStoreMode mGraphic;
+    private UserCommonMGraphic userCommonMGraphic;
 
     public UserCXInfoManagerServiceImpl() {
 
@@ -71,71 +71,53 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
 
         // removeTheSameUserCXInfo(userInfo.getId(),userCXInfo);
 
-        String mgraphicId = mGraphic.getId();
+        String mgraphicId = userCommonMGraphic.getId();
 
         // 用户自定义的用户设定彩像.
         if (mgraphicId == null || "".equals(mgraphicId)) {
-            mGraphic.setId(null);
+            userCommonMGraphic.setId(null);
             CXInfo cxInfo = userCXInfo.getCxInfo();
             dealWithCXInfo(cxInfo, imsi);
-            mGraphicStoreModeDao.save(mGraphic);
+            userCommonMGraphicDao.save(userCommonMGraphic);
         }
         // 这是一次彩像的编辑操作
         else {
             // 排除如果数据已经被
-            MGraphicStoreMode existsMGraphicStoreMode = mGraphicStoreModeDao.findOne(mGraphic.getId());
-            if (existsMGraphicStoreMode != null) {
-                existsMGraphicStoreMode.setName(mGraphic.getName());
-                existsMGraphicStoreMode.setSignature(mGraphic.getSignature());
-                existsMGraphicStoreMode.setPhoneNo(mGraphic.getPhoneNo());
-                existsMGraphicStoreMode.setStartHour(mGraphic.getStartHour());
-                existsMGraphicStoreMode.setEndHour(mGraphic.getEndHour());
-                updateUserCXInfoTimeStamp(existsMGraphicStoreMode);
-                mGraphicStoreModeDao.save(existsMGraphicStoreMode);
+            UserCommonMGraphic existsUserCommonMGraphic = userCommonMGraphicDao.findOne(userCommonMGraphic.getId());
+            if (existsUserCommonMGraphic != null) {
+                existsUserCommonMGraphic.setName(userCommonMGraphic.getName());
+                existsUserCommonMGraphic.setSignature(userCommonMGraphic.getSignature());
+                existsUserCommonMGraphic.setPhoneNo(userCommonMGraphic.getPhoneNo());
+                updateUserCXInfoTimeStamp(existsUserCommonMGraphic);
+                userCommonMGraphicDao.save(existsUserCommonMGraphic);
             } else {
                 return StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "数据不存在");
             }
 
         }
-        String graphicId = mGraphic.getGraphicId();
-        mgraphicId = mGraphic.getId();
 
         String dealResult = "";
-        if (hasRemovedTheSameUserCXInfo) {
-            dealResult =
-                    StringUtil.generateAddUserCXInfoSuccesfulXMLResultString(Constants.SUCCESS_FLAG, "数据已经更新", graphicId,
-                            mgraphicId);
-        } else {
-            dealResult =
-                    StringUtil.generateAddUserCXInfoSuccesfulXMLResultString(Constants.SUCCESS_FLAG, "操作成功", graphicId,
-                            mgraphicId);
-        }
+
         return dealResult;
     }
 
     public void makeupMGraphicStoreMode(UserCXInfo userCXInfo, UserInfo userInfo) {
-        mGraphic = new MGraphicStoreMode();
-        mGraphic.setId(userCXInfo.getId());
-        mGraphic.setStartHour(userCXInfo.getStartHour());
-        mGraphic.setEndHour(userCXInfo.getEndHour());
-        mGraphic.setModifyTime(new Date());
-        mGraphic.setPhoneNo(userCXInfo.getPhoneNo());
-        mGraphic.setType(3);
-        mGraphic.setUserInfo(userInfo);
-        mGraphic.setModeType(userCXInfo.getModeType());
+        userCommonMGraphic = new UserCommonMGraphic();
+        userCommonMGraphic.setId(userCXInfo.getId());
+        userCommonMGraphic.setModifyTime(new Date());
+        userCommonMGraphic.setPhoneNo(userCXInfo.getPhoneNo());
+        userCommonMGraphic.setUserInfo(userInfo);
+        userCommonMGraphic.setModeType(userCXInfo.getModeType());
 
         CXInfo cxInfo = userCXInfo.getCxInfo();
         if (cxInfo != null) {
-            mGraphic.setName(cxInfo.getName());
-            mGraphic.setResourceId(cxInfo.getId());
+            userCommonMGraphic.setName(cxInfo.getName());
             if (cxInfo.getId() == null || "".equals(cxInfo.getId())) {
-                mGraphic.setAuditPass(false);
+                userCommonMGraphic.setAuditPass(false);
             }
-            mGraphic.setGraphicId(cxInfo.getResourceId());
             if (cxInfo.getSignature() != null && !"".equals(cxInfo.getSignature())) {
-                mGraphic.setSignature(cxInfo.getSignature());
+                userCommonMGraphic.setSignature(cxInfo.getSignature());
             }
-            mGraphic.setFileType(cxInfo.getFileType());
         }
     }
 
@@ -203,24 +185,20 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(contents);
                 Long fileLength = (long) contents.length;
                 cxInfo = restSender.uploadCXInfo(inputStream, cxInfo, imsi, fileLength);
-                mGraphic.setAuditPass(false);
+                userCommonMGraphic.setAuditPass(false);
             }
         } else {
-            mGraphic.setAuditPass(true);
+            userCommonMGraphic.setAuditPass(true);
         }
-        mGraphic.setResourceId(cxInfo.getId());
-        mGraphic.setGraphicId(cxInfo.getResourceId());
-        mGraphic.setName(cxInfo.getName());
-        mGraphic.setSignature(cxInfo.getSignature());
-        mGraphic.setModifyTime(new Date());
-        mGraphic.setType(3);
-        mGraphic.setFileType(cxInfo.getFileType());
+        userCommonMGraphic.setName(cxInfo.getName());
+        userCommonMGraphic.setSignature(cxInfo.getSignature());
+        userCommonMGraphic.setModifyTime(new Date());
     }
 
     /**
      * 更新 彩像关联关系时间戳.
      */
-    private void updateUserCXInfoTimeStamp(MGraphicStoreMode mgraphic) {
+    private void updateUserCXInfoTimeStamp(UserCommonMGraphic mgraphic) {
         Date date = mgraphic.getModifyTime();
         if (date == null) {
             mgraphic.setModifyTime(date);
@@ -230,14 +208,9 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
     @Override
     public String deleteMGraphicStoreMode(String id, String imsi) throws SystemException {
         String dealwithResult = "";
-        MGraphicStoreMode mGraphicStoreMode = mGraphicStoreModeDao.findOne(id);
-        if (mGraphicStoreMode != null) {
-            if (mGraphicStoreMode.getType() != 1) {
-                mGraphicStoreModeDao.delete(mGraphicStoreMode);
-                dealwithResult = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "操作成功");
-            } else {
-                dealwithResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "该彩像不是用户设定的彩像");
-            }
+        UserCommonMGraphic userCommonMGraphic = userCommonMGraphicDao.findOne(id);
+        if (userCommonMGraphic != null) {
+
 
         } else {
             dealwithResult = StringUtil.generateXMLResultString("ERROR", "数据不存在");
@@ -250,7 +223,7 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
     public List<UserCXInfo> retrieveUserCXInfos(Map<String, String> params) {
         String imsi = params.get(Constants.IMSI_STR);
         UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
-        List<MGraphicStoreMode> list = mGraphicStoreModeDao.getAllMGraphicStoreModeByUserId(userInfo.getId());
+        List<UserCommonMGraphic> list = userCommonMGraphicDao.getAllMGraphicStoreModeByUserId(userInfo.getId());
 
         List<UserCXInfo> userCXInfos = Lists.transform(list, businessFunctions.mGraphicStoreModeTransformToUserCXInfo());
 

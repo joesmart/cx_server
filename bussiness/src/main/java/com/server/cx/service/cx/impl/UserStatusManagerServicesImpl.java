@@ -3,13 +3,13 @@ package com.server.cx.service.cx.impl;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.MGraphicStoreModeDao;
+import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.SignatureDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.CXInfo;
 import com.server.cx.dto.Result;
 import com.server.cx.dto.UserCXInfo;
-import com.server.cx.entity.cx.MGraphicStoreMode;
+import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.UserStatusManagerService;
@@ -32,7 +32,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     @Autowired
     SignatureDao signatureDao;
     @Autowired
-    private MGraphicStoreModeDao mGraphicStoreModeDao;
+    private UserCommonMGraphicDao userCommonMGraphicDao;
     @Autowired
     UserInfoDao userInfoDao;
     @Autowired
@@ -82,9 +82,9 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     public UserCXInfo getCurrentValidStatusUserCXInfo() throws SystemException {
         if (userInfo != null) {
             //TODO need fix here since the UserInfo Id change to String typ By Joesmart
-            MGraphicStoreMode mgraphicStoreMode = mGraphicStoreModeDao.getMGraphicStoreModeByModeType(userInfo.getId(), 5);
-            if (mgraphicStoreMode != null) {
-                return mgraphicStoreMode.convertMGraphicStoreModeToUserCXInfo();
+            UserCommonMGraphic mgraphicUserCommon = userCommonMGraphicDao.getMGraphicStoreModeByModeType(userInfo.getId(), 5);
+            if (mgraphicUserCommon != null) {
+                return mgraphicUserCommon.convertMGraphicStoreModeToUserCXInfo();
             } else {
                 return null;
             }
@@ -123,7 +123,7 @@ public class UserStatusManagerServicesImpl implements UserStatusManagerService {
     public String deletCurrentUserStatus(String imsi, String userCXInfoId, String cxInfoId) throws SystemException {
         ValidationUtil.checkParametersNotNull(imsi, userCXInfoId, cxInfoId);
         isUserExists(imsi);
-        mGraphicStoreModeDao.delete(userCXInfoId);
+        userCommonMGraphicDao.delete(userCXInfoId);
         List<CXInfo> cxInfos = requestCXInfoResourceData();
         List<UserCXInfo> userCXInfos = convertCXInfosToUserCXInfo(imsi, cxInfos);
         String xmlresult = gnerateXMLResult(userCXInfos);
