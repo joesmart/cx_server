@@ -70,7 +70,15 @@ public class MyCollectionsResource {
     public Response findByPage(@PathParam("imsi") String imsi,
                                @DefaultValue("0") @QueryParam("offset") Integer offset,
                                @DefaultValue("10") @QueryParam("limit") Integer limit){
-        DataPage dataPage = userFavoritesService.getAllUserFavorites(imsi,offset,limit);
-        return  Response.ok(dataPage).build();
+        try{
+            DataPage dataPage = userFavoritesService.getAllUserFavorites(imsi,offset,limit);
+            return  Response.ok(dataPage).build();
+        }catch (Exception ex){
+            OperationDescription operationDescription = new OperationDescription();
+            operationDescription.setErrorCode(400);
+            operationDescription.setErrorMessage(ex.getMessage());
+            operationDescription.setStatusCode(Response.Status.FORBIDDEN.getStatusCode());
+            return  Response.ok(operationDescription).status(Response.Status.FORBIDDEN).build();
+        }
     }
 }

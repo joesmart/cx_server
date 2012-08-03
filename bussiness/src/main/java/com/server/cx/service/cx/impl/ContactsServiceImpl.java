@@ -20,7 +20,7 @@ import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.CXInfo;
 import com.server.cx.dto.ContactPeopleInfo;
 import com.server.cx.dto.Result;
-import com.server.cx.dto.UploadContactDTO;
+import com.cl.cx.platform.dto.UploadContactDTO;
 import com.server.cx.dto.UserCXInfo;
 import com.server.cx.entity.cx.Contacts;
 import com.server.cx.entity.cx.MGraphicStoreMode;

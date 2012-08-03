@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.server.cx.dto.VersionInfoDTO;
+import com.cl.cx.platform.dto.VersionInfoDTO;
 import com.server.cx.service.cx.VersionInfoService;
 import com.server.cx.util.business.ValidationUtil;
 

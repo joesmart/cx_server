@@ -1,8 +1,8 @@
 package com.server.cx.util;
 
 import com.cl.cx.platform.dto.OperationDescription;
-import com.server.cx.dto.UploadContactDTO;
-import com.server.cx.dto.VersionInfoDTO;
+import com.cl.cx.platform.dto.UploadContactDTO;
+import com.cl.cx.platform.dto.VersionInfoDTO;
 
 public class ObjectFactory {
     public static VersionInfoDTO buildVersionInfoDTO(String flag, String content) {

@@ -11,7 +11,7 @@ import org.springside.modules.test.spring.SpringTransactionalTestCase;
 import com.server.cx.constants.Constants;
 import com.server.cx.data.ContactsData;
 import com.server.cx.dto.ContactPeopleInfo;
-import com.server.cx.dto.UploadContactDTO;
+import com.cl.cx.platform.dto.UploadContactDTO;
 
 import static org.fest.assertions.Assertions.assertThat;
 

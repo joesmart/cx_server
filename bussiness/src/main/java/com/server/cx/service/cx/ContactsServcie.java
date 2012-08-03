@@ -2,7 +2,7 @@ package com.server.cx.service.cx;
 
 import java.util.List;
 import com.server.cx.dto.ContactPeopleInfo;
-import com.server.cx.dto.UploadContactDTO;
+import com.cl.cx.platform.dto.UploadContactDTO;
 import com.server.cx.exception.SystemException;
 
 public interface ContactsServcie {

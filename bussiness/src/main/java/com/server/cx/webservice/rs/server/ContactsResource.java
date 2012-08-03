@@ -3,7 +3,7 @@ package com.server.cx.webservice.rs.server;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
 import com.server.cx.dto.Result;
-import com.server.cx.dto.UploadContactDTO;
+import com.cl.cx.platform.dto.UploadContactDTO;
 import com.server.cx.service.cx.ContactsServcie;
 import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;

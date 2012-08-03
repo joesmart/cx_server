@@ -51,7 +51,7 @@ public class BusinessFunctions extends BasicService {
                     item.setSourceImagePath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId());
                 }
                 item.setHref(baseHostAddress + restURL + imsi + "/myCollections/" + input.getId());
-                Action action = actionBuilder.buildGraphicItemAction(imsi);
+                Action action = actionBuilder.buildUserFavoriteItemAction(imsi,input.getId());
                 item.setAction(action);
                 return item;
             }
