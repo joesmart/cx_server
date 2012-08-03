@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.OperationDescription;
+import com.cl.cx.platform.dto.SuggestionDTO;
 import com.server.cx.constants.Constants;
 import com.server.cx.entity.cx.Suggestion;
 import com.server.cx.exception.SystemException;
@@ -52,13 +53,8 @@ public class SuggestionResource {
         if (suggestions == null || suggestions.isEmpty()) {
             return Response.noContent().build();
         }
-        hideSuggestionUserInfo(suggestions);
-        return Response.ok(suggestions).build();
-    }
-
-    private void hideSuggestionUserInfo(List<Suggestion> suggestions) {
-        for(Suggestion suggestion : suggestions) {
-            suggestion.setUserInfo(null);
-        }
+//        hideSuggestionUserInfo(suggestions);
+        List<SuggestionDTO> suggestionDTOs = ObjectFactory.buildAllSuggestionDTOFromSuggestion(suggestions);
+        return Response.ok(suggestionDTOs).build();
     }
 }
