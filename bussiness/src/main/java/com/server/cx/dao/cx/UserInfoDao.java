@@ -11,6 +11,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * Time: 下午2:09
  * FileName:UserInfoDao
  */
-public interface UserInfoDao extends JpaRepository<UserInfo, Long>,JpaSpecificationExecutor<UserInfo>, UserInfoCustomDao {
+public interface UserInfoDao extends JpaRepository<UserInfo, String>,JpaSpecificationExecutor<UserInfo>, UserInfoCustomDao {
     public UserInfo findByImsi(String imsi);
 }

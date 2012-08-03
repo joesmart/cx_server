@@ -1,21 +1,21 @@
 package com.server.cx.dao.cx;
 
-import static org.fest.assertions.Assertions.assertThat;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import com.server.cx.data.SuggestionData;
+import com.server.cx.entity.cx.Suggestion;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
-import com.server.cx.data.SuggestionData;
-import com.server.cx.entity.cx.Suggestion;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 @ContextConfiguration(locations = {"/applicationContext.xml"})
-@ActiveProfiles(profiles = {"test"})
 public class SuggestionDaoTest extends SpringTransactionalTestCase {
     @Autowired
     private SuggestionDao suggestionDao;

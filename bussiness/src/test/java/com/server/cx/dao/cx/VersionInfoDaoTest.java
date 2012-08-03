@@ -3,7 +3,6 @@ package com.server.cx.dao.cx;
 import com.server.cx.entity.cx.VersionInfo;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 
@@ -12,7 +11,6 @@ import java.util.List;
 import static org.fest.assertions.Assertions.assertThat;
 
 @ContextConfiguration(locations = {"/applicationContext.xml"})
-@ActiveProfiles(profiles = {"test"})
 public class VersionInfoDaoTest extends SpringTransactionalTestCase {
     @Autowired
     private VersionInfoDao versionInfoDao;

@@ -1,20 +1,20 @@
 package com.server.cx.dao.cx;
 
-import static org.fest.assertions.Assertions.assertThat;
-import java.util.List;
+import com.server.cx.data.ContactsData;
+import com.server.cx.data.UserInfoData;
+import com.server.cx.entity.cx.Contacts;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
-import com.server.cx.data.ContactsData;
-import com.server.cx.data.UserInfoData;
-import com.server.cx.entity.cx.Contacts;
+
+import java.util.List;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 @ContextConfiguration(locations = {"/applicationContext.xml"})
-@ActiveProfiles(profiles = {"test"})
 public class ContactsDaoTest extends SpringTransactionalTestCase {
     @Autowired
     private ContactsDao contactsDao;

@@ -1,5 +1,7 @@
 package com.server.cx.entity.basic;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -8,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
+@ToString @EqualsAndHashCode
 public class StringTypeBaseEntity implements StringTypeIdentifiable {
     private String id;
 

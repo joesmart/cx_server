@@ -87,9 +87,7 @@ public class UserCommonMGraphicDaoImpl extends BasicDao implements UserCommonMGr
 
             detachedCriteria.add(Restrictions.eq("endHour", mgraphicUserCommon.getEndHour()));
         }*/
-        if (mgraphicUserCommon.getPhoneNo() != null && !"".equals(mgraphicUserCommon.getPhoneNo())) {
-            detachedCriteria.add(Restrictions.eq("phoneNo", mgraphicUserCommon.getPhoneNo()));
-        }
+
         detachedCriteria.add(Restrictions.eq("modeType", modeType)).add(Restrictions.eq("userInfo.id", userId))
                 .add(Restrictions.eq("type", 3)).setProjection(Projections.property("id"));
 

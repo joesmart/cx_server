@@ -1,14 +1,15 @@
 package com.server.cx.dao.cx;
 
-import static org.fest.assertions.Assertions.assertThat;
-import java.util.List;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springside.modules.test.spring.SpringTransactionalTestCase;
 import com.server.cx.data.UserInfoData;
 import com.server.cx.entity.cx.UserInfo;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springside.modules.test.spring.SpringTransactionalTestCase;
+
+import java.util.List;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 /**
  * User: yanjianzou
@@ -17,7 +18,6 @@ import com.server.cx.entity.cx.UserInfo;
  * FileName:UserInfoDaoTest
  */
 @ContextConfiguration(locations = {"/applicationContext.xml"})
-@ActiveProfiles(profiles = {"test"})
 public class UserInfoDaoTest extends SpringTransactionalTestCase {
     @Autowired
     private UserInfoDao userInfoDao;

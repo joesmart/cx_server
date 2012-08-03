@@ -37,6 +37,6 @@ public class JacksonContextResolver implements ContextResolver<ObjectMapper> {
 
     @Override
     public ObjectMapper getContext(Class<?> type) {
-        return objectMapper;  //To change body of implemented methods use File | Settings | File Templates.
+        return objectMapper;
     }
 }
