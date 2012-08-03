@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Component
-@Path("/contacts")
+@Path("/{imsi}/contacts")
 //@Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class ContactsResource {
@@ -28,13 +28,13 @@ public class ContactsResource {
 
     @SuppressWarnings("finally")
     @POST
-    public Response uploadContacts(UploadContactDTO uploadContactDTO) {
+    public Response uploadContacts(@PathParam("imsi") String imsi, UploadContactDTO uploadContactDTO) {
         LOGGER.info("uploadContactDTO = " + uploadContactDTO);
 
         OperationDescription operationDescription = new OperationDescription();
         try {
             ValidationUtil.checkParametersNotNull(uploadContactDTO);
-            contactsServcie.uploadContacts(uploadContactDTO.getContactPeopleInfos(), uploadContactDTO.getImsi());
+            contactsServcie.uploadContacts(uploadContactDTO.getContactPeopleInfos(), imsi);
             operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,
                 "uploadContacts", Constants.SUCCESS_FLAG);
         } catch (Exception e) {
