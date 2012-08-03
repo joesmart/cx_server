@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 
@@ -28,7 +27,6 @@ import static org.fest.assertions.Assertions.assertThat;
  * FileName:GraphicInfoDaoTest
  */
 @ContextConfiguration(locations = {"/applicationContext.xml"})
-@ActiveProfiles(profiles = {"test"})
 public class GraphicInfoDaoTest extends SpringTransactionalTestCase {
 
     @PersistenceContext

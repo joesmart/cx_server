@@ -6,7 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 
@@ -19,7 +18,6 @@ import java.util.List;
  * FileName:GraphicResourceDaoTest
  */
 @ContextConfiguration(locations = {"/applicationContext.xml"})
-@ActiveProfiles(profiles = {"test"})
 public class GraphicResourceDaoTest extends SpringTransactionalTestCase {
     @Autowired
     GraphicResourceDao graphicResourceDao;

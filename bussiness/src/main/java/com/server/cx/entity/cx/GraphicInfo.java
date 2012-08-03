@@ -1,6 +1,7 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableStringEntity;
+import com.server.cx.util.business.AuditStatus;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,6 +26,7 @@ public class GraphicInfo extends AuditableStringEntity {
     private StatusType statusType;
     private HolidayType holidayType;
     private Boolean recommend;
+    private AuditStatus auditStatus;
 
     public String getName() {
         return name;
@@ -120,5 +122,13 @@ public class GraphicInfo extends AuditableStringEntity {
 
     public void setRecommend(Boolean recommend) {
         this.recommend = recommend;
+    }
+
+    public AuditStatus getAuditStatus() {
+        return auditStatus;
+    }
+
+    public void setAuditStatus(AuditStatus auditStatus) {
+        this.auditStatus = auditStatus;
     }
 }

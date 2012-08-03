@@ -2,7 +2,9 @@ package com.server.cx.dao.cx;
 
 import com.server.cx.dao.cx.custom.UserCommonMGraphicCustomDao;
 import com.server.cx.entity.cx.UserCommonMGraphic;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import com.server.cx.entity.cx.UserInfo;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 /**
  * User: yanjianzou
@@ -10,5 +12,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Time: 下午3:57
  * FileName:UserCommonMGraphicDao
  */
-public interface UserCommonMGraphicDao extends PagingAndSortingRepository<UserCommonMGraphic, String>, UserCommonMGraphicCustomDao {
+public interface UserCommonMGraphicDao extends JpaRepository<UserCommonMGraphic, String>,
+                                                   JpaSpecificationExecutor<UserCommonMGraphic>,
+                                                   UserCommonMGraphicCustomDao {
+
+    public UserCommonMGraphic findByUserInfoAndActive(UserInfo userInfo,Boolean active);
 }

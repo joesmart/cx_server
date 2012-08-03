@@ -87,7 +87,6 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
             if (existsUserCommonMGraphic != null) {
                 existsUserCommonMGraphic.setName(userCommonMGraphic.getName());
                 existsUserCommonMGraphic.setSignature(userCommonMGraphic.getSignature());
-                existsUserCommonMGraphic.setPhoneNo(userCommonMGraphic.getPhoneNo());
                 updateUserCXInfoTimeStamp(existsUserCommonMGraphic);
                 userCommonMGraphicDao.save(existsUserCommonMGraphic);
             } else {
@@ -105,16 +104,12 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
         userCommonMGraphic = new UserCommonMGraphic();
         userCommonMGraphic.setId(userCXInfo.getId());
         userCommonMGraphic.setModifyTime(new Date());
-        userCommonMGraphic.setPhoneNo(userCXInfo.getPhoneNo());
         userCommonMGraphic.setUserInfo(userInfo);
         userCommonMGraphic.setModeType(userCXInfo.getModeType());
 
         CXInfo cxInfo = userCXInfo.getCxInfo();
         if (cxInfo != null) {
             userCommonMGraphic.setName(cxInfo.getName());
-            if (cxInfo.getId() == null || "".equals(cxInfo.getId())) {
-                userCommonMGraphic.setAuditPass(false);
-            }
             if (cxInfo.getSignature() != null && !"".equals(cxInfo.getSignature())) {
                 userCommonMGraphic.setSignature(cxInfo.getSignature());
             }
@@ -185,10 +180,7 @@ public class UserCXInfoManagerServiceImpl implements UserCXInfoManagerService {
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(contents);
                 Long fileLength = (long) contents.length;
                 cxInfo = restSender.uploadCXInfo(inputStream, cxInfo, imsi, fileLength);
-                userCommonMGraphic.setAuditPass(false);
             }
-        } else {
-            userCommonMGraphic.setAuditPass(true);
         }
         userCommonMGraphic.setName(cxInfo.getName());
         userCommonMGraphic.setSignature(cxInfo.getSignature());

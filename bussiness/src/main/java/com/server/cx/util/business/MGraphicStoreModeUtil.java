@@ -17,7 +17,7 @@ public class MGraphicStoreModeUtil {
         int startTime =  0;// mgraphicUserCommon.getStartHour() == null ? 0 : mgraphicUserCommon.getStartHour();
         int endTime = 12;//mgraphicUserCommon.getEndHour() == null ? 24 : mgraphicUserCommon.getEndHour();
 
-        if (specialPhoneNo != null && !"".equals(specialPhoneNo) && specialPhoneNo.equals(mgraphicUserCommon.getPhoneNo())
+        if (specialPhoneNo != null && !"".equals(specialPhoneNo)
                 && mgraphicUserCommon.getModeType() == 3) {
             priority += mgraphicUserCommon.getModeType() + 11;
             priority = updateTheTimelimitPriority(currentHour, priority, startTime, endTime);

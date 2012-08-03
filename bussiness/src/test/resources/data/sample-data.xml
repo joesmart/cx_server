@@ -86,4 +86,5 @@
 	<suggestion id="1" content="I have a dream" userinfo_id="6"></suggestion>
 	<suggestion id="2" content="路人甲" userinfo_id="6"></suggestion>
 	<suggestion id="3" content="路人乙" userinfo_id="7"></suggestion>
+    <mgraphic cast_type="common" id="1"  name="abcd" signature="xxxxx" graphic_info_id="4028b88138d5e5e50138d5e5f2800024" user_id="1" priority="3" mode_type="1" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0"/>
 </dataset>
