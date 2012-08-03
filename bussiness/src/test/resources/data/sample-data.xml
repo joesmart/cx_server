@@ -83,4 +83,7 @@
     <user_catacts id="3" name="Jordon" phone_no="1512581473" self_user_id="4" user_id="1"></user_catacts>
     <user_catacts id="4" name="Avril" phone_no="1512581098" user_id="1"></user_catacts>
     <user_favorites id="4028b88138e5cc440138e5ccab220000" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" user_id="2" graphic_info_id="4028b88138d5e5e50138d5e5f2800001"></user_favorites>
+	<suggestion id="1" content="I have a dream" userinfo_id="6"></suggestion>
+	<suggestion id="2" content="路人甲" userinfo_id="6"></suggestion>
+	<suggestion id="3" content="路人乙" userinfo_id="7"></suggestion>
 </dataset>

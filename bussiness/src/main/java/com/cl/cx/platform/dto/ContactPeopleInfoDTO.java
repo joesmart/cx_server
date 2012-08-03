@@ -2,14 +2,13 @@
 
 package com.cl.cx.platform.dto;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.server.cx.dto.UserCXInfo;
-
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Briefly describe what this class does.
  */
-@XmlRootElement
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property= "@type")
 public class ContactPeopleInfoDTO {
 
     private String contactName;
