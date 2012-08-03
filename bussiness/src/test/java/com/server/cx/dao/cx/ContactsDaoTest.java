@@ -37,4 +37,11 @@ public class ContactsDaoTest extends SpringTransactionalTestCase {
         int afterSize = ((List<Contacts>)contactsDao.findAll()).size();
         assertThat(afterSize - beforeSize).isEqualTo(2);
     }
+    
+    @Test
+    public void test_getContactsByUserIdAndSelfUserInfoNotNull() {
+        List<Contacts> contacts = contactsDao.getContactsByUserIdAndSelfUserInfoNotNull("1");
+        assertThat(contacts.size()).isEqualTo(3);
+        assertThat(contacts.get(0).getName()).isEqualTo("Lebron James");
+    }
 }
