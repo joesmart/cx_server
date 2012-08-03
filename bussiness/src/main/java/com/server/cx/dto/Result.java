@@ -1,5 +1,6 @@
 package com.server.cx.dto;
 
+import com.cl.cx.platform.dto.ContactPeopleInfoDTO;
 import com.server.cx.dto.adapters.XmlGenericMapAdapter;
 
 import javax.xml.bind.annotation.*;
@@ -32,11 +33,11 @@ public class Result {
 
     private Map<String, CXInfo> cxinfoMap;
 
-    private List<ContactPeopleInfo> contactPeopleInfos;
+    private List<ContactPeopleInfoDTO> contactPeopleInfos;
 
     @XmlElementWrapper(name = "contactPeopleInfos")
     @XmlElement(name = "contactPeopleInfo")
-    public List<ContactPeopleInfo> getContactPeopleInfos() {
+    public List<ContactPeopleInfoDTO> getContactPeopleInfos() {
         return contactPeopleInfos;
     }
 
@@ -83,7 +84,7 @@ public class Result {
         return userCXInfos;
     }
 
-    public void setContactPeopleInfos(List<ContactPeopleInfo> contactPeopleInfos) {
+    public void setContactPeopleInfos(List<ContactPeopleInfoDTO> contactPeopleInfos) {
         this.contactPeopleInfos = contactPeopleInfos;
     }
 

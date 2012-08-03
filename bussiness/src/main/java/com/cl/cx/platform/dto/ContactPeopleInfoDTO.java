@@ -1,6 +1,8 @@
 // Copyright (c) 2009-2012 CIeNET Ltd. All rights reserved.
 
-package com.server.cx.dto;
+package com.cl.cx.platform.dto;
+
+import com.server.cx.dto.UserCXInfo;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -8,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Briefly describe what this class does.
  */
 @XmlRootElement
-public class ContactPeopleInfo {
+public class ContactPeopleInfoDTO {
 
     private String contactName;
     private String phoneNumList;
