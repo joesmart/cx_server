@@ -2361,7 +2361,11 @@
       <created>1343901850909</created>
       <updated>1343901850909</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="support userCommonMGraphic">
+      <created>1343986474267</created>
+      <updated>1343986474267</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <option name="createChangelist" value="false" />
     <servers />
   </component>
@@ -2466,7 +2470,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="support userCommonMGraphic" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -2494,6 +2498,7 @@
     <MESSAGE value="remove useless import" />
     <MESSAGE value="Return unique DataItem Object" />
     <MESSAGE value="update" />
+    <MESSAGE value="support userCommonMGraphic" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
