@@ -76,7 +76,7 @@ public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
     }
 
     @Override
-    public List<Contacts> getContactsByUserIdAndSelfUserInfoNotNull(Long userId) throws SystemException {
+    public List<Contacts> getContactsByUserIdAndSelfUserInfoNotNull(String userId) throws SystemException {
         DetachedCriteria criteria = DetachedCriteria.forClass(Contacts.class);
         criteria.add(Restrictions.eq("userInfo.id", userId))
                 .add(Restrictions.isNotNull("selfUserInfo"));

@@ -1,11 +1,13 @@
 package com.server.cx.util;
 
 import java.util.List;
+import com.cl.cx.platform.dto.DataItem;
+import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.cl.cx.platform.dto.SuggestionDTO;
-import com.cl.cx.platform.dto.UploadContactDTO;
 import com.cl.cx.platform.dto.VersionInfoDTO;
 import com.google.common.collect.Lists;
+import com.server.cx.entity.cx.Contacts;
 import com.server.cx.entity.cx.Suggestion;
 
 public class ObjectFactory {
@@ -50,5 +52,20 @@ public class ObjectFactory {
             suggestionDTOs.add(suggestionDTO);
         }
         return suggestionDTOs;
+    }
+
+    public static DataPage buildDataPageByContacts(List<Contacts> contacts) {
+        if(contacts == null || contacts.isEmpty())
+            return null;
+        DataPage dataPage = new DataPage();
+        List<DataItem> dataItems = Lists.newArrayList();
+        for(Contacts contact : contacts) {
+            DataItem dataItem = new DataItem();
+            dataItem.setPhoneNo(contact.getPhoneNo());
+            dataItem.setName(contact.getName());
+            dataItems.add(dataItem);
+        }
+        dataPage.setItems(dataItems);
+        return dataPage;
     }
 }

@@ -12,5 +12,5 @@ public interface ContactsCustomDao {
 
     public List<String> retrieveExistsMobiles(String userId, List<String> phoneNos) throws SystemException;
 
-    public List<Contacts> getContactsByUserIdAndSelfUserInfoNotNull(Long userId) throws SystemException;
+    public List<Contacts> getContactsByUserIdAndSelfUserInfoNotNull(String userId) throws SystemException;
 }
