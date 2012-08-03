@@ -1,7 +1,7 @@
 package com.server.cx.webservice.rs.server;
 
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.MGraphicStoreModeDao;
+import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.Result;
 import com.server.cx.dto.UserCXInfo;
@@ -24,7 +24,7 @@ public class StatusUserCXInfoResource {
     @Autowired
     private UserCXInfoManagerService userCXInfoManagerService;
     @Autowired
-    private MGraphicStoreModeDao mGraphicStoreModeDao;
+    private UserCommonMGraphicDao userCommonMGraphicDao;
     @Autowired
     private UserInfoDao userInfoDao;
 
@@ -38,7 +38,7 @@ public class StatusUserCXInfoResource {
             UserCXInfo userCXInfo = result.getUserCXInfos().get(0);
             UserInfo userinfo = userInfoDao.getUserInfoByImsi(userCXInfo.getImsi());
             //TODO need fix here since the UserInfo Id change to String typ By Joesmart
-            //mGraphicStoreModeDao.deleteUserAllStatus(userinfo.getId());
+            //userCommonMGraphicDao.deleteUserAllStatus(userinfo.getId());
             String xmlString = userCXInfoManagerService.dealWithUserCXInfoAdding(result);
             return Response.ok(xmlString).build();
         } catch (Exception e) {

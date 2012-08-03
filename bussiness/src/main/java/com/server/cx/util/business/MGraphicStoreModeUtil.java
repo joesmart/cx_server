@@ -1,40 +1,40 @@
 package com.server.cx.util.business;
 
-import com.server.cx.entity.cx.MGraphicStoreMode;
+import com.server.cx.entity.cx.UserCommonMGraphic;
 
 import java.util.Calendar;
 
 public class MGraphicStoreModeUtil {
 
-    public static int getPrioritrNumber(MGraphicStoreMode mgraphicStoreMode, String specialPhoneNo) {
+    public static int getPrioritrNumber(UserCommonMGraphic mgraphicUserCommon, String specialPhoneNo) {
         Calendar calendar = Calendar.getInstance();
         int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
-        return getPriorityNumber(mgraphicStoreMode, specialPhoneNo, currentHour);
+        return getPriorityNumber(mgraphicUserCommon, specialPhoneNo, currentHour);
     }
 
-    public static int getPriorityNumber(MGraphicStoreMode mgraphicStoreMode, String specialPhoneNo, int currentHour) {
+    public static int getPriorityNumber(UserCommonMGraphic mgraphicUserCommon, String specialPhoneNo, int currentHour) {
         int priority = 1;
-        int startTime = mgraphicStoreMode.getStartHour() == null ? 0 : mgraphicStoreMode.getStartHour();
-        int endTime = mgraphicStoreMode.getEndHour() == null ? 24 : mgraphicStoreMode.getEndHour();
+        int startTime =  0;// mgraphicUserCommon.getStartHour() == null ? 0 : mgraphicUserCommon.getStartHour();
+        int endTime = 12;//mgraphicUserCommon.getEndHour() == null ? 24 : mgraphicUserCommon.getEndHour();
 
-        if (specialPhoneNo != null && !"".equals(specialPhoneNo) && specialPhoneNo.equals(mgraphicStoreMode.getPhoneNo())
-                && mgraphicStoreMode.getModeType() == 3) {
-            priority += mgraphicStoreMode.getModeType() + 11;
+        if (specialPhoneNo != null && !"".equals(specialPhoneNo) && specialPhoneNo.equals(mgraphicUserCommon.getPhoneNo())
+                && mgraphicUserCommon.getModeType() == 3) {
+            priority += mgraphicUserCommon.getModeType() + 11;
             priority = updateTheTimelimitPriority(currentHour, priority, startTime, endTime);
 
         }
 
-        if (mgraphicStoreMode.getModeType() == 2) {
-            priority += mgraphicStoreMode.getModeType();
+        if (mgraphicUserCommon.getModeType() == 2) {
+            priority += mgraphicUserCommon.getModeType();
             priority = updateTheTimelimitPriority(currentHour, priority, startTime, endTime);
         }
 
-        if (mgraphicStoreMode.getModeType() == 1) {
-            priority += mgraphicStoreMode.getModeType();
+        if (mgraphicUserCommon.getModeType() == 1) {
+            priority += mgraphicUserCommon.getModeType();
             priority = updateTheTimelimitPriority(currentHour, priority, startTime, endTime);
         }
 
-        if (currentHour >= startTime && currentHour < endTime && mgraphicStoreMode.getModeType() == 4) {
+        if (currentHour >= startTime && currentHour < endTime && mgraphicUserCommon.getModeType() == 4) {
             priority += 4;
             priority = updateTheTimelimitPriority(currentHour, priority, startTime, endTime);
         }

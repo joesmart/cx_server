@@ -11,13 +11,13 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.ContactsDao;
-import com.server.cx.dao.cx.MGraphicStoreModeDao;
+import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dto.CXInfo;
 import com.server.cx.dto.Result;
 import com.server.cx.dto.UserCXInfo;
 import com.server.cx.entity.cx.Contacts;
-import com.server.cx.entity.cx.MGraphicStoreMode;
+import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
@@ -44,7 +44,7 @@ public class ContactsServiceImpl implements ContactsServcie {
     @Autowired
     private ContactsDao contactsDao;
     @Autowired
-    private MGraphicStoreModeDao mgraphicStoreModeDao;
+    private UserCommonMGraphicDao mgraphicDaoUserCommon;
     @Autowired
     private UserCXInfoManagerService userCXInfoManagerService;
     @Autowired
@@ -134,12 +134,12 @@ public class ContactsServiceImpl implements ContactsServcie {
         Preconditions.checkNotNull(imsi);
         checkUserInfo(imsi);
         List<Contacts> contactsList = contactsDao.getContactsByUserId(userInfo.getId());
-        List<MGraphicStoreMode> mGraphicStoreModes = mgraphicStoreModeDao.getAllContactsMGraphicStoreModes(userInfo.getId());
+        List<UserCommonMGraphic> userCommonMGraphics = mgraphicDaoUserCommon.getAllContactsMGraphicStoreModes(userInfo.getId());
 
         Map<String, UserCXInfo> mgraphicMap = Maps.newHashMap();
-        for (MGraphicStoreMode tempMgraphicStoreMode : mGraphicStoreModes) {
-            if (tempMgraphicStoreMode != null)
-                mgraphicMap.put(tempMgraphicStoreMode.getUserInfo().getId(), tempMgraphicStoreMode.convertMGraphicStoreModeToUserCXInfo());
+        for (UserCommonMGraphic tempMgraphicUserCommon : userCommonMGraphics) {
+            if (tempMgraphicUserCommon != null)
+                mgraphicMap.put(tempMgraphicUserCommon.getUserInfo().getId(), tempMgraphicUserCommon.convertMGraphicStoreModeToUserCXInfo());
         }
 
         List<ContactPeopleInfoDTO> contactPeopleInfosList = Lists.newArrayList();

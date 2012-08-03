@@ -4,7 +4,7 @@ package com.server.cx.entity.cx;
  * User: yanjianzou
  * Date: 12-7-26
  * Time: 下午6:03
- * FileName:StatusMGraphicStoreMode
+ * FileName:UserStatusMGraphic
  */
-public class StatusMGraphicStoreMode {
+public class UserStatusMGraphic {
 }

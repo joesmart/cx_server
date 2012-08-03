@@ -18,10 +18,10 @@ import javax.annotation.Nullable;
 @Component
 public class BusinessFunctions extends BasicService {
 
-    public Function<MGraphicStoreMode, UserCXInfo> mGraphicStoreModeTransformToUserCXInfo() {
-        return new Function<MGraphicStoreMode, UserCXInfo>() {
+    public Function<UserCommonMGraphic, UserCXInfo> mGraphicStoreModeTransformToUserCXInfo() {
+        return new Function<UserCommonMGraphic, UserCXInfo>() {
             @Override
-            public UserCXInfo apply(MGraphicStoreMode intput) {
+            public UserCXInfo apply(UserCommonMGraphic intput) {
                 return intput.convertMGraphicStoreModeToUserCXInfo();
             }
 
