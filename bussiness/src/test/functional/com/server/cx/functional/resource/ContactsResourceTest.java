@@ -8,6 +8,7 @@ import com.cl.cx.platform.dto.OperationDescription;
 import com.cl.cx.platform.dto.UploadContactDTO;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.server.cx.constants.Constants;
 import com.server.cx.data.ContactsData;
 import com.sun.jersey.api.client.ClientResponse;
@@ -19,6 +20,9 @@ public class ContactsResourceTest extends BasicJerseyTest {
         UploadContactDTO uploadContactDTO = new UploadContactDTO();
         uploadContactDTO.setImsi("13146001010");
         uploadContactDTO.setContactPeopleInfos(ContactsData.buildContactPeopleInfos());
+        ObjectMapper mapper = new ObjectMapper();
+        String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(uploadContactDTO);
+        System.out.println("uploadContactDTO = " + result);
         ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, uploadContactDTO);
         assertThat(response.getStatus()).isEqualTo(200);
         OperationDescription operationDescription = response.getEntity(OperationDescription.class);

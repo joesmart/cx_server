@@ -61,7 +61,7 @@ public class ContactsServiceImpl implements ContactsServcie {
 
     @Override
     @Transactional(readOnly=false)
-    public UploadContactDTO uploadContacts(List<ContactPeopleInfoDTO> contactPeopleInfos, String imsi) throws SystemException {
+    public void uploadContacts(List<ContactPeopleInfoDTO> contactPeopleInfos, String imsi) throws SystemException {
         ValidationUtil.checkParametersNotNull(imsi, contactPeopleInfos);
         checkUserInfo(imsi);
         convertContactPeopleListToCotactsList(contactPeopleInfos);
@@ -100,7 +100,6 @@ public class ContactsServiceImpl implements ContactsServcie {
             }
             contactsDao.batchInsertContacts(newContacts);
         }
-        return ObjectFactory.buildUploadContactDTO(Constants.SUCCESS_FLAG, "操作成功");
     }
 
     private void checkUserInfo(String imsi) {

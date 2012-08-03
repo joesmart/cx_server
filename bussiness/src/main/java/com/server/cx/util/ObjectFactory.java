@@ -23,13 +23,6 @@ public class ObjectFactory {
         return versionInfoDTO;
     }
 
-    public static UploadContactDTO buildUploadContactDTO(String flag, String content) {
-        UploadContactDTO uploadContactDTO = new UploadContactDTO();
-        uploadContactDTO.setFlag(flag);
-        uploadContactDTO.setContent(content);
-        return uploadContactDTO;
-    }
-
     public static OperationDescription buildOperationDescription(int statusCode, String actionName, String flag) {
         OperationDescription operationDescription = new OperationDescription();
         operationDescription.setStatusCode(statusCode);
