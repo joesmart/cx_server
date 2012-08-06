@@ -23,12 +23,6 @@ public class UserCommonMGraphicServiceImpl extends MGraphicService implements Us
     @Autowired
     private UserCommonMGraphicDao userCommonMGraphicDao;
 
-    private void checkAndInitializeContext(String imsi, MGraphicDTO mGraphicDTO) {
-        checkParameters(imsi, mGraphicDTO);
-        checkAndSetUserInfoExists(imsi);
-        getAndCheckGraphicInfo(mGraphicDTO);
-    }
-
     private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
         UserCommonMGraphic userCommonMGraphic = new UserCommonMGraphic();
         saveOrUpdateUserCommonMGraphic(mGraphicDTO, userCommonMGraphic);
@@ -48,7 +42,8 @@ public class UserCommonMGraphicServiceImpl extends MGraphicService implements Us
     @Override
     public OperationResult createUserCommonMGraphic(String imsi, MGraphicDTO mGraphicDTO) throws RuntimeException{
         checkAndInitializeContext(imsi, mGraphicDTO);
-        mGraphicIdMustBeNotExists(mGraphicDTO);
+        checkMGraphicDTOPhoneNosMustBeNull(mGraphicDTO);
+        checkMGraphicIdMustBeNotExists(mGraphicDTO);
         UserCommonMGraphic previousUserCommonMGraphic = userCommonMGraphicDao.findByUserInfoAndActive(userInfo,true);
         if(previousUserCommonMGraphic != null){
             historyPreviousUserCommonMGraphic(previousUserCommonMGraphic);
@@ -61,17 +56,22 @@ public class UserCommonMGraphicServiceImpl extends MGraphicService implements Us
     @Override
     public OperationResult editUserCommonMGraphic(String imsi, MGraphicDTO mGraphicDTO) {
         checkAndInitializeContext(imsi, mGraphicDTO);
+        checkMGraphicDTOPhoneNosMustBeNull(mGraphicDTO);
         mGraphicIdMustBeExists(mGraphicDTO);
-        UserCommonMGraphic userCommonMGraphic = userCommonMGraphicDao.findOne(mGraphicDTO.getId());
-        saveOrUpdateUserCommonMGraphic(mGraphicDTO,userCommonMGraphic);
-        checkAndSetUserInfoExists(imsi);
+        Preconditions.checkNotNull(mGraphicDTO.getModeType(),"类型模式不允许为空");
+
+        if(2 == mGraphicDTO.getModeType()){
+            UserCommonMGraphic userCommonMGraphic = userCommonMGraphicDao.findOne(mGraphicDTO.getId());
+            saveOrUpdateUserCommonMGraphic(mGraphicDTO,userCommonMGraphic);
+        }
+
         return new OperationResult("editUserCommonMGraphic","success");
     }
 
     @Override
     public OperationResult disableUserCommonMGraphic(String imsi, String userCommonMGraphicId) {
         Preconditions.checkNotNull(imsi,"imsi为空");
-        Preconditions.checkNotNull(userCommonMGraphicId,"指定对象不存在");
+        Preconditions.checkNotNull(userCommonMGraphicId, "指定对象不存在");
         checkAndSetUserInfoExists(imsi);
         UserCommonMGraphic userCommonMGraphic = userCommonMGraphicDao.findOne(userCommonMGraphicId);
         if(userCommonMGraphic != null){

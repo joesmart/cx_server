@@ -27,4 +27,5 @@ public class DataItem extends BasicItem {
     private String description;
     private String graphicURL;
     private String favoriteId;
+    private Integer modeType;
 }

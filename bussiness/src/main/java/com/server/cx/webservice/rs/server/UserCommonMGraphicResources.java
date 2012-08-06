@@ -4,6 +4,7 @@ import com.cl.cx.platform.dto.MGraphicDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.dto.OperationResult;
 import com.server.cx.service.cx.UserCommonMGraphicService;
+import com.server.cx.service.cx.UserSpecialMGraphicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,10 @@ public class UserCommonMGraphicResources {
 
     @Autowired
     private UserCommonMGraphicService userCommonMGraphicService;
+
+    @Autowired
+    private UserSpecialMGraphicService userSpecialMGraphicService;
+
     private OperationDescription operationDescription;
     private String actionName;
     private String dealResult;
@@ -36,7 +41,12 @@ public class UserCommonMGraphicResources {
     public Response create(@PathParam("imsi") String imsi, MGraphicDTO mGraphicDTO) {
         operationDescription = new OperationDescription();
         try {
-            OperationResult operationResult = userCommonMGraphicService.createUserCommonMGraphic(imsi, mGraphicDTO);
+            OperationResult operationResult;
+            if(mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0){
+                operationResult = userCommonMGraphicService.createUserCommonMGraphic(imsi, mGraphicDTO);
+            }else{
+                operationResult = userSpecialMGraphicService.createUserSpecialMGraphic(imsi,mGraphicDTO);
+            }
             updateOperationDescription(operationResult);
         } catch (Exception ex) {
             actionName = "createUserCommonMGraphic";

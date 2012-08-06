@@ -20,4 +20,5 @@ public class MGraphicDTO {
     private List<String> phoneNos;
     private Date begin;
     private Date end;
+    private Integer modeType;
 }

@@ -32,7 +32,7 @@ public class MGraphicService extends UserCheckService {
     protected GraphicInfoService graphicInfoService;
     protected GraphicInfo graphicInfo;
 
-    protected void mGraphicIdMustBeNotExists(MGraphicDTO mGraphicDTO) {
+    protected void checkMGraphicIdMustBeNotExists(MGraphicDTO mGraphicDTO) {
         if(mGraphicDTO.getId() != null){
             throw new CXServerBusinessException("调用一般彩像添加接口错误,Id字段应该为空");
         }
@@ -47,11 +47,21 @@ public class MGraphicService extends UserCheckService {
     protected void checkParameters(String imsi, MGraphicDTO mGraphicDTO) {
         Preconditions.checkNotNull(imsi, "imsi编号为空");
         Preconditions.checkNotNull(mGraphicDTO,"传输对象为空");
+    }
 
+    protected void checkMGraphicDTOPhoneNosMustBeNull(MGraphicDTO mGraphicDTO) {
         if(mGraphicDTO.getPhoneNos()!= null && mGraphicDTO.getPhoneNos().size()>0){
             throw new CXServerBusinessException("调用一般彩像添加接口错误,不应该设定号码");
         }
     }
+
+    protected void checkMGraphicDTOPhoneNosMustBeNotNull(MGraphicDTO mGraphicDTO) {
+        if(mGraphicDTO.getPhoneNos() == null && mGraphicDTO.getPhoneNos().size()<=0){
+            throw new CXServerBusinessException("调用一般彩像添加接口错误,应该设定号码");
+        }
+    }
+
+
 
     protected void historyPreviousUserCommonMGraphic(MGraphic mGraphic) {
         if(mGraphic == null) return;
@@ -73,5 +83,11 @@ public class MGraphicService extends UserCheckService {
         if(!AuditStatus.PASSED.equals(graphicInfo.getAuditStatus())){
             throw new CXServerBusinessException("图像审核中,或审核未通过");
         }
+    }
+
+    protected void checkAndInitializeContext(String imsi, MGraphicDTO mGraphicDTO) {
+        checkParameters(imsi, mGraphicDTO);
+        checkAndSetUserInfoExists(imsi);
+        getAndCheckGraphicInfo(mGraphicDTO);
     }
 }

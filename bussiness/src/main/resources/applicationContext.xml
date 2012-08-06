@@ -93,9 +93,7 @@
         <constructor-arg value="http://10.90.3.122:38183/CXResourceManager/rest/cxinfos/status"/>
     </bean>
 
-    <bean id="baseHostAddress" class="java.lang.String">
-        <constructor-arg value="http://localhost:8080/CXServer/"/>
-    </bean>
+
 
     <bean id="restURL" class="java.lang.String">
         <constructor-arg value="rs/"/>
@@ -110,7 +108,7 @@
     </bean>
 
     <!-- production/local development环境 -->
-    <beans profile="production,development">
+    <beans profile="development">
         <context:property-placeholder ignore-unresolvable="true"
                                       location="classpath*:/application.properties,
           			  classpath*:/application.local.properties"/>
@@ -132,9 +130,45 @@
             <property name="minEvictableIdleTimeMillis" value="3600000"/>
         </bean>
 
+        <bean id="baseHostAddress" class="java.lang.String">
+            <constructor-arg value="http://localhost:8080/CXServer/"/>
+        </bean>
+
         <!-- 数据源配置,使用应用服务器的数据库连接池 -->
         <!--<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/ExampleDB" />-->
     </beans>
+
+    <beans profile="production">
+        <context:property-placeholder ignore-unresolvable="true"
+                                      location="classpath*:/application.properties,
+          			  classpath*:/application.local.properties"/>
+
+        <!-- 数据源配置, 使用DBCP数据库连接池 -->
+        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+            <!-- Connection Info -->
+            <property name="driverClassName" value="${jdbc.driver}"/>
+            <property name="url" value="${jdbc.url}"/>
+            <property name="username" value="${jdbc.username}"/>
+            <property name="password" value="${jdbc.password}"/>
+
+            <!-- Connection Pooling Info -->
+            <property name="maxActive" value="${dbcp.maxActive}"/>
+            <property name="maxIdle" value="${dbcp.maxIdle}"/>
+            <property name="defaultAutoCommit" value="false"/>
+            <!-- 连接Idle一个小时后超时 -->
+            <property name="timeBetweenEvictionRunsMillis" value="3600000"/>
+            <property name="minEvictableIdleTimeMillis" value="3600000"/>
+        </bean>
+
+        <bean id="baseHostAddress" class="java.lang.String">
+            <constructor-arg value="http://10.90.3.122:38183/CXServer/"/>
+        </bean>
+
+        <!-- 数据源配置,使用应用服务器的数据库连接池 -->
+        <!--<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/ExampleDB" />-->
+    </beans>
+
+
 
     <!-- unit test环境 -->
     <beans profile="test">
@@ -151,6 +185,10 @@
         <bean class="org.springside.modules.test.data.DataInitializer" lazy-init="false">
             <property name="dataSource" ref="dataSource"/>
             <property name="dataFile" value="/data/sample-data.xml"/>
+        </bean>
+
+        <bean id="baseHostAddress" class="java.lang.String">
+            <constructor-arg value="http://localhost:8080/CXServer/"/>
         </bean>
     </beans>
 
@@ -179,6 +217,10 @@
         <bean class="org.springside.modules.test.data.DataInitializer" lazy-init="false">
             <property name="dataSource" ref="dataSource"/>
             <property name="dataFile" value="/data/sample-data.xml"/>
+        </bean>
+
+        <bean id="baseHostAddress" class="java.lang.String">
+            <constructor-arg value="http://localhost:8080/CXServer/"/>
         </bean>
     </beans>
 </beans>
