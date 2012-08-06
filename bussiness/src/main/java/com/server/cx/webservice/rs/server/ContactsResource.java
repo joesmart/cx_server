@@ -3,7 +3,7 @@ package com.server.cx.webservice.rs.server;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
 import com.server.cx.dto.Result;
-import com.cl.cx.platform.dto.ContactDTO;
+import com.cl.cx.platform.dto.ContactsDTO;
 import com.server.cx.service.cx.ContactsServcie;
 import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
@@ -28,7 +28,7 @@ public class ContactsResource {
 
     @SuppressWarnings("finally")
     @POST
-    public Response uploadContacts(@PathParam("imsi") String imsi, ContactDTO uploadContactDTO) {
+    public Response uploadContacts(@PathParam("imsi") String imsi, ContactsDTO uploadContactDTO) {
         LOGGER.info("uploadContactDTO = " + uploadContactDTO);
 
         OperationDescription operationDescription = new OperationDescription();

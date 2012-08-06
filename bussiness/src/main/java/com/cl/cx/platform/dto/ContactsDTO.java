@@ -7,6 +7,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Data
 @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property= "@type")
-public class ContactDTO {
+public class ContactsDTO {
     private List<ContactInfoDTO> contactInfos = new ArrayList<ContactInfoDTO>();
 }

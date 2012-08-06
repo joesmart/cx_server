@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.cl.cx.platform.dto.ContactDTO;
+import com.cl.cx.platform.dto.ContactsDTO;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.google.common.collect.Lists;
 import com.server.cx.entity.cx.Contacts;
@@ -32,11 +32,11 @@ public class CXAppResource {
     private BusinessFunctions businessFunctions;
 
     @GET
-    public ContactDTO getCXAppUsersByImsi(@PathParam("imsi") String imsi) {
+    public ContactsDTO getCXAppUsersByImsi(@PathParam("imsi") String imsi) {
         LOGGER.info("imsi:" + imsi);
         
         List<Contacts> contacts = cxAppService.queryCXAppUserByImsi(imsi);
-        ContactDTO contactDTO = new ContactDTO();
+        ContactsDTO contactDTO = new ContactsDTO();
         List<ContactInfoDTO> contactInfoDTOList = Lists.transform(contacts,
             businessFunctions.contactsTransformToContactInfoDTO());
         contactDTO.setContactInfos(contactInfoDTOList);
