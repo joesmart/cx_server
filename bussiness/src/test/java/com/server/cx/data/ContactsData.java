@@ -1,8 +1,8 @@
 package com.server.cx.data;
 
 import java.util.List;
+import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.google.common.collect.Lists;
-import com.cl.cx.platform.dto.ContactPeopleInfoDTO;
 import com.server.cx.entity.cx.Contacts;
 import com.server.cx.entity.cx.UserInfo;
 
@@ -43,26 +43,46 @@ public class ContactsData {
 
     }
 
-    public static ContactPeopleInfoDTO buildContactPeopleInfo() {
-        ContactPeopleInfoDTO info = new ContactPeopleInfoDTO();
+    public static ContactInfoDTO buildContactPeopleInfo() {
+        ContactInfoDTO info = new ContactInfoDTO();
         info.setContactName("Steve Nash");
-        info.setPhoneNumList("1512581472,1512581481");
+//        info.setPhoneNumList("1512581472,1512581481");
+        info.setPhoneNo("1512581472");
         return info;
     }
 
-    public static ContactPeopleInfoDTO buildContactPeopleInfo2() {
-        ContactPeopleInfoDTO info = new ContactPeopleInfoDTO();
+    public static ContactInfoDTO buildContactPeopleInfo2() {
+        ContactInfoDTO info = new ContactInfoDTO();
         info.setContactName("King Gavin");
-        info.setPhoneNumList("1512581122,1512581111");
+//        info.setPhoneNumList("1512581122,1512581111");
+        info.setPhoneNo("1512581122");
+        return info;
+    }
+    
+    public static ContactInfoDTO buildContactPeopleInfo3() {
+        ContactInfoDTO info = new ContactInfoDTO();
+        info.setContactName("Steve Nash");
+        info.setPhoneNo("1512581481");
+        return info;
+    }
+    
+    public static ContactInfoDTO buildContactPeopleInfo4() {
+        ContactInfoDTO info = new ContactInfoDTO();
+        info.setContactName("King Gavin");
+        info.setPhoneNo("1512581111");
         return info;
     }
 
-    public static List<ContactPeopleInfoDTO> buildContactPeopleInfos() {
-        List<ContactPeopleInfoDTO> contactPeopleInfos = Lists.newArrayList();
-        ContactPeopleInfoDTO info1 = buildContactPeopleInfo();
-        ContactPeopleInfoDTO info2 = buildContactPeopleInfo2();
+    public static List<ContactInfoDTO> buildContactPeopleInfos() {
+        List<ContactInfoDTO> contactPeopleInfos = Lists.newArrayList();
+        ContactInfoDTO info1 = buildContactPeopleInfo();
+        ContactInfoDTO info2 = buildContactPeopleInfo2();
+        ContactInfoDTO info3 = buildContactPeopleInfo3();
+        ContactInfoDTO info4 = buildContactPeopleInfo4();
         contactPeopleInfos.add(info1);
         contactPeopleInfos.add(info2);
+        contactPeopleInfos.add(info3);
+        contactPeopleInfos.add(info4);
         return contactPeopleInfos;
     }
 }

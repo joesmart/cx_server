@@ -53,19 +53,4 @@ public class ObjectFactory {
         }
         return suggestionDTOs;
     }
-
-    public static DataPage buildDataPageByContacts(List<Contacts> contacts) {
-        if(contacts == null || contacts.isEmpty())
-            return null;
-        DataPage dataPage = new DataPage();
-        List<DataItem> dataItems = Lists.newArrayList();
-        for(Contacts contact : contacts) {
-            DataItem dataItem = new DataItem();
-            dataItem.setPhoneNo(contact.getPhoneNo());
-            dataItem.setName(contact.getName());
-            dataItems.add(dataItem);
-        }
-        dataPage.setItems(dataItems);
-        return dataPage;
-    }
 }

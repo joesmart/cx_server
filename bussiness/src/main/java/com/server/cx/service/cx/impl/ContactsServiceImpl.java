@@ -1,10 +1,13 @@
 package com.server.cx.service.cx.impl;
 
-import com.cl.cx.platform.dto.ContactPeopleInfoDTO;
-import com.cl.cx.platform.dto.UploadContactDTO;
-import com.google.common.base.Preconditions;
+import java.util.List;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.google.common.base.Predicate;
-import com.google.common.base.Splitter;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -17,24 +20,15 @@ import com.server.cx.dto.CXInfo;
 import com.server.cx.dto.Result;
 import com.server.cx.dto.UserCXInfo;
 import com.server.cx.entity.cx.Contacts;
-import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.ContactsServcie;
 import com.server.cx.service.cx.UserCXInfoManagerService;
 import com.server.cx.service.util.BusinessFunctions;
-import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.RestSender;
 import com.server.cx.util.StringUtil;
 import com.server.cx.util.business.ValidationUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Map;
 
 @Service("contactsServcie")
 @Transactional
@@ -60,28 +54,29 @@ public class ContactsServiceImpl implements ContactsServcie {
     private List<String> mobiles;
 
     @Override
-    @Transactional(readOnly=false)
-    public void uploadContacts(List<ContactPeopleInfoDTO> contactPeopleInfos, String imsi) throws SystemException {
+    @Transactional(readOnly = false)
+    public void uploadContacts(List<ContactInfoDTO> contactPeopleInfos, String imsi) throws SystemException {
         ValidationUtil.checkParametersNotNull(imsi, contactPeopleInfos);
         checkUserInfo(imsi);
         convertContactPeopleListToCotactsList(contactPeopleInfos);
         mobiles = contactsDao.retrieveExistsMobiles(userInfo.getId(), mobiles);
-        List<Contacts> newContacts = Lists.newArrayList(Iterators.filter(contactsList.iterator(), new Predicate<Contacts>() {
-            @Override
-            public boolean apply(Contacts input) {
-                if (mobiles == null || (mobiles != null && mobiles.size() == 0)) {
-                    return true;
-                } else {
-                    if (mobiles.contains(input.getPhoneNo())) {
-                        mobiles.remove(input.getPhoneNo());
-                        return false;
-                    } else {
+        List<Contacts> newContacts = Lists.newArrayList(Iterators.filter(contactsList.iterator(),
+            new Predicate<Contacts>() {
+                @Override
+                public boolean apply(Contacts input) {
+                    if (mobiles == null || (mobiles != null && mobiles.size() == 0)) {
                         return true;
+                    } else {
+                        if (mobiles.contains(input.getPhoneNo())) {
+                            mobiles.remove(input.getPhoneNo());
+                            return false;
+                        } else {
+                            return true;
+                        }
                     }
-                }
 
-            }
-        }));
+                }
+            }));
         Map<String, UserInfo> phoneNoAndImsiMap = null;
         if (mobiles != null && mobiles.size() > 0) {
             List<UserInfo> userInfos = userInfoDao.getUserInfosByPhoneNos(mobiles);
@@ -111,56 +106,55 @@ public class ContactsServiceImpl implements ContactsServcie {
         }
     }
 
-    private void convertContactPeopleListToCotactsList(List<ContactPeopleInfoDTO> contactPeopleInfos) {
+    private void convertContactPeopleListToCotactsList(List<ContactInfoDTO> contactPeopleInfos) {
         contactsList = Lists.newArrayList();
         mobiles = Lists.newArrayList();
-        for (ContactPeopleInfoDTO temp : contactPeopleInfos) {
-            List<String> phoneNoList = Lists.newArrayList(Splitter.on(",").split(temp.getPhoneNumList()));
-            for (String phoneNo : phoneNoList) {
-                Contacts contacts = new Contacts();
-                contacts.setName(temp.getContactName());
-                contacts.setUserInfo(userInfo);
-                contacts.setPhoneNo(phoneNo);
-                contactsList.add(contacts);
-                mobiles.add(phoneNo);
-            }
+        for (ContactInfoDTO temp : contactPeopleInfos) {
+            String phoneNo = temp.getPhoneNo();
+            Contacts contacts = new Contacts();
+            contacts.setName(temp.getContactName());
+            contacts.setUserInfo(userInfo);
+            contacts.setPhoneNo(phoneNo);
+            contactsList.add(contacts);
+            mobiles.add(phoneNo);
         }
         mobiles = Lists.newArrayList(Sets.newHashSet(mobiles).iterator());
     }
 
     @Override
     public String retrieveContactUserCXInfo(String imsi) throws SystemException {
-        Preconditions.checkNotNull(imsi);
-        checkUserInfo(imsi);
-        List<Contacts> contactsList = contactsDao.getContactsByUserId(userInfo.getId());
-        List<UserCommonMGraphic> userCommonMGraphics = mgraphicDaoUserCommon.getAllContactsMGraphicStoreModes(userInfo.getId());
-
-        Map<String, UserCXInfo> mgraphicMap = Maps.newHashMap();
-        for (UserCommonMGraphic tempMgraphicUserCommon : userCommonMGraphics) {
-            if (tempMgraphicUserCommon != null)
-                mgraphicMap.put(tempMgraphicUserCommon.getUserInfo().getId(), tempMgraphicUserCommon.convertMGraphicStoreModeToUserCXInfo());
-        }
-
-        List<ContactPeopleInfoDTO> contactPeopleInfosList = Lists.newArrayList();
-        UserCXInfo tempUserCXInfo;
-        ContactPeopleInfoDTO contactPeopleInfo;
-        for (Contacts tempContacts : contactsList) {
-            if (tempContacts.getSelfUserInfo() != null) {
-                tempUserCXInfo = mgraphicMap.get(tempContacts.getSelfUserInfo().getId());
-                if (tempUserCXInfo != null) {
-                    contactPeopleInfo = new ContactPeopleInfoDTO();
-                    contactPeopleInfo.setUserCXInfo(tempUserCXInfo);
-                    contactPeopleInfo.setContactName(tempContacts.getName());
-                    contactPeopleInfo.setPhoneNumList(tempContacts.getPhoneNo());
-                    contactPeopleInfosList.add(contactPeopleInfo);
-                }
-            }
-        }
-
-        Result result = new Result();
-        result.setContactPeopleInfos(contactPeopleInfosList);
-        dealResult = StringUtil.generateXMLResultFromObject(result);
-        return dealResult;
+        //        Preconditions.checkNotNull(imsi);
+        //        checkUserInfo(imsi);
+        //        List<Contacts> contactsList = contactsDao.getContactsByUserId(userInfo.getId());
+        //        List<UserCommonMGraphic> userCommonMGraphics = mgraphicDaoUserCommon.getAllContactsMGraphicStoreModes(userInfo.getId());
+        //
+        //        Map<String, UserCXInfo> mgraphicMap = Maps.newHashMap();
+        //        for (UserCommonMGraphic tempMgraphicUserCommon : userCommonMGraphics) {
+        //            if (tempMgraphicUserCommon != null)
+        //                mgraphicMap.put(tempMgraphicUserCommon.getUserInfo().getId(), tempMgraphicUserCommon.convertMGraphicStoreModeToUserCXInfo());
+        //        }
+        //
+        //        List<ContactPeopleInfoDTO> contactPeopleInfosList = Lists.newArrayList();
+        //        UserCXInfo tempUserCXInfo;
+        //        ContactPeopleInfoDTO contactPeopleInfo;
+        //        for (Contacts tempContacts : contactsList) {
+        //            if (tempContacts.getSelfUserInfo() != null) {
+        //                tempUserCXInfo = mgraphicMap.get(tempContacts.getSelfUserInfo().getId());
+        //                if (tempUserCXInfo != null) {
+        //                    contactPeopleInfo = new ContactPeopleInfoDTO();
+        //                    contactPeopleInfo.setUserCXInfo(tempUserCXInfo);
+        //                    contactPeopleInfo.setContactName(tempContacts.getName());
+        //                    contactPeopleInfo.setPhoneNumList(tempContacts.getPhoneNo());
+        //                    contactPeopleInfosList.add(contactPeopleInfo);
+        //                }
+        //            }
+        //        }
+        //
+        //        Result result = new Result();
+        //        result.setContactPeopleInfos(contactPeopleInfosList);
+        //        dealResult = StringUtil.generateXMLResultFromObject(result);
+        //        return dealResult;
+        return null;
     }
 
     @Override
