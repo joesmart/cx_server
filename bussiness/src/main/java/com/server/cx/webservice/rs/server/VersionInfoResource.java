@@ -18,7 +18,7 @@ import com.server.cx.service.cx.VersionInfoService;
 import com.server.cx.util.business.ValidationUtil;
 
 @Component
-@Path("/{imsi}/upgrade")
+@Path("/upgrade")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class VersionInfoResource {
@@ -41,7 +41,7 @@ public class VersionInfoResource {
         LOGGER.info("imsi = " + imsi);
         LOGGER.info("version = " + version);
         ValidationUtil.checkParametersNotNull(imsi);
-        VersionInfoDTO versionInfoDTO = versionInfoService.checkIsTheLatestVersion(imsi, version);
+        VersionInfoDTO versionInfoDTO = versionInfoService.checkIsTheLatestVersion(version);
         return Response.ok(versionInfoDTO).build();
     }
 }
