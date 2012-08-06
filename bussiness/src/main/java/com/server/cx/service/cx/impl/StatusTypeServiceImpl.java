@@ -40,7 +40,6 @@ public class StatusTypeServiceImpl extends BasicService implements StatusTypeSer
         for (StatusType statusType : statusTypes) {
             DataItem dataItem = new DataItem();
             dataItem.setName(statusType.getName());
-            dataItem.setLevel(statusType.getLevel());
             dataItem.setGraphicURL(imageShowURL + statusType.getGraphicResourceId());
             //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该状态包, 暂时全部返回false
             dataItem.setUsed(false);
