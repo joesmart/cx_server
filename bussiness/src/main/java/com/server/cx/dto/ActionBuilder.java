@@ -78,7 +78,7 @@ public class ActionBuilder {
         return  action()
                 .collectURL(baseHostAddress + restURL + imsi + "/myCollections")
                 .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
-                .useURL(baseHostAddress + restURL + imsi + "/myGraphicInfos")
+                .useURL(baseHostAddress + restURL + imsi + "/userCommonMGraphics")
                 .build();
     }
 
@@ -93,7 +93,7 @@ public class ActionBuilder {
         return  action()
                 .removeURL(baseHostAddress + restURL + imsi + "/myCollections/"+userFavoriteId)
                 .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
-                .useURL(baseHostAddress + restURL + imsi + "/myGraphicInfos")
+                .useURL(baseHostAddress + restURL + imsi + "/userCommonMGraphics")
                 .build();
     }
 
