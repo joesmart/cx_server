@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
-import com.cl.cx.platform.dto.ContactPeopleInfoDTO;
+import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.ContactsDao;
 import com.server.cx.data.ContactsData;
@@ -21,40 +21,37 @@ public class ContactsServcieTest extends SpringTransactionalTestCase {
     public static final Logger LOGGER = LoggerFactory.getLogger(ContactsServcieTest.class);
     @Autowired
     private ContactsServcie contactsServcie;
-    
+
     @Autowired
     private ContactsDao contactsDao;
 
     @Test
     public void should_upload_contacts() {
         String imsi = "13146001010";
-        List<ContactPeopleInfoDTO> contactPeopleInfos = ContactsData.buildContactPeopleInfos();
+        List<ContactInfoDTO> contactPeopleInfos = ContactsData.buildContactPeopleInfos();
         contactsServcie.uploadContacts(contactPeopleInfos, imsi);
         List<Contacts> contacts = (List<Contacts>) contactsDao.findAll();
         List<String> allPhones = Lists.newArrayList();
-        for(ContactPeopleInfoDTO contactPeopleInfoDTO : contactPeopleInfos) {
-            String[] phones = contactPeopleInfoDTO.getPhoneNumList().split(",");
-            for(String phone : phones) {
-                if(!allPhones.contains(phone))
-                    allPhones.add(phone);
-            }
+        for (ContactInfoDTO contactPeopleInfoDTO : contactPeopleInfos) {
+            String phoneNo = contactPeopleInfoDTO.getPhoneNo();
+            allPhones.add(phoneNo);
         }
-        
+
         List<String> dbPhones = Lists.newArrayList();
-        for(Contacts c  : contacts) {
+        for (Contacts c : contacts) {
             dbPhones.add(c.getPhoneNo());
         }
-        
-        for(String phoneNo : allPhones) {
+
+        for (String phoneNo : allPhones) {
             assertThat(dbPhones.contains(phoneNo)).isEqualTo(true);
         }
-        
+
     }
 
     @Test
     public void should_no_exist_imsi_exception() {
         String imsi = "131460010987";
-        List<ContactPeopleInfoDTO> contactPeopleInfos = ContactsData.buildContactPeopleInfos();
+        List<ContactInfoDTO> contactPeopleInfos = ContactsData.buildContactPeopleInfos();
         try {
             contactsServcie.uploadContacts(contactPeopleInfos, imsi);
         } catch (Exception e) {

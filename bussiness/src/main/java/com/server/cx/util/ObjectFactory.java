@@ -54,7 +54,7 @@ public class ObjectFactory {
         return suggestionDTOs;
     }
 
-    public static DataPage buildDataPageByContacts(List<Contacts> contacts) {
+    public static DataPage buildContactsDTOByContacts(List<Contacts> contacts) {
         if(contacts == null || contacts.isEmpty())
             return null;
         DataPage dataPage = new DataPage();

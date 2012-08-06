@@ -1,12 +1,15 @@
 package com.server.cx.dto;
 
-import com.cl.cx.platform.dto.ContactPeopleInfoDTO;
-import com.server.cx.dto.adapters.XmlGenericMapAdapter;
-
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.List;
 import java.util.Map;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import com.cl.cx.platform.dto.ContactInfoDTO;
+import com.server.cx.dto.adapters.XmlGenericMapAdapter;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement
@@ -33,11 +36,11 @@ public class Result {
 
     private Map<String, CXInfo> cxinfoMap;
 
-    private List<ContactPeopleInfoDTO> contactPeopleInfos;
+    private List<ContactInfoDTO> contactPeopleInfos;
 
     @XmlElementWrapper(name = "contactPeopleInfos")
     @XmlElement(name = "contactPeopleInfo")
-    public List<ContactPeopleInfoDTO> getContactPeopleInfos() {
+    public List<ContactInfoDTO> getContactPeopleInfos() {
         return contactPeopleInfos;
     }
 
@@ -84,7 +87,7 @@ public class Result {
         return userCXInfos;
     }
 
-    public void setContactPeopleInfos(List<ContactPeopleInfoDTO> contactPeopleInfos) {
+    public void setContactPeopleInfos(List<ContactInfoDTO> contactPeopleInfos) {
         this.contactPeopleInfos = contactPeopleInfos;
     }
 

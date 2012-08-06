@@ -35,6 +35,9 @@ public class SuggestionDaoTest extends SpringTransactionalTestCase {
     
     @Test
     public void test_get_all_suggestion() {
+        suggestionDao.deleteAll();
+        entityManager.flush();
+        
         Suggestion suggestion = SuggestionData.buildSuggestion();
         suggestionDao.save(suggestion);
         

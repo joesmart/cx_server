@@ -18,6 +18,14 @@ public class HolidayType extends AuditableEntity {
     private Integer downloadNum;
     private Integer itemsNum;
     private String graphicResourceId;
+    private Integer level;
+    
+    
+    public HolidayType() {
+        super();
+        //TODO 节日分类需要增加星级数，默认为5， 数字需移除  by JinHui
+        level = 5;
+    }
 
     public String getGraphicResourceId() {
         return graphicResourceId;
@@ -50,4 +58,13 @@ public class HolidayType extends AuditableEntity {
     public void setItemsNum(Integer itemsNum) {
         this.itemsNum = itemsNum;
     }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }  
+    
 }

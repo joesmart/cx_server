@@ -1,7 +1,7 @@
 package com.server.cx.functional.resource;
 
 import com.cl.cx.platform.dto.OperationDescription;
-import com.cl.cx.platform.dto.UploadContactDTO;
+import com.cl.cx.platform.dto.ContactDTO;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,9 +18,9 @@ import static org.fest.assertions.Assertions.assertThat;
 public class ContactsResourceTest extends BasicJerseyTest {
     @Test
     public void test_check_upload_contacts() throws JsonGenerationException, JsonMappingException, IOException {
-        resource = resource.path("/contacts");
-        UploadContactDTO uploadContactDTO = new UploadContactDTO();
-        uploadContactDTO.setContactPeopleInfos(ContactsData.buildContactPeopleInfos());
+        resource = resource.path("/13146001010/contacts");
+        ContactDTO uploadContactDTO = new ContactDTO();
+        uploadContactDTO.setContactInfos(ContactsData.buildContactPeopleInfos());
         ObjectMapper mapper = new ObjectMapper();
         String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(uploadContactDTO);
         System.out.println("uploadContactDTO = " + result);

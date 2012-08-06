@@ -132,5 +132,17 @@ public class BusinessFunctions extends BasicService {
             }
         };
     }
+    
+    public Function<Contacts, ContactInfoDTO> contactsTransformToContactInfoDTO() {
+        return new Function<Contacts, ContactInfoDTO>() {
+            @Override
+            public ContactInfoDTO apply(@javax.annotation.Nullable Contacts input) {
+                ContactInfoDTO contactInfoDTO = new ContactInfoDTO();
+                contactInfoDTO.setContactName(input.getName());
+                contactInfoDTO.setPhoneNo(input.getPhoneNo());
+                return contactInfoDTO;
+            }
+        };
+    }
 }
 

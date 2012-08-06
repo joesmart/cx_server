@@ -1,8 +1,11 @@
 package com.server.cx.dao.cx.impl;
 
-import com.server.cx.dao.cx.custom.ContactsCustomDao;
-import com.server.cx.entity.cx.Contacts;
-import com.server.cx.exception.SystemException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.sql.Types;
+import java.util.List;
+import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
@@ -10,12 +13,10 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.stereotype.Repository;
-
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.sql.Types;
-import java.util.List;
+import com.server.cx.dao.cx.custom.ContactsCustomDao;
+import com.server.cx.entity.cx.Contacts;
+import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.exception.SystemException;
 
 @Repository("contactsDao")
 public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
@@ -83,5 +84,14 @@ public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
         Session session = (Session) em.getDelegate();
         List<Contacts> contacts = criteria.getExecutableCriteria(session).list();
         return contacts;
+    }
+
+    @Override
+    public void updateContactsSelfUserInfo(UserInfo userinfo) throws SystemException {
+        String hql = "update Contacts c set c.self_user_id = ? where c.phoneNo = ?";
+        Query query = em.createQuery(hql);
+        query.setParameter(1, userinfo.getId());
+        query.setParameter(2, userinfo.getPhoneNo());
+        query.executeUpdate();
     }
 }
