@@ -41,7 +41,7 @@ public class HolidayTypeServiceImpl extends BasicService implements HolidayTypeS
     private List<DataItem> generateHolidayTypeList(List<HolidayType> holidayTypes, String imsi) {
         List<DataItem> holidayTypeDataItems = Lists.newArrayList();
         if (holidayTypes == null || holidayTypes.isEmpty())
-            return null;
+            return holidayTypeDataItems;
 
         for (HolidayType holidayType : holidayTypes) {
             DataItem dataItem = new DataItem();

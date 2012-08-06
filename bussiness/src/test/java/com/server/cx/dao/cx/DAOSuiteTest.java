@@ -10,7 +10,9 @@ import org.junit.runners.Suite;
     GraphicResourceDaoTest.class,
     SuggestionDaoTest.class,
     UserInfoDaoTest.class,
-    VersionInfoDaoTest.class
+    VersionInfoDaoTest.class,
+    HolidayTypeDaoTest.class,
+    StatusTypeDaoTest.class
     })
 public class DAOSuiteTest {
 
