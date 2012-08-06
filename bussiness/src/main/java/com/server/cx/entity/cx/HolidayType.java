@@ -16,7 +16,6 @@ import javax.persistence.Table;
 public class HolidayType extends AuditableEntity {
     private String name;
     private Integer downloadNum;
-    private Integer itemsNum;
     private String graphicResourceId;
     private Integer level;
     
@@ -49,14 +48,6 @@ public class HolidayType extends AuditableEntity {
 
     public void setDownloadNum(Integer downloadNum) {
         this.downloadNum = downloadNum;
-    }
-
-    public Integer getItemsNum() {
-        return itemsNum;
-    }
-
-    public void setItemsNum(Integer itemsNum) {
-        this.itemsNum = itemsNum;
     }
 
     public Integer getLevel() {

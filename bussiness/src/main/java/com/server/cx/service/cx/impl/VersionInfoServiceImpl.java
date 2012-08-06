@@ -24,16 +24,13 @@ public class VersionInfoServiceImpl implements VersionInfoService {
     @Autowired
     private VersionInfoDao versionInfoDao;
 
-    @Autowired
-    private UserInfoDao userInfoDao;
-
     @Override
-    public VersionInfoDTO checkIsTheLatestVersion(String imsi, String clientVersion) {
-        UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
-
-        if (userInfo == null) {
-            return ObjectFactory.buildVersionInfoDTO(Constants.USER_DATA_ERROR_FLAG, "用户不存在");
-        }
+    public VersionInfoDTO checkIsTheLatestVersion(String clientVersion) {
+//        UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
+//
+//        if (userInfo == null) {
+//            return ObjectFactory.buildVersionInfoDTO(Constants.USER_DATA_ERROR_FLAG, "用户不存在");
+//        }
 
         if (!ValidationUtil.isVerionString(clientVersion)) {
             return ObjectFactory.buildVersionInfoDTO(Constants.ERROR_FLAG, "版本字符串格式不对");

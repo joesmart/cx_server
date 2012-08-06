@@ -17,20 +17,20 @@ public class VersionInfoServiceTest extends SpringTransactionalTestCase {
 
     @Test
     public void testCheckIsTheLatestVersion() {
-        VersionInfoDTO versionInfoDTO = versionInfoService.checkIsTheLatestVersion("13146001000", "3.0.105");
+        VersionInfoDTO versionInfoDTO = versionInfoService.checkIsTheLatestVersion("3.0.105");
         assertThat(versionInfoDTO.getFlag()).isEqualTo(Constants.SERVER_HAVE_NEWVERION);
     }
     
-    @Test
-    public void test_check_user_not_exist() {
-        VersionInfoDTO versionInfoDTO = versionInfoService.checkIsTheLatestVersion("13146001002", "3.0.105");
-        System.out.println(versionInfoDTO.getFlag());
-        assertThat(versionInfoDTO.getFlag()).isEqualTo(Constants.USER_DATA_ERROR_FLAG);
-    }
+//    @Test
+//    public void test_check_user_not_exist() {
+//        VersionInfoDTO versionInfoDTO = versionInfoService.checkIsTheLatestVersion("3.0.105");
+//        System.out.println(versionInfoDTO.getFlag());
+//        assertThat(versionInfoDTO.getFlag()).isEqualTo(Constants.USER_DATA_ERROR_FLAG);
+//    }
     
     @Test
     public void test_check_force_update() {
-        VersionInfoDTO versionInfoDTO = versionInfoService.checkIsTheLatestVersion("13146001000", "3.1.2.122");
+        VersionInfoDTO versionInfoDTO = versionInfoService.checkIsTheLatestVersion("3.1.2.122");
         assertThat(versionInfoDTO.getFlag()).isEqualTo(Constants.SERVER_HAVE_NEWVERION);
         assertThat(versionInfoDTO.getForceUpdate()).isEqualTo("true");
         
