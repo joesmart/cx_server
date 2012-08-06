@@ -1,7 +1,5 @@
 package com.server.cx.webservice.rs.server;
 
-import com.server.cx.dao.cx.GraphicInfoDao;
-import com.server.cx.dao.cx.UserInfoDao;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.IdDTO;
 import com.cl.cx.platform.dto.OperationDescription;
@@ -21,18 +19,13 @@ import javax.ws.rs.core.Response;
  * Time: 下午1:54
  * FileName:MyCollections
  */
+//TODO 需要增加返回处理结果处理 方法 by Zou YanJian.
 @Component
 @Path("/{imsi}/myCollections")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class MyCollectionsResource {
     public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResource.class);
-
-    @Autowired
-    private  GraphicInfoDao graphicInfoDao;
-
-    @Autowired
-    private UserInfoDao userInfoDao;
 
     @Autowired
     private UserFavoritesService userFavoritesService;

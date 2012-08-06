@@ -7,6 +7,7 @@
     <bean class="com.server.cx.webservice.rs.server.CategoryResources" />
     <bean class="com.server.cx.webservice.rs.server.GraphicInfoResources" />
     <bean class="com.server.cx.webservice.rs.server.MyCollectionsResource" />
+    <bean class="com.server.cx.webservice.rs.server.UserCommonMGraphicResources" />
     <bean class="com.server.cx.webservice.rs.server.ContactsResource" />
     <bean class="com.server.cx.webservice.rs.server.CXAppResource" />
     <bean class="com.server.cx.webservice.rs.server.SuggestionResource" />

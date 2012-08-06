@@ -12,5 +12,5 @@ import com.server.cx.dto.OperationResult;
 public interface UserCommonMGraphicService {
     public abstract OperationResult createUserCommonMGraphic(String imsi,MGraphicDTO mGraphicDTO);
     public abstract OperationResult editUserCommonMGraphic(String imsi,MGraphicDTO mGraphicDTO);
-    public abstract OperationResult disableUserCommonMGraphic(String imsi,MGraphicDTO mGraphicDTO);
+    public abstract OperationResult disableUserCommonMGraphic(String imsi, String userCommonMGraphicId);
 }

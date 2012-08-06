@@ -28,6 +28,7 @@ public class GraphicInfo extends AuditableStringEntity {
     private Boolean recommend;
     private AuditStatus auditStatus;
 
+    @Column(length = 40)
     public String getName() {
         return name;
     }
@@ -36,6 +37,7 @@ public class GraphicInfo extends AuditableStringEntity {
         this.name = name;
     }
 
+    @Column(length = 40)
     public String getOwner() {
         return owner;
     }
@@ -52,6 +54,7 @@ public class GraphicInfo extends AuditableStringEntity {
         this.price = price;
     }
 
+    @Column(length = 60)
     public String getSignature() {
         return signature;
     }
@@ -124,6 +127,8 @@ public class GraphicInfo extends AuditableStringEntity {
         this.recommend = recommend;
     }
 
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
     public AuditStatus getAuditStatus() {
         return auditStatus;
     }

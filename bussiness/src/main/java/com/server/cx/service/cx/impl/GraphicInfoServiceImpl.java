@@ -2,6 +2,7 @@ package com.server.cx.service.cx.impl;
 
 import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.GraphicInfoDao;
 import com.server.cx.dao.cx.spec.GraphicInfoSpecifications;
@@ -112,5 +113,18 @@ public class GraphicInfoServiceImpl extends  BasicService implements GraphicInfo
         dataPage.setFirst(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=0&limit=" + limit);
         dataPage.setLast(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=" + (dataPage.getTotal() - 1) + "&limit=" + limit);
         return dataPage;
+    }
+
+    @Override
+    public boolean updateGraphicInfoUseCount(GraphicInfo graphicInfo) {
+        Preconditions.checkNotNull(graphicInfo);
+        Preconditions.checkNotNull(graphicInfo.getId());
+        graphicInfo.setUseCount(graphicInfo.getUseCount() !=null?graphicInfo.getUseCount()+1:1);
+        GraphicInfo afterSavedGraphicInfo = graphicInfoDao.save(graphicInfo);
+        if(afterSavedGraphicInfo.getId()!= null){
+            return  true;
+        }else {
+            return  false;
+        }
     }
 }
