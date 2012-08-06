@@ -48,7 +48,8 @@ public class HolidayTypeServiceImpl extends BasicService implements HolidayTypeS
             dataItem.setName(holidayType.getName());
             dataItem.setLevel(holidayType.getLevel());
             dataItem.setGraphicURL(imageShowURL + holidayType.getGraphicResourceId());
-
+            //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该节日包, 暂时全部返回false
+            dataItem.setUsed(false);
             holidayTypeDataItems.add(dataItem);
         }
 

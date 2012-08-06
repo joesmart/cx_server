@@ -16,6 +16,7 @@ public class DataItem extends BasicItem {
     private Boolean auditPassed;
     private Boolean purchased;
     private Boolean collected;
+    private Boolean used;
     private Integer level;
     private Float price;
     private String thumbnailPath;
@@ -26,5 +27,4 @@ public class DataItem extends BasicItem {
     private String description;
     private String graphicURL;
     private String favoriteId;
-    private String phoneNo;
 }
