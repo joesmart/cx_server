@@ -1,6 +1,7 @@
 package com.server.cx.service.cx;
 
 import com.cl.cx.platform.dto.DataPage;
+import com.server.cx.entity.cx.GraphicInfo;
 
 /**
  * User: yanjianzou
@@ -14,4 +15,6 @@ public interface GraphicInfoService {
     public abstract DataPage findHotGraphicInfoByDownloadNum(String imsi,Integer offset,Integer limit);
 
     public abstract DataPage findRecommendGraphicAndPagination(String imsi, Integer offset, Integer limit);
+
+    public abstract boolean updateGraphicInfoUseCount(GraphicInfo graphicInfo);
 }

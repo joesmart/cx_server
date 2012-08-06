@@ -1,8 +1,7 @@
 package com.server.cx.entity.cx;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * User: yanjianzou
@@ -13,19 +12,22 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("special")
 public class UserSpecialMGraphic extends UserCommonMGraphic {
-    private String phoneNos;
+
+    private List<String> phoneNos;
 
     public UserSpecialMGraphic(){
         this.setPriority(4);
         this.setModeType(2);
     }
 
-    @Column(length = 4000)
-    public String getPhoneNos() {
+    @ElementCollection
+    @CollectionTable(name = "mgraphic_phone_no", joinColumns = {@JoinColumn(name = "mgraphic_id")})
+    @Column(name = "phone_number")
+    public List<String> getPhoneNos() {
         return phoneNos;
     }
 
-    public void setPhoneNos(String phoneNos) {
+    public void setPhoneNos(List<String> phoneNos) {
         this.phoneNos = phoneNos;
     }
 }

@@ -2,6 +2,7 @@ package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -14,6 +15,7 @@ public class Category extends AuditableEntity {
     private Integer downloadNum;
     private String graphicResourceId;
 
+    @Column(length = 40)
     public String getName() {
         return name;
     }
@@ -22,6 +24,7 @@ public class Category extends AuditableEntity {
         this.name = name;
     }
 
+    @Column(length = 180)
     public String getDescription() {
         return description;
     }

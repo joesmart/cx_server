@@ -6,6 +6,7 @@ import com.server.cx.exception.CXServerBusinessException;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * User: yanjianzou
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Data
+@Transactional
 public class UserCheckService {
     @Autowired
     private UserInfoDao userInfoDao;

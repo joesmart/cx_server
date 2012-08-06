@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.spec.GraphicInfoSpecifications;
 import com.server.cx.entity.cx.Category;
 import com.server.cx.entity.cx.GraphicInfo;
+import com.server.cx.util.business.AuditStatus;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,8 +38,7 @@ public class GraphicInfoDaoTest extends SpringTransactionalTestCase {
 
     @Autowired
     private GraphicInfoDao graphicInfoDao;
-    //@Autowired
-    //private DataInitializer dataInitializer;
+
 
     @Before
     public void setUp() throws Exception {
@@ -85,5 +85,17 @@ public class GraphicInfoDaoTest extends SpringTransactionalTestCase {
             assertThat(graphicInfo.getCategory().getId()).isEqualTo(2L);
         }
         assertThat(graphicInfoList.get(graphicInfoList.size()-1).getCreatedOn().compareTo(graphicInfoList.get(0).getCreatedOn())).isLessThan(0);
+    }
+
+    @Test
+    public  void should_save_graphicinfo_with_audit_status(){
+        GraphicInfo graphicInfo = new GraphicInfo();
+        graphicInfo.setUseCount(10);
+        graphicInfo.setAuditStatus(AuditStatus.PASSING);
+        graphicInfo.setLevel(10);
+        graphicInfo.setSignature("tests");
+        graphicInfo.setName("test");
+        GraphicInfo afterSavedGraphicInfo = graphicInfoDao.save(graphicInfo);
+        assertThat(afterSavedGraphicInfo.getId()).isNotNull();
     }
 }
