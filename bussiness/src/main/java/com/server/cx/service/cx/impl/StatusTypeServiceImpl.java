@@ -10,12 +10,16 @@ import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.StatusTypeDao;
 import com.server.cx.entity.cx.StatusType;
 import com.server.cx.service.cx.StatusTypeService;
+import com.server.cx.service.util.BusinessFunctions;
 
 @Component
 @Transactional(readOnly = true)
 public class StatusTypeServiceImpl extends BasicService implements StatusTypeService {
     @Autowired
     private StatusTypeDao statusTypeDao;
+    
+    @Autowired
+    private BusinessFunctions businessFunctions;
     
     @Override
     public DataPage queryAllStatusTypes(String imsi) {
@@ -33,20 +37,21 @@ public class StatusTypeServiceImpl extends BasicService implements StatusTypeSer
     }
     
     private List<DataItem> generateStatusTypeList(List<StatusType> statusTypes, String imsi) {
-        List<DataItem> holidayTypeDataItems = Lists.newArrayList();
-        if (statusTypes == null || statusTypes.isEmpty())
-            return holidayTypeDataItems;
-
-        for (StatusType statusType : statusTypes) {
-            DataItem dataItem = new DataItem();
-            dataItem.setName(statusType.getName());
-            dataItem.setGraphicURL(imageShowURL + statusType.getGraphicResourceId());
-            //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该状态包, 暂时全部返回false
-            dataItem.setUsed(false);
-            holidayTypeDataItems.add(dataItem);
-        }
-
-        return holidayTypeDataItems;
+    	return Lists.transform(statusTypes, businessFunctions.statusTypeTransformToDataItem());
+//        List<DataItem> holidayTypeDataItems = Lists.newArrayList();
+//        if (statusTypes == null || statusTypes.isEmpty())
+//            return holidayTypeDataItems;
+//
+//        for (StatusType statusType : statusTypes) {
+//            DataItem dataItem = new DataItem();
+//            dataItem.setName(statusType.getName());
+//            dataItem.setGraphicURL(imageShowURL + statusType.getGraphicResourceId());
+//            //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该状态包, 暂时全部返回false
+//            dataItem.setUsed(false);
+//            holidayTypeDataItems.add(dataItem);
+//        }
+//
+//        return holidayTypeDataItems;
     }
 
 }

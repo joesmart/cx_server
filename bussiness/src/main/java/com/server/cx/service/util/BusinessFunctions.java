@@ -1,5 +1,7 @@
 package com.server.cx.service.util;
 
+import java.util.List;
+
 import com.cl.cx.platform.dto.*;
 import com.google.common.base.Function;
 import com.server.cx.dto.*;
@@ -160,4 +162,19 @@ public class BusinessFunctions extends BasicService {
             }
         };
     }
+    
+    public Function<StatusType, DataItem> statusTypeTransformToDataItem() {
+        return new Function<StatusType, DataItem>() {
+        	@Override
+        	public DataItem apply(@Nullable StatusType input) {
+              DataItem dataItem = new DataItem();
+              dataItem.setName(input.getName());
+              dataItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
+              //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该状态包, 暂时全部返回false
+              dataItem.setUsed(false);
+              return dataItem;
+        	}
+        };
+    }
+
 }
