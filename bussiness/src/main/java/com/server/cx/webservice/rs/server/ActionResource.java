@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import com.server.cx.dto.ActionBuilder;
 
 @Component
-@Path("/action")
+@Path("/actions")
 @Produces({MediaType.APPLICATION_JSON})
 public class ActionResource {
     public static final Logger LOGGER = LoggerFactory.getLogger(CategoryResources.class);

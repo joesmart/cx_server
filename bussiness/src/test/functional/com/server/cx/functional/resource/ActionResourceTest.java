@@ -15,23 +15,23 @@ public class ActionResourceTest extends BasicJerseyTest {
 
     @Test
     public void test_query_all_actions() {
-        resource = resource.path("/action");
+        resource = resource.path("/actions");
         ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
             .get(ClientResponse.class);
         assertThat(response.getStatus()).isEqualTo(200);
         Action action = response.getEntity(Action.class);
-        assertThat(action.getVersionUpdateUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
-        assertThat(action.getGraphicInfoRecommendUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "none" + "/graphicInfos?recommend=true");
+        assertThat(action.getVersionUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
+        assertThat(action.getRecommendUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "none" + "/graphicInfos?recommend=true");
     }
     
     @Test
     public void test_query_all_actions_by_imsi() {
-        resource = resource.path("/action/123456");
+        resource = resource.path("/actions/123456");
         ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
             .get(ClientResponse.class);
         assertThat(response.getStatus()).isEqualTo(200);
         Action action = response.getEntity(Action.class);
-        assertThat(action.getVersionUpdateUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
-        assertThat(action.getGraphicInfoRecommendUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "123456" + "/graphicInfos?recommend=true");
+        assertThat(action.getVersionUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
+        assertThat(action.getRecommendUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "123456" + "/graphicInfos?recommend=true");
     }
 }

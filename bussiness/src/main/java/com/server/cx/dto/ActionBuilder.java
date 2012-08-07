@@ -70,43 +70,43 @@ public class ActionBuilder {
         return this;
     }
     
-    public ActionBuilder graphicInfoRecommendUrl(String url) {
-        action.setGraphicInfoRecommendUrl(url);
+    public ActionBuilder recommendUrl(String url) {
+        action.setRecommendUrl(url);
         return this;
     }
     
-    public ActionBuilder graphicInfoHotUrl(String url) {
-        action.setGraphicInfoHotUrl(url);
+    public ActionBuilder hotUrl(String url) {
+        action.setHotUrl(url);
         return this;
     }
     
-    public ActionBuilder graphicInfoByCategoryUrl(String url) {
-        action.setGraphicInfoByCategoryUrl(url);
+    public ActionBuilder categoryUrl(String url) {
+        action.setCategoryUrl(url);
         return this;
     }
     
-    public ActionBuilder myCXListUrl(String url) {
-        action.setMyCXListUrl(url);
+    public ActionBuilder mGraphicsUrl(String url) {
+        action.setMGraphicsUrl(url);
         return this;
     }
     
-    public ActionBuilder statusPackageListUrl(String url) {
-        action.setStatusPackageListUrl(url);
+    public ActionBuilder statusUrl(String url) {
+        action.setStatusUrl(url);
         return this;
     }
     
-    public ActionBuilder holidayPackageListUrl(String url) {
-        action.setHolidayPackageListUrl(url);
+    public ActionBuilder holidaiesUrl(String url) {
+        action.setHolidaiesUrl(url);
         return this;
     }
     
-    public ActionBuilder themePackageListUrl(String url) {
-        action.setThemePackageListUrl(url);
+    public ActionBuilder customMGraphicsUrl(String url) {
+        action.setCustomMGraphicsUrl(url);
         return this;
     }
     
-    public ActionBuilder versionUpdateUrl(String url) {
-        action.setVersionUpdateUrl(url);
+    public ActionBuilder versionUrl(String url) {
+        action.setVersionUrl(url);
         return this;
     }
     
@@ -115,18 +115,18 @@ public class ActionBuilder {
         return this;
     }
     
-    public ActionBuilder phoneCallUrl(String url) {
-        action.setPhoneCallUrl(url);
+    public ActionBuilder callUrl(String url) {
+        action.setCallUrl(url);
         return this;
     }
     
-    public ActionBuilder userCollectListUrl(String url) {
-        action.setUserCollectListUrl(url);
+    public ActionBuilder collectionsUrl(String url) {
+        action.setCollectionsUrl(url);
         return this;
     }
     
-    public ActionBuilder userRegisterUrl(String url) {
-        action.setUserRegisterUrl(url);
+    public ActionBuilder registerUrl(String url) {
+        action.setRegisterUrl(url);
         return this;
     }
     
@@ -161,18 +161,18 @@ public class ActionBuilder {
     
     public Action buildUrlActions(String imsi) {
         ActionBuilder actionBuilder = action();
-        actionBuilder.graphicInfoRecommendUrl(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true");
-        actionBuilder.graphicInfoHotUrl(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true");
-        actionBuilder.graphicInfoByCategoryUrl(baseHostAddress + restURL + imsi + "/categories");
-        actionBuilder.myCXListUrl("");
-        actionBuilder.statusPackageListUrl(baseHostAddress + restURL + imsi + "/statusTypes");
-        actionBuilder.holidayPackageListUrl(baseHostAddress + restURL + imsi + "/holidayTypes");
-        actionBuilder.themePackageListUrl("");
-        actionBuilder.versionUpdateUrl(baseHostAddress + restURL + "upgrade");
+        actionBuilder.recommendUrl(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true");
+        actionBuilder.hotUrl(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true");
+        actionBuilder.categoryUrl(baseHostAddress + restURL + imsi + "/categories");
+        actionBuilder.mGraphicsUrl("");
+        actionBuilder.statusUrl(baseHostAddress + restURL + imsi + "/statusTypes");
+        actionBuilder.holidaiesUrl(baseHostAddress + restURL + imsi + "/holidayTypes");
+        actionBuilder.customMGraphicsUrl("");
+        actionBuilder.versionUrl(baseHostAddress + restURL + "upgrade");
         actionBuilder.suggestionUrl(baseHostAddress + restURL + "suggestion/" + imsi);
-        actionBuilder.phoneCallUrl("");
-        actionBuilder.userCollectListUrl(baseHostAddress + restURL + imsi + "/myCollections ");
-        actionBuilder.userRegisterUrl("");
+        actionBuilder.callUrl("");
+        actionBuilder.collectionsUrl(baseHostAddress + restURL + imsi + "/collections");
+        actionBuilder.registerUrl("");
         return actionBuilder.build();
     }
     

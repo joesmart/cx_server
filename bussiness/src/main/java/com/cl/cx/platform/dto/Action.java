@@ -16,20 +16,20 @@ public class Action {
     private String zoneOutURL;
     private String useURL;
     private String collectURL;
-    private String purchaseURL;
     private String removeURL;
     private String disableURL;
     
-    private String graphicInfoRecommendUrl;
-    private String graphicInfoHotUrl;
-    private String graphicInfoByCategoryUrl;
-    private String myCXListUrl;
-    private String statusPackageListUrl;
-    private String holidayPackageListUrl;
-    private String themePackageListUrl;
-    private String versionUpdateUrl;
+    private String recommendUrl;
+    private String hotUrl;
+    private String categoryUrl;
+    private String mGraphicsUrl;
+    private String statusUrl;
+    private String holidaiesUrl;
+    private String customMGraphicsUrl;
+    private String versionUrl;
     private String suggestionUrl;
-    private String phoneCallUrl;
-    private String userCollectListUrl;
-    private String userRegisterUrl;
+    private String callUrl;
+    private String collectionsUrl;
+    private String registerUrl;
+    private String purchaseURL;
 }
