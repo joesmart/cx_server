@@ -8,6 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -21,6 +23,8 @@ import static org.fest.assertions.Assertions.assertThat;
 public class UserInfoDaoTest extends SpringTransactionalTestCase {
     @Autowired
     private UserInfoDao userInfoDao;
+    @PersistenceContext
+    private EntityManager entityManager;
     
     public void should_get_userinfo_when_find_by_imsi(){
         List<String> mobiles = UserInfoData.buildPhoneNos();
@@ -41,5 +45,17 @@ public class UserInfoDaoTest extends SpringTransactionalTestCase {
         UserInfo info = userInfoDao.getUserInfoByImsi("13146001000");
         assertThat(info.getId()).isEqualTo("1");
         assertThat(info.getPhoneNo()).isEqualTo("1512581470");
+    }
+    
+    @Test
+    public void should_save_info_successful() {
+        UserInfo info = new UserInfo();
+        info.setPhoneNo("111111111111");
+        info.setImsi("111112222223333");
+        userInfoDao.save(info);
+        entityManager.flush();
+        
+        UserInfo dbInfo = userInfoDao.findOne(info.getId());
+        assertThat(info).isEqualTo(dbInfo);
     }
 }

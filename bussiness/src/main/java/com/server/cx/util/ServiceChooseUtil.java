@@ -44,7 +44,7 @@ public class ServiceChooseUtil {
             Map<String, String> mapParams = getAllRequestParmeters(requestUrl, req, data);
             // 用户注册
             if (requestUrl.equals(Constants.REGISTER_URL)) {
-                result = registerService.registe(mapParams);
+//                result = registerService.registe(mapParams);
             } else if (requestUrl.equals(Constants.UPDATE_CLIENT_URL)) {
                 // 升级
                 String imsi = mapParams.get(Constants.IMSI_STR);

@@ -3,55 +3,44 @@
  */
 package com.server.cx.service.cx.impl;
 
-import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.UserInfoDao;
-import com.server.cx.entity.cx.UserInfo;
-import com.server.cx.exception.SystemException;
-import com.server.cx.service.cx.RegisterService;
-import com.server.cx.util.StringUtil;
+import java.util.UUID;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Map;
-import java.util.UUID;
+import com.cl.cx.platform.dto.OperationDescription;
+import com.server.cx.dao.cx.UserInfoDao;
+import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.service.cx.RegisterService;
+import com.server.cx.util.ObjectFactory;
 
 /**
  * implement of RegisterService interface. Briefly describe what this class does.
  */
 @Service("registerService")
-@Transactional
+@Transactional(readOnly=true)
 public class RegisterServiceImpl implements RegisterService {
     @Autowired
     private UserInfoDao userInfoDao;
-
-    public RegisterServiceImpl() {
-
-    }
-
+    
     @Override
-    public String registe(Map<String, String> paramsMap) throws SystemException {
-        String dealResult = "";
-        String imsi = paramsMap.get(Constants.IMSI_STR);
-        String phoneNo = paramsMap.get(Constants.PHONE_NO_STR);
-
-        if (imsi != null && !"".equals(imsi)) {
-            UserInfo userinfo = userInfoDao.getUserInfoByImsi(imsi);
-            if (userinfo == null) {
-                userinfo = new UserInfo();
-                userinfo.setImsi(imsi);
-                phoneNo = dealWithPhoneNo(imsi, phoneNo);
-                userinfo.setPhoneNo(phoneNo);
-                userInfoDao.save(userinfo);
-                dealResult = StringUtil.generateXMLResultString(Constants.SUCCESS_FLAG, "用户注册成功");
-            } else {
-                dealResult = StringUtil.generateXMLResultString(Constants.USER_REGISTERED_FLAG, "用户已经注册");
-            }
+    @Transactional(readOnly=false)
+    public OperationDescription register(String imsi, String phoneNo) {
+        UserInfo userinfo = userInfoDao.getUserInfoByImsi(imsi);
+        OperationDescription operationDescription = null;
+        if (userinfo == null) {
+            userinfo = new UserInfo();
+            userinfo.setImsi(imsi);
+            phoneNo = dealWithPhoneNo(imsi, phoneNo);
+            userinfo.setPhoneNo(phoneNo);
+            userInfoDao.save(userinfo);
+            operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,
+                "register", "用户注册成功");
         } else {
-            dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "IMSI数据为空");
+            operationDescription = ObjectFactory.buildErrorOperationDescription(HttpServletResponse.SC_CONFLICT,
+                "register", "用户已经注册");
         }
-
-        return dealResult;
+        return operationDescription;
     }
 
     private String dealWithPhoneNo(String imsi, String phoneNo) {
@@ -66,5 +55,4 @@ public class RegisterServiceImpl implements RegisterService {
         }
         return phoneNo;
     }
-
 }
