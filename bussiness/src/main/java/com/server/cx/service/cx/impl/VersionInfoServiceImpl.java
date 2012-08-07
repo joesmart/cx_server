@@ -1,11 +1,9 @@
 package com.server.cx.service.cx.impl;
 
+import com.cl.cx.platform.dto.VersionInfoDTO;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
-import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.VersionInfoDao;
-import com.cl.cx.platform.dto.VersionInfoDTO;
-import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.entity.cx.VersionInfo;
 import com.server.cx.service.cx.VersionInfoService;
 import com.server.cx.util.ObjectFactory;
@@ -26,12 +24,6 @@ public class VersionInfoServiceImpl implements VersionInfoService {
 
     @Override
     public VersionInfoDTO checkIsTheLatestVersion(String clientVersion) {
-//        UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
-//
-//        if (userInfo == null) {
-//            return ObjectFactory.buildVersionInfoDTO(Constants.USER_DATA_ERROR_FLAG, "用户不存在");
-//        }
-
         if (!ValidationUtil.isVerionString(clientVersion)) {
             return ObjectFactory.buildVersionInfoDTO(Constants.ERROR_FLAG, "版本字符串格式不对");
         }

@@ -1,8 +1,8 @@
 package com.server.cx.service.cx.impl;
 
 import com.cl.cx.platform.dto.DataItem;
+import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.MGraphicDao;
@@ -15,31 +15,38 @@ import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserSpecialMGraphic;
 import com.server.cx.exception.CXServerBusinessException;
-import com.server.cx.service.cx.UserCommonMGraphicService;
+import com.server.cx.service.cx.HistoryMGraphicService;
+import com.server.cx.service.util.BusinessFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 /**
  * User: yanjianzou
  * Date: 12-8-3
  * Time: 下午2:59
- * FileName:UserCommonMGraphicServiceImpl
+ * FileName:MGraphicServiceImpl
  */
 @Service(value = "userCommonMGraphicService")
 @Transactional
-public class UserCommonMGraphicServiceImpl extends MGraphicService implements UserCommonMGraphicService {
+public class MGraphicServiceImpl extends com.server.cx.service.cx.impl.MGraphicService implements com.server.cx.service.cx.MGraphicService {
 
+    @Autowired
+    private BasicService basicService;
     @Autowired
     private UserCommonMGraphicDao userCommonMGraphicDao;
     @Autowired
     private UserSpecialMGraphicDao userSpecialMGraphicDao;
     @Autowired
+    private HistoryMGraphicService historyMGraphicService;
+    @Autowired
     private MGraphicDao mGraphicDao;
+
+    @Autowired
+    private BusinessFunctions businessFunctions;
 
     private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
         UserCommonMGraphic userCommonMGraphic = new UserCommonMGraphic();
@@ -68,25 +75,25 @@ public class UserCommonMGraphicServiceImpl extends MGraphicService implements Us
     }
 
     private void historyPreviousUserCommonMGraphic() {
-        UserCommonMGraphic previousUserCommonMGraphic = userCommonMGraphicDao.findByUserInfoAndActive(userInfo, true);
-        if (previousUserCommonMGraphic != null) {
-            historyPreviousUserCommonMGraphic(previousUserCommonMGraphic);
-            userCommonMGraphicDao.delete(previousUserCommonMGraphic);
+        List<UserCommonMGraphic> previousUserCommonMGraphics = userCommonMGraphicDao.findByUserInfoAndActiveAndModeType(userInfo, true, 1);
+        for (UserCommonMGraphic userCommonMGraphic : previousUserCommonMGraphics) {
+            historyPreviousUserCommonMGraphic(userCommonMGraphic);
+            userCommonMGraphicDao.delete(userCommonMGraphic);
         }
+
     }
 
     @Override
     public OperationResult editUserCommonMGraphic(String imsi, MGraphicDTO mGraphicDTO) {
         checkAndInitializeContext(imsi, mGraphicDTO);
-        checkMGraphicDTOPhoneNosMustBeNull(mGraphicDTO);
         mGraphicIdMustBeExists(mGraphicDTO);
 
         UserCommonMGraphic mGraphic = userCommonMGraphicDao.findOne(mGraphicDTO.getId());
         if (mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0) {
+            historyPreviousUserCommonMGraphic();
             ((UserSpecialMGraphic) mGraphic).setPhoneNos(null);
             ((UserSpecialMGraphic) mGraphic).setModeType(1);
             ((UserSpecialMGraphic) mGraphic).setPriority(3);
-            historyPreviousUserCommonMGraphic();
             updateUserCommonMGraphicNameAndSignature(mGraphicDTO, mGraphic);
             userCommonMGraphicDao.save(mGraphic);
         } else {
@@ -119,27 +126,22 @@ public class UserCommonMGraphicServiceImpl extends MGraphicService implements Us
     }
 
     @Override
-    public List<DataItem> getUserMGraphic(String imsi) {
-        Preconditions.checkNotNull(imsi,"imsi 不能为空");
+    public DataPage queryUserMGraphic(String imsi) {
+        Preconditions.checkNotNull(imsi, "imsi 不能为空");
         checkAndSetUserInfoExists(imsi);
-        List<MGraphic> mGraphics = mGraphicDao.findAll(MGraphicSpecifications.userMGraphic(userInfo),new Sort(new Sort.Order(Sort.Direction.ASC,"modeType"),new Sort.Order(Sort.Direction.DESC,"createdOn")));
-        List<DataItem> dataItemList = Lists.transform(mGraphics,new Function<MGraphic, DataItem>() {
-            @Override
-            public DataItem apply(@Nullable MGraphic input) {
-                DataItem dataItem = new DataItem();
-                dataItem.setName(input.getName());
-                dataItem.setSignature(input.getSignature());
-                dataItem.setId(input.getGraphicInfo().getId());
-                dataItem.setMGraphicId(input.getId());
-                dataItem.setLevel(input.getGraphicInfo().getLevel());
-                dataItem.setModeType(input.getModeType());
-                if(2 == input.getModeType()){
-                    dataItem.setPhoneNos(((UserSpecialMGraphic)input).getPhoneNos());
-                }
-                dataItem.setInUsing(true);
-                return dataItem;
-            }
-        });
-        return dataItemList;
+        List<MGraphic> mGraphics = mGraphicDao.findAll(MGraphicSpecifications.userMGraphic(userInfo), new Sort(new Sort.Order(Sort.Direction.ASC, "modeType"), new Sort.Order(Sort.Direction.DESC, "createdOn")));
+        List<DataItem> mGraphicDataItems = Lists.transform(mGraphics, businessFunctions.mGraphicTransformToDataItem(imsi) );
+        List<DataItem> historyMGraphicDataItems = historyMGraphicService.queryHistoryMGraphicsByUserInfo(userInfo);
+        List<DataItem> dataItems = Lists.newArrayListWithCapacity(mGraphicDataItems.size() + historyMGraphicDataItems.size());
+        dataItems.addAll(mGraphicDataItems);
+        dataItems.addAll(historyMGraphicDataItems);
+
+        DataPage dataPage = new DataPage();
+        dataPage.setItems(dataItems);
+        dataPage.setOffset(0);
+        dataPage.setLimit(dataItems.size());
+        dataPage.setTotal(1);
+        dataPage.setHref(basicService.baseHostAddress + basicService.restURL + imsi + "/mGraphics");
+        return dataPage;
     }
 }

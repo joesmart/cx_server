@@ -1,10 +1,10 @@
 package com.server.cx.webservice.rs.server;
 
-import com.cl.cx.platform.dto.DataItem;
+import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.dto.OperationResult;
-import com.server.cx.service.cx.UserCommonMGraphicService;
+import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.UserSpecialMGraphicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 /**
  * User: yanjianzou
@@ -26,11 +25,11 @@ import java.util.List;
 @Path("/{imsi}/mGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-public class UserCommonMGraphicResources {
+public class MGraphicResources {
     public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResource.class);
 
     @Autowired
-    private UserCommonMGraphicService userCommonMGraphicService;
+    private MGraphicService mGraphicService;
 
     @Autowired
     private UserSpecialMGraphicService userSpecialMGraphicService;
@@ -45,7 +44,7 @@ public class UserCommonMGraphicResources {
         try {
             OperationResult operationResult;
             if(mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0){
-                operationResult = userCommonMGraphicService.createUserCommonMGraphic(imsi, mGraphicDTO);
+                operationResult = mGraphicService.createUserCommonMGraphic(imsi, mGraphicDTO);
             }else{
                 operationResult = userSpecialMGraphicService.createUserSpecialMGraphic(imsi,mGraphicDTO);
             }
@@ -78,7 +77,7 @@ public class UserCommonMGraphicResources {
         operationDescription = new OperationDescription();
         try {
             mGraphicDTO.setId(userCommonMGraphicId);
-            OperationResult operationResult = userCommonMGraphicService.editUserCommonMGraphic(imsi,mGraphicDTO);
+            OperationResult operationResult = mGraphicService.editUserCommonMGraphic(imsi,mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
             actionName = "editUserCommonMGraphic";
@@ -93,7 +92,7 @@ public class UserCommonMGraphicResources {
     public Response delete(@PathParam("imsi")String imsi,@PathParam("id")String userCommonMGraphicId){
         operationDescription = new OperationDescription();
         try {
-            OperationResult operationResult = userCommonMGraphicService.disableUserCommonMGraphic(imsi,userCommonMGraphicId);
+            OperationResult operationResult = mGraphicService.disableUserCommonMGraphic(imsi,userCommonMGraphicId);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
             actionName = "disableUserCommonMGraphic";
@@ -104,7 +103,7 @@ public class UserCommonMGraphicResources {
     }
     @GET
     public Response getAll(@PathParam("imsi")String imsi){
-        List<DataItem> dataItemList = userCommonMGraphicService.getUserMGraphic(imsi);
-        return Response.ok(dataItemList).build();
+        DataPage dataPage = mGraphicService.queryUserMGraphic(imsi);
+        return Response.ok(dataPage).build();
     }
 }
