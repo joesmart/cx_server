@@ -157,7 +157,7 @@ public class BusinessFunctions extends BasicService {
                 dataItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
                 dataItem.setDownloadNumber(String.valueOf(input.getDownloadNum().intValue()));
                 //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该节日包, 暂时全部返回false
-                dataItem.setUsed(false);
+                dataItem.setHasUsed(false);
                 return dataItem;
             }
         };
@@ -171,7 +171,7 @@ public class BusinessFunctions extends BasicService {
               dataItem.setName(input.getName());
               dataItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
               //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该状态包, 暂时全部返回false
-              dataItem.setUsed(false);
+              dataItem.setHasUsed(false);
               return dataItem;
         	}
         };

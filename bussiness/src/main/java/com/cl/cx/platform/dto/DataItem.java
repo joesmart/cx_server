@@ -2,6 +2,8 @@ package com.cl.cx.platform.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * User: yanjianzou
  * Date: 12-8-2
@@ -16,7 +18,7 @@ public class DataItem extends BasicItem {
     private Boolean auditPassed;
     private Boolean purchased;
     private Boolean collected;
-    private Boolean used;
+    private Boolean hasUsed;
     private Integer level;
     private Float price;
     private String thumbnailPath;
@@ -28,4 +30,7 @@ public class DataItem extends BasicItem {
     private String graphicURL;
     private String favoriteId;
     private Integer modeType;
+    private List<String> phoneNos;
+    private String mGraphicId;
+    private boolean inUsing;
 }

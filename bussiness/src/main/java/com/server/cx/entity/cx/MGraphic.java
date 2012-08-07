@@ -1,6 +1,7 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableStringEntity;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,6 +17,7 @@ import java.util.Date;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="cast_type", discriminatorType=DiscriminatorType.STRING,length=10)
 @DiscriminatorValue("basic")
+@ToString
 public class MGraphic extends AuditableStringEntity {
 
     private Date modifyTime;

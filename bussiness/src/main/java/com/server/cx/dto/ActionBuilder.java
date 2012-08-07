@@ -69,11 +69,73 @@ public class ActionBuilder {
         action.setDisableURL(url);
         return this;
     }
+    
+    public ActionBuilder recommendUrl(String url) {
+        action.setRecommendUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder hotUrl(String url) {
+        action.setHotUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder categoryUrl(String url) {
+        action.setCategoryUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder mGraphicsUrl(String url) {
+        action.setMGraphicsUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder statusUrl(String url) {
+        action.setStatusUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder holidaiesUrl(String url) {
+        action.setHolidaiesUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder customMGraphicsUrl(String url) {
+        action.setCustomMGraphicsUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder versionUrl(String url) {
+        action.setVersionUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder suggestionUrl(String url) {
+        action.setSuggestionUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder callUrl(String url) {
+        action.setCallUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder collectionsUrl(String url) {
+        action.setCollectionsUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder registerUrl(String url) {
+        action.setRegisterUrl(url);
+        return this;
+    }
+    
+    
 
     public Action build(){
         return action;
     }
-
+    
     public Action buildGraphicItemAction(String imsi){
         return  action()
                 .collectURL(baseHostAddress + restURL + imsi + "/myCollections")
@@ -96,5 +158,36 @@ public class ActionBuilder {
                 .useURL(baseHostAddress + restURL + imsi + "/userCommonMGraphics")
                 .build();
     }
+    
+    public Action buildUrlActions(String imsi) {
+        ActionBuilder actionBuilder = action();
+        actionBuilder.recommendUrl(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true");
+        actionBuilder.hotUrl(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true");
+        actionBuilder.categoryUrl(baseHostAddress + restURL + imsi + "/categories");
+        actionBuilder.mGraphicsUrl("");
+        actionBuilder.statusUrl(baseHostAddress + restURL + imsi + "/statusTypes");
+        actionBuilder.holidaiesUrl(baseHostAddress + restURL + imsi + "/holidayTypes");
+        actionBuilder.customMGraphicsUrl("");
+        actionBuilder.versionUrl(baseHostAddress + restURL + "upgrade");
+        actionBuilder.suggestionUrl(baseHostAddress + restURL + "suggestion/" + imsi);
+        actionBuilder.callUrl("");
+        actionBuilder.collectionsUrl(baseHostAddress + restURL + imsi + "/collections");
+        actionBuilder.registerUrl("");
+        return actionBuilder.build();
+    }
+    
+    public Action buildUrlActions() {
+        String replaceImsi = "none";
+        Action action = buildUrlActions(replaceImsi);
+        hiddenCustomActionsForNoImsi(action);
+        return action;
+    }
+    
+    private void hiddenCustomActionsForNoImsi(Action action) {
+        action.setCollectionsUrl(null);
+        action.setCallUrl(null);
+        action.setMGraphicsUrl(null);
+    }
+    
 
 }

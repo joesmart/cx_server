@@ -34,7 +34,7 @@ public class GraphicInfoResources {
                                                            @QueryParam("hot") Boolean isHot,
                                                            @QueryParam("recommend")Boolean recommend,
                                                            @DefaultValue("0") @QueryParam("offset") Integer offset,
-                                                           @DefaultValue("10") @QueryParam("limit") Integer limit
+                                                           @DefaultValue("5") @QueryParam("limit") Integer limit
     ) {
         LOGGER.info("imsi:" + imsi);
         LOGGER.info("id:" + categoryId);

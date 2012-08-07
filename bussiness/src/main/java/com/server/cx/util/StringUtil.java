@@ -116,4 +116,11 @@ public class StringUtil {
         }
         return phoneNo;
     }
+
+    public static boolean notNull(String str) {
+        if(str == null || "".equals(str)) {
+            return false;
+        }
+        return true;
+    }
 }

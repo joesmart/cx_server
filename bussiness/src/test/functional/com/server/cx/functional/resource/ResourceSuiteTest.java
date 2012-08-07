@@ -11,7 +11,8 @@ import org.junit.runners.Suite;
         VersionInfoResourceTest.class,
         CXAppResourceTest.class,
         HolidayTypeResourceTest.class,
-        StatusTypeResourceTest.class
+        StatusTypeResourceTest.class,
+        ActionResourceTest.class
     })
 public class ResourceSuiteTest {
 

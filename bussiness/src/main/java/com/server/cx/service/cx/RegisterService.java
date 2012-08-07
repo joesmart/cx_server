@@ -3,15 +3,14 @@
  */
 package com.server.cx.service.cx;
 
-import com.server.cx.exception.SystemException;
+import com.cl.cx.platform.dto.OperationDescription;
 
-import java.util.Map;
 
 /**
  * register service interface. Provide register method.
  */
 public interface RegisterService {
 
-    String registe(Map<String, String> paramsMap) throws SystemException;
+    public abstract OperationDescription register(String imsi, String phoneNo);
 
 }

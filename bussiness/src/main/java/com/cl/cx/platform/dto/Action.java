@@ -16,7 +16,20 @@ public class Action {
     private String zoneOutURL;
     private String useURL;
     private String collectURL;
-    private String purchaseURL;
     private String removeURL;
     private String disableURL;
+    
+    private String recommendUrl;
+    private String hotUrl;
+    private String categoryUrl;
+    private String mGraphicsUrl;
+    private String statusUrl;
+    private String holidaiesUrl;
+    private String customMGraphicsUrl;
+    private String versionUrl;
+    private String suggestionUrl;
+    private String callUrl;
+    private String collectionsUrl;
+    private String registerUrl;
+    private String purchaseURL;
 }

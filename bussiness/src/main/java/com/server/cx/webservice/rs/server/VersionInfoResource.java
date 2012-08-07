@@ -4,7 +4,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.VersionInfoDTO;
 import com.server.cx.service.cx.VersionInfoService;
-import com.server.cx.util.business.ValidationUtil;
 
 @Component
 @Path("/upgrade")
@@ -36,11 +34,8 @@ public class VersionInfoResource {
     }
 
     @GET
-    public Response checkIsTheLatestVersion(@PathParam("imsi") String imsi,
-                                            @DefaultValue("0") @QueryParam("version") String version) {
-        LOGGER.info("imsi = " + imsi);
+    public Response checkIsTheLatestVersion(@DefaultValue("0") @QueryParam("version") String version) {
         LOGGER.info("version = " + version);
-        ValidationUtil.checkParametersNotNull(imsi);
         VersionInfoDTO versionInfoDTO = versionInfoService.checkIsTheLatestVersion(version);
         return Response.ok(versionInfoDTO).build();
     }

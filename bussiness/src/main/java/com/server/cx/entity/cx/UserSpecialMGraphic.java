@@ -1,5 +1,7 @@
 package com.server.cx.entity.cx;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  */
 @Entity
 @DiscriminatorValue("special")
+@ToString
 public class UserSpecialMGraphic extends UserCommonMGraphic {
 
     private List<String> phoneNos;
