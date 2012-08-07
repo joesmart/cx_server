@@ -2,13 +2,14 @@
 
 package com.cl.cx.platform.dto;
 
+import lombok.ToString;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.server.cx.dto.UserCXInfo;
 
 /**
  * Briefly describe what this class does.
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@type")
+@ToString
 public class ContactInfoDTO {
 
     private String contactName;

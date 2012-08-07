@@ -69,11 +69,73 @@ public class ActionBuilder {
         action.setDisableURL(url);
         return this;
     }
+    
+    public ActionBuilder graphicInfoRecommendUrl(String url) {
+        action.setGraphicInfoRecommendUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder graphicInfoHotUrl(String url) {
+        action.setGraphicInfoHotUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder graphicInfoByCategoryUrl(String url) {
+        action.setGraphicInfoByCategoryUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder myCXListUrl(String url) {
+        action.setMyCXListUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder statusPackageListUrl(String url) {
+        action.setStatusPackageListUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder holidayPackageListUrl(String url) {
+        action.setHolidayPackageListUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder themePackageListUrl(String url) {
+        action.setThemePackageListUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder versionUpdateUrl(String url) {
+        action.setVersionUpdateUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder suggestionUrl(String url) {
+        action.setSuggestionUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder phoneCallUrl(String url) {
+        action.setPhoneCallUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder userCollectListUrl(String url) {
+        action.setUserCollectListUrl(url);
+        return this;
+    }
+    
+    public ActionBuilder userRegisterUrl(String url) {
+        action.setUserRegisterUrl(url);
+        return this;
+    }
+    
+    
 
     public Action build(){
         return action;
     }
-
+    
     public Action buildGraphicItemAction(String imsi){
         return  action()
                 .collectURL(baseHostAddress + restURL + imsi + "/myCollections")
@@ -95,6 +157,28 @@ public class ActionBuilder {
                 .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
                 .useURL(baseHostAddress + restURL + imsi + "/userCommonMGraphics")
                 .build();
+    }
+    
+    public Action buildUrlActions(String imsi) {
+        ActionBuilder actionBuilder = action();
+        actionBuilder.graphicInfoRecommendUrl(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true");
+        actionBuilder.graphicInfoHotUrl(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true");
+        actionBuilder.graphicInfoByCategoryUrl(baseHostAddress + restURL + imsi + "/categories");
+        actionBuilder.myCXListUrl("");
+        actionBuilder.statusPackageListUrl(baseHostAddress + restURL + imsi + "/statusTypes");
+        actionBuilder.holidayPackageListUrl(baseHostAddress + restURL + imsi + "/holidayTypes");
+        actionBuilder.themePackageListUrl("");
+        actionBuilder.versionUpdateUrl(baseHostAddress + restURL + "upgrade");
+        actionBuilder.suggestionUrl(baseHostAddress + restURL + "suggestion/" + imsi);
+        actionBuilder.phoneCallUrl("");
+        actionBuilder.userCollectListUrl(baseHostAddress + restURL + imsi + "/myCollections ");
+        actionBuilder.userRegisterUrl("");
+        return actionBuilder.build();
+    }
+    
+    public Action buildUrlActions() {
+        String replaceImsi = "none";
+        return buildUrlActions(replaceImsi);
     }
 
 }

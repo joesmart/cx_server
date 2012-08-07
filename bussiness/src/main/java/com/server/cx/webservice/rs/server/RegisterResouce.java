@@ -1,16 +1,16 @@
 package com.server.cx.webservice.rs.server;
 
-import java.util.UUID;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.OperationDescription;
-import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.InvalidParameterException;
 import com.server.cx.service.cx.RegisterService;
 import com.server.cx.util.ObjectFactory;
@@ -25,11 +25,16 @@ import com.server.cx.util.business.ValidationUtil;
 @Component
 @Path("/{imsi}/register")
 public class RegisterResouce {
+    private static final Logger LOGGER = LoggerFactory.getLogger(VersionInfoResource.class);
+    
     @Autowired
     private RegisterService registerService;
 
     @POST
     public Response register(@PathParam("imsi") String imsi, ContactInfoDTO contactInfoDTO) {
+        LOGGER.info("Into register imsi = " + imsi);
+        LOGGER.info("contactInfoDTO = " + contactInfoDTO);
+        
         String phoneNo = getPhoneNoFromContactInfo(contactInfoDTO);
         try {
             ValidationUtil.checkParametersNotNull(imsi);

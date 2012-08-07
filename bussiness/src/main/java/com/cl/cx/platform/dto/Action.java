@@ -19,4 +19,17 @@ public class Action {
     private String purchaseURL;
     private String removeURL;
     private String disableURL;
+    
+    private String graphicInfoRecommendUrl;
+    private String graphicInfoHotUrl;
+    private String graphicInfoByCategoryUrl;
+    private String myCXListUrl;
+    private String statusPackageListUrl;
+    private String holidayPackageListUrl;
+    private String themePackageListUrl;
+    private String versionUpdateUrl;
+    private String suggestionUrl;
+    private String phoneCallUrl;
+    private String userCollectListUrl;
+    private String userRegisterUrl;
 }
