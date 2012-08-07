@@ -104,7 +104,7 @@
     </bean>
 
     <bean id="thumbnailSize" class="java.lang.String">
-        <constructor-arg value="size=60X60"/>
+        <constructor-arg value="size=128X128"/>
     </bean>
 
     <!-- production/local development环境 -->
