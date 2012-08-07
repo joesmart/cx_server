@@ -6,6 +6,8 @@ import com.server.cx.entity.cx.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
+import java.util.List;
+
 /**
  * User: yanjianzou
  * Date: 12-7-24
@@ -16,5 +18,5 @@ public interface UserCommonMGraphicDao extends JpaRepository<UserCommonMGraphic,
                                                    JpaSpecificationExecutor<UserCommonMGraphic>,
                                                    UserCommonMGraphicCustomDao {
 
-    public UserCommonMGraphic findByUserInfoAndActive(UserInfo userInfo,Boolean active);
+    public List<UserCommonMGraphic> findByUserInfoAndActiveAndModeType(UserInfo userInfo,Boolean active,Integer modeType);
 }

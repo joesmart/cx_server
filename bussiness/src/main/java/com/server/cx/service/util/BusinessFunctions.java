@@ -1,13 +1,15 @@
 package com.server.cx.service.util;
 
-import java.util.List;
-
-import com.cl.cx.platform.dto.*;
+import com.cl.cx.platform.dto.Action;
+import com.cl.cx.platform.dto.ContactInfoDTO;
+import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
-import com.server.cx.dto.*;
+import com.server.cx.dto.CXInfo;
+import com.server.cx.dto.UserCXInfo;
 import com.server.cx.entity.cx.*;
 import com.server.cx.service.cx.impl.BasicService;
 import org.springframework.stereotype.Component;
+
 import javax.annotation.Nullable;
 
 /**
@@ -177,4 +179,43 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
+
+    public Function<MGraphic, DataItem> mGraphicTransformToDataItem(final String imsi){
+       return new Function<MGraphic, DataItem>() {
+            @Override
+            public DataItem apply(@Nullable MGraphic input) {
+                DataItem dataItem = new DataItem();
+                dataItem.setName(input.getName());
+                dataItem.setSignature(input.getSignature());
+                dataItem.setId(input.getGraphicInfo().getId());
+                dataItem.setMGraphicId(input.getId());
+                dataItem.setLevel(input.getGraphicInfo().getLevel());
+                dataItem.setModeType(input.getModeType());
+                if (2 == input.getModeType()) {
+                    dataItem.setPhoneNos(((UserSpecialMGraphic) input).getPhoneNos());
+                }
+                dataItem.setInUsing(true);
+                dataItem.setAction(actionBuilder.buildMGraphicActions(imsi,input.getId()));
+                return dataItem;
+            }
+        };
+    }
+
+    public Function<HistoryMGraphic, DataItem> historyMGraphicTransformToDataItem(final String imsi) {
+        return new Function<HistoryMGraphic, DataItem>() {
+            @Override
+            public DataItem apply(@Nullable HistoryMGraphic input) {
+                DataItem dataItem = new DataItem();
+                dataItem.setName(input.getName());
+                dataItem.setSignature(input.getSignature());
+                dataItem.setId(input.getGraphicInfo().getId());
+                dataItem.setMGraphicId(input.getId());
+                dataItem.setLevel(input.getGraphicInfo().getLevel());
+                dataItem.setModeType(input.getModeType());
+                dataItem.setInUsing(false);
+                dataItem.setAction(actionBuilder.buildHistoryMGraphicActions(imsi,input.getId()));
+                return dataItem;
+            }
+        };
+    }
 }

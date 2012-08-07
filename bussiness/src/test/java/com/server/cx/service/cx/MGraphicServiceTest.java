@@ -11,10 +11,10 @@ import org.springside.modules.test.spring.SpringTransactionalTestCase;
  * User: yanjianzou
  * Date: 12-8-3
  * Time: 下午4:57
- * FileName:UserCommonMGraphicServiceTest
+ * FileName:MGraphicServiceTest
  */
 @ContextConfiguration(locations = {"/applicationContext.xml"})
-public class UserCommonMGraphicServiceTest extends SpringTransactionalTestCase {
+public class MGraphicServiceTest extends SpringTransactionalTestCase {
 
     private MGraphicDTO mGraphicDTO;
     private String imsi;

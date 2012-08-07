@@ -18,13 +18,14 @@ public class Action {
     private String collectURL;
     private String removeURL;
     private String disableURL;
+    private String editURL;
     
     private String recommendUrl;
     private String hotUrl;
     private String categoryUrl;
     private String mGraphicsUrl;
     private String statusUrl;
-    private String holidaiesUrl;
+    private String holidaysUrl;
     private String customMGraphicsUrl;
     private String versionUrl;
     private String suggestionUrl;

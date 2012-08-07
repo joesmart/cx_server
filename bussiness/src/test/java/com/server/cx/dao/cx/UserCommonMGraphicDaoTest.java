@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 
+import java.util.List;
+
 import static org.fest.assertions.Assertions.assertThat;
 
 /**
@@ -58,7 +60,7 @@ public class UserCommonMGraphicDaoTest extends SpringTransactionalTestCase {
     @Test
     public void should_get_UserCommonMGraphic_when_find_by_userinfo_and_active_true() {
         UserInfo userInfo = userInfoDao.findOne("1");
-        UserCommonMGraphic userCommonMGraphic = userCommonMGraphicDao.findByUserInfoAndActive(userInfo, true);
+        List<UserCommonMGraphic> userCommonMGraphic = userCommonMGraphicDao.findByUserInfoAndActiveAndModeType(userInfo, true, 1);
         assertThat(userCommonMGraphic).isNotNull();
     }
 

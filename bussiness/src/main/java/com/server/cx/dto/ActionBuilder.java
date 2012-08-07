@@ -96,7 +96,7 @@ public class ActionBuilder {
     }
     
     public ActionBuilder holidaiesUrl(String url) {
-        action.setHolidaiesUrl(url);
+        action.setHolidaysUrl(url);
         return this;
     }
     
@@ -127,6 +127,11 @@ public class ActionBuilder {
     
     public ActionBuilder registerUrl(String url) {
         action.setRegisterUrl(url);
+        return this;
+    }
+
+    public ActionBuilder editURL(String url){
+        action.setEditURL(url);
         return this;
     }
     
@@ -160,20 +165,18 @@ public class ActionBuilder {
     }
     
     public Action buildUrlActions(String imsi) {
-        ActionBuilder actionBuilder = action();
-        actionBuilder.recommendUrl(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true");
-        actionBuilder.hotUrl(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true");
-        actionBuilder.categoryUrl(baseHostAddress + restURL + imsi + "/categories");
-        actionBuilder.mGraphicsUrl("");
-        actionBuilder.statusUrl(baseHostAddress + restURL + imsi + "/statusTypes");
-        actionBuilder.holidaiesUrl(baseHostAddress + restURL + imsi + "/holidayTypes");
-        actionBuilder.customMGraphicsUrl("");
-        actionBuilder.versionUrl(baseHostAddress + restURL + "upgrade");
-        actionBuilder.suggestionUrl(baseHostAddress + restURL + "suggestion/" + imsi);
-        actionBuilder.callUrl("");
-        actionBuilder.collectionsUrl(baseHostAddress + restURL + imsi + "/collections");
-        actionBuilder.registerUrl("");
-        return actionBuilder.build();
+        return action().recommendUrl(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true")
+        .hotUrl(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true")
+        .categoryUrl(baseHostAddress + restURL + imsi + "/categories")
+        .mGraphicsUrl("")
+        .statusUrl(baseHostAddress + restURL + imsi + "/statusTypes")
+        .holidaiesUrl(baseHostAddress + restURL + imsi + "/holidayTypes")
+        .customMGraphicsUrl("")
+        .versionUrl(baseHostAddress + restURL + "upgrade")
+        .suggestionUrl(baseHostAddress + restURL + "suggestion/" + imsi)
+        .callUrl("")
+        .collectionsUrl(baseHostAddress + restURL + imsi + "/collections")
+        .registerUrl("").build();
     }
     
     public Action buildUrlActions() {
@@ -187,6 +190,23 @@ public class ActionBuilder {
         action.setCollectionsUrl(null);
         action.setCallUrl(null);
         action.setMGraphicsUrl(null);
+    }
+
+
+
+    public Action buildMGraphicActions(String imsi,String id){
+        return  action()
+                .useURL(baseHostAddress+restURL+imsi+"/mGraphics")
+                .editURL(baseHostAddress+restURL+imsi+"/mGraphics/"+id)
+                .disableURL(baseHostAddress+restURL+imsi+"/mGraphics/"+id)
+                .build();
+    }
+
+    public Action buildHistoryMGraphicActions(String imsi,String id){
+        return  action()
+                .useURL(baseHostAddress+restURL+imsi+"/MGraphics")
+                .removeURL(baseHostAddress+restURL+imsi+"/historyMGraphics/"+id)
+                .build();
     }
     
 
