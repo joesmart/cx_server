@@ -4,6 +4,8 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableStringEntity;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -37,6 +39,7 @@ public class UserInfo extends AuditableStringEntity {
     }
 
     @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "user", fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SELECT)
     public List<UserFavorites> getUserFavorites() {
         return userFavorites;
     }

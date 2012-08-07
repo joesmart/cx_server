@@ -3,6 +3,7 @@ package com.server.cx.dao.cx;
 import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.entity.cx.UserSpecialMGraphic;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,9 +42,9 @@ public class UserCommonMGraphicDaoTest extends SpringTransactionalTestCase {
     }
 
     @Test
-    public void should_save_new_userCommonMGraphic_successful(){
+    public void should_save_new_userCommonMGraphic_successful() {
         UserInfo userInfo = userInfoDao.findOne("1");
-        GraphicInfo graphicInfo =  graphicInfoDao.findOne("4028b88138d5e5e50138d5e5f2800003");
+        GraphicInfo graphicInfo = graphicInfoDao.findOne("4028b88138d5e5e50138d5e5f2800003");
         UserCommonMGraphic userCommonMGraphic = new UserCommonMGraphic();
         userCommonMGraphic.setActive(true);
         userCommonMGraphic.setGraphicInfo(graphicInfo);
@@ -55,9 +56,21 @@ public class UserCommonMGraphicDaoTest extends SpringTransactionalTestCase {
     }
 
     @Test
-    public void should_get_UserCommonMGraphic_when_find_by_userinfo_and_active_true(){
+    public void should_get_UserCommonMGraphic_when_find_by_userinfo_and_active_true() {
         UserInfo userInfo = userInfoDao.findOne("1");
-        UserCommonMGraphic userCommonMGraphic = userCommonMGraphicDao.findByUserInfoAndActive(userInfo,true);
+        UserCommonMGraphic userCommonMGraphic = userCommonMGraphicDao.findByUserInfoAndActive(userInfo, true);
         assertThat(userCommonMGraphic).isNotNull();
+    }
+
+    @Test
+    public void should_can_load_special_MGraphic_mode() {
+        UserCommonMGraphic userCommonMGraphic = userCommonMGraphicDao.findOne("2");
+        assertThat(userCommonMGraphic).isNotNull();
+        ((UserSpecialMGraphic) userCommonMGraphic).setPhoneNos(null);
+        ((UserSpecialMGraphic) userCommonMGraphic).setModeType(1);
+        ((UserSpecialMGraphic) userCommonMGraphic).setPriority(3);
+        userCommonMGraphicDao.save(userCommonMGraphic);
+        UserCommonMGraphic userCommonMGraphic1 = userCommonMGraphicDao.findOne("2");
+        System.out.println(userCommonMGraphic1.toString());
     }
 }

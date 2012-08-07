@@ -2,6 +2,7 @@ package com.server.cx.entity.cx;
 
 
 import com.server.cx.dto.UserCXInfo;
+import lombok.ToString;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("common")
+@ToString
 public class UserCommonMGraphic extends MGraphic {
     private Boolean active;
 
