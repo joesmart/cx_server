@@ -178,7 +178,16 @@ public class ActionBuilder {
     
     public Action buildUrlActions() {
         String replaceImsi = "none";
-        return buildUrlActions(replaceImsi);
+        Action action = buildUrlActions(replaceImsi);
+        hiddenCustomActionsForNoImsi(action);
+        return action;
     }
+    
+    private void hiddenCustomActionsForNoImsi(Action action) {
+        action.setCollectionsUrl(null);
+        action.setCallUrl(null);
+        action.setMGraphicsUrl(null);
+    }
+    
 
 }
