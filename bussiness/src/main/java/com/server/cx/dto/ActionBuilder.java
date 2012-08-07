@@ -145,7 +145,7 @@ public class ActionBuilder {
         return  action()
                 .collectURL(baseHostAddress + restURL + imsi + "/myCollections")
                 .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
-                .useURL(baseHostAddress + restURL + imsi + "/userCommonMGraphics")
+                .useURL(baseHostAddress + restURL + imsi + "/mGraphics")
                 .build();
     }
 
@@ -160,7 +160,7 @@ public class ActionBuilder {
         return  action()
                 .removeURL(baseHostAddress + restURL + imsi + "/myCollections/"+userFavoriteId)
                 .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
-                .useURL(baseHostAddress + restURL + imsi + "/userCommonMGraphics")
+                .useURL(baseHostAddress + restURL + imsi + "/mGraphics")
                 .build();
     }
     
@@ -168,7 +168,7 @@ public class ActionBuilder {
         return action().recommendUrl(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true")
         .hotUrl(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true")
         .categoryUrl(baseHostAddress + restURL + imsi + "/categories")
-        .mGraphicsUrl("")
+        .mGraphicsUrl(baseHostAddress + restURL + imsi + "/mGraphics")
         .statusUrl(baseHostAddress + restURL + imsi + "/statusTypes")
         .holidaiesUrl(baseHostAddress + restURL + imsi + "/holidayTypes")
         .customMGraphicsUrl("")
