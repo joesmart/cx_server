@@ -1,5 +1,6 @@
 package com.server.cx.webservice.rs.server;
 
+import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.dto.OperationResult;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * User: yanjianzou
@@ -21,7 +23,7 @@ import javax.ws.rs.core.Response;
  * FileName:UserCommonMGraphicResources
  */
 @Component
-@Path("/{imsi}/userCommonMGraphics")
+@Path("/{imsi}/mGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class UserCommonMGraphicResources {
@@ -99,5 +101,10 @@ public class UserCommonMGraphicResources {
         } finally {
             return  Response.ok(operationDescription).build();
         }
+    }
+    @GET
+    public Response getAll(@PathParam("imsi")String imsi){
+        List<DataItem> dataItemList = userCommonMGraphicService.getUserMGraphic(imsi);
+        return Response.ok(dataItemList).build();
     }
 }
