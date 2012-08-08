@@ -13,4 +13,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  */
 public interface UserInfoDao extends JpaRepository<UserInfo, String>,JpaSpecificationExecutor<UserInfo>, UserInfoCustomDao {
     public UserInfo findByImsi(String imsi);
+
+    public UserInfo findByPhoneNo(String phoneNo);
 }

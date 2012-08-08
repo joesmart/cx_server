@@ -18,7 +18,7 @@ public class ServiceChooseUtil {
     @Autowired
     private RegisterService registerService;
     @Autowired
-    private CXCallingManagerService cxCallingManagerService;
+    private CallingService callingService;
     @Autowired
     private UserCXInfoManagerService userCXInfoManagerService;
     @Autowired
@@ -53,7 +53,7 @@ public class ServiceChooseUtil {
             } else if (requestUrl.equals(Constants.CALLING_USERCXINFO_URL)) {
                 // 区分主叫和被叫用户.
                 // 通话时获取主叫用户或者被叫用户的彩像信息
-                result = cxCallingManagerService.getCallingCXInfo(mapParams);
+//                result = callingService.getCallingMGraphic(mapParams, null);
             } else if (requestUrl.equals(Constants.INVITE_FRIENDS_URL)) {
                 // 邀请好友
                 String imsi = mapParams.get(Constants.IMSI_STR);

@@ -205,10 +205,12 @@
 	<suggestion id="2" content="路人甲" userinfo_id="6"></suggestion>
 	<suggestion id="3" content="路人乙" userinfo_id="7"></suggestion>
 
-    <mgraphic cast_type="common" id="1"  name="abcd" signature="xxxxx" graphic_info_id="4028b88138d5e5e50138d5e5f2800024" user_id="1" priority="3" mode_type="1" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0"/>
-    <mgraphic cast_type="special" id="2"  name="abcd" signature="xxxxx" graphic_info_id="4028b88138d5e5e50138d5e5f2800025" user_id="1" priority="3" mode_type="1" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0"/>
+    <mgraphic cast_type="common" id="1"  name="abcd" signature="xxxxx"        graphic_info_id="4028b88138d5e5e50138d5e5f2800024" user_id="1" priority="3" mode_type="1" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0"/>
+    <mgraphic cast_type="special" id="2"  name="abcd" signature="xxxxx"       graphic_info_id="4028b88138d5e5e50138d5e5f2800025" user_id="1" priority="4" mode_type="2" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0"/>
+    <mgraphic cast_type="default" id="3"  name="default" signature="default" graphic_info_id="4028b88138d5e5e50138d5e5f2800026" user_id="1" priority="1" mode_type="0" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" />
+    <mgraphic cast_type="default" id="4"  name="default" signature="10086"   graphic_info_id="4028b88138d5e5e50138d5e5f2800027" priority="1" mode_type="0" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" special_phone_no="10086"/>
 
-    <mgraphic_phone_no mgraphic_id="2"  phone_number="13561341576"/>
+    <mgraphic_phone_no mgraphic_id="2"  phone_number="1512581472"/>
     <mgraphic_phone_no mgraphic_id="2"  phone_number="13561341578"/>
     <mgraphic_phone_no mgraphic_id="2"  phone_number="13561341579"/>
     <mgraphic_phone_no mgraphic_id="2"  phone_number="13561341579"/>

@@ -194,6 +194,12 @@ public class BusinessFunctions extends BasicService {
                 if (2 == input.getModeType()) {
                     dataItem.setPhoneNos(((UserSpecialMGraphic) input).getPhoneNos());
                 }
+                GraphicInfo graphicInfo = input.getGraphicInfo();
+                if (graphicInfo.getGraphicResources().size() > 0) {
+                    dataItem.setThumbnailPath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId() + "&"
+                            + thumbnailSize);
+                    dataItem.setSourceImagePath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId());
+                }
                 dataItem.setInUsing(true);
                 dataItem.setAction(actionBuilder.buildMGraphicActions(imsi,input.getId()));
                 return dataItem;
@@ -218,4 +224,5 @@ public class BusinessFunctions extends BasicService {
             }
         };
     }
+
 }
