@@ -1,6 +1,7 @@
 package com.server.cx.webservice.rs.server;
 
 import com.cl.cx.platform.dto.DataPage;
+import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.service.cx.GraphicInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.concurrent.ExecutionException;
 
 /**
  * User: yanjianzou
@@ -43,17 +45,28 @@ public class GraphicInfoResources {
         LOGGER.info("offset:" + offset);
         LOGGER.info("limit:" + limit);
 
-        if (isHot!=null && isHot) {
-            DataPage dataPage = graphicInfoService.findHotGraphicInfoByDownloadNum(imsi, offset, limit);
-            return Response.ok(dataPage).build();
-        }
-        if(recommend !=null && recommend){
-            DataPage dataPage = graphicInfoService.findRecommendGraphicAndPagination(imsi, offset, limit);
-            return Response.ok(dataPage).build();
-        }
-        if(categoryId != null){
-            DataPage dataPage = graphicInfoService.findGraphicInfoDataPageByCategoryId(imsi, categoryId, offset, limit);
-            return Response.ok(dataPage).build();
+
+        try {
+            if (isHot!=null && isHot) {
+                DataPage dataPage = graphicInfoService.findHotGraphicInfoByDownloadNum(imsi, offset, limit);
+                return Response.ok(dataPage).build();
+            }
+            if(recommend !=null && recommend){
+                DataPage dataPage = graphicInfoService.findRecommendGraphicAndPagination(imsi, offset, limit);
+                return Response.ok(dataPage).build();
+            }
+            if(categoryId != null){
+                DataPage dataPage = graphicInfoService.findGraphicInfoDataPageByCategoryId(imsi, categoryId, offset, limit);
+                return Response.ok(dataPage).build();
+            }
+        } catch (ExecutionException e) {
+            LOGGER.error("GraphicInfos cache error",e);
+            OperationDescription operationDescription = new OperationDescription();
+            operationDescription.setActionName("getGraphicInfosByCategoryAndPagination");
+            operationDescription.setErrorCode(500);
+            operationDescription.setStatusCode(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode());
+            operationDescription.setErrorMessage("服务器内部错误");
+            return Response.ok(operationDescription).build();
         }
         return Response.noContent().build();
     }

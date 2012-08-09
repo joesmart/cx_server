@@ -1,9 +1,8 @@
 package com.server.cx.webservice.rs.server;
 
+import com.cl.cx.platform.dto.ContactsDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
-import com.server.cx.model.Result;
-import com.cl.cx.platform.dto.ContactsDTO;
 import com.server.cx.service.cx.ContactsServcie;
 import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
@@ -11,8 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.*;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -42,36 +45,6 @@ public class ContactsResources {
                 HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "uploadContacts", e.getMessage());
         } finally {
             return Response.ok(operationDescription).build();
-        }
-    }
-
-    @GET
-    @Path("query")
-    public Response getCatactUserCXInfos(@QueryParam("imsi") String imsi) {
-        Result xmlResult = new Result();
-        try {
-            ValidationUtil.checkParametersNotNull(imsi);
-            String xml = contactsServcie.retrieveContactUserCXInfo(imsi);
-            return Response.ok(xml).build();
-        } catch (Exception e) {
-            xmlResult.setFlag(Constants.ERROR_FLAG);
-            xmlResult.setContent(e.getMessage());
-            return Response.ok(xmlResult).build();
-        }
-    }
-
-    @POST
-    @Path("copy")
-    public Response copy(@QueryParam("imsi") String imsi, @QueryParam("cxInfoId") String cxInfoId) {
-        Result xmlResult = new Result();
-        try {
-            ValidationUtil.checkParametersNotNull(imsi);
-            String xml = contactsServcie.copyContactUserCXInfo(imsi, cxInfoId);
-            return Response.ok(xml).build();
-        } catch (Exception e) {
-            xmlResult.setFlag(Constants.ERROR_FLAG);
-            xmlResult.setContent(e.getMessage());
-            return Response.ok(xmlResult).build();
         }
     }
 }

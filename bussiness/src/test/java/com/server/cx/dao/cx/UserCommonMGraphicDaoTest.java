@@ -27,6 +27,7 @@ public class UserCommonMGraphicDaoTest extends SpringTransactionalTestCase {
     @Autowired
     private UserCommonMGraphicDao userCommonMGraphicDao;
 
+
     @Autowired
     private UserInfoDao userInfoDao;
 

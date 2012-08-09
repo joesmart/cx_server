@@ -2,14 +2,10 @@ package com.server.cx.servlet;
 
 import com.server.cx.constants.Constants;
 import com.server.cx.model.Result;
-import com.server.cx.exception.CXServerBusinessException;
-import com.server.cx.exception.SystemException;
-import com.server.cx.service.cx.UserCXInfoManagerService;
 import com.server.cx.util.StringUtil;
 import com.server.cx.xml.util.XMLUnmarshallUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
@@ -30,8 +26,6 @@ public class UserCXInfoAddServlet extends HttpServlet {
     private static final long serialVersionUID = -4302719561778080755L;
     private Logger logger = LoggerFactory.getLogger(UserCXInfoAddServlet.class);
 
-    @Autowired
-    private UserCXInfoManagerService userCXInfoManagerService;
     private XMLUnmarshallUtil xmlUnmarshallUtil;
 
     public void init(ServletConfig config) throws ServletException {
@@ -68,14 +62,7 @@ public class UserCXInfoAddServlet extends HttpServlet {
                 dealResult = StringUtil.generateXMLResultString(Constants.NULL_INPUT_FLAG, "无数据输入");
             } else {
                 String serverPath = req.getSession().getServletContext().getRealPath("/");
-                try {
-                    dealResult = userCXInfoManagerService.dealWithUserCXInfoAdding(xmlConvertResult);
-                } catch (SystemException e) {
-                    dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, e.getLocalMessage());
-                } catch (Exception e) {
-                    SystemException systemexception = new CXServerBusinessException(e, "系统内部错误");
-                    dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, systemexception.getLocalMessage());
-                }
+
             }
         }
 

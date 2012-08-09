@@ -105,16 +105,6 @@
     </servlet-mapping>
 
     <servlet>
-        <description>彩像信息浏览</description>
-        <servlet-name>DispatchServlet</servlet-name>
-        <servlet-class>com.server.cx.servlet.DispatchServiceServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DispatchServlet</servlet-name>
-        <url-pattern>/cx/1.0/*</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <description>彩像设定</description>
         <servlet-name>UserCXInfoAddServlet</servlet-name>
         <servlet-class>com.server.cx.servlet.UserCXInfoAddServlet</servlet-class>
