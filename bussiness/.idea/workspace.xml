@@ -4,37 +4,7 @@
     <option name="ANALYSIS_IN_BACKGROUND" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/UserStatusMGraphic.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/server/cx/dao/cx/UserFavoritesDaoTest.java" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\service\cx\UserCXInfoManagerService.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\service\cx\UserStatusManagerService.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\service\cx\impl\UserCXInfoManagerServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\service\cx\impl\UserStatusManagerServicesImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\webservice\rs\server\StatusUserCXInfoResources.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business.iml" afterPath="$PROJECT_DIR$/business.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cl/cx/platform/dto/DataItem.java" afterPath="$PROJECT_DIR$/src/main/java/com/cl/cx/platform/dto/DataItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/custom/UserFavoritesCustomDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/custom/UserFavoritesCustomDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/MGraphicDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/MGraphicDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/UserFavoritesDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/impl/UserFavoritesDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserStatusMGraphic.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserStatusMGraphic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/ContactsServcie.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/ContactsServcie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/GraphicInfoService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/GraphicInfoService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/GraphicInfoServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/GraphicInfoServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/servlet/UserCXInfoAddServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/servlet/UserCXInfoAddServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/util/ServiceChooseUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/util/ServiceChooseUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/ContactsResources.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/ContactsResources.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/GraphicInfoResources.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/GraphicInfoResources.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/sql/schema.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/schema.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/server/cx/dao/cx/UserCommonMGraphicDaoTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/server/cx/dao/cx/UserCommonMGraphicDaoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/server/cx/service/cx/GraphicInfoServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/server/cx/service/cx/GraphicInfoServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/server/cx/temp/GuavaTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/server/cx/temp/GuavaTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/data/sample-data.xml" afterPath="$PROJECT_DIR$/src/test/resources/data/sample-data.xml" />
-    </list>
+    <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="" />
     <ignored path="bussiness.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.ids" />
@@ -262,7 +232,7 @@
       <file leaf-file-name="UserStatusMGraphic.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/UserStatusMGraphic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="34" selection-start="525" selection-end="543" vertical-scroll-proportion="0.4665757">
+            <state line="18" column="34" selection-start="525" selection-end="543" vertical-scroll-proportion="1.0088495">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1875,7 +1845,11 @@
       <created>1344491214784</created>
       <updated>1344491214784</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="enable GraphicInfos contain the Collected sign.&#10;Start the UserStatusMGraphic setting develop;">
+      <created>1344502607909</created>
+      <updated>1344502607909</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <option name="createChangelist" value="false" />
     <servers />
   </component>
@@ -1915,7 +1889,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5039578" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JavaRebel" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32718122" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31492108" sideWeight="0.48021108" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31492108" sideWeight="0.48021108" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7994723" sideWeight="0.47988507" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22126436" sideWeight="0.19865319" order="4" side_tool="false" content_ui="tabs" />
@@ -1980,7 +1954,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove useless java class" />
+    <option name="LAST_COMMIT_MESSAGE" value="enable GraphicInfos contain the Collected sign.&#10;Start the UserStatusMGraphic setting develop;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -2015,6 +1989,7 @@
     <MESSAGE value="calling interface support done" />
     <MESSAGE value="modify the com.server.cx.dto package name to com.server.cx.model" />
     <MESSAGE value="remove useless java class" />
+    <MESSAGE value="enable GraphicInfos contain the Collected sign.&#10;Start the UserStatusMGraphic setting develop;" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -2167,7 +2142,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/dao/cx/UserStatusMGraphic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="34" selection-start="525" selection-end="543" vertical-scroll-proportion="0.4665757">
+        <state line="18" column="34" selection-start="525" selection-end="543" vertical-scroll-proportion="1.0088495">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
