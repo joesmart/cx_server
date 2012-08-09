@@ -1,7 +1,7 @@
 package com.server.cx.service.cx;
 
-import com.server.cx.dto.Result;
-import com.server.cx.dto.UserCXInfo;
+import com.server.cx.model.Result;
+import com.server.cx.model.UserCXInfo;
 import com.server.cx.exception.SystemException;
 
 import java.util.List;

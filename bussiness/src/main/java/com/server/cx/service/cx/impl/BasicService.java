@@ -1,6 +1,6 @@
 package com.server.cx.service.cx.impl;
 
-import com.server.cx.dto.ActionBuilder;
+import com.server.cx.model.ActionBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;

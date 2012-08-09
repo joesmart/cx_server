@@ -1,4 +1,4 @@
-package com.server.cx.dto.adapters;
+package com.server.cx.model.adapters;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

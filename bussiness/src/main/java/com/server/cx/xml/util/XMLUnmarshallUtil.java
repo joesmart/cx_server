@@ -1,6 +1,6 @@
 package com.server.cx.xml.util;
 
-import com.server.cx.dto.Result;
+import com.server.cx.model.Result;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;

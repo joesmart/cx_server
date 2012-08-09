@@ -1,6 +1,6 @@
 package com.server.cx.webservice.rs.server;
 
-import com.server.cx.dto.ActionBuilder;
+import com.server.cx.model.ActionBuilder;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.service.cx.impl.UserCheckService;
 import org.slf4j.Logger;

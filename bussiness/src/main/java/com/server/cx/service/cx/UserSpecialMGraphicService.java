@@ -1,7 +1,7 @@
 package com.server.cx.service.cx;
 
 import com.cl.cx.platform.dto.MGraphicDTO;
-import com.server.cx.dto.OperationResult;
+import com.server.cx.model.OperationResult;
 
 /**
  * User: yanjianzou

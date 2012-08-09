@@ -3,7 +3,7 @@ package com.server.cx.service.cx.impl;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.server.cx.dao.cx.UserSpecialMGraphicDao;
 import com.server.cx.dao.cx.spec.UserSpecialMGraphicSpecifications;
-import com.server.cx.dto.OperationResult;
+import com.server.cx.model.OperationResult;
 import com.server.cx.entity.cx.UserSpecialMGraphic;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.service.cx.UserSpecialMGraphicService;

@@ -10,7 +10,7 @@ import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.UserSpecialMGraphicDao;
 import com.server.cx.dao.cx.spec.MGraphicSpecifications;
 import com.server.cx.dao.cx.spec.UserSpecialMGraphicSpecifications;
-import com.server.cx.dto.OperationResult;
+import com.server.cx.model.OperationResult;
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserSpecialMGraphic;

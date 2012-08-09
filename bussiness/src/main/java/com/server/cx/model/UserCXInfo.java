@@ -1,4 +1,4 @@
-package com.server.cx.dto;
+package com.server.cx.model;
 
 import javax.xml.bind.annotation.XmlType;
 

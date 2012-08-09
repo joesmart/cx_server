@@ -2,7 +2,7 @@ package com.server.cx.service.cx.impl;
 
 import com.google.common.base.Preconditions;
 import com.server.cx.dao.cx.SmsMessageDao;
-import com.server.cx.dto.OperationResult;
+import com.server.cx.model.OperationResult;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;

@@ -5,7 +5,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.HistoryMGraphicDao;
 import com.server.cx.dao.cx.spec.HistoryMGraphicSpecifications;
-import com.server.cx.dto.OperationResult;
+import com.server.cx.model.OperationResult;
 import com.server.cx.entity.cx.HistoryMGraphic;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.service.cx.HistoryMGraphicService;

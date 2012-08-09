@@ -2,7 +2,7 @@ package com.server.cx.webservice.rs.server;
 
 import com.cl.cx.platform.dto.OperationDescription;
 import com.cl.cx.platform.dto.SMSDTO;
-import com.server.cx.dto.OperationResult;
+import com.server.cx.model.OperationResult;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.SmsMessageService;
 import org.slf4j.Logger;

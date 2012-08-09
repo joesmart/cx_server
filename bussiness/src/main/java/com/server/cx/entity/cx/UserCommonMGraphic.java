@@ -1,7 +1,7 @@
 package com.server.cx.entity.cx;
 
 
-import com.server.cx.dto.UserCXInfo;
+import com.server.cx.model.UserCXInfo;
 import lombok.ToString;
 
 import javax.persistence.DiscriminatorValue;

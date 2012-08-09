@@ -1,4 +1,4 @@
-package com.server.cx.dto;
+package com.server.cx.model;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import com.cl.cx.platform.dto.ContactInfoDTO;
-import com.server.cx.dto.adapters.XmlGenericMapAdapter;
+import com.server.cx.model.adapters.XmlGenericMapAdapter;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement
