@@ -24,8 +24,8 @@ import com.server.cx.util.business.ValidationUtil;
  */
 @Component
 @Path("/{imsi}/register")
-public class RegisterResouce {
-    private static final Logger LOGGER = LoggerFactory.getLogger(VersionInfoResource.class);
+public class RegisterResouces {
+    private static final Logger LOGGER = LoggerFactory.getLogger(VersionInfoResources.class);
     
     @Autowired
     private RegisterService registerService;

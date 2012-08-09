@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 
 @Component
 @Path("/status")
-public class StatusUserCXInfoResource {
+public class StatusUserCXInfoResources {
 
     @Autowired
     private UserCXInfoManagerService userCXInfoManagerService;

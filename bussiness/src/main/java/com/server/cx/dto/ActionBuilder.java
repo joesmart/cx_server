@@ -71,62 +71,62 @@ public class ActionBuilder {
     }
     
     public ActionBuilder recommendUrl(String url) {
-        action.setRecommendUrl(url);
+        action.setDisableURL(url);
         return this;
     }
     
     public ActionBuilder hotUrl(String url) {
-        action.setHotUrl(url);
+        action.setHotURL(url);
         return this;
     }
     
     public ActionBuilder categoryUrl(String url) {
-        action.setCategoryUrl(url);
+        action.setCategoryURL(url);
         return this;
     }
     
     public ActionBuilder mGraphicsUrl(String url) {
-        action.setMGraphicsUrl(url);
+        action.setMGraphicsURL(url);
         return this;
     }
     
     public ActionBuilder statusUrl(String url) {
-        action.setStatusUrl(url);
+        action.setStatusURL(url);
         return this;
     }
     
     public ActionBuilder holidaiesUrl(String url) {
-        action.setHolidaysUrl(url);
+        action.setHolidaysURL(url);
         return this;
     }
     
     public ActionBuilder customMGraphicsUrl(String url) {
-        action.setCustomMGraphicsUrl(url);
+        action.setCustomMGraphicsURL(url);
         return this;
     }
     
     public ActionBuilder versionUrl(String url) {
-        action.setVersionUrl(url);
+        action.setVersionURL(url);
         return this;
     }
     
     public ActionBuilder suggestionUrl(String url) {
-        action.setSuggestionUrl(url);
+        action.setSuggestionURL(url);
         return this;
     }
     
     public ActionBuilder callUrl(String url) {
-        action.setCallUrl(url);
+        action.setCallURL(url);
         return this;
     }
     
     public ActionBuilder collectionsUrl(String url) {
-        action.setCollectionsUrl(url);
+        action.setCollectionsURL(url);
         return this;
     }
     
     public ActionBuilder registerUrl(String url) {
-        action.setRegisterUrl(url);
+        action.setRegisterURL(url);
         return this;
     }
 
@@ -174,7 +174,7 @@ public class ActionBuilder {
         .customMGraphicsUrl("")
         .versionUrl(baseHostAddress + restURL + "upgrade")
         .suggestionUrl(baseHostAddress + restURL + "suggestion/" + imsi)
-        .callUrl("")
+        .callUrl(baseHostAddress + restURL+ imsi+"/callings")
         .collectionsUrl(baseHostAddress + restURL + imsi + "/collections")
         .registerUrl("").build();
     }
@@ -187,9 +187,9 @@ public class ActionBuilder {
     }
     
     private void hiddenCustomActionsForNoImsi(Action action) {
-        action.setCollectionsUrl(null);
-        action.setCallUrl(null);
-        action.setMGraphicsUrl(null);
+        action.setCollectionsURL(null);
+        action.setCallURL(null);
+        action.setMGraphicsURL(null);
     }
 
 

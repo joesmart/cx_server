@@ -23,7 +23,7 @@ import javax.ws.rs.core.Response;
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class HistoryMGraphicResources {
-    public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResource.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResources.class);
 
     @Autowired
     private HistoryMGraphicService historyMGraphicService;

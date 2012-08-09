@@ -21,7 +21,7 @@ public class ActionResourceTest extends BasicJerseyTest {
         assertThat(response.getStatus()).isEqualTo(200);
         Action action = response.getEntity(Action.class);
         assertThat(action.getVersionUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
-        assertThat(action.getRecommendUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "none" + "/graphicInfos?recommend=true");
+        assertThat(action.getRecommendURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "none" + "/graphicInfos?recommend=true");
     }
     
     @Test
@@ -32,6 +32,6 @@ public class ActionResourceTest extends BasicJerseyTest {
         assertThat(response.getStatus()).isEqualTo(200);
         Action action = response.getEntity(Action.class);
         assertThat(action.getVersionUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
-        assertThat(action.getRecommendUrl()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "123456" + "/graphicInfos?recommend=true");
+        assertThat(action.getRecommendURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "123456" + "/graphicInfos?recommend=true");
     }
 }

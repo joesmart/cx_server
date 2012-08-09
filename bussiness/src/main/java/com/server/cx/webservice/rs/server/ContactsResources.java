@@ -20,8 +20,8 @@ import javax.ws.rs.core.Response;
 @Path("/{imsi}/contacts")
 //@Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-public class ContactsResource {
-    private final static Logger LOGGER = LoggerFactory.getLogger(ContactsResource.class);
+public class ContactsResources {
+    private final static Logger LOGGER = LoggerFactory.getLogger(ContactsResources.class);
 
     @Autowired
     private ContactsServcie contactsServcie;
