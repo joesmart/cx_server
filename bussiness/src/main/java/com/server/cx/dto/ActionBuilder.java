@@ -71,7 +71,7 @@ public class ActionBuilder {
     }
     
     public ActionBuilder recommendUrl(String url) {
-        action.setDisableURL(url);
+        action.setRecommendURL(url);
         return this;
     }
     
@@ -134,7 +134,11 @@ public class ActionBuilder {
         action.setEditURL(url);
         return this;
     }
-    
+
+    public ActionBuilder inviteFriendsURL(String url){
+        action.setInviteFriendsURL(url);
+        return this;
+    }
     
 
     public Action build(){
@@ -171,12 +175,13 @@ public class ActionBuilder {
         .mGraphicsUrl(baseHostAddress + restURL + imsi + "/mGraphics")
         .statusUrl(baseHostAddress + restURL + imsi + "/statusTypes")
         .holidaiesUrl(baseHostAddress + restURL + imsi + "/holidayTypes")
-        .customMGraphicsUrl("")
+        .customMGraphicsUrl(baseHostAddress + restURL + imsi + "/customMGraphics")
         .versionUrl(baseHostAddress + restURL + "upgrade")
-        .suggestionUrl(baseHostAddress + restURL + "suggestion/" + imsi)
+        .suggestionUrl(baseHostAddress + restURL + imsi + "/suggestion" )
         .callUrl(baseHostAddress + restURL+ imsi+"/callings")
         .collectionsUrl(baseHostAddress + restURL + imsi + "/collections")
-        .registerUrl("").build();
+        .inviteFriendsURL(baseHostAddress + restURL + imsi + "/sms")
+        .registerUrl(baseHostAddress + restURL + "register").build();
     }
     
     public Action buildUrlActions() {
@@ -190,6 +195,9 @@ public class ActionBuilder {
         action.setCollectionsURL(null);
         action.setCallURL(null);
         action.setMGraphicsURL(null);
+        action.setSuggestionURL(null);
+        action.setCustomMGraphicsURL(null);
+        action.setInviteFriendsURL(null);
     }
 
 

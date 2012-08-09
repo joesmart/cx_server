@@ -35,4 +35,5 @@ public class Action {
     private String collectionsURL;
     private String registerURL;
     private String purchaseURL;
+    private String inviteFriendsURL;
 }

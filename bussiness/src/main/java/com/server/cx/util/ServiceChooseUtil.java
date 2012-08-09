@@ -58,7 +58,7 @@ public class ServiceChooseUtil {
                 // 邀请好友
                 String imsi = mapParams.get(Constants.IMSI_STR);
                 String phoneNos = mapParams.get(Constants.PHONE_NO_STR);
-                result = smsMessageService.inviteFriends(imsi, phoneNos);
+//                result = smsMessageService.inviteFriends(imsi, phoneNos, null);
             } else if (requestUrl.equals(Constants.ATTENTION_URL)) {
 
             } else if (requestUrl.equals(Constants.CX_CLIENT_ABOUT_URL)) {

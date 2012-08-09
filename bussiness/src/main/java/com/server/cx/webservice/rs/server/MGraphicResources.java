@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response;
 @Path("/{imsi}/mGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-public class MGraphicResources {
+public class MGraphicResources extends OperationResources {
     public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResources.class);
 
     @Autowired
@@ -34,9 +34,7 @@ public class MGraphicResources {
     @Autowired
     private UserSpecialMGraphicService userSpecialMGraphicService;
 
-    private OperationDescription operationDescription;
-    private String actionName;
-    private String dealResult;
+
 
     @POST
     public Response create(@PathParam("imsi") String imsi, MGraphicDTO mGraphicDTO) {
@@ -57,19 +55,6 @@ public class MGraphicResources {
         }
     }
 
-    private void updateOperationDescription(OperationResult operationResult) {
-        actionName = operationResult.getName();
-        dealResult = operationResult.getDealResult();
-        operationDescription.setActionName(actionName);
-        operationDescription.setDealResult(dealResult);
-    }
-
-    private void errorMessage(Exception ex) {
-        operationDescription.setActionName(actionName);
-        operationDescription.setErrorMessage(ex.getMessage());
-        operationDescription.setErrorCode(401);
-        operationDescription.setStatusCode(Response.Status.CONFLICT.getStatusCode());
-    }
 
     @PUT
     @Path("/{id}")

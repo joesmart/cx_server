@@ -1,9 +1,12 @@
 package com.server.cx.service.cx;
 
+import com.server.cx.dto.OperationResult;
 import com.server.cx.exception.SystemException;
+
+import java.util.List;
 
 public interface SmsMessageService {
 
-    public String inviteFriends(String imsi, String mobiles) throws SystemException;
+    public OperationResult inviteFriends(String imsi, List<String> mobiles, String smsContent) throws SystemException;
 
 }

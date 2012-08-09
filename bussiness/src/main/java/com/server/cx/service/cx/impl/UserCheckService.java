@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * User: yanjianzou
  * Date: 12-8-3
@@ -27,5 +29,9 @@ public class UserCheckService {
         if(userInfo == null){
             throw new CXServerBusinessException("用户不存在");
         }
+    }
+
+    public List<String> getAlreadyRegisteredMobiles(List<String> mobiles){
+        return  userInfoDao.getHasRegisteredPhoneNos(mobiles);
     }
 }

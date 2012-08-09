@@ -1,18 +1,5 @@
 package com.server.cx.webservice.rs.server;
 
-import java.util.List;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.cl.cx.platform.dto.SuggestionDTO;
 import com.server.cx.constants.Constants;
@@ -20,9 +7,19 @@ import com.server.cx.entity.cx.Suggestion;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.SuggestionService;
 import com.server.cx.util.ObjectFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Component
-@Path("/suggestion")
+@Path("/{imsi}/suggestion")
 @Produces({MediaType.APPLICATION_JSON})
 public class SuggestionResources {
     private final static Logger LOGGER = LoggerFactory.getLogger(SuggestionResources.class);
@@ -30,7 +27,6 @@ public class SuggestionResources {
     private SuggestionService suggestionService;
 
     @POST
-    @Path("{imsi}")
     public Response addSuggestion(@PathParam("imsi") String imsi, String content) {
         LOGGER.info("Into addSuggestion content = " + content);
         OperationDescription operationDescription = new OperationDescription();

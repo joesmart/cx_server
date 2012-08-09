@@ -4,6 +4,7 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableStringEntity;
+import lombok.ToString;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "userinfo", uniqueConstraints = @UniqueConstraint(columnNames = {"phoneNo"}))
+@ToString(callSuper = true)
 public class UserInfo extends AuditableStringEntity {
 
     @Column(unique = true, nullable = false)
