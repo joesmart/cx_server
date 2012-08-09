@@ -24,8 +24,8 @@ import javax.ws.rs.core.Response;
 @Path("/{imsi}/myCollections")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-public class MyCollectionsResource {
-    public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResource.class);
+public class MyCollectionsResources {
+    public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResources.class);
 
     @Autowired
     private UserFavoritesService userFavoritesService;

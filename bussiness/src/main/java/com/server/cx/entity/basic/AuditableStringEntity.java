@@ -9,7 +9,8 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 
 @MappedSuperclass
-@ToString(callSuper = true) @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true,exclude = {"createdBy","updatedBy","createdOn","updatedOn"})
+@EqualsAndHashCode(callSuper = true)
 public class AuditableStringEntity extends StringTypeBaseEntity implements Auditable {
     private String createdBy;
     private String updatedBy;

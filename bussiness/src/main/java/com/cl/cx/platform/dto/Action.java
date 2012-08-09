@@ -19,18 +19,21 @@ public class Action {
     private String removeURL;
     private String disableURL;
     private String editURL;
-    
-    private String recommendUrl;
-    private String hotUrl;
-    private String categoryUrl;
-    private String mGraphicsUrl;
-    private String statusUrl;
-    private String holidaysUrl;
-    private String customMGraphicsUrl;
-    private String versionUrl;
-    private String suggestionUrl;
-    private String callUrl;
-    private String collectionsUrl;
-    private String registerUrl;
+
+
+    //TODO 接口下发列表 需要新的DTO 对象
+    private String recommendURL;
+    private String hotURL;
+    private String categoryURL;
+    private String mGraphicsURL;
+    private String statusURL;
+    private String holidaysURL;
+    private String customMGraphicsURL;
+    private String versionURL;
+    private String suggestionURL;
+    private String callURL;
+    private String collectionsURL;
+    private String registerURL;
     private String purchaseURL;
+    private String inviteFriendsURL;
 }

@@ -5,7 +5,7 @@
 	<groupId>org.springside</groupId>
 	<artifactId>springside-parent</artifactId>
 	<version>4.0.0.RC4-SNAPSHOT</version>
-	<name>Springside :: Parent</name>
+	<name>business :: Parent</name>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -25,7 +25,7 @@
 		<jackson.version>2.0.4</jackson.version>
 		<spymemcached.version>2.8.1</spymemcached.version>
 		<jolokia.version>1.0.4</jolokia.version>
-		<guava.version>13.0-rc1</guava.version>
+		<guava.version>13.0-rc2</guava.version>
 		<commons-lang3.version>3.1</commons-lang3.version>
 		<commons-io.version>2.4</commons-io.version>
 		<joda-time.version>2.1</joda-time.version>
@@ -623,7 +623,7 @@
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>13.0-rc1</version>
+				<version>${guava.version}</version>
 			</dependency>
 
 			<!-- joda -->

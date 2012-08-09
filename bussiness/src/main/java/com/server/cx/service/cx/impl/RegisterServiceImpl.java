@@ -3,16 +3,17 @@
  */
 package com.server.cx.service.cx.impl;
 
-import java.util.UUID;
-import javax.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.service.cx.RegisterService;
 import com.server.cx.util.ObjectFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 /**
  * implement of RegisterService interface. Briefly describe what this class does.
@@ -35,10 +36,10 @@ public class RegisterServiceImpl implements RegisterService {
             userinfo.setPhoneNo(phoneNo);
             userInfoDao.save(userinfo);
             operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,
-                "register", "用户注册成功");
+                "register", "success");
         } else {
             operationDescription = ObjectFactory.buildErrorOperationDescription(HttpServletResponse.SC_CONFLICT,
-                "register", "用户已经注册");
+                "register", "registered");
         }
         return operationDescription;
     }

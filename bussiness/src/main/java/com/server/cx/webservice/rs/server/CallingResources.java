@@ -31,7 +31,7 @@ public class CallingResources {
     private CallingService callingService;
 
     @GET
-    public Response get(@PathParam("imsi") String imsi,@QueryParam("callPhoneNo") String callPhoneNo){
+    public Response get(@PathParam("imsi") String imsi,@QueryParam("phoneNo") String callPhoneNo){
         DataItem dataItem = callingService.getCallingMGraphic(Optional.of(imsi), Optional.of(callPhoneNo));
         return  Response.ok(dataItem).build();
     }
