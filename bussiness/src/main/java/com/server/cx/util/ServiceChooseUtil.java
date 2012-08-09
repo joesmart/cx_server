@@ -145,10 +145,10 @@ public class ServiceChooseUtil {
     private String retrieveUserCXInfos(HttpServletResponse resp, Map<String, String> mapParams, String result) {
         // 返回 系统 URL
         String imsi = mapParams.get(Constants.IMSI_STR);
-        List<com.server.cx.dto.UserCXInfo> resultList = Collections.emptyList();
+        List<com.server.cx.model.UserCXInfo> resultList = Collections.emptyList();
         if (imsi != null && !"".equals(imsi)) {
             resultList = userCXInfoManagerService.retrieveUserCXInfos(mapParams);
-            com.server.cx.dto.Result xmlResult = new com.server.cx.dto.Result();
+            com.server.cx.model.Result xmlResult = new com.server.cx.model.Result();
 
             if (resultList != null && resultList.size() > 0) {
                 xmlResult.setFlag(Constants.SUCCESS_FLAG);

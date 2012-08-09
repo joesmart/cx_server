@@ -1,6 +1,6 @@
 package com.server.cx.service.cx;
 
-import com.server.cx.dto.OperationResult;
+import com.server.cx.model.OperationResult;
 import com.server.cx.exception.SystemException;
 
 import java.util.List;

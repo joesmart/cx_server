@@ -1,4 +1,4 @@
-package com.server.cx.dto;
+package com.server.cx.model;
 
 import com.cl.cx.platform.dto.Action;
 import org.springframework.beans.factory.annotation.Autowired;

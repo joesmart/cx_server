@@ -1,7 +1,7 @@
 package com.server.cx.servlet;
 
 import com.server.cx.constants.Constants;
-import com.server.cx.dto.Result;
+import com.server.cx.model.Result;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.UserCXInfoManagerService;

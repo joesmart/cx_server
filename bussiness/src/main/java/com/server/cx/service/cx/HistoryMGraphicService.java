@@ -1,7 +1,7 @@
 package com.server.cx.service.cx;
 
 import com.cl.cx.platform.dto.DataItem;
-import com.server.cx.dto.OperationResult;
+import com.server.cx.model.OperationResult;
 import com.server.cx.entity.cx.UserInfo;
 
 import java.util.List;

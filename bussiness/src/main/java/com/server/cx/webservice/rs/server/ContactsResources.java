@@ -2,7 +2,7 @@ package com.server.cx.webservice.rs.server;
 
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
-import com.server.cx.dto.Result;
+import com.server.cx.model.Result;
 import com.cl.cx.platform.dto.ContactsDTO;
 import com.server.cx.service.cx.ContactsServcie;
 import com.server.cx.util.ObjectFactory;

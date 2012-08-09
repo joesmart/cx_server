@@ -1,4 +1,4 @@
-package com.server.cx.dto.adapters;
+package com.server.cx.model.adapters;
 
 import org.w3c.dom.*;
 

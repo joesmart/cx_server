@@ -1,7 +1,7 @@
 package com.server.cx.webservice.rs.server;
 
 import com.cl.cx.platform.dto.OperationDescription;
-import com.server.cx.dto.OperationResult;
+import com.server.cx.model.OperationResult;
 
 import javax.ws.rs.core.Response;
 

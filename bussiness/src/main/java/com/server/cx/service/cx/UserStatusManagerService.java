@@ -1,6 +1,6 @@
 package com.server.cx.service.cx;
 
-import com.server.cx.dto.UserCXInfo;
+import com.server.cx.model.UserCXInfo;
 import com.server.cx.exception.SystemException;
 
 public interface UserStatusManagerService {

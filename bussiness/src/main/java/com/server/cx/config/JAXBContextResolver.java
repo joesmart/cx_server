@@ -1,10 +1,10 @@
 package com.server.cx.config;
 
-import com.server.cx.dto.CXInfo;
-import com.server.cx.dto.Result;
-import com.server.cx.dto.UserCXInfo;
-import com.server.cx.dto.adapters.MapEntryType;
-import com.server.cx.dto.adapters.MapType;
+import com.server.cx.model.CXInfo;
+import com.server.cx.model.Result;
+import com.server.cx.model.UserCXInfo;
+import com.server.cx.model.adapters.MapEntryType;
+import com.server.cx.model.adapters.MapType;
 import com.sun.jersey.api.json.JSONConfiguration;
 import com.sun.jersey.api.json.JSONJAXBContext;
 
