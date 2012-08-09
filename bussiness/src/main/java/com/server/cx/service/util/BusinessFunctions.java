@@ -4,13 +4,14 @@ import com.cl.cx.platform.dto.Action;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
+import com.server.cx.entity.cx.*;
 import com.server.cx.model.CXInfo;
 import com.server.cx.model.UserCXInfo;
-import com.server.cx.entity.cx.*;
 import com.server.cx.service.cx.impl.BasicService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 /**
  * User: yanjianzou Date: 12-8-2 Time: 上午11:30 FileName:BusinessFunctions
@@ -48,7 +49,7 @@ public class BusinessFunctions extends BasicService {
                 item.setLevel(graphicInfo.getLevel());
                 if (graphicInfo.getGraphicResources().size() > 0) {
                     item.setThumbnailPath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId() + "&"
-                        + thumbnailSize);
+                            + thumbnailSize);
                     item.setSourceImagePath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId());
                 }
                 item.setHref(baseHostAddress + restURL + imsi + "/myCollections/" + input.getId());
@@ -78,14 +79,16 @@ public class BusinessFunctions extends BasicService {
                 categoryItem.setDownloadNumber(String.valueOf(input.getDownloadNum()));
                 categoryItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
                 categoryItem.setHref(baseHostAddress + restURL + imsi + "/categories/" + input.getId());
-                Action action = actionBuilder.buildCategoriesAction(imsi, input.getId());
-                categoryItem.setAction(action);
+                if(!"none".equals(imsi)){
+                    Action action = actionBuilder.buildCategoriesAction(imsi, input.getId());
+                    categoryItem.setAction(action);
+                }
                 return categoryItem;
             }
         };
     }
 
-    public Function<GraphicInfo, DataItem> graphicInfoTransformToGraphicInfoItem(final String imsi) {
+    public Function<GraphicInfo, DataItem> graphicInfoTransformToGraphicInfoItem(final String imsi, final List<String> graphicIds) {
         return new Function<GraphicInfo, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicInfo input) {
@@ -103,13 +106,22 @@ public class BusinessFunctions extends BasicService {
                 graphicInfoItem.setLevel(input.getLevel());
                 if (input.getGraphicResources().size() > 0) {
                     graphicInfoItem.setThumbnailPath(imageShowURL + input.getGraphicResources().get(0).getResourceId()
-                        + "&" + thumbnailSize);
+                            + "&" + thumbnailSize);
                     graphicInfoItem.setSourceImagePath(imageShowURL
-                        + input.getGraphicResources().get(0).getResourceId());
+                            + input.getGraphicResources().get(0).getResourceId());
                 }
                 graphicInfoItem.setHref(baseHostAddress + restURL + imsi + "/graphicInfos/" + input.getId());
-                Action action = actionBuilder.buildGraphicItemAction(imsi);
-                graphicInfoItem.setAction(action);
+                if (!"none".equals(imsi)) {
+                    Action action = actionBuilder.buildGraphicItemAction(imsi);
+                    graphicInfoItem.setAction(action);
+                }
+                if(graphicIds != null){
+                    if(graphicIds.contains(input.getId())){
+                        graphicInfoItem.setCollected(true);
+                    }else{
+                        graphicInfoItem.setCollected(false);
+                    }
+                }
                 return graphicInfoItem;
             }
         };
@@ -120,7 +132,7 @@ public class BusinessFunctions extends BasicService {
             @Override
             public UserCXInfo apply(CXInfo cxInfo) {
                 if (userCXInfo != null && userCXInfo.getCxInfo() != null
-                    && userCXInfo.getCxInfo().getId().equals(cxInfo.getId())) {
+                        && userCXInfo.getCxInfo().getId().equals(cxInfo.getId())) {
                     userCXInfo.setImsi(imsi);
                     return userCXInfo;
                 }
@@ -164,24 +176,24 @@ public class BusinessFunctions extends BasicService {
             }
         };
     }
-    
+
     public Function<StatusType, DataItem> statusTypeTransformToDataItem() {
         return new Function<StatusType, DataItem>() {
-        	@Override
-        	public DataItem apply(@Nullable StatusType input) {
-              DataItem dataItem = new DataItem();
-              dataItem.setName(input.getName());
-              dataItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
-              //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该状态包, 暂时全部返回false
-              dataItem.setHasUsed(false);
-              return dataItem;
-        	}
+            @Override
+            public DataItem apply(@Nullable StatusType input) {
+                DataItem dataItem = new DataItem();
+                dataItem.setName(input.getName());
+                dataItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
+                //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该状态包, 暂时全部返回false
+                dataItem.setHasUsed(false);
+                return dataItem;
+            }
         };
     }
 
 
-    public Function<MGraphic, DataItem> mGraphicTransformToDataItem(final String imsi){
-       return new Function<MGraphic, DataItem>() {
+    public Function<MGraphic, DataItem> mGraphicTransformToDataItem(final String imsi) {
+        return new Function<MGraphic, DataItem>() {
             @Override
             public DataItem apply(@Nullable MGraphic input) {
                 DataItem dataItem = new DataItem();
@@ -201,7 +213,7 @@ public class BusinessFunctions extends BasicService {
                     dataItem.setSourceImagePath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId());
                 }
                 dataItem.setInUsing(true);
-                dataItem.setAction(actionBuilder.buildMGraphicActions(imsi,input.getId()));
+                dataItem.setAction(actionBuilder.buildMGraphicActions(imsi, input.getId()));
                 return dataItem;
             }
         };
@@ -219,7 +231,7 @@ public class BusinessFunctions extends BasicService {
                 dataItem.setLevel(input.getGraphicInfo().getLevel());
                 dataItem.setModeType(input.getModeType());
                 dataItem.setInUsing(false);
-                dataItem.setAction(actionBuilder.buildHistoryMGraphicActions(imsi,input.getId()));
+                dataItem.setAction(actionBuilder.buildHistoryMGraphicActions(imsi, input.getId()));
                 return dataItem;
             }
         };

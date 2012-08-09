@@ -15,9 +15,7 @@ import java.util.List;
  * Time: 下午3:04
  * FileName:MGraphicDaoImpl
  */
-public class MGraphicDaoImpl implements MGraphicCustomDao {
-    @PersistenceContext
-    private EntityManager em;
+public class MGraphicDaoImpl extends BasicDao implements MGraphicCustomDao {
 
     @Override
     public List<MGraphic> queryUserMGraphics(UserInfo userInfo, Integer maxPriority, String callPhoneNo) {

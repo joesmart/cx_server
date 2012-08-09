@@ -1,11 +1,5 @@
 package com.server.cx.service.cx.impl;
 
-import java.util.List;
-import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
@@ -16,19 +10,25 @@ import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.ContactsDao;
 import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.UserInfoDao;
-import com.server.cx.model.CXInfo;
-import com.server.cx.model.Result;
-import com.server.cx.model.UserCXInfo;
 import com.server.cx.entity.cx.Contacts;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
+import com.server.cx.model.CXInfo;
+import com.server.cx.model.Result;
+import com.server.cx.model.UserCXInfo;
 import com.server.cx.service.cx.ContactsServcie;
-import com.server.cx.service.cx.UserCXInfoManagerService;
 import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.RestSender;
 import com.server.cx.util.StringUtil;
 import com.server.cx.util.business.ValidationUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Map;
 
 @Service("contactsServcie")
 @Transactional
@@ -39,8 +39,7 @@ public class ContactsServiceImpl implements ContactsServcie {
     private ContactsDao contactsDao;
     @Autowired
     private UserCommonMGraphicDao mgraphicDaoUserCommon;
-    @Autowired
-    private UserCXInfoManagerService userCXInfoManagerService;
+
     @Autowired
     @Qualifier("cxinfosQueryIdRestSender")
     private RestSender restSender;
@@ -155,16 +154,6 @@ public class ContactsServiceImpl implements ContactsServcie {
         //        dealResult = StringUtil.generateXMLResultFromObject(result);
         //        return dealResult;
         return null;
-    }
-
-    @Override
-    public String copyContactUserCXInfo(String imsi, String cxInfoId) throws SystemException {
-        List<String> resourceIdsList = Lists.newArrayList(cxInfoId);
-        Map<String, CXInfo> cxInfosMap = restSender.getCXInfoMap(resourceIdsList);
-        CXInfo cxinfo = cxInfosMap.get(cxInfoId);
-        Result result = makeupResultObject(imsi, cxinfo);
-        String xmlResult = userCXInfoManagerService.dealWithUserCXInfoAdding(result);
-        return xmlResult;
     }
 
     private Result makeupResultObject(String imsi, CXInfo cxinfo) {

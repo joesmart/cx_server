@@ -1,7 +1,9 @@
 package com.server.cx.temp;
 
 import com.google.common.base.Preconditions;
+import com.google.common.math.IntMath;
 import org.apache.commons.lang.math.RandomUtils;
+import org.fest.assertions.Assertions;
 import org.junit.Test;
 
 /**
@@ -40,5 +42,16 @@ public class GuavaTest {
         for (int i = 0; i < 100; i++) {
             System.out.println(RandomUtils.nextInt(0));
         }
+    }
+
+    @Test
+    public void test_page_divide(){
+        int x =IntMath.mod(20,3);
+        Assertions.assertThat(x).isEqualTo(2);
+        Assertions.assertThat(20/3).isEqualTo(6);
+
+        x =IntMath.mod(20,4);
+        Assertions.assertThat(x).isEqualTo(2);
+        Assertions.assertThat(20/3).isEqualTo(6);
     }
 }

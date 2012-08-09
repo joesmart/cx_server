@@ -12,6 +12,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 
+import java.util.concurrent.ExecutionException;
+
 /**
  * User: yanjianzou
  * Date: 12-7-31
@@ -39,7 +41,7 @@ public class GraphicInfoServiceTest extends SpringTransactionalTestCase {
     }
 
     @Test
-    public void should_get_graphicInfos_when_query_by_categoryId(){
+    public void should_get_graphicInfos_when_query_by_categoryId() throws ExecutionException {
         DataPage dataPage =  graphicInfoService.findGraphicInfoDataPageByCategoryId("abcedefg", 1L, 0, 2);
         Assertions.assertThat(dataPage).isNotNull();
         LOGGER.info(dataPage.toString());

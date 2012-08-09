@@ -20,15 +20,12 @@ public class ServiceChooseUtil {
     @Autowired
     private CallingService callingService;
     @Autowired
-    private UserCXInfoManagerService userCXInfoManagerService;
-    @Autowired
     private SmsMessageService smsMessageService;
     @Autowired
     private VersionInfoService versionInfoService;
     @Autowired
     private UserFavoritesService userFavoriteService;
-    @Autowired
-    private UserStatusManagerService userStatusManagerService;
+
 
     private XMLParser xmlParser = XMLParser.getInstance();
 
@@ -90,25 +87,6 @@ public class ServiceChooseUtil {
                 String requestPageSize = mapParams.get(Constants.REQUEST_PAGE_SIZE);
                 String typeId = mapParams.get(Constants.TYPE_ID);
 //                result = userFavoriteService.getAllUserFavorites(imsi, typeId, requestPage, requestPageSize);
-            } else if (requestUrl.equals(Constants.ADD_NEW_USERSTATUS_USERCXINFO)) {
-                // TODO 添加一个新的状态用户设定彩像.
-                String imsi = mapParams.get(Constants.IMSI_STR);
-                String type = mapParams.get(Constants.TYPE);
-                String signature = mapParams.get(Constants.SIGNATURE_STR);
-                String validTime = mapParams.get(Constants.VALIDTIME_STR);
-                result = userStatusManagerService.addNewUserStatus(imsi, type, signature, validTime);
-            } else if (requestUrl.equals(Constants.RETRIVE_USERSTATUS_USERCXINFO_BY_STATUS)) {
-                // TODO 返回状态列表对象
-                String imsi = mapParams.get(Constants.IMSI_STR);
-                result = userStatusManagerService.retriveAllStatusMGraphic(imsi);
-            } else if (requestUrl.equals(Constants.GET_CURRENT_USERSTATUS)) {
-                // 获取当前用户设定的彩像
-                String imsi = mapParams.get(Constants.IMSI_STR);
-                result = userStatusManagerService.getCurrentUserStatus(imsi);
-            } else if (requestUrl.equals(Constants.DELETE_CURRENTUSER_STATUS)) {
-                // 删除当前用户设定的彩像
-                String imsi = mapParams.get(Constants.IMSI_STR);
-                result = userStatusManagerService.deletCurrentUserStatus(imsi, null, null);
             } else {
                 result = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "服务器无内容返回");
                 resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
@@ -137,7 +115,7 @@ public class ServiceChooseUtil {
 
         ValidationUtil.checkParametersNotNull(userCXInfoId, imsi);
 
-        String result = userCXInfoManagerService.deleteMGraphicStoreMode(userCXInfoId, imsi);
+        String result = "";
 
         return result;
     }
@@ -147,7 +125,7 @@ public class ServiceChooseUtil {
         String imsi = mapParams.get(Constants.IMSI_STR);
         List<com.server.cx.model.UserCXInfo> resultList = Collections.emptyList();
         if (imsi != null && !"".equals(imsi)) {
-            resultList = userCXInfoManagerService.retrieveUserCXInfos(mapParams);
+            resultList = null;
             com.server.cx.model.Result xmlResult = new com.server.cx.model.Result();
 
             if (resultList != null && resultList.size() > 0) {

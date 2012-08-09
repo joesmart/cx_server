@@ -3,6 +3,7 @@ package com.server.cx.dao.cx.impl;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.custom.UserFavoritesCustomDao;
 import com.server.cx.entity.cx.UserFavorites;
+import com.server.cx.entity.cx.UserInfo;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
@@ -64,6 +65,15 @@ public class UserFavoritesDaoImpl extends BasicDao implements UserFavoritesCusto
         Long rowCount = (Long) criteria.uniqueResult();
 
         return rowCount.intValue();
+    }
+
+    @Override
+    public List<String> getGraphicIdListByUserInfo(UserInfo userInfo) {
+
+        String hql = "select a.graphicInfo.id from UserFavorites a where a.user = :userInfo ";
+        List<String> graphicInfoIdList = em.createQuery(hql,String.class).setParameter("userInfo",userInfo).getResultList();
+
+        return graphicInfoIdList;
     }
 
 }

@@ -32,5 +32,5 @@ public class DataItem extends BasicItem {
     private Integer modeType;
     private List<String> phoneNos;
     private String mGraphicId;
-    private boolean inUsing;
+    private Boolean inUsing;
 }
