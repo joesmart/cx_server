@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="">
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\servlet\DispatchServiceServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\thumbnail\GifThumbnailStrategy.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\thumbnail\ImageThumbnailStrategy.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\thumbnail\ThumbnailStrategy.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\util\FileUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\util\SessionFactoryUtil.java" afterPath="" />
-      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\java\com\server\cx\util\URLParser.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business.iml" afterPath="$PROJECT_DIR$/business.iml" />
     </list>
     <ignored path="bussiness.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1785,7 +1777,11 @@
       <created>1344490498820</created>
       <updated>1344490498820</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="remove useless java class">
+      <created>1344491214784</created>
+      <updated>1344491214784</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <option name="createChangelist" value="false" />
     <servers />
   </component>
@@ -1890,7 +1886,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify the com.server.cx.dto package name to com.server.cx.model" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove useless java class" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1924,6 +1920,7 @@
     <MESSAGE value="updated" />
     <MESSAGE value="calling interface support done" />
     <MESSAGE value="modify the com.server.cx.dto package name to com.server.cx.model" />
+    <MESSAGE value="remove useless java class" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
