@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.Collection;
 
 /**
  * User: yanjianzou
@@ -25,4 +26,15 @@ public class UserSpecialMGraphicSpecifications {
             }
         };
     }
+
+    public static Specification<UserSpecialMGraphic> queryByPhoneNos(){
+        return  new Specification<UserSpecialMGraphic>() {
+            @Override
+            public Predicate toPredicate(Root<UserSpecialMGraphic> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+//                return cb.isNotEmpty(root.<List<String>>get("phoneNos"));
+                return cb.isMember("1231231321", root.<Collection<String>>get("phoneNos"));
+            }
+        };
+    }
+
 }

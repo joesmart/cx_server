@@ -9,6 +9,7 @@
     <bean class="com.server.cx.webservice.rs.server.MGraphicResources" />
     <bean class="com.server.cx.webservice.rs.server.ContactsResource" />
     <bean class="com.server.cx.webservice.rs.server.CXAppResource" />
+    <bean class="com.server.cx.webservice.rs.server.CallingResources" />
     <bean class="com.server.cx.webservice.rs.server.SuggestionResource" />
     <bean class="com.server.cx.webservice.rs.server.VersionInfoResource" />
     <bean class="com.server.cx.webservice.rs.server.StatusTypeResource" />

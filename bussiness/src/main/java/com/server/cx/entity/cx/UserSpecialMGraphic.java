@@ -1,5 +1,6 @@
 package com.server.cx.entity.cx;
 
+import com.google.common.collect.Lists;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -16,7 +17,7 @@ import java.util.List;
 @ToString
 public class UserSpecialMGraphic extends UserCommonMGraphic {
 
-    private List<String> phoneNos;
+    private List<String> phoneNos = Lists.newArrayList();
 
     public UserSpecialMGraphic(){
         this.setPriority(4);
