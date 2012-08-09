@@ -942,12 +942,13 @@
       <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="PRIORITY" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
       <column name="SIGNATURE" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
-      <column name="HOLIDAY" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
+      <column name="SPECIAL_PHONE_NO" sqlType="VARCHAR" length="20" precision="0" nullable="true" jdbcType="12" />
       <column name="ACTIVE" sqlType="BOOLEAN" length="1" precision="0" nullable="true" jdbcType="16" />
+      <column name="HOLIDAY" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
+      <column name="VALID_DATE" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="BEGIN" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="END" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="PHONE_NOS" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12" />
-      <column name="VALID_DATE" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="GRAPHIC_INFO_ID" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
       <column name="USER_ID" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
       <primary-key name="CONSTRAINT_7" columns="id" />
