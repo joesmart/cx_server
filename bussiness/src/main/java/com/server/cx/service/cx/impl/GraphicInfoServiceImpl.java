@@ -34,31 +34,14 @@ public class GraphicInfoServiceImpl extends  BasicService implements GraphicInfo
     private BusinessFunctions businessFunctions;
     @Override
     public DataPage findGraphicInfoDataPageByCategoryId(final String imsi, Long categoryId, Integer offset, Integer limit) {
-        final String baseHref = baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId + "&offset=" + offset + "&limit=" + limit;
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "createdOn");
         Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.categoryTypeGraphicInfo(categoryId), pageRequest);
         List<GraphicInfo> graphicInfoList = page.getContent();
-
         List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, graphicInfoList);
-
-        DataPage dataPage = new DataPage();
-        dataPage.setLimit(page.getSize());
-        dataPage.setOffset(page.getNumber());
-        dataPage.setTotal(page.getTotalPages());
-        dataPage.setItems(graphicInfoItemList);
-        dataPage.setHref(baseHref);
-        if (offset > 0) {
-            int previousOffset = offset - 1;
-            dataPage.setPrevious(baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId + "&offset=" + previousOffset + "&limit=" + limit);
-        }
-        if (offset + 1 < page.getTotalPages()) {
-            int nextOffset = offset + 1;
-            dataPage.setNext(baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId + "&offset=" + nextOffset + "&limit=" + limit);
-        }
-        dataPage.setFirst(baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId + "&offset=0&limit=" + limit);
-        dataPage.setLast(baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId + "&offset=" + (dataPage.getTotal() - 1) + "&limit=" + limit);
-        return dataPage;
+        String queryCondition = "categoryId=" + categoryId;
+        return generateDataPage(imsi, offset, limit, page, graphicInfoItemList, queryCondition);
     }
+
 
     private List<DataItem> transformToGraphicItemList(final String imsi, List<GraphicInfo> graphicInfoList) {
         return Lists.transform(graphicInfoList,businessFunctions.graphicInfoTransformToGraphicInfoItem(imsi));
@@ -66,53 +49,47 @@ public class GraphicInfoServiceImpl extends  BasicService implements GraphicInfo
 
     @Override
     public DataPage findHotGraphicInfoByDownloadNum(String imsi, Integer offset, Integer limit) {
-        final String baseHref = baseHostAddress + restURL + imsi + "/graphicInfos?hot=true&offset=" + offset + "&limit=" + limit;
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "useCount","createdOn");
         Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.hotCategoryTypeGraphicInfo(), pageRequest);
-
         List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent());
-        DataPage dataPage = new DataPage();
-        dataPage.setLimit(page.getSize());
-        dataPage.setOffset(page.getNumber());
-        dataPage.setTotal(page.getTotalPages());
-        dataPage.setItems(graphicInfoItemList);
-        dataPage.setHref(baseHref);
-        if (offset > 0) {
-            int previousOffset = offset - 1;
-            dataPage.setPrevious(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true&offset=" + previousOffset + "&limit=" + limit);
-        }
-        if (offset + 1 < page.getTotalPages()) {
-            int nextOffset = offset + 1;
-            dataPage.setNext(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true&offset=" + nextOffset + "&limit=" + limit);
-        }
-        dataPage.setFirst(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true&offset=0&limit=" + limit);
-        dataPage.setLast(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true&offset=" + (dataPage.getTotal() - 1) + "&limit=" + limit);
-        return dataPage;
+        String condition = "hot=true";
+        return generateDataPage(imsi, offset, limit, page, graphicInfoItemList, condition);
     }
+
+
+
     @Override
     public DataPage findRecommendGraphicAndPagination(String imsi, Integer offset, Integer limit){
-        final String baseHref = baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=" + offset + "&limit=" + limit;
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "useCount","createdOn");
         Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.recommendGraphicInfo(), pageRequest);
-
         List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent());
+        String condition = "recommend=true";
+        return generateDataPage(imsi, offset, limit, page, graphicInfoItemList, condition);
+    }
+
+    private DataPage generateDataPage(String imsi, Integer offset, Integer limit, Page page, List<DataItem> graphicInfoItemList, String condition) {
         DataPage dataPage = new DataPage();
         dataPage.setLimit(page.getSize());
         dataPage.setOffset(page.getNumber());
         dataPage.setTotal(page.getTotalPages());
         dataPage.setItems(graphicInfoItemList);
-        dataPage.setHref(baseHref);
+        dataPage.setHref(generatePageURL(imsi,offset,limit, condition));
+
         if (offset > 0) {
             int previousOffset = offset - 1;
-            dataPage.setPrevious(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=" + previousOffset + "&limit=" + limit);
+            dataPage.setPrevious(generatePageURL(imsi, previousOffset, limit, condition));
         }
         if (offset + 1 < page.getTotalPages()) {
             int nextOffset = offset + 1;
-            dataPage.setNext(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=" + nextOffset + "&limit=" + limit);
+            dataPage.setNext(generatePageURL(imsi, nextOffset, limit, condition));
         }
-        dataPage.setFirst(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=0&limit=" + limit);
-        dataPage.setLast(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true&offset=" + (dataPage.getTotal() - 1) + "&limit=" + limit);
+        dataPage.setFirst(generatePageURL(imsi,0,limit, condition));
+        dataPage.setLast(generatePageURL(imsi, (dataPage.getTotal() - 1), limit, condition));
         return dataPage;
+    }
+
+    private String generatePageURL(String imsi, int offset, Integer limit, String queryCondition) {
+        return baseHostAddress + restURL + imsi + "/graphicInfos?" + queryCondition + "&offset=" + offset + "&limit=" + limit;
     }
 
     @Override
