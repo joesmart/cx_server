@@ -24,7 +24,7 @@ public class Actions {
     private Action recommendURL;
     private Action hotURL;
     private Action categoryURL;
-    private Action mGraphicsURL;
+    private Action mgraphicsURL;
     private Action statusURL;
     private Action holidaysURL;
     private Action customMGraphicsURL;
