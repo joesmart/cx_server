@@ -21,12 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 import java.util.List;
 
-/**
- * User: yanjianzou
- * Date: 12-8-10
- * Time: ÏÂÎç1:45
- * FileName:HolidayMGraphicServiceImpl
- */
+
 public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService implements HolidayMGraphicService {
 
     @Autowired
@@ -104,7 +99,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         } else {
             Long dataRowNumber = userHolidayMGraphicDao.count(UserCommonMGraphicSpecifications.userHolidayMGraphicSpecification(userInfo));
             if (dataRowNumber >= 5) {
-                throw new CXServerBusinessException("Ö¸¶¨ºÅÂëÓÃ»§ÉèÖÃ²ÊÏñ×î¶àÔÊĞí5¸ö");
+                throw new CXServerBusinessException("æŒ‡å®šå·ç ç”¨æˆ·è®¾ç½®å½©åƒæœ€å¤šå…è®¸5ä¸ª");
             }
 
             mGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
@@ -120,8 +115,8 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
 
     @Override
     public OperationResult disable(String imsi, String mgraphicId) {
-        Preconditions.checkNotNull(imsi, "imsiÎª¿Õ");
-        Preconditions.checkNotNull(mgraphicId, "Ö¸¶¨¶ÔÏó²»´æÔÚ");
+        Preconditions.checkNotNull(imsi, "imsiä¸ºç©º");
+        Preconditions.checkNotNull(mgraphicId, "æŒ‡å®šå¯¹è±¡ä¸å­˜åœ¨");
         checkAndSetUserInfoExists(imsi);
         UserHolidayMGraphic userCommonMGraphic = userHolidayMGraphicDao.findOne(mgraphicId);
         if (userCommonMGraphic != null) {

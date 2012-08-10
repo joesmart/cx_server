@@ -10,12 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-/**
- * User: yanjianzou
- * Date: 12-8-6
- * Time: обнГ4:15
- * FileName:UserSpecialMGraphicSpecifications
- */
+
 public class UserCommonMGraphicSpecifications {
 
     public static Specification<UserHolidayMGraphic> userHolidayMGraphicSpecification(final UserInfo userInfo){
