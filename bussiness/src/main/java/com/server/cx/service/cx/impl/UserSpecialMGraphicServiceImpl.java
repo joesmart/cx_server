@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service("userSpecialMGraphicService")
 @Transactional
-public class UserSpecialMGraphicServiceImpl extends MGraphicService implements UserSpecialMGraphicService {
+public class UserSpecialMGraphicServiceImpl extends CheckAndHistoryMGraphicService implements UserSpecialMGraphicService {
 
     @Autowired
     private UserSpecialMGraphicDao userSpecialMGraphicDao;

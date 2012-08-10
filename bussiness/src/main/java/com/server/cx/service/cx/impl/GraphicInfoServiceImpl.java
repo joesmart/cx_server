@@ -3,17 +3,11 @@ package com.server.cx.service.cx.impl;
 import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.google.common.base.Preconditions;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
 import com.google.common.collect.Lists;
 import com.google.common.math.IntMath;
 import com.server.cx.dao.cx.GraphicInfoDao;
-import com.server.cx.dao.cx.UserFavoritesDao;
-import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.spec.GraphicInfoSpecifications;
 import com.server.cx.entity.cx.GraphicInfo;
-import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.service.cx.GraphicInfoService;
 import com.server.cx.service.util.BusinessFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 
 /**
  * User: yanjianzou
@@ -44,24 +37,7 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
     private GraphicInfoDao graphicInfoDao;
 
     @Autowired
-    private UserInfoDao userInfoDao;
-
-    @Autowired
-    private UserFavoritesDao userFavoritesDao;
-
-    @Autowired
     private BusinessFunctions businessFunctions;
-    LoadingCache<String, List<String>> userCollectionsCache = CacheBuilder.newBuilder().maximumSize(100)
-            .expireAfterAccess(5, TimeUnit.SECONDS).build(new CacheLoader<String, List<String>>() {
-                @Override
-                public List<String> load(String key) throws Exception {
-                    if(key == null) return null;
-                    //TODO need Refactor to use single sql to get all data;
-                    UserInfo userInfo = userInfoDao.findByImsi(key);
-                    List<String> graphicIdList = userFavoritesDao.getGraphicIdListByUserInfo(userInfo);
-                    return graphicIdList;
-                }
-            });
 
     @Override
     public DataPage findGraphicInfoDataPageByCategoryId(final String imsi, Long categoryId, Integer offset, Integer limit) throws ExecutionException {

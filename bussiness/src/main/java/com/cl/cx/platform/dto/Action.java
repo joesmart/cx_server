@@ -9,6 +9,9 @@ public class Action {
     private String href;
     private String method;
 
+    public Action(){
+
+    }
     public Action(String href,String method){
         this.href = href;
         this.method = method;

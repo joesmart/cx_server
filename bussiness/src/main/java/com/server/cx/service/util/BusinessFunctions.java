@@ -53,8 +53,11 @@ public class BusinessFunctions extends BasicService {
                     item.setSourceImagePath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId());
                 }
                 item.setHref(baseHostAddress + restURL + imsi + "/myCollections/" + input.getId());
-                Actions actions = actionBuilder.buildUserFavoriteItemAction(imsi, input.getId());
-                item.setActions(actions);
+                if(!"none".equals(imsi)){
+                    Actions actions = actionBuilder.buildUserFavoriteItemAction(imsi, input.getId());
+                    item.setActions(actions);
+                }
+
                 return item;
             }
         };
@@ -92,37 +95,36 @@ public class BusinessFunctions extends BasicService {
         return new Function<GraphicInfo, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicInfo input) {
-                DataItem graphicInfoItem = new DataItem();
-                graphicInfoItem.setId(input.getId());
-                graphicInfoItem.setName(input.getName());
-                graphicInfoItem.setSignature(input.getSignature());
-                graphicInfoItem.setDownloadNumber(String.valueOf(input.getUseCount()));
-                graphicInfoItem.setAuditPassed(true);
-                graphicInfoItem.setPrice(input.getPrice());
+                DataItem item = new DataItem();
+                item.setId(input.getId());
+                item.setName(input.getName());
+                item.setSignature(input.getSignature());
+                item.setDownloadNumber(String.valueOf(input.getUseCount()));
+                item.setAuditPassed(true);
+                item.setPrice(input.getPrice());
                 if (input.getPrice() > 0.0F) {
-                    graphicInfoItem.setPurchased(false);
+                    item.setPurchased(false);
                 }
-                graphicInfoItem.setCollected(false);
-                graphicInfoItem.setLevel(input.getLevel());
+                item.setLevel(input.getLevel());
                 if (input.getGraphicResources().size() > 0) {
-                    graphicInfoItem.setThumbnailPath(imageShowURL + input.getGraphicResources().get(0).getResourceId()
+                    item.setThumbnailPath(imageShowURL + input.getGraphicResources().get(0).getResourceId()
                             + "&" + thumbnailSize);
-                    graphicInfoItem.setSourceImagePath(imageShowURL
+                    item.setSourceImagePath(imageShowURL
                             + input.getGraphicResources().get(0).getResourceId());
                 }
-                graphicInfoItem.setHref(baseHostAddress + restURL + imsi + "/graphicInfos/" + input.getId());
+                item.setHref(baseHostAddress + restURL + imsi + "/graphicInfos/" + input.getId());
                 if (!"none".equals(imsi)) {
                     Actions actions = actionBuilder.buildGraphicItemAction(imsi);
-                    graphicInfoItem.setActions(actions);
+                    item.setActions(actions);
                 }
                 if(graphicIds != null){
                     if(graphicIds.contains(input.getId())){
-                        graphicInfoItem.setCollected(true);
+                        item.setCollected(true);
                     }else{
-                        graphicInfoItem.setCollected(false);
+                        item.setCollected(false);
                     }
                 }
-                return graphicInfoItem;
+                return item;
             }
         };
     }

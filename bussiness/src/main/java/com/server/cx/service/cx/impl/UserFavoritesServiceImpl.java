@@ -1,6 +1,9 @@
 package com.server.cx.service.cx.impl;
 
-import com.cl.cx.platform.dto.*;
+import com.cl.cx.platform.dto.DataItem;
+import com.cl.cx.platform.dto.DataPage;
+import com.cl.cx.platform.dto.IdDTO;
+import com.cl.cx.platform.dto.OperationDescription;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
@@ -25,6 +28,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @Service("userFavoritesService")
 @Transactional
@@ -130,9 +134,7 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
     }
 
     @Override
-    public DataPage getAllUserFavorites(final String imsi, Integer offset, Integer limit) {
-        final String baseHref = baseHostAddress + restURL + imsi + "/myCollections?offset=" + offset + "&limit=" + limit;
-
+    public DataPage getAllUserFavorites(final String imsi, Integer offset, Integer limit) throws ExecutionException {
         Preconditions.checkNotNull(imsi);
         Preconditions.checkNotNull(offset);
         Preconditions.checkNotNull(limit);
@@ -146,29 +148,40 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
         Page page = userFavoritesDao.findAll(UserFavoriteSpecifications.userFavoritesSpecification(userInfo),pageRequest);
         List<UserFavorites> userFavoritesList  =  page.getContent();
 
-        List<DataItem> collectedGraphicInfoItems = Lists.transform(userFavoritesList,businessFunctions.userFavoriteTransformToCollectedGraphicInfoItem(imsi));
+        List<DataItem> collectedGraphicInfoItems = transformToDataItemList(imsi, userFavoritesList);
 
+        DataPage dataPage = generateDataPage(imsi, offset, limit, page, collectedGraphicInfoItems);
+        return dataPage;
+
+    }
+
+    private List<DataItem> transformToDataItemList(String imsi, List<UserFavorites> userFavoritesList) throws ExecutionException {
+        return Lists.transform(userFavoritesList, businessFunctions.userFavoriteTransformToCollectedGraphicInfoItem(imsi));
+    }
+
+    private DataPage generateDataPage(String imsi, Integer offset, Integer limit, Page page, List<DataItem> collectedGraphicInfoItems) {
         DataPage dataPage = new DataPage();
         dataPage.setLimit(page.getSize());
         dataPage.setOffset(page.getNumber());
         dataPage.setTotal(page.getTotalPages());
         dataPage.setItems(collectedGraphicInfoItems);
-        dataPage.setHref(baseHref);
+        dataPage.setHref(generateDataPage(imsi, offset, limit));
         if (offset > 0) {
             int previousOffset = offset - 1;
-            dataPage.setPrevious(baseHostAddress + restURL + imsi + "/myCollections?offset=" + previousOffset + "&limit=" + limit);
+            dataPage.setPrevious(generateDataPage(imsi, previousOffset, limit));
         }
         if (offset + 1 < page.getTotalPages()) {
             int nextOffset = offset + 1;
-            dataPage.setNext(baseHostAddress + restURL + imsi + "/myCollections?offset=" + nextOffset + "&limit=" + limit);
+            dataPage.setNext(generateDataPage(imsi, nextOffset, limit));
         }
-        dataPage.setFirst(baseHostAddress + restURL + imsi + "/myCollections?offset=0&limit=" + limit);
-        dataPage.setLast(baseHostAddress + restURL + imsi + "/myCollections?offset=" + (dataPage.getTotal() - 1) + "&limit=" + limit);
+        dataPage.setFirst(generateDataPage(imsi, 0, limit));
+        dataPage.setLast(generateDataPage(imsi, (dataPage.getTotal() - 1), limit));
         return dataPage;
-
     }
 
-
+    private String generateDataPage(String imsi, int offset, Integer limit) {
+        return baseHostAddress + restURL + imsi + "/myCollections?offset=" + offset + "&limit=" + limit;
+    }
 
 
 }

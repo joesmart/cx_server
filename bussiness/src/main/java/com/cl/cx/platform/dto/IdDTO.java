@@ -1,5 +1,6 @@
 package com.cl.cx.platform.dto;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.google.common.collect.Lists;
 import lombok.Data;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * FileName:IdDTO
  */
 @Data
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property= "@type")
 public class IdDTO {
     public IdDTO(){
         ids = Lists.newArrayList();

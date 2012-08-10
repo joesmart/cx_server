@@ -1,9 +1,18 @@
 package com.server.cx.service.cx.impl;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.server.cx.dao.cx.UserFavoritesDao;
+import com.server.cx.dao.cx.UserInfoDao;
+import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.model.ActionBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * User: yanjianzou
@@ -31,4 +40,19 @@ public class BasicService {
 
     @Autowired
     protected ActionBuilder actionBuilder;
+    @Autowired
+    private UserInfoDao userInfoDao;
+    @Autowired
+    private UserFavoritesDao userFavoritesDao;
+
+    LoadingCache<String, List<String>> userCollectionsCache = CacheBuilder.newBuilder().maximumSize(100)
+            .expireAfterAccess(5, TimeUnit.SECONDS).build(new CacheLoader<String, List<String>>() {
+                @Override
+                public List<String> load(String key) throws Exception {
+                    if(key == null) return null;
+                    UserInfo userInfo = userInfoDao.findByImsi(key);
+                    List<String> graphicIdList = userFavoritesDao.getGraphicIdListByUserInfo(userInfo);
+                    return graphicIdList;
+                }
+            });
 }

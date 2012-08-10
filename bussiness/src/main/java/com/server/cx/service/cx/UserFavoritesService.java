@@ -5,6 +5,8 @@ import com.cl.cx.platform.dto.IdDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.exception.SystemException;
 
+import java.util.concurrent.ExecutionException;
+
 public interface UserFavoritesService {
 
     public OperationDescription addNewUserFavorites(String imsi, IdDTO idDTO) throws SystemException;
@@ -14,6 +16,6 @@ public interface UserFavoritesService {
     public OperationDescription deleteUserFavoritesById(String imsi, String userFavoriteId) throws SystemException;
 
     public DataPage getAllUserFavorites(String imsi, Integer offset, Integer limit)
-            throws SystemException;
+            throws SystemException, ExecutionException;
 
 }
