@@ -28,7 +28,7 @@
 	<acct_user_group user_id="5" group_id="2" />
 	<acct_user_group user_id="6" group_id="2" />
 	
-	 <holiday_type id="1" name="七夕" download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+	<holiday_type id="1" name="七夕" download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
 	<holiday_type id="2" name="教师节 " download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
 	<holiday_type id="3" name="中秋节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
 	<holiday_type id="4" name="国庆节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
@@ -148,6 +148,18 @@
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800080" name="彩像90" signature="男儿当自强80" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-09 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-09 12:13:35.0" status_type_id="3"></graphic_infos>
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800081" name="彩像91" signature="男儿当自强81" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-10 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-10 12:13:35.0" status_type_id="3"></graphic_infos>
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800082" name="彩像92" signature="男儿当自强82" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-11 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-11 12:13:35.0" status_type_id="4"></graphic_infos>
+    <!-- holiday -->
+	<graphic_infos id="4028b88138d5e5e50138d5e5f2800083" name="彩像93" signature="男儿当自强83" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-02 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-02 12:13:35.0" holiday_type_id="1"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800084" name="彩像94" signature="男儿当自强84" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-03 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-03 12:13:35.0" holiday_type_id="1"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800085" name="彩像95" signature="男儿当自强85" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-04 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-04 12:13:35.0" holiday_type_id="1"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800086" name="彩像96" signature="男儿当自强86" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-05 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-05 12:13:35.0" holiday_type_id="1"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800087" name="彩像97" signature="男儿当自强87" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-06 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-06 12:13:35.0" holiday_type_id="2"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800088" name="彩像98" signature="男儿当自强88" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-07 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-07 12:13:35.0" holiday_type_id="2"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800089" name="彩像99" signature="男儿当自强89" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-08 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-08 12:13:35.0" holiday_type_id="2"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800090" name="彩像100" signature="男儿当自强90" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-09 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-09 12:13:35.0" holiday_type_id="3"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800091" name="彩像101" signature="男儿当自强91" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-10 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-10 12:13:35.0" holiday_type_id="3"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800092" name="彩像102" signature="男儿当自强92" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-11 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-11 12:13:35.0" holiday_type_id="4"></graphic_infos>
+    
     
     <graphic_resource id="4028b88138d65e360138d65e448e0000" graphicinfo_id="4028b88138d5e5e50138d5e5f2800001" resource_id="50208811e4b07efd76d72472" graphic_id="1231" audit_passed="true" />
     <graphic_resource id="4028b88138d65e360138d65e448e0001" graphicinfo_id="4028b88138d5e5e50138d5e5f2800002" resource_id="50208811e4b07efd76d7243d" graphic_id="1231" audit_passed="true" />
@@ -258,7 +270,12 @@
     <mgraphic cast_type="status" id="7"  name="status" signature="xxxxx"   graphic_info_id="4028b88138d5e5e50138d5e5f2800075" priority="1" mode_type="5" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
     <mgraphic cast_type="status" id="8"  name="status" signature="xxxxx"   graphic_info_id="4028b88138d5e5e50138d5e5f2800076" priority="1" mode_type="5" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
     <mgraphic cast_type="status" id="9"  name="status" signature="xxxxx"   graphic_info_id="4028b88138d5e5e50138d5e5f2800077" priority="1" mode_type="5" active="true" created_on="2012-08-01 21:54:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
-
+	<mgraphic cast_type="holiday" id="10"  name="holiday" signature="hello"   graphic_info_id="4028b88138d5e5e50138d5e5f2800083" user_id="1" priority="1" mode_type="4" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
+    <mgraphic cast_type="holiday" id="11"  name="holiday" signature="world"   graphic_info_id="4028b88138d5e5e50138d5e5f2800084" priority="1" mode_type="4" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
+    <mgraphic cast_type="holiday" id="12"  name="holiday" signature="LeBron James"   graphic_info_id="4028b88138d5e5e50138d5e5f2800085" priority="1" mode_type="4" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
+    <mgraphic cast_type="holiday" id="13"  name="holiday" signature="Kelven King"   graphic_info_id="4028b88138d5e5e50138d5e5f2800086" priority="1" mode_type="4" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
+    <mgraphic cast_type="holiday" id="14"  name="holiday" signature="Steve Nash"   graphic_info_id="4028b88138d5e5e50138d5e5f2800087" priority="1" mode_type="4" active="true" created_on="2012-08-01 21:54:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
+   
     <mgraphic_phone_no mgraphic_id="2"  phone_number="1512581472"/>
     <mgraphic_phone_no mgraphic_id="2"  phone_number="13561341578"/>
     <mgraphic_phone_no mgraphic_id="2"  phone_number="13561341579"/>

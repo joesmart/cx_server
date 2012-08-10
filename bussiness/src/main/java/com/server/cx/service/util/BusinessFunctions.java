@@ -260,4 +260,24 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
+    public Function<GraphicInfo, DataItem> holidayGraphicInfoTransformToDataItem() {
+        return new Function<GraphicInfo, DataItem>() {
+            @Override
+            public DataItem apply(@Nullable GraphicInfo input) {
+                DataItem dataItem = new DataItem();
+                dataItem.setName(input.getName());
+                dataItem.setDownloadNumber(String.valueOf(input.getUseCount()));
+                dataItem.setId(input.getId());
+                dataItem.setLevel(input.getHolidayType().getLevel());
+                if(input.getGraphicResources() != null && !input.getGraphicResources().isEmpty()) {
+                    GraphicResource graphicResource = input.getGraphicResources().get(0);
+                    if(graphicResource != null) {
+                        dataItem.setGraphicURL(imageShowURL + graphicResource.getResourceId());
+                    }
+                }
+                return dataItem;
+            }
+        };
+    }
+
 }

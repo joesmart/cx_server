@@ -4,6 +4,7 @@ import com.server.cx.entity.basic.AuditableEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import lombok.ToString;
 
 /**
  * User: yanjianzou
@@ -13,6 +14,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "holiday_type")
+@ToString
 public class HolidayType extends AuditableEntity {
     private String name;
     private Integer downloadNum;

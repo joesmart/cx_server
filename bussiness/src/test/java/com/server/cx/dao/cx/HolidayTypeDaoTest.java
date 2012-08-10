@@ -20,4 +20,11 @@ public class HolidayTypeDaoTest extends SpringTransactionalTestCase {
         assertThat(holidayTypes.size()).isEqualTo(19);
         assertThat(holidayTypes.get(0).getName()).isEqualTo("七夕");
     }
+    
+    @Test
+    public void test_find_one() {
+        HolidayType holidayType = holidayTypeDao.findOne(19L);
+        assertThat(holidayType).isNotNull();
+        assertThat(holidayType.getName()).isEqualTo("父亲节");
+    }
 }

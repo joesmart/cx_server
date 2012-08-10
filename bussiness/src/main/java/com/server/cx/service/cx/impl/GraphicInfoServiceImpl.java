@@ -14,12 +14,16 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.math.IntMath;
 import com.server.cx.dao.cx.GraphicInfoDao;
+import com.server.cx.dao.cx.HolidayTypeDao;
 import com.server.cx.dao.cx.StatusTypeDao;
+import com.server.cx.dao.cx.UserHolidayMGraphicDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.UserStatusMGraphicDao;
 import com.server.cx.dao.cx.spec.GraphicInfoSpecifications;
 import com.server.cx.entity.cx.GraphicInfo;
+import com.server.cx.entity.cx.HolidayType;
 import com.server.cx.entity.cx.StatusType;
+import com.server.cx.entity.cx.UserHolidayMGraphic;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.entity.cx.UserStatusMGraphic;
 import com.server.cx.service.cx.GraphicInfoService;
@@ -46,9 +50,15 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
 
     @Autowired
     private StatusTypeDao statusTypeDao;
+    
+    @Autowired
+    private HolidayTypeDao holidayTypeDao;
 
     @Autowired
     private UserStatusMGraphicDao userStatusMGraphicDao;
+    
+    @Autowired
+    private UserHolidayMGraphicDao userHolidayMGraphicDao;
 
     @Override
     public DataPage findGraphicInfoDataPageByCategoryId(final String imsi, Long categoryId, Integer offset,
@@ -193,5 +203,60 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
 
     private List<DataItem> transformTostStatusGraphicInfoList(List<GraphicInfo> usingStatusGraphicInfos) {
         return Lists.transform(usingStatusGraphicInfos, businessFunctions.statusGraphicInfoTransformToDataItem());
+    }
+
+    @Override
+    public DataPage findHolidayGraphicInfosByImsi(String imsi, Long holidayTypeId, Integer offset, Integer limit) {
+        final String baseHref = baseHostAddress + restURL + imsi + "/holidayTypes/" + holidayTypeId + "?offset=" + offset
+            + "&limit=" + limit;
+        System.out.println("imsi = " + imsi);
+        System.out.println("holidayTypeId = " + holidayTypeId);
+        UserInfo userInfo = userInfoDao.findByImsi(imsi);
+        HolidayType holidayType = holidayTypeDao.findOne(holidayTypeId);
+        List<UserHolidayMGraphic> userHolidayGraphicInfos = userHolidayMGraphicDao.findByUserInfoAndHolidayType(userInfo,
+            holidayType);
+        boolean existUserGraphicInfo = userHolidayGraphicInfos != null && !userHolidayGraphicInfos.isEmpty();
+
+        String usedId = existUserGraphicInfo ? userHolidayGraphicInfos.get(0).getGraphicInfo().getId() : null;
+        PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "createdOn");
+        Page page = graphicInfoDao.findAll(
+            GraphicInfoSpecifications.holidayTypeGraphicInfoExcludedUsed(holidayTypeId, usedId), pageRequest);
+        List<GraphicInfo> holidayGraphicInfos = Lists.newArrayList(page.getContent().iterator());
+
+        if (existUserGraphicInfo) {
+            holidayGraphicInfos.add(0, userHolidayGraphicInfos.get(0).getGraphicInfo());
+        }
+
+        List<DataItem> dataItems = transformTostHolidayGraphicInfoList(holidayGraphicInfos);
+
+        if (existUserGraphicInfo) {
+            dataItems.get(0).setInUsing(true);
+        }
+
+        DataPage dataPage = new DataPage();
+        dataPage.setLimit(page.getSize());
+        dataPage.setOffset(page.getNumber());
+        dataPage.setTotal(page.getTotalPages());
+        dataPage.setItems(dataItems);
+        dataPage.setHref(baseHref);
+        if (offset > 0) {
+            int previousOffset = offset - 1;
+            dataPage.setPrevious(baseHostAddress + restURL + imsi + "/statusTypes/" + holidayTypeId + "?offset="
+                + previousOffset + "&limit=" + limit);
+        }
+        if (offset + 1 < page.getTotalPages()) {
+            int nextOffset = offset + 1;
+            dataPage.setNext(baseHostAddress + restURL + imsi + "/statusTypes/" + holidayTypeId + "?offset="
+                + nextOffset + "&limit=" + limit);
+        }
+        dataPage.setFirst(baseHostAddress + restURL + imsi + "/statusTypes/" + holidayTypeId + "?offset=0&limit="
+            + limit);
+        dataPage.setLast(baseHostAddress + restURL + imsi + "/statusTypes/" + holidayTypeId + "?offset="
+            + (dataPage.getTotal() - 1) + "&limit=" + limit);
+        return dataPage;
+    }
+
+    private List<DataItem> transformTostHolidayGraphicInfoList(List<GraphicInfo> holidayGraphicInfos) {
+        return Lists.transform(holidayGraphicInfos, businessFunctions.holidayGraphicInfoTransformToDataItem());
     }
 }

@@ -66,5 +66,24 @@ public class GraphicInfoServiceTest extends SpringTransactionalTestCase {
         Assertions.assertThat(dataPage.getItems().get(0).getName()).isEqualTo("彩像86");
     }
     
+    @Test
+    public void should_find_holiday_graphicInfos_exist_by_imsi() {
+        DataPage dataPage = graphicInfoService.findHolidayGraphicInfosByImsi("13146001000", 1L, 0, 3);
+        Assertions.assertThat(dataPage).isNotNull();
+        LOGGER.info(dataPage.toString());
+        Assertions.assertThat(dataPage.getItems().size()).isEqualTo(4);
+        Assertions.assertThat(dataPage.getItems().get(0).getName()).isEqualTo("彩像93");
+        Assertions.assertThat(dataPage.getItems().get(1).getName()).isEqualTo("彩像96");
+    }
+    
+    @Test
+    public void should_find_holiday_graphicInfos_not_exist_by_imsi() {
+        DataPage dataPage = graphicInfoService.findHolidayGraphicInfosByImsi("13146001001", 1L, 0, 3);
+        Assertions.assertThat(dataPage).isNotNull();
+        LOGGER.info(dataPage.toString());
+        Assertions.assertThat(dataPage.getItems().size()).isEqualTo(3);
+        Assertions.assertThat(dataPage.getItems().get(0).getName()).isEqualTo("彩像96");
+    }
+    
     
 }
