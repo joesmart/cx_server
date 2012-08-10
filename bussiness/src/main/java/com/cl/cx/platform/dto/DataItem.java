@@ -32,4 +32,5 @@ public class DataItem extends BasicItem {
     private List<String> phoneNos;
     private String mGraphicId;
     private Boolean inUsing;
+    private String mediaType;
 }

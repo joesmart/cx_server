@@ -17,6 +17,11 @@ public interface GraphicInfoService {
     public abstract DataPage findHotGraphicInfoByDownloadNum(String imsi,Integer offset,Integer limit) throws ExecutionException;
 
     public abstract DataPage findRecommendGraphicAndPagination(String imsi, Integer offset, Integer limit) throws ExecutionException;
+    
+    public abstract DataPage findStatusGraphicInfosByImsi(String imsi, long statusTypeId, Integer offset,Integer limit);
 
     public abstract boolean updateGraphicInfoUseCount(GraphicInfo graphicInfo);
+
+    public abstract DataPage findHolidayGraphicInfosByImsi(String imsi, Long holidayTypeId, Integer offset,
+                                                           Integer limit);
 }

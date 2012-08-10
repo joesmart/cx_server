@@ -98,4 +98,32 @@ public class GraphicInfoDaoTest extends SpringTransactionalTestCase {
         GraphicInfo afterSavedGraphicInfo = graphicInfoDao.save(graphicInfo);
         assertThat(afterSavedGraphicInfo.getId()).isNotNull();
     }
+    
+    @Test
+    public void should_get_status_graphicInfo_successful(){
+        PageRequest pageRequest  = new PageRequest(0,3, Sort.Direction.DESC,"createdOn");
+        Page<GraphicInfo> page  = graphicInfoDao.findAll(GraphicInfoSpecifications.statusTypeGraphicInfoExcludedUsed(1L, "4444"),pageRequest);
+        List<GraphicInfo> graphicInfoList = page.getContent();
+        assertThat(graphicInfoList).isNotNull();
+        assertThat(page.getTotalPages()).isEqualTo(2);
+        assertThat(graphicInfoList.size()).isEqualTo(3);
+        for(GraphicInfo graphicInfo:graphicInfoList){
+            assertThat(graphicInfo.getStatusType().getId()).isEqualTo(1L);
+        }
+        assertThat(graphicInfoList.get(graphicInfoList.size()-1).getCreatedOn().compareTo(graphicInfoList.get(0).getCreatedOn())).isLessThan(0);
+    }
+    
+    @Test
+    public void should_exclude_usedId_get_status_graphicINfo_successful() {
+        PageRequest pageRequest  = new PageRequest(0,3, Sort.Direction.DESC,"createdOn");
+        Page<GraphicInfo> page  = graphicInfoDao.findAll(GraphicInfoSpecifications.statusTypeGraphicInfoExcludedUsed(1L, "4028b88138d5e5e50138d5e5f2800073"),pageRequest);
+        List<GraphicInfo> graphicInfoList = page.getContent();
+        assertThat(graphicInfoList).isNotNull();
+        assertThat(page.getTotalPages()).isEqualTo(1);
+        assertThat(graphicInfoList.size()).isEqualTo(3);
+        for(GraphicInfo graphicInfo:graphicInfoList){
+            assertThat(graphicInfo.getStatusType().getId()).isEqualTo(1L);
+        }
+        assertThat(graphicInfoList.get(graphicInfoList.size()-1).getCreatedOn().compareTo(graphicInfoList.get(0).getCreatedOn())).isLessThan(0);
+    }
 }

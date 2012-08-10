@@ -37,10 +37,14 @@ public class BusinessFunctions extends BasicService {
                 }
                 item.setCollected(true);
                 item.setLevel(graphicInfo.getLevel());
+
                 if (graphicInfo.getGraphicResources().size() > 0) {
-                    item.setThumbnailPath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId() + "&"
-                            + thumbnailSize);
-                    item.setSourceImagePath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId());
+                    GraphicResource graphicResource = graphicInfo.getGraphicResources().get(0);
+                    item.setThumbnailPath(imageShowURL + graphicResource.getResourceId()
+                            + "&" + thumbnailSize);
+                    item.setSourceImagePath(imageShowURL
+                            + graphicResource.getResourceId());
+                    item.setMediaType(graphicResource.getType());
                 }
                 item.setHref(baseHostAddress + restURL + imsi + "/myCollections/" + input.getId());
                 if(!"none".equals(imsi)){
@@ -97,10 +101,12 @@ public class BusinessFunctions extends BasicService {
                 }
                 item.setLevel(input.getLevel());
                 if (input.getGraphicResources().size() > 0) {
-                    item.setThumbnailPath(imageShowURL + input.getGraphicResources().get(0).getResourceId()
+                    GraphicResource graphicResource = input.getGraphicResources().get(0);
+                    item.setThumbnailPath(imageShowURL + graphicResource.getResourceId()
                             + "&" + thumbnailSize);
                     item.setSourceImagePath(imageShowURL
-                            + input.getGraphicResources().get(0).getResourceId());
+                            + graphicResource.getResourceId());
+                    item.setMediaType(graphicResource.getType());
                 }
                 item.setHref(baseHostAddress + restURL + imsi + "/graphicInfos/" + input.getId());
                 if (!"none".equals(imsi)) {
@@ -158,6 +164,7 @@ public class BusinessFunctions extends BasicService {
             @Override
             public DataItem apply(@Nullable HolidayType input) {
                 DataItem dataItem = new DataItem();
+                dataItem.setId(String.valueOf(input.getId()));
                 dataItem.setName(input.getName());
                 dataItem.setLevel(input.getLevel());
                 dataItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
@@ -171,15 +178,16 @@ public class BusinessFunctions extends BasicService {
 
     public Function<StatusType, DataItem> statusTypeTransformToDataItem() {
         return new Function<StatusType, DataItem>() {
-            @Override
-            public DataItem apply(@Nullable StatusType input) {
-                DataItem dataItem = new DataItem();
-                dataItem.setName(input.getName());
-                dataItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
-                //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该状态包, 暂时全部返回false
-                dataItem.setHasUsed(false);
-                return dataItem;
-            }
+        	@Override
+        	public DataItem apply(@Nullable StatusType input) {
+              DataItem dataItem = new DataItem();
+              dataItem.setId(String.valueOf(input.getId()));
+              dataItem.setName(input.getName());
+              dataItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
+              //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该状态包, 暂时全部返回false
+              dataItem.setHasUsed(false);
+              return dataItem;
+        	}
         };
     }
 
@@ -199,10 +207,14 @@ public class BusinessFunctions extends BasicService {
                     dataItem.setPhoneNos(((UserCommonMGraphic) input).getPhoneNos());
                 }
                 GraphicInfo graphicInfo = input.getGraphicInfo();
+
                 if (graphicInfo.getGraphicResources().size() > 0) {
-                    dataItem.setThumbnailPath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId() + "&"
-                            + thumbnailSize);
-                    dataItem.setSourceImagePath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId());
+                    GraphicResource graphicResource = graphicInfo.getGraphicResources().get(0);
+                    dataItem.setThumbnailPath(imageShowURL + graphicResource.getResourceId()
+                            + "&" + thumbnailSize);
+                    dataItem.setSourceImagePath(imageShowURL
+                            + graphicResource.getResourceId());
+                    dataItem.setMediaType(graphicResource.getType());
                 }
                 dataItem.setInUsing(true);
                 dataItem.setActions(actionBuilder.buildMGraphicActions(imsi, input.getId()));
@@ -224,6 +236,46 @@ public class BusinessFunctions extends BasicService {
                 dataItem.setModeType(input.getModeType());
                 dataItem.setInUsing(false);
                 dataItem.setActions(actionBuilder.buildHistoryMGraphicActions(imsi, input.getId()));
+                return dataItem;
+            }
+        };
+    }
+
+    public Function<GraphicInfo, DataItem> statusGraphicInfoTransformToDataItem() {
+        return new Function<GraphicInfo, DataItem>() {
+            @Override
+            public DataItem apply(@Nullable GraphicInfo input) {
+                DataItem dataItem = new DataItem();
+                dataItem.setName(input.getName());
+                dataItem.setDownloadNumber(String.valueOf(input.getUseCount()));
+                dataItem.setId(input.getId());
+                if(input.getGraphicResources() != null && !input.getGraphicResources().isEmpty()) {
+                    GraphicResource graphicResource = input.getGraphicResources().get(0);
+                    if(graphicResource != null) {
+                        dataItem.setGraphicURL(imageShowURL + graphicResource.getResourceId());
+                    }
+                }
+                return dataItem;
+            }
+        };
+    }
+
+    public Function<GraphicInfo, DataItem> holidayGraphicInfoTransformToDataItem() {
+        return new Function<GraphicInfo, DataItem>() {
+            @Override
+            public DataItem apply(@Nullable GraphicInfo input) {
+                DataItem dataItem = new DataItem();
+                dataItem.setName(input.getName());
+                dataItem.setDownloadNumber(String.valueOf(input.getUseCount()));
+                dataItem.setId(input.getId());
+                dataItem.setLevel(input.getHolidayType().getLevel());
+                if(input.getGraphicResources() != null && !input.getGraphicResources().isEmpty()) {
+                    GraphicResource graphicResource = input.getGraphicResources().get(0);
+                    if(graphicResource != null) {
+                        dataItem.setGraphicURL(imageShowURL + graphicResource.getResourceId());
+                        dataItem.setMediaType(graphicResource.getType());
+                    }
+                }
                 return dataItem;
             }
         };
