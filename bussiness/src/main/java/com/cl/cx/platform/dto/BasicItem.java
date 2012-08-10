@@ -13,5 +13,5 @@ import lombok.Data;
 @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property= "@type")
 public class BasicItem {
     private String href;
-    private Action action;
+    private Actions actions;
 }

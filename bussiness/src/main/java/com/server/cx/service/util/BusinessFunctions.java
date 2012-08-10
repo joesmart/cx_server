@@ -1,6 +1,6 @@
 package com.server.cx.service.util;
 
-import com.cl.cx.platform.dto.Action;
+import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
@@ -53,8 +53,8 @@ public class BusinessFunctions extends BasicService {
                     item.setSourceImagePath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId());
                 }
                 item.setHref(baseHostAddress + restURL + imsi + "/myCollections/" + input.getId());
-                Action action = actionBuilder.buildUserFavoriteItemAction(imsi, input.getId());
-                item.setAction(action);
+                Actions actions = actionBuilder.buildUserFavoriteItemAction(imsi, input.getId());
+                item.setActions(actions);
                 return item;
             }
         };
@@ -80,8 +80,8 @@ public class BusinessFunctions extends BasicService {
                 categoryItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
                 categoryItem.setHref(baseHostAddress + restURL + imsi + "/categories/" + input.getId());
                 if(!"none".equals(imsi)){
-                    Action action = actionBuilder.buildCategoriesAction(imsi, input.getId());
-                    categoryItem.setAction(action);
+                    Actions actions = actionBuilder.buildCategoriesAction(imsi, input.getId());
+                    categoryItem.setActions(actions);
                 }
                 return categoryItem;
             }
@@ -112,8 +112,8 @@ public class BusinessFunctions extends BasicService {
                 }
                 graphicInfoItem.setHref(baseHostAddress + restURL + imsi + "/graphicInfos/" + input.getId());
                 if (!"none".equals(imsi)) {
-                    Action action = actionBuilder.buildGraphicItemAction(imsi);
-                    graphicInfoItem.setAction(action);
+                    Actions actions = actionBuilder.buildGraphicItemAction(imsi);
+                    graphicInfoItem.setActions(actions);
                 }
                 if(graphicIds != null){
                     if(graphicIds.contains(input.getId())){
@@ -213,7 +213,7 @@ public class BusinessFunctions extends BasicService {
                     dataItem.setSourceImagePath(imageShowURL + graphicInfo.getGraphicResources().get(0).getResourceId());
                 }
                 dataItem.setInUsing(true);
-                dataItem.setAction(actionBuilder.buildMGraphicActions(imsi, input.getId()));
+                dataItem.setActions(actionBuilder.buildMGraphicActions(imsi, input.getId()));
                 return dataItem;
             }
         };
@@ -231,7 +231,7 @@ public class BusinessFunctions extends BasicService {
                 dataItem.setLevel(input.getGraphicInfo().getLevel());
                 dataItem.setModeType(input.getModeType());
                 dataItem.setInUsing(false);
-                dataItem.setAction(actionBuilder.buildHistoryMGraphicActions(imsi, input.getId()));
+                dataItem.setActions(actionBuilder.buildHistoryMGraphicActions(imsi, input.getId()));
                 return dataItem;
             }
         };
