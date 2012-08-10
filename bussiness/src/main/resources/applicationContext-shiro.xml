@@ -27,6 +27,7 @@
 				/logout = logout
 				/static/** = anon
                 /rs/** = anon
+                /app/** = anon
                 /cx/1.0/** = anon
 		    	/** = user
 		 	</value>

@@ -245,6 +245,17 @@ public class BusinessFunctions extends BasicService {
                 dataItem.setLevel(input.getGraphicInfo().getLevel());
                 dataItem.setModeType(input.getModeType());
                 dataItem.setInUsing(false);
+
+                GraphicInfo graphicInfo = input.getGraphicInfo();
+                if (graphicInfo.getGraphicResources().size() > 0) {
+                    GraphicResource graphicResource = graphicInfo.getGraphicResources().get(0);
+                    dataItem.setThumbnailPath(imageShowURL + graphicResource.getResourceId()
+                            + "&" + thumbnailSize);
+                    dataItem.setSourceImagePath(imageShowURL
+                            + graphicResource.getResourceId());
+                    dataItem.setMediaType(graphicResource.getType());
+                }
+                input.getGraphicInfo().getGraphicResources().get(0);
                 dataItem.setActions(actionBuilder.buildHistoryMGraphicActions(imsi, input.getId()));
                 return dataItem;
             }
