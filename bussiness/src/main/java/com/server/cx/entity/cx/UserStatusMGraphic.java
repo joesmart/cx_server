@@ -19,7 +19,7 @@ public class UserStatusMGraphic extends MGraphic {
     private StatusType statusType;
 
     public UserStatusMGraphic(){
-        this.setPriority(7);
+        this.setPriority(10);
         this.setModeType(5);
     }
 

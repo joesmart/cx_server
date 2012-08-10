@@ -238,6 +238,26 @@
 	<holiday_type id="18" name="端午节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
 	<holiday_type id="19" name="父亲节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
 
+    <holiday id="1" holiday_day="2012-8-23" type="1"/>
+    <holiday id="2" holiday_day="2012-9-10" type="2"/>
+    <holiday id="3" holiday_day="2012-9-30" type="3"/>
+    <holiday id="4" holiday_day="2012-10-1" type="4"/>
+    <holiday id="5" holiday_day="2012-10-31" type="5"/>
+    <holiday id="6" holiday_day="2012-11-11" type="6"/>
+    <holiday id="7" holiday_day="2012-12-24" type="7"/>
+    <holiday id="8" holiday_day="2012-12-25" type="8"/>
+    <holiday id="9" holiday_day="2013-2-9" type="9"/>
+    <holiday id="10" holiday_day="2013-2-10" type="10"/>
+    <holiday id="11" holiday_day="2013-2-24" type="11"/>
+    <holiday id="12" holiday_day="2013-3-8" type="12"/>
+    <holiday id="13" holiday_day="2013-4-1" type="13"/>
+    <holiday id="14" holiday_day="2013-5-1" type="14"/>
+    <holiday id="15" holiday_day="2013-5-4" type="15"/>
+    <holiday id="16" holiday_day="2013-5-12" type="16"/>
+    <holiday id="17" holiday_day="2013-6-1" type="17"/>
+    <holiday id="18" holiday_day="2013-6-12" type="18"/>
+    <holiday id="19" holiday_day="2013-6-16" type="19"/>
+
 	<status_type id="1" name="飞机上" graphic_resource_id="500797b7e4b06f4f79efbf5a"></status_type>
 	<status_type id="2" name="开汽车 " graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
 	<status_type id="3" name="会议中" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>

@@ -19,16 +19,6 @@ import java.util.List;
 @Component
 public class BusinessFunctions extends BasicService {
 
-    public Function<UserCommonMGraphic, UserCXInfo> mGraphicStoreModeTransformToUserCXInfo() {
-        return new Function<UserCommonMGraphic, UserCXInfo>() {
-            @Override
-            public UserCXInfo apply(UserCommonMGraphic intput) {
-                return intput.convertMGraphicStoreModeToUserCXInfo();
-            }
-
-        };
-    }
-
     public Function<UserFavorites, DataItem> userFavoriteTransformToCollectedGraphicInfoItem(final String imsi) {
         return new Function<UserFavorites, DataItem>() {
             @Override
@@ -206,7 +196,7 @@ public class BusinessFunctions extends BasicService {
                 dataItem.setLevel(input.getGraphicInfo().getLevel());
                 dataItem.setModeType(input.getModeType());
                 if (2 == input.getModeType()) {
-                    dataItem.setPhoneNos(((UserSpecialMGraphic) input).getPhoneNos());
+                    dataItem.setPhoneNos(((UserCommonMGraphic) input).getPhoneNos());
                 }
                 GraphicInfo graphicInfo = input.getGraphicInfo();
                 if (graphicInfo.getGraphicResources().size() > 0) {

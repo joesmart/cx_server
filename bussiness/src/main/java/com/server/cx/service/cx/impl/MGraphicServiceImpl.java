@@ -7,15 +7,14 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.MGraphicDao;
 import com.server.cx.dao.cx.UserCommonMGraphicDao;
-import com.server.cx.dao.cx.UserSpecialMGraphicDao;
 import com.server.cx.dao.cx.spec.MGraphicSpecifications;
-import com.server.cx.dao.cx.spec.UserSpecialMGraphicSpecifications;
-import com.server.cx.model.OperationResult;
+import com.server.cx.dao.cx.spec.UserCommonMGraphicSpecifications;
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserCommonMGraphic;
-import com.server.cx.entity.cx.UserSpecialMGraphic;
 import com.server.cx.exception.CXServerBusinessException;
+import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.HistoryMGraphicService;
+import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.util.BusinessFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -32,14 +31,12 @@ import java.util.List;
  */
 @Service(value = "userCommonMGraphicService")
 @Transactional
-public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implements com.server.cx.service.cx.MGraphicService {
+public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implements MGraphicService {
 
     @Autowired
     private BasicService basicService;
     @Autowired
     private UserCommonMGraphicDao userCommonMGraphicDao;
-    @Autowired
-    private UserSpecialMGraphicDao userSpecialMGraphicDao;
     @Autowired
     private HistoryMGraphicService historyMGraphicService;
     @Autowired
@@ -52,6 +49,13 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         UserCommonMGraphic userCommonMGraphic = new UserCommonMGraphic();
         userCommonMGraphic.setGraphicInfo(graphicInfo);
         userCommonMGraphic.setUserInfo(userInfo);
+        userCommonMGraphic.setCommon(true);
+
+        if(mGraphicDTO.getPhoneNos() != null && mGraphicDTO.getPhoneNos().size() > 0){
+            userCommonMGraphic.setCommon(false);
+            userCommonMGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
+            userCommonMGraphic.setPriority(4);
+        }
         updateUserCommonMGraphicNameAndSignature(mGraphicDTO, userCommonMGraphic);
         userCommonMGraphicDao.save(userCommonMGraphic);
         graphicInfoService.updateGraphicInfoUseCount(graphicInfo);
@@ -59,13 +63,12 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
 
     @Transactional(readOnly = false)
     private void updateUserCommonMGraphicNameAndSignature(MGraphicDTO mGraphicDTO, UserCommonMGraphic userCommonMGraphic) {
-        userCommonMGraphic.setActive(true);
         userCommonMGraphic.setName(getGraphicInfoName(mGraphicDTO));
         userCommonMGraphic.setSignature(mGraphicDTO.getSignature());
     }
 
     @Override
-    public OperationResult createUserCommonMGraphic(String imsi, MGraphicDTO mGraphicDTO) throws RuntimeException {
+    public OperationResult create(String imsi, MGraphicDTO mGraphicDTO) throws RuntimeException {
         checkAndInitializeContext(imsi, mGraphicDTO);
         checkMGraphicDTOPhoneNosMustBeNull(mGraphicDTO);
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
@@ -75,7 +78,7 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     }
 
     private void historyPreviousUserCommonMGraphic() {
-        List<UserCommonMGraphic> previousUserCommonMGraphics = userCommonMGraphicDao.findByUserInfoAndActiveAndModeType(userInfo, true, 1);
+        List<UserCommonMGraphic> previousUserCommonMGraphics = userCommonMGraphicDao.findByUserInfoAndModeTypeAndCommon(userInfo, 2, true);
         for (UserCommonMGraphic userCommonMGraphic : previousUserCommonMGraphics) {
             historyPreviousUserCommonMGraphic(userCommonMGraphic);
             userCommonMGraphicDao.delete(userCommonMGraphic);
@@ -84,28 +87,29 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     }
 
     @Override
-    public OperationResult editUserCommonMGraphic(String imsi, MGraphicDTO mGraphicDTO) {
+    public OperationResult edit(String imsi, MGraphicDTO mGraphicDTO) {
         checkAndInitializeContext(imsi, mGraphicDTO);
         mGraphicIdMustBeExists(mGraphicDTO);
 
         UserCommonMGraphic mGraphic = userCommonMGraphicDao.findOne(mGraphicDTO.getId());
         if (mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0) {
             historyPreviousUserCommonMGraphic();
-            ((UserSpecialMGraphic) mGraphic).setPhoneNos(null);
-            ((UserSpecialMGraphic) mGraphic).setModeType(1);
-            ((UserSpecialMGraphic) mGraphic).setPriority(3);
+            mGraphic.setPhoneNos(null);
+            mGraphic.setPriority(3);
+            mGraphic.setCommon(true);
             updateUserCommonMGraphicNameAndSignature(mGraphicDTO, mGraphic);
             userCommonMGraphicDao.save(mGraphic);
         } else {
-            Long dataRowNumber = userSpecialMGraphicDao.count(UserSpecialMGraphicSpecifications.userSpecialMGraphicCount(userInfo));
+            Long dataRowNumber = userCommonMGraphicDao.count(UserCommonMGraphicSpecifications.userCommonMGraphicCount(userInfo));
             if (dataRowNumber >= 5) {
                 throw new CXServerBusinessException("指定号码用户设置彩像最多允许5个");
             }
-            ((UserSpecialMGraphic) mGraphic).setPhoneNos(mGraphicDTO.getPhoneNos());
-            ((UserSpecialMGraphic) mGraphic).setModeType(2);
-            ((UserSpecialMGraphic) mGraphic).setPriority(4);
+            mGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
+            mGraphic.setModeType(2);
+            mGraphic.setPriority(4);
+            mGraphic.setCommon(false);
             updateUserCommonMGraphicNameAndSignature(mGraphicDTO, mGraphic);
-            userSpecialMGraphicDao.save((UserSpecialMGraphic) mGraphic);
+            userCommonMGraphicDao.save( mGraphic);
         }
 
 
@@ -113,7 +117,7 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     }
 
     @Override
-    public OperationResult disableUserCommonMGraphic(String imsi, String userCommonMGraphicId) {
+    public OperationResult disable(String imsi, String userCommonMGraphicId) {
         Preconditions.checkNotNull(imsi, "imsi为空");
         Preconditions.checkNotNull(userCommonMGraphicId, "指定对象不存在");
         checkAndSetUserInfoExists(imsi);

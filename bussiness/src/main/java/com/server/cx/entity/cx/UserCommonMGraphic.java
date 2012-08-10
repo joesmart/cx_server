@@ -1,33 +1,40 @@
 package com.server.cx.entity.cx;
 
 
-import com.server.cx.model.UserCXInfo;
 import lombok.ToString;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
 @DiscriminatorValue("common")
 @ToString
 public class UserCommonMGraphic extends MGraphic {
-    private Boolean active;
 
     public UserCommonMGraphic(){
         this.setPriority(3);
-        this.setModeType(1);
+        this.setModeType(2);
+    }
+    private Boolean common;
+    private List<String> phoneNos;
+
+    @ElementCollection
+    @CollectionTable(name = "mgraphic_phone_no", joinColumns = {@JoinColumn(name = "mgraphic_id")})
+    @Column(name = "phone_number")
+    public List<String> getPhoneNos() {
+        return phoneNos;
     }
 
-    public Boolean getActive() {
-        return active;
+    public void setPhoneNos(List<String> phoneNos) {
+        this.phoneNos = phoneNos;
     }
 
-    public void setActive(Boolean active) {
-        this.active = active;
+    public Boolean getCommon() {
+        return common;
     }
 
-    public UserCXInfo convertMGraphicStoreModeToUserCXInfo() {
-        return  null;
+    public void setCommon(Boolean common) {
+        this.common = common;
     }
 }

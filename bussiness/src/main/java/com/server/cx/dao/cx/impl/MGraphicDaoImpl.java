@@ -4,8 +4,6 @@ import com.server.cx.dao.cx.custom.MGraphicCustomDao;
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserInfo;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -34,7 +32,8 @@ public class MGraphicDaoImpl extends BasicDao implements MGraphicCustomDao {
 
     @Override
     public int queryMaxPriorityByUserInfo(UserInfo userInfo, String callPhoneNo) {
-        String hql = "select max(a.priority) from UserCommonMGraphic a where (a.userInfo = :userInfo and a.modeType=1 ) or (:callPhoneNo in elements(a.phoneNos) and a.userInfo=:userInfo and a.modeType=2)";
+        String hql = "select max(a.priority) from UserCommonMGraphic a where (a.userInfo = :userInfo and a.modeType=1 ) " +
+                "or (:callPhoneNo in elements(a.phoneNos) and a.userInfo=:userInfo and a.modeType=2)";
         TypedQuery<Integer> query = em.createQuery(hql, Integer.class);
         query.setParameter("userInfo", userInfo);
         query.setParameter("callPhoneNo", callPhoneNo);

@@ -5,7 +5,6 @@ import com.cl.cx.platform.dto.MGraphicDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.MGraphicService;
-import com.server.cx.service.cx.UserSpecialMGraphicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +30,6 @@ public class MGraphicResources extends OperationResources {
     @Autowired
     private MGraphicService mGraphicService;
 
-    @Autowired
-    private UserSpecialMGraphicService userSpecialMGraphicService;
 
 
 
@@ -41,11 +38,7 @@ public class MGraphicResources extends OperationResources {
         operationDescription = new OperationDescription();
         try {
             OperationResult operationResult;
-            if(mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0){
-                operationResult = mGraphicService.createUserCommonMGraphic(imsi, mGraphicDTO);
-            }else{
-                operationResult = userSpecialMGraphicService.createUserSpecialMGraphic(imsi,mGraphicDTO);
-            }
+            operationResult = mGraphicService.create(imsi, mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception ex) {
             actionName = "createUserCommonMGraphic";
@@ -62,7 +55,7 @@ public class MGraphicResources extends OperationResources {
         operationDescription = new OperationDescription();
         try {
             mGraphicDTO.setId(userCommonMGraphicId);
-            OperationResult operationResult = mGraphicService.editUserCommonMGraphic(imsi,mGraphicDTO);
+            OperationResult operationResult = mGraphicService.edit(imsi, mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
             actionName = "editUserCommonMGraphic";
@@ -77,7 +70,7 @@ public class MGraphicResources extends OperationResources {
     public Response delete(@PathParam("imsi")String imsi,@PathParam("id")String userCommonMGraphicId){
         operationDescription = new OperationDescription();
         try {
-            OperationResult operationResult = mGraphicService.disableUserCommonMGraphic(imsi,userCommonMGraphicId);
+            OperationResult operationResult = mGraphicService.disable(imsi, userCommonMGraphicId);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
             actionName = "disableUserCommonMGraphic";
