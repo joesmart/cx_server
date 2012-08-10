@@ -98,7 +98,7 @@ public class ActionBuilder {
     
     public ActionBuilder mGraphicsUrl(String url) {
         Action action = new Action(url,"GET");
-        actions.setMGraphicsURL(action);
+        actions.setMgraphicsURL(action);
         return this;
     }
     
@@ -216,7 +216,7 @@ public class ActionBuilder {
     private void hiddenCustomActionsForNoImsi(Actions actions) {
         actions.setCollectionsURL(null);
         actions.setCallURL(null);
-        actions.setMGraphicsURL(null);
+        actions.setMgraphicsURL(null);
         actions.setSuggestionURL(null);
         actions.setCustomMGraphicsURL(null);
         actions.setInviteFriendsURL(null);
