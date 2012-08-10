@@ -4,7 +4,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import javax.ws.rs.core.MediaType;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.cl.cx.platform.dto.Action;
+import com.cl.cx.platform.dto.Actions;
 import com.sun.jersey.api.client.ClientResponse;
 
 public class ActionResourceTest extends BasicJerseyTest {
@@ -19,9 +19,9 @@ public class ActionResourceTest extends BasicJerseyTest {
         ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
             .get(ClientResponse.class);
         assertThat(response.getStatus()).isEqualTo(200);
-        Action action = response.getEntity(Action.class);
-        assertThat(action.getVersionURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
-        assertThat(action.getRecommendURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "none" + "/graphicInfos?recommend=true");
+        Actions actions = response.getEntity(Actions.class);
+        assertThat(actions.getVersionURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
+        assertThat(actions.getRecommendURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "none" + "/graphicInfos?recommend=true");
     }
     
     @Test
@@ -30,8 +30,8 @@ public class ActionResourceTest extends BasicJerseyTest {
         ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
             .get(ClientResponse.class);
         assertThat(response.getStatus()).isEqualTo(200);
-        Action action = response.getEntity(Action.class);
-        assertThat(action.getVersionURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
-        assertThat(action.getRecommendURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "123456" + "/graphicInfos?recommend=true");
+        Actions actions = response.getEntity(Actions.class);
+        assertThat(actions.getVersionURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
+        assertThat(actions.getRecommendURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "123456" + "/graphicInfos?recommend=true");
     }
 }

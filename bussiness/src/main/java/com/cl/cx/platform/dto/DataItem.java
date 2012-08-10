@@ -24,7 +24,7 @@ public class DataItem extends BasicItem {
     private String thumbnailPath;
     private String sourceImagePath;
     private String downloadNumber;
-    private Action action;
+    private Actions actions;
     private String resourceType;
     private String description;
     private String graphicURL;

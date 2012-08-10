@@ -1,6 +1,7 @@
 package com.server.cx.model;
 
 import com.cl.cx.platform.dto.Action;
+import com.cl.cx.platform.dto.Actions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -30,188 +31,208 @@ public class ActionBuilder {
     protected String thumbnailSize;
 
 
-    private Action action ;
+    private Actions actions;
 
-    public  ActionBuilder action(){
-        action = new Action();
+    public  ActionBuilder actions(){
+        actions = new Actions();
         return  this;
     }
     public  ActionBuilder zoneInURL(String url){
-        action.setZoneInURL(url);
+        Action action = new Action(url,"GET");
+        actions.setZoneInURL(action);
         return this;
     }
 
     public ActionBuilder zoneOutURL(String url){
-        action.setZoneOutURL(url);
+        Action action = new Action(url,"GET");
+        actions.setZoneOutURL(action);
         return this;
     }
 
     public ActionBuilder collectURL(String url){
-        action.setCollectURL(url);
+        Action action = new Action(url,"POST");
+        actions.setCollectURL(action);
         return this;
     }
 
     public ActionBuilder useURL(String url){
-        action.setUseURL(url);
+        Action action = new Action(url,"POST");
+        actions.setUseURL(action);
         return  this;
     }
     public ActionBuilder purchaseURL(String url){
-        action.setPurchaseURL(url);
+        Action action = new Action(url,"POST");
+        actions.setPurchaseURL(action);
         return  this;
     }
 
     public ActionBuilder removeURL(String url){
-        action.setRemoveURL(url);
+        Action action = new Action(url,"DELETE");
+        actions.setRemoveURL(action);
         return this;
     }
 
     public ActionBuilder disableURL(String url){
-        action.setDisableURL(url);
+        Action action = new Action(url,"DELETE");
+        actions.setDisableURL(action);
         return this;
     }
     
     public ActionBuilder recommendUrl(String url) {
-        action.setRecommendURL(url);
+        Action action = new Action(url,"GET");
+        actions.setRecommendURL(action);
         return this;
     }
     
     public ActionBuilder hotUrl(String url) {
-        action.setHotURL(url);
+        Action action = new Action(url,"GET");
+        actions.setHotURL(action);
         return this;
     }
     
     public ActionBuilder categoryUrl(String url) {
-        action.setCategoryURL(url);
+        Action action = new Action(url,"GET");
+        actions.setCategoryURL(action);
         return this;
     }
     
     public ActionBuilder mGraphicsUrl(String url) {
-        action.setMGraphicsURL(url);
+        Action action = new Action(url,"GET");
+        actions.setMGraphicsURL(action);
         return this;
     }
     
     public ActionBuilder statusUrl(String url) {
-        action.setStatusURL(url);
+        Action action = new Action(url,"GET");
+        actions.setStatusURL(action);
         return this;
     }
     
-    public ActionBuilder holidaiesUrl(String url) {
-        action.setHolidaysURL(url);
+    public ActionBuilder holidaysUrl(String url) {
+        Action action = new Action(url,"GET");
+        actions.setHolidaysURL(action);
         return this;
     }
     
     public ActionBuilder customMGraphicsUrl(String url) {
-        action.setCustomMGraphicsURL(url);
+        Action action = new Action(url,"GET");
+        actions.setCustomMGraphicsURL(action);
         return this;
     }
     
     public ActionBuilder versionUrl(String url) {
-        action.setVersionURL(url);
+        Action action = new Action(url,"GET");
+        actions.setVersionURL(action);
         return this;
     }
     
     public ActionBuilder suggestionUrl(String url) {
-        action.setSuggestionURL(url);
+        Action action = new Action(url,"POST");
+        actions.setSuggestionURL(action);
         return this;
     }
     
     public ActionBuilder callUrl(String url) {
-        action.setCallURL(url);
+        Action action = new Action(url,"GET");
+        actions.setCallURL(action);
         return this;
     }
     
-    public ActionBuilder collectionsUrl(String url) {
-        action.setCollectionsURL(url);
+    public ActionBuilder collectionsUrl(String url, String method) {
+        Action action = new Action(url,method);
+        actions.setCollectionsURL(action);
         return this;
     }
-    
+
     public ActionBuilder registerUrl(String url) {
-        action.setRegisterURL(url);
+        Action action = new Action(url,"POST");
+        actions.setRegisterURL(action);
         return this;
     }
 
     public ActionBuilder editURL(String url){
-        action.setEditURL(url);
+        Action action = new Action(url,"PUT");
+        actions.setEditURL(action);
         return this;
     }
 
     public ActionBuilder inviteFriendsURL(String url){
-        action.setInviteFriendsURL(url);
+        Action action = new Action(url,"POST");
+        actions.setInviteFriendsURL(action);
         return this;
     }
     
 
-    public Action build(){
-        return action;
+    public Actions build(){
+        return actions;
     }
     
-    public Action buildGraphicItemAction(String imsi){
-        return  action()
+    public Actions buildGraphicItemAction(String imsi){
+        return  actions()
                 .collectURL(baseHostAddress + restURL + imsi + "/myCollections")
                 .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
                 .useURL(baseHostAddress + restURL + imsi + "/mGraphics")
                 .build();
     }
 
-    public  Action buildCategoriesAction(String imsi,Long categoryId){
-        return  action()
+    public Actions buildCategoriesAction(String imsi,Long categoryId){
+        return  actions()
                 .zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId)
                 .zoneOutURL(baseHostAddress + restURL + imsi + "/categories")
                 .build();
     }
 
-    public Action buildUserFavoriteItemAction(String imsi,String userFavoriteId){
-        return  action()
+    public Actions buildUserFavoriteItemAction(String imsi,String userFavoriteId){
+        return  actions()
                 .removeURL(baseHostAddress + restURL + imsi + "/myCollections/"+userFavoriteId)
                 .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
                 .useURL(baseHostAddress + restURL + imsi + "/mGraphics")
                 .build();
     }
     
-    public Action buildUrlActions(String imsi) {
-        return action().recommendUrl(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true")
+    public Actions buildUrlActions(String imsi) {
+        return actions().recommendUrl(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true")
         .hotUrl(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true")
         .categoryUrl(baseHostAddress + restURL + imsi + "/categories")
         .mGraphicsUrl(baseHostAddress + restURL + imsi + "/mGraphics")
         .statusUrl(baseHostAddress + restURL + imsi + "/statusTypes")
-        .holidaiesUrl(baseHostAddress + restURL + imsi + "/holidayTypes")
+        .holidaysUrl(baseHostAddress + restURL + imsi + "/holidayTypes")
         .customMGraphicsUrl(baseHostAddress + restURL + imsi + "/customMGraphics")
         .versionUrl(baseHostAddress + restURL + "upgrade")
-        .suggestionUrl(baseHostAddress + restURL + imsi + "/suggestion" )
-        .callUrl(baseHostAddress + restURL+ imsi+"/callings")
-        .collectionsUrl(baseHostAddress + restURL + imsi + "/collections")
+        .suggestionUrl(baseHostAddress + restURL + imsi + "/suggestion")
+        .callUrl(baseHostAddress + restURL + imsi + "/callings")
+        .collectionsUrl(baseHostAddress + restURL + imsi + "/collections", "GET")
         .inviteFriendsURL(baseHostAddress + restURL + imsi + "/sms")
         .registerUrl(baseHostAddress + restURL + "register").build();
     }
     
-    public Action buildUrlActions() {
+    public Actions buildUrlActions() {
         String replaceImsi = "none";
-        Action action = buildUrlActions(replaceImsi);
-        hiddenCustomActionsForNoImsi(action);
-        return action;
+        Actions actions = buildUrlActions(replaceImsi);
+        hiddenCustomActionsForNoImsi(actions);
+        return actions;
     }
     
-    private void hiddenCustomActionsForNoImsi(Action action) {
-        action.setCollectionsURL(null);
-        action.setCallURL(null);
-        action.setMGraphicsURL(null);
-        action.setSuggestionURL(null);
-        action.setCustomMGraphicsURL(null);
-        action.setInviteFriendsURL(null);
+    private void hiddenCustomActionsForNoImsi(Actions actions) {
+        actions.setCollectionsURL(null);
+        actions.setCallURL(null);
+        actions.setMGraphicsURL(null);
+        actions.setSuggestionURL(null);
+        actions.setCustomMGraphicsURL(null);
+        actions.setInviteFriendsURL(null);
     }
 
 
 
-    public Action buildMGraphicActions(String imsi,String id){
-        return  action()
-                .useURL(baseHostAddress+restURL+imsi+"/mGraphics")
+    public Actions buildMGraphicActions(String imsi,String id){
+        return  actions()
                 .editURL(baseHostAddress+restURL+imsi+"/mGraphics/"+id)
                 .disableURL(baseHostAddress+restURL+imsi+"/mGraphics/"+id)
                 .build();
     }
 
-    public Action buildHistoryMGraphicActions(String imsi,String id){
-        return  action()
+    public Actions buildHistoryMGraphicActions(String imsi,String id){
+        return  actions()
                 .useURL(baseHostAddress+restURL+imsi+"/MGraphics")
                 .removeURL(baseHostAddress+restURL+imsi+"/historyMGraphics/"+id)
                 .build();
