@@ -19,4 +19,10 @@ public class StatusTypeDaoTest extends SpringTransactionalTestCase {
         assertThat(statusTypes.size()).isEqualTo(9);
         assertThat(statusTypes.get(0).getName()).isEqualTo("飞机上");
     }
+    
+    @Test
+    public void test_find_one_successful() {
+        StatusType statusType = statusTypeDao.findOne(1L);
+        assertThat(statusType.getName()).isEqualTo("飞机上");
+    }
 }

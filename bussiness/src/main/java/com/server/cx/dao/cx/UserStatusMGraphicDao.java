@@ -2,6 +2,7 @@ package com.server.cx.dao.cx;
 
 import com.server.cx.entity.cx.StatusType;
 import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.entity.cx.UserStatusMGraphic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * Time: 下午4:53
  * FileName:UserStatusMGraphic
  */
-public interface UserStatusMGraphic extends JpaRepository<UserStatusMGraphic, String>,
+public interface UserStatusMGraphicDao extends JpaRepository<UserStatusMGraphic, String>,
         JpaSpecificationExecutor<UserStatusMGraphic> {
 
     public List<UserStatusMGraphic> findByUserInfoAndStatusType(UserInfo userInfo,StatusType statusType);
