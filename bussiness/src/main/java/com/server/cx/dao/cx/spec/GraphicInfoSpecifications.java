@@ -55,4 +55,19 @@ public class GraphicInfoSpecifications {
             }
         };
     }
+
+    public static Specification<GraphicInfo> holidayTypeGraphicInfoExcludedUsed(final Long holidayTypeId, final String usedId) {
+        return new Specification<GraphicInfo>() {
+            @Override
+            public Predicate toPredicate(Root<GraphicInfo> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                if(StringUtil.notNull(usedId)) {
+                    return cb.and(cb.isNotNull(root.get("holidayType")),
+                        cb.equal(root.get("holidayType").<String> get("id"), holidayTypeId),
+                        cb.notEqual(root.get("id"), usedId));
+                }
+                return cb.and(cb.isNotNull(root.get("holidayType")),
+                    cb.equal(root.get("holidayType").<String> get("id"), holidayTypeId));
+            }
+        };
+    }
 }
