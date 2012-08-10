@@ -25,7 +25,7 @@ import java.util.List;
  */
 @Service(value = "historyMGraphicService")
 @Transactional
-public class HistoryMGraphicServiceImpl extends MGraphicService implements HistoryMGraphicService {
+public class HistoryMGraphicServiceImpl extends CheckAndHistoryMGraphicService implements HistoryMGraphicService {
     @Autowired
     private HistoryMGraphicDao historyMGraphicDao;
 

@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Component
 @Transactional
-public class MGraphicService extends UserCheckService {
+public class CheckAndHistoryMGraphicService extends UserCheckService {
     @Autowired
     protected HistoryMGraphicDao historyMGraphicDao;
     @Autowired

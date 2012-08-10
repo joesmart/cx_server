@@ -1,5 +1,6 @@
 package com.cl.cx.platform.dto;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.List;
  * FileName:MGraphicDTO
  */
 @Data
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property= "@type")
 public class MGraphicDTO {
     private String id;
     private String graphicInfoId;

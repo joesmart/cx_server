@@ -32,7 +32,7 @@ import java.util.List;
  */
 @Service(value = "userCommonMGraphicService")
 @Transactional
-public class MGraphicServiceImpl extends com.server.cx.service.cx.impl.MGraphicService implements com.server.cx.service.cx.MGraphicService {
+public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implements com.server.cx.service.cx.MGraphicService {
 
     @Autowired
     private BasicService basicService;
