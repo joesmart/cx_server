@@ -201,7 +201,7 @@ public class ActionBuilder {
         .versionUrl(baseHostAddress + restURL + "upgrade")
         .suggestionUrl(baseHostAddress + restURL + imsi + "/suggestion")
         .callUrl(baseHostAddress + restURL + imsi + "/callings")
-        .collectionsUrl(baseHostAddress + restURL + imsi + "/collections", "GET")
+        .collectionsUrl(baseHostAddress + restURL + imsi + "/myCollections", "GET")
         .inviteFriendsURL(baseHostAddress + restURL + imsi + "/sms")
         .registerUrl(baseHostAddress + restURL + "register").build();
     }
