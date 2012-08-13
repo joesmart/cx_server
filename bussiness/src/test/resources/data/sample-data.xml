@@ -27,37 +27,38 @@
 	<acct_user_group user_id="4" group_id="2" />
 	<acct_user_group user_id="5" group_id="2" />
 	<acct_user_group user_id="6" group_id="2" />
-	
-	<holiday_type id="1" name="七夕" download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="2" name="教师节 " download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="3" name="中秋节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="4" name="国庆节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="5" name="万圣节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="6" name="光棍节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="7" name="平安夜" download_num="100000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="8" name="圣诞节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="9" name="除夕" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="10" name="春节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="11" name="元宵节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="12" name="妇女节" download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="13" name="愚人节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="14" name="劳动节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="15" name="青年节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="16" name="母亲节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="17" name="儿童节" download_num="100000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="18" name="端午节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="19" name="父亲节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
 
-	<status_type id="1" name="飞机上" graphic_resource_id="500797b7e4b06f4f79efbf5a"></status_type>
-	<status_type id="2" name="开汽车 " graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="3" name="会议中" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="4" name="睡觉" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="5" name="烧饭" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="6" name="WC" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="7" name="看电视"  graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="8" name="购物" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="9" name="走路" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	
+    <status_type id="1" name="飞机上" graphic_resource_id="500797b7e4b06f4f79efbf5a"></status_type>
+    <status_type id="2" name="开汽车 " graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
+    <status_type id="3" name="会议中" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
+    <status_type id="4" name="睡觉" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
+    <status_type id="5" name="烧饭" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
+    <status_type id="6" name="WC" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
+    <status_type id="7" name="看电视"  graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
+    <status_type id="8" name="购物" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
+    <status_type id="9" name="走路" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
+
+    <holiday_type id="1" name="七夕" download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="2" name="教师节 " download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="3" name="中秋节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="4" name="国庆节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="5" name="万圣节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="6" name="光棍节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="7" name="平安夜" download_num="100000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="8" name="圣诞节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="9" name="除夕" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="10" name="春节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="11" name="元宵节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="12" name="妇女节" download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="13" name="愚人节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="14" name="劳动节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="15" name="青年节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="16" name="母亲节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="17" name="儿童节" download_num="100000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="18" name="端午节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="19" name="父亲节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+
+
     <category id="1" name="心情物语" description="心情物语测试测试车上" download_num="1000" graphic_resource_id="50039d9ee4b09ed787af7143" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
     <category id="2" name="精品资讯" description="精品资讯测试测试车上" download_num="1000" graphic_resource_id="50039d92e4b09ed787af7107" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
     <category id="3" name="动漫天地" description="动漫天地测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
@@ -261,20 +262,20 @@
 	<suggestion id="2" content="路人甲" userinfo_id="6"></suggestion>
 	<suggestion id="3" content="a" userinfo_id="7"></suggestion>
 
-    <mgraphic cast_type="common" id="1"  name="abcd" signature="xxxxx"        graphic_info_id="4028b88138d5e5e50138d5e5f2800024" user_id="1" priority="3" mode_type="1" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0"/>
-    <mgraphic cast_type="special" id="2"  name="abcd" signature="xxxxx"       graphic_info_id="4028b88138d5e5e50138d5e5f2800025" user_id="1" priority="4" mode_type="2" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0"/>
-    <mgraphic cast_type="default" id="3"  name="default" signature="default" graphic_info_id="4028b88138d5e5e50138d5e5f2800026" user_id="1" priority="1" mode_type="0" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" />
-    <mgraphic cast_type="default" id="4"  name="default" signature="10086"   graphic_info_id="4028b88138d5e5e50138d5e5f2800027" priority="1" mode_type="0" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" special_phone_no="10086"/>
-    <mgraphic cast_type="status" id="5"  name="status" signature="xxxxx"   graphic_info_id="4028b88138d5e5e50138d5e5f2800073" user_id="1" priority="1" mode_type="5" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
-    <mgraphic cast_type="status" id="6"  name="status" signature="xxxxx"   graphic_info_id="4028b88138d5e5e50138d5e5f2800074" priority="1" mode_type="5" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
-    <mgraphic cast_type="status" id="7"  name="status" signature="xxxxx"   graphic_info_id="4028b88138d5e5e50138d5e5f2800075" priority="1" mode_type="5" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
-    <mgraphic cast_type="status" id="8"  name="status" signature="xxxxx"   graphic_info_id="4028b88138d5e5e50138d5e5f2800076" priority="1" mode_type="5" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
-    <mgraphic cast_type="status" id="9"  name="status" signature="xxxxx"   graphic_info_id="4028b88138d5e5e50138d5e5f2800077" priority="1" mode_type="5" active="true" created_on="2012-08-01 21:54:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
-	<mgraphic cast_type="holiday" id="10"  name="holiday" signature="hello"   graphic_info_id="4028b88138d5e5e50138d5e5f2800083" user_id="1" priority="1" mode_type="4" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
-    <mgraphic cast_type="holiday" id="11"  name="holiday" signature="world"   graphic_info_id="4028b88138d5e5e50138d5e5f2800084" priority="1" mode_type="4" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
-    <mgraphic cast_type="holiday" id="12"  name="holiday" signature="LeBron James"   graphic_info_id="4028b88138d5e5e50138d5e5f2800085" priority="1" mode_type="4" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
-    <mgraphic cast_type="holiday" id="13"  name="holiday" signature="Kelven King"   graphic_info_id="4028b88138d5e5e50138d5e5f2800086" priority="1" mode_type="4" active="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
-    <mgraphic cast_type="holiday" id="14"  name="holiday" signature="Steve Nash"   graphic_info_id="4028b88138d5e5e50138d5e5f2800087" priority="1" mode_type="4" active="true" created_on="2012-08-01 21:54:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
+    <mgraphic cast_type="common" id="1"     name="abcd"         signature="xxxxx"           graphic_info_id="4028b88138d5e5e50138d5e5f2800024"  user_id="1" priority="3" mode_type="1" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0"/>
+    <mgraphic cast_type="special" id="2"    name="abcd"         signature="xxxxx"           graphic_info_id="4028b88138d5e5e50138d5e5f2800025"  user_id="1" priority="4" mode_type="2" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0"/>
+    <mgraphic cast_type="default" id="3"    name="default"     signature="default"         graphic_info_id="4028b88138d5e5e50138d5e5f2800026"  user_id="1" priority="1" mode_type="0" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" />
+    <mgraphic cast_type="default" id="4"    name="default"     signature="10086"            graphic_info_id="4028b88138d5e5e50138d5e5f2800027" priority="1" mode_type="0" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" special_phone_no="10086"/>
+    <mgraphic cast_type="status" id="5"     name="status"      signature="xxxxx"            graphic_info_id="4028b88138d5e5e50138d5e5f2800073" user_id="1" priority="1" mode_type="5" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
+    <mgraphic cast_type="status" id="6"     name="status"      signature="xxxxx"            graphic_info_id="4028b88138d5e5e50138d5e5f2800074" user_id="1" priority="1" mode_type="9" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
+    <mgraphic cast_type="status" id="7"     name="status"      signature="xxxxx"            graphic_info_id="4028b88138d5e5e50138d5e5f2800075" user_id="1" priority="1" mode_type="9" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
+    <mgraphic cast_type="status" id="8"     name="status"      signature="xxxxx"            graphic_info_id="4028b88138d5e5e50138d5e5f2800076" user_id="1" priority="1" mode_type="9" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
+    <mgraphic cast_type="status" id="9"     name="status"      signature="xxxxx"            graphic_info_id="4028b88138d5e5e50138d5e5f2800077" user_id="1" priority="1" mode_type="9" common="true" created_on="2012-08-01 21:54:10.0" updated_on="2012-08-01 21:55:10.0" status_type_id="1"/>
+	<mgraphic cast_type="holiday" id="10"   name="holiday"     signature="hello"           graphic_info_id="4028b88138d5e5e50138d5e5f2800083" user_id="1"  priority="1" mode_type="7" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
+    <mgraphic cast_type="holiday" id="11"   name="holiday"     signature="world"           graphic_info_id="4028b88138d5e5e50138d5e5f2800084" user_id="1"  priority="1" mode_type="7" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
+    <mgraphic cast_type="holiday" id="12"   name="holiday"     signature="LeBron James"   graphic_info_id="4028b88138d5e5e50138d5e5f2800085" user_id="1"  priority="1" mode_type="7" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
+    <mgraphic cast_type="holiday" id="13"   name="holiday"     signature="Kelven King"    graphic_info_id="4028b88138d5e5e50138d5e5f2800086" user_id="1"  priority="1" mode_type="7" common="true" created_on="2012-08-01 21:55:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
+    <mgraphic cast_type="holiday" id="14"   name="holiday"     signature="Steve Nash"     graphic_info_id="4028b88138d5e5e50138d5e5f2800087" user_id="1"  priority="1" mode_type="7" common="true" created_on="2012-08-01 21:54:10.0" updated_on="2012-08-01 21:55:10.0" holiday_type_id="1"/>
    
     <mgraphic_phone_no mgraphic_id="2"  phone_number="1512581472"/>
     <mgraphic_phone_no mgraphic_id="2"  phone_number="13561341578"/>
@@ -282,25 +283,6 @@
     <mgraphic_phone_no mgraphic_id="2"  phone_number="13561341579"/>
 
 
-    <holiday_type id="1" name="七夕" download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="2" name="教师节 " download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="3" name="中秋节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="4" name="国庆节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="5" name="万圣节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="6" name="光棍节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="7" name="平安夜" download_num="100000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="8" name="圣诞节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="9" name="除夕" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="10" name="春节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="11" name="元宵节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="12" name="妇女节" download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="13" name="愚人节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="14" name="劳动节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="15" name="青年节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="16" name="母亲节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="17" name="儿童节" download_num="100000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="18" name="端午节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-	<holiday_type id="19" name="父亲节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
 
     <holiday id="1" holiday_day="2012-8-23" type="1"/>
     <holiday id="2" holiday_day="2012-9-10" type="2"/>
@@ -321,15 +303,7 @@
     <holiday id="17" holiday_day="2013-6-1" type="17"/>
     <holiday id="18" holiday_day="2013-6-12" type="18"/>
     <holiday id="19" holiday_day="2013-6-16" type="19"/>
-
-	<status_type id="1" name="飞机上" graphic_resource_id="500797b7e4b06f4f79efbf5a"></status_type>
-	<status_type id="2" name="开汽车 " graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="3" name="会议中" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="4" name="睡觉" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="5" name="烧饭" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="6" name="WC" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="7" name="看电视"  graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="8" name="购物" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
-	<status_type id="9" name="走路" graphic_resource_id="500797b7e4b06f4f79efbf5a" ></status_type>
+    <holiday id="20" holiday_day="2013-12-24" type="7"/>
+    <holiday id="21" holiday_day="2013-8-13" type="1"/>
 
 </dataset>

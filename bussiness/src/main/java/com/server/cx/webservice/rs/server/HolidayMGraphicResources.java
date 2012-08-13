@@ -1,10 +1,9 @@
 package com.server.cx.webservice.rs.server;
 
-import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.model.OperationResult;
-import com.server.cx.service.cx.MGraphicService;
+import com.server.cx.service.cx.HolidayMGraphicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,26 +15,25 @@ import javax.ws.rs.core.Response;
 
 /**
  * User: yanjianzou
- * Date: 12-8-6
- * Time: 上午10:29
- * FileName:UserCommonMGraphicResources
+ * Date: 12-8-13
+ * Time: 下午12:23
+ * FileName:HolidayMGraphicURL
  */
 @Component
-@Path("/{imsi}/mGraphics")
+@Path("/{imsi}/holidayMGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-public class MGraphicResources extends OperationResources {
+public class HolidayMGraphicResources extends OperationResources{
     public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResources.class);
-
     @Autowired
-    private MGraphicService mGraphicService;
+    private HolidayMGraphicService holidayMGraphicService;
 
     @POST
     public Response create(@PathParam("imsi") String imsi, MGraphicDTO mGraphicDTO) {
         operationDescription = new OperationDescription();
         try {
             OperationResult operationResult;
-            operationResult = mGraphicService.create(imsi, mGraphicDTO);
+            operationResult = holidayMGraphicService.create(imsi, mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception ex) {
             actionName = "createUserCommonMGraphic";
@@ -52,7 +50,7 @@ public class MGraphicResources extends OperationResources {
         operationDescription = new OperationDescription();
         try {
             mGraphicDTO.setId(userCommonMGraphicId);
-            OperationResult operationResult = mGraphicService.edit(imsi, mGraphicDTO);
+            OperationResult operationResult = holidayMGraphicService.edit(imsi, mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
             actionName = "editUserCommonMGraphic";
@@ -67,7 +65,7 @@ public class MGraphicResources extends OperationResources {
     public Response delete(@PathParam("imsi")String imsi,@PathParam("id")String userCommonMGraphicId){
         operationDescription = new OperationDescription();
         try {
-            OperationResult operationResult = mGraphicService.disable(imsi, userCommonMGraphicId);
+            OperationResult operationResult = holidayMGraphicService.disable(imsi, userCommonMGraphicId);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
             actionName = "disableUserCommonMGraphic";
@@ -75,10 +73,5 @@ public class MGraphicResources extends OperationResources {
         } finally {
             return  Response.ok(operationDescription).build();
         }
-    }
-    @GET
-    public Response getAll(@PathParam("imsi")String imsi){
-        DataPage dataPage = mGraphicService.queryUserMGraphic(imsi);
-        return Response.ok(dataPage).build();
     }
 }

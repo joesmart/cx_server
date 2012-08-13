@@ -1,5 +1,6 @@
 package com.server.cx.temp;
 
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.math.IntMath;
 import org.apache.commons.lang.math.RandomUtils;
@@ -62,5 +63,12 @@ public class GuavaTest {
     public void test_x(){
         System.out.println(System.currentTimeMillis());
         System.out.println(LocalDate.now().toDate());
+    }
+
+    @Test
+    public void test_optional(){
+        String a = null;
+
+        System.out.print(Optional.of(a).isPresent());
     }
 }
