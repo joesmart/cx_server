@@ -1,10 +1,10 @@
 package com.server.cx.model;
 
-import com.cl.cx.platform.dto.Action;
-import com.cl.cx.platform.dto.Actions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import com.cl.cx.platform.dto.Action;
+import com.cl.cx.platform.dto.Actions;
 
 /**
  * User: yanjianzou
@@ -162,6 +162,12 @@ public class ActionBuilder {
         return this;
     }
     
+    public ActionBuilder uploadContactsURL(String url) {
+        Action action = new Action(url, "POST");
+        actions.setUploadContactsURL(action);
+        return this;
+    }
+    
 
     public Actions build(){
         return actions;
@@ -225,9 +231,10 @@ public class ActionBuilder {
         .versionUrl(baseHostAddress + restURL + "upgrade")
         .suggestionUrl(baseHostAddress + restURL + imsi + "/suggestion")
         .callUrl(baseHostAddress + restURL + imsi + "/callings")
-        .collectionsUrl(baseHostAddress + restURL + imsi + "/collections", "GET")
+        .collectionsUrl(baseHostAddress + restURL + imsi + "/myCollections", "GET")
         .inviteFriendsURL(baseHostAddress + restURL + imsi + "/sms")
-        .registerUrl(baseHostAddress + restURL + "register").build();
+        .registerUrl(baseHostAddress + restURL + "register")
+        .uploadContactsURL(baseHostAddress + restURL + imsi + "/contacts").build();
     }
     
     public Actions buildUrlActions() {
@@ -244,6 +251,7 @@ public class ActionBuilder {
         actions.setSuggestionURL(null);
         actions.setCustomMGraphicsURL(null);
         actions.setInviteFriendsURL(null);
+        actions.setUploadContactsURL(null);
     }
 
 
