@@ -2,7 +2,6 @@ package com.server.cx.dao.cx;
 
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserInfo;
-import com.server.cx.entity.cx.UserSpecialMGraphic;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,18 +21,11 @@ import static org.fest.assertions.Assertions.assertThat;
 public class UserSpecialMGraphicDaoTest extends SpringTransactionalTestCase {
 
     @Autowired
-    private UserSpecialMGraphicDao userSpecialMGraphicDao;
-
-    @Autowired
     private MGraphicDao mGraphicDao;
     @Autowired
     private UserInfoDao userInfoDao;
 
-    @Test
-    public void should_cant_load_common_mgraphic_when_query_common_mgraphic_by_id(){
-        UserSpecialMGraphic userSpecialMGraphic =  userSpecialMGraphicDao.findOne("2");
-        assertThat(userSpecialMGraphic).isNotNull();
-    }
+
 
     @Test
     public void should_query_by_phoneNos_successful(){

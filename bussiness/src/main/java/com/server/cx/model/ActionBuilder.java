@@ -181,10 +181,34 @@ public class ActionBuilder {
                 .build();
     }
 
+    public Actions buildHolidayMGraphicItemAction(String imsi){
+        return  actions()
+                .collectURL(baseHostAddress + restURL + imsi + "/myCollections")
+                .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
+                .useURL(baseHostAddress + restURL + imsi + "/holidayMGraphics")
+                .build();
+    }
+
+    public Actions buildHolidayMGraphicItemEditAction(String imsi,String mGraphicId){
+        return  actions()
+                .collectURL(baseHostAddress + restURL + imsi + "/myCollections")
+                .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
+                .editURL(baseHostAddress + restURL + imsi + "/holidayMGraphics/"+mGraphicId)
+                .removeURL(baseHostAddress + restURL + imsi + "/holidayMGraphics/"+mGraphicId)
+                .build();
+    }
+
     public Actions buildCategoriesAction(String imsi,Long categoryId){
         return  actions()
                 .zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId)
                 .zoneOutURL(baseHostAddress + restURL + imsi + "/categories")
+                .build();
+    }
+
+    public Actions buildHolidayTypeAction(String imsi,Long holidayTypeId){
+        return  actions()
+                .zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?holidayTypeId=" + holidayTypeId)
+                .zoneOutURL(baseHostAddress + restURL + imsi + "/holidayTypes")
                 .build();
     }
 

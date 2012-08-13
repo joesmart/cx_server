@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Entity
 @DiscriminatorValue("holiday")
-public class UserHolidayMGraphic extends MGraphic {
+public class UserHolidayMGraphic extends UserCommonMGraphic {
     private Date holiday;
     private HolidayType holidayType;
     
@@ -25,6 +25,7 @@ public class UserHolidayMGraphic extends MGraphic {
         this.holidayType = holidayType;
     }
 
+
     public UserHolidayMGraphic() {
         this.setPriority(6);
         this.setModeType(4);
@@ -37,4 +38,5 @@ public class UserHolidayMGraphic extends MGraphic {
     public void setHoliday(Date holiday) {
         this.holiday = holiday;
     }
+
 }

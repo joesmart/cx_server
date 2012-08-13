@@ -5,13 +5,13 @@ import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
 import com.server.cx.entity.cx.*;
-import com.server.cx.model.CXInfo;
-import com.server.cx.model.UserCXInfo;
 import com.server.cx.service.cx.impl.BasicService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: yanjianzou Date: 12-8-2 Time: 上午11:30 FileName:BusinessFunctions
@@ -19,43 +19,16 @@ import java.util.List;
 @Component
 public class BusinessFunctions extends BasicService {
 
-    public Function<UserCommonMGraphic, UserCXInfo> mGraphicStoreModeTransformToUserCXInfo() {
-        return new Function<UserCommonMGraphic, UserCXInfo>() {
-            @Override
-            public UserCXInfo apply(UserCommonMGraphic intput) {
-                return intput.convertMGraphicStoreModeToUserCXInfo();
-            }
-
-        };
-    }
-
     public Function<UserFavorites, DataItem> userFavoriteTransformToCollectedGraphicInfoItem(final String imsi) {
         return new Function<UserFavorites, DataItem>() {
             @Override
             public DataItem apply(@Nullable UserFavorites input) {
-                DataItem item = new DataItem();
                 GraphicInfo graphicInfo = input.getGraphicInfo();
-                item.setFavoriteId(input.getId());
-                item.setId(input.getId());
-                item.setName(graphicInfo.getName());
-                item.setSignature(graphicInfo.getSignature());
-                item.setDownloadNumber(String.valueOf(graphicInfo.getUseCount()));
-                item.setAuditPassed(true);
-                item.setPrice(graphicInfo.getPrice());
-                if (graphicInfo.getPrice() > 0.0F) {
-                    item.setPurchased(false);
-                }
-                item.setCollected(true);
-                item.setLevel(graphicInfo.getLevel());
 
-                if (graphicInfo.getGraphicResources().size() > 0) {
-                    GraphicResource graphicResource = graphicInfo.getGraphicResources().get(0);
-                    item.setThumbnailPath(imageShowURL + graphicResource.getResourceId()
-                            + "&" + thumbnailSize);
-                    item.setSourceImagePath(imageShowURL
-                            + graphicResource.getResourceId());
-                    item.setMediaType(graphicResource.getType());
-                }
+                DataItem item = generateBasicDataItem(graphicInfo,imsi,null);
+
+                item.setCollected(true);
+                item.setFavoriteId(input.getId());
                 item.setHref(baseHostAddress + restURL + imsi + "/myCollections/" + input.getId());
                 if(!"none".equals(imsi)){
                     Actions actions = actionBuilder.buildUserFavoriteItemAction(imsi, input.getId());
@@ -95,66 +68,105 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
-    public Function<GraphicInfo, DataItem> graphicInfoTransformToGraphicInfoItem(final String imsi, final List<String> graphicIds) {
+    public Function<GraphicInfo, DataItem> graphicInfoTransformToGraphicInfoItem(final String imsi, final List<String> graphicIds, final Map<String, String> usedGraphicInfos, final ActionNames actionNames) {
         return new Function<GraphicInfo, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicInfo input) {
-                DataItem item = new DataItem();
-                item.setId(input.getId());
-                item.setName(input.getName());
-                item.setSignature(input.getSignature());
-                item.setDownloadNumber(String.valueOf(input.getUseCount()));
-                item.setAuditPassed(true);
-                item.setPrice(input.getPrice());
-                if (input.getPrice() > 0.0F) {
-                    item.setPurchased(false);
-                }
-                item.setLevel(input.getLevel());
-                if (input.getGraphicResources().size() > 0) {
-                    GraphicResource graphicResource = input.getGraphicResources().get(0);
-                    item.setThumbnailPath(imageShowURL + graphicResource.getResourceId()
-                            + "&" + thumbnailSize);
-                    item.setSourceImagePath(imageShowURL
-                            + graphicResource.getResourceId());
-                    item.setMediaType(graphicResource.getType());
-                }
+                DataItem item = generateBasicDataItem(input, imsi, graphicIds);
                 item.setHref(baseHostAddress + restURL + imsi + "/graphicInfos/" + input.getId());
+
+                //TODO too mush duties need to refactor by Zou YanJian
                 if (!"none".equals(imsi)) {
-                    Actions actions = actionBuilder.buildGraphicItemAction(imsi);
-                    item.setActions(actions);
-                }
-                if(graphicIds != null){
-                    if(graphicIds.contains(input.getId())){
-                        item.setCollected(true);
-                    }else{
-                        item.setCollected(false);
+                    Actions actions = null;
+                    if(ActionNames.MGRAPHIC_ACTION.equals(actionNames)){
+                        actions = actionBuilder.buildGraphicItemAction(imsi);
+                        item.setActions(actions);
+                    }
+
+
+                    if(usedGraphicInfos != null){
+                        String mgraphicId = usedGraphicInfos.get(input.getId());
+                        if(StringUtils.isNotEmpty(mgraphicId)){
+                            item.setMGraphicId(mgraphicId);
+                            item.setInUsing(true);
+                            if(ActionNames.HOLIDAY_MGRAPHIC_ACTION.equals(actionNames)){
+                                actions = actionBuilder.buildHolidayMGraphicItemEditAction(imsi,mgraphicId);
+                                item.setActions(actions);
+                            }
+
+                          }else{
+                            item.setInUsing(false);
+                            if(ActionNames.HOLIDAY_MGRAPHIC_ACTION.equals(actionNames)){
+                                actions = actionBuilder.buildHolidayMGraphicItemAction(imsi);
+                                item.setActions(actions);
+                            }
+                        }
                     }
                 }
+
                 return item;
             }
         };
     }
 
-    public Function cxInfoTransformToUserCXInfo(final UserCXInfo userCXInfo, final String imsi) {
-        return new Function<CXInfo, UserCXInfo>() {
+    public Function<GraphicInfo, DataItem> graphicInfoTransformToGraphicInfoItemAndContainMGraphicInfo(final String imsi, final List<String> collectedGraphicInfos,final Map<String,String> usedGraphicInfos, final ActionNames actionNames) {
+        return new Function<GraphicInfo, DataItem>() {
             @Override
-            public UserCXInfo apply(CXInfo cxInfo) {
-                if (userCXInfo != null && userCXInfo.getCxInfo() != null
-                        && userCXInfo.getCxInfo().getId().equals(cxInfo.getId())) {
-                    userCXInfo.setImsi(imsi);
-                    return userCXInfo;
+            public DataItem apply(@Nullable GraphicInfo input) {
+                DataItem item = generateBasicDataItem(input, imsi, collectedGraphicInfos);
+                item.setHref(baseHostAddress + restURL + imsi + "/graphicInfos/" + input.getId());
+
+
+                if (!"none".equals(imsi)) {
+                    Actions actions = null;
+                    if(ActionNames.MGRAPHIC_ACTION.equals(actionNames)){
+                        actions = actionBuilder.buildGraphicItemAction(imsi);
+                        item.setActions(actions);
+                    }
+                    if(ActionNames.HOLIDAY_MGRAPHIC_ACTION.equals(actionNames)){
+                        actions = actionBuilder.buildHolidayMGraphicItemAction(imsi);
+                        item.setActions(actions);
+                    }
                 }
-                UserCXInfo userCXInfo = new UserCXInfo();
-                userCXInfo.setType(3);
-                userCXInfo.setModeType(5);
-                userCXInfo.setImsi(imsi);
-                userCXInfo.setCxInfo(cxInfo);
-                userCXInfo.setStartHour(0);
-                userCXInfo.setEndHour(24);
-                userCXInfo.setAuditPass(true);
-                return userCXInfo;
+
+                return item;
             }
         };
+    }
+
+
+    private DataItem generateBasicDataItem(GraphicInfo input, String imsi, List<String> graphicIds) {
+        DataItem item = new DataItem();
+        item.setId(input.getId());
+        item.setName(input.getName());
+        item.setSignature(input.getSignature());
+        item.setDownloadNumber(String.valueOf(input.getUseCount()));
+        item.setAuditPassed(true);
+        item.setPrice(input.getPrice());
+        if (input.getPrice() > 0.0F) {
+            item.setPurchased(false);
+        }
+
+        item.setLevel(input.getLevel());
+        if (input.getGraphicResources().size() > 0) {
+            GraphicResource graphicResource = input.getGraphicResources().get(0);
+            item.setThumbnailPath(imageShowURL + graphicResource.getResourceId()
+                    + "&" + thumbnailSize);
+            item.setSourceImagePath(imageShowURL
+                    + graphicResource.getResourceId());
+            item.setMediaType(graphicResource.getType());
+        }
+
+        item.setInUsing(false);
+
+        if(graphicIds != null){
+            if(graphicIds.contains(input.getId())){
+                item.setCollected(true);
+            }else{
+                item.setCollected(false);
+            }
+        }
+        return item;
     }
 
     public Function<Contacts, ContactInfoDTO> contactsTransformToContactInfoDTO() {
@@ -169,7 +181,7 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
-    public Function<HolidayType, DataItem> holidayTypeTransformToDataItem() {
+    public Function<HolidayType, DataItem> holidayTypeTransformToDataItem(final String imsi,final List<HolidayType> holidayTypes) {
         return new Function<HolidayType, DataItem>() {
             @Override
             public DataItem apply(@Nullable HolidayType input) {
@@ -179,8 +191,15 @@ public class BusinessFunctions extends BasicService {
                 dataItem.setLevel(input.getLevel());
                 dataItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
                 dataItem.setDownloadNumber(String.valueOf(input.getDownloadNum().intValue()));
-                //TODO 这边接口未完成，需要根据imsi查出具体用户是否使用该节日包, 暂时全部返回false
-                dataItem.setHasUsed(false);
+                if(holidayTypes != null && holidayTypes.size()>0){
+                    dataItem.setHasUsed(holidayTypes.contains(input));
+                }else{
+                    dataItem.setHasUsed(false);
+                }
+                if (!"none".equals(imsi)) {
+                    Actions actions = actionBuilder.buildHolidayTypeAction(imsi, input.getId());
+                    dataItem.setActions(actions);
+                }
                 return dataItem;
             }
         };
@@ -214,7 +233,7 @@ public class BusinessFunctions extends BasicService {
                 dataItem.setLevel(input.getGraphicInfo().getLevel());
                 dataItem.setModeType(input.getModeType());
                 if (2 == input.getModeType()) {
-                    dataItem.setPhoneNos(((UserSpecialMGraphic) input).getPhoneNos());
+                    dataItem.setPhoneNos(((UserCommonMGraphic) input).getPhoneNos());
                 }
                 GraphicInfo graphicInfo = input.getGraphicInfo();
 
@@ -302,4 +321,12 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
+    public Function<UserHolidayMGraphic, HolidayType> userHolidayMGraphicTransformToHolidayType() {
+        return new Function<UserHolidayMGraphic, HolidayType>() {
+            @Override
+            public HolidayType apply(@Nullable UserHolidayMGraphic input) {
+                return input.getHolidayType();
+            }
+        };
+    }
 }

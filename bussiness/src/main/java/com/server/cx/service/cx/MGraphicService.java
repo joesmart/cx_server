@@ -11,8 +11,8 @@ import com.server.cx.model.OperationResult;
  * FileName:MGraphicService
  */
 public interface MGraphicService {
-    public abstract OperationResult createUserCommonMGraphic(String imsi,MGraphicDTO mGraphicDTO);
-    public abstract OperationResult editUserCommonMGraphic(String imsi,MGraphicDTO mGraphicDTO);
-    public abstract OperationResult disableUserCommonMGraphic(String imsi, String userCommonMGraphicId);
+    public abstract OperationResult create(String imsi, MGraphicDTO mGraphicDTO);
+    public abstract OperationResult edit(String imsi, MGraphicDTO mGraphicDTO);
+    public abstract OperationResult disable(String imsi, String userCommonMGraphicId);
     public DataPage queryUserMGraphic(String imsi);
 }

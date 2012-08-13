@@ -67,7 +67,7 @@ public class GraphicInfoServiceTest extends SpringTransactionalTestCase {
     }
     
     @Test
-    public void should_find_holiday_graphicInfos_exist_by_imsi() {
+    public void should_find_holiday_graphicInfos_exist_by_imsi() throws ExecutionException {
         DataPage dataPage = graphicInfoService.findHolidayGraphicInfosByImsi("13146001000", 1L, 0, 3);
         Assertions.assertThat(dataPage).isNotNull();
         LOGGER.info(dataPage.toString());
@@ -77,7 +77,7 @@ public class GraphicInfoServiceTest extends SpringTransactionalTestCase {
     }
     
     @Test
-    public void should_find_holiday_graphicInfos_not_exist_by_imsi() {
+    public void should_find_holiday_graphicInfos_not_exist_by_imsi() throws ExecutionException {
         DataPage dataPage = graphicInfoService.findHolidayGraphicInfosByImsi("13146001001", 1L, 0, 3);
         Assertions.assertThat(dataPage).isNotNull();
         LOGGER.info(dataPage.toString());

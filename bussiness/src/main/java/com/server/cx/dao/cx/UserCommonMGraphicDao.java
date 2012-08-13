@@ -18,5 +18,5 @@ public interface UserCommonMGraphicDao extends JpaRepository<UserCommonMGraphic,
                                                    JpaSpecificationExecutor<UserCommonMGraphic>,
                                                    UserCommonMGraphicCustomDao {
 
-    public List<UserCommonMGraphic> findByUserInfoAndActiveAndModeType(UserInfo userInfo,Boolean active,Integer modeType);
+    public List<UserCommonMGraphic> findByUserInfoAndModeTypeAndCommon(UserInfo userInfo,Integer modeType,Boolean common);
 }

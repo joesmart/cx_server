@@ -18,7 +18,7 @@ public class GraphicInfoSpecifications {
             @Override
             public Predicate toPredicate(Root<GraphicInfo> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 return cb.and(cb.isNotNull(root.get("category")),
-                    cb.equal(root.get("category").<String> get("id"), categoryId));
+                    cb.equal(root.get("category").<Long> get("id"), categoryId));
             }
         };
     }
@@ -47,11 +47,11 @@ public class GraphicInfoSpecifications {
             public Predicate toPredicate(Root<GraphicInfo> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 if(StringUtil.notNull(usedId)) {
                     return cb.and(cb.isNotNull(root.get("statusType")),
-                        cb.equal(root.get("statusType").<String> get("id"), statusTypeId),
+                        cb.equal(root.get("statusType").<Long> get("id"), statusTypeId),
                         cb.notEqual(root.get("id"), usedId));
                 }
                 return cb.and(cb.isNotNull(root.get("statusType")),
-                    cb.equal(root.get("statusType").<String> get("id"), statusTypeId));
+                    cb.equal(root.get("statusType").<Long> get("id"), statusTypeId));
             }
         };
     }
@@ -62,11 +62,11 @@ public class GraphicInfoSpecifications {
             public Predicate toPredicate(Root<GraphicInfo> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 if(StringUtil.notNull(usedId)) {
                     return cb.and(cb.isNotNull(root.get("holidayType")),
-                        cb.equal(root.get("holidayType").<String> get("id"), holidayTypeId),
+                        cb.equal(root.get("holidayType").<Long> get("id"), holidayTypeId),
                         cb.notEqual(root.get("id"), usedId));
                 }
                 return cb.and(cb.isNotNull(root.get("holidayType")),
-                    cb.equal(root.get("holidayType").<String> get("id"), holidayTypeId));
+                    cb.equal(root.get("holidayType").<Long> get("id"), holidayTypeId));
             }
         };
     }
