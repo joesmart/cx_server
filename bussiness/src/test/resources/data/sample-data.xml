@@ -160,6 +160,7 @@
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800091" name="彩像101" signature="男儿当自强91" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-10 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-10 12:13:35.0" holiday_type_id="3"></graphic_infos>
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800092" name="彩像102" signature="男儿当自强92" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-11 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-11 12:13:35.0" holiday_type_id="4"></graphic_infos>
 
+    <versioninfo id="1" version="3.0.122" url="http://10.90.3.122:38183/CXServer/app/CXAndroidClient3.0.apk"></versioninfo>
     <graphic_resource id="4028b88138d65e360138d65e448e0000" graphicinfo_id="4028b88138d5e5e50138d5e5f2800001" resource_id="50208811e4b07efd76d72472" type="jpg" graphic_id="1231" audit_passed="true" />
     <graphic_resource id="4028b88138d65e360138d65e448e0001" graphicinfo_id="4028b88138d5e5e50138d5e5f2800002" resource_id="50208811e4b07efd76d7243d" type="jpg" graphic_id="1231" audit_passed="true" />
     <graphic_resource id="4028b88138d65e360138d65e448e0002" graphicinfo_id="4028b88138d5e5e50138d5e5f2800003" resource_id="50208811e4b07efd76d72445" type="jpg" graphic_id="1231" audit_passed="true" />
@@ -235,6 +236,7 @@
 
 
     <versioninfo id="1" version="3.0.122" url="http://www.zhibo8.cn"></versioninfo>
+>>>>>>> .r108
 
     <userinfo id="1" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001000" phone_no="1512581470"></userinfo>
 	<userinfo id="2" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001001" phone_no="1512581471"></userinfo>

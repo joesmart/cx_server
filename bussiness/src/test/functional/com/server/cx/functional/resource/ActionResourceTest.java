@@ -26,12 +26,12 @@ public class ActionResourceTest extends BasicJerseyTest {
     
     @Test
     public void test_query_all_actions_by_imsi() {
-        resource = resource.path("/actions/123456");
+        resource = resource.path("/actions/13146001000");
         ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
             .get(ClientResponse.class);
         assertThat(response.getStatus()).isEqualTo(200);
         Actions actions = response.getEntity(Actions.class);
-        assertThat(actions.getVersionURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
-        assertThat(actions.getRecommendURL()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "123456" + "/graphicInfos?recommend=true");
+        assertThat(actions.getVersionURL().getHref()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "upgrade");
+        assertThat(actions.getRecommendURL().getHref()).isEqualTo("http://localhost:8080/CXServer/" + "rs/" + "13146001000" + "/graphicInfos?recommend=true");
     }
 }

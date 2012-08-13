@@ -35,4 +35,5 @@ public class Actions {
     private Action registerURL;
     private Action purchaseURL;
     private Action inviteFriendsURL;
+    private Action uploadContactsURL;
 }
