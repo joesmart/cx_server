@@ -2,6 +2,8 @@ package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableStringEntity;
 import lombok.ToString;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,6 +32,7 @@ public class MGraphic extends AuditableStringEntity {
 
 
     @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SELECT)
     @JoinColumn(name = "graphic_info_id")
     public GraphicInfo getGraphicInfo() {
         return graphicInfo;

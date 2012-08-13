@@ -35,6 +35,7 @@ public class GraphicInfoResources {
                                                            @QueryParam("categoryId") Long categoryId,
                                                            @QueryParam("hot") Boolean isHot,
                                                            @QueryParam("recommend")Boolean recommend,
+                                                           @QueryParam("holidayTypeId")Long holidayTypeId,
                                                            @DefaultValue("0") @QueryParam("offset") Integer offset,
                                                            @DefaultValue("5") @QueryParam("limit") Integer limit
     ) {
@@ -57,6 +58,10 @@ public class GraphicInfoResources {
             }
             if(categoryId != null){
                 DataPage dataPage = graphicInfoService.findGraphicInfoDataPageByCategoryId(imsi, categoryId, offset, limit);
+                return Response.ok(dataPage).build();
+            }
+            if(holidayTypeId != null){
+                DataPage dataPage = graphicInfoService.findHolidayGraphicInfosByImsi(imsi, holidayTypeId, offset, limit);
                 return Response.ok(dataPage).build();
             }
         } catch (ExecutionException e) {

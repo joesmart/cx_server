@@ -818,7 +818,7 @@
       <column name="ID" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
     </table>
     <table name="ACCT_GROUP" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMTM5OEMzN0JfMUVBOV80QTQyXzg5QUFfMDI1REZBQjE4QkQxKQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMENCQjFGNDBfOTNERF80MDA0X0JFMkZfRjNDMEYzREVBNDlFKQ==" autoIncrement="true" />
       <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
       <primary-key name="CONSTRAINT_6" columns="id" />
     </table>
@@ -829,7 +829,7 @@
       <index name="FK19C1023BEFE35BA9_INDEX_F" unique="false" columns="GROUP_ID" />
     </table>
     <table name="ACCT_USER" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfRTMxRUM4OTVfNDY5Ql80QjUwX0I2NjBfQUY5RjI2OTMwQTlFKQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfRjIzNTRCODlfREVFMl80QUJDX0JDMEFfNDMxNDk0MkZBNzc4KQ==" autoIncrement="true" />
       <column name="EMAIL" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="LOGIN_NAME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
@@ -846,7 +846,7 @@
       <index name="FKD19A04B7EFE35BA9_INDEX_E" unique="false" columns="GROUP_ID" />
     </table>
     <table name="CATEGORY" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfM0Q3N0QwQjlfOUFDRV80OUREXzhCMzNfMTYzNkVCRDAxMDg2KQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMUM2MjgyMDFfQTc1OV80MTMwX0E4NTFfQTFEQTk0MTI1QzcyKQ==" autoIncrement="true" />
       <column name="CREATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
       <column name="CREATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="UPDATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
@@ -919,7 +919,7 @@
       <index name="FK73D101268EBB0422_INDEX_C" unique="false" columns="GRAPHIC_INFO_ID" />
     </table>
     <table name="HOLIDAY" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfRTNDNUIyQTNfN0FFQV80OTA3XzgxNzhfMkQ4MDA3QUMxNTU4KQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfNjc5NEQ1NEVfOEMwOV80ODRDXzg3RDdfOTdFMjExRTE5QkFFKQ==" autoIncrement="true" />
       <column name="HOLIDAY_DAY" sqlType="DATE" length="8" precision="0" nullable="true" jdbcType="91" />
       <column name="TYPE" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
       <primary-key name="CONSTRAINT_6B" columns="id" />
@@ -927,7 +927,7 @@
       <index name="FK411528586F516363_INDEX_6" unique="false" columns="TYPE" />
     </table>
     <table name="HOLIDAY_TYPE" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMkYxODQ0QzRfQTM2M180RTM4X0E2RTNfOUQ2RDBFOEMzOUY1KQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfRkI2NDU3QUNfN0ZEOF80QTI0XzlDNTRfMkUyMkMzMEE1RUQ4KQ==" autoIncrement="true" />
       <column name="CREATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
       <column name="CREATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="UPDATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
@@ -950,32 +950,35 @@
       <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="PRIORITY" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
       <column name="SIGNATURE" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="COMMON" sqlType="BOOLEAN" length="1" precision="0" nullable="true" jdbcType="16" />
+      <column name="HOLIDAY" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="SPECIAL_PHONE_NO" sqlType="VARCHAR" length="20" precision="0" nullable="true" jdbcType="12" />
       <column name="VALID_DATE" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
-      <column name="HOLIDAY" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
-      <column name="ACTIVE" sqlType="BOOLEAN" length="1" precision="0" nullable="true" jdbcType="16" />
       <column name="BEGIN" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="END" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
-      <column name="PHONE_NOS" sqlType="VARCHAR" length="4000" precision="0" nullable="true" jdbcType="12" />
       <column name="GRAPHIC_INFO_ID" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
       <column name="USER_ID" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <column name="HOLIDAY_TYPE_ID" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
       <column name="STATUS_TYPE_ID" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
       <primary-key name="CONSTRAINT_7" columns="id" />
       <foreign-key name="FK4B95CDDB8EBB0422" columns="GRAPHIC_INFO_ID" ref-table="GRAPHIC_INFOS" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
+      <foreign-key name="FK4B95CDDBCDC4AB82" columns="HOLIDAY_TYPE_ID" ref-table="HOLIDAY_TYPE" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
       <foreign-key name="FK4B95CDDBEBB54FE8" columns="STATUS_TYPE_ID" ref-table="STATUS_TYPE" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
       <foreign-key name="FK4B95CDDB6C146C11" columns="USER_ID" ref-table="USERINFO" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
       <index name="FK4B95CDDB6C146C11_INDEX_7" unique="false" columns="USER_ID" />
       <index name="FK4B95CDDB8EBB0422_INDEX_7" unique="false" columns="GRAPHIC_INFO_ID" />
+      <index name="FK4B95CDDBCDC4AB82_INDEX_7" unique="false" columns="HOLIDAY_TYPE_ID" />
       <index name="FK4B95CDDBEBB54FE8_INDEX_7" unique="false" columns="STATUS_TYPE_ID" />
     </table>
     <table name="MGRAPHIC_PHONE_NO" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
       <column name="MGRAPHIC_ID" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" />
       <column name="PHONE_NUMBER" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
-      <foreign-key name="FK6F8CE01682CEDDBF" columns="MGRAPHIC_ID" ref-table="MGRAPHIC" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
-      <index name="FK6F8CE01682CEDDBF_INDEX_F" unique="false" columns="MGRAPHIC_ID" />
+      <foreign-key name="FK6F8CE016A4886B19" columns="MGRAPHIC_ID" ref-table="MGRAPHIC" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
+      <foreign-key name="FK6F8CE016E7C0E69F" columns="MGRAPHIC_ID" ref-table="MGRAPHIC" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
+      <index name="FK6F8CE016A4886B19_INDEX_F" unique="false" columns="MGRAPHIC_ID" />
     </table>
     <table name="SIGNATURE" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfOEYxODM3RkJfMTNDNV80ODlEX0I5N0FfQTI4RTg4OURDNjhEKQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfODM4RTgxQTVfNEI2NV80NTA0X0FFRTNfQjgzNzVBQzEyMThBKQ==" autoIncrement="true" />
       <column name="CREATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
       <column name="CREATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="UPDATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
@@ -986,7 +989,7 @@
       <primary-key name="CONSTRAINT_E6" columns="id" />
     </table>
     <table name="SMS_MESSAGE" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfQzQ2NTNCRTZfMjJBQl80MzFEXzhCRjBfMTZCN0Q4RjE1NEQxKQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfNDc1NzdDMEJfMDE0NV80MjlDX0E5NEZfNDI2RTc1ODE0MDBDKQ==" autoIncrement="true" />
       <column name="CREATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
       <column name="CREATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="UPDATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
@@ -998,7 +1001,7 @@
       <primary-key name="CONSTRAINT_C2" columns="id" />
     </table>
     <table name="STATUS_TYPE" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfM0E5ODNGQURfQkJBRV80RUQ5X0E1RDNfMkJBRUJDRjhDN0YwKQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMUQ1RDEwODBfMTI2RV80MUIxX0IyODFfOTJBRUUyNEYyQ0ZCKQ==" autoIncrement="true" />
       <column name="CREATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
       <column name="CREATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="UPDATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
@@ -1008,7 +1011,7 @@
       <primary-key name="CONSTRAINT_4C" columns="id" />
     </table>
     <table name="SUGGESTION" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfOTc4MzExRkFfMkJDNl80RThGXzg1RjJfQzkwN0M0MDJDN0JFKQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfNjkzRjI4QUFfMzk4Rl80RkNGXzhDMTVfOTUzNUIxM0Y4RTM4KQ==" autoIncrement="true" />
       <column name="CREATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
       <column name="CREATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="UPDATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
@@ -1020,7 +1023,7 @@
       <index name="FK4763CA0473976E23_INDEX_6" unique="false" columns="USERINFO_ID" />
     </table>
     <table name="TYPE" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfQjM0REZERkZfQTg2QV80NkUzX0E2RjhfQjc0ODg3QTg3MDZGKQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMjNERkZCOEVfNTIzQV80MEVCXzhGRjFfRDk3Q0YzRUFEQjNEKQ==" autoIncrement="true" />
       <column name="CREATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
       <column name="CREATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="UPDATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
@@ -1039,7 +1042,7 @@
       <primary-key name="CONSTRAINT_1" columns="id" />
     </table>
     <table name="USER_CATACTS" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfNzMyM0U4RURfRUIzN180RkI1XzhFMjVfNTM4ODY5M0IxNThGKQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfQzQ4MkNGQkZfMkVERV80QkFEXzg3MDFfQTYwOTk1RUU1MzNFKQ==" autoIncrement="true" />
       <column name="CREATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
       <column name="CREATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="UPDATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
@@ -1084,7 +1087,7 @@
       <index name="FKF2FF4EE38EBB0422_INDEX_F" unique="false" columns="GRAPHIC_INFO_ID" />
     </table>
     <table name="VERSIONINFO" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
-      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMzgzODIwNDlfRUE2Ql80RkUwX0I0NDZfRjZCODhERUQxNTNCKQ==" autoIncrement="true" />
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfQjBGRDBCNDVfQzE1Ml80MjY0X0I4QUVfMkJERUFGOUM0MTMyKQ==" autoIncrement="true" />
       <column name="CREATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
       <column name="CREATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="UPDATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
@@ -1268,17 +1271,22 @@
       <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="priority" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
       <column name="signature" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
-      <column name="valid_date" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="active" sqlType="BIT" length="1" precision="0" nullable="true" jdbcType="-7" />
-      <column name="holiday" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="special_phone_no" sqlType="VARCHAR" length="20" precision="0" nullable="true" jdbcType="12" />
       <column name="begin" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="end" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="phone_nos" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1" />
+      <column name="holiday" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="valid_date" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="graphic_info_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
       <column name="user_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <column name="holiday_type_id" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <column name="status_type_id" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
       <primary-key name="PRIMARY" columns="id" />
       <index name="FK4B95CDDB6C146C11" unique="false" columns="user_id" />
       <index name="FK4B95CDDB8EBB0422" unique="false" columns="graphic_info_id" />
+      <index name="FK4B95CDDBEBB54FE8" unique="false" columns="status_type_id" />
+      <index name="FK4B95CDDBCDC4AB82" unique="false" columns="holiday_type_id" />
     </table>
     <table name="mgraphic_phone_no" schema="" catalog="bussiness" type="TABLE">
       <column name="mgraphic_id" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" />

@@ -35,6 +35,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
     private BusinessFunctions businessFunctions;
 
     private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
+        Preconditions.checkNotNull(mGraphicDTO.getHolidayType(),"holidayType未提供");
         HolidayType holidayType = holidayTypeDao.findOne(mGraphicDTO.getHolidayType());
         deletePreviousHolidayMGraphic(holidayType);
         UserHolidayMGraphic holidayMGraphic = new UserHolidayMGraphic();
@@ -42,6 +43,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         holidayMGraphic.setUserInfo(userInfo);
         holidayMGraphic.setCommon(true);
         holidayMGraphic.setPhoneNos(null);
+        holidayMGraphic.setHolidayType(holidayType);
         if (mGraphicDTO.getPhoneNos() != null && mGraphicDTO.getPhoneNos().size()>0){
             holidayMGraphic.setPriority(8);
             holidayMGraphic.setCommon(false);
@@ -71,11 +73,10 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
     @Override
     public OperationResult create(String imsi, MGraphicDTO mGraphicDTO) throws RuntimeException {
         checkAndInitializeContext(imsi, mGraphicDTO);
-        checkMGraphicDTOPhoneNosMustBeNull(mGraphicDTO);
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
         historyPreviousUserCommonMGraphic();
         createAndSaveNewUserCommonMGraphic(mGraphicDTO);
-        return new OperationResult("createUserCommonMGraphic", "success");
+        return new OperationResult("createUserHolidayMGraphic", "success");
     }
 
     private void historyPreviousUserCommonMGraphic() {
