@@ -15,6 +15,7 @@ import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.HistoryMGraphicService;
 import com.server.cx.service.cx.MGraphicService;
+import com.server.cx.service.cx.QueryMGraphicService;
 import com.server.cx.service.util.BusinessFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -29,9 +30,9 @@ import java.util.List;
  * Time: 下午2:59
  * FileName:MGraphicServiceImpl
  */
-@Service(value = "userCommonMGraphicService")
+@Service(value = "mgraphicService")
 @Transactional
-public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implements MGraphicService {
+public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implements MGraphicService,QueryMGraphicService {
 
     @Autowired
     private BasicService basicService;
@@ -56,15 +57,9 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
             userCommonMGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
             userCommonMGraphic.setPriority(4);
         }
-        updateUserCommonMGraphicNameAndSignature(mGraphicDTO, userCommonMGraphic);
+        updateMGraphicNameAndSignature(mGraphicDTO, userCommonMGraphic);
         userCommonMGraphicDao.save(userCommonMGraphic);
         graphicInfoService.updateGraphicInfoUseCount(graphicInfo);
-    }
-
-    @Transactional(readOnly = false)
-    private void updateUserCommonMGraphicNameAndSignature(MGraphicDTO mGraphicDTO, UserCommonMGraphic userCommonMGraphic) {
-        userCommonMGraphic.setName(getGraphicInfoName(mGraphicDTO));
-        userCommonMGraphic.setSignature(mGraphicDTO.getSignature());
     }
 
     @Override
@@ -97,7 +92,7 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
             mGraphic.setPhoneNos(null);
             mGraphic.setPriority(3);
             mGraphic.setCommon(true);
-            updateUserCommonMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
             userCommonMGraphicDao.save(mGraphic);
         } else {
             Long dataRowNumber = userCommonMGraphicDao.count(UserCommonMGraphicSpecifications.userCommonMGraphicCount(userInfo));
@@ -108,7 +103,7 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
             mGraphic.setModeType(2);
             mGraphic.setPriority(4);
             mGraphic.setCommon(false);
-            updateUserCommonMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
             userCommonMGraphicDao.save( mGraphic);
         }
 

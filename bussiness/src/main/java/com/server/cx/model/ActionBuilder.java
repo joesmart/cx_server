@@ -259,7 +259,7 @@ public class ActionBuilder {
     public Actions buildMGraphicActions(String imsi,String id){
         return  actions()
                 .editURL(baseHostAddress+restURL+imsi+"/mGraphics/"+id)
-                .disableURL(baseHostAddress+restURL+imsi+"/mGraphics/"+id)
+                .removeURL(baseHostAddress+restURL+imsi+"/mGraphics/"+id)
                 .build();
     }
 

@@ -81,8 +81,13 @@ public class BusinessFunctions extends BasicService {
                     if(ActionNames.MGRAPHIC_ACTION.equals(actionNames)){
                         actions = actionBuilder.buildGraphicItemAction(imsi);
                         item.setActions(actions);
+                        item.setInUsing(false);
                     }
-
+                    if(ActionNames.HOLIDAY_MGRAPHIC_ACTION.equals(actionNames)){
+                        actions = actionBuilder.buildHolidayMGraphicItemAction(imsi);
+                        item.setActions(actions);
+                        item.setInUsing(false);
+                    }
 
                     if(usedGraphicInfos != null){
                         String mgraphicId = usedGraphicInfos.get(input.getId());
@@ -93,39 +98,7 @@ public class BusinessFunctions extends BasicService {
                                 actions = actionBuilder.buildHolidayMGraphicItemEditAction(imsi,mgraphicId);
                                 item.setActions(actions);
                             }
-
-                          }else{
-                            item.setInUsing(false);
-                            if(ActionNames.HOLIDAY_MGRAPHIC_ACTION.equals(actionNames)){
-                                actions = actionBuilder.buildHolidayMGraphicItemAction(imsi);
-                                item.setActions(actions);
-                            }
-                        }
-                    }
-                }
-
-                return item;
-            }
-        };
-    }
-
-    public Function<GraphicInfo, DataItem> graphicInfoTransformToGraphicInfoItemAndContainMGraphicInfo(final String imsi, final List<String> collectedGraphicInfos,final Map<String,String> usedGraphicInfos, final ActionNames actionNames) {
-        return new Function<GraphicInfo, DataItem>() {
-            @Override
-            public DataItem apply(@Nullable GraphicInfo input) {
-                DataItem item = generateBasicDataItem(input, imsi, collectedGraphicInfos);
-                item.setHref(baseHostAddress + restURL + imsi + "/graphicInfos/" + input.getId());
-
-
-                if (!"none".equals(imsi)) {
-                    Actions actions = null;
-                    if(ActionNames.MGRAPHIC_ACTION.equals(actionNames)){
-                        actions = actionBuilder.buildGraphicItemAction(imsi);
-                        item.setActions(actions);
-                    }
-                    if(ActionNames.HOLIDAY_MGRAPHIC_ACTION.equals(actionNames)){
-                        actions = actionBuilder.buildHolidayMGraphicItemAction(imsi);
-                        item.setActions(actions);
+                          }
                     }
                 }
 

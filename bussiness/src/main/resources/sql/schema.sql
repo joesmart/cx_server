@@ -57,11 +57,11 @@
 
     alter table mgraphic_phone_no 
         drop 
-        foreign key FK6F8CE016E7C0E69F;
+        foreign key FK6F8CE016A4886B19;
 
     alter table mgraphic_phone_no 
         drop 
-        foreign key FK6F8CE016A4886B19;
+        foreign key FK6F8CE016E7C0E69F;
 
     alter table suggestion 
         drop 
@@ -248,12 +248,12 @@
         name varchar(255),
         priority integer,
         signature varchar(255),
-        begin datetime,
-        end datetime,
-        special_phone_no varchar(20),
         valid_date datetime,
         common bit,
+        begin datetime,
+        end datetime,
         holiday datetime,
+        special_phone_no varchar(20),
         graphic_info_id varchar(32),
         user_id varchar(32),
         status_type_id bigint,
@@ -455,14 +455,14 @@
         references status_type (id);
 
     alter table mgraphic_phone_no 
-        add index FK6F8CE016E7C0E69F (mgraphic_id), 
-        add constraint FK6F8CE016E7C0E69F 
+        add index FK6F8CE016A4886B19 (mgraphic_id), 
+        add constraint FK6F8CE016A4886B19 
         foreign key (mgraphic_id) 
         references mgraphic (id);
 
     alter table mgraphic_phone_no 
-        add index FK6F8CE016A4886B19 (mgraphic_id), 
-        add constraint FK6F8CE016A4886B19 
+        add index FK6F8CE016E7C0E69F (mgraphic_id), 
+        add constraint FK6F8CE016E7C0E69F 
         foreign key (mgraphic_id) 
         references mgraphic (id);
 

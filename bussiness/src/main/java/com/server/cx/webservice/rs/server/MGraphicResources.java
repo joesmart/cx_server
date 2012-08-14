@@ -5,6 +5,7 @@ import com.cl.cx.platform.dto.MGraphicDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.MGraphicService;
+import com.server.cx.service.cx.QueryMGraphicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +29,20 @@ public class MGraphicResources extends OperationResources {
     public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResources.class);
 
     @Autowired
-    private MGraphicService mGraphicService;
+    private MGraphicService mgraphicService;
+
+    @Autowired
+    private QueryMGraphicService queryMGraphicService;
 
     @POST
     public Response create(@PathParam("imsi") String imsi, MGraphicDTO mGraphicDTO) {
         operationDescription = new OperationDescription();
         try {
             OperationResult operationResult;
-            operationResult = mGraphicService.create(imsi, mGraphicDTO);
+            operationResult = mgraphicService.create(imsi, mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception ex) {
-            actionName = "createUserCommonMGraphic";
+            actionName = "createCommonMGraphic";
             errorMessage(ex);
         }finally {
             return Response.ok(operationDescription).build();
@@ -52,10 +56,10 @@ public class MGraphicResources extends OperationResources {
         operationDescription = new OperationDescription();
         try {
             mGraphicDTO.setId(userCommonMGraphicId);
-            OperationResult operationResult = mGraphicService.edit(imsi, mGraphicDTO);
+            OperationResult operationResult = mgraphicService.edit(imsi, mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
-            actionName = "editUserCommonMGraphic";
+            actionName = "editCommonMGraphic";
             errorMessage(e);
         } finally {
             return  Response.ok(operationDescription).build();
@@ -67,10 +71,10 @@ public class MGraphicResources extends OperationResources {
     public Response delete(@PathParam("imsi")String imsi,@PathParam("id")String userCommonMGraphicId){
         operationDescription = new OperationDescription();
         try {
-            OperationResult operationResult = mGraphicService.disable(imsi, userCommonMGraphicId);
+            OperationResult operationResult = mgraphicService.disable(imsi, userCommonMGraphicId);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
-            actionName = "disableUserCommonMGraphic";
+            actionName = "disableCommonMGraphic";
             errorMessage(e);
         } finally {
             return  Response.ok(operationDescription).build();
@@ -78,7 +82,7 @@ public class MGraphicResources extends OperationResources {
     }
     @GET
     public Response getAll(@PathParam("imsi")String imsi){
-        DataPage dataPage = mGraphicService.queryUserMGraphic(imsi);
+        DataPage dataPage = queryMGraphicService.queryUserMGraphic(imsi);
         return Response.ok(dataPage).build();
     }
 }
