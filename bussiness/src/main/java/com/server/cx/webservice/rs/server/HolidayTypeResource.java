@@ -1,7 +1,6 @@
 package com.server.cx.webservice.rs.server;
 
 import com.cl.cx.platform.dto.DataPage;
-import com.server.cx.service.cx.GraphicInfoService;
 import com.server.cx.service.cx.HolidayTypeService;
 import com.server.cx.util.business.ValidationUtil;
 import org.slf4j.Logger;
@@ -21,10 +20,7 @@ public class HolidayTypeResource {
 
     @Autowired
     private HolidayTypeService holidayTypeService;
-    
-    @Autowired
-    private GraphicInfoService graphicInfoService;
-    
+
     @GET
     public DataPage queryAllHolidayTypes(@PathParam("imsi")String imsi){
         LOGGER.info("imsi:"+imsi);

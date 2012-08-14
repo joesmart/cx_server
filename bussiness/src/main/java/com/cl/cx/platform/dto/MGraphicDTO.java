@@ -24,4 +24,5 @@ public class MGraphicDTO {
     private Date end;
     private Integer modeType;
     private Long holidayType;
+    private Long statusType;
 }

@@ -1,7 +1,9 @@
 package com.cl.cx.platform.dto;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,6 +13,7 @@ import java.util.List;
  * FileName:DataItem
  */
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class DataItem extends BasicItem {
     private String id;
     private String name;
@@ -33,4 +36,6 @@ public class DataItem extends BasicItem {
     private String mGraphicId;
     private Boolean inUsing;
     private String mediaType;
+    private Date begin;
+    private Date end;
 }
