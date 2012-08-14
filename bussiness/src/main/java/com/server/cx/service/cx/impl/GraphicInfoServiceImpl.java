@@ -21,7 +21,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -49,13 +48,13 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
 
     @Autowired
     private StatusTypeDao statusTypeDao;
-    
+
     @Autowired
     private HolidayTypeDao holidayTypeDao;
 
     @Autowired
     private UserStatusMGraphicDao userStatusMGraphicDao;
-    
+
     @Autowired
     private UserHolidayMGraphicDao userHolidayMGraphicDao;
 
@@ -65,16 +64,19 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "createdOn");
         Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.categoryTypeGraphicInfo(categoryId), pageRequest);
         List<GraphicInfo> graphicInfoList = page.getContent();
-        List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, graphicInfoList, null, ActionNames.MGRAPHIC_ACTION);
+        List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, graphicInfoList, null,
+            ActionNames.MGRAPHIC_ACTION);
         String queryCondition = "categoryId=" + categoryId;
         return generateDataPage(imsi, offset, limit, page, graphicInfoItemList, queryCondition, -1);
     }
 
-    private List<DataItem> transformToGraphicItemList(final String imsi, List<GraphicInfo> graphicInfoList, Map<String, String> usedGraphicInfo, ActionNames actionNames)
+    private List<DataItem> transformToGraphicItemList(final String imsi, List<GraphicInfo> graphicInfoList,
+                                                      Map<String, String> usedGraphicInfo, ActionNames actionNames)
         throws ExecutionException {
         List<String> userCollectionList = userCollectionsCache.get(imsi);
-        Function<GraphicInfo,DataItem> function = businessFunctions.graphicInfoTransformToGraphicInfoItem(imsi, userCollectionList, usedGraphicInfo, actionNames);
-        return Lists.transform(graphicInfoList,function);
+        Function<GraphicInfo, DataItem> function = businessFunctions.graphicInfoTransformToGraphicInfoItem(imsi,
+            userCollectionList, usedGraphicInfo, actionNames);
+        return Lists.transform(graphicInfoList, function);
     }
 
     @Override
@@ -82,7 +84,8 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
         throws ExecutionException {
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "useCount", "createdOn");
         Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.hotCategoryTypeGraphicInfo(), pageRequest);
-        List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent(), null, ActionNames.MGRAPHIC_ACTION);
+        List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent(), null,
+            ActionNames.MGRAPHIC_ACTION);
         String condition = "hot=true";
         setUpTotalPageLimit(limit, page.getTotalPages(), HOT_SIZE_LIMIT);
         return generateDataPage(imsi, offset, limit, page, graphicInfoItemList, condition, -1);
@@ -94,7 +97,8 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "useCount", "createdOn");
         Page page = graphicInfoDao.findAll(GraphicInfoSpecifications.recommendGraphicInfo(), pageRequest);
         setUpTotalPageLimit(limit, page.getTotalPages(), RECOMMEND_SIZE_LIMIT);
-        List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent(), null, ActionNames.MGRAPHIC_ACTION);
+        List<DataItem> graphicInfoItemList = transformToGraphicItemList(imsi, page.getContent(), null,
+            ActionNames.MGRAPHIC_ACTION);
         String condition = "recommend=true";
         DataPage dataPage = generateDataPage(imsi, offset, limit, page, graphicInfoItemList, condition, -1);
         return dataPage;
@@ -151,17 +155,31 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
     }
 
     @Override
-    public DataPage findStatusGraphicInfosByImsi(String imsi, long statusTypeId, Integer offset, Integer limit) {
+    public DataPage findStatusGraphicInfosByImsi(String imsi, long statusTypeId, Integer offset, Integer limit) throws ExecutionException {
         final String baseHref = baseHostAddress + restURL + imsi + "/statusTypes/" + statusTypeId + "?offset=" + offset
             + "&limit=" + limit;
-
+        String queryCondition = "statusTypeId=" + statusTypeId;
         UserInfo userInfo = userInfoDao.findByImsi(imsi);
         StatusType statusType = statusTypeDao.findOne(statusTypeId);
         List<UserStatusMGraphic> userStatusGraphicInfos = userStatusMGraphicDao.findByUserInfoAndStatusType(userInfo,
             statusType);
-        boolean existUserGraphicInfo = userStatusGraphicInfos != null && !userStatusGraphicInfos.isEmpty();
+        //        boolean existUserGraphicInfo = userStatusGraphicInfos != null && !userStatusGraphicInfos.isEmpty();
 
-        String usedId = existUserGraphicInfo ? userStatusGraphicInfos.get(0).getGraphicInfo().getId() : null;
+        boolean existUserGraphicInfo = false;
+        UserStatusMGraphic userStatusMGraphic = null;
+        GraphicInfo graphicInfo = null;
+        String usedId = null;
+        Map<String, String> usedGraphicInfos = null;
+        if (userStatusGraphicInfos != null && userStatusGraphicInfos.size() > 0) {
+            userStatusMGraphic = userStatusGraphicInfos.get(0);
+            graphicInfo = userStatusMGraphic.getGraphicInfo();
+            usedId = graphicInfo.getId();
+            existUserGraphicInfo = true;
+            LOGGER.info(graphicInfo.getName());
+            usedGraphicInfos = Maps.newHashMap();
+            usedGraphicInfos.put(graphicInfo.getId(), userStatusMGraphic.getId());
+        }
+
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "createdOn");
         Page page = graphicInfoDao.findAll(
             GraphicInfoSpecifications.statusTypeGraphicInfoExcludedUsed(statusTypeId, usedId), pageRequest);
@@ -171,63 +189,42 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
             statusGraphicInfos.add(0, userStatusGraphicInfos.get(0).getGraphicInfo());
         }
 
-        List<DataItem> dataItems = transformTostStatusGraphicInfoList(statusGraphicInfos);
-
-        if (existUserGraphicInfo) {
-            dataItems.get(0).setInUsing(true);
-        }
-
-        DataPage dataPage = new DataPage();
-        dataPage.setLimit(page.getSize());
-        dataPage.setOffset(page.getNumber());
-        dataPage.setTotal(page.getTotalPages());
-        dataPage.setItems(dataItems);
-        dataPage.setHref(baseHref);
-        if (offset > 0) {
-            int previousOffset = offset - 1;
-            dataPage.setPrevious(baseHostAddress + restURL + imsi + "/statusTypes/" + statusTypeId + "?offset="
-                + previousOffset + "&limit=" + limit);
-        }
-        if (offset + 1 < page.getTotalPages()) {
-            int nextOffset = offset + 1;
-            dataPage.setNext(baseHostAddress + restURL + imsi + "/statusTypes/" + statusTypeId + "?offset="
-                + nextOffset + "&limit=" + limit);
-        }
-        dataPage.setFirst(baseHostAddress + restURL + imsi + "/statusTypes/" + statusTypeId + "?offset=0&limit="
-            + limit);
-        dataPage.setLast(baseHostAddress + restURL + imsi + "/statusTypes/" + statusTypeId + "?offset="
-            + (dataPage.getTotal() - 1) + "&limit=" + limit);
+        List<DataItem> dataItems = transformToGraphicItemList(imsi, statusGraphicInfos, usedGraphicInfos,
+            ActionNames.STATUS_MGRAPHIC_ACTION);
+        DataPage dataPage = generateDataPage(imsi, offset, limit, page, dataItems, queryCondition, page.getTotalPages());
+        
         return dataPage;
     }
 
-    private List<DataItem> transformTostStatusGraphicInfoList(List<GraphicInfo> usingStatusGraphicInfos) {
+    private List<DataItem> transformToStatusGraphicInfoList(List<GraphicInfo> usingStatusGraphicInfos) {
         return Lists.transform(usingStatusGraphicInfos, businessFunctions.statusGraphicInfoTransformToDataItem());
     }
 
     @Override
-    public DataPage findHolidayGraphicInfosByImsi(String imsi, Long holidayTypeId, Integer offset, Integer limit) throws ExecutionException {
-        final String baseHref = baseHostAddress + restURL + imsi + "/holidayTypes/" + holidayTypeId + "?offset=" + offset
-            + "&limit=" + limit;
+    public DataPage findHolidayGraphicInfosByImsi(String imsi, Long holidayTypeId, Integer offset, Integer limit)
+        throws ExecutionException {
+        final String baseHref = baseHostAddress + restURL + imsi + "/holidayTypes/" + holidayTypeId + "?offset="
+            + offset + "&limit=" + limit;
         String queryCondition = "holidayTypeId=" + holidayTypeId;
         LOGGER.info("imsi = " + imsi);
         LOGGER.info("holidayTypeId = " + holidayTypeId);
         UserInfo userInfo = userInfoDao.findByImsi(imsi);
         HolidayType holidayType = holidayTypeDao.findOne(holidayTypeId);
-        List<UserHolidayMGraphic> userHolidayGraphicInfos = userHolidayMGraphicDao.findByUserInfoAndHolidayType(userInfo,
-            holidayType);
-        boolean existUserGraphicInfo =false;
+        List<UserHolidayMGraphic> userHolidayGraphicInfos = userHolidayMGraphicDao.findByUserInfoAndHolidayType(
+            userInfo, holidayType);
+        boolean existUserGraphicInfo = false;
         UserHolidayMGraphic userHolidayMGraphic = null;
         GraphicInfo graphicInfo = null;
-        String usedId =null;
-        Map<String,String> usedGraphicInfos = null;
-        if(userHolidayGraphicInfos!= null && userHolidayGraphicInfos.size() > 0){
+        String usedId = null;
+        Map<String, String> usedGraphicInfos = null;
+        if (userHolidayGraphicInfos != null && userHolidayGraphicInfos.size() > 0) {
             userHolidayMGraphic = userHolidayGraphicInfos.get(0);
             graphicInfo = userHolidayMGraphic.getGraphicInfo();
             usedId = graphicInfo.getId();
             existUserGraphicInfo = true;
             LOGGER.info(graphicInfo.getName());
             usedGraphicInfos = Maps.newHashMap();
-            usedGraphicInfos.put(graphicInfo.getId(),userHolidayMGraphic.getId());
+            usedGraphicInfos.put(graphicInfo.getId(), userHolidayMGraphic.getId());
         }
 
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "createdOn");
@@ -237,9 +234,10 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
         if (existUserGraphicInfo) {
             holidayGraphicInfos.add(0, graphicInfo);
         }
-        List<DataItem> dataItems = transformToGraphicItemList(imsi, holidayGraphicInfos, usedGraphicInfos, ActionNames.HOLIDAY_MGRAPHIC_ACTION);
+        List<DataItem> dataItems = transformToGraphicItemList(imsi, holidayGraphicInfos, usedGraphicInfos,
+            ActionNames.HOLIDAY_MGRAPHIC_ACTION);
 
-        DataPage dataPage = generateDataPage(imsi,offset,limit,page,dataItems,queryCondition,page.getTotalPages());
+        DataPage dataPage = generateDataPage(imsi, offset, limit, page, dataItems, queryCondition, page.getTotalPages());
 
         return dataPage;
     }

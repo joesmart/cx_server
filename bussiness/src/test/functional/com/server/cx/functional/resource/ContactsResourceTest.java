@@ -24,7 +24,11 @@ public class ContactsResourceTest extends BasicJerseyTest {
         ObjectMapper mapper = new ObjectMapper();
         String result = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(uploadContactDTO);
         System.out.println("uploadContactDTO = " + result);
-        ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, uploadContactDTO);
+        
+//        String test = "{\"@type\":\"com.cl.cx.platform.dto.ContactsDTO\",\"contactInfos\":[{\"contactName\":\"啊是\",\"phoneNo\":\"13512345678\"},{\"contactName\":\"大家\",\"phoneNo\":\"13612345678\"},{\"contactName\":\"简单\",\"phoneNo\":\"12634567894\"}]}";
+//        String test = "{\"@type\" : \"com.cl.cx.platform.dto.ContactsDTO\",\"contactInfos\" : [{\"@type\" : \"com.cl.cx.platform.dto.ContactInfoDTO\",\"contactName\" : \"King Gavin\",\"phoneNo\" : \"1512581111\"}]}";
+        String test ="{\"@type\":\"com.cl.cx.platform.dto.ContactsDTO\",\"contactInfos\":[{\"@type\" : \"com.cl.cx.platform.dto.ContactInfoDTO\", \"contactName\":\"啊是\",\"phoneNo\":\"13512345678\"}, {\"@type\" : \"com.cl.cx.platform.dto.ContactInfoDTO\", \"contactName\":\"大家\",\"phoneNo\":\"13612345678\"}]}";
+        ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, test);
         assertThat(response.getStatus()).isEqualTo(200);
         OperationDescription operationDescription = response.getEntity(OperationDescription.class);
         assertThat(operationDescription.getDealResult()).isEqualTo(Constants.SUCCESS_FLAG);
