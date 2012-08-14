@@ -9,6 +9,7 @@ import com.server.cx.service.cx.QueryMGraphicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
@@ -32,6 +33,7 @@ public class MGraphicResources extends OperationResources {
     private MGraphicService mgraphicService;
 
     @Autowired
+    @Qualifier("mgraphicService")
     private QueryMGraphicService queryMGraphicService;
 
     @POST
