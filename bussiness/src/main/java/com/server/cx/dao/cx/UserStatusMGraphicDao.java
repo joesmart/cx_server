@@ -20,6 +20,6 @@ public interface UserStatusMGraphicDao extends JpaRepository<UserStatusMGraphic,
 
     public List<UserStatusMGraphic> findByUserInfoAndModeType(UserInfo userInfo, int modeType);
 
-    public List<UserStatusMGraphic> findByUserInfoAndValidDateAndModeTyp(UserInfo userInfo, Date today, int modeType);
+    public List<UserStatusMGraphic> findByValidDateAndStatusTypeAndUserInfo(Date today,UserInfo userInfo, StatusType statusType);
 
 }

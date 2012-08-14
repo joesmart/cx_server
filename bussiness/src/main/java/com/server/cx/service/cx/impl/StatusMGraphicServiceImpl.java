@@ -2,11 +2,14 @@ package com.server.cx.service.cx.impl;
 
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
+import com.server.cx.dao.cx.StatusTypeDao;
 import com.server.cx.dao.cx.UserStatusMGraphicDao;
+import com.server.cx.entity.cx.StatusType;
 import com.server.cx.entity.cx.UserStatusMGraphic;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.MGraphicService;
 import org.joda.time.LocalDate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +26,11 @@ import java.util.List;
 @Transactional
 public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService implements MGraphicService {
 
+    @Autowired
     private UserStatusMGraphicDao userStatusMGraphicDao;
+
+    @Autowired
+    private StatusTypeDao statusTypeDao;
 
     @Override
     public OperationResult create(String imsi, MGraphicDTO mGraphicDTO) {
@@ -67,8 +74,9 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
     }
 
     private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
-        Preconditions.checkNotNull(mGraphicDTO.getHolidayType(), "holidayType未提供");
-        deletePreviousMGraphic();
+        Preconditions.checkNotNull(mGraphicDTO.getStatusType(), "StatusType未提供");
+        StatusType statusType = statusTypeDao.findOne(mGraphicDTO.getStatusType());
+        deletePreviousMGraphic(statusType);
         UserStatusMGraphic userStatusMGraphic = new UserStatusMGraphic();
         userStatusMGraphic.setGraphicInfo(graphicInfo);
         userStatusMGraphic.setUserInfo(userInfo);
@@ -78,8 +86,8 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         graphicInfoService.updateGraphicInfoUseCount(graphicInfo);
     }
 
-    private void deletePreviousMGraphic() {
-        List<UserStatusMGraphic> previousMGraphics = userStatusMGraphicDao.findByUserInfoAndValidDateAndModeTyp(userInfo,LocalDate.now().toDate(),5);
+    private void deletePreviousMGraphic(StatusType statusType) {
+        List<UserStatusMGraphic> previousMGraphics = userStatusMGraphicDao.findByValidDateAndStatusTypeAndUserInfo(LocalDate.now().toDate(),userInfo,statusType);
         userStatusMGraphicDao.delete(previousMGraphics);
     }
 }

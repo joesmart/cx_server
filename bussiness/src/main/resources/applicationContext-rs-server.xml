@@ -6,14 +6,18 @@
     <bean class="com.server.cx.webservice.rs.server.CallingResources" />
     <bean class="com.server.cx.webservice.rs.server.CategoryResources" />
     <bean class="com.server.cx.webservice.rs.server.ContactsResources" />
+    <bean class="com.server.cx.webservice.rs.server.CustomMGraphicResources" />
     <bean class="com.server.cx.webservice.rs.server.CXAppResources" />
     <bean class="com.server.cx.webservice.rs.server.GraphicInfoResources" />
+    <bean class="com.server.cx.webservice.rs.server.HistoryMGraphicResources" />
+    <bean class="com.server.cx.webservice.rs.server.HolidayMGraphicResources" />
     <bean class="com.server.cx.webservice.rs.server.HolidayTypeResource" />
     <bean class="com.server.cx.webservice.rs.server.MyCollectionsResources" />
     <bean class="com.server.cx.webservice.rs.server.MGraphicResources" />
     <bean class="com.server.cx.webservice.rs.server.ShiroExceptionMapper" scope="singleton"/>
     <bean class="com.server.cx.webservice.rs.server.SMSResources" />
     <bean class="com.server.cx.webservice.rs.server.StatusTypeResources" />
+    <bean class="com.server.cx.webservice.rs.server.StatusMGraphicResources" />
     <bean class="com.server.cx.webservice.rs.server.SuggestionResources" />
     <bean class="com.server.cx.webservice.rs.server.VersionInfoResources" />
 </beans>

@@ -241,33 +241,48 @@ public class BusinessFunctions extends BasicService {
         };
     }
 
-    public Function<MGraphic, DataItem> mGraphicTransformToDataItem(final String imsi) {
+
+    public Function<MGraphic, DataItem> mGraphicTransformToDataItem(final String imsi, final String conditions) {
         return new Function<MGraphic, DataItem>() {
             @Override
             public DataItem apply(@Nullable MGraphic input) {
-                DataItem dataItem = new DataItem();
-                dataItem.setName(input.getName());
-                dataItem.setSignature(input.getSignature());
-                dataItem.setId(input.getGraphicInfo().getId());
-                dataItem.setMGraphicId(input.getId());
-                dataItem.setLevel(input.getGraphicInfo().getLevel());
-                dataItem.setModeType(input.getModeType());
-                if (2 == input.getModeType()) {
-                    dataItem.setPhoneNos(((UserCommonMGraphic) input).getPhoneNos());
-                }
-                GraphicInfo graphicInfo = input.getGraphicInfo();
+                DataItem dataItem = generateBasicMGraphicDataItem(input);
+                dataItem.setActions(actionBuilder.buildMGraphicActions(imsi, input.getId(), conditions));
 
-                if (graphicInfo.getGraphicResources().size() > 0) {
-                    GraphicResource graphicResource = graphicInfo.getGraphicResources().get(0);
-                    dataItem.setThumbnailPath(imageShowURL + graphicResource.getResourceId() + "&" + thumbnailSize);
-                    dataItem.setSourceImagePath(imageShowURL + graphicResource.getResourceId());
-                    dataItem.setMediaType(graphicResource.getType());
-                }
-                dataItem.setInUsing(true);
-                dataItem.setActions(actionBuilder.buildMGraphicActions(imsi, input.getId()));
                 return dataItem;
             }
         };
+    }
+
+    private DataItem generateBasicMGraphicDataItem(MGraphic input) {
+        DataItem dataItem = new DataItem();
+        dataItem.setName(input.getName());
+        dataItem.setSignature(input.getSignature());
+        dataItem.setId(input.getGraphicInfo().getId());
+        dataItem.setMGraphicId(input.getId());
+        dataItem.setLevel(input.getGraphicInfo().getLevel());
+        dataItem.setModeType(input.getModeType());
+        if(input instanceof UserCommonMGraphic){
+            dataItem.setPhoneNos(((UserCommonMGraphic) input).getPhoneNos());
+        }
+
+        if(input instanceof UserCustomMGraphic){
+            dataItem.setBegin(((UserCustomMGraphic) input).getBegin());
+            dataItem.setEnd(((UserCustomMGraphic) input).getEnd());
+        }
+
+        GraphicInfo graphicInfo = input.getGraphicInfo();
+
+        if (graphicInfo.getGraphicResources().size() > 0) {
+            GraphicResource graphicResource = graphicInfo.getGraphicResources().get(0);
+            dataItem.setThumbnailPath(imageShowURL + graphicResource.getResourceId()
+                    + "&" + thumbnailSize);
+            dataItem.setSourceImagePath(imageShowURL
+                    + graphicResource.getResourceId());
+            dataItem.setMediaType(graphicResource.getType());
+        }
+        dataItem.setInUsing(true);
+        return dataItem;
     }
 
     public Function<HistoryMGraphic, DataItem> historyMGraphicTransformToDataItem(final String imsi) {
