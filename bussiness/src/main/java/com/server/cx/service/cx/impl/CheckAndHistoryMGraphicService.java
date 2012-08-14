@@ -90,4 +90,9 @@ public class CheckAndHistoryMGraphicService extends UserCheckService {
         checkAndSetUserInfoExists(imsi);
         getAndCheckGraphicInfo(mGraphicDTO);
     }
+
+    protected void updateMGraphicNameAndSignature(MGraphicDTO mGraphicDTO, MGraphic mgraphic) {
+        mgraphic.setName(getGraphicInfoName(mGraphicDTO));
+        mgraphic.setSignature(mGraphicDTO.getSignature());
+    }
 }

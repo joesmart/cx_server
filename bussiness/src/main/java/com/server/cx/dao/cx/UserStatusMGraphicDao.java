@@ -6,6 +6,7 @@ import com.server.cx.entity.cx.UserStatusMGraphic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,4 +19,9 @@ public interface UserStatusMGraphicDao extends JpaRepository<UserStatusMGraphic,
         JpaSpecificationExecutor<UserStatusMGraphic> {
 
     public List<UserStatusMGraphic> findByUserInfoAndStatusType(UserInfo userInfo,StatusType statusType);
+
+    public List<UserStatusMGraphic> findByUserInfoAndModeType(UserInfo userInfo, int modeType);
+
+    public List<UserStatusMGraphic> findByUserInfoAndValidDateAndModeTyp(UserInfo userInfo,Date today, int modeType);
+
 }

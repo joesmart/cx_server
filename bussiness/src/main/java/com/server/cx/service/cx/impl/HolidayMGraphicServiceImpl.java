@@ -5,12 +5,10 @@ import com.google.common.base.Preconditions;
 import com.server.cx.dao.cx.HolidayTypeDao;
 import com.server.cx.dao.cx.UserHolidayMGraphicDao;
 import com.server.cx.entity.cx.HolidayType;
-import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserHolidayMGraphic;
 import com.server.cx.model.OperationResult;
-import com.server.cx.service.cx.HolidayMGraphicService;
 import com.server.cx.service.cx.HolidayService;
-import com.server.cx.service.util.BusinessFunctions;
+import com.server.cx.service.cx.MGraphicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +18,7 @@ import java.util.List;
 
 @Service(value = "holidayMGraphicService")
 @Transactional
-public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService implements HolidayMGraphicService {
+public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService implements MGraphicService {
 
     @Autowired
     private UserHolidayMGraphicDao userHolidayMGraphicDao;
@@ -30,9 +28,6 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
 
     @Autowired
     private HolidayService holidayService;
-
-    @Autowired
-    private BusinessFunctions businessFunctions;
 
     private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
         Preconditions.checkNotNull(mGraphicDTO.getHolidayType(),"holidayType未提供");
@@ -51,7 +46,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         }
         Date appropriateDate = holidayService.getAppropriateHolidayDate(holidayType);
         holidayMGraphic.setHoliday(appropriateDate);
-        updateUserCommonMGraphicNameAndSignature(mGraphicDTO, holidayMGraphic);
+        updateMGraphicNameAndSignature(mGraphicDTO, holidayMGraphic);
         userHolidayMGraphicDao.save(holidayMGraphic);
         graphicInfoService.updateGraphicInfoUseCount(graphicInfo);
     }
@@ -62,12 +57,6 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         for(UserHolidayMGraphic userHolidayMGraphic:historyHolidayMGraphics){
             userHolidayMGraphicDao.delete(userHolidayMGraphic);
         }
-    }
-
-    @Transactional(readOnly = false)
-    private void updateUserCommonMGraphicNameAndSignature(MGraphicDTO mGraphicDTO, MGraphic userCommonMGraphic) {
-        userCommonMGraphic.setName(getGraphicInfoName(mGraphicDTO));
-        userCommonMGraphic.setSignature(mGraphicDTO.getSignature());
     }
 
     @Override
@@ -81,10 +70,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
 
     private void historyPreviousUserCommonMGraphic() {
         List<UserHolidayMGraphic> previousUserCommonMGraphics = userHolidayMGraphicDao.findByUserInfoAndModeTypeAndCommon(userInfo, 4, true);
-        for (UserHolidayMGraphic holidayMGraphic : previousUserCommonMGraphics) {
-            historyPreviousUserCommonMGraphic(holidayMGraphic);
-            userHolidayMGraphicDao.delete(holidayMGraphic);
-        }
+        userHolidayMGraphicDao.delete(previousUserCommonMGraphics);
     }
 
     @Override
@@ -97,13 +83,13 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
             mGraphic.setPhoneNos(null);
             mGraphic.setCommon(true);
             mGraphic.setPriority(7);
-            updateUserCommonMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
             userHolidayMGraphicDao.save(mGraphic);
         } else {
             mGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
             mGraphic.setPriority(8);
             mGraphic.setCommon(false);
-            updateUserCommonMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
             userHolidayMGraphicDao.save(mGraphic);
         }
         return new OperationResult("editUserCommonMGraphic", "success");

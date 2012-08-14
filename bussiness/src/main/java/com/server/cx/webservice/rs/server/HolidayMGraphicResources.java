@@ -3,7 +3,7 @@ package com.server.cx.webservice.rs.server;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.model.OperationResult;
-import com.server.cx.service.cx.HolidayMGraphicService;
+import com.server.cx.service.cx.MGraphicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import javax.ws.rs.core.Response;
 public class HolidayMGraphicResources extends OperationResources{
     public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResources.class);
     @Autowired
-    private HolidayMGraphicService holidayMGraphicService;
+    private MGraphicService holidayMGraphicService;
 
     @POST
     public Response create(@PathParam("imsi") String imsi, MGraphicDTO mGraphicDTO) {

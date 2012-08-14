@@ -1,6 +1,5 @@
 package com.server.cx.service.cx;
 
-import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.server.cx.model.OperationResult;
 
@@ -14,5 +13,4 @@ public interface MGraphicService {
     public abstract OperationResult create(String imsi, MGraphicDTO mGraphicDTO);
     public abstract OperationResult edit(String imsi, MGraphicDTO mGraphicDTO);
     public abstract OperationResult disable(String imsi, String userCommonMGraphicId);
-    public DataPage queryUserMGraphic(String imsi);
 }
