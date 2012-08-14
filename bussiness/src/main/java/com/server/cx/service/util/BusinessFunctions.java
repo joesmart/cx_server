@@ -6,8 +6,8 @@ import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
 import com.server.cx.entity.cx.*;
 import com.server.cx.service.cx.impl.BasicService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
+
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
@@ -69,7 +69,7 @@ public class BusinessFunctions extends BasicService {
 
     public Function<GraphicInfo, DataItem> graphicInfoTransformToGraphicInfoItem(final String imsi,
                                                                                  final List<String> graphicIds,
-                                                                                 final Map<String, String> usedGraphicInfos,
+                                                                                 final Map<String, ? extends MGraphic> usedGraphicInfos,
                                                                                  final ActionNames actionNames) {
         return new Function<GraphicInfo, DataItem>() {
             @Override
@@ -91,28 +91,27 @@ public class BusinessFunctions extends BasicService {
                         item.setInUsing(false);
                     }
 
+                    if (ActionNames.STATUS_MGRAPHIC_ACTION.equals(actionNames)) {
+                        actions = actionBuilder.buildStatusMGraphicItemAction(imsi);
+                        item.setActions(actions);
+                    }
+
                     if (usedGraphicInfos != null) {
-                        String mgraphicId = usedGraphicInfos.get(input.getId());
-                        if (StringUtils.isNotEmpty(mgraphicId)) {
-                            item.setMGraphicId(mgraphicId);
+                        MGraphic mgraphic = usedGraphicInfos.get(input.getId());
+                        if (mgraphic!= null ) {
+                            String id = mgraphic.getId();
+                            item.setMGraphicId(id);
+                            item.setName(mgraphic.getName());
+                            item.setSignature(mgraphic.getSignature());
                             item.setInUsing(true);
                             if (ActionNames.HOLIDAY_MGRAPHIC_ACTION.equals(actionNames)) {
-                                actions = actionBuilder.buildHolidayMGraphicItemEditAction(imsi, mgraphicId);
+                                actions = actionBuilder.buildHolidayMGraphicItemEditAction(imsi, id);
                                 item.setActions(actions);
                             } else if (ActionNames.STATUS_MGRAPHIC_ACTION.equals(actionNames)) {
-                                actions = actionBuilder.buildStatusMGraphicItemEditAction(imsi, mgraphicId);
+                                actions = actionBuilder.buildStatusMGraphicItemEditAction(imsi, id);
                                 item.setActions(actions);
                             }
 
-                        } else {
-                            item.setInUsing(false);
-                            if (ActionNames.HOLIDAY_MGRAPHIC_ACTION.equals(actionNames)) {
-                                actions = actionBuilder.buildHolidayMGraphicItemAction(imsi);
-                                item.setActions(actions);
-                            } else if (ActionNames.STATUS_MGRAPHIC_ACTION.equals(actionNames)) {
-                                actions = actionBuilder.buildStatusMGraphicItemAction(imsi);
-                                item.setActions(actions);
-                            }
                         }
                     }
                 }
@@ -169,6 +168,14 @@ public class BusinessFunctions extends BasicService {
             item.setMediaType(graphicResource.getType());
         }
 
+        HolidayType holidayType = input.getHolidayType();
+        if(holidayType!= null){
+            item.setHolidayType(holidayType.getId());
+        }
+        StatusType statusType = input.getStatusType();
+        if(statusType != null){
+            item.setHolidayType(statusType.getId());
+        }
         item.setInUsing(false);
 
         if (graphicIds != null) {

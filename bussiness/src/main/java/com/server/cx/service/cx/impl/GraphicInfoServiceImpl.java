@@ -71,7 +71,7 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
     }
 
     private List<DataItem> transformToGraphicItemList(final String imsi, List<GraphicInfo> graphicInfoList,
-                                                      Map<String, String> usedGraphicInfo, ActionNames actionNames)
+                                                      Map<String, ? extends MGraphic> usedGraphicInfo, ActionNames actionNames)
         throws ExecutionException {
         List<String> userCollectionList = userCollectionsCache.get(imsi);
         Function<GraphicInfo, DataItem> function = businessFunctions.graphicInfoTransformToGraphicInfoItem(imsi,
@@ -163,13 +163,12 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
         StatusType statusType = statusTypeDao.findOne(statusTypeId);
         List<UserStatusMGraphic> userStatusGraphicInfos = userStatusMGraphicDao.findByUserInfoAndStatusType(userInfo,
             statusType);
-        //        boolean existUserGraphicInfo = userStatusGraphicInfos != null && !userStatusGraphicInfos.isEmpty();
 
         boolean existUserGraphicInfo = false;
         UserStatusMGraphic userStatusMGraphic = null;
         GraphicInfo graphicInfo = null;
         String usedId = null;
-        Map<String, String> usedGraphicInfos = null;
+        Map<String, MGraphic> usedGraphicInfos = null;
         if (userStatusGraphicInfos != null && userStatusGraphicInfos.size() > 0) {
             userStatusMGraphic = userStatusGraphicInfos.get(0);
             graphicInfo = userStatusMGraphic.getGraphicInfo();
@@ -177,7 +176,7 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
             existUserGraphicInfo = true;
             LOGGER.info(graphicInfo.getName());
             usedGraphicInfos = Maps.newHashMap();
-            usedGraphicInfos.put(graphicInfo.getId(), userStatusMGraphic.getId());
+            usedGraphicInfos.put(graphicInfo.getId(), userStatusMGraphic);
         }
 
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "createdOn");
@@ -216,7 +215,7 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
         UserHolidayMGraphic userHolidayMGraphic = null;
         GraphicInfo graphicInfo = null;
         String usedId = null;
-        Map<String, String> usedGraphicInfos = null;
+        Map<String, MGraphic> usedGraphicInfos = null;
         if (userHolidayGraphicInfos != null && userHolidayGraphicInfos.size() > 0) {
             userHolidayMGraphic = userHolidayGraphicInfos.get(0);
             graphicInfo = userHolidayMGraphic.getGraphicInfo();
@@ -224,7 +223,7 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
             existUserGraphicInfo = true;
             LOGGER.info(graphicInfo.getName());
             usedGraphicInfos = Maps.newHashMap();
-            usedGraphicInfos.put(graphicInfo.getId(), userHolidayMGraphic.getId());
+            usedGraphicInfos.put(graphicInfo.getId(), userHolidayMGraphic);
         }
 
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "createdOn");
