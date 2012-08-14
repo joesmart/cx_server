@@ -41,7 +41,7 @@ public class CallingServiceImpl implements CallingService {
         UserInfo callerUserInfo = userInfoDao.findByPhoneNo(callPhoneNo.get());
 
         if(callerUserInfo == null){
-            return businessFunctions.mGraphicTransformToDataItem(imsi.get()).apply(getSystemDefaultMGraphic(callPhoneNo));
+            return businessFunctions.mGraphicTransformToDataItem(imsi.get(), "mGraphics").apply(getSystemDefaultMGraphic(callPhoneNo));
         }
 
         int maxPriority = mGraphicDao.queryMaxPriorityByUserInfo(callerUserInfo,userInfo == null?null:userInfo.getPhoneNo());
@@ -58,7 +58,7 @@ public class CallingServiceImpl implements CallingService {
             }
         }
 
-        return businessFunctions.mGraphicTransformToDataItem(imsi.get()).apply(mGraphic);
+        return businessFunctions.mGraphicTransformToDataItem(imsi.get(), "mGraphics").apply(mGraphic);
     }
 
     private MGraphic getSystemDefaultMGraphic(Optional<String> callPhoneNo) {

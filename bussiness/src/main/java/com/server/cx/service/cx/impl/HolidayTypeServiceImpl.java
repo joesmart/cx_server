@@ -11,12 +11,12 @@ import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.HolidayTypeService;
 import com.server.cx.service.util.BusinessFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component
+@Service(value = "holidayTypeService")
 @Transactional(readOnly = true)
 public class HolidayTypeServiceImpl extends UserCheckService implements HolidayTypeService {
 

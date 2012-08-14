@@ -1,8 +1,8 @@
 package com.server.cx.entity.cx;
 
-import javax.persistence.*;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.util.Date;
-import java.util.List;
 
 /**
  * User: yanjianzou
@@ -12,15 +12,14 @@ import java.util.List;
  */
 @Entity
 @DiscriminatorValue("custom")
-public class UserCustomMGraphic extends MGraphic {
+public class UserCustomMGraphic extends UserCommonMGraphic {
     private Date begin;
     private Date end;
 
-    private List<String> phoneNos;
-
     public UserCustomMGraphic(){
-        this.setPriority(5);
+        this.setPriority(9);
         this.setModeType(3);
+        this.setCommon(true);
     }
 
     public Date getBegin() {
@@ -37,16 +36,5 @@ public class UserCustomMGraphic extends MGraphic {
 
     public void setEnd(Date end) {
         this.end = end;
-    }
-
-    @ElementCollection
-    @CollectionTable(name = "mgraphic_phone_no", joinColumns = {@JoinColumn(name = "mgraphic_id")})
-    @Column(name = "phone_number")
-    public List<String> getPhoneNos() {
-        return phoneNos;
-    }
-
-    public void setPhoneNos(List<String> phoneNos) {
-        this.phoneNos = phoneNos;
     }
 }
