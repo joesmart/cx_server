@@ -104,7 +104,7 @@
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:0.11.2" />
           <element id="library" level="project" name="Maven: joda-time:joda-time:2.1" />
           <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:2.0.0" />
-          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.1.22" />
+          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.1.23" />
           <element id="library" level="project" name="Maven: org.easytesting:fest-assert:1.4" />
           <element id="library" level="project" name="Maven: org.easytesting:fest-util:1.1.6" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.21" />
