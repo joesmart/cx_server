@@ -68,8 +68,8 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
     private void historyPreviousUserCommonMGraphic() {
         List<UserStatusMGraphic> previousUserCommonMGraphics = userStatusMGraphicDao.findByUserInfoAndModeType(userInfo, 5);
-        for (UserStatusMGraphic holidayMGraphic : previousUserCommonMGraphics) {
-            userStatusMGraphicDao.delete(holidayMGraphic);
+        for (UserStatusMGraphic statusMGraphic : previousUserCommonMGraphics) {
+            userStatusMGraphicDao.delete(statusMGraphic);
         }
     }
 
@@ -80,6 +80,7 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         UserStatusMGraphic userStatusMGraphic = new UserStatusMGraphic();
         userStatusMGraphic.setGraphicInfo(graphicInfo);
         userStatusMGraphic.setUserInfo(userInfo);
+        userStatusMGraphic.setStatusType(statusType);
         userStatusMGraphic.setValidDate(LocalDate.now().toDate());
         updateMGraphicNameAndSignature(mGraphicDTO, userStatusMGraphic);
         userStatusMGraphicDao.save(userStatusMGraphic);
@@ -87,7 +88,7 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
     }
 
     private void deletePreviousMGraphic(StatusType statusType) {
-        List<UserStatusMGraphic> previousMGraphics = userStatusMGraphicDao.findByValidDateAndStatusTypeAndUserInfo(LocalDate.now().toDate(),userInfo,statusType);
+        List<UserStatusMGraphic> previousMGraphics = userStatusMGraphicDao.findByValidDateAndStatusTypeAndUserInfo(LocalDate.now().toDate(),statusType,userInfo);
         userStatusMGraphicDao.delete(previousMGraphics);
     }
 }

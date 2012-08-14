@@ -36,6 +36,8 @@ public class DataItem extends BasicItem {
     private String mGraphicId;
     private Boolean inUsing;
     private String mediaType;
+    private Long holidayType;
+    private Long statusType;
     private Date begin;
     private Date end;
 }

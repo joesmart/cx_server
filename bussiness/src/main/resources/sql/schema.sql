@@ -36,16 +36,13 @@
         drop constraint FK4B95CDDB8EBB0422;
 
     alter table mgraphic 
-        drop constraint FK4B95CDDBCDC4AB82;
+        drop constraint FK4B95CDDBEBB54FE8;
 
     alter table mgraphic 
-        drop constraint FK4B95CDDBEBB54FE8;
+        drop constraint FK4B95CDDBCDC4AB82;
 
     alter table mgraphic_phone_no 
         drop constraint FK6F8CE016A4886B19;
-
-    alter table mgraphic_phone_no 
-        drop constraint FK6F8CE016E7C0E69F;
 
     alter table suggestion 
         drop constraint FK4763CA0473976E23;
@@ -227,16 +224,16 @@
         name varchar(255),
         priority integer,
         signature varchar(255),
-        common boolean,
-        valid_date timestamp,
         special_phone_no varchar(20),
+        common boolean,
         begin timestamp,
         end timestamp,
         holiday timestamp,
+        valid_date timestamp,
         graphic_info_id varchar(32),
         user_id varchar(32),
-        status_type_id bigint,
         holiday_type_id bigint,
+        status_type_id bigint,
         primary key (id)
     );
 
@@ -410,22 +407,17 @@
         references graphic_infos;
 
     alter table mgraphic 
-        add constraint FK4B95CDDBCDC4AB82 
-        foreign key (holiday_type_id) 
-        references holiday_type;
-
-    alter table mgraphic 
         add constraint FK4B95CDDBEBB54FE8 
         foreign key (status_type_id) 
         references status_type;
 
-    alter table mgraphic_phone_no 
-        add constraint FK6F8CE016A4886B19 
-        foreign key (mgraphic_id) 
-        references mgraphic;
+    alter table mgraphic 
+        add constraint FK4B95CDDBCDC4AB82 
+        foreign key (holiday_type_id) 
+        references holiday_type;
 
     alter table mgraphic_phone_no 
-        add constraint FK6F8CE016E7C0E69F 
+        add constraint FK6F8CE016A4886B19 
         foreign key (mgraphic_id) 
         references mgraphic;
 
