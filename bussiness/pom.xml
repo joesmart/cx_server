@@ -348,12 +348,22 @@
                     <artifactId>httpcore</artifactId>
                     <groupId>org.apache.httpcomponents</groupId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-remote-driver</artifactId>
-		</dependency>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 		
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -434,7 +444,12 @@
                     <check />
                 </configuration>
 			</plugin>
-			
+
+            <!-- enforcer插件, 避免被依赖的依赖引入过期的jar包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
 			<!-- eclipse插件, 设定wtp版本并添加springIDE nature -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

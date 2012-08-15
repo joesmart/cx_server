@@ -67,12 +67,12 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         checkAndInitializeContext(imsi, mGraphicDTO);
         checkMGraphicDTOPhoneNosMustBeNull(mGraphicDTO);
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
-        historyPreviousUserCommonMGraphic();
+        historyPreviousMGraphic();
         createAndSaveNewUserCommonMGraphic(mGraphicDTO);
         return new OperationResult("createUserCommonMGraphic", "success");
     }
 
-    private void historyPreviousUserCommonMGraphic() {
+    private void historyPreviousMGraphic() {
         List<UserCommonMGraphic> previousUserCommonMGraphics = userCommonMGraphicDao.findByUserInfoAndModeTypeAndCommon(userInfo, 2, true);
         for (UserCommonMGraphic userCommonMGraphic : previousUserCommonMGraphics) {
             historyPreviousUserCommonMGraphic(userCommonMGraphic);
@@ -88,7 +88,7 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
 
         UserCommonMGraphic mGraphic = userCommonMGraphicDao.findOne(mGraphicDTO.getId());
         if (mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0) {
-            historyPreviousUserCommonMGraphic();
+            historyPreviousMGraphic();
             mGraphic.setPhoneNos(null);
             mGraphic.setPriority(3);
             mGraphic.setCommon(true);

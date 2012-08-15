@@ -15,8 +15,10 @@ import org.junit.Test;
  * FileName:GuavaTest
  */
 public class GuavaTest {
+    @Test
     public void test() {
 
+        System.out.println(LocalDate.now());
 
     }
 

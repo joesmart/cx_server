@@ -1,6 +1,7 @@
 package com.server.cx.dao.cx;
 
 import com.server.cx.entity.cx.MGraphic;
+import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserInfo;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,14 @@ public class UserSpecialMGraphicDaoTest extends SpringTransactionalTestCase {
     private MGraphicDao mGraphicDao;
     @Autowired
     private UserInfoDao userInfoDao;
+    @Autowired
+    private UserCommonMGraphicDao userCommonMGraphicDao;
 
 
 
     @Test
     public void should_query_by_phoneNos_successful(){
-        List<MGraphic> mGraphicList =  mGraphicDao.queryUserMGraphics(null, null, null);
+        List<UserCommonMGraphic> mGraphicList =  userCommonMGraphicDao.queryUserMGraphics(null, null, null);
         assertThat(mGraphicList).isNotNull();
 
     }
@@ -46,7 +49,7 @@ public class UserSpecialMGraphicDaoTest extends SpringTransactionalTestCase {
         UserInfo userInfo = userInfoDao.findOne("2");
         int maxPriority =mGraphicDao.queryMaxPriorityByUserInfo(userInfo, "13561341576");
 
-        List<MGraphic> mGraphics = mGraphicDao.queryUserMGraphics(userInfo,maxPriority, null);
+        List<UserCommonMGraphic> mGraphics = userCommonMGraphicDao.queryUserMGraphics(userInfo,maxPriority, null);
         assertThat(mGraphics).isNotNull();
         assertThat(mGraphics.size()).isGreaterThan(0);
         for(MGraphic mGraphic:mGraphics){

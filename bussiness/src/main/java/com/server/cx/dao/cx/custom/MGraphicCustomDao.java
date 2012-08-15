@@ -3,8 +3,6 @@ package com.server.cx.dao.cx.custom;
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserInfo;
 
-import java.util.List;
-
 /**
  * User: yanjianzou
  * Date: 12-8-8
@@ -12,10 +10,6 @@ import java.util.List;
  * FileName:MGraphicCustomDao
  */
 public interface MGraphicCustomDao {
-
-    List<MGraphic> queryUserMGraphics(UserInfo userInfo, Integer maxPriority, String callPhoneNo);
-
-    int queryMaxPriorityByUserInfo(UserInfo userInfo, String callPhoneNo);
-
+    int queryMaxPriorityByUserInfo(UserInfo callerUserInfo, String selfPhoneNo);
     MGraphic queryDefaultMGraphic(String callPhoneNo);
 }

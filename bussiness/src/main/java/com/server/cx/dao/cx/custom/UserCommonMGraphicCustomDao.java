@@ -1,6 +1,7 @@
 package com.server.cx.dao.cx.custom;
 
 import com.server.cx.entity.cx.UserCommonMGraphic;
+import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.SystemException;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface UserCommonMGraphicCustomDao {
     public void deleteUserAllStatus(String userId);
 
     public UserCommonMGraphic getMGraphicStoreModeByModeType(String userId, Integer modeType);
+
+    public List<UserCommonMGraphic> queryUserMGraphics(UserInfo userInfo, Integer maxPriority, String callPhoneNo);
 }

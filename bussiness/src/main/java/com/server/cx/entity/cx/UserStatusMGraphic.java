@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @Entity
 @DiscriminatorValue("status")
-public class UserStatusMGraphic extends MGraphic {
+public class UserStatusMGraphic extends UserCommonMGraphic {
     private Date validDate;
     private StatusType statusType;
 

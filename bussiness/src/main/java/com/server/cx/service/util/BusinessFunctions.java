@@ -6,6 +6,7 @@ import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
 import com.server.cx.entity.cx.*;
 import com.server.cx.service.cx.impl.BasicService;
+import org.joda.time.LocalDate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Nullable;
@@ -270,6 +271,13 @@ public class BusinessFunctions extends BasicService {
         dataItem.setModeType(input.getModeType());
         if(input instanceof UserCommonMGraphic){
             dataItem.setPhoneNos(((UserCommonMGraphic) input).getPhoneNos());
+        }
+
+        if(input instanceof  UserCustomMGraphic){
+            if(((UserCustomMGraphic) input).getBegin() !=null && ((UserCustomMGraphic) input).getBegin().equals(LocalDate.parse("1900-1-1"))){
+                ((UserCustomMGraphic) input).setBegin(null);
+                ((UserCustomMGraphic) input).setEnd(null);
+            }
         }
 
         if(input instanceof UserCustomMGraphic){

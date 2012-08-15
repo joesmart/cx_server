@@ -17,7 +17,7 @@ public class UserCustomMGraphic extends UserCommonMGraphic {
     private Date end;
 
     public UserCustomMGraphic(){
-        this.setPriority(9);
+        this.setPriority(5);
         this.setModeType(3);
         this.setCommon(true);
     }

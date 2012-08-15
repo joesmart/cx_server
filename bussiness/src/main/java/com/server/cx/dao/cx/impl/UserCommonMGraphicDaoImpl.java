@@ -4,15 +4,18 @@ import com.google.common.base.Preconditions;
 import com.server.cx.dao.cx.custom.UserCommonMGraphicCustomDao;
 import com.server.cx.entity.cx.Contacts;
 import com.server.cx.entity.cx.UserCommonMGraphic;
+import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.util.business.ValidationUtil;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.*;
+import org.joda.time.LocalDate;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository("mgraphicStoreModeDao")
@@ -146,5 +149,30 @@ userInfoCriteria.add(Property.forName("imsi").in(contactsCriteria))
 
         return mgraphicUserCommon;
     }
+
+
+    @Override
+    public List<UserCommonMGraphic> queryUserMGraphics(UserInfo userInfo, Integer maxPriority, String callPhoneNo) {
+
+        String sql = "select a from UserCommonMGraphic a " +
+                "where a.userInfo = :userInfo " +
+                "and ( " +
+                "( :currentDate between  a.begin and a.end and a.modeType=3)  " +
+                "or  ( :callPhoneNo in elements(a.phoneNos) and a.modeType =3 and :currentDate between  a.begin and a.end ) " +
+                "or  ( :callPhoneNo in elements(a.phoneNos) and a.modeType !=3) " +
+                "or (a.modeType=2 and a.common=true) " +
+                "or (a.validDate = :currentDate and a.modeType =5) " +
+                "or (a.holiday = :currentDate and a.modeType=4) " +
+                ") and a.priority = :maxPriority order by a.modeType desc,a.end ";
+
+        TypedQuery<UserCommonMGraphic> typedQuery = em.createQuery(sql, UserCommonMGraphic.class);
+        typedQuery.setParameter("userInfo", userInfo);
+        typedQuery.setParameter("maxPriority", maxPriority);
+        typedQuery.setParameter("callPhoneNo", callPhoneNo);
+        typedQuery.setParameter("currentDate", LocalDate.now().toDate());
+
+        return typedQuery.getResultList();
+    }
+
 
 }

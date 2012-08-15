@@ -4,8 +4,10 @@ import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.server.cx.dao.cx.MGraphicDao;
+import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.entity.cx.MGraphic;
+import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.CallingService;
@@ -27,6 +29,8 @@ public class CallingServiceImpl implements CallingService {
     private UserInfoDao userInfoDao;
     @Autowired
     private MGraphicDao mGraphicDao;
+    @Autowired
+    private UserCommonMGraphicDao userCommonMGraphicDao;
 
     @Autowired
     private BusinessFunctions businessFunctions;
@@ -35,10 +39,15 @@ public class CallingServiceImpl implements CallingService {
     public DataItem getCallingMGraphic(Optional<String> imsi, Optional<String> callPhoneNo) throws SystemException {
         Preconditions.checkNotNull(imsi.isPresent(),"imsi 为空");
         Preconditions.checkNotNull(callPhoneNo.isPresent(),"imsi 为空");
-
+        //本人的UserInfo
         UserInfo userInfo = userInfoDao.findByImsi(imsi.get());
-
-        UserInfo callerUserInfo = userInfoDao.findByPhoneNo(callPhoneNo.get());
+        UserInfo callerUserInfo;
+        if(callPhoneNo.equals(userInfo.getPhoneNo())){
+            callerUserInfo = userInfo;
+        }else {
+            //根据手机号码得到对方 UserInfo
+            callerUserInfo = userInfoDao.findByPhoneNo(callPhoneNo.get());
+        }
 
         if(callerUserInfo == null){
             return businessFunctions.mGraphicTransformToDataItem(imsi.get(), "mGraphics").apply(getSystemDefaultMGraphic(callPhoneNo));
@@ -49,13 +58,21 @@ public class CallingServiceImpl implements CallingService {
         if(maxPriority == -1){
             mGraphic = getSystemDefaultMGraphic(callPhoneNo);
         }else {
-            List<MGraphic> mGraphics = mGraphicDao.queryUserMGraphics(callerUserInfo,maxPriority, userInfo == null?null:userInfo.getPhoneNo());
+            List<UserCommonMGraphic> mGraphics = userCommonMGraphicDao.queryUserMGraphics(callerUserInfo,maxPriority, userInfo == null?null:userInfo.getPhoneNo());
             if(mGraphics != null && mGraphics.size()>0){
-                mGraphic = mGraphics.get(RandomUtils.nextInt(mGraphics.size()));
+                if(maxPriority !=5 && maxPriority != 6){
+                    mGraphic = mGraphics.get(RandomUtils.nextInt(mGraphics.size()));
+                }else if(maxPriority == 5 || maxPriority ==6){
+                    mGraphic = mGraphics.get(0);
+                }else {
+                    mGraphic = getSystemDefaultMGraphic(callPhoneNo);
+                    LOGGER.error("calling phone error:should have a user MGraphic!");
+                }
             }else {
                 mGraphic = getSystemDefaultMGraphic(callPhoneNo);
                 LOGGER.error("calling phone error:should have a user MGraphic!");
             }
+
         }
 
         return businessFunctions.mGraphicTransformToDataItem(imsi.get(), "mGraphics").apply(mGraphic);
