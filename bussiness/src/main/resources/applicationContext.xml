@@ -102,6 +102,10 @@
     <bean id="imageShowURL" class="java.lang.String">
         <constructor-arg value="http://10.90.3.122:38183/resources/rs/graphics/show?id="/>
     </bean>
+    
+    <bean id="fileUploadUrl" class="java.lang.String">
+    	<constructor-arg value="http://10.90.3.122:38183/resources/rs/file" />
+    </bean>
 
     <bean id="thumbnailSize" class="java.lang.String">
         <constructor-arg value="size=128X128"/>
