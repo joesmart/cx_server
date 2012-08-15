@@ -16,6 +16,7 @@ import com.server.cx.service.cx.QueryMGraphicService;
 import com.server.cx.service.util.BusinessFunctions;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
     public static final Logger LOGGER = LoggerFactory.getLogger(CustomMGraphicServiceImpl.class);
 
+    private static final String MIN_BEGIN_DATE="1900-1-1";
+    private static final String MAX_END_DATE="2022-1-1";
+
     @Autowired
     private UserCustomMGraphicDao userCustomMGraphicDao;
 
@@ -54,10 +58,17 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         userCustomMGraphic.setCommon(true);
         userCustomMGraphic.setPhoneNos(null);
         if (mGraphicDTO.getPhoneNos() != null && mGraphicDTO.getPhoneNos().size()>0){
-            userCustomMGraphic.setPriority(10);
+            userCustomMGraphic.setPriority(6);
             userCustomMGraphic.setCommon(false);
             userCustomMGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
         }
+        convertBeginAndEndDate(mGraphicDTO, userCustomMGraphic);
+        updateMGraphicNameAndSignature(mGraphicDTO, userCustomMGraphic);
+        userCustomMGraphicDao.save(userCustomMGraphic);
+        graphicInfoService.updateGraphicInfoUseCount(graphicInfo);
+    }
+
+    private void convertBeginAndEndDate(MGraphicDTO mGraphicDTO, UserCustomMGraphic userCustomMGraphic) {
         if(mGraphicDTO.getBegin()!=null&&mGraphicDTO.getEnd()!=null){
             DateTime begin = new DateTime(mGraphicDTO.getBegin().getTime());
             DateTime end = new DateTime(mGraphicDTO.getEnd().getTime());
@@ -66,10 +77,10 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
             }
             userCustomMGraphic.setBegin(mGraphicDTO.getBegin());
             userCustomMGraphic.setEnd(mGraphicDTO.getEnd());
+        }else {
+            userCustomMGraphic.setBegin(LocalDate.parse(MIN_BEGIN_DATE).toDate());
+            userCustomMGraphic.setEnd(LocalDate.parse(MAX_END_DATE).toDate());
         }
-        updateMGraphicNameAndSignature(mGraphicDTO, userCustomMGraphic);
-        userCustomMGraphicDao.save(userCustomMGraphic);
-        graphicInfoService.updateGraphicInfoUseCount(graphicInfo);
     }
 
     private void checkPreviousMGraphicCount() {
@@ -94,19 +105,19 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         mGraphicIdMustBeExists(mGraphicDTO);
 
         UserCustomMGraphic mGraphic = userCustomMGraphicDao.findOne(mGraphicDTO.getId());
+        convertBeginAndEndDate(mGraphicDTO,mGraphic);
         if (mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0) {
             mGraphic.setPhoneNos(null);
             mGraphic.setCommon(true);
-            mGraphic.setPriority(9);
+            mGraphic.setPriority(5);
             updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
-            userCustomMGraphicDao.save(mGraphic);
         } else {
             mGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
-            mGraphic.setPriority(10);
+            mGraphic.setPriority(6);
             mGraphic.setCommon(false);
             updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
-            userCustomMGraphicDao.save(mGraphic);
         }
+        userCustomMGraphicDao.save(mGraphic);
         return new OperationResult("editUserCommonMGraphic", "success");
     }
 

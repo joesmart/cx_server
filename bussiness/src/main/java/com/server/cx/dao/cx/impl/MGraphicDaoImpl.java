@@ -2,7 +2,9 @@ package com.server.cx.dao.cx.impl;
 
 import com.server.cx.dao.cx.custom.MGraphicCustomDao;
 import com.server.cx.entity.cx.MGraphic;
+import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserInfo;
+import org.joda.time.LocalDate;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -16,27 +18,21 @@ import java.util.List;
 public class MGraphicDaoImpl extends BasicDao implements MGraphicCustomDao {
 
     @Override
-    public List<MGraphic> queryUserMGraphics(UserInfo userInfo, Integer maxPriority, String callPhoneNo) {
-        String sql = "select a from MGraphic a where a.userInfo =:userInfo and a.priority =:maxPriority";
-        if(maxPriority == 4){
-            sql = "select a from UserCommonMGraphic a where a.userInfo =:userInfo and a.priority =:maxPriority and :callPhoneNo in elements(a.phoneNos)";
-        }
-        TypedQuery<MGraphic> typedQuery = em.createQuery(sql, MGraphic.class);
-        typedQuery.setParameter("userInfo", userInfo);
-        typedQuery.setParameter("maxPriority", maxPriority);
-        if(maxPriority == 4){
-            typedQuery.setParameter("callPhoneNo", callPhoneNo);
-        }
-        return typedQuery.getResultList();
-    }
-
-    @Override
-    public int queryMaxPriorityByUserInfo(UserInfo userInfo, String callPhoneNo) {
-        String hql = "select max(a.priority) from UserCommonMGraphic a where (a.userInfo = :userInfo and a.modeType=1 ) " +
-                "or (:callPhoneNo in elements(a.phoneNos) and a.userInfo=:userInfo and a.modeType=2)";
+    public int queryMaxPriorityByUserInfo(UserInfo callerUserInfo, String selfPhoneNo) {
+        String hql = "select max(a.priority) from UserCommonMGraphic a " +
+                "where a.userInfo = :userInfo " +
+                "and ( " +
+                "( :currentDate between  a.begin and a.end and a.modeType=3)  " +
+                "or  ( :callPhoneNo in elements(a.phoneNos) and a.modeType =3 and :currentDate between  a.begin and a.end )" +
+                "or  ( :callPhoneNo in elements(a.phoneNos) and a.modeType !=3)" +
+                "or (a.modeType=2 and a.common=true) " +
+                "or (a.validDate = :currentDate and a.modeType =5) " +
+                "or (a.holiday = :currentDate and a.modeType=4)" +
+                ") ";
         TypedQuery<Integer> query = em.createQuery(hql, Integer.class);
-        query.setParameter("userInfo", userInfo);
-        query.setParameter("callPhoneNo", callPhoneNo);
+        query.setParameter("userInfo", callerUserInfo);
+        query.setParameter("callPhoneNo", selfPhoneNo);
+        query.setParameter("currentDate", LocalDate.now().toDate());
         Integer commonPriority = query.getSingleResult();
 
         if(commonPriority != null){

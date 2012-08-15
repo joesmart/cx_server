@@ -50,13 +50,19 @@ public class MyCollectionsResources {
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("imsi")String imsi,@PathParam("id")String userFavoriteId){
-
+        OperationDescription operationDescription =null;
         try{
-           userFavoritesService.deleteUserFavoritesById(imsi, userFavoriteId);
+            operationDescription = userFavoritesService.deleteUserFavoritesById(imsi, userFavoriteId);
+            return Response.ok(operationDescription).status(Response.Status.ACCEPTED).build();
         }catch (Exception e){
            LOGGER.error("delete UserFavorite Error:",e);
+            operationDescription = new OperationDescription();
+            operationDescription.setActionName("addNewUserFavorite");
+            operationDescription.setStatusCode(Response.Status.CONFLICT.getStatusCode());
+            operationDescription.setErrorMessage(e.getMessage());
+            return Response.ok(operationDescription).status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
-        return Response.status(Response.Status.ACCEPTED).build();
+
     }
 
     @GET
