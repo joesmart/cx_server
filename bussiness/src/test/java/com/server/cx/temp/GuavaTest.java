@@ -1,12 +1,13 @@
 package com.server.cx.temp;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.math.IntMath;
 import org.apache.commons.lang.math.RandomUtils;
 import org.fest.assertions.Assertions;
 import org.joda.time.LocalDate;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: yanjianzou
@@ -15,6 +16,7 @@ import org.junit.Test;
  * FileName:GuavaTest
  */
 public class GuavaTest {
+    public static final Logger LOGGER = LoggerFactory.getLogger(GuavaTest.class);
     @Test
     public void test() {
 
@@ -70,7 +72,8 @@ public class GuavaTest {
     @Test
     public void test_optional(){
         String a = null;
+        LOGGER.info("help {} dd","a");
 
-        System.out.print(Optional.of(a).isPresent());
+//        System.out.print(Optional.of(a).isPresent());
     }
 }

@@ -1,10 +1,10 @@
 package com.server.cx.entity.cx;
 
-import com.server.cx.entity.basic.AuditableEntity;
+import com.server.cx.entity.basic.LongTypeIdBaseEntity;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import lombok.ToString;
 
 /**
  * User: yanjianzou
@@ -15,7 +15,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "holiday_type")
 @ToString
-public class HolidayType extends AuditableEntity {
+public class HolidayType extends LongTypeIdBaseEntity {
     private String name;
     private Integer downloadNum;
     private String graphicResourceId;

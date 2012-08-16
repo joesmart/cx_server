@@ -1,6 +1,6 @@
 package com.server.cx.entity.cx;
 
-import com.server.cx.entity.basic.AuditableEntity;
+import com.server.cx.entity.basic.LongTypeIdBaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "category")
-public class Category extends AuditableEntity {
+public class Category extends LongTypeIdBaseEntity {
 
     private String name;
     private String description;

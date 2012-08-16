@@ -65,7 +65,6 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     @Override
     public OperationResult create(String imsi, MGraphicDTO mGraphicDTO) throws RuntimeException {
         checkAndInitializeContext(imsi, mGraphicDTO);
-        checkMGraphicDTOPhoneNosMustBeNull(mGraphicDTO);
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
         historyPreviousMGraphic();
         createAndSaveNewUserCommonMGraphic(mGraphicDTO);
