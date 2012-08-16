@@ -295,6 +295,12 @@
         </dependency>
 		<!-- GENERAL UTILS end -->
 
+		<!-- TIMER -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+		</dependency>
+
 		<!-- TEST begin -->
 		<dependency>
 			<groupId>org.springside</groupId>
