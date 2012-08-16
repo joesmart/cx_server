@@ -1,9 +1,10 @@
 package com.server.cx.entity.cx;
 
-import com.server.cx.entity.basic.AuditableEntity;
+import com.server.cx.entity.basic.LongTypeIdBaseEntity;
+import lombok.ToString;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import lombok.ToString;
 
 /**
  * User: yanjianzou Date: 12-7-26 Time: 下午5:34 FileName:StatusType
@@ -11,7 +12,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "status_type")
 @ToString
-public class StatusType extends AuditableEntity {
+public class StatusType extends LongTypeIdBaseEntity {
 
     private String name;
     private String graphicResourceId;

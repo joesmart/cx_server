@@ -59,12 +59,13 @@
     <holiday_type id="19" name="父亲节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
 
 
-    <category id="1" name="心情物语" description="心情物语测试测试车上" download_num="1000" graphic_resource_id="50039d9ee4b09ed787af7143" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
-    <category id="2" name="精品资讯" description="精品资讯测试测试车上" download_num="1000" graphic_resource_id="50039d92e4b09ed787af7107" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
-    <category id="3" name="动漫天地" description="动漫天地测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
-    <category id="4" name="健康贴士" description="健康贴士测试测试车上" download_num="1000" graphic_resource_id="50039d9ae4b09ed787af7127" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
-    <category id="5" name="节日祝福" description="节日祝福测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
-    <category id="6" name="新闻摘要" description="新闻摘要测试测试车上" download_num="1000" graphic_resource_id="50039d9de4b09ed787af7133" created_by="Anonymous" created_on="2012-08-01 11:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"/>
+    <category id="1" name="心情物语" description="心情物语测试测试车上" download_num="1000" graphic_resource_id="50039d9ee4b09ed787af7143" created_by="Anonymous" />
+    <category id="2" name="精品资讯" description="精品资讯测试测试车上" download_num="1000" graphic_resource_id="50039d92e4b09ed787af7107" created_by="Anonymous" />
+    <category id="3" name="动漫天地" description="动漫天地测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" created_by="Anonymous" />
+    <category id="4" name="健康贴士" description="健康贴士测试测试车上" download_num="1000" graphic_resource_id="50039d9ae4b09ed787af7127" created_by="Anonymous" />
+    <category id="5" name="节日祝福" description="节日祝福测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" created_by="Anonymous" />
+    <category id="6" name="新闻摘要" description="新闻摘要测试测试车上" download_num="1000" graphic_resource_id="50039d9de4b09ed787af7133" created_by="Anonymous" />
+
 
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800001" name="彩像11" signature="男儿当自强1 " audit_status="PASSED" level="3" recommend="false" use_count="12" price="1.2" owner="system" category_id="1" created_by="Anonymous" created_on="2012-08-01 12:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800002" name="彩像12" signature="男儿当自强2 " audit_status="PASSED" level="1" recommend="false" use_count="15" price="1.2" owner="system" category_id="1" created_by="Anonymous" created_on="2012-08-02 12:13:35.0" updated_by="Anonymous" updated_on="2012-08-02 12:13:35.0"></graphic_infos>

@@ -38,6 +38,7 @@ public class MGraphicResources extends OperationResources {
 
     @POST
     public Response create(@PathParam("imsi") String imsi, MGraphicDTO mGraphicDTO) {
+        log(imsi, mGraphicDTO,"create");
         operationDescription = new OperationDescription();
         try {
             OperationResult operationResult;
@@ -51,10 +52,20 @@ public class MGraphicResources extends OperationResources {
         }
     }
 
+    private void log(String imsi, MGraphicDTO mGraphicDTO,String method) {
+        String[] strings = new String[]{this.getClass().getName(),method,imsi,mGraphicDTO.toString()};
+        LOGGER.info("Resource:{},method:{},parameters: imsi:{},MGraphicDTO:{}",strings);
+    }
+
+    private void log(String imsi, String id,String method) {
+        String[] strings = new String[]{this.getClass().getName(),method,imsi,id};
+        LOGGER.info("Resource:{},method:{},parameters: imsi:{},id:{}",strings);
+    }
 
     @PUT
     @Path("/{id}")
-    public Response update(@PathParam("imsi") String imsi,@PathParam("id")String userCommonMGraphicId, MGraphicDTO mGraphicDTO){
+    public Response edit(@PathParam("imsi") String imsi, @PathParam("id") String userCommonMGraphicId, MGraphicDTO mGraphicDTO){
+        log(imsi, mGraphicDTO,"edit");
         operationDescription = new OperationDescription();
         try {
             mGraphicDTO.setId(userCommonMGraphicId);
@@ -71,6 +82,7 @@ public class MGraphicResources extends OperationResources {
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("imsi")String imsi,@PathParam("id")String userCommonMGraphicId){
+        log(imsi, userCommonMGraphicId ,"delete");
         operationDescription = new OperationDescription();
         try {
             OperationResult operationResult = mgraphicService.disable(imsi, userCommonMGraphicId);
@@ -84,6 +96,7 @@ public class MGraphicResources extends OperationResources {
     }
     @GET
     public Response getAll(@PathParam("imsi")String imsi){
+        log(imsi, "" ,"getAll");
         DataPage dataPage = queryMGraphicService.queryUserMGraphic(imsi);
         return Response.ok(dataPage).build();
     }
