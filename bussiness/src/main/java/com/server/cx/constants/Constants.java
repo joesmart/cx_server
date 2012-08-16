@@ -102,4 +102,8 @@ public class Constants {
     public static final int HEIGHT = 100;
     public static final String VALIDTIME_STR = "validTime";
     public static final String SIGNATURE_STR = "signature";
+
+    public static final String RESOURCE_SERVER_USERNAME = "joesmart";
+
+    public static final String RESOURCE_SERVER_PASSWORD = "123456";
 }

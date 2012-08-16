@@ -4,6 +4,7 @@ import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
+import com.google.common.collect.Lists;
 import com.server.cx.entity.cx.*;
 import com.server.cx.service.cx.impl.BasicService;
 import org.joda.time.LocalDate;
@@ -380,6 +381,24 @@ public class BusinessFunctions extends BasicService {
             @Override
             public StatusType apply(@Nullable UserStatusMGraphic input) {
                 return input.getStatusType();
+            }
+        };
+    }
+    
+    public Function<FileMeta, GraphicInfo> fileMetaTransformToGraphicInfo() {
+        return new Function<FileMeta, GraphicInfo>() {
+            @Override
+            public GraphicInfo apply(@Nullable FileMeta input) {
+                System.out.println("input = " + input);
+                GraphicResource graphicResource = new GraphicResource();
+                graphicResource.setResourceId(input.getResourceId());
+                
+                GraphicInfo graphicInfo = new GraphicInfo();
+                graphicInfo.setName(input.getName());
+                List<GraphicResource> graphicResources = Lists.newArrayList();
+                graphicResources.add(graphicResource);
+                graphicInfo.setGraphicResources(graphicResources);
+                return graphicInfo;
             }
         };
     }

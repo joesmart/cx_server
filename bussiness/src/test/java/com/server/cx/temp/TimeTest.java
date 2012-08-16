@@ -15,6 +15,7 @@ public class TimeTest {
     @Test
     public void showTime(){
         DateTime now = DateTime.now();
+        System.out.println(now);
         System.out.println(now.toDate().getTime());
         System.out.println(now.plusDays(1).toDate().getTime());
     }
