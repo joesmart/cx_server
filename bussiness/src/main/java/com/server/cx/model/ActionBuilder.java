@@ -165,6 +165,12 @@ public class ActionBuilder {
         actions.setUploadContactsURL(action);
         return this;
     }
+    
+    public ActionBuilder getContactsURL(String url) {
+        Action action = new Action(url, "GET");
+        actions.setGetContactsURL(action);
+        return this;
+    }
 
     public Actions build() {
         return actions;
@@ -222,7 +228,7 @@ public class ActionBuilder {
             .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
             .useURL(baseHostAddress + restURL + imsi + "/mGraphics").build();
     }
-
+    
     public Actions buildUrlActions(String imsi) {
         return actions().recommendUrl(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true")
             .hotUrl(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true")
@@ -237,7 +243,9 @@ public class ActionBuilder {
             .collectionsUrl(baseHostAddress + restURL + imsi + "/myCollections", "GET")
             .inviteFriendsURL(baseHostAddress + restURL + imsi + "/sms")
             .registerUrl(baseHostAddress + restURL + "register")
+            .getContactsURL(baseHostAddress + restURL + imsi + "/contacts")
             .uploadContactsURL(baseHostAddress + restURL + imsi + "/contacts").build();
+        
     }
 
     public Actions buildUrlActions() {
@@ -255,6 +263,7 @@ public class ActionBuilder {
         actions.setCustomMGraphicsURL(null);
         actions.setInviteFriendsURL(null);
         actions.setUploadContactsURL(null);
+        actions.setGetContactsURL(null);
     }
 
 

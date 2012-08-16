@@ -9,7 +9,6 @@ import org.junit.runners.Suite;
         MyCollectionsResourceIT.class,
         SuggestionResourceTest.class,
         VersionInfoResourceTest.class,
-        CXAppResourceTest.class,
         HolidayTypeResourceTest.class,
         StatusTypeResourceTest.class,
         ActionResourceTest.class,

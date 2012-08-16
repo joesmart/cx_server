@@ -33,4 +33,13 @@ public class ContactsResourceTest extends BasicJerseyTest {
         OperationDescription operationDescription = response.getEntity(OperationDescription.class);
         assertThat(operationDescription.getDealResult()).isEqualTo(Constants.SUCCESS_FLAG);
     }
+    
+    @Test
+    public void test_getCXAppUsersByImsi() {
+        resource = resource.path("/13146001000/contacts");
+        ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+        assertThat(response.getStatus()).isEqualTo(200);
+        ContactsDTO contactDTO =  response.getEntity(ContactsDTO.class);
+        assertThat(contactDTO.getContactInfos().size()).isEqualTo(3);
+    }
 }

@@ -1,17 +1,22 @@
 package com.server.cx.webservice.rs.server;
 
+import java.util.List;
+import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.ContactsDTO;
 import com.cl.cx.platform.dto.OperationDescription;
+import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
+import com.server.cx.entity.cx.Contacts;
 import com.server.cx.service.cx.ContactsServcie;
+import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -28,6 +33,9 @@ public class ContactsResources {
 
     @Autowired
     private ContactsServcie contactsServcie;
+
+    @Autowired
+    private BusinessFunctions businessFunctions;
 
     @SuppressWarnings("finally")
     @POST
@@ -46,5 +54,17 @@ public class ContactsResources {
         } finally {
             return Response.ok(operationDescription).build();
         }
+    }
+
+    @GET
+    public ContactsDTO getContactsByImsi(@PathParam("imsi") String imsi) {
+        LOGGER.info("imsi:" + imsi);
+
+        List<Contacts> contacts = contactsServcie.queryCXAppConactsByImsi(imsi);
+        ContactsDTO contactDTO = new ContactsDTO();
+        List<ContactInfoDTO> contactInfoDTOList = Lists.transform(contacts,
+            businessFunctions.contactsTransformToContactInfoDTO());
+        contactDTO.setContactInfos(contactInfoDTOList);
+        return contactDTO;
     }
 }
