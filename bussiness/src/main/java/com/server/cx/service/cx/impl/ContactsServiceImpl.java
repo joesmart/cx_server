@@ -1,5 +1,11 @@
 package com.server.cx.service.cx.impl;
 
+import java.util.List;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
@@ -22,13 +28,6 @@ import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.RestSender;
 import com.server.cx.util.StringUtil;
 import com.server.cx.util.business.ValidationUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Map;
 
 @Service("contactsServcie")
 @Transactional
@@ -48,7 +47,6 @@ public class ContactsServiceImpl implements ContactsServcie {
     private BusinessFunctions businessFunctions;
 
     private UserInfo userInfo;
-    private String dealResult = "";
     private List<Contacts> contactsList;
     private List<String> mobiles;
 
@@ -100,7 +98,7 @@ public class ContactsServiceImpl implements ContactsServcie {
         userInfoDao.getUserInfoByImsi(imsi);
         userInfo = userInfoDao.getUserInfoByImsi(imsi);
         if (null == userInfo) {
-            dealResult = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户未注册");
+            StringUtil.generateXMLResultString(Constants.ERROR_FLAG, "用户未注册");
             throw new CXServerBusinessException("用户未注册");
         }
     }
@@ -119,7 +117,16 @@ public class ContactsServiceImpl implements ContactsServcie {
         }
         mobiles = Lists.newArrayList(Sets.newHashSet(mobiles).iterator());
     }
+    
+    @Override
+    public List<Contacts> queryCXAppConactsByImsi(String imsi) throws SystemException {
+        ValidationUtil.checkParametersNotNull(imsi);
+        UserInfo userInfo = userInfoDao.findByImsi(imsi);
+        List<Contacts> contacts = (List<Contacts>) contactsDao.getContactsByUserIdAndSelfUserInfoNotNull(userInfo.getId());
+        return contacts;
+    }
 
+    
     @Override
     public String retrieveContactUserCXInfo(String imsi) throws SystemException {
         //        Preconditions.checkNotNull(imsi);

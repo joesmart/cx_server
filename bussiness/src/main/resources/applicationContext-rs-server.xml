@@ -7,7 +7,6 @@
     <bean class="com.server.cx.webservice.rs.server.CategoryResources" />
     <bean class="com.server.cx.webservice.rs.server.ContactsResources" />
     <bean class="com.server.cx.webservice.rs.server.CustomMGraphicResources" />
-    <bean class="com.server.cx.webservice.rs.server.CXAppResources" />
     <bean class="com.server.cx.webservice.rs.server.GraphicInfoResources" />
     <bean class="com.server.cx.webservice.rs.server.HistoryMGraphicResources" />
     <bean class="com.server.cx.webservice.rs.server.HolidayMGraphicResources" />
