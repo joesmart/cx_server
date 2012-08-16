@@ -27,7 +27,7 @@ import javax.ws.rs.core.Response;
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class MGraphicResources extends OperationResources {
-    public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResources.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(MGraphicResources.class);
 
     @Autowired
     private MGraphicService mgraphicService;

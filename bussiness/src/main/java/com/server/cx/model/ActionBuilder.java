@@ -276,7 +276,7 @@ public class ActionBuilder {
     }
 
     public Actions buildHistoryMGraphicActions(String imsi, String id) {
-        return actions().useURL(baseHostAddress + restURL + imsi + "/MGraphics")
+        return actions().useURL(baseHostAddress + restURL + imsi + "/mGraphics")
             .removeURL(baseHostAddress + restURL + imsi + "/historyMGraphics/" + id).build();
     }
 
