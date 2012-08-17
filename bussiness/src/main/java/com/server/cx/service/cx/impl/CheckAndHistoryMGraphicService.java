@@ -8,6 +8,7 @@ import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.entity.cx.HistoryMGraphic;
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.exception.CXServerBusinessException;
+import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.GraphicInfoService;
 import com.server.cx.util.business.AuditStatus;
 import org.apache.commons.lang.StringUtils;
@@ -31,6 +32,9 @@ public class CheckAndHistoryMGraphicService extends UserCheckService {
     @Autowired
     protected GraphicInfoService graphicInfoService;
     protected GraphicInfo graphicInfo;
+
+    @Autowired
+    protected ActionBuilder actionBuilder;
 
     protected void checkMGraphicIdMustBeNotExists(MGraphicDTO mGraphicDTO) {
         if(mGraphicDTO.getId() != null){
@@ -73,8 +77,8 @@ public class CheckAndHistoryMGraphicService extends UserCheckService {
         historyMGraphicDao.save(historyMGraphic);
     }
 
-    protected String getGraphicInfoName(MGraphicDTO mGraphicDTO) {
-        return StringUtils.isEmpty(mGraphicDTO.getName())? graphicInfo.getName():mGraphicDTO.getName();
+    protected String judgeString(String name,String defaultName) {
+        return StringUtils.isEmpty(name)? defaultName: name;
     }
 
     protected void getAndCheckGraphicInfo(MGraphicDTO mGraphicDTO) {
@@ -92,7 +96,7 @@ public class CheckAndHistoryMGraphicService extends UserCheckService {
     }
 
     protected void updateMGraphicNameAndSignature(MGraphicDTO mGraphicDTO, MGraphic mgraphic) {
-        mgraphic.setName(getGraphicInfoName(mGraphicDTO));
-        mgraphic.setSignature(mGraphicDTO.getSignature());
+        mgraphic.setName(judgeString(mGraphicDTO.getName(),graphicInfo.getName()));
+        mgraphic.setSignature(judgeString(mGraphicDTO.getSignature(),graphicInfo.getSignature()));
     }
 }

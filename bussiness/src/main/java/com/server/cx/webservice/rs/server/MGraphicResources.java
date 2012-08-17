@@ -42,7 +42,7 @@ public class MGraphicResources extends OperationResources {
         operationDescription = new OperationDescription();
         try {
             OperationResult operationResult;
-            operationResult = mgraphicService.create(imsi, mGraphicDTO);
+            operationResult = mgraphicService.create(imsi, false, mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception ex) {
             actionName = "createCommonMGraphic";

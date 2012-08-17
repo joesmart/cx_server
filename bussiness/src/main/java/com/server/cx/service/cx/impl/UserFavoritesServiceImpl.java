@@ -18,9 +18,7 @@ import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.UserFavoritesService;
 import com.server.cx.service.util.BusinessFunctions;
-import com.server.cx.util.RestSender;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -42,10 +40,6 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
 
     @Autowired
     private GraphicInfoDao graphicInfoDao;
-
-    @Autowired
-    @Qualifier("cxinfosQueryIdRestSender")
-    private RestSender restSender;
 
     @Autowired
     private BusinessFunctions businessFunctions;

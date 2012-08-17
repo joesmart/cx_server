@@ -203,7 +203,8 @@ public class BusinessFunctions extends BasicService {
     }
 
     public Function<HolidayType, DataItem> holidayTypeTransformToDataItem(final String imsi,
-                                                                          final List<HolidayType> holidayTypes) {
+                                                                          final List<HolidayType> holidayTypes,
+                                                                          final Map<Long, UserHolidayMGraphic> userHolidayMGraphicMap) {
         return new Function<HolidayType, DataItem>() {
             @Override
             public DataItem apply(@Nullable HolidayType input) {
@@ -213,22 +214,31 @@ public class BusinessFunctions extends BasicService {
                 dataItem.setLevel(input.getLevel());
                 dataItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
                 dataItem.setDownloadNumber(String.valueOf(input.getDownloadNum().intValue()));
+                Actions actions = null;
+                if (!"none".equals(imsi)) {
+                    actions = actionBuilder.buildHolidayTypeAction(imsi, input.getId());
+                    dataItem.setActions(actions);
+                }
                 if (holidayTypes != null && holidayTypes.size() > 0) {
-                    dataItem.setHasUsed(holidayTypes.contains(input));
+                    boolean hasUsed = holidayTypes.contains(input);
+                    dataItem.setHasUsed(hasUsed);
+                    if(hasUsed){
+                        UserHolidayMGraphic userHolidayMGraphic = userHolidayMGraphicMap.get(input.getId());
+                        actions = actionBuilder.buildHolidayTypeHasUsedActions(imsi, input.getId(), userHolidayMGraphic.getId());
+                        dataItem.setActions(actions);
+                    }
                 } else {
                     dataItem.setHasUsed(false);
                 }
-                if (!"none".equals(imsi)) {
-                    Actions actions = actionBuilder.buildHolidayTypeAction(imsi, input.getId());
-                    dataItem.setActions(actions);
-                }
+
                 return dataItem;
             }
         };
     }
 
     public Function<StatusType, DataItem> statusTypeTransformToDataItem(final String imsi,
-                                                                        final List<StatusType> statusTypes) {
+                                                                        final List<StatusType> statusTypes,
+                                                                        final Map<Long, UserStatusMGraphic> userStatusMGraphicMap) {
         return new Function<StatusType, DataItem>() {
             @Override
             public DataItem apply(@Nullable StatusType input) {
@@ -236,15 +246,23 @@ public class BusinessFunctions extends BasicService {
                 dataItem.setId(String.valueOf(input.getId()));
                 dataItem.setName(input.getName());
                 dataItem.setGraphicURL(imageShowURL + input.getGraphicResourceId());
+                Actions actions = null;
+                if (!"none".equals(imsi)) {
+                    actions = actionBuilder.buildStatusTypeAction(imsi, input.getId());
+                    dataItem.setActions(actions);
+                }
                 if (statusTypes != null && statusTypes.size() > 0) {
-                    dataItem.setHasUsed(statusTypes.contains(input));
+                    boolean hasUsed = statusTypes.contains(input);
+                    dataItem.setHasUsed(hasUsed);
+                    if(hasUsed){
+                        UserStatusMGraphic userStatusMGraphic = userStatusMGraphicMap.get(input.getId());
+                        actions = actionBuilder.buildStatusTypeHasUsedActions(imsi,input.getId(),userStatusMGraphic.getId());
+                        dataItem.setActions(actions);
+                    }
                 } else {
                     dataItem.setHasUsed(false);
                 }
-                if (!"none".equals(imsi)) {
-                    Actions actions = actionBuilder.buildStatusTypeAction(imsi, input.getId());
-                    dataItem.setActions(actions);
-                }
+
                 return dataItem;
             }
         };

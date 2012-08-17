@@ -84,17 +84,6 @@
         </property>
     </bean>
 
-    <bean id="cxinfosQueryIdRestSender" class="com.server.cx.util.RestSender">
-        <constructor-arg value="http://10.90.3.122:38183/CXResourceManager/rest/cxinfos/queryById"/>
-    </bean>
-    <bean id="cxinfosUploadRestSender" class="com.server.cx.util.RestSender">
-        <constructor-arg value="http://10.90.3.122:38183/CXResourceManager/rest/cxinfos/upload"/>
-    </bean>
-    <bean id="statusRestSender" class="com.server.cx.util.RestSender">
-        <constructor-arg value="http://10.90.3.122:38183/CXResourceManager/rest/cxinfos/status"/>
-    </bean>
-
-
 
     <bean id="restURL" class="java.lang.String">
         <constructor-arg value="rs/"/>

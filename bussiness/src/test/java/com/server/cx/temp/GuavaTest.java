@@ -1,5 +1,6 @@
 package com.server.cx.temp;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.math.IntMath;
 import org.apache.commons.lang.math.RandomUtils;
@@ -76,4 +77,12 @@ public class GuavaTest {
 
 //        System.out.print(Optional.of(a).isPresent());
     }
+    @Test
+    public void test_joiner(){
+        String[] a = null;
+        Joiner.on(",").join(a);
+    }
+
+
 }
+

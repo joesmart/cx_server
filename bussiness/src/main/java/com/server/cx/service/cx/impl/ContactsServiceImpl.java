@@ -1,11 +1,5 @@
 package com.server.cx.service.cx.impl;
 
-import java.util.List;
-import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
@@ -25,9 +19,14 @@ import com.server.cx.model.Result;
 import com.server.cx.model.UserCXInfo;
 import com.server.cx.service.cx.ContactsServcie;
 import com.server.cx.service.util.BusinessFunctions;
-import com.server.cx.util.RestSender;
 import com.server.cx.util.StringUtil;
 import com.server.cx.util.business.ValidationUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Map;
 
 @Service("contactsServcie")
 @Transactional
@@ -38,10 +37,6 @@ public class ContactsServiceImpl implements ContactsServcie {
     private ContactsDao contactsDao;
     @Autowired
     private UserCommonMGraphicDao mgraphicDaoUserCommon;
-
-    @Autowired
-    @Qualifier("cxinfosQueryIdRestSender")
-    private RestSender restSender;
 
     @Autowired
     private BusinessFunctions businessFunctions;

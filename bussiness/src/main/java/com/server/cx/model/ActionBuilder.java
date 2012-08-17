@@ -201,11 +201,23 @@ public class ActionBuilder {
             .removeURL(baseHostAddress + restURL + imsi + "/holidayMGraphics/" + mGraphicId).build();
     }
 
+    public Actions buildHolidayMGraphicItemCreatedAction(String imsi, String mGraphicId) {
+        return actions()
+                .removeURL(baseHostAddress + restURL + imsi + "/holidayMGraphics/" + mGraphicId)
+                .build();
+    }
+
     public Actions buildStatusMGraphicItemEditAction(String imsi, String mGraphicId) {
         return actions().collectURL(baseHostAddress + restURL + imsi + "/myCollections")
             .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
             .editURL(baseHostAddress + restURL + imsi + "/statusMGraphics/" + mGraphicId)
             .removeURL(baseHostAddress + restURL + imsi + "/statusMGraphics/" + mGraphicId).build();
+    }
+
+    public Actions buildStatusMGraphicItemCreatedAction(String imsi, String mGraphicId) {
+        return actions()
+                .removeURL(baseHostAddress + restURL + imsi + "/statusMGraphics/" + mGraphicId)
+                .build();
     }
 
     public Actions buildCategoriesAction(String imsi, Long categoryId) {
@@ -214,13 +226,37 @@ public class ActionBuilder {
     }
 
     public Actions buildHolidayTypeAction(String imsi, Long holidayTypeId) {
-        return actions().zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?holidayTypeId=" + holidayTypeId)
-            .zoneOutURL(baseHostAddress + restURL + imsi + "/holidayTypes").build();
+        return actions()
+            .zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?holidayTypeId=" + holidayTypeId)
+            .zoneOutURL(baseHostAddress + restURL + imsi + "/holidayTypes")
+            .useURL(baseHostAddress + restURL + imsi + "/holidayMGraphics?immediate=true")
+            .build();
+    }
+
+    public Actions buildHolidayTypeHasUsedActions(String imsi, Long holidayTypeId,String mgraphicId) {
+        return actions()
+                .zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?holidayTypeId=" + holidayTypeId)
+                .zoneOutURL(baseHostAddress + restURL + imsi + "/holidayTypes")
+                .useURL(baseHostAddress + restURL + imsi + "/holidayMGraphics?immediate=true")
+                .removeURL(baseHostAddress + restURL + imsi + "/holidayMGraphics/"+mgraphicId)
+                .build();
     }
     
     public Actions buildStatusTypeAction(String imsi, Long statusTypeId) {
-        return actions().zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?statusTypeId=" + statusTypeId)
-            .zoneOutURL(baseHostAddress + restURL + imsi + "/statusTypes").build();
+        return actions()
+               .zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?statusTypeId=" + statusTypeId)
+               .zoneOutURL(baseHostAddress + restURL + imsi + "/statusTypes")
+               .useURL(baseHostAddress + restURL + imsi + "/statusMGraphics?immediate=true")
+               .build();
+    }
+
+    public Actions buildStatusTypeHasUsedActions(String imsi,Long statusTypeId,String mgraphicId){
+        return actions()
+                .zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?statusTypeId=" + statusTypeId)
+                .zoneOutURL(baseHostAddress + restURL + imsi + "/statusTypes")
+                .useURL(baseHostAddress + restURL + imsi + "/statusMGraphics?immediate=true")
+                .removeURL(baseHostAddress + restURL + imsi + "/statusMGraphics/"+mgraphicId)
+                .build();
     }
 
     public Actions buildUserFavoriteItemAction(String imsi, String userFavoriteId) {

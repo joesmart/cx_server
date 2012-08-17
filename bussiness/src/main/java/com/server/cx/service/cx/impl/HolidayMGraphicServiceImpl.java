@@ -1,5 +1,6 @@
 package com.server.cx.service.cx.impl;
 
+import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
 import com.server.cx.dao.cx.HolidayTypeDao;
@@ -8,6 +9,7 @@ import com.server.cx.entity.cx.HolidayType;
 import com.server.cx.entity.cx.UserHolidayMGraphic;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.HolidayService;
+import com.server.cx.service.cx.HolidayTypeService;
 import com.server.cx.service.cx.MGraphicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,12 +26,15 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
     private UserHolidayMGraphicDao userHolidayMGraphicDao;
 
     @Autowired
+    private HolidayTypeService holidayTypeService;
+
+    @Autowired
     private HolidayTypeDao holidayTypeDao;
 
     @Autowired
     private HolidayService holidayService;
 
-    private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
+    private String createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
         Preconditions.checkNotNull(mGraphicDTO.getHolidayType(),"holidayType未提供");
         HolidayType holidayType = holidayTypeDao.findOne(mGraphicDTO.getHolidayType());
         deletePreviousHolidayMGraphic(holidayType);
@@ -49,6 +54,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         updateMGraphicNameAndSignature(mGraphicDTO, holidayMGraphic);
         userHolidayMGraphicDao.save(holidayMGraphic);
         graphicInfoService.updateGraphicInfoUseCount(graphicInfo);
+        return holidayMGraphic.getId();
     }
 
     private void deletePreviousHolidayMGraphic(HolidayType holidayType) {
@@ -60,12 +66,23 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
     }
 
     @Override
-    public OperationResult create(String imsi, MGraphicDTO mGraphicDTO) throws RuntimeException {
-        checkAndInitializeContext(imsi, mGraphicDTO);
+    public OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO) throws RuntimeException {
+        checkParameters(imsi, mGraphicDTO);
+        checkAndSetUserInfoExists(imsi);
+        if(isImmediate){
+            graphicInfo = holidayTypeService.getFirstChild(mGraphicDTO.getHolidayType());
+            mGraphicDTO.setGraphicInfoId(graphicInfo.getId());
+        }
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
+
         historyPreviousUserCommonMGraphic();
-        createAndSaveNewUserCommonMGraphic(mGraphicDTO);
-        return new OperationResult("createUserHolidayMGraphic", "success");
+        String mgraphicId = createAndSaveNewUserCommonMGraphic(mGraphicDTO);
+        OperationResult operationResult = new OperationResult("createUserHolidayMGraphic", "success");
+        if(isImmediate){
+            Actions actions = actionBuilder.buildHolidayMGraphicItemCreatedAction(imsi, mgraphicId);
+            operationResult.setActions(actions);
+        }
+        return operationResult;
     }
 
     private void historyPreviousUserCommonMGraphic() {

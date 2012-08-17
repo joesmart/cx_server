@@ -31,11 +31,12 @@ public class StatusMGraphicResources extends OperationResources {
     private MGraphicService statusMGraphicService;
 
     @POST
-    public Response create(@PathParam("imsi") String imsi, MGraphicDTO mGraphicDTO) {
+    public Response create(@PathParam("imsi") String imsi,@DefaultValue("false")@QueryParam("immediate")Boolean isImmediate, MGraphicDTO mGraphicDTO) {
         operationDescription = new OperationDescription();
         try {
             OperationResult operationResult;
-            operationResult = statusMGraphicService.create(imsi, mGraphicDTO);
+            operationResult = statusMGraphicService.create(imsi, isImmediate, mGraphicDTO);
+            operationDescription.setActions(operationResult.getActions());
             updateOperationDescription(operationResult);
         } catch (Exception ex) {
             actionName = "createUserCommonMGraphic";

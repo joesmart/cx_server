@@ -29,11 +29,12 @@ public class HolidayMGraphicResources extends OperationResources{
     private MGraphicService holidayMGraphicService;
 
     @POST
-    public Response create(@PathParam("imsi") String imsi, MGraphicDTO mGraphicDTO) {
+    public Response create(@PathParam("imsi") String imsi,@DefaultValue(value = "false") @QueryParam("immediate") Boolean isImmediate, MGraphicDTO mGraphicDTO) {
         operationDescription = new OperationDescription();
         try {
             OperationResult operationResult;
-            operationResult = holidayMGraphicService.create(imsi, mGraphicDTO);
+            operationResult = holidayMGraphicService.create(imsi, isImmediate, mGraphicDTO);
+            operationDescription.setActions(operationResult.getActions());
             updateOperationDescription(operationResult);
         } catch (Exception ex) {
             actionName = "createUserCommonMGraphic";

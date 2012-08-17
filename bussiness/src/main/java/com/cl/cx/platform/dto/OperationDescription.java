@@ -20,4 +20,5 @@ public class OperationDescription {
     private String dealResult;
     private String developMessage;
     private String moreInfo;
+    private Actions actions;
 }

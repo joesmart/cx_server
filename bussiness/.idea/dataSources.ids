@@ -1154,6 +1154,239 @@
       <index name="FK143BF46A4FD90D75" unique="false" columns="role_id" />
       <index name="FK143BF46AF503D155" unique="false" columns="user_id" />
     </table>
+    <table name="acct_group" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="name" unique="true" columns="name" />
+    </table>
+    <table name="acct_group_permission" schema="" catalog="business" type="TABLE">
+      <column name="group_id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="permission" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <index name="FK19C1023BEFE35BA9" unique="false" columns="group_id" />
+    </table>
+    <table name="acct_user" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="email" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="login_name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="password" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="status" sqlType="BIT" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <primary-key name="PRIMARY" columns="id" />
+    </table>
+    <table name="acct_user_group" schema="" catalog="business" type="TABLE">
+      <column name="user_id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="group_id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <index name="FKD19A04B7274F65AB" unique="false" columns="user_id" />
+      <index name="FKD19A04B7EFE35BA9" unique="false" columns="group_id" />
+    </table>
+    <table name="category" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="description" sqlType="VARCHAR" length="180" precision="0" nullable="true" jdbcType="12" />
+      <column name="download_num" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="graphic_resource_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="name" sqlType="VARCHAR" length="40" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+    </table>
+    <table name="graphic_infos" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="audit_status" sqlType="VARCHAR" length="20" precision="0" nullable="true" jdbcType="12" />
+      <column name="level" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="name" sqlType="VARCHAR" length="40" precision="0" nullable="true" jdbcType="12" />
+      <column name="owner" sqlType="VARCHAR" length="40" precision="0" nullable="true" jdbcType="12" />
+      <column name="price" sqlType="FLOAT" length="12" precision="0" nullable="true" jdbcType="7" />
+      <column name="recommend" sqlType="BIT" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <column name="signature" sqlType="VARCHAR" length="60" precision="0" nullable="true" jdbcType="12" />
+      <column name="use_count" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="category_id" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <column name="holiday_type_id" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <column name="status_type_id" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="FKA2E5796EE36BFFE3" unique="false" columns="category_id" />
+      <index name="FKA2E5796EEBB54FE8" unique="false" columns="status_type_id" />
+      <index name="FKA2E5796ECDC4AB82" unique="false" columns="holiday_type_id" />
+    </table>
+    <table name="graphic_resource" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="audit_passed" sqlType="BIT" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <column name="graphic_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="resource_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="source_path" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="thumbnail_path" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="type" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="graphicinfo_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="FK4F320785E231CA91" unique="false" columns="graphicinfo_id" />
+    </table>
+    <table name="history_mgraphic" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="mode_type" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="modify_time" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="priority" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="signature" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="graphic_info_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <column name="user_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="FK73D101266C146C11" unique="false" columns="user_id" />
+      <index name="FK73D101268EBB0422" unique="false" columns="graphic_info_id" />
+    </table>
+    <table name="holiday" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="holiday_day" sqlType="DATE" length="10" precision="0" nullable="true" jdbcType="91" />
+      <column name="type" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="FK411528586F516363" unique="false" columns="type" />
+    </table>
+    <table name="holiday_type" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="download_num" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="graphic_resource_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="level" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+    </table>
+    <table name="mgraphic" schema="" catalog="business" type="TABLE">
+      <column name="cast_type" sqlType="VARCHAR" length="10" precision="0" nullable="false" jdbcType="12" />
+      <column name="id" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="mode_type" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="modify_time" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="priority" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="signature" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="common" sqlType="BIT" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <column name="valid_date" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="holiday" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="begin" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="end" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="special_phone_no" sqlType="VARCHAR" length="20" precision="0" nullable="true" jdbcType="12" />
+      <column name="graphic_info_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <column name="user_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <column name="status_type_id" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <column name="holiday_type_id" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="FK4B95CDDB6C146C11" unique="false" columns="user_id" />
+      <index name="FK4B95CDDB8EBB0422" unique="false" columns="graphic_info_id" />
+      <index name="FK4B95CDDBCDC4AB82" unique="false" columns="holiday_type_id" />
+      <index name="FK4B95CDDBEBB54FE8" unique="false" columns="status_type_id" />
+    </table>
+    <table name="mgraphic_phone_no" schema="" catalog="business" type="TABLE">
+      <column name="mgraphic_id" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" />
+      <column name="phone_number" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <index name="FK6F8CE016A4886B19" unique="false" columns="mgraphic_id" />
+    </table>
+    <table name="signature" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="content" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="level" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" def="LTE=" />
+      <column name="type" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" def="LTE=" />
+      <primary-key name="PRIMARY" columns="id" />
+    </table>
+    <table name="sms_message" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="from_mobile_no" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="is_send" sqlType="BIT" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <column name="sms" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="to_mobile_no" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+    </table>
+    <table name="status_type" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="graphic_resource_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+    </table>
+    <table name="suggestion" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="content" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1" />
+      <column name="userinfo_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="FK4763CA0473976E23" unique="false" columns="userinfo_id" />
+    </table>
+    <table name="type" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+    </table>
+    <table name="user_catacts" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="phone_no" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="self_user_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <column name="user_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="FK7C0ED6836C146C11" unique="false" columns="user_id" />
+      <index name="FK7C0ED6834DEBD61E" unique="false" columns="self_user_id" />
+    </table>
+    <table name="user_favorites" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="graphic_info_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <column name="user_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="FKF2FF4EE36C146C11" unique="false" columns="user_id" />
+      <index name="FKF2FF4EE38EBB0422" unique="false" columns="graphic_info_id" />
+    </table>
+    <table name="userinfo" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="imsi" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="phone_no" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="phone_no" unique="true" columns="phone_no" />
+    </table>
+    <table name="versioninfo" schema="" catalog="business" type="TABLE">
+      <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
+      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
+      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="url" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="version" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id" />
+    </table>
     <table name="acct_group" schema="" catalog="bussiness" type="TABLE">
       <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
       <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
@@ -1182,10 +1415,6 @@
     </table>
     <table name="category" schema="" catalog="bussiness" type="TABLE">
       <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
-      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
-      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
-      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
-      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="description" sqlType="VARCHAR" length="180" precision="0" nullable="true" jdbcType="12" />
       <column name="download_num" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
       <column name="graphic_resource_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
@@ -1256,10 +1485,6 @@
     </table>
     <table name="holiday_type" schema="" catalog="bussiness" type="TABLE">
       <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
-      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
-      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
-      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
-      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="download_num" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
       <column name="graphic_resource_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="level" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
@@ -1278,11 +1503,11 @@
       <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="priority" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
       <column name="signature" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
-      <column name="valid_date" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="common" sqlType="BIT" length="1" precision="0" nullable="true" jdbcType="-7" />
-      <column name="holiday" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="begin" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="end" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="valid_date" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="holiday" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="special_phone_no" sqlType="VARCHAR" length="20" precision="0" nullable="true" jdbcType="12" />
       <column name="graphic_info_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
       <column name="user_id" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
@@ -1298,7 +1523,6 @@
       <column name="mgraphic_id" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" />
       <column name="phone_number" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <index name="FK6F8CE016A4886B19" unique="false" columns="mgraphic_id" />
-      <index name="FK6F8CE016E7C0E69F" unique="false" columns="mgraphic_id" />
     </table>
     <table name="mgraphic_storemode" schema="" catalog="bussiness" type="TABLE">
       <column name="id" sqlType="VARCHAR" length="32" precision="0" nullable="false" jdbcType="12" />
@@ -1348,10 +1572,6 @@
     </table>
     <table name="status_type" schema="" catalog="bussiness" type="TABLE">
       <column name="id" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" autoIncrement="true" />
-      <column name="created_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
-      <column name="created_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
-      <column name="updated_by" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
-      <column name="updated_on" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="graphic_resource_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <primary-key name="PRIMARY" columns="id" />

@@ -37,7 +37,7 @@ public class CustomMGraphicResources extends OperationResources {
         operationDescription = new OperationDescription();
         try {
             OperationResult operationResult;
-            operationResult = customMGraphicService.create(imsi, mGraphicDTO);
+            operationResult = customMGraphicService.create(imsi, false, mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception ex) {
             actionName = "createUserCommonMGraphic";
