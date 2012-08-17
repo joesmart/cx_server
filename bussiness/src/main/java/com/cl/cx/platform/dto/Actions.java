@@ -37,4 +37,5 @@ public class Actions {
     private Action inviteFriendsURL;
     private Action uploadContactsURL;
     private Action getContactsURL;
+    private Action uploadCommonMGraphicURL;
 }

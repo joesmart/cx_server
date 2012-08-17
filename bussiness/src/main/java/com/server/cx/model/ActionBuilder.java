@@ -171,6 +171,12 @@ public class ActionBuilder {
         actions.setGetContactsURL(action);
         return this;
     }
+    
+    private ActionBuilder uploadCommonMGraphicURL(String url) {
+        Action action = new Action(url, "POST");
+        actions.setUploadCommonMGraphicURL(action);
+        return this;
+    }
 
     public Actions build() {
         return actions;
@@ -244,8 +250,9 @@ public class ActionBuilder {
             .inviteFriendsURL(baseHostAddress + restURL + imsi + "/sms")
             .registerUrl(baseHostAddress + restURL + "register")
             .getContactsURL(baseHostAddress + restURL + imsi + "/contacts")
+            .uploadCommonMGraphicURL(baseHostAddress + restURL + imsi + "/userCommonMGraphic/upload" )
             .uploadContactsURL(baseHostAddress + restURL + imsi + "/contacts").build();
-        
+            
     }
 
     public Actions buildUrlActions() {
@@ -264,6 +271,7 @@ public class ActionBuilder {
         actions.setInviteFriendsURL(null);
         actions.setUploadContactsURL(null);
         actions.setGetContactsURL(null);
+        actions.setUploadCommonMGraphicURL(null);
     }
 
 
