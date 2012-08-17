@@ -4,6 +4,7 @@
 package com.server.cx.service.cx;
 
 import com.cl.cx.platform.dto.OperationDescription;
+import com.cl.cx.platform.dto.RegisterDTO;
 
 
 /**
@@ -11,6 +12,6 @@ import com.cl.cx.platform.dto.OperationDescription;
  */
 public interface RegisterService {
 
-    public abstract OperationDescription register(String imsi, String phoneNo);
+    public abstract OperationDescription register(RegisterDTO registerDTO, String phoneNo);
 
 }

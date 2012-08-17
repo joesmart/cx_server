@@ -7,7 +7,6 @@ import com.server.cx.entity.basic.AuditableStringEntity;
 import lombok.ToString;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -26,6 +25,10 @@ public class UserInfo extends AuditableStringEntity {
     private String imsi;
     private List<UserFavorites> userFavorites;
 
+    private String deviceId;
+
+    private String userAgent;
+
     public UserInfo() {
     }
 
@@ -40,29 +43,46 @@ public class UserInfo extends AuditableStringEntity {
         this.imsi = imsi;
     }
 
-    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "user", fetch = FetchType.LAZY)
-    @Fetch(FetchMode.SELECT)
-    public List<UserFavorites> getUserFavorites() {
-        return userFavorites;
-    }
-
-    public void setUserFavorites(List<UserFavorites> userFavorites) {
-        this.userFavorites = userFavorites;
-    }
-
-    public String getPhoneNo() {
-        return phoneNo;
-    }
-
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
+    @Column(length = 60)
+    public String getDeviceId() {
+        return deviceId;
     }
 
     public String getImsi() {
         return imsi;
     }
 
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    @Column(length = 60)
+    public String getUserAgent() {
+        return userAgent;
+    }
+    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "user", fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SELECT)
+    public List<UserFavorites> getUserFavorites() {
+        return userFavorites;
+    }
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
+
     public void setImsi(String imsi) {
         this.imsi = imsi;
     }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
+    }
+
+    public void setUserFavorites(List<UserFavorites> userFavorites) {
+        this.userFavorites = userFavorites;
+    }
+
 }

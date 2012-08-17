@@ -13,4 +13,6 @@ import lombok.Data;
 @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property= "@type")
 public class RegisterDTO {
     private String imsi;
+    private String deviceId;
+    private String userAgent;
 }
