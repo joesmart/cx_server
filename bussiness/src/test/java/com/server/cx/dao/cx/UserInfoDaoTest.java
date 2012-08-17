@@ -52,6 +52,8 @@ public class UserInfoDaoTest extends SpringTransactionalTestCase {
         UserInfo info = new UserInfo();
         info.setPhoneNo("111111111111");
         info.setImsi("111112222223333");
+        info.setDeviceId("xxxx-559");
+        info.setUserAgent("userAgent");
         userInfoDao.save(info);
         entityManager.flush();
         

@@ -35,11 +35,11 @@ public class RegisterResources {
     @POST
     public Response register(RegisterDTO registerDTO) {
 
-        LOGGER.info("Into register imsi = " + registerDTO);
+        LOGGER.info("Into register registerDTO = " + registerDTO);
         try {
-            ValidationUtil.checkParametersNotNull(registerDTO);
+            ValidationUtil.checkParametersNotNull(registerDTO, registerDTO.getImsi());
             Preconditions.checkNotNull(registerDTO.getImsi());
-            OperationDescription operationDescription = registerService.register(registerDTO.getImsi(), null);
+            OperationDescription operationDescription = registerService.register(registerDTO, null);
             return Response.ok(operationDescription).build();
         } catch (InvalidParameterException e) {
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(

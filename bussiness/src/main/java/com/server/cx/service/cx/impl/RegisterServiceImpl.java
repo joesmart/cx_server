@@ -4,6 +4,7 @@
 package com.server.cx.service.cx.impl;
 
 import com.cl.cx.platform.dto.OperationDescription;
+import com.cl.cx.platform.dto.RegisterDTO;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.service.cx.RegisterService;
@@ -26,15 +27,18 @@ public class RegisterServiceImpl implements RegisterService {
     
     @Override
     @Transactional(readOnly=false)
-    public OperationDescription register(String imsi, String phoneNo) {
-        UserInfo userinfo = userInfoDao.getUserInfoByImsi(imsi);
+    public OperationDescription register(RegisterDTO registerDTO, String phoneNo) {
+        UserInfo userinfo = userInfoDao.getUserInfoByImsi(registerDTO.getImsi());
         OperationDescription operationDescription = null;
         if (userinfo == null) {
             userinfo = new UserInfo();
-            userinfo.setImsi(imsi);
-            phoneNo = dealWithPhoneNo(imsi, phoneNo);
+            userinfo.setImsi(registerDTO.getImsi());
+            phoneNo = dealWithPhoneNo(registerDTO.getImsi(), phoneNo);
             userinfo.setPhoneNo(phoneNo);
+            userinfo.setUserAgent(registerDTO.getUserAgent());
+            userinfo.setDeviceId(registerDTO.getDeviceId());
             userInfoDao.save(userinfo);
+            System.out.println("userInfo 222 = " + userinfo);
             operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,
                 "register", "success");
         } else {
