@@ -139,7 +139,7 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         dataPage.setOffset(0);
         dataPage.setLimit(dataItems.size());
         dataPage.setTotal(1);
-        dataPage.setHref(basicService.baseHostAddress + basicService.restURL + imsi + "/mGraphics");
+        dataPage.setHref(basicService.generateMGraphicsURL(imsi));
         return dataPage;
     }
 }

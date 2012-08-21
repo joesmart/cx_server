@@ -146,7 +146,7 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         dataPage.setOffset(0);
         dataPage.setLimit(mGraphicDataItems.size());
         dataPage.setTotal(1);
-        dataPage.setHref(basicService.baseHostAddress + basicService.restURL + imsi + "/"+conditions);
+        dataPage.setHref(basicService.generateCustomMGraphicsVisitURL(imsi));
         return dataPage;
     }
 

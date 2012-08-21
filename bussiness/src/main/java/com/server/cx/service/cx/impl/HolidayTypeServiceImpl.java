@@ -43,7 +43,7 @@ public class HolidayTypeServiceImpl extends UserCheckService implements HolidayT
     public DataPage queryAllHolidayTypes(String imsi) throws SystemException {
         checkAndSetUserInfoExists(imsi);
         List<HolidayType> holidayTypes = Lists.newArrayList(holidayTypeDao.findAll());
-        final String baseHref = basicService.baseHostAddress + basicService.restURL + imsi + "/holidayTypes";
+        final String baseHref = basicService.generateHolidayTypesVisitURL(imsi);
         List<DataItem> holidayTypeList = generateHolidayTypeList(imsi, holidayTypes);
 
         DataPage dataPage = new DataPage();

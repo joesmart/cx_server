@@ -38,7 +38,6 @@ public class RegisterServiceImpl implements RegisterService {
             userinfo.setUserAgent(registerDTO.getUserAgent());
             userinfo.setDeviceId(registerDTO.getDeviceId());
             userInfoDao.save(userinfo);
-            System.out.println("userInfo 222 = " + userinfo);
             operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,
                 "register", "success");
         } else {

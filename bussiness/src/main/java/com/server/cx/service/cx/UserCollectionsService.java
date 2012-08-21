@@ -7,7 +7,7 @@ import com.server.cx.exception.SystemException;
 
 import java.util.concurrent.ExecutionException;
 
-public interface UserFavoritesService {
+public interface UserCollectionsService {
 
     public OperationDescription addNewUserFavorites(String imsi, IdDTO idDTO) throws SystemException;
 

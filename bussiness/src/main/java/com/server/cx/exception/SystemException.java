@@ -1,38 +1,24 @@
 package com.server.cx.exception;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.Data;
 
+@Data
 public class SystemException extends RuntimeException {
 
-    Logger log = LoggerFactory.getLogger("SYSTEM_EXCEPTION");
-    Throwable exception = null;
-    String localMessage;
-
-    public SystemException() {
+    public SystemException(){
         super();
     }
 
-    public SystemException(String message) {
+    public SystemException(String message){
         super(message);
-        localMessage = message;
     }
 
-    public SystemException(Throwable e) {
+    public SystemException(Throwable e){
         super(e);
-        exception = e;
-        log.error("exception:", e);
     }
 
-    private static final long serialVersionUID = 1L;
-
-    public String getLocalMessage() {
-        return localMessage;
+    public SystemException(String message,Throwable e){
+        super(message,e);
     }
-
-    public void setLocalMessage(String localMessage) {
-        this.localMessage = localMessage;
-    }
-
 
 }

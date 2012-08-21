@@ -46,7 +46,7 @@ public class StatusTypeServiceImpl extends UserCheckService implements StatusTyp
     public DataPage queryAllStatusTypes(String imsi) {
         checkAndSetUserInfoExists(imsi);
         List<StatusType> statusType = Lists.newArrayList(statusTypeDao.findAll());
-        final String baseHref = basicService.baseHostAddress + basicService.restURL + imsi + "/statusTypes";
+        final String baseHref = basicService.generateStatusTypeVisitURL(imsi);
         List<DataItem> statusTypeList = generateStatusTypeList(statusType, imsi);
 
         DataPage dataPage = new DataPage();

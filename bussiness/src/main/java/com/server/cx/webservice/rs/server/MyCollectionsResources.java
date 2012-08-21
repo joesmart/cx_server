@@ -3,7 +3,7 @@ package com.server.cx.webservice.rs.server;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.IdDTO;
 import com.cl.cx.platform.dto.OperationDescription;
-import com.server.cx.service.cx.UserFavoritesService;
+import com.server.cx.service.cx.UserCollectionsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +28,13 @@ public class MyCollectionsResources {
     public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResources.class);
 
     @Autowired
-    private UserFavoritesService userFavoritesService;
+    private UserCollectionsService userCollectionsService;
 
     @POST
     public Response create(@PathParam("imsi")String imsi,IdDTO idDTO){
         OperationDescription operationDescription =null;
         try{
-            operationDescription = userFavoritesService.addNewUserFavorites(imsi, idDTO);
+            operationDescription = userCollectionsService.addNewUserFavorites(imsi, idDTO);
             operationDescription.setStatusCode(Response.Status.CREATED.getStatusCode());
             return Response.ok(operationDescription).status(Response.Status.OK).build();
         }catch (Exception e){
@@ -52,7 +52,7 @@ public class MyCollectionsResources {
     public Response delete(@PathParam("imsi")String imsi,@PathParam("id")String userFavoriteId){
         OperationDescription operationDescription =null;
         try{
-            operationDescription = userFavoritesService.deleteUserFavoritesById(imsi, userFavoriteId);
+            operationDescription = userCollectionsService.deleteUserFavoritesById(imsi, userFavoriteId);
             return Response.ok(operationDescription).status(Response.Status.ACCEPTED).build();
         }catch (Exception e){
            LOGGER.error("delete UserFavorite Error:",e);
@@ -70,7 +70,7 @@ public class MyCollectionsResources {
                                @DefaultValue("0") @QueryParam("offset") Integer offset,
                                @DefaultValue("10") @QueryParam("limit") Integer limit){
         try{
-            DataPage dataPage = userFavoritesService.getAllUserFavorites(imsi,offset,limit);
+            DataPage dataPage = userCollectionsService.getAllUserFavorites(imsi,offset,limit);
             return  Response.ok(dataPage).build();
         }catch (Exception ex){
             OperationDescription operationDescription = new OperationDescription();
