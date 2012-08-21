@@ -19,7 +19,7 @@ public class DatabaseExportSample {
 
 //    Class driverClass = Class.forName("com.mysql.jdbc.Driver");
 //    Connection jdbcConnection = DriverManager.getConnection("jdbc:mysql://10.90.3.122/cxserver", "root", "root");
-        Class driverClass = Class.forName("org.h2.Driver");
+//        Class driverClass = Class.forName("org.h2.Driver");
         Connection jdbcConnection = DriverManager.getConnection("jdbc:h2:file:~/bussiness4;AUTO_SERVER=TRUE", "sa", "");
 //        IDatabaseConnection connection = new DatabaseConnection(jdbcConnection);
         H2Connection connection = new H2Connection(jdbcConnection,null);

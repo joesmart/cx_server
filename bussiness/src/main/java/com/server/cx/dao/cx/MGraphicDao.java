@@ -2,11 +2,8 @@ package com.server.cx.dao.cx;
 
 import com.server.cx.dao.cx.custom.MGraphicCustomDao;
 import com.server.cx.entity.cx.MGraphic;
-import com.server.cx.entity.cx.UserCommonMGraphic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-
-import java.util.List;
 
 /**
  * User: yanjianzou
@@ -15,5 +12,5 @@ import java.util.List;
  * FileName:MGraphicDao
  */
 public interface MGraphicDao extends JpaRepository<MGraphic, String>,JpaSpecificationExecutor<MGraphic>,MGraphicCustomDao {
-    public List<UserCommonMGraphic> findByPhoneNosIsNotNull();
+
 }

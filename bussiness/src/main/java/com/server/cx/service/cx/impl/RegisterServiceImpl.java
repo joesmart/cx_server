@@ -29,7 +29,7 @@ public class RegisterServiceImpl implements RegisterService {
     @Transactional(readOnly=false)
     public OperationDescription register(RegisterDTO registerDTO, String phoneNo) {
         UserInfo userinfo = userInfoDao.getUserInfoByImsi(registerDTO.getImsi());
-        OperationDescription operationDescription = null;
+        OperationDescription operationDescription ;
         if (userinfo == null) {
             userinfo = new UserInfo();
             userinfo.setImsi(registerDTO.getImsi());

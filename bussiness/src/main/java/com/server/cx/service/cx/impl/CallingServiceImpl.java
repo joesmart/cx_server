@@ -42,7 +42,7 @@ public class CallingServiceImpl implements CallingService {
         //本人的UserInfo
         UserInfo userInfo = userInfoDao.findByImsi(imsi.get());
         UserInfo callerUserInfo;
-        if(callPhoneNo.equals(userInfo.getPhoneNo())){
+        if(callPhoneNo.get().equals(userInfo.getPhoneNo())){
             callerUserInfo = userInfo;
         }else {
             //根据手机号码得到对方 UserInfo

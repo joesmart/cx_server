@@ -8,7 +8,7 @@ import java.util.List;
 public class VersionInfoUtil {
 
     private boolean isNeedToForceUpgrade = false;
-    ;
+
     private boolean isNeedToUpgrade = false;
 
     public boolean isNeedToForceUpgrade() {
@@ -75,7 +75,6 @@ public class VersionInfoUtil {
     }
 
     private List<String> changeStringToList(String versionString) {
-        List<String> list = Lists.newArrayList(Splitter.on(".").split(versionString));
-        return list;
+        return Lists.newArrayList(Splitter.on(".").split(versionString));
     }
 }

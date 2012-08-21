@@ -123,7 +123,7 @@ public class ServiceChooseUtil {
     private String retrieveUserCXInfos(HttpServletResponse resp, Map<String, String> mapParams, String result) {
         // 返回 系统 URL
         String imsi = mapParams.get(Constants.IMSI_STR);
-        List<com.server.cx.model.UserCXInfo> resultList = Collections.emptyList();
+        List<com.server.cx.model.UserCXInfo> resultList ;
         if (imsi != null && !"".equals(imsi)) {
             resultList = null;
             com.server.cx.model.Result xmlResult = new com.server.cx.model.Result();

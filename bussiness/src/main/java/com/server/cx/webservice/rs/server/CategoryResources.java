@@ -32,8 +32,7 @@ public class CategoryResources {
     @GET
     public DataPage categoriesList(@PathParam("imsi")String imsi){
         LOGGER.info("imsi:"+imsi);
-        DataPage dataPage = categoryService.queryAllCategoryData(imsi);
-        return  dataPage;
+        return categoryService.queryAllCategoryData(imsi);
     }
 
     @GET

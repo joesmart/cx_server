@@ -40,11 +40,13 @@ public class HistoryMGraphicResources {
             OperationResult operationResult = historyMGraphicService.deleteHistoryMGraphic(imsi,historyMGraphicId);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
-            actionName = "disableUserCommonMGraphic";
             errorMessage(e);
-        } finally {
-            return  Response.ok(operationDescription).build();
+            actionName = "disableUserCommonMGraphic";
+            operationDescription.setActionName(actionName);
+            operationDescription.setErrorCode(403);
+            return Response.ok(operationDescription).status(Response.Status.FORBIDDEN).build();
         }
+        return  Response.ok(operationDescription).build();
     }
 
     private void updateOperationDescription(OperationResult operationResult) {

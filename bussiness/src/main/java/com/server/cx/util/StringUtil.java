@@ -71,11 +71,12 @@ public class StringUtil {
         return returnResult;
     }
 
+    //TODO use String format to refactor by Zou YanJian
     public static String updateTheSmsContent(String mobile) {
         String contentTemplate = Constants.SMS_CONTENT;
         CharMatcher question = CharMatcher.is('?');
-        int possiton = question.indexIn(contentTemplate);
-        contentTemplate = contentTemplate.substring(0, possiton) + mobile + contentTemplate.substring(possiton + 1);
+        int position = question.indexIn(contentTemplate);
+        contentTemplate = contentTemplate.substring(0, position) + mobile + contentTemplate.substring(position + 1);
         return contentTemplate;
     }
 

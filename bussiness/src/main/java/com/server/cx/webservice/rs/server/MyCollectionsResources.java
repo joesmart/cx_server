@@ -32,7 +32,7 @@ public class MyCollectionsResources {
 
     @POST
     public Response create(@PathParam("imsi")String imsi,IdDTO idDTO){
-        OperationDescription operationDescription =null;
+        OperationDescription operationDescription ;
         try{
             operationDescription = userCollectionsService.addNewUserFavorites(imsi, idDTO);
             operationDescription.setStatusCode(Response.Status.CREATED.getStatusCode());
@@ -43,14 +43,14 @@ public class MyCollectionsResources {
             operationDescription.setActionName("addNewUserFavorite");
             operationDescription.setStatusCode(Response.Status.CONFLICT.getStatusCode());
             operationDescription.setErrorMessage(e.getMessage());
-            return Response.ok(operationDescription).status(Response.Status.CONFLICT).build();
+            return Response.ok(operationDescription).build();
         }
     }
 
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("imsi")String imsi,@PathParam("id")String userFavoriteId){
-        OperationDescription operationDescription =null;
+        OperationDescription operationDescription ;
         try{
             operationDescription = userCollectionsService.deleteUserFavoritesById(imsi, userFavoriteId);
             return Response.ok(operationDescription).status(Response.Status.ACCEPTED).build();
@@ -77,7 +77,7 @@ public class MyCollectionsResources {
             operationDescription.setErrorCode(400);
             operationDescription.setErrorMessage(ex.getMessage());
             operationDescription.setStatusCode(Response.Status.FORBIDDEN.getStatusCode());
-            return  Response.ok(operationDescription).status(Response.Status.FORBIDDEN).build();
+            return  Response.ok(operationDescription).build();
         }
     }
 }

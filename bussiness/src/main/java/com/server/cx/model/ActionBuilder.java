@@ -126,8 +126,8 @@ public class ActionBuilder {
         return this;
     }
 
-    public ActionBuilder collectionsUrl(String url, String method) {
-        Action action = new Action(url, method);
+    public ActionBuilder collectionsUrl(String url) {
+        Action action = new Action(url, "GET");
         actions.setCollectionsURL(action);
         return this;
     }
@@ -272,7 +272,7 @@ public class ActionBuilder {
             .versionUrl(basicService.generateVersionVisitURL())
             .suggestionUrl(basicService.generateSuggestionSubmitURL(imsi))
             .callUrl(basicService.generateCallingURL(imsi))
-            .collectionsUrl(basicService.generateMyCollectionsVisitURL(imsi), "GET")
+            .collectionsUrl(basicService.generateMyCollectionsVisitURL(imsi))
             .inviteFriendsURL(basicService.generateInviteFriendsURL(imsi))
             .registerUrl(basicService.generateMobileRegisterURL())
             .getContactsURL(basicService.generateContactsUploadURL(imsi))

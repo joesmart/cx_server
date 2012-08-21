@@ -1,6 +1,5 @@
 package com.server.cx.webservice.rs.server;
 
-import java.util.List;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.ContactsDTO;
 import com.cl.cx.platform.dto.OperationDescription;
@@ -15,14 +14,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Component
 @Path("/{imsi}/contacts")
@@ -50,10 +47,10 @@ public class ContactsResources {
                 "uploadContacts", Constants.SUCCESS_FLAG);
         } catch (Exception e) {
             operationDescription = ObjectFactory.buildErrorOperationDescription(
-                HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "uploadContacts", e.getMessage());
-        } finally {
+            HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "uploadContacts", e.getMessage());
             return Response.ok(operationDescription).build();
         }
+        return Response.ok(operationDescription).build();
     }
 
     @GET

@@ -72,6 +72,7 @@ public class HolidayTypeServiceImpl extends UserCheckService implements HolidayT
         Map<Long,UserHolidayMGraphic> userHolidayMGraphicMap =  Maps.uniqueIndex(userHolidayMGraphics, new Function<UserHolidayMGraphic, Long>() {
             @Override
             public Long apply(@Nullable UserHolidayMGraphic input) {
+                if(input == null) return null;
                 HolidayType holidayType = input.getHolidayType();
                 return holidayType.getId();
             }

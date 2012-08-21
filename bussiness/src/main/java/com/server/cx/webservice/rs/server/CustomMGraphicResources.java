@@ -40,11 +40,13 @@ public class CustomMGraphicResources extends OperationResources {
             operationResult = customMGraphicService.create(imsi, false, mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception ex) {
-            actionName = "createUserCommonMGraphic";
             errorMessage(ex);
-        }finally {
+            actionName = "createUserCommonMGraphic";
+            operationDescription.setActionName(actionName);
+            operationDescription.setErrorCode(403);
             return Response.ok(operationDescription).build();
         }
+        return Response.ok(operationDescription).build();
     }
 
 
@@ -57,11 +59,13 @@ public class CustomMGraphicResources extends OperationResources {
             OperationResult operationResult = customMGraphicService.edit(imsi, mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
-            actionName = "editUserCommonMGraphic";
             errorMessage(e);
-        } finally {
-            return  Response.ok(operationDescription).build();
+            actionName = "editUserCommonMGraphic";
+            operationDescription.setActionName(actionName);
+            operationDescription.setErrorCode(409);
+            return Response.ok(operationDescription).build();
         }
+        return  Response.ok(operationDescription).build();
     }
 
     @DELETE
@@ -72,11 +76,13 @@ public class CustomMGraphicResources extends OperationResources {
             OperationResult operationResult = customMGraphicService.disable(imsi, userCommonMGraphicId);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
-            actionName = "disableUserCommonMGraphic";
             errorMessage(e);
-        } finally {
-            return  Response.ok(operationDescription).build();
+            actionName = "disableUserCommonMGraphic";
+            operationDescription.setActionName(actionName);
+            operationDescription.setErrorCode(403);
+            return Response.ok(operationDescription).build();
         }
+        return  Response.ok(operationDescription).build();
     }
 
     @GET

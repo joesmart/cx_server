@@ -74,6 +74,7 @@ public class StatusTypeServiceImpl extends UserCheckService implements StatusTyp
         Map<Long,UserStatusMGraphic> userStatusMGraphicMap =  Maps.uniqueIndex(userStatusMGraphics, new Function<UserStatusMGraphic, Long>() {
             @Override
             public Long apply(@Nullable UserStatusMGraphic input) {
+                if(input == null) return null;
                 StatusType statusType = input.getStatusType();
                 return statusType.getId();
             }

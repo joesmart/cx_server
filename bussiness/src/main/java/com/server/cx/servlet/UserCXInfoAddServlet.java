@@ -60,13 +60,8 @@ public class UserCXInfoAddServlet extends HttpServlet {
             Result xmlConvertResult = xmlUnmarshallUtil.unmarshallXMLFileResult(byteArrayInput);
             if (xmlConvertResult == null) {
                 dealResult = StringUtil.generateXMLResultString(Constants.NULL_INPUT_FLAG, "无数据输入");
-            } else {
-                String serverPath = req.getSession().getServletContext().getRealPath("/");
-
             }
         }
-
-        contentBytes = null;
 
         System.setProperty("sun.net.client.defaultConnectTimeout", String.valueOf(10000));
         System.setProperty("sun.net.client.defaultReadTimeout", String.valueOf(10000));

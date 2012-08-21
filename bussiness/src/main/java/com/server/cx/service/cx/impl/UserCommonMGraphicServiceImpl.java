@@ -1,13 +1,5 @@
 package com.server.cx.service.cx.impl;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import javax.ws.rs.core.MediaType;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.UserInfoDao;
@@ -25,6 +17,15 @@ import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
 import com.sun.jersey.core.header.FormDataContentDisposition;
 import com.sun.jersey.multipart.FormDataBodyPart;
 import com.sun.jersey.multipart.FormDataMultiPart;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.ws.rs.core.MediaType;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 @Component
 @Transactional
@@ -48,13 +49,14 @@ public class UserCommonMGraphicServiceImpl implements UserCommonMGraphicService 
         FileMeta fileMeta = uploadToResourceServer(fileStream);
         GraphicInfo graphicInfo = businessFunctions.fileMetaTransformToGraphicInfo().apply(fileMeta);
         UserInfo userInfo = userInfoDao.findByImsi(imsi);
-        graphicInfo.setOwner(userInfo.getId());
-        
-        UserCommonMGraphic userCommonMGraphic = new UserCommonMGraphic();
-        userCommonMGraphic.setUserInfo(userInfo);
-        userCommonMGraphic.setGraphicInfo(graphicInfo);
-        userCommonMGraphic.setCommon(true); //没有设置使用对象
-        userCommonMGraphicDao.save(userCommonMGraphic);
+        if(userInfo !=null){
+            graphicInfo.setOwner(userInfo.getId());
+            UserCommonMGraphic userCommonMGraphic = new UserCommonMGraphic();
+            userCommonMGraphic.setUserInfo(userInfo);
+            userCommonMGraphic.setGraphicInfo(graphicInfo);
+            userCommonMGraphic.setCommon(true); //没有设置使用对象
+            userCommonMGraphicDao.save(userCommonMGraphic);
+        }
     }
     
     private FileMeta uploadToResourceServer(InputStream fileStream) throws IOException {

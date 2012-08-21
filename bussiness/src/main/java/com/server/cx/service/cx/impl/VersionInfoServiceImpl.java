@@ -24,7 +24,7 @@ public class VersionInfoServiceImpl implements VersionInfoService {
 
     @Override
     public VersionInfoDTO checkIsTheLatestVersion(String clientVersion) {
-        if (!ValidationUtil.isVerionString(clientVersion)) {
+        if (!ValidationUtil.isVersionString(clientVersion)) {
             return ObjectFactory.buildVersionInfoDTO(Constants.ERROR_FLAG, "版本字符串格式不对");
         }
 

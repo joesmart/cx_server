@@ -77,7 +77,7 @@ public class ContactsServiceImpl implements ContactsServcie {
 
         if (newContacts != null && newContacts.size() > 0) {
             if (phoneNoAndImsiMap != null) {
-                UserInfo tempUserInfo = null;
+                UserInfo tempUserInfo;
                 for (Contacts contact : newContacts) {
                     tempUserInfo = phoneNoAndImsiMap.get(contact.getPhoneNo());
                     if (tempUserInfo != null) {

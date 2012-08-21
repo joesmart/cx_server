@@ -27,7 +27,6 @@ public class SmsMessageServiceImp implements SmsMessageService {
         Preconditions.checkNotNull(imsi);
         Preconditions.checkNotNull(mobiles);
         userCheckService.checkAndSetUserInfoExists(imsi);
-        String result = "";
         UserInfo userInfo = userCheckService.getUserInfo();
         String phoneNo = userInfo.getPhoneNo();
 

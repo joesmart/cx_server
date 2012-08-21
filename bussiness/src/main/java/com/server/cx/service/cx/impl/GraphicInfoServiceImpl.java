@@ -166,8 +166,8 @@ public class GraphicInfoServiceImpl  implements GraphicInfoService {
             statusType);
 
         boolean existUserGraphicInfo = false;
-        UserStatusMGraphic userStatusMGraphic = null;
-        GraphicInfo graphicInfo = null;
+        UserStatusMGraphic userStatusMGraphic ;
+        GraphicInfo graphicInfo ;
         String usedId = null;
         Map<String, MGraphic> usedGraphicInfos = null;
         if (userStatusGraphicInfos != null && userStatusGraphicInfos.size() > 0) {
@@ -211,7 +211,7 @@ public class GraphicInfoServiceImpl  implements GraphicInfoService {
         List<UserHolidayMGraphic> userHolidayGraphicInfos = userHolidayMGraphicDao.findByUserInfoAndHolidayType(
             userInfo, holidayType);
         boolean existUserGraphicInfo = false;
-        UserHolidayMGraphic userHolidayMGraphic = null;
+        UserHolidayMGraphic userHolidayMGraphic;
         GraphicInfo graphicInfo = null;
         String usedId = null;
         Map<String, MGraphic> usedGraphicInfos = null;
