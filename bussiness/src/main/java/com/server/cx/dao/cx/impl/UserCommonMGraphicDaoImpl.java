@@ -38,7 +38,7 @@ public class UserCommonMGraphicDaoImpl extends BasicDao implements UserCommonMGr
                 mgraphicUserCommon = list.get(index);
             }
         } catch (DataAccessException e) {
-            SystemException exception = new CXServerBusinessException(e, "数据存储错误");
+            SystemException exception = new CXServerBusinessException("数据存储错误", e);
             throw exception;
         }
 
@@ -143,7 +143,7 @@ userInfoCriteria.add(Property.forName("imsi").in(contactsCriteria))
                 mgraphicUserCommon = list.get(index);
             }
         } catch (DataAccessException e) {
-            SystemException exception = new CXServerBusinessException(e, "数据检索错误");
+            SystemException exception = new CXServerBusinessException("数据检索错误", e);
             throw exception;
         }
 

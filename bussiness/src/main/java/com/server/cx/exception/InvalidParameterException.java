@@ -1,15 +1,24 @@
 package com.server.cx.exception;
 
+import lombok.Data;
+
+@Data
 public class InvalidParameterException extends SystemException {
 
-    private static final long serialVersionUID = 7287621469405140017L;
-
-    public InvalidParameterException(Throwable e, String message) {
-        super(e);
-        this.localMessage = message;
+    public InvalidParameterException(){
+        super();
     }
 
-    public InvalidParameterException(String message) {
+    public InvalidParameterException(String message){
         super(message);
     }
+
+    public InvalidParameterException(Throwable e){
+        super(e);
+    }
+
+    public InvalidParameterException(String message,Throwable e){
+        super(message,e);
+    }
+
 }

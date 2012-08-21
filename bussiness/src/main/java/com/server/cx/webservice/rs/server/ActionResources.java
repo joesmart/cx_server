@@ -29,20 +29,18 @@ public class ActionResources {
     @GET
     public Response queryAllActions() {
         LOGGER.info("into queryAllActions");
-        return Response.ok(actionBuilder.buildUrlActions()).build();
+        return Response.ok(actionBuilder.buildAnonymousActions()).build();
     }
 
     @GET
     @Path("{imsi}")
     public Response queryAllActions(@PathParam("imsi") String imsi) {
-        LOGGER.info("into queryAllActions imsi = " + imsi);
         try {
             userCheckService.checkAndSetUserInfoExists(imsi);
-            LOGGER.info("注册用户访问:"+userCheckService.getUserInfo().toString());
-            return Response.ok(actionBuilder.buildUrlActions(imsi)).build();
+            return Response.ok(actionBuilder.buildUserOperableActions(imsi)).build();
         } catch (CXServerBusinessException e) {
-            LOGGER.info("未注册用户访问");
-            return Response.ok(actionBuilder.buildUrlActions()).build();
+            LOGGER.error("Error:",e);
+            return Response.ok(actionBuilder.buildAnonymousActions()).build();
         }
     }
 }

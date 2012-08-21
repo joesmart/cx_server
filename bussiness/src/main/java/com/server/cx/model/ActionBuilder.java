@@ -1,10 +1,12 @@
 package com.server.cx.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.Action;
 import com.cl.cx.platform.dto.Actions;
+import com.server.cx.service.cx.impl.BasicService;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * User: yanjianzou Date: 12-7-30 Time: 下午3:27 FileName:ActionBuilder
@@ -12,20 +14,8 @@ import com.cl.cx.platform.dto.Actions;
 @Component
 public class ActionBuilder {
     @Autowired
-    @Qualifier("baseHostAddress")
-    protected String baseHostAddress;
-
-    @Autowired
-    @Qualifier("restURL")
-    protected String restURL;
-
-    @Autowired
-    @Qualifier("imageShowURL")
-    protected String imageShowURL;
-
-    @Autowired
-    @Qualifier("thumbnailSize")
-    protected String thumbnailSize;
+    @Setter @Getter
+    private BasicService basicService;
 
     private Actions actions;
 
@@ -183,86 +173,122 @@ public class ActionBuilder {
     }
 
     public Actions buildGraphicItemAction(String imsi) {
-        return actions().collectURL(baseHostAddress + restURL + imsi + "/myCollections")
-            .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
-            .useURL(baseHostAddress + restURL + imsi + "/mGraphics").build();
+        return actions().collectURL(basicService.generateMyCollectionsVisitURL(imsi))
+            .purchaseURL(basicService.generateImagePurchaseURL(imsi))
+            .useURL(basicService.generateMGraphicsURL(imsi)).build();
     }
 
     public Actions buildHolidayMGraphicItemAction(String imsi) {
-        return actions().collectURL(baseHostAddress + restURL + imsi + "/myCollections")
-            .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
-            .useURL(baseHostAddress + restURL + imsi + "/holidayMGraphics").build();
+        return actions().collectURL(basicService.generateMyCollectionsVisitURL(imsi))
+            .purchaseURL(basicService.generateImagePurchaseURL(imsi))
+            .useURL(basicService.generateHolidayMGraphicUseURL(imsi)).build();
     }
-    
+
     public Actions buildStatusMGraphicItemAction(String imsi) {
-        return actions().collectURL(baseHostAddress + restURL + imsi + "/myCollections")
-            .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
-            .useURL(baseHostAddress + restURL + imsi + "/statusMGraphics").build();
+        return actions().collectURL(basicService.generateMyCollectionsVisitURL(imsi))
+            .purchaseURL(basicService.generateImagePurchaseURL(imsi))
+            .useURL(basicService.generateStatusMGraphicUseURL(imsi)).build();
     }
 
     public Actions buildHolidayMGraphicItemEditAction(String imsi, String mGraphicId) {
-        return actions().collectURL(baseHostAddress + restURL + imsi + "/myCollections")
-            .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
-            .editURL(baseHostAddress + restURL + imsi + "/holidayMGraphics/" + mGraphicId)
-            .removeURL(baseHostAddress + restURL + imsi + "/holidayMGraphics/" + mGraphicId).build();
+        return actions().collectURL(basicService.generateMyCollectionsVisitURL(imsi))
+            .purchaseURL(basicService.generateImagePurchaseURL(imsi))
+            .editURL(basicService.generateHolidayMGraphicRemoveURL(imsi, mGraphicId))
+            .removeURL(basicService.generateHolidayMGraphicRemoveURL(imsi, mGraphicId)).build();
+    }
+
+    public Actions buildHolidayMGraphicItemCreatedAction(String imsi, String mGraphicId) {
+        return actions()
+                .removeURL(basicService.generateHolidayMGraphicRemoveURL(imsi, mGraphicId))
+                .build();
     }
 
     public Actions buildStatusMGraphicItemEditAction(String imsi, String mGraphicId) {
-        return actions().collectURL(baseHostAddress + restURL + imsi + "/myCollections")
-            .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
-            .editURL(baseHostAddress + restURL + imsi + "/statusMGraphics/" + mGraphicId)
-            .removeURL(baseHostAddress + restURL + imsi + "/statusMGraphics/" + mGraphicId).build();
+        return actions().collectURL(basicService.generateMyCollectionsVisitURL(imsi))
+            .purchaseURL(basicService.generateImagePurchaseURL(imsi))
+            .editURL(basicService.generateStatusMGraphicRemoveURL(imsi, mGraphicId))
+            .removeURL(basicService.generateStatusMGraphicRemoveURL(imsi, mGraphicId)).build();
+    }
+
+    public Actions buildStatusMGraphicItemCreatedAction(String imsi, String mGraphicId) {
+        return actions()
+                .removeURL(basicService.generateStatusMGraphicRemoveURL(imsi, mGraphicId))
+                .build();
     }
 
     public Actions buildCategoriesAction(String imsi, Long categoryId) {
-        return actions().zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?categoryId=" + categoryId)
-            .zoneOutURL(baseHostAddress + restURL + imsi + "/categories").build();
+        return actions().zoneInURL(basicService.generateGraphicInfosZoneInURL(imsi, categoryId))
+            .zoneOutURL(basicService.generateCategoriesVisitURL(imsi)).build();
     }
 
     public Actions buildHolidayTypeAction(String imsi, Long holidayTypeId) {
-        return actions().zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?holidayTypeId=" + holidayTypeId)
-            .zoneOutURL(baseHostAddress + restURL + imsi + "/holidayTypes").build();
+        return actions()
+            .zoneInURL(basicService.generateHolidayTypeGraphicInfosVisitURL(imsi, holidayTypeId))
+            .zoneOutURL(basicService.generateHolidayTypesVisitURL(imsi))
+            .useURL(basicService.generateImmediateUseHolidayMGraphicURL(imsi))
+            .build();
     }
-    
+
+    public Actions buildHolidayTypeHasUsedActions(String imsi, Long holidayTypeId,String mgraphicId) {
+        return actions()
+                .zoneInURL(basicService.generateHolidayTypeGraphicInfosVisitURL(imsi, holidayTypeId))
+                .zoneOutURL(basicService.generateHolidayTypesVisitURL(imsi))
+                .useURL(basicService.generateImmediateUseHolidayMGraphicURL(imsi))
+                .removeURL(basicService.generateHolidayMGraphicRemoveURL(imsi, mgraphicId))
+                .build();
+    }
+
     public Actions buildStatusTypeAction(String imsi, Long statusTypeId) {
-        return actions().zoneInURL(baseHostAddress + restURL + imsi + "/graphicInfos?statusTypeId=" + statusTypeId)
-            .zoneOutURL(baseHostAddress + restURL + imsi + "/statusTypes").build();
+        return actions()
+               .zoneInURL(basicService.generateStatusTypeGraphicInfosVisitURL(imsi, statusTypeId))
+               .zoneOutURL(basicService.generateStatusTypeVisitURL(imsi))
+               .useURL(basicService.generateImmediateUseStatusMGraphicURL(imsi))
+               .build();
+    }
+
+    public Actions buildStatusTypeHasUsedActions(String imsi,Long statusTypeId,String mgraphicId){
+        return actions()
+                .zoneInURL(basicService.generateStatusTypeGraphicInfosVisitURL(imsi, statusTypeId))
+                .zoneOutURL(basicService.generateStatusTypeVisitURL(imsi))
+                .useURL(basicService.generateImmediateUseStatusMGraphicURL(imsi))
+                .removeURL(basicService.generateStatusMGraphicRemoveURL(imsi, mgraphicId))
+                .build();
     }
 
     public Actions buildUserFavoriteItemAction(String imsi, String userFavoriteId) {
-        return actions().removeURL(baseHostAddress + restURL + imsi + "/myCollections/" + userFavoriteId)
-            .purchaseURL(baseHostAddress + restURL + imsi + "/myPurchasedImages")
-            .useURL(baseHostAddress + restURL + imsi + "/mGraphics").build();
+        return actions().removeURL(basicService.generateMyCollectionsOperateURL(imsi, userFavoriteId))
+            .purchaseURL(basicService.generateImagePurchaseURL(imsi))
+            .useURL(basicService.generateMGraphicsURL(imsi)).build();
     }
-    
-    public Actions buildUrlActions(String imsi) {
-        return actions().recommendUrl(baseHostAddress + restURL + imsi + "/graphicInfos?recommend=true")
-            .hotUrl(baseHostAddress + restURL + imsi + "/graphicInfos?hot=true")
-            .categoryUrl(baseHostAddress + restURL + imsi + "/categories")
-            .mGraphicsUrl(baseHostAddress + restURL + imsi + "/mGraphics")
-            .statusUrl(baseHostAddress + restURL + imsi + "/statusTypes")
-            .holidaysUrl(baseHostAddress + restURL + imsi + "/holidayTypes")
-            .customMGraphicsUrl(baseHostAddress + restURL + imsi + "/customMGraphics")
-            .versionUrl(baseHostAddress + restURL + "upgrade")
-            .suggestionUrl(baseHostAddress + restURL + imsi + "/suggestion")
-            .callUrl(baseHostAddress + restURL + imsi + "/callings")
-            .collectionsUrl(baseHostAddress + restURL + imsi + "/myCollections", "GET")
-            .inviteFriendsURL(baseHostAddress + restURL + imsi + "/sms")
-            .registerUrl(baseHostAddress + restURL + "register")
-            .getContactsURL(baseHostAddress + restURL + imsi + "/contacts")
-            .uploadCommonMGraphicURL(baseHostAddress + restURL + imsi + "/userCommonMGraphic/upload" )
-            .uploadContactsURL(baseHostAddress + restURL + imsi + "/contacts").build();
+
+    public Actions buildUserOperableActions(String imsi) {
+        return actions().recommendUrl(basicService.generateRecommendGraphicInfoVisitURL(imsi))
+            .hotUrl(basicService.generateHotGraphicInfosVisitURL(imsi))
+            .categoryUrl(basicService.generateCategoriesVisitURL(imsi))
+            .mGraphicsUrl(basicService.generateMGraphicsURL(imsi))
+            .statusUrl(basicService.generateStatusTypeVisitURL(imsi))
+            .holidaysUrl(basicService.generateHolidayTypesVisitURL(imsi))
+            .customMGraphicsUrl(basicService.generateCustomMGraphicsVisitURL(imsi))
+            .versionUrl(basicService.generateVersionVisitURL())
+            .suggestionUrl(basicService.generateSuggestionSubmitURL(imsi))
+            .callUrl(basicService.generateCallingURL(imsi))
+            .collectionsUrl(basicService.generateMyCollectionsVisitURL(imsi), "GET")
+            .inviteFriendsURL(basicService.generateInviteFriendsURL(imsi))
+            .registerUrl(basicService.generateMobileRegisterURL())
+            .getContactsURL(basicService.generateContactsUploadURL(imsi))
+            .uploadCommonMGraphicURL(basicService.generateUserDIYMGraphicUploadURL(imsi))
+            .uploadContactsURL(basicService.generateContactsUploadURL(imsi)).build();
             
     }
 
-    public Actions buildUrlActions() {
+    public Actions buildAnonymousActions() {
         String replaceImsi = "none";
-        Actions actions = buildUrlActions(replaceImsi);
-        hiddenCustomActionsForNoImsi(actions);
+        Actions actions = buildUserOperableActions(replaceImsi);
+        hiddenTheNeedRegisteredActions(actions);
         return actions;
     }
 
-    private void hiddenCustomActionsForNoImsi(Actions actions) {
+    private void hiddenTheNeedRegisteredActions(Actions actions) {
         actions.setCollectionsURL(null);
         actions.setCallURL(null);
         actions.setMgraphicsURL(null);
@@ -278,14 +304,15 @@ public class ActionBuilder {
 
     public Actions buildMGraphicActions(String imsi, String id, String conditions){
         return  actions()
-                .editURL(baseHostAddress+restURL+imsi+"/"+conditions+"/" +id)
-                .removeURL(baseHostAddress+restURL+imsi+ "/"+conditions+"/" +id)
+                .editURL(basicService.getBaseURL()+imsi+"/"+conditions+"/" +id)
+                .removeURL(basicService.getBaseURL()+imsi+ "/"+conditions+"/" +id)
                 .build();
     }
 
     public Actions buildHistoryMGraphicActions(String imsi, String id) {
-        return actions().useURL(baseHostAddress + restURL + imsi + "/mGraphics")
-            .removeURL(baseHostAddress + restURL + imsi + "/historyMGraphics/" + id).build();
+        return actions().useURL(basicService.generateMGraphicsURL(imsi))
+            .removeURL(basicService.generateHistoryMGraphicRemoveURL(imsi, id))
+            .build();
     }
 
 }

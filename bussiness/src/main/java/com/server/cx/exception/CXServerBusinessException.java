@@ -1,17 +1,23 @@
 package com.server.cx.exception;
 
 
+import lombok.Data;
+
+@Data
 public class CXServerBusinessException extends SystemException {
-
-    private static final long serialVersionUID = 8746274310732322552L;
-
-    public CXServerBusinessException(Throwable e, String message) {
-        super(e);
-        this.localMessage = message;
+    public CXServerBusinessException(){
+        super();
     }
 
-    public CXServerBusinessException(String message) {
+    public CXServerBusinessException(String message){
         super(message);
     }
 
+    public CXServerBusinessException(Throwable e){
+        super(e);
+    }
+
+    public CXServerBusinessException(String message,Throwable e){
+        super(message,e);
+    }
 }

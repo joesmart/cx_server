@@ -10,7 +10,7 @@ import com.server.cx.model.OperationResult;
  * FileName:MGraphicService
  */
 public interface MGraphicService {
-    public abstract OperationResult create(String imsi, MGraphicDTO mGraphicDTO);
+    public abstract OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO);
     public abstract OperationResult edit(String imsi, MGraphicDTO mGraphicDTO);
     public abstract OperationResult disable(String imsi, String userCommonMGraphicId);
 }

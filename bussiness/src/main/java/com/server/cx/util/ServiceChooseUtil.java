@@ -24,7 +24,7 @@ public class ServiceChooseUtil {
     @Autowired
     private VersionInfoService versionInfoService;
     @Autowired
-    private UserFavoritesService userFavoriteService;
+    private UserCollectionsService userFavoriteService;
 
 
     private XMLParser xmlParser = XMLParser.getInstance();
@@ -93,10 +93,10 @@ public class ServiceChooseUtil {
             }
 
         } catch (SystemException e) {
-            result = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, e.getLocalMessage());
+            result = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, e.getMessage());
         } catch (Exception e) {
-            SystemException systemexception = new CXServerBusinessException(e, "系统内部错误");
-            result = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, systemexception.getLocalMessage());
+            SystemException systemexception = new CXServerBusinessException("系统内部错误", e);
+            result = StringUtil.generateXMLResultString(Constants.ERROR_FLAG, systemexception.getMessage());
         }
         return result;
     }

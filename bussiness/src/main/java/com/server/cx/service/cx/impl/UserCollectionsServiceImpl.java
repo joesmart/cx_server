@@ -16,11 +16,10 @@ import com.server.cx.entity.cx.UserFavorites;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.SystemException;
-import com.server.cx.service.cx.UserFavoritesService;
+import com.server.cx.service.cx.UserCollectionsService;
 import com.server.cx.service.util.BusinessFunctions;
-import com.server.cx.util.RestSender;
+import com.server.cx.util.business.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -30,9 +29,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-@Service("userFavoritesService")
+@Service("userCollectionsService")
 @Transactional
-public class UserFavoritesServiceImpl extends  BasicService implements UserFavoritesService {
+public class UserCollectionsServiceImpl extends UserCheckService implements UserCollectionsService {
 
     @Autowired
     private UserInfoDao userInfoDao;
@@ -44,11 +43,10 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
     private GraphicInfoDao graphicInfoDao;
 
     @Autowired
-    @Qualifier("cxinfosQueryIdRestSender")
-    private RestSender restSender;
+    private BusinessFunctions businessFunctions;
 
     @Autowired
-    private BusinessFunctions businessFunctions;
+    private BasicService basicService;
 
     private String dealResult = "";
     private List<UserFavorites> userFavoritesList;
@@ -61,7 +59,7 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
         Preconditions.checkNotNull(idDTO);
 
         UserInfo userInfo = userInfoDao.findByImsi(imsi);
-        Preconditions.checkNotNull(userInfo,"用户不存在");
+        Preconditions.checkNotNull(userInfo, "用户不存在");
 
         String userId = userInfo.getId();
         boolean isAlreadyAddedInUserFavorites = userFavoritesDao.isAlreadAddedInUserFavorites(userId, idDTO.getId());
@@ -72,13 +70,13 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
 
         Integer totalCountOfUserFavorites = userFavoritesDao.getUserFavoritesTotalCount(userId);
         if (totalCountOfUserFavorites >= Constants.TOTAL_USERFAVORITES_COUNT) {
-            throw new CXServerBusinessException("用户收藏已经超出限制的"+Constants.TOTAL_USERFAVORITES_COUNT + "条!");
+            throw new CXServerBusinessException("用户收藏已经超出限制的" + Constants.TOTAL_USERFAVORITES_COUNT + "条!");
         }
 
         UserFavorites userFavorites = new UserFavorites();
         userFavorites.setUser(userInfo);
         GraphicInfo graphicInfo = graphicInfoDao.findOne(idDTO.getId());
-        if(graphicInfo == null){
+        if (graphicInfo == null) {
             throw new CXServerBusinessException("找不到图库资源");
         }
         userFavorites.setGraphicInfo(graphicInfo);
@@ -93,9 +91,9 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
     @Override
     public OperationDescription deleteUserFavorites(String imsi, IdDTO idDTO) throws SystemException {
 
-        Preconditions.checkNotNull(imsi,"imsi为空");
-        Preconditions.checkNotNull(idDTO,"收藏ID为空");
-        if (idDTO.getIds().size()<=0) {
+        Preconditions.checkNotNull(imsi, "imsi为空");
+        Preconditions.checkNotNull(idDTO, "收藏ID为空");
+        if (idDTO.getIds().size() <= 0) {
             throw new CXServerBusinessException("收藏ID为空");
         }
 
@@ -104,8 +102,8 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
             throw new CXServerBusinessException("用户未注册");
         }
 
-        List<UserFavorites> userFavorites =  Lists.newArrayList(userFavoritesDao.findAll(idDTO.getIds()));
-        if(userFavorites !=null && userFavorites.size() >0){
+        List<UserFavorites> userFavorites = Lists.newArrayList(userFavoritesDao.findAll(idDTO.getIds()));
+        if (userFavorites != null && userFavorites.size() > 0) {
             userFavoritesDao.deleteInBatch(userFavorites);
         }
 
@@ -117,8 +115,8 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
 
     @Override
     public OperationDescription deleteUserFavoritesById(String imsi, String userFavoriteId) throws SystemException {
-        Preconditions.checkNotNull(imsi,"imsi为空");
-        Preconditions.checkNotNull(userFavoriteId,"收藏ID为空");
+        Preconditions.checkNotNull(imsi, "imsi为空");
+        Preconditions.checkNotNull(userFavoriteId, "收藏ID为空");
 
         UserInfo userInfo = userInfoDao.getUserInfoByImsi(imsi);
         if (null == userInfo) {
@@ -135,18 +133,16 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
 
     @Override
     public DataPage getAllUserFavorites(final String imsi, Integer offset, Integer limit) throws ExecutionException {
-        Preconditions.checkNotNull(imsi);
-        Preconditions.checkNotNull(offset);
-        Preconditions.checkNotNull(limit);
+        ValidationUtil.checkParametersNotNull(imsi,offset,limit);
 
         UserInfo userInfo = userInfoDao.findByImsi(imsi);
         if (null == userInfo) {
             throw new CXServerBusinessException("用户未注册");
         }
         //TODO need fix 需要一个级联查询实现.
-        PageRequest pageRequest = new PageRequest(offset,limit, Sort.Direction.DESC,"createdOn");
-        Page page = userFavoritesDao.findAll(UserFavoriteSpecifications.userFavoritesSpecification(userInfo),pageRequest);
-        List<UserFavorites> userFavoritesList  =  page.getContent();
+        PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "createdOn");
+        Page page = userFavoritesDao.findAll(UserFavoriteSpecifications.userFavoritesSpecification(userInfo), pageRequest);
+        List<UserFavorites> userFavoritesList = page.getContent();
 
         List<DataItem> collectedGraphicInfoItems = transformToDataItemList(imsi, userFavoritesList);
 
@@ -180,7 +176,7 @@ public class UserFavoritesServiceImpl extends  BasicService implements UserFavor
     }
 
     private String generateDataPage(String imsi, int offset, Integer limit) {
-        return baseHostAddress + restURL + imsi + "/myCollections?offset=" + offset + "&limit=" + limit;
+        return basicService.generateURL(imsi,"/myCollections?offset=" + offset + "&limit=" + limit);
     }
 
 

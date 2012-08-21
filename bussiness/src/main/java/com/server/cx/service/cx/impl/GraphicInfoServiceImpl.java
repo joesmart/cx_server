@@ -30,7 +30,7 @@ import java.util.concurrent.ExecutionException;
  */
 @Service("graphicInfoService")
 @Transactional
-public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoService {
+public class GraphicInfoServiceImpl  implements GraphicInfoService {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(GraphicInfoServiceImpl.class);
 
@@ -39,6 +39,9 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
 
     @Autowired
     private GraphicInfoDao graphicInfoDao;
+
+    @Autowired
+    private BasicService basicService;
 
     @Autowired
     private BusinessFunctions businessFunctions;
@@ -73,7 +76,7 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
     private List<DataItem> transformToGraphicItemList(final String imsi, List<GraphicInfo> graphicInfoList,
                                                       Map<String, ? extends MGraphic> usedGraphicInfo, ActionNames actionNames)
         throws ExecutionException {
-        List<String> userCollectionList = userCollectionsCache.get(imsi);
+        List<String> userCollectionList = basicService.getUserCollectionsCache().get(imsi);
         Function<GraphicInfo, DataItem> function = businessFunctions.graphicInfoTransformToGraphicInfoItem(imsi,
             userCollectionList, usedGraphicInfo, actionNames);
         return Lists.transform(graphicInfoList, function);
@@ -137,8 +140,7 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
     }
 
     private String generatePageURL(String imsi, int offset, Integer limit, String queryCondition) {
-        return baseHostAddress + restURL + imsi + "/graphicInfos?" + queryCondition + "&offset=" + offset + "&limit="
-            + limit;
+        return basicService.generateURL(imsi,"/graphicInfos?" + queryCondition + "&offset=" + offset + "&limit="  + limit);
     }
 
     @Override
@@ -156,8 +158,7 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
 
     @Override
     public DataPage findStatusGraphicInfosByImsi(String imsi, long statusTypeId, Integer offset, Integer limit) throws ExecutionException {
-        final String baseHref = baseHostAddress + restURL + imsi + "/statusTypes/" + statusTypeId + "?offset=" + offset
-            + "&limit=" + limit;
+
         String queryCondition = "statusTypeId=" + statusTypeId;
         UserInfo userInfo = userInfoDao.findByImsi(imsi);
         StatusType statusType = statusTypeDao.findOne(statusTypeId);
@@ -190,9 +191,8 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
 
         List<DataItem> dataItems = transformToGraphicItemList(imsi, statusGraphicInfos, usedGraphicInfos,
             ActionNames.STATUS_MGRAPHIC_ACTION);
-        DataPage dataPage = generateDataPage(imsi, offset, limit, page, dataItems, queryCondition, page.getTotalPages());
-        
-        return dataPage;
+
+        return generateDataPage(imsi, offset, limit, page, dataItems, queryCondition, page.getTotalPages());
     }
 
     private List<DataItem> transformToStatusGraphicInfoList(List<GraphicInfo> usingStatusGraphicInfos) {
@@ -202,8 +202,7 @@ public class GraphicInfoServiceImpl extends BasicService implements GraphicInfoS
     @Override
     public DataPage findHolidayGraphicInfosByImsi(String imsi, Long holidayTypeId, Integer offset, Integer limit)
         throws ExecutionException {
-        final String baseHref = baseHostAddress + restURL + imsi + "/holidayTypes/" + holidayTypeId + "?offset="
-            + offset + "&limit=" + limit;
+
         String queryCondition = "holidayTypeId=" + holidayTypeId;
         LOGGER.info("imsi = " + imsi);
         LOGGER.info("holidayTypeId = " + holidayTypeId);

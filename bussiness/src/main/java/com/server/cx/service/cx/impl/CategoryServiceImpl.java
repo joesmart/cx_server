@@ -4,7 +4,6 @@ import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.CategoryDao;
-import com.server.cx.dao.cx.GraphicInfoDao;
 import com.server.cx.entity.cx.Category;
 import com.server.cx.service.cx.CategoryService;
 import com.server.cx.service.util.BusinessFunctions;
@@ -22,12 +21,12 @@ import java.util.List;
  */
 @Service("categoryService")
 @Transactional
-public class CategoryServiceImpl extends BasicService implements CategoryService {
+public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryDao categoryDao;
 
     @Autowired
-    private GraphicInfoDao graphicInfoDao;
+    private BasicService basicService;
 
     @Autowired
     private BusinessFunctions businessFunctions;
@@ -36,7 +35,7 @@ public class CategoryServiceImpl extends BasicService implements CategoryService
     @Transactional(readOnly = true)
     public DataPage queryAllCategoryData(final String imsi) {
         List<Category> categoryList = Lists.newArrayList(categoryDao.findAll());
-        final String baseHref = baseHostAddress + restURL + imsi + "/categories";
+        final String baseHref = basicService.generateCategoriesVisitURL(imsi);
         List<DataItem> categoryItemList = Lists.transform(categoryList, businessFunctions.categoryTransformToCategoryItem(imsi));
 
         DataPage dataPage = new DataPage();
