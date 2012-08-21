@@ -27,7 +27,7 @@ public class SmsMessageServiceUtil {
 
     public static List<String> generateSmsContent(List<String> mobileList, String userInfoPhoneNo) {
         List<String> contentList = Lists.newArrayList();
-        String content = null;
+        String content;
         for (int i = 0; i < mobileList.size(); i++) {
             content = StringUtil.updateTheSmsContent(userInfoPhoneNo);
             contentList.add(content);

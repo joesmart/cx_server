@@ -28,12 +28,12 @@ public class UserFavoritesDaoImpl extends BasicDao implements UserFavoritesCusto
         Criteria criteria = getSession().createCriteria(UserFavorites.class).add(Restrictions.eq("user.id", userId))
                 .add(Restrictions.eq("graphicInfo.id", graphicInfoId))
                 .setProjection(Projections.projectionList().add(Projections.rowCount()));
-        Integer queryResult = Integer.valueOf(((Long) criteria.uniqueResult()).intValue());
+        Integer queryResult = ((Long) criteria.uniqueResult()).intValue();
 
-        if (queryResult == null || queryResult.intValue() == 0) {
+        if (queryResult == null || queryResult == 0) {
             return false;
         }
-        if (queryResult.intValue() > 0) {
+        if (queryResult > 0) {
             return true;
         }
         return false;

@@ -64,8 +64,7 @@ public class BasicService {
                 public List<String> load(String key) throws Exception {
                     if (key == null) return null;
                     UserInfo userInfo = userInfoDao.findByImsi(key);
-                    List<String> graphicIdList = userFavoritesDao.getGraphicIdListByUserInfo(userInfo);
-                    return graphicIdList;
+                    return userFavoritesDao.getGraphicIdListByUserInfo(userInfo);
                 }
             });
 

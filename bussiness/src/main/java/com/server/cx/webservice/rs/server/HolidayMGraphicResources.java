@@ -37,11 +37,13 @@ public class HolidayMGraphicResources extends OperationResources{
             operationDescription.setActions(operationResult.getActions());
             updateOperationDescription(operationResult);
         } catch (Exception ex) {
-            actionName = "createUserCommonMGraphic";
             errorMessage(ex);
-        }finally {
+            actionName = "createUserCommonMGraphic";
+            operationDescription.setActionName(actionName);
+            operationDescription.setErrorCode(403);
             return Response.ok(operationDescription).build();
         }
+        return Response.ok(operationDescription).status(Response.Status.ACCEPTED).build();
     }
 
 
@@ -54,11 +56,13 @@ public class HolidayMGraphicResources extends OperationResources{
             OperationResult operationResult = holidayMGraphicService.edit(imsi, mGraphicDTO);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
-            actionName = "editUserCommonMGraphic";
             errorMessage(e);
-        } finally {
-            return  Response.ok(operationDescription).build();
+            actionName = "editUserCommonMGraphic";
+            operationDescription.setActionName(actionName);
+            operationDescription.setErrorCode(409);
+            return Response.ok(operationDescription).build();
         }
+        return  Response.ok(operationDescription).build();
     }
 
     @DELETE
@@ -69,10 +73,12 @@ public class HolidayMGraphicResources extends OperationResources{
             OperationResult operationResult = holidayMGraphicService.disable(imsi, userCommonMGraphicId);
             updateOperationDescription(operationResult);
         } catch (Exception e) {
-            actionName = "disableUserCommonMGraphic";
             errorMessage(e);
-        } finally {
-            return  Response.ok(operationDescription).build();
+            actionName = "disableUserCommonMGraphic";
+            operationDescription.setActionName(actionName);
+            operationDescription.setErrorCode(403);
+            return Response.ok(operationDescription).build();
         }
+        return  Response.ok(operationDescription).build();
     }
 }

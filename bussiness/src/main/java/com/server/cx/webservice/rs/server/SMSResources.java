@@ -38,11 +38,13 @@ public class SMSResources extends OperationResources {
             operationResult = smsMessageService.inviteFriends(imsi,smsdto.getPhoneNos(),smsdto.getContent());
             updateOperationDescription(operationResult);
         } catch (SystemException e) {
-            actionName = "inviteFriends";
             errorMessage(e);
-        } finally {
+            actionName = "inviteFriends";
+            operationDescription.setActionName(actionName);
+            operationDescription.setErrorCode(403);
             return Response.ok(operationDescription).build();
         }
+        return Response.ok(operationDescription).build();
     }
 
 }

@@ -31,6 +31,7 @@ public class BusinessFunctions  {
         return new Function<UserFavorites, DataItem>() {
             @Override
             public DataItem apply(@Nullable UserFavorites input) {
+                if(input == null) return null;
                 GraphicInfo graphicInfo = input.getGraphicInfo();
 
                 DataItem item = generateBasicDataItem(graphicInfo, imsi, null);
@@ -62,12 +63,12 @@ public class BusinessFunctions  {
         return new Function<Category, DataItem>() {
             @Override
             public DataItem apply(@javax.annotation.Nullable Category input) {
+                if(input == null) return  null;
                 DataItem categoryItem = new DataItem();
                 categoryItem.setName(input.getName());
                 categoryItem.setDescription(input.getDescription());
                 categoryItem.setDownloadNumber(String.valueOf(input.getDownloadNum()));
                 categoryItem.setGraphicURL(basicService.imageURL( input.getGraphicResourceId()));
-
                 categoryItem.setHref(basicService.generateCategoriesOperateURL(imsi,input.getId()));
                 if (!"none".equals(imsi)) {
                     Actions actions = actionBuilder.buildCategoriesAction(imsi, input.getId());
@@ -85,12 +86,13 @@ public class BusinessFunctions  {
         return new Function<GraphicInfo, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicInfo input) {
+                if(input == null) return null;
                 DataItem item = generateBasicDataItem(input, imsi, graphicIds);
                 item.setHref(basicService.generateGraphicInfosOperateURL(imsi,input.getId()));
 
                 //TODO too mush duties need to refactor by Zou YanJian
                 if (!"none".equals(imsi)) {
-                    Actions actions = null;
+                    Actions actions ;
                     if (ActionNames.MGRAPHIC_ACTION.equals(actionNames)) {
                         actions = actionBuilder.buildGraphicItemAction(imsi);
                         item.setActions(actions);
@@ -139,11 +141,12 @@ public class BusinessFunctions  {
         return new Function<GraphicInfo, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicInfo input) {
+                if(input == null) return null;
                 DataItem item = generateBasicDataItem(input, imsi, collectedGraphicInfos);
                 item.setHref(basicService.generateGraphicInfosOperateURL(imsi,input.getId()));
 
                 if (!"none".equals(imsi)) {
-                    Actions actions = null;
+                    Actions actions ;
                     if (ActionNames.MGRAPHIC_ACTION.equals(actionNames)) {
                         actions = actionBuilder.buildGraphicItemAction(imsi);
                         item.setActions(actions);
@@ -172,13 +175,7 @@ public class BusinessFunctions  {
         }
 
         item.setLevel(input.getLevel());
-        if (input.getGraphicResources().size() > 0) {
-            GraphicResource graphicResource = input.getGraphicResources().get(0);
-            item.setThumbnailPath(basicService.thumbnailImageURL(graphicResource.getResourceId()));
-            item.setSourceImagePath(basicService.imageURL(graphicResource.getResourceId()));
-            item.setMediaType(graphicResource.getType());
-            item.setResourceType(graphicResource.getType());
-        }
+        setUpSourceAndThumbnailImagePath(item, input);
 
         HolidayType holidayType = input.getHolidayType();
         if(holidayType!= null){
@@ -204,6 +201,7 @@ public class BusinessFunctions  {
         return new Function<Contacts, ContactInfoDTO>() {
             @Override
             public ContactInfoDTO apply(@javax.annotation.Nullable Contacts input) {
+                if(input == null) return null;
                 ContactInfoDTO contactInfoDTO = new ContactInfoDTO();
                 contactInfoDTO.setContactName(input.getName());
                 contactInfoDTO.setPhoneNo(input.getPhoneNo());
@@ -218,13 +216,14 @@ public class BusinessFunctions  {
         return new Function<HolidayType, DataItem>() {
             @Override
             public DataItem apply(@Nullable HolidayType input) {
+                if(input == null) return null;
                 DataItem dataItem = new DataItem();
                 dataItem.setId(String.valueOf(input.getId()));
                 dataItem.setName(input.getName());
                 dataItem.setLevel(input.getLevel());
                 dataItem.setGraphicURL(basicService.imageURL(input.getGraphicResourceId()));
                 dataItem.setDownloadNumber(String.valueOf(input.getDownloadNum().intValue()));
-                Actions actions = null;
+                Actions actions;
                 if (!"none".equals(imsi)) {
                     actions = actionBuilder.buildHolidayTypeAction(imsi, input.getId());
                     dataItem.setActions(actions);
@@ -252,11 +251,12 @@ public class BusinessFunctions  {
         return new Function<StatusType, DataItem>() {
             @Override
             public DataItem apply(@Nullable StatusType input) {
+                if(input == null) return null;
                 DataItem dataItem = new DataItem();
                 dataItem.setId(String.valueOf(input.getId()));
                 dataItem.setName(input.getName());
                 dataItem.setGraphicURL(basicService.imageURL(input.getGraphicResourceId()));
-                Actions actions = null;
+                Actions actions ;
                 if (!"none".equals(imsi)) {
                     actions = actionBuilder.buildStatusTypeAction(imsi, input.getId());
                     dataItem.setActions(actions);
@@ -283,6 +283,7 @@ public class BusinessFunctions  {
         return new Function<MGraphic, DataItem>() {
             @Override
             public DataItem apply(@Nullable MGraphic input) {
+                if(input == null) return null;
                 DataItem dataItem = generateBasicMGraphicDataItem(input);
                 dataItem.setActions(actionBuilder.buildMGraphicActions(imsi, input.getId(), conditions));
                 return dataItem;
@@ -303,7 +304,7 @@ public class BusinessFunctions  {
         }
 
         if(input instanceof  UserCustomMGraphic){
-            if(((UserCustomMGraphic) input).getBegin() !=null && ((UserCustomMGraphic) input).getBegin().equals(LocalDate.parse("1900-1-1"))){
+            if(((UserCustomMGraphic) input).getBegin() !=null && ((UserCustomMGraphic) input).getBegin().equals(LocalDate.parse("1900-1-1").toDate())){
                 ((UserCustomMGraphic) input).setBegin(null);
                 ((UserCustomMGraphic) input).setEnd(null);
             }
@@ -316,21 +317,27 @@ public class BusinessFunctions  {
 
         GraphicInfo graphicInfo = input.getGraphicInfo();
 
-        if (graphicInfo.getGraphicResources().size() > 0) {
-            GraphicResource graphicResource = graphicInfo.getGraphicResources().get(0);
+        setUpSourceAndThumbnailImagePath(dataItem, graphicInfo);
+        dataItem.setInUsing(true);
+        return dataItem;
+    }
+
+    private void setUpSourceAndThumbnailImagePath(DataItem dataItem, GraphicInfo graphicInfo) {
+        List<GraphicResource> graphicResources = graphicInfo.getGraphicResources();
+        if (graphicResources.size() > 0) {
+            GraphicResource graphicResource = graphicResources.get(0);
             dataItem.setThumbnailPath(basicService.thumbnailImageURL(graphicResource.getResourceId()));
             dataItem.setSourceImagePath(basicService.imageURL( graphicResource.getResourceId() ));
             dataItem.setMediaType(graphicResource.getType());
             dataItem.setResourceType(graphicResource.getType());
         }
-        dataItem.setInUsing(true);
-        return dataItem;
     }
 
     public Function<HistoryMGraphic, DataItem> historyMGraphicTransformToDataItem(final String imsi) {
         return new Function<HistoryMGraphic, DataItem>() {
             @Override
             public DataItem apply(@Nullable HistoryMGraphic input) {
+                if(input == null) return null;
                 DataItem dataItem = new DataItem();
                 dataItem.setName(input.getName());
                 dataItem.setSignature(input.getSignature());
@@ -341,13 +348,7 @@ public class BusinessFunctions  {
                 dataItem.setInUsing(false);
 
                 GraphicInfo graphicInfo = input.getGraphicInfo();
-                if (graphicInfo.getGraphicResources().size() > 0) {
-                    GraphicResource graphicResource = graphicInfo.getGraphicResources().get(0);
-                    dataItem.setThumbnailPath(basicService.thumbnailImageURL(graphicResource.getResourceId()));
-                    dataItem.setSourceImagePath(basicService.imageURL(graphicResource.getResourceId()));
-                    dataItem.setMediaType(graphicResource.getType());
-                }
-                input.getGraphicInfo().getGraphicResources().get(0);
+                setUpSourceAndThumbnailImagePath(dataItem,graphicInfo);
                 dataItem.setActions(actionBuilder.buildHistoryMGraphicActions(imsi, input.getId()));
                 return dataItem;
             }
@@ -358,16 +359,12 @@ public class BusinessFunctions  {
         return new Function<GraphicInfo, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicInfo input) {
+                if(input == null) return null;
                 DataItem dataItem = new DataItem();
                 dataItem.setName(input.getName());
                 dataItem.setDownloadNumber(String.valueOf(input.getUseCount()));
                 dataItem.setId(input.getId());
-                if (input.getGraphicResources() != null && !input.getGraphicResources().isEmpty()) {
-                    GraphicResource graphicResource = input.getGraphicResources().get(0);
-                    if (graphicResource != null) {
-                        dataItem.setGraphicURL(basicService.imageURL(graphicResource.getResourceId()));
-                    }
-                }
+                setUpGraphicURL(dataItem,input);
                 return dataItem;
             }
         };
@@ -377,22 +374,27 @@ public class BusinessFunctions  {
         return new Function<GraphicInfo, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicInfo input) {
+                if(input == null) return null;
                 DataItem dataItem = new DataItem();
                 dataItem.setName(input.getName());
                 dataItem.setDownloadNumber(String.valueOf(input.getUseCount()));
                 dataItem.setId(input.getId());
                 dataItem.setLevel(input.getHolidayType().getLevel());
-                if (input.getGraphicResources() != null && !input.getGraphicResources().isEmpty()) {
-                    GraphicResource graphicResource = input.getGraphicResources().get(0);
-                    if (graphicResource != null) {
-                        dataItem.setGraphicURL(basicService.imageURL(graphicResource.getResourceId()));
-                        dataItem.setMediaType(graphicResource.getType());
-                        dataItem.setResourceType(graphicResource.getType());
-                    }
-                }
+                setUpGraphicURL(dataItem, input);
                 return dataItem;
             }
         };
+    }
+
+    private void setUpGraphicURL(DataItem dataItem, GraphicInfo input) {
+        if (input.getGraphicResources() != null && !input.getGraphicResources().isEmpty()) {
+            GraphicResource graphicResource = input.getGraphicResources().get(0);
+            if (graphicResource != null) {
+                dataItem.setGraphicURL(basicService.imageURL(graphicResource.getResourceId()));
+                dataItem.setMediaType(graphicResource.getType());
+                dataItem.setResourceType(graphicResource.getType());
+            }
+        }
     }
 
     public Function<UserHolidayMGraphic, HolidayType> userHolidayMGraphicTransformToHolidayType() {
@@ -408,6 +410,7 @@ public class BusinessFunctions  {
         return new Function<UserStatusMGraphic, StatusType>() {
             @Override
             public StatusType apply(@Nullable UserStatusMGraphic input) {
+                if(input == null) return null;
                 return input.getStatusType();
             }
         };
@@ -417,7 +420,7 @@ public class BusinessFunctions  {
         return new Function<FileMeta, GraphicInfo>() {
             @Override
             public GraphicInfo apply(@Nullable FileMeta input) {
-                System.out.println("input = " + input);
+                if(input == null) return null;
                 GraphicResource graphicResource = new GraphicResource();
                 graphicResource.setResourceId(input.getResourceId());
                 

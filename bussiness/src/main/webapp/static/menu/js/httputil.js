@@ -20,9 +20,9 @@ var ERROR_USER_SET_OFFINE = 'ERROR_USER_SET_OFFINE';
 //url
 var MENU_MAIN_URL = "http://localhost:8080/mini-web/menu/category";
 var METHOD_GET = "GET";
-var METHOD_POST = "POST"
-var METHOD_PUT = "PUT"
-var METHOD_DELETE = "DELETE"
+var METHOD_POST = "POST";
+var METHOD_PUT = "PUT";
+var METHOD_DELETE = "DELETE";
 
 function Command(url, method, handler) {
 	this.url = url;

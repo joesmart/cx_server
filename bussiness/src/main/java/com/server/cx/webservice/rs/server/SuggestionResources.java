@@ -29,7 +29,7 @@ public class SuggestionResources {
     @POST
     public Response addSuggestion(@PathParam("imsi") String imsi, String content) {
         LOGGER.info("Into addSuggestion content = " + content);
-        OperationDescription operationDescription = new OperationDescription();
+        OperationDescription operationDescription;
         try {
             suggestionService.addSuggestion(imsi, content);
             operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,

@@ -34,6 +34,7 @@ public class Logging {
     public void beforeRun(JoinPoint joinPoint) {
         initializeContext(joinPoint);
         initializeMessageObjects(joinPoint);
+        logger.info("Longing ID"+this.toString());
         logger.info("Usage:{}.{}.({}) start",messageObjects);
         if (stopwatch == null) {
             stopwatch = new Stopwatch();
@@ -44,6 +45,7 @@ public class Logging {
             stopwatch.reset();
         }
         stopwatch.start();
+        logger.info("Longing ID"+stopwatch.hashCode());
     }
 
     @AfterReturning(pointcut = "execution( * com.server.cx.webservice.rs.server.*.*(..))",argNames = "joinPoint")
@@ -52,6 +54,8 @@ public class Logging {
         initializeMessageObjects(joinPoint);
         if(stopwatch != null && stopwatch.isRunning()){
             stopwatch.stop();
+            logger.info("Longing ID"+this.toString());
+            logger.info("Longing ID"+stopwatch.hashCode());
             logger.info("Execute Time:{}.{}.({}) Spend time:"+stopwatch,messageObjects);
         }
         logger.info("Usage:{}.{}.({}) end",messageObjects);
@@ -61,6 +65,7 @@ public class Logging {
     public void logError(JoinPoint joinPoint,Throwable throwable){
         initializeContext(joinPoint);
         initializeMessageObjects(joinPoint);
+        logger.info("Longing ID"+this.toString());
         logger.error("Service Method Execute Error:{}.{}.({})",messageObjects);
         logger.error("Detail Error:",throwable);
     }

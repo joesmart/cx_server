@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ValidationUtil {
 
-    public static boolean isVerionString(String version) {
+    public static boolean isVersionString(String version) {
         boolean result = isContainDigitAndSpecialCharacter(version, '.');
         return result;
     }
@@ -30,7 +30,7 @@ public class ValidationUtil {
     }
 
     public static boolean isDigit(String numberString) {
-        boolean result = false;
+        boolean result;
         CharMatcher matcher = CharMatcher.DIGIT;
         result = matcher.matchesAllOf(numberString);
         return result;
@@ -55,11 +55,7 @@ public class ValidationUtil {
     }
 
     public static boolean isShortPhoneNo(String phoneNO) {
-        if (isPhoneNo(phoneNO)) {
-            return (phoneNO.length() <= 6 && phoneNO.length() >= 3);
-        } else {
-            return false;
-        }
+        return isPhoneNo(phoneNO) && (phoneNO.length() <= 6 && phoneNO.length() >= 3);
     }
 
     public static boolean isStatusValidTime(String validTime) {

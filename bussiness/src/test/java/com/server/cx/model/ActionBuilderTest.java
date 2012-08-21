@@ -22,7 +22,7 @@ import java.io.IOException;
  */
 public class ActionBuilderTest {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(ActionBuilderTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ActionBuilderTest.class);
 
     private ActionBuilder actionBuilder;
     private String baseHostAddress = "http://localhost:8080/CXServer/";

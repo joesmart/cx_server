@@ -2,7 +2,9 @@ package com.server.cx.exception;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = false)
 @Data
 public class CXServerBusinessException extends SystemException {
     public CXServerBusinessException(){
