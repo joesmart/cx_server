@@ -52,7 +52,7 @@ public class RegisterServiceImpl implements RegisterService {
         OperationDescription operationDescription ;
         if (userinfo != null) {
             userinfo.setPhoneNo(registerDTO.getPhoneNo());
-            userInfoDao.save(userinfo);
+            userInfoDao.saveAndFlush(userinfo);
             operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,"updateUserInfo", "success");
         } else {
             operationDescription = ObjectFactory.buildErrorOperationDescription(HttpServletResponse.SC_CONFLICT,"updateUserInfo", "failed");
