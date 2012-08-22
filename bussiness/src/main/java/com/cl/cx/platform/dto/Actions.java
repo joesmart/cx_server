@@ -33,6 +33,7 @@ public class Actions {
     private Action callURL;
     private Action collectionsURL;
     private Action registerURL;
+    private Action updateUserInfoURL;
     private Action purchaseURL;
     private Action inviteFriendsURL;
     private Action uploadContactsURL;

@@ -92,6 +92,10 @@ public class BasicService {
         return getBaseURL() + "register";
     }
 
+    public String generateMobileRegisterUpdateURL(String imsi) {
+        return getBaseURL() + "register/"+imsi;
+    }
+
     public String generateVersionVisitURL() {
         return getBaseURL() + "upgrade";
     }

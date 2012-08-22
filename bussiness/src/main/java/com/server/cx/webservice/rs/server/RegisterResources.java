@@ -16,7 +16,9 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 /**
@@ -34,8 +36,6 @@ public class RegisterResources {
 
     @POST
     public Response register(RegisterDTO registerDTO) {
-
-        LOGGER.info("Into register registerDTO = " + registerDTO);
         try {
             ValidationUtil.checkParametersNotNull(registerDTO, registerDTO.getImsi());
             Preconditions.checkNotNull(registerDTO.getImsi());
@@ -46,7 +46,15 @@ public class RegisterResources {
                 HttpServletResponse.SC_NOT_ACCEPTABLE, "register", "IMSI数据为空");
             return Response.ok(operationDescription).build();
         }
+    }
 
+    @PUT
+    @Path("/{imsi}")
+    public Response updateP(@PathParam("imsi")String imsi,RegisterDTO registerDTO){
+        ValidationUtil.checkParametersNotNull(registerDTO,registerDTO.getPhoneNo());
+        registerDTO.setImsi(imsi);
+        OperationDescription operationDescription = registerService.update(registerDTO);
+        return Response.ok(operationDescription).build();
     }
 
     private String getPhoneNoFromContactInfo(ContactInfoDTO contactInfoDTO) {

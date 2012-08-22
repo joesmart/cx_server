@@ -15,4 +15,5 @@ public class RegisterDTO {
     private String imsi;
     private String deviceId;
     private String userAgent;
+    private String phoneNo;
 }

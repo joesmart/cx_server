@@ -138,6 +138,12 @@ public class ActionBuilder {
         return this;
     }
 
+    public ActionBuilder registerUpDateURL(String url){
+        Action action = new Action(url, "PUT");
+        actions.setUpdateUserInfoURL(action);
+        return this;
+    }
+
     public ActionBuilder editURL(String url) {
         Action action = new Action(url, "PUT");
         actions.setEditURL(action);
@@ -275,6 +281,7 @@ public class ActionBuilder {
             .collectionsUrl(basicService.generateMyCollectionsVisitURL(imsi))
             .inviteFriendsURL(basicService.generateInviteFriendsURL(imsi))
             .registerUrl(basicService.generateMobileRegisterURL())
+            .registerUpDateURL(basicService.generateMobileRegisterUpdateURL(imsi))
             .getContactsURL(basicService.generateContactsUploadURL(imsi))
             .uploadCommonMGraphicURL(basicService.generateUserDIYMGraphicUploadURL(imsi))
             .uploadContactsURL(basicService.generateContactsUploadURL(imsi)).build();
