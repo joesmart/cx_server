@@ -33,8 +33,7 @@ public class RegisterServiceImpl implements RegisterService {
         if (userinfo == null) {
             userinfo = new UserInfo();
             userinfo.setImsi(registerDTO.getImsi());
-            phoneNo = dealWithPhoneNo(registerDTO.getImsi(), phoneNo);
-            userinfo.setPhoneNo(phoneNo);
+            userinfo.setPhoneNo(dealWithPhoneNo(registerDTO.getImsi()));
             userinfo.setUserAgent(registerDTO.getUserAgent());
             userinfo.setDeviceId(registerDTO.getDeviceId());
             userInfoDao.save(userinfo);
@@ -47,8 +46,23 @@ public class RegisterServiceImpl implements RegisterService {
         return operationDescription;
     }
 
-    private String dealWithPhoneNo(String imsi, String phoneNo) {
-        if (phoneNo == null || "".equals(phoneNo)) {
+    @Override
+    public OperationDescription update(RegisterDTO registerDTO) {
+        UserInfo userinfo = userInfoDao.getUserInfoByImsi(registerDTO.getImsi());
+        OperationDescription operationDescription ;
+        if (userinfo != null) {
+            userinfo.setPhoneNo(registerDTO.getPhoneNo());
+            userInfoDao.save(userinfo);
+            operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,"updateUserInfo", "success");
+        } else {
+            operationDescription = ObjectFactory.buildErrorOperationDescription(HttpServletResponse.SC_CONFLICT,"updateUserInfo", "failed");
+        }
+        return operationDescription;
+    }
+
+    private String dealWithPhoneNo(String imsi) {
+        String phoneNo = null;
+        if (imsi == null || "".equals(imsi)) {
             phoneNo = String.valueOf(UUID.randomUUID().getMostSignificantBits());
         } else if ("460025581509188".equals(imsi)) {
             phoneNo = "18358163576";
