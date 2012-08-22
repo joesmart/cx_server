@@ -13,7 +13,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Component
-@Path("/{imsi}/statusTypes")
+@Path("{imsi}/statusTypes")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class StatusTypeResources {

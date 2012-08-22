@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
  * FileName:SMSResources
  */
 @Component
-@Path("/{imsi}/sms")
+@Path("{imsi}/sms")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class SMSResources extends OperationResources {

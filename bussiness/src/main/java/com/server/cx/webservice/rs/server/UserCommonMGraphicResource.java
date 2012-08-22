@@ -1,7 +1,15 @@
 package com.server.cx.webservice.rs.server;
 
-import java.io.IOException;
-import java.io.InputStream;
+import com.cl.cx.platform.dto.OperationDescription;
+import com.server.cx.constants.Constants;
+import com.server.cx.service.cx.UserCommonMGraphicService;
+import com.server.cx.util.ObjectFactory;
+import com.server.cx.util.business.ValidationUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,18 +20,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import com.cl.cx.platform.dto.OperationDescription;
-import com.server.cx.constants.Constants;
-import com.server.cx.service.cx.UserCommonMGraphicService;
-import com.server.cx.util.ObjectFactory;
-import com.server.cx.util.business.ValidationUtil;
+import java.io.IOException;
+import java.io.InputStream;
 
 @Component
-@Path("/{imsi}/userCommonMGraphic")
+@Path("{imsi}/userCommonMGraphic")
 @Produces({MediaType.APPLICATION_JSON})
 public class UserCommonMGraphicResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserCommonMGraphicResource.class);

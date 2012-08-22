@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response;
  * @author calvin
  */
 @Component
-@Path("/register")
+@Path("register")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class RegisterResources {

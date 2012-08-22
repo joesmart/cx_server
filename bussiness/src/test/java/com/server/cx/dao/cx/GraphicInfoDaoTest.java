@@ -91,7 +91,7 @@ public class GraphicInfoDaoTest extends SpringTransactionalTestCase {
     public  void should_save_graphicinfo_with_audit_status(){
         GraphicInfo graphicInfo = new GraphicInfo();
         graphicInfo.setUseCount(10);
-        graphicInfo.setAuditStatus(AuditStatus.PASSING);
+        graphicInfo.setAuditStatus(AuditStatus.CHECKING);
         graphicInfo.setLevel(10);
         graphicInfo.setSignature("tests");
         graphicInfo.setName("test");

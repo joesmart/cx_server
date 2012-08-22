@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
  * FileName:StatusMGraphicResources
  */
 @Component
-@Path("/{imsi}/statusMGraphics")
+@Path("{imsi}/statusMGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class StatusMGraphicResources extends OperationResources {

@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 
 
 @Component
-@Path("/{imsi}/customMGraphics")
+@Path("{imsi}/customMGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class CustomMGraphicResources extends OperationResources {

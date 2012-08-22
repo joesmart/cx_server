@@ -22,7 +22,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Component
-@Path("/{imsi}/contacts")
+@Path("{imsi}/contacts")
 //@Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class ContactsResources {

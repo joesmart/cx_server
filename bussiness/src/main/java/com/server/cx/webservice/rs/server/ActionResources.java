@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Component
-@Path("/actions")
+@Path("actions")
 @Produces({MediaType.APPLICATION_JSON})
 public class ActionResources {
     public static final Logger LOGGER = LoggerFactory.getLogger(CategoryResources.class);

@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
  * FileName:HolidayMGraphicURL
  */
 @Component
-@Path("/{imsi}/holidayMGraphics")
+@Path("{imsi}/holidayMGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class HolidayMGraphicResources extends OperationResources{

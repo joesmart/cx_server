@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutionException;
  */
 
 @Component
-@Path("/{imsi}/graphicInfos")
+@Path("{imsi}/graphicInfos")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class GraphicInfoResources {

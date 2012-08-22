@@ -268,7 +268,8 @@ public class ActionBuilder {
     }
 
     public Actions buildUserOperableActions(String imsi) {
-        return actions().recommendUrl(basicService.generateRecommendGraphicInfoVisitURL(imsi))
+        return actions()
+            .recommendUrl(basicService.generateRecommendGraphicInfoVisitURL(imsi))
             .hotUrl(basicService.generateHotGraphicInfosVisitURL(imsi))
             .categoryUrl(basicService.generateCategoriesVisitURL(imsi))
             .mGraphicsUrl(basicService.generateMGraphicsURL(imsi))
@@ -284,7 +285,8 @@ public class ActionBuilder {
             .registerUpDateURL(basicService.generateMobileRegisterUpdateURL(imsi))
             .getContactsURL(basicService.generateContactsUploadURL(imsi))
             .uploadCommonMGraphicURL(basicService.generateUserDIYMGraphicUploadURL(imsi))
-            .uploadContactsURL(basicService.generateContactsUploadURL(imsi)).build();
+            .uploadContactsURL(basicService.generateContactsUploadURL(imsi))
+             .build();
             
     }
 

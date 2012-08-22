@@ -12,7 +12,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Component
-@Path("/{imsi}/holidayTypes")
+@Path("{imsi}/holidayTypes")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class HolidayTypeResource {

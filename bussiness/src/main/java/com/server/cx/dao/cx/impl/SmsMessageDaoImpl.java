@@ -29,7 +29,7 @@ public class SmsMessageDaoImpl extends BasicDao implements SmsMessageCustomDao {
 
         final int size = mobiles.size();
         getJdbcTemplate().batchUpdate(
-                "insert into sms_message(sms,fromMobileNo,toMobileNo,isSend,createdOn) values(?,?,?,?,?)",
+                "insert into sms_message(sms,from_mobile_no,to_mobile_no,is_send,created_on) values(?,?,?,?,?)",
                 new BatchPreparedStatementSetter() {
                     @Override
                     public void setValues(PreparedStatement ps, int index) throws SQLException {
@@ -50,7 +50,7 @@ public class SmsMessageDaoImpl extends BasicDao implements SmsMessageCustomDao {
     @Override
     @Transactional
     public void updateSmsMessageSentStatus(final Long[] ids) {
-        super.getJdbcTemplate().batchUpdate("update sms_message set isSend = ?,updatedOn=? where id= ?",
+        super.getJdbcTemplate().batchUpdate("update sms_message set is_send = ?,updated_on=? where id= ?",
                 new BatchPreparedStatementSetter() {
                     @Override
                     public void setValues(PreparedStatement ps, int index) throws SQLException {

@@ -23,7 +23,7 @@ import javax.ws.rs.core.Response;
  * FileName:UserCommonMGraphicResources
  */
 @Component
-@Path("/{imsi}/mGraphics")
+@Path("{imsi}/mGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class MGraphicResources extends OperationResources {
