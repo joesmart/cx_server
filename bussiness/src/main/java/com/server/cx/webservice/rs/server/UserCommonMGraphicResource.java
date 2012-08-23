@@ -2,7 +2,7 @@ package com.server.cx.webservice.rs.server;
 
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
-import com.server.cx.service.cx.UserCommonMGraphicService;
+import com.server.cx.service.cx.UserDiyGraphicService;
 import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
 import org.slf4j.Logger;
@@ -30,7 +30,10 @@ public class UserCommonMGraphicResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserCommonMGraphicResource.class);
     
     @Autowired
-    private UserCommonMGraphicService userCommonMGraphicService;
+    private UserDiyGraphicService userDiyGraphicService;
+
+
+
     
     @Path("/upload")
     @POST
@@ -39,7 +42,7 @@ public class UserCommonMGraphicResource {
         try {
             ValidationUtil.checkParametersNotNull(imsi);
             InputStream fileStream = req.getInputStream();
-            userCommonMGraphicService.addFileStreamToResourceServer(imsi, fileStream);
+            userDiyGraphicService.addFileStreamToResourceServer(imsi, fileStream);
             OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
                 HttpServletResponse.SC_CREATED, "uploadImage", Constants.SUCCESS_FLAG);
             return Response.ok(operationDescription).build();

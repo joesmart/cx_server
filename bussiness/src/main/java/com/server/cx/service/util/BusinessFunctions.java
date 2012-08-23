@@ -4,7 +4,6 @@ import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
-import com.google.common.collect.Lists;
 import com.server.cx.entity.cx.*;
 import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.impl.BasicService;
@@ -416,20 +415,19 @@ public class BusinessFunctions  {
         };
     }
     
-    public Function<FileMeta, GraphicInfo> fileMetaTransformToGraphicInfo() {
-        return new Function<FileMeta, GraphicInfo>() {
+    public Function<FileMeta, GraphicResource> fileMetaTransformToGraphicInfo(final UserDiyGraphic userDiyGraphic) {
+        return new Function<FileMeta, GraphicResource>() {
             @Override
-            public GraphicInfo apply(@Nullable FileMeta input) {
+            public GraphicResource apply(@Nullable FileMeta input) {
                 if(input == null) return null;
                 GraphicResource graphicResource = new GraphicResource();
                 graphicResource.setResourceId(input.getResourceId());
-                
-                GraphicInfo graphicInfo = new GraphicInfo();
-                graphicInfo.setName(input.getName());
-                List<GraphicResource> graphicResources = Lists.newArrayList();
-                graphicResources.add(graphicResource);
-                graphicInfo.setGraphicResources(graphicResources);
-                return graphicInfo;
+                if(CheckStatusDesc.CHECKING.equals(input.getCheckStatusDesc())){
+                    graphicResource.setAuditPassed(null);
+                }
+                graphicResource.setType(input.getType());
+                graphicResource.setUserDiyGraphic(userDiyGraphic);
+                return graphicResource;
             }
         };
     }

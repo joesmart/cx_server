@@ -39,12 +39,11 @@ public class Logging {
             stopwatch = new Stopwatch();
         } else {
             if (stopwatch.isRunning()) {
+                stopwatch.reset();
                 stopwatch.stop();
             }
-            stopwatch.reset();
         }
         stopwatch.start();
-        logger.info("Longing ID"+stopwatch.hashCode());
     }
 
     @AfterReturning(pointcut = "execution( * com.server.cx.webservice.rs.server.*.*(..))",argNames = "joinPoint")

@@ -1,10 +1,8 @@
 package com.server.cx.service.cx;
 
-/**
- * User: yanjianzou
- * Date: 12-8-22
- * Time: 下午4:55
- * FileName:UserDiyGraphicService
- */
+import java.io.IOException;
+import java.io.InputStream;
+
 public interface UserDiyGraphicService {
+    public void addFileStreamToResourceServer(String imsi, InputStream fileStream) throws IOException ;
 }

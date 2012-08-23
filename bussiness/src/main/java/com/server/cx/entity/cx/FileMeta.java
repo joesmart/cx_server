@@ -12,6 +12,7 @@ public class FileMeta {
     private String thumbnail_url;
     private String delete_url;
     private String delete_type;
+    private String type;
     private CheckStatusDesc checkStatusDesc;
 
 }

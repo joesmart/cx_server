@@ -25,6 +25,10 @@
 
     alter table graphic_resource 
         drop 
+        foreign key FK4F320785A8BFB6AE;
+
+    alter table graphic_resource 
+        drop 
         foreign key FK4F320785E231CA91;
 
     alter table history_mgraphic 
@@ -49,11 +53,11 @@
 
     alter table mgraphic 
         drop 
-        foreign key FK4B95CDDBEBB54FE8;
+        foreign key FK4B95CDDBCDC4AB82;
 
     alter table mgraphic 
         drop 
-        foreign key FK4B95CDDBCDC4AB82;
+        foreign key FK4B95CDDBEBB54FE8;
 
     alter table mgraphic_phone_no 
         drop 
@@ -70,6 +74,10 @@
     alter table user_catacts 
         drop 
         foreign key FK7C0ED6834DEBD61E;
+
+    alter table user_diy_graphic 
+        drop 
+        foreign key FKB013FBC96C146C11;
 
     alter table user_favorites 
         drop 
@@ -114,6 +122,8 @@
     drop table if exists type;
 
     drop table if exists user_catacts;
+
+    drop table if exists user_diy_graphic;
 
     drop table if exists user_favorites;
 
@@ -183,12 +193,12 @@
         updated_by varchar(64),
         updated_on datetime,
         audit_passed bit,
-        graphic_id varchar(255),
-        resource_id varchar(255),
+        resource_id varchar(40),
         source_path varchar(255),
         thumbnail_path varchar(255),
-        type varchar(255),
+        type varchar(10),
         graphicinfo_id varchar(32),
+        diy_id varchar(32),
         primary key (id)
     );
 
@@ -225,27 +235,27 @@
     );
 
     create table mgraphic (
+        cast_type varchar(10) not null,
         id varchar(32) not null,
         created_by varchar(64),
         created_on datetime,
         updated_by varchar(64),
         updated_on datetime,
-        cast_type varchar(10) not null,
         mode_type integer,
         modify_time datetime,
         name varchar(255),
         priority integer,
         signature varchar(255),
         common bit,
+        valid_date datetime,
         begin datetime,
         end datetime,
         special_phone_no varchar(20),
         holiday datetime,
-        valid_date datetime,
         graphic_info_id varchar(32),
         user_id varchar(32),
-        holiday_type_id bigint,
         status_type_id bigint,
+        holiday_type_id bigint,
         primary key (id)
     );
 
@@ -316,6 +326,18 @@
         name varchar(255),
         phone_no varchar(255),
         self_user_id varchar(32),
+        user_id varchar(32),
+        primary key (id)
+    );
+
+    create table user_diy_graphic (
+        id varchar(32) not null,
+        created_by varchar(64),
+        created_on datetime,
+        updated_by varchar(64),
+        updated_on datetime,
+        name varchar(255),
+        signature varchar(255),
         user_id varchar(32),
         primary key (id)
     );
@@ -393,6 +415,12 @@
         references holiday_type (id);
 
     alter table graphic_resource 
+        add index FK4F320785A8BFB6AE (diy_id), 
+        add constraint FK4F320785A8BFB6AE 
+        foreign key (diy_id) 
+        references user_diy_graphic (id);
+
+    alter table graphic_resource 
         add index FK4F320785E231CA91 (graphicinfo_id), 
         add constraint FK4F320785E231CA91 
         foreign key (graphicinfo_id) 
@@ -429,16 +457,16 @@
         references graphic_infos (id);
 
     alter table mgraphic 
-        add index FK4B95CDDBEBB54FE8 (status_type_id), 
-        add constraint FK4B95CDDBEBB54FE8 
-        foreign key (status_type_id) 
-        references status_type (id);
-
-    alter table mgraphic 
         add index FK4B95CDDBCDC4AB82 (holiday_type_id), 
         add constraint FK4B95CDDBCDC4AB82 
         foreign key (holiday_type_id) 
         references holiday_type (id);
+
+    alter table mgraphic 
+        add index FK4B95CDDBEBB54FE8 (status_type_id), 
+        add constraint FK4B95CDDBEBB54FE8 
+        foreign key (status_type_id) 
+        references status_type (id);
 
     alter table mgraphic_phone_no 
         add index FK6F8CE016A4886B19 (mgraphic_id), 
@@ -462,6 +490,12 @@
         add index FK7C0ED6834DEBD61E (self_user_id), 
         add constraint FK7C0ED6834DEBD61E 
         foreign key (self_user_id) 
+        references userinfo (id);
+
+    alter table user_diy_graphic 
+        add index FKB013FBC96C146C11 (user_id), 
+        add constraint FKB013FBC96C146C11 
+        foreign key (user_id) 
         references userinfo (id);
 
     alter table user_favorites 
