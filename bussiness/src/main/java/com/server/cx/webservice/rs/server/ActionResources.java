@@ -36,7 +36,7 @@ public class ActionResources {
     @Path("{imsi}")
     public Response queryAllActions(@PathParam("imsi") String imsi) {
         try {
-            userCheckService.checkAndSetUserInfoExists(imsi);
+//            userCheckService.checkAndSetUserInfoExists(imsi);
             return Response.ok(actionBuilder.buildUserOperableActions(imsi)).build();
         } catch (CXServerBusinessException e) {
             LOGGER.error("Error:",e);

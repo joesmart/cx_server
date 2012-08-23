@@ -25,10 +25,6 @@
 
     alter table graphic_resource 
         drop 
-        foreign key FK4F320785A8BFB6AE;
-
-    alter table graphic_resource 
-        drop 
         foreign key FK4F320785E231CA91;
 
     alter table history_mgraphic 
@@ -75,10 +71,6 @@
         drop 
         foreign key FK7C0ED6834DEBD61E;
 
-    alter table user_diy_graphic 
-        drop 
-        foreign key FKB013FBC96C146C11;
-
     alter table user_favorites 
         drop 
         foreign key FKF2FF4EE36C146C11;
@@ -122,8 +114,6 @@
     drop table if exists type;
 
     drop table if exists user_catacts;
-
-    drop table if exists user_diy_graphic;
 
     drop table if exists user_favorites;
 
@@ -193,12 +183,12 @@
         updated_by varchar(64),
         updated_on datetime,
         audit_passed bit,
-        resource_id varchar(40),
+        graphic_id varchar(255),
+        resource_id varchar(255),
         source_path varchar(255),
         thumbnail_path varchar(255),
-        type varchar(10),
+        type varchar(255),
         graphicinfo_id varchar(32),
-        diy_id varchar(32),
         primary key (id)
     );
 
@@ -246,11 +236,11 @@
         name varchar(255),
         priority integer,
         signature varchar(255),
+        special_phone_no varchar(20),
         common bit,
-        valid_date datetime,
         begin datetime,
         end datetime,
-        special_phone_no varchar(20),
+        valid_date datetime,
         holiday datetime,
         graphic_info_id varchar(32),
         user_id varchar(32),
@@ -330,18 +320,6 @@
         primary key (id)
     );
 
-    create table user_diy_graphic (
-        id varchar(32) not null,
-        created_by varchar(64),
-        created_on datetime,
-        updated_by varchar(64),
-        updated_on datetime,
-        name varchar(255),
-        signature varchar(255),
-        user_id varchar(32),
-        primary key (id)
-    );
-
     create table user_favorites (
         id varchar(32) not null,
         created_by varchar(64),
@@ -415,12 +393,6 @@
         references holiday_type (id);
 
     alter table graphic_resource 
-        add index FK4F320785A8BFB6AE (diy_id), 
-        add constraint FK4F320785A8BFB6AE 
-        foreign key (diy_id) 
-        references user_diy_graphic (id);
-
-    alter table graphic_resource 
         add index FK4F320785E231CA91 (graphicinfo_id), 
         add constraint FK4F320785E231CA91 
         foreign key (graphicinfo_id) 
@@ -490,12 +462,6 @@
         add index FK7C0ED6834DEBD61E (self_user_id), 
         add constraint FK7C0ED6834DEBD61E 
         foreign key (self_user_id) 
-        references userinfo (id);
-
-    alter table user_diy_graphic 
-        add index FKB013FBC96C146C11 (user_id), 
-        add constraint FKB013FBC96C146C11 
-        foreign key (user_id) 
         references userinfo (id);
 
     alter table user_favorites 
