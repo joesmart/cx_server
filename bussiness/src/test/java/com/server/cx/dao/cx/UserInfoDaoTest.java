@@ -1,17 +1,18 @@
 package com.server.cx.dao.cx;
 
-import com.server.cx.data.UserInfoData;
-import com.server.cx.entity.cx.UserInfo;
+import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.Assert.*;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import org.fest.assertions.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
-
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import static org.fest.assertions.Assertions.assertThat;
+import com.server.cx.data.UserInfoData;
+import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.exception.MoneyNotEnoughException;
 
 /**
  * User: yanjianzou
@@ -59,5 +60,29 @@ public class UserInfoDaoTest extends SpringTransactionalTestCase {
         
         UserInfo dbInfo = userInfoDao.findOne(info.getId());
         assertThat(info).isEqualTo(dbInfo);
+    }
+    
+    @Test
+    public void test_check_current_money_validate() {
+        UserInfo userInfo = userInfoDao.findOne("1");
+        boolean result = userInfoDao.checkCurrentMoneyValidate(userInfo.getId(), 15d);
+        assertThat(result).isEqualTo(true);
+    }
+    
+    @Test
+    public void test_check_current_money_not_enough() {
+        UserInfo userInfo = userInfoDao.findOne("1");
+        try  {
+            userInfoDao.checkCurrentMoneyValidate(userInfo.getId(), 55d);
+            fail("没有抛出异常");
+        } catch(MoneyNotEnoughException e) {
+            assertTrue(true);
+        }
+    }
+    
+    @Test
+    public void test_minus_money_by_price() {
+        userInfoDao.minusMoneyByPrice("1", 15d);
+        assertEquals(userInfoDao.findOne("1").getTotleMoney().doubleValue(), 35d, 1e-3);
     }
 }

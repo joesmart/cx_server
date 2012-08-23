@@ -2,19 +2,15 @@ package com.cl.cx.platform.dto;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.ToString;
-
 import java.util.List;
 
 /**
- * User: yanjianzou
- * Date: 12-7-30
- * Time: 下午4:22
- * FileName:DataPage
+ * User: yanjianzou Date: 12-7-30 Time: 下午4:22 FileName:DataPage
  */
 @ToString
-@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property= "@type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "@type")
 public class DataPage {
-    private String href ;
+    private String href;
     private Integer offset;
     private Integer limit;
     private Integer total;
@@ -23,6 +19,7 @@ public class DataPage {
     private String next;
     private String previous;
     private List<DataItem> items;
+    private Boolean isSubscribed;
 
     public String getFirst() {
         return first;
@@ -94,5 +91,13 @@ public class DataPage {
 
     public void setTotal(Integer total) {
         this.total = total;
+    }
+
+    public Boolean isSubscribed() {
+        return isSubscribed;
+    }
+
+    public void setSubscribed(Boolean isSubscribed) {
+        this.isSubscribed = isSubscribed;
     }
 }

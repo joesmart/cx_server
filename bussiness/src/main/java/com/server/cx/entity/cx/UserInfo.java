@@ -28,6 +28,8 @@ public class UserInfo extends AuditableStringEntity {
     private String deviceId;
 
     private String userAgent;
+    
+    private Double totleMoney;
 
     public UserInfo() {
     }
@@ -85,4 +87,11 @@ public class UserInfo extends AuditableStringEntity {
         this.userFavorites = userFavorites;
     }
 
+    public Double getTotleMoney() {
+        return totleMoney;
+    }
+
+    public void setTotleMoney(Double totleMoney) {
+        this.totleMoney = totleMoney;
+    }
 }

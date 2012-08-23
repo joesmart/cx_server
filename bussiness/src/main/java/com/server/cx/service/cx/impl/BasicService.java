@@ -195,7 +195,11 @@ public class BasicService {
     public String generateStatusMGraphicRemoveURL(String imsi, String mGraphicId) {
         return generateURL(imsi,"/statusMGraphics/" + mGraphicId);
     }
-
+    
+    public String generateSubscribeURL(String imsi, String type) {
+        return generateURL(imsi,"/subsucribe/?type=" + type);
+    }
+    
     public String imageURL(String resourceId){
         return  this.imageShowURL+resourceId;
     }

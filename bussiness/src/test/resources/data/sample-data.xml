@@ -271,16 +271,16 @@
 
     <versioninfo id="1" version="3.0.122" url="http://10.90.3.122:38183/CXServer/app/CXAndroidClient3.0.apk"></versioninfo>
 
-    <userinfo id="1" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001000" phone_no="1512581470" user_agent="userAgent" device_id="xxx-509"></userinfo>
-	<userinfo id="2" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001001" phone_no="1512581471" user_agent="userAgent" device_id="xxx-509"></userinfo>
-	<userinfo id="3" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001003" phone_no="1512581472" user_agent="userAgent" device_id="xxx-509"></userinfo>
-	<userinfo id="4" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001004" phone_no="1512581473" user_agent="userAgent" device_id="xxx-509"></userinfo>
-	<userinfo id="5" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001005" phone_no="1512581474" user_agent="userAgent" device_id="xxx-509"></userinfo>
-	<userinfo id="6" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001006" phone_no="1512581475" user_agent="userAgent" device_id="xxx-509"></userinfo>
-	<userinfo id="7" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001007" phone_no="1512581476" user_agent="userAgent" device_id="xxx-509"></userinfo>
-	<userinfo id="8" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001008" phone_no="1512581477" user_agent="userAgent" device_id="xxx-509"></userinfo>
-	<userinfo id="9" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001009" phone_no="1512581478" user_agent="userAgent" device_id="xxx-509"></userinfo>
-	<userinfo id="10" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001010" phone_no="1512581479" user_agent="userAgent" device_id="xxx-509"></userinfo>
+    <userinfo id="1" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001000" phone_no="1512581470" user_agent="userAgent" device_id="xxx-509" totle_money="50"></userinfo>
+	<userinfo id="2" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001001" phone_no="1512581471" user_agent="userAgent" device_id="xxx-509" totle_money="50"></userinfo>
+	<userinfo id="3" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001003" phone_no="1512581472" user_agent="userAgent" device_id="xxx-509" totle_money="40"></userinfo>
+	<userinfo id="4" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001004" phone_no="1512581473" user_agent="userAgent" device_id="xxx-509" totle_money="40"></userinfo>
+	<userinfo id="5" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001005" phone_no="1512581474" user_agent="userAgent" device_id="xxx-509" totle_money="30"></userinfo>
+	<userinfo id="6" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001006" phone_no="1512581475" user_agent="userAgent" device_id="xxx-509" totle_money="30"></userinfo>
+	<userinfo id="7" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001007" phone_no="1512581476" user_agent="userAgent" device_id="xxx-509" totle_money="20"></userinfo>
+	<userinfo id="8" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001008" phone_no="1512581477" user_agent="userAgent" device_id="xxx-509" totle_money="20"></userinfo>
+	<userinfo id="9" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001009" phone_no="1512581478" user_agent="userAgent" device_id="xxx-509" totle_money="10"></userinfo>
+	<userinfo id="10" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001010" phone_no="1512581479" user_agent="userAgent" device_id="xxx-509" totle_money="10"></userinfo>
 
     <user_catacts id="1" name="Lebron James" phone_no="1512581471" self_user_id="2" user_id="1"></user_catacts>
     <user_catacts id="2" name="Steve Nash" phone_no="1512581472" self_user_id="3" user_id="1"></user_catacts>
@@ -348,5 +348,19 @@
     <holiday id="19" holiday_day="2013-06-16 00:00:00.0" type="19"/>
     <holiday id="20" holiday_day="2013-12-24 00:00:00.0" type="7"/>
     <holiday id="21" holiday_day="2013-08-13 00:00:00.0" type="1"/>
-
+    
+    <subscribe_type id="1" name="节日包" price="15" cast_type="holiday"></subscribe_type>
+    <subscribe_type id="2" name="状态包" price="10" cast_type="status"></subscribe_type>
+    <subscribe_type id="3" name="自主包" price="10" cast_type="custom"></subscribe_type>
+    
+    <user_subscribe_type id="1" user_id="1" subscribe_status="SUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
+    <user_subscribe_type id="2" user_id="1" subscribe_status="SUBSCRIBED" subscribe_type_id="2" validate_month="8"></user_subscribe_type>
+    <!-- <user_subscribe_type id="3" user_id="1" subscribe_status="SUBSCRIBED" subscribe_type_id="3" validate_month="8"></user_subscribe_type> -->
+    <user_subscribe_type id="4" user_id="2" subscribe_status="SUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
+    <user_subscribe_type id="5" user_id="2" subscribe_status="SUBSCRIBED" subscribe_type_id="2" validate_month="8"></user_subscribe_type>
+    <user_subscribe_type id="6" user_id="3" subscribe_status="SUBSCRIBED" subscribe_type_id="3" validate_month="8"></user_subscribe_type>
+    <user_subscribe_type id="7" user_id="4" subscribe_status="UNSUBSCRIBED" subscribe_type_id="1" validate_month="7"></user_subscribe_type>
+    <user_subscribe_type id="8" user_id="4" subscribe_status="UNSUBSCRIBED" subscribe_type_id="2" validate_month="8"></user_subscribe_type>
+    <user_subscribe_type id="9" user_id="4" subscribe_status="MONEYNOTENOUGH" subscribe_type_id="3"></user_subscribe_type>
+    <user_subscribe_type id="10" user_id="7" subscribe_status="UNSUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
 </dataset>

@@ -1,21 +1,31 @@
 package com.server.cx.webservice.rs.server;
 
-import com.cl.cx.platform.dto.DataPage;
-import com.cl.cx.platform.dto.MGraphicDTO;
-import com.cl.cx.platform.dto.OperationDescription;
-import com.server.cx.model.OperationResult;
-import com.server.cx.service.cx.MGraphicService;
-import com.server.cx.service.cx.QueryMGraphicService;
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
+import com.cl.cx.platform.dto.DataPage;
+import com.cl.cx.platform.dto.MGraphicDTO;
+import com.cl.cx.platform.dto.OperationDescription;
+import com.server.cx.constants.Constants;
+import com.server.cx.exception.NotSubscribeTypeException;
+import com.server.cx.model.ActionBuilder;
+import com.server.cx.model.OperationResult;
+import com.server.cx.service.cx.MGraphicService;
+import com.server.cx.service.cx.QueryMGraphicService;
+import com.server.cx.util.ObjectFactory;
 
 @Component
 @Path("/{imsi}/customMGraphics")
@@ -31,6 +41,9 @@ public class CustomMGraphicResources extends OperationResources {
     @Autowired
     @Qualifier("customMGraphicService")
     private QueryMGraphicService queryMGraphicService;
+
+    @Autowired
+    private ActionBuilder actionBuilder;
 
     @POST
     public Response create(@PathParam("imsi") String imsi, MGraphicDTO mGraphicDTO) {
@@ -49,10 +62,10 @@ public class CustomMGraphicResources extends OperationResources {
         return Response.ok(operationDescription).build();
     }
 
-
     @PUT
     @Path("/{id}")
-    public Response update(@PathParam("imsi") String imsi,@PathParam("id")String userCommonMGraphicId, MGraphicDTO mGraphicDTO){
+    public Response update(@PathParam("imsi") String imsi, @PathParam("id") String userCommonMGraphicId,
+                           MGraphicDTO mGraphicDTO) {
         operationDescription = new OperationDescription();
         try {
             mGraphicDTO.setId(userCommonMGraphicId);
@@ -70,7 +83,7 @@ public class CustomMGraphicResources extends OperationResources {
 
     @DELETE
     @Path("/{id}")
-    public Response delete(@PathParam("imsi")String imsi,@PathParam("id")String userCommonMGraphicId){
+    public Response delete(@PathParam("imsi") String imsi, @PathParam("id") String userCommonMGraphicId) {
         operationDescription = new OperationDescription();
         try {
             OperationResult operationResult = customMGraphicService.disable(imsi, userCommonMGraphicId);
@@ -86,8 +99,14 @@ public class CustomMGraphicResources extends OperationResources {
     }
 
     @GET
-    public Response getAll(@PathParam("imsi")String imsi){
-        DataPage dataPage = queryMGraphicService.queryUserMGraphic(imsi);
-        return Response.ok(dataPage).build();
+    public Response getAll(@PathParam("imsi") String imsi) {
+        try {
+            DataPage dataPage = queryMGraphicService.queryUserMGraphic(imsi);
+            return Response.ok(dataPage).build();
+        } catch (NotSubscribeTypeException e) {
+            OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
+                HttpServletResponse.SC_OK, "getAll", Constants.SUCCESS_FLAG, actionBuilder.buildSubscribeCustomAction(imsi));
+            return Response.ok(operationDescription).build();
+        }
     }
 }

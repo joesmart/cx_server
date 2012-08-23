@@ -6,13 +6,16 @@ import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.UserCustomMGraphicDao;
+import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.spec.UserCustomMGraphicSpecifications;
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserCustomMGraphic;
 import com.server.cx.exception.CXServerBusinessException;
+import com.server.cx.exception.NotSubscribeTypeException;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.QueryMGraphicService;
+import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.service.util.BusinessFunctions;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
@@ -49,6 +52,12 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
     @Autowired
     private BasicService basicService;
+    
+    @Autowired
+    private UserSubscribeTypeService userSubscribeTypeService;
+    
+    @Autowired
+    private UserInfoDao userInfoDao;
 
     private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
         checkPreviousMGraphicCount();
@@ -134,9 +143,10 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
     }
 
     @Override
-    public DataPage queryUserMGraphic(String imsi) {
+    public DataPage queryUserMGraphic(String imsi) throws NotSubscribeTypeException {
         Preconditions.checkNotNull(imsi, "imsi 不能为空");
         checkAndSetUserInfoExists(imsi);
+        userSubscribeTypeService.checkSubscribeType(userInfo, "custom");
         List<UserCustomMGraphic> mGraphics = userCustomMGraphicDao.findAll(UserCustomMGraphicSpecifications.userCustomMGraphic(userInfo), new Sort(new Sort.Order(Sort.Direction.ASC, "modeType"), new Sort.Order(Sort.Direction.DESC, "createdOn")));
         String conditions = "customMGraphics";
         List<DataItem> mGraphicDataItems = Lists.transform(mGraphics, businessFunctions.mGraphicTransformToDataItem(imsi, conditions));
