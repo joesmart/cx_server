@@ -279,8 +279,8 @@
 	<userinfo id="6" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001006" phone_no="1512581475" user_agent="userAgent" device_id="xxx-509" totle_money="30"></userinfo>
 	<userinfo id="7" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001007" phone_no="1512581476" user_agent="userAgent" device_id="xxx-509" totle_money="20"></userinfo>
 	<userinfo id="8" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001008" phone_no="1512581477" user_agent="userAgent" device_id="xxx-509" totle_money="20"></userinfo>
-	<userinfo id="9" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001009" phone_no="1512581478" user_agent="userAgent" device_id="xxx-509" totle_money="10"></userinfo>
-	<userinfo id="10" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001010" phone_no="1512581479" user_agent="userAgent" device_id="xxx-509" totle_money="10"></userinfo>
+	<userinfo id="9" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001009" phone_no="1512581478" user_agent="userAgent" device_id="xxx-509" totle_money="9"></userinfo>
+	<userinfo id="10" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001010" phone_no="1512581479" user_agent="userAgent" device_id="xxx-509" totle_money="9"></userinfo>
 
     <user_catacts id="1" name="Lebron James" phone_no="1512581471" self_user_id="2" user_id="1"></user_catacts>
     <user_catacts id="2" name="Steve Nash" phone_no="1512581472" self_user_id="3" user_id="1"></user_catacts>
@@ -353,9 +353,10 @@
     <subscribe_type id="2" name="状态包" price="10" cast_type="status"></subscribe_type>
     <subscribe_type id="3" name="自主包" price="10" cast_type="custom"></subscribe_type>
     
+    <user_subscribe_record id="1" expenses="15.0" description="订购" subscribe_type_id="1" user_id="1"></user_subscribe_record>
+    
     <user_subscribe_type id="1" user_id="1" subscribe_status="SUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
     <user_subscribe_type id="2" user_id="1" subscribe_status="SUBSCRIBED" subscribe_type_id="2" validate_month="8"></user_subscribe_type>
-    <!-- <user_subscribe_type id="3" user_id="1" subscribe_status="SUBSCRIBED" subscribe_type_id="3" validate_month="8"></user_subscribe_type> -->
     <user_subscribe_type id="4" user_id="2" subscribe_status="SUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
     <user_subscribe_type id="5" user_id="2" subscribe_status="SUBSCRIBED" subscribe_type_id="2" validate_month="8"></user_subscribe_type>
     <user_subscribe_type id="6" user_id="3" subscribe_status="SUBSCRIBED" subscribe_type_id="3" validate_month="8"></user_subscribe_type>

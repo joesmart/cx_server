@@ -20,12 +20,18 @@ import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
+import com.server.cx.exception.InvalidParameterException;
+import com.server.cx.exception.MoneyNotEnoughException;
 import com.server.cx.exception.NotSubscribeTypeException;
+import com.server.cx.exception.UserHasSubscribedException;
 import com.server.cx.model.ActionBuilder;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.QueryMGraphicService;
+import com.server.cx.service.cx.UserCustomTypeService;
+import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.util.ObjectFactory;
+import com.server.cx.util.business.ValidationUtil;
 
 @Component
 @Path("/{imsi}/customMGraphics")
@@ -41,10 +47,16 @@ public class CustomMGraphicResources extends OperationResources {
     @Autowired
     @Qualifier("customMGraphicService")
     private QueryMGraphicService queryMGraphicService;
-
+    
+    @Autowired
+    private UserCustomTypeService userCustomTypeService;
+    
     @Autowired
     private ActionBuilder actionBuilder;
-
+    
+    @Autowired
+    private UserSubscribeTypeService userSubscribeTypeService;
+    
     @POST
     public Response create(@PathParam("imsi") String imsi, MGraphicDTO mGraphicDTO) {
         operationDescription = new OperationDescription();
@@ -78,7 +90,7 @@ public class CustomMGraphicResources extends OperationResources {
             operationDescription.setErrorCode(409);
             return Response.ok(operationDescription).build();
         }
-        return  Response.ok(operationDescription).build();
+        return Response.ok(operationDescription).build();
     }
 
     @DELETE
@@ -95,7 +107,7 @@ public class CustomMGraphicResources extends OperationResources {
             operationDescription.setErrorCode(403);
             return Response.ok(operationDescription).build();
         }
-        return  Response.ok(operationDescription).build();
+        return Response.ok(operationDescription).build();
     }
 
     @GET
@@ -105,8 +117,45 @@ public class CustomMGraphicResources extends OperationResources {
             return Response.ok(dataPage).build();
         } catch (NotSubscribeTypeException e) {
             OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
-                HttpServletResponse.SC_OK, "getAll", Constants.SUCCESS_FLAG, actionBuilder.buildSubscribeCustomAction(imsi));
+                HttpServletResponse.SC_OK, "getAll", Constants.SUCCESS_FLAG,
+                actionBuilder.buildSubscribeCustomAction(imsi));
             return Response.ok(operationDescription).build();
         }
+    }
+
+    @PUT
+    public Response subscribeCustomType(@PathParam("imsi") String imsi) {
+        LOGGER.info("Into subscribeFunctionType imsi = " + imsi);
+
+        try {
+            ValidationUtil.checkParametersNotNull(imsi);
+            DataPage dataPage = userCustomTypeService.subscribeAndQueryCustomTypes(imsi);
+            return Response.ok(dataPage).build();
+            
+        } catch (InvalidParameterException e) {
+            LOGGER.error("subscribeFunctionType InvalidParameterException error", e);
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                Response.Status.BAD_REQUEST.getStatusCode(), "subscribeFunctionType", "请求参数异常");
+            return Response.ok(operationDescription).build();
+
+        } catch (MoneyNotEnoughException e) {
+            LOGGER.info("subscribeFunctionType MoneyNotEnoughException", e);
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "subscribeFunctionType", "余额不足");
+            return Response.ok(operationDescription).build();
+
+        } catch (UserHasSubscribedException e) {
+            LOGGER.error("subscribeFunctionType error", e);
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "subscribeFunctionType", "用户已经订购");
+            return Response.ok(operationDescription).build();
+
+        } catch (Exception e) {
+            LOGGER.error("subscribeFunctionType error", e);
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), "subscribeFunctionType", "服务器内部错误");
+            return Response.ok(operationDescription).build();
+        }
+
     }
 }

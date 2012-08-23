@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import com.cl.cx.platform.dto.DataPage;
 import com.server.cx.dao.cx.SubscribeTypeDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.UserSubscribeRecordDao;
@@ -20,9 +19,7 @@ import com.server.cx.exception.MoneyNotEnoughException;
 import com.server.cx.exception.NotSubscribeTypeException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.exception.UserHasSubscribedException;
-import com.server.cx.service.cx.HolidayTypeService;
 import com.server.cx.service.cx.QueryMGraphicService;
-import com.server.cx.service.cx.StatusTypeService;
 import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.DateUtil;
@@ -42,16 +39,6 @@ public class UserSubscribeTypeServiceImpl extends UserCheckService implements Us
 
     @Autowired
     private BusinessFunctions businessFunctions;
-
-    @Autowired
-    private HolidayTypeService holidayTypeService;
-
-    @Autowired
-    private StatusTypeService statusTypeService;
-
-    @Autowired
-    @Qualifier("customMGraphicService")
-    private QueryMGraphicService queryMGraphicService;
 
     @Autowired
     private UserInfoDao userInfoDao;
@@ -117,41 +104,14 @@ public class UserSubscribeTypeServiceImpl extends UserCheckService implements Us
             return true;
         throw new NotSubscribeTypeException("用户未订购");
     }
-
+    
+    
     @Override
-    public DataPage subscribeAndQueryHoliayTypes(String imsi) {
-        LOGGER.info("Into subscribeAndQueryHoliayTypes imsi = " + imsi);
-        checkAndSetUserInfoExists(imsi);
-        checkUserUnSubscribeType(userInfo, "holiday");
-        subscribeType(userInfo, "holiday");
-        return holidayTypeService.queryAllHolidayTypes(imsi);
-    }
-    
-    
-    private boolean checkUserUnSubscribeType(UserInfo userInfo, String type) throws UserHasSubscribedException {
+    public boolean checkUserUnSubscribeType(UserInfo userInfo, String type) throws UserHasSubscribedException {
         List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findSubscribeTypes(userInfo, type);
         if (userSubscribeTypes != null && !userSubscribeTypes.isEmpty()) {
             throw new UserHasSubscribedException("用户已经订购");
         }
         return true;
     }
-
-    @Override
-    public DataPage subscribeAndQueryStatusTypes(String imsi) {
-        LOGGER.info("Into subscribeAndQueryStatusTypes imsi = " + imsi);
-        checkAndSetUserInfoExists(imsi);
-        checkUserUnSubscribeType(userInfo, "status");
-        subscribeType(userInfo, "status");
-        return statusTypeService.queryAllStatusTypes(imsi);
-    }
-
-    @Override
-    public DataPage subscribeAndQueryCustomTypes(String imsi) {
-        LOGGER.info("Into subscribeAndQueryCustomTypes imsi = " + imsi);
-        checkAndSetUserInfoExists(imsi);
-        checkUserUnSubscribeType(userInfo, "custom");
-        subscribeType(userInfo, "custom");
-        return queryMGraphicService.queryUserMGraphic(imsi);
-    }
-
 }
