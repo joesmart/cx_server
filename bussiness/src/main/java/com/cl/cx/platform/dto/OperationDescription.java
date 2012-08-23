@@ -1,7 +1,7 @@
 package com.cl.cx.platform.dto;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * User: yanjianzou

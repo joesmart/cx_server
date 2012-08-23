@@ -59,6 +59,24 @@ public class ActionBuilder {
         actions.setRemoveURL(action);
         return this;
     }
+    
+    public ActionBuilder subscribeHolidayURL(String url) {
+        Action action = new Action(url, "PUT");
+        actions.setSubscribeHolidayURL(action);
+        return this;
+    }
+    
+    public ActionBuilder subscribeStatusURL(String url) {
+        Action action = new Action(url, "PUT");
+        actions.setSubscribeStatusURL(action);
+        return this;
+    }
+    
+    public ActionBuilder subscribeCustomURL(String url) {
+        Action action = new Action(url, "PUT");
+        actions.setSubscribeCustomURL(action);
+        return this;
+    }
 
     public ActionBuilder disableURL(String url) {
         Action action = new Action(url, "DELETE");
@@ -266,6 +284,19 @@ public class ActionBuilder {
             .purchaseURL(basicService.generateImagePurchaseURL(imsi))
             .useURL(basicService.generateMGraphicsURL(imsi)).build();
     }
+    
+    public Actions buildSubscribeHolidayAction(String imsi) {
+        return actions().subscribeHolidayURL(basicService.generateSubscribeURL(imsi, "holiday")).build();
+    }
+    
+    public Actions buildSubscribeStatusAction(String imsi) {
+        return actions().subscribeStatusURL(basicService.generateSubscribeURL(imsi, "status")).build();
+    }
+    
+    public Actions buildSubscribeCustomAction(String imsi) {
+        return actions().subscribeCustomURL(basicService.generateSubscribeURL(imsi, "custom")).build();
+    }
+    
 
     public Actions buildUserOperableActions(String imsi) {
         return actions()

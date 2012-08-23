@@ -431,4 +431,17 @@ public class BusinessFunctions  {
             }
         };
     }
+    
+    public Function<SubscribeType, UserSubscribeType> holidaySubscribeTypeTransformToUserSubscribeType(final UserInfo userInfo) {
+        return new Function<SubscribeType, UserSubscribeType>() {
+            @Override
+            public UserSubscribeType apply(@Nullable SubscribeType input) {
+                UserSubscribeType userSubscribeType = new UserSubscribeType();
+                userSubscribeType.setUserInfo(userInfo);
+                userSubscribeType.setSubscribeType(input);
+                return userSubscribeType;
+            }
+        };
+    }
+
 }

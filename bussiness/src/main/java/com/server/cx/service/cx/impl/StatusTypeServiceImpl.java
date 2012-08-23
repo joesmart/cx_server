@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.server.cx.dao.cx.GraphicInfoDao;
 import com.server.cx.dao.cx.StatusTypeDao;
+import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.UserStatusMGraphicDao;
 import com.server.cx.dao.cx.spec.GraphicInfoSpecifications;
 import com.server.cx.entity.cx.GraphicInfo;
@@ -14,6 +15,7 @@ import com.server.cx.entity.cx.StatusType;
 import com.server.cx.entity.cx.UserStatusMGraphic;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.service.cx.StatusTypeService;
+import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.service.util.BusinessFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -42,9 +44,16 @@ public class StatusTypeServiceImpl extends UserCheckService implements StatusTyp
     @Autowired
     private GraphicInfoDao graphicInfoDao;
     
+    @Autowired
+    private UserSubscribeTypeService userSubscribeTypeService;
+    
+    @Autowired
+    private UserInfoDao userInfoDao;
+    
     @Override
     public DataPage queryAllStatusTypes(String imsi) {
         checkAndSetUserInfoExists(imsi);
+        userSubscribeTypeService.checkSubscribeType(userInfo, "status");
         List<StatusType> statusType = Lists.newArrayList(statusTypeDao.findAll());
         final String baseHref = basicService.generateStatusTypeVisitURL(imsi);
         List<DataItem> statusTypeList = generateStatusTypeList(statusType, imsi);

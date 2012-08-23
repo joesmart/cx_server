@@ -1,5 +1,12 @@
 package com.server.cx.service.cx.impl;
 
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.google.common.base.Function;
@@ -8,20 +15,16 @@ import com.google.common.collect.Maps;
 import com.server.cx.dao.cx.GraphicInfoDao;
 import com.server.cx.dao.cx.HolidayTypeDao;
 import com.server.cx.dao.cx.UserHolidayMGraphicDao;
+import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.spec.GraphicInfoSpecifications;
-import com.server.cx.entity.cx.*;
+import com.server.cx.entity.cx.GraphicInfo;
+import com.server.cx.entity.cx.HolidayType;
+import com.server.cx.entity.cx.UserHolidayMGraphic;
 import com.server.cx.exception.CXServerBusinessException;
-import com.server.cx.exception.SystemException;
+import com.server.cx.exception.NotSubscribeTypeException;
 import com.server.cx.service.cx.HolidayTypeService;
+import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.service.util.BusinessFunctions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Map;
 
 @Service(value = "holidayTypeService")
 @Transactional(readOnly = true)
@@ -38,10 +41,18 @@ public class HolidayTypeServiceImpl extends UserCheckService implements HolidayT
 
     @Autowired
     private UserHolidayMGraphicDao userHolidayMGraphicDao;
-    
+
+    @Autowired
+    private UserSubscribeTypeService userSubscribeTypeService;
+
+    @Autowired
+    private UserInfoDao userInfoDao;
+
     @Override
-    public DataPage queryAllHolidayTypes(String imsi) throws SystemException {
+    public DataPage queryAllHolidayTypes(String imsi) throws NotSubscribeTypeException {
         checkAndSetUserInfoExists(imsi);
+        //检查是否订购了节日包
+        userSubscribeTypeService.checkSubscribeType(userInfo, "holiday");
         List<HolidayType> holidayTypes = Lists.newArrayList(holidayTypeDao.findAll());
         final String baseHref = basicService.generateHolidayTypesVisitURL(imsi);
         List<DataItem> holidayTypeList = generateHolidayTypeList(imsi, holidayTypes);
@@ -53,6 +64,7 @@ public class HolidayTypeServiceImpl extends UserCheckService implements HolidayT
         dataPage.setHref(baseHref);
         dataPage.setItems(holidayTypeList);
         return dataPage;
+
     }
 
     @Override

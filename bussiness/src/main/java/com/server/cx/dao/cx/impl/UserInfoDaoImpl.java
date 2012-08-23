@@ -1,18 +1,21 @@
 package com.server.cx.dao.cx.impl;
 
-import com.server.cx.dao.cx.custom.UserInfoCustomDao;
-import com.server.cx.entity.cx.UserInfo;
+import java.util.List;
+import javax.persistence.Query;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import com.server.cx.dao.cx.custom.UserInfoCustomDao;
+import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.exception.MoneyNotEnoughException;
 
-import java.util.List;
 
-
-@Repository("userInfoDao")
-@Transactional
+//@Repository("userInfoDao")
+//@Transactional
+@Component
 public class UserInfoDaoImpl extends BasicDao implements UserInfoCustomDao {
 
     public UserInfoDaoImpl() {
@@ -61,4 +64,25 @@ public class UserInfoDaoImpl extends BasicDao implements UserInfoCustomDao {
         List<UserInfo> userinfos = criteria.getExecutableCriteria(getSession()).list();
         return userinfos;
     }
+
+    @Override
+    public boolean checkCurrentMoneyValidate(String id, Double price) {
+        DetachedCriteria criteria = DetachedCriteria.forClass(UserInfo.class);
+        criteria.add(Restrictions.idEq(id)).add(Restrictions.gt("totleMoney", price));
+        List<UserInfo> userInfos = criteria.getExecutableCriteria(getSession()).list();
+        if(userInfos != null && !userInfos.isEmpty()) 
+            return true;
+        throw new MoneyNotEnoughException("余额不足");
+    }
+
+    @Override
+    public void minusMoneyByPrice(String id, Double price) {
+        String hql = "update UserInfo info set info.totleMoney = ? where id = ?";
+        Query query = em.createQuery(hql);
+        query.setParameter(1, 35d);
+        query.setParameter(2, id);
+        query.executeUpdate();
+    }
+    
+    
 }

@@ -15,7 +15,7 @@ public class UserCommonMGraphicResourceTest extends BasicJerseyTest{
         resource = resource.path("/13146001000/userCommonMGraphic/upload");
         InputStream inputStream = UserCommonMGraphicResourceTest.class.getResourceAsStream("/Winter.jpg");
         System.out.println("inputStream = " + inputStream);
-        ClientResponse response = resource.accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, inputStream);
+        ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, inputStream);
         OperationDescription operationDescription = response.getEntity(OperationDescription.class);
         System.out.println("operationDescription = " + operationDescription);
         assertThat(operationDescription.getStatusCode()).isEqualTo(201);
