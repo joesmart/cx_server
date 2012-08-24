@@ -3,6 +3,8 @@ package com.server.cx.service.cx.impl;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -29,7 +31,8 @@ import com.server.cx.service.util.BusinessFunctions;
 @Service(value = "holidayTypeService")
 @Transactional(readOnly = true)
 public class HolidayTypeServiceImpl extends UserCheckService implements HolidayTypeService {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(HolidayTypeServiceImpl.class);
+    
     @Autowired
     private BasicService basicService;
     @Autowired
@@ -66,7 +69,16 @@ public class HolidayTypeServiceImpl extends UserCheckService implements HolidayT
         return dataPage;
 
     }
-
+    
+    @Override
+    public DataPage subscribeAndQueryHoliayTypes(String imsi) {
+        LOGGER.info("Into subscribeAndQueryHoliayTypes imsi = " + imsi);
+        checkAndSetUserInfoExists(imsi);
+        userSubscribeTypeService.checkUserUnSubscribeType(userInfo, "holiday");
+        userSubscribeTypeService.subscribeType(userInfo, "holiday");
+        return queryAllHolidayTypes(imsi);
+    }
+    
     @Override
     public GraphicInfo getFirstChild(Long holidayTypeId) {
         List<GraphicInfo> graphicInfos = graphicInfoDao.findAll(GraphicInfoSpecifications.holidayTypeGraphicInfoExcludedUsed(holidayTypeId,null),new Sort(Sort.Direction.DESC,"createdOn"));

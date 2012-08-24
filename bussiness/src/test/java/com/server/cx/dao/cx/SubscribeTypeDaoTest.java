@@ -1,13 +1,13 @@
 package com.server.cx.dao.cx;
 
+import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 import com.server.cx.entity.cx.CustomSubscribeType;
-import com.server.cx.entity.cx.HolidaySubscribeType;
 import com.server.cx.entity.cx.StatusSubscribeType;
-import static org.fest.assertions.Assertions.assertThat;
+import com.server.cx.entity.cx.SubscribeType;
 
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 public class SubscribeTypeDaoTest extends SpringTransactionalTestCase {
@@ -16,9 +16,9 @@ public class SubscribeTypeDaoTest extends SpringTransactionalTestCase {
 
     @Test
     public void test_find_holiday_subscribe_type() {
-        HolidaySubscribeType holidaySubscribeType = subscribeTypeDao.findHolidaySubscribeType();
-        assertThat(holidaySubscribeType).isNotNull();
-        assertThat(holidaySubscribeType.getName()).isEqualTo("节日包");
+        SubscribeType subscribeType = subscribeTypeDao.findSubscribeType("holiday");
+        assertThat(subscribeType).isNotNull();
+        assertThat(subscribeType.getName()).isEqualTo("节日包");
     }
     
     @Test

@@ -1,5 +1,15 @@
 package com.server.cx.service.cx.impl;
 
+import java.util.List;
+import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
@@ -17,17 +27,6 @@ import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.QueryMGraphicService;
 import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.service.util.BusinessFunctions;
-import org.apache.commons.lang3.StringUtils;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * User: yanjianzou
@@ -54,10 +53,10 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
     private BasicService basicService;
     
     @Autowired
-    private UserSubscribeTypeService userSubscribeTypeService;
+    private UserInfoDao userInfoDao;
     
     @Autowired
-    private UserInfoDao userInfoDao;
+    private UserSubscribeTypeService userSubscribeTypeService;
 
     private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
         checkPreviousMGraphicCount();

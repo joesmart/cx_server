@@ -28,7 +28,7 @@ public class UserSubscribeTypeDaoImpl extends BasicDao implements UserSubscribeT
     
     @SuppressWarnings("unchecked")
     @Override
-    public List<UserSubscribeType> findSubscribeTypes(UserInfo userInfo, String type) {
+    public List<UserSubscribeType> findUserSubscribeTypes(UserInfo userInfo, String type) {
         String hql = "select u from UserSubscribeType u inner join u.subscribeType item where cast_type = ? and u.userInfo = ? and u.subscribeStatus = ?";
         Query query = em.createQuery(hql);
         query.setParameter(1, type);
@@ -48,6 +48,15 @@ public class UserSubscribeTypeDaoImpl extends BasicDao implements UserSubscribeT
         query.setParameter(4, userInfo);
         List<UserSubscribeType> userSubscribeTypes = query.getResultList();
         return (userSubscribeTypes == null || userSubscribeTypes.isEmpty()) ? null : userSubscribeTypes.get(0);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<UserSubscribeType> findAllSubscribeTypes() {
+        String hql = "select u from UserSubscribeType u inner join u.subscribeType item where u.subscribeStatus = ? order by u.createdOn asc";
+        Query query = em.createQuery(hql);
+        query.setParameter(1, SubscribeStatus.SUBSCRIBED);
+        return query.getResultList();
     }
 
 }

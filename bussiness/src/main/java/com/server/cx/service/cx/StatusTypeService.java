@@ -8,4 +8,6 @@ public interface StatusTypeService {
     public DataPage queryAllStatusTypes(String imsi);
 
     public GraphicInfo getFirstChild(Long statusType);
+
+    public abstract DataPage subscribeAndQueryStatusTypes(String imsi);
 }

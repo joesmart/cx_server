@@ -9,4 +9,6 @@ public interface HolidayTypeService {
     public DataPage queryAllHolidayTypes(String imsi) throws NotSubscribeTypeException;
 
     public GraphicInfo getFirstChild(Long holidayTypeId);
+
+    public abstract DataPage subscribeAndQueryHoliayTypes(String imsi);
 }

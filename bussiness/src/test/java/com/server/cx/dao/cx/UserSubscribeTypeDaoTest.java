@@ -34,7 +34,13 @@ public class UserSubscribeTypeDaoTest extends SpringTransactionalTestCase {
         assertThat(userSubscribeTypes.size()).isEqualTo(9);
         assertThat(userSubscribeTypes.get(0).getSubscribeType().getName()).isEqualTo("节日包");
     }
-
+    
+    @Test
+    public void test_find_all_subscribe_types() {
+        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findAllSubscribeTypes();
+        assertThat(userSubscribeTypes.size()).isEqualTo(5);
+        System.out.println("userSubscribeTypes = " + userSubscribeTypes);
+    }
     @Test
     public void test_save_successful() {
         UserSubscribeType userSubscribeType = new UserSubscribeType();
@@ -69,7 +75,7 @@ public class UserSubscribeTypeDaoTest extends SpringTransactionalTestCase {
     
     @Test
     public void test_find_subscribe_holiday_types() {
-        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findSubscribeTypes(userInfoDao.findOne("1"), "holiday");
+        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfoDao.findOne("1"), "holiday");
         System.out.println("userSubscribeType = " + (UserSubscribeType)userSubscribeTypes.get(0));
         assertThat(userSubscribeTypes).isNotNull();
         assertThat(userSubscribeTypes.size()).isEqualTo(1);
@@ -78,7 +84,7 @@ public class UserSubscribeTypeDaoTest extends SpringTransactionalTestCase {
     
     @Test
     public void test_find_subscribe_status_types() {
-        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findSubscribeTypes(userInfoDao.findOne("1"), "status");
+        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfoDao.findOne("1"), "status");
         System.out.println("userSubscribeType = " + (UserSubscribeType)userSubscribeTypes.get(0));
         assertThat(userSubscribeTypes).isNotNull();
         assertThat(userSubscribeTypes.size()).isEqualTo(1);
@@ -87,7 +93,7 @@ public class UserSubscribeTypeDaoTest extends SpringTransactionalTestCase {
     
     @Test
     public void test_find_subscribe_custom_types() {
-        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findSubscribeTypes(userInfoDao.findOne("1"), "custom");
+        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfoDao.findOne("1"), "custom");
         System.out.println("userSubscribeType = " + (UserSubscribeType)userSubscribeTypes.get(0));
         assertThat(userSubscribeTypes).isNotNull();
         assertThat(userSubscribeTypes.size()).isEqualTo(1);
