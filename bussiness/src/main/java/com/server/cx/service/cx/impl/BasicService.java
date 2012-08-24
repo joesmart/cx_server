@@ -196,8 +196,8 @@ public class BasicService {
         return generateURL(imsi,"/statusMGraphics/" + mGraphicId);
     }
     
-    public String generateSubscribeURL(String imsi, String type) {
-        return generateURL(imsi,"/subsucribe/?type=" + type);
+    public String generateSubscribeURL(String imsi) {
+        return generateURL(imsi,"/holidayTypes");
     }
     
     public String imageURL(String resourceId){

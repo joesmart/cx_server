@@ -276,7 +276,7 @@
 	<userinfo id="3" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001003" phone_no="1512581472" user_agent="userAgent" device_id="xxx-509" totle_money="40"></userinfo>
 	<userinfo id="4" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001004" phone_no="1512581473" user_agent="userAgent" device_id="xxx-509" totle_money="40"></userinfo>
 	<userinfo id="5" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001005" phone_no="1512581474" user_agent="userAgent" device_id="xxx-509" totle_money="30"></userinfo>
-	<userinfo id="6" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001006" phone_no="1512581475" user_agent="userAgent" device_id="xxx-509" totle_money="30"></userinfo>
+	<userinfo id="6" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001006" phone_no="1512581475" user_agent="userAgent" device_id="xxx-509" totle_money="10"></userinfo>
 	<userinfo id="7" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001007" phone_no="1512581476" user_agent="userAgent" device_id="xxx-509" totle_money="20"></userinfo>
 	<userinfo id="8" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" imsi="13146001008" phone_no="1512581477" user_agent="userAgent" device_id="xxx-509" totle_money="20"></userinfo>
 	<userinfo id="9" created_by="gavin" created_on="2012-08-01 21:55:10.0" updated_by="gavin" updated_on="2012-08-01 21:56:10.0" imsi="13146001009" phone_no="1512581478" user_agent="userAgent" device_id="xxx-509" totle_money="9"></userinfo>
@@ -363,5 +363,6 @@
     <user_subscribe_type id="7" user_id="4" subscribe_status="UNSUBSCRIBED" subscribe_type_id="1" validate_month="7"></user_subscribe_type>
     <user_subscribe_type id="8" user_id="4" subscribe_status="UNSUBSCRIBED" subscribe_type_id="2" validate_month="8"></user_subscribe_type>
     <user_subscribe_type id="9" user_id="4" subscribe_status="MONEYNOTENOUGH" subscribe_type_id="3"></user_subscribe_type>
-    <user_subscribe_type id="10" user_id="7" subscribe_status="UNSUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
+    <user_subscribe_type id="10" user_id="6" subscribe_status="SUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
+    <user_subscribe_type id="11" user_id="7" subscribe_status="UNSUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
 </dataset>

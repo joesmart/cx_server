@@ -83,7 +83,7 @@ public class UserSubscribeTypeServiceImpl extends UserCheckService implements Us
         LOGGER.info("Into   imsi = " + imsi);
         checkAndSetUserInfoExists(imsi);
 
-        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findSubscribeTypes(userInfo, type);
+        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, type);
         if (userSubscribeTypes != null && !userSubscribeTypes.isEmpty()) {
             UserSubscribeType userSubscribeType = userSubscribeTypes.get(0);
             //取消用户订购
@@ -99,7 +99,7 @@ public class UserSubscribeTypeServiceImpl extends UserCheckService implements Us
     @Override
     public boolean checkSubscribeType(UserInfo userInfo, String type) throws NotSubscribeTypeException {
         LOGGER.info("Into checkExistSubscribeHolidayType userInfo = " + userInfo);
-        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findSubscribeTypes(userInfo, type);
+        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, type);
         if (userSubscribeTypes != null && !userSubscribeTypes.isEmpty())
             return true;
         throw new NotSubscribeTypeException("用户未订购");
@@ -108,7 +108,7 @@ public class UserSubscribeTypeServiceImpl extends UserCheckService implements Us
     
     @Override
     public boolean checkUserUnSubscribeType(UserInfo userInfo, String type) throws UserHasSubscribedException {
-        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findSubscribeTypes(userInfo, type);
+        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, type);
         if (userSubscribeTypes != null && !userSubscribeTypes.isEmpty()) {
             throw new UserHasSubscribedException("用户已经订购");
         }
