@@ -7,6 +7,7 @@ import com.cl.cx.platform.dto.SuggestionDTO;
 import com.cl.cx.platform.dto.VersionInfoDTO;
 import com.google.common.collect.Lists;
 import com.server.cx.entity.cx.Suggestion;
+import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.entity.cx.UserSubscribeRecord;
 import com.server.cx.entity.cx.UserSubscribeType;
 
@@ -37,7 +38,8 @@ public class ObjectFactory {
         OperationDescription operationDescription = new OperationDescription();
         operationDescription.setErrorCode(errorCode);
         operationDescription.setActionName(actionName);
-        operationDescription.setDealResult(flag);
+//        operationDescription.setDealResult(flag);
+        operationDescription.setErrorMessage(flag);
         return operationDescription;
     }
 
@@ -67,6 +69,15 @@ public class ObjectFactory {
         userSubscribeRecord.setSubscribeType(userSubscribeType.getSubscribeType());
         userSubscribeRecord.setUserInfo(userSubscribeType.getUserInfo());
         userSubscribeRecord.setDescription("取消订购");
+        return userSubscribeRecord;
+    }
+    
+    public static UserSubscribeRecord buildUserGraphicItemSubscribeRecord(UserInfo userInfo) {
+        UserSubscribeRecord userSubscribeRecord = new UserSubscribeRecord();
+        //TODO
+//        userInfo.setGraphicInfo()
+        userSubscribeRecord.setUserInfo(userInfo);
+        userSubscribeRecord.setDescription("订购");
         return userSubscribeRecord;
     }
     
