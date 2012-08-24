@@ -39,7 +39,6 @@ public class Logging {
             stopwatch = new Stopwatch();
         } else {
             if (stopwatch.isRunning()) {
-                stopwatch.reset();
                 stopwatch.stop();
             }
         }

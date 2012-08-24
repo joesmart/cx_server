@@ -57,7 +57,7 @@ public class ContactsResources {
     public ContactsDTO getContactsByImsi(@PathParam("imsi") String imsi) {
         LOGGER.info("imsi:" + imsi);
 
-        List<Contacts> contacts = contactsServcie.queryCXAppConactsByImsi(imsi);
+        List<Contacts> contacts = contactsServcie.queryCXAppContactsByImsi(imsi);
         ContactsDTO contactDTO = new ContactsDTO();
         List<ContactInfoDTO> contactInfoDTOList = Lists.transform(contacts,
             businessFunctions.contactsTransformToContactInfoDTO());

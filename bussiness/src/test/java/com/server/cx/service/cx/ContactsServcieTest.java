@@ -62,7 +62,7 @@ public class ContactsServcieTest extends SpringTransactionalTestCase {
     
     @Test
     public void test_query_cxappuser_byimsi() throws Exception {
-        List<Contacts> contacts  = contactsServcie.queryCXAppConactsByImsi("13146001000");
+        List<Contacts> contacts  = contactsServcie.queryCXAppContactsByImsi("13146001000");
         assertThat(contacts).isNotNull();
         assertThat(contacts.size()).isEqualTo(3);
         assertThat(contacts.get(0).getName()).isEqualTo("Lebron James");

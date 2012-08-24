@@ -1,6 +1,7 @@
 package com.server.cx.service.cx.impl;
 
 import com.cl.cx.platform.dto.ContactInfoDTO;
+import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -50,7 +51,7 @@ public class ContactsServiceImpl implements ContactsServcie {
     public void uploadContacts(List<ContactInfoDTO> contactPeopleInfos, String imsi) throws SystemException {
         ValidationUtil.checkParametersNotNull(imsi, contactPeopleInfos);
         checkUserInfo(imsi);
-        convertContactPeopleListToCotactsList(contactPeopleInfos);
+        convertContactPeopleListToContactsList(contactPeopleInfos);
         mobiles = contactsDao.retrieveExistsMobiles(userInfo.getId(), mobiles);
         List<Contacts> newContacts = Lists.newArrayList(Iterators.filter(contactsList.iterator(),
             new Predicate<Contacts>() {
@@ -98,9 +99,11 @@ public class ContactsServiceImpl implements ContactsServcie {
         }
     }
 
-    private void convertContactPeopleListToCotactsList(List<ContactInfoDTO> contactPeopleInfos) {
+    private void convertContactPeopleListToContactsList(List<ContactInfoDTO> contactPeopleInfos) {
+        Preconditions.checkState(contactPeopleInfos==null||contactPeopleInfos.size() ==0,"上传联系人为空");
         contactsList = Lists.newArrayList();
         mobiles = Lists.newArrayList();
+
         for (ContactInfoDTO temp : contactPeopleInfos) {
             String phoneNo = temp.getPhoneNo();
             Contacts contacts = new Contacts();
@@ -114,7 +117,7 @@ public class ContactsServiceImpl implements ContactsServcie {
     }
     
     @Override
-    public List<Contacts> queryCXAppConactsByImsi(String imsi) throws SystemException {
+    public List<Contacts> queryCXAppContactsByImsi(String imsi) throws SystemException {
         ValidationUtil.checkParametersNotNull(imsi);
         UserInfo userInfo = userInfoDao.findByImsi(imsi);
         List<Contacts> contacts = (List<Contacts>) contactsDao.getContactsByUserIdAndSelfUserInfoNotNull(userInfo.getId());

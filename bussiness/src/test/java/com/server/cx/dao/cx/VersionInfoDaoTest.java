@@ -20,6 +20,6 @@ public class VersionInfoDaoTest extends SpringTransactionalTestCase {
         List<VersionInfo> versionInfos = (List<VersionInfo>) versionInfoDao.findAll();
         assertThat(versionInfos.size()).isGreaterThan(0);
         assertThat(versionInfos.get(0).getVersion()).isEqualTo("3.0.122");
-        assertThat(versionInfos.size()).isEqualTo(2);
+        assertThat(versionInfos.size()).isEqualTo(1);
     }
 }

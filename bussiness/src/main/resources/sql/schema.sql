@@ -25,6 +25,10 @@
 
     alter table graphic_resource 
         drop 
+        foreign key FK4F320785A8BFB6AE;
+
+    alter table graphic_resource 
+        drop 
         foreign key FK4F320785E231CA91;
 
     alter table history_mgraphic 
@@ -71,6 +75,10 @@
         drop 
         foreign key FK7C0ED6834DEBD61E;
 
+    alter table user_diy_graphic 
+        drop 
+        foreign key FKB013FBC96C146C11;
+
     alter table user_favorites 
         drop 
         foreign key FKF2FF4EE36C146C11;
@@ -78,6 +86,30 @@
     alter table user_favorites 
         drop 
         foreign key FKF2FF4EE38EBB0422;
+
+    alter table user_graphic_item_subscribe 
+        drop 
+        foreign key FKDA2044496C146C11;
+
+    alter table user_graphic_item_subscribe 
+        drop 
+        foreign key FKDA2044498EBB0422;
+
+    alter table user_subscribe_record 
+        drop 
+        foreign key FKECF0ADA6C146C11;
+
+    alter table user_subscribe_record 
+        drop 
+        foreign key FKECF0ADA9E7BF8A6;
+
+    alter table user_subscribe_type 
+        drop 
+        foreign key FK44373C036C146C11;
+
+    alter table user_subscribe_type 
+        drop 
+        foreign key FK44373C039E7BF8A6;
 
     drop table if exists acct_group;
 
@@ -109,13 +141,23 @@
 
     drop table if exists status_type;
 
+    drop table if exists subscribe_type;
+
     drop table if exists suggestion;
 
     drop table if exists type;
 
     drop table if exists user_catacts;
 
+    drop table if exists user_diy_graphic;
+
     drop table if exists user_favorites;
+
+    drop table if exists user_graphic_item_subscribe;
+
+    drop table if exists user_subscribe_record;
+
+    drop table if exists user_subscribe_type;
 
     drop table if exists userinfo;
 
@@ -183,12 +225,12 @@
         updated_by varchar(64),
         updated_on datetime,
         audit_passed bit,
-        graphic_id varchar(255),
-        resource_id varchar(255),
+        resource_id varchar(40),
         source_path varchar(255),
         thumbnail_path varchar(255),
-        type varchar(255),
+        type varchar(10),
         graphicinfo_id varchar(32),
+        diy_id varchar(32),
         primary key (id)
     );
 
@@ -240,8 +282,8 @@
         holiday datetime,
         begin datetime,
         end datetime,
-        special_phone_no varchar(20),
         valid_date datetime,
+        special_phone_no varchar(20),
         graphic_info_id varchar(32),
         user_id varchar(32),
         holiday_type_id bigint,
@@ -286,6 +328,18 @@
         primary key (id)
     );
 
+    create table subscribe_type (
+        cast_type varchar(10) not null,
+        id bigint not null auto_increment,
+        created_by varchar(64),
+        created_on datetime,
+        updated_by varchar(64),
+        updated_on datetime,
+        name varchar(255),
+        price double precision,
+        primary key (id)
+    );
+
     create table suggestion (
         id bigint not null auto_increment,
         created_by varchar(64),
@@ -320,6 +374,18 @@
         primary key (id)
     );
 
+    create table user_diy_graphic (
+        id varchar(32) not null,
+        created_by varchar(64),
+        created_on datetime,
+        updated_by varchar(64),
+        updated_on datetime,
+        name varchar(255),
+        signature varchar(255),
+        user_id varchar(32),
+        primary key (id)
+    );
+
     create table user_favorites (
         id varchar(32) not null,
         created_by varchar(64),
@@ -327,6 +393,44 @@
         updated_by varchar(64),
         updated_on datetime,
         graphic_info_id varchar(32),
+        user_id varchar(32),
+        primary key (id)
+    );
+
+    create table user_graphic_item_subscribe (
+        id bigint not null auto_increment,
+        created_by varchar(64),
+        created_on datetime,
+        updated_by varchar(64),
+        updated_on datetime,
+        graphic_info_id varchar(32),
+        user_id varchar(32),
+        primary key (id)
+    );
+
+    create table user_subscribe_record (
+        id bigint not null auto_increment,
+        created_by varchar(64),
+        created_on datetime,
+        updated_by varchar(64),
+        updated_on datetime,
+        description varchar(200),
+        expenses double precision,
+        income double precision,
+        subscribe_type_id bigint,
+        user_id varchar(32),
+        primary key (id)
+    );
+
+    create table user_subscribe_type (
+        id bigint not null auto_increment,
+        created_by varchar(64),
+        created_on datetime,
+        updated_by varchar(64),
+        updated_on datetime,
+        subscribe_status varchar(20),
+        validate_month integer,
+        subscribe_type_id bigint,
         user_id varchar(32),
         primary key (id)
     );
@@ -340,6 +444,7 @@
         device_id varchar(60),
         imsi varchar(255),
         phone_no varchar(255),
+        totle_money double precision,
         user_agent varchar(60),
         primary key (id),
         unique (phone_no)
@@ -391,6 +496,12 @@
         add constraint FKA2E5796ECDC4AB82 
         foreign key (holiday_type_id) 
         references holiday_type (id);
+
+    alter table graphic_resource 
+        add index FK4F320785A8BFB6AE (diy_id), 
+        add constraint FK4F320785A8BFB6AE 
+        foreign key (diy_id) 
+        references user_diy_graphic (id);
 
     alter table graphic_resource 
         add index FK4F320785E231CA91 (graphicinfo_id), 
@@ -464,6 +575,12 @@
         foreign key (self_user_id) 
         references userinfo (id);
 
+    alter table user_diy_graphic 
+        add index FKB013FBC96C146C11 (user_id), 
+        add constraint FKB013FBC96C146C11 
+        foreign key (user_id) 
+        references userinfo (id);
+
     alter table user_favorites 
         add index FKF2FF4EE36C146C11 (user_id), 
         add constraint FKF2FF4EE36C146C11 
@@ -475,3 +592,39 @@
         add constraint FKF2FF4EE38EBB0422 
         foreign key (graphic_info_id) 
         references graphic_infos (id);
+
+    alter table user_graphic_item_subscribe 
+        add index FKDA2044496C146C11 (user_id), 
+        add constraint FKDA2044496C146C11 
+        foreign key (user_id) 
+        references userinfo (id);
+
+    alter table user_graphic_item_subscribe 
+        add index FKDA2044498EBB0422 (graphic_info_id), 
+        add constraint FKDA2044498EBB0422 
+        foreign key (graphic_info_id) 
+        references graphic_infos (id);
+
+    alter table user_subscribe_record 
+        add index FKECF0ADA6C146C11 (user_id), 
+        add constraint FKECF0ADA6C146C11 
+        foreign key (user_id) 
+        references userinfo (id);
+
+    alter table user_subscribe_record 
+        add index FKECF0ADA9E7BF8A6 (subscribe_type_id), 
+        add constraint FKECF0ADA9E7BF8A6 
+        foreign key (subscribe_type_id) 
+        references subscribe_type (id);
+
+    alter table user_subscribe_type 
+        add index FK44373C036C146C11 (user_id), 
+        add constraint FK44373C036C146C11 
+        foreign key (user_id) 
+        references userinfo (id);
+
+    alter table user_subscribe_type 
+        add index FK44373C039E7BF8A6 (subscribe_type_id), 
+        add constraint FK44373C039E7BF8A6 
+        foreign key (subscribe_type_id) 
+        references subscribe_type (id);

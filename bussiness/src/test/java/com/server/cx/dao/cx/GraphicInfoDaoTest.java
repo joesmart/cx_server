@@ -79,7 +79,7 @@ public class GraphicInfoDaoTest extends SpringTransactionalTestCase {
         Page<GraphicInfo> page  = graphicInfoDao.findAll(GraphicInfoSpecifications.categoryTypeGraphicInfo(2L),pageRequest);
         List<GraphicInfo> graphicInfoList = page.getContent();
         assertThat(graphicInfoList).isNotNull();
-        assertThat(page.getTotalPages()).isEqualTo(1);
+        assertThat(page.getTotalPages()).isEqualTo(11);
         assertThat(graphicInfoList.size()).isGreaterThanOrEqualTo(2);
         for(GraphicInfo graphicInfo:graphicInfoList){
             assertThat(graphicInfo.getCategory().getId()).isEqualTo(2L);
