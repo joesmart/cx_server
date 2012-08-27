@@ -301,16 +301,15 @@ public class BusinessFunctions {
         }
 
         if (input instanceof UserCustomMGraphic) {
-            if (((UserCustomMGraphic) input).getBegin() != null && ((UserCustomMGraphic) input).getBegin().equals(LocalDate.parse("1900-1-1").toDate())) {
+            if (((UserCustomMGraphic) input).getBegin() != null && ((UserCustomMGraphic) input).getBegin().getTime() == (LocalDate.parse("1900-1-1").toDate().getTime())) {
                 ((UserCustomMGraphic) input).setBegin(null);
                 ((UserCustomMGraphic) input).setEnd(null);
+            }else{
+                dataItem.setBegin(((UserCustomMGraphic) input).getBegin());
+                dataItem.setEnd(((UserCustomMGraphic) input).getEnd());
             }
         }
 
-        if (input instanceof UserCustomMGraphic) {
-            dataItem.setBegin(((UserCustomMGraphic) input).getBegin());
-            dataItem.setEnd(((UserCustomMGraphic) input).getEnd());
-        }
 
         GraphicInfo graphicInfo = input.getGraphicInfo();
 
