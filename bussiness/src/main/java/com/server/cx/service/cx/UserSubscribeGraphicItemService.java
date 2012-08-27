@@ -1,9 +1,13 @@
 package com.server.cx.service.cx;
 
-public class UserSubscribeGraphicItemService {
+import com.server.cx.entity.cx.GraphicInfo;
+import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.exception.NotSubscribeTypeException;
 
-    public UserSubscribeGraphicItemService() {
-        // TODO Auto-generated constructor stub
-    }
+public interface UserSubscribeGraphicItemService {
+    public void subscribeGraphicItem(String imsi, String graphicInfoId);
 
+    public void subscribeGraphicItem(UserInfo userInfo, GraphicInfo graphicInfo);
+
+    public void checkUserSubscribeGraphicItem(UserInfo userInfo, String graphicInfoId) throws NotSubscribeTypeException;
 }

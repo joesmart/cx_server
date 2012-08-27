@@ -25,6 +25,7 @@ import com.server.cx.exception.NotSubscribeTypeException;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.QueryMGraphicService;
+import com.server.cx.service.cx.UserSubscribeGraphicItemService;
 import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.service.util.BusinessFunctions;
 
@@ -57,10 +58,14 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
     
     @Autowired
     private UserSubscribeTypeService userSubscribeTypeService;
+    
+    @Autowired
+    private UserSubscribeGraphicItemService userSubscribeGraphicItemService;
 
     private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
         checkPreviousMGraphicCount();
         UserCustomMGraphic userCustomMGraphic = new UserCustomMGraphic();
+        userCustomMGraphic.setSubscribe(mGraphicDTO.getSubscribe());
         userCustomMGraphic.setGraphicInfo(graphicInfo);
         userCustomMGraphic.setUserInfo(userInfo);
         userCustomMGraphic.setCommon(true);
@@ -99,9 +104,18 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
     }
 
     @Override
-    public OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO) throws RuntimeException {
+    public OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO, Boolean subscribe) throws RuntimeException {
         checkAndInitializeContext(imsi, mGraphicDTO);
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
+        
+
+        if(subscribe) {
+            userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
+        } else {
+            userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+        }
+        mGraphicDTO.setSubscribe(true);
+        
         createAndSaveNewUserCommonMGraphic(mGraphicDTO);
         return new OperationResult("createUserHolidayMGraphic", "success");
     }
@@ -111,7 +125,8 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
     public OperationResult edit(String imsi, MGraphicDTO mGraphicDTO) {
         checkAndInitializeContext(imsi, mGraphicDTO);
         mGraphicIdMustBeExists(mGraphicDTO);
-
+        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+        
         UserCustomMGraphic mGraphic = userCustomMGraphicDao.findOne(mGraphicDTO.getId());
         convertBeginAndEndDate(mGraphicDTO,mGraphic);
         if (mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0) {

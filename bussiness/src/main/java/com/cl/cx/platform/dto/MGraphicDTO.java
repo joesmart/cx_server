@@ -25,4 +25,5 @@ public class MGraphicDTO {
     private Integer modeType;
     private Long holidayType;
     private Long statusType;
+    private Boolean subscribe;
 }

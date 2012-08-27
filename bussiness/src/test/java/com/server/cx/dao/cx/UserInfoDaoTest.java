@@ -79,10 +79,4 @@ public class UserInfoDaoTest extends SpringTransactionalTestCase {
             assertTrue(true);
         }
     }
-    
-    @Test
-    public void test_minus_money_by_price() {
-        userInfoDao.minusMoneyByPrice("1", 15d);
-        assertEquals(userInfoDao.findOne("1").getTotleMoney().doubleValue(), 35d, 1e-3);
-    }
 }

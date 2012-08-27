@@ -4,20 +4,16 @@ import com.server.cx.entity.basic.AuditableStringEntity;
 import lombok.ToString;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.util.Date;
 
 /**
- * User: yanjianzou
- * Date: 12-8-3
- * Time: 下午12:36
- * FileName:MGraphic
+ * User: yanjianzou Date: 12-8-3 Time: 下午12:36 FileName:MGraphic
  */
 @Entity
 @Table(name = "mgraphic")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="cast_type", discriminatorType=DiscriminatorType.STRING,length=10)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "cast_type", discriminatorType = DiscriminatorType.STRING, length = 10)
 @DiscriminatorValue("basic")
 @ToString
 public class MGraphic extends AuditableStringEntity {
@@ -29,9 +25,9 @@ public class MGraphic extends AuditableStringEntity {
     private String name;
     private GraphicInfo graphicInfo;
     private Integer priority;
+    private Boolean subscribe;
 
-
-    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @Fetch(FetchMode.SELECT)
     @JoinColumn(name = "graphic_info_id")
     public GraphicInfo getGraphicInfo() {
@@ -74,7 +70,7 @@ public class MGraphic extends AuditableStringEntity {
         this.signature = signature;
     }
 
-    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     public UserInfo getUserInfo() {
         return userInfo;
@@ -90,6 +86,14 @@ public class MGraphic extends AuditableStringEntity {
 
     public void setPriority(Integer priority) {
         this.priority = priority;
+    }
+
+    public Boolean getSubscribe() {
+        return subscribe;
+    }
+
+    public void setSubscribe(Boolean subscribe) {
+        this.subscribe = subscribe;
     }
 
 }

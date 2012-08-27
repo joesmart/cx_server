@@ -295,6 +295,7 @@ public class BusinessFunctions {
         dataItem.setId(input.getGraphicInfo().getId());
         dataItem.setMGraphicId(input.getId());
         dataItem.setLevel(input.getGraphicInfo().getLevel());
+        dataItem.setSubScribe(input.getSubscribe());
         dataItem.setModeType(input.getModeType());
         if (input instanceof UserCommonMGraphic) {
             dataItem.setPhoneNos(((UserCommonMGraphic) input).getPhoneNos());

@@ -163,8 +163,8 @@
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800091" name="彩像101" signature="男儿当自强91" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-10 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-10 12:13:35.0" holiday_type_id="3"></graphic_infos>
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800092" name="彩像102" signature="男儿当自强92" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-11 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-11 12:13:35.0" holiday_type_id="4"></graphic_infos>
     <!--GIF-->
-    <graphic_infos id="4028b88138d5e5e50138d5e5f2800093" name="彩像103" signature="男儿当自强93" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-11 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-11 12:13:35.0" category_id="7"></graphic_infos>
-    <graphic_infos id="4028b88138d5e5e50138d5e5f2800094" name="彩像104" signature="男儿当自强94" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-11 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-11 12:13:35.0" category_id="7"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800093" name="彩像103" signature="男儿当自强93" audit_status="PASSED" level="3" recommend="true" use_count="14" price="20" owner="system" created_by="Anonymous"  created_on="2012-10-11 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-11 12:13:35.0" category_id="7"></graphic_infos>
+    <graphic_infos id="4028b88138d5e5e50138d5e5f2800094" name="彩像104" signature="男儿当自强94" audit_status="PASSED" level="3" recommend="true" use_count="14" price="52.5" owner="system" created_by="Anonymous"  created_on="2012-10-11 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-11 12:13:35.0" category_id="7"></graphic_infos>
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800095" name="彩像105" signature="男儿当自强95" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-11 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-11 12:13:35.0" category_id="7"></graphic_infos>
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800096" name="彩像106" signature="男儿当自强96" audit_status="PASSED" level="3" recommend="true" use_count="14" price="1.2" owner="system" created_by="Anonymous"  created_on="2012-10-11 12:13:35.0" updated_by="Anonymous" updated_on="2012-10-11 12:13:35.0" category_id="7"></graphic_infos>
 
@@ -369,4 +369,10 @@
     <user_subscribe_type id="9" user_id="4" subscribe_status="MONEYNOTENOUGH" subscribe_type_id="3"></user_subscribe_type>
     <user_subscribe_type id="10" user_id="6" subscribe_status="SUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
     <user_subscribe_type id="11" user_id="7" subscribe_status="UNSUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
+	
+	<user_subscribe_graphic_item user_id="1" graphic_info_id="4028b88138d5e5e50138d5e5f2800001"></user_subscribe_graphic_item>
+	<user_subscribe_graphic_item user_id="1" graphic_info_id="4028b88138d5e5e50138d5e5f2800002"></user_subscribe_graphic_item>
+	<user_subscribe_graphic_item user_id="1" graphic_info_id="4028b88138d5e5e50138d5e5f2800003"></user_subscribe_graphic_item>
+	<user_subscribe_graphic_item user_id="1" graphic_info_id="4028b88138d5e5e50138d5e5f2800004"></user_subscribe_graphic_item>
+	<user_subscribe_graphic_item user_id="1" graphic_info_id="4028b88138d5e5e50138d5e5f2800005"></user_subscribe_graphic_item>
 </dataset>
