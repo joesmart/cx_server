@@ -3,12 +3,14 @@ package com.server.cx.webservice.rs.server;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
@@ -47,23 +49,37 @@ public class CustomMGraphicResources extends OperationResources {
     @Autowired
     @Qualifier("customMGraphicService")
     private QueryMGraphicService queryMGraphicService;
-    
+
     @Autowired
     private UserCustomTypeService userCustomTypeService;
-    
+
     @Autowired
     private ActionBuilder actionBuilder;
-    
+
     @Autowired
     private UserSubscribeTypeService userSubscribeTypeService;
-    
+
     @POST
-    public Response create(@PathParam("imsi") String imsi, MGraphicDTO mGraphicDTO) {
+    public Response create(@PathParam("imsi") String imsi,
+                           @DefaultValue("false") @QueryParam("subscribe") Boolean subscribe, MGraphicDTO mGraphicDTO) {
         operationDescription = new OperationDescription();
         try {
             OperationResult operationResult;
-            operationResult = customMGraphicService.create(imsi, false, mGraphicDTO);
+            operationResult = customMGraphicService.create(imsi, false, mGraphicDTO, subscribe);
             updateOperationDescription(operationResult);
+        } catch (MoneyNotEnoughException e) {
+            LOGGER.info("create MoneyNotEnoughException", e);
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "create", "余额不足");
+            return Response.ok(operationDescription).build();
+
+        } catch (NotSubscribeTypeException e) {
+            LOGGER.error("create NotSubscribeTypeException error", e);
+            OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
+                HttpServletResponse.SC_OK, "create", Constants.SUCCESS_FLAG,
+                actionBuilder.buildCustomSubscribeGraphicItemAction(imsi));
+            return Response.ok(operationDescription).build();
+
         } catch (Exception ex) {
             errorMessage(ex);
             actionName = "createUserCommonMGraphic";
@@ -83,6 +99,12 @@ public class CustomMGraphicResources extends OperationResources {
             mGraphicDTO.setId(userCommonMGraphicId);
             OperationResult operationResult = customMGraphicService.edit(imsi, mGraphicDTO);
             updateOperationDescription(operationResult);
+        } catch (NotSubscribeTypeException e) {
+            LOGGER.error("update NotSubscribeTypeException error", e);
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "create", "用户未订购");
+            return Response.ok(operationDescription).build();
+
         } catch (Exception e) {
             errorMessage(e);
             actionName = "editUserCommonMGraphic";
@@ -131,7 +153,7 @@ public class CustomMGraphicResources extends OperationResources {
             ValidationUtil.checkParametersNotNull(imsi);
             DataPage dataPage = userCustomTypeService.subscribeAndQueryCustomTypes(imsi);
             return Response.ok(dataPage).build();
-            
+
         } catch (InvalidParameterException e) {
             LOGGER.error("subscribeFunctionType InvalidParameterException error", e);
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(

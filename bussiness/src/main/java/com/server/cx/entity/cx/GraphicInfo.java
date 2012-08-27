@@ -2,15 +2,11 @@ package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableStringEntity;
 import com.server.cx.util.business.AuditStatus;
-
 import javax.persistence.*;
 import java.util.List;
 
 /**
- * User: yanjianzou
- * Date: 12-7-25
- * Time: 下午2:03
- * FileName:GraphicInfo
+ * User: yanjianzou Date: 12-7-25 Time: 下午2:03 FileName:GraphicInfo
  */
 @Entity
 @Table(name = "graphic_infos")
@@ -19,12 +15,12 @@ public class GraphicInfo extends AuditableStringEntity {
     private String signature;
     private Integer level;
     private Integer useCount;
-    private Float price;
+    private Double price; 
     private String owner;
     private List<GraphicResource> graphicResources;
     private Category category;
     private StatusType statusType;
-    private HolidayType holidayType;
+    private HolidayType holidayType; 
     private Boolean recommend;
     private AuditStatus auditStatus;
 
@@ -46,11 +42,11 @@ public class GraphicInfo extends AuditableStringEntity {
         this.owner = owner;
     }
 
-    public Float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -113,7 +109,6 @@ public class GraphicInfo extends AuditableStringEntity {
     public HolidayType getHolidayType() {
         return holidayType;
     }
-
 
     public void setHolidayType(HolidayType holidayType) {
         this.holidayType = holidayType;

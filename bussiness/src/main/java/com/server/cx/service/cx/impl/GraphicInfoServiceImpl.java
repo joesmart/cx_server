@@ -13,6 +13,7 @@ import com.server.cx.entity.cx.*;
 import com.server.cx.service.cx.GraphicInfoService;
 import com.server.cx.service.util.ActionNames;
 import com.server.cx.service.util.BusinessFunctions;
+import com.server.cx.util.ObjectFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +61,10 @@ public class GraphicInfoServiceImpl  implements GraphicInfoService {
 
     @Autowired
     private UserHolidayMGraphicDao userHolidayMGraphicDao;
-
+    
+    @Autowired
+    private UserSubscribeRecordDao userSubscribeRecordDao;
+    
     @Override
     public DataPage findGraphicInfoDataPageByCategoryId(final String imsi, Long categoryId, Integer offset,
                                                         Integer limit) throws ExecutionException {
@@ -232,11 +236,26 @@ public class GraphicInfoServiceImpl  implements GraphicInfoService {
         if (existUserGraphicInfo) {
             holidayGraphicInfos.add(0, graphicInfo);
         }
+        
         List<DataItem> dataItems = transformToGraphicItemList(imsi, holidayGraphicInfos, usedGraphicInfos,
             ActionNames.HOLIDAY_MGRAPHIC_ACTION);
 
         DataPage dataPage = generateDataPage(imsi, offset, limit, page, dataItems, queryCondition, page.getTotalPages());
 
         return dataPage;
+    }
+
+    @Override
+    public void subscribeGraphicInfo(String imsi, String graphicInfoId) {
+        GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
+        UserInfo userInfo = userInfoDao.findByImsi(imsi);
+        userInfoDao.checkCurrentMoneyValidate(userInfo.getId(), graphicInfo.getPrice());
+        //订购
+        //扣钱
+        userInfo.setTotleMoney(userInfo.getTotleMoney() - graphicInfo.getPrice());
+        userInfoDao.save(userInfo);
+        //生成记录
+        UserSubscribeRecord userSubscribeRecord = ObjectFactory.buildUserGraphicItemSubscribeRecord(userInfo);
+        userSubscribeRecordDao.save(userSubscribeRecord);
     }
 }

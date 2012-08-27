@@ -1,12 +1,12 @@
 package com.server.cx.model;
 
-import com.cl.cx.platform.dto.Action;
-import com.cl.cx.platform.dto.Actions;
-import com.server.cx.service.cx.impl.BasicService;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import com.cl.cx.platform.dto.Action;
+import com.cl.cx.platform.dto.Actions;
+import com.server.cx.service.cx.impl.BasicService;
 
 /**
  * User: yanjianzou Date: 12-7-30 Time: 下午3:27 FileName:ActionBuilder
@@ -14,7 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ActionBuilder {
     @Autowired
-    @Setter @Getter
+    @Setter
+    @Getter
     private BasicService basicService;
 
     private Actions actions;
@@ -59,22 +60,22 @@ public class ActionBuilder {
         actions.setRemoveURL(action);
         return this;
     }
-    
+
     public ActionBuilder subscribeHolidayURL(String url) {
         Action action = new Action(url, "PUT");
-        actions.setSubscribeHolidayURL(action);
+        actions.setSubscribeURL(action);
         return this;
     }
-    
+
     public ActionBuilder subscribeStatusURL(String url) {
         Action action = new Action(url, "PUT");
-        actions.setSubscribeStatusURL(action);
+        actions.setSubscribeURL(action);
         return this;
     }
-    
+
     public ActionBuilder subscribeCustomURL(String url) {
         Action action = new Action(url, "PUT");
-        actions.setSubscribeCustomURL(action);
+        actions.setSubscribeURL(action);
         return this;
     }
 
@@ -156,7 +157,7 @@ public class ActionBuilder {
         return this;
     }
 
-    public ActionBuilder registerUpDateURL(String url){
+    public ActionBuilder registerUpDateURL(String url) {
         Action action = new Action(url, "PUT");
         actions.setUpdateUserInfoURL(action);
         return this;
@@ -179,16 +180,22 @@ public class ActionBuilder {
         actions.setUploadContactsURL(action);
         return this;
     }
-    
+
     public ActionBuilder getContactsURL(String url) {
         Action action = new Action(url, "GET");
         actions.setGetContactsURL(action);
         return this;
     }
-    
+
     private ActionBuilder uploadCommonMGraphicURL(String url) {
         Action action = new Action(url, "POST");
         actions.setUploadCommonMGraphicURL(action);
+        return this;
+    }
+
+    private ActionBuilder subscribeURL(String url) {
+        Action action = new Action(url, "POST");
+        actions.setSubscribeURL(action);
         return this;
     }
 
@@ -198,8 +205,8 @@ public class ActionBuilder {
 
     public Actions buildGraphicItemAction(String imsi) {
         return actions().collectURL(basicService.generateMyCollectionsVisitURL(imsi))
-            .purchaseURL(basicService.generateImagePurchaseURL(imsi))
-            .useURL(basicService.generateMGraphicsURL(imsi)).build();
+            .purchaseURL(basicService.generateImagePurchaseURL(imsi)).useURL(basicService.generateMGraphicsURL(imsi))
+            .build();
     }
 
     public Actions buildHolidayMGraphicItemAction(String imsi) {
@@ -222,9 +229,7 @@ public class ActionBuilder {
     }
 
     public Actions buildHolidayMGraphicItemCreatedAction(String imsi, String mGraphicId) {
-        return actions()
-                .removeURL(basicService.generateHolidayMGraphicRemoveURL(imsi, mGraphicId))
-                .build();
+        return actions().removeURL(basicService.generateHolidayMGraphicRemoveURL(imsi, mGraphicId)).build();
     }
 
     public Actions buildStatusMGraphicItemEditAction(String imsi, String mGraphicId) {
@@ -235,9 +240,7 @@ public class ActionBuilder {
     }
 
     public Actions buildStatusMGraphicItemCreatedAction(String imsi, String mGraphicId) {
-        return actions()
-                .removeURL(basicService.generateStatusMGraphicRemoveURL(imsi, mGraphicId))
-                .build();
+        return actions().removeURL(basicService.generateStatusMGraphicRemoveURL(imsi, mGraphicId)).build();
     }
 
     public Actions buildCategoriesAction(String imsi, Long categoryId) {
@@ -246,57 +249,64 @@ public class ActionBuilder {
     }
 
     public Actions buildHolidayTypeAction(String imsi, Long holidayTypeId) {
-        return actions()
-            .zoneInURL(basicService.generateHolidayTypeGraphicInfosVisitURL(imsi, holidayTypeId))
+        return actions().zoneInURL(basicService.generateHolidayTypeGraphicInfosVisitURL(imsi, holidayTypeId))
             .zoneOutURL(basicService.generateHolidayTypesVisitURL(imsi))
-            .useURL(basicService.generateImmediateUseHolidayMGraphicURL(imsi))
-            .build();
+            .useURL(basicService.generateImmediateUseHolidayMGraphicURL(imsi)).build();
     }
 
-    public Actions buildHolidayTypeHasUsedActions(String imsi, Long holidayTypeId,String mgraphicId) {
-        return actions()
-                .zoneInURL(basicService.generateHolidayTypeGraphicInfosVisitURL(imsi, holidayTypeId))
-                .zoneOutURL(basicService.generateHolidayTypesVisitURL(imsi))
-                .useURL(basicService.generateImmediateUseHolidayMGraphicURL(imsi))
-                .removeURL(basicService.generateHolidayMGraphicRemoveURL(imsi, mgraphicId))
-                .build();
+    public Actions buildHolidayTypeHasUsedActions(String imsi, Long holidayTypeId, String mgraphicId) {
+        return actions().zoneInURL(basicService.generateHolidayTypeGraphicInfosVisitURL(imsi, holidayTypeId))
+            .zoneOutURL(basicService.generateHolidayTypesVisitURL(imsi))
+            .useURL(basicService.generateImmediateUseHolidayMGraphicURL(imsi))
+            .removeURL(basicService.generateHolidayMGraphicRemoveURL(imsi, mgraphicId)).build();
     }
 
     public Actions buildStatusTypeAction(String imsi, Long statusTypeId) {
-        return actions()
-               .zoneInURL(basicService.generateStatusTypeGraphicInfosVisitURL(imsi, statusTypeId))
-               .zoneOutURL(basicService.generateStatusTypeVisitURL(imsi))
-               .useURL(basicService.generateImmediateUseStatusMGraphicURL(imsi))
-               .build();
+        return actions().zoneInURL(basicService.generateStatusTypeGraphicInfosVisitURL(imsi, statusTypeId))
+            .zoneOutURL(basicService.generateStatusTypeVisitURL(imsi))
+            .useURL(basicService.generateImmediateUseStatusMGraphicURL(imsi)).build();
     }
 
-    public Actions buildStatusTypeHasUsedActions(String imsi,Long statusTypeId,String mgraphicId){
-        return actions()
-                .zoneInURL(basicService.generateStatusTypeGraphicInfosVisitURL(imsi, statusTypeId))
-                .zoneOutURL(basicService.generateStatusTypeVisitURL(imsi))
-                .useURL(basicService.generateImmediateUseStatusMGraphicURL(imsi))
-                .removeURL(basicService.generateStatusMGraphicRemoveURL(imsi, mgraphicId))
-                .build();
+    public Actions buildStatusTypeHasUsedActions(String imsi, Long statusTypeId, String mgraphicId) {
+        return actions().zoneInURL(basicService.generateStatusTypeGraphicInfosVisitURL(imsi, statusTypeId))
+            .zoneOutURL(basicService.generateStatusTypeVisitURL(imsi))
+            .useURL(basicService.generateImmediateUseStatusMGraphicURL(imsi))
+            .removeURL(basicService.generateStatusMGraphicRemoveURL(imsi, mgraphicId)).build();
     }
 
     public Actions buildUserFavoriteItemAction(String imsi, String userFavoriteId) {
         return actions().removeURL(basicService.generateMyCollectionsOperateURL(imsi, userFavoriteId))
-            .purchaseURL(basicService.generateImagePurchaseURL(imsi))
-            .useURL(basicService.generateMGraphicsURL(imsi)).build();
+            .purchaseURL(basicService.generateImagePurchaseURL(imsi)).useURL(basicService.generateMGraphicsURL(imsi))
+            .build();
     }
-    
+
     public Actions buildSubscribeHolidayAction(String imsi) {
         return actions().subscribeHolidayURL(basicService.generateHolidayTypesVisitURL(imsi)).build();
     }
-    
+
     public Actions buildSubscribeStatusAction(String imsi) {
         return actions().subscribeStatusURL(basicService.generateStatusTypeVisitURL(imsi)).build();
     }
-    
+
     public Actions buildSubscribeCustomAction(String imsi) {
         return actions().subscribeCustomURL(basicService.generateCustomMGraphicsVisitURL(imsi)).build();
     }
+
+    public Actions buildHolidaySubscribeGraphicItemAction(String imsi, Boolean isImmediate) {
+        return actions().subscribeURL(basicService.generateHolidaySubscribeGraphicItemURL(imsi, isImmediate)).build();
+    }
     
+    public Actions buildStatusSubscribeGraphicItemAction(String imsi, Boolean isImmediate) {
+        return actions().subscribeURL(basicService.generateStatusSubscribeGraphicItemURL(imsi, isImmediate)).build();
+    }
+    
+    public Actions buildCustomSubscribeGraphicItemAction(String imsi) {
+        return actions().subscribeURL(basicService.generateCustomSubscribeGraphicItemURL(imsi)).build();
+    }
+    
+    public Actions buildSubscribeGraphicItemAction(String imsi) {
+        return actions().subscribeURL(basicService.generateSubscribeGraphicItem(imsi)).build();
+    }
 
     public Actions buildUserOperableActions(String imsi) {
         return actions().recommendUrl(basicService.generateRecommendGraphicInfoVisitURL(imsi))
@@ -316,7 +326,7 @@ public class ActionBuilder {
             .getContactsURL(basicService.generateContactsUploadURL(imsi))
             .uploadCommonMGraphicURL(basicService.generateUserDIYMGraphicUploadURL(imsi))
             .uploadContactsURL(basicService.generateContactsUploadURL(imsi)).build();
-            
+
     }
 
     public Actions buildAnonymousActions() {
@@ -338,19 +348,13 @@ public class ActionBuilder {
         actions.setUploadCommonMGraphicURL(null);
     }
 
-
-
-    public Actions buildMGraphicActions(String imsi, String id, String conditions){
-        return  actions()
-                .editURL(basicService.getBaseURL()+imsi+"/"+conditions+"/" +id)
-                .removeURL(basicService.getBaseURL()+imsi+ "/"+conditions+"/" +id)
-                .build();
+    public Actions buildMGraphicActions(String imsi, String id, String conditions) {
+        return actions().editURL(basicService.getBaseURL() + imsi + "/" + conditions + "/" + id)
+            .removeURL(basicService.getBaseURL() + imsi + "/" + conditions + "/" + id).build();
     }
 
     public Actions buildHistoryMGraphicActions(String imsi, String id) {
         return actions().useURL(basicService.generateMGraphicsURL(imsi))
-            .removeURL(basicService.generateHistoryMGraphicRemoveURL(imsi, id))
-            .build();
+            .removeURL(basicService.generateHistoryMGraphicRemoveURL(imsi, id)).build();
     }
-
 }

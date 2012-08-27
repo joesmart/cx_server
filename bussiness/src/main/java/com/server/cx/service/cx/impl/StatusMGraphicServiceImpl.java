@@ -10,6 +10,7 @@ import com.server.cx.entity.cx.UserStatusMGraphic;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.StatusTypeService;
+import com.server.cx.service.cx.UserSubscribeGraphicItemService;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,12 +37,25 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
     @Autowired
     private StatusTypeService statusTypeService;
+    
+    @Autowired
+    private UserSubscribeGraphicItemService userSubscribeGraphicItemService;
 
     @Override
-    public OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO) {
+    public OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO, Boolean subscribe) {
 
         checkParameters(imsi, mGraphicDTO);
         checkAndSetUserInfoExists(imsi);
+        
+        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+        
+        if(subscribe) {
+            userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
+        } else {
+            userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+        }
+        mGraphicDTO.setSubscribe(true);
+        
         if(isImmediate){
             graphicInfo = statusTypeService.getFirstChild(mGraphicDTO.getStatusType());
             mGraphicDTO.setGraphicInfoId(graphicInfo.getId());
@@ -63,9 +77,10 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         checkAndInitializeContext(imsi, mGraphicDTO);
         checkParameters(imsi, mGraphicDTO);
         checkAndSetUserInfoExists(imsi);
-
+        
         mGraphicIdMustBeExists(mGraphicDTO);
-
+        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+        
         UserStatusMGraphic mGraphic = userStatusMGraphicDao.findOne(mGraphicDTO.getId());
         updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
         userStatusMGraphicDao.save(mGraphic);
@@ -100,6 +115,7 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         UserStatusMGraphic userStatusMGraphic = new UserStatusMGraphic();
         userStatusMGraphic.setGraphicInfo(graphicInfo);
         userStatusMGraphic.setUserInfo(userInfo);
+        userStatusMGraphic.setSubscribe(mGraphicDTO.getSubscribe());
         userStatusMGraphic.setStatusType(statusType);
         userStatusMGraphic.setValidDate(LocalDate.now().toDate());
         updateMGraphicNameAndSignature(mGraphicDTO, userStatusMGraphic);

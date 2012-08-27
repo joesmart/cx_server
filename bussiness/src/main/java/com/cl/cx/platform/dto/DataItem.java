@@ -23,7 +23,7 @@ public class DataItem extends BasicItem {
     private Boolean collected;
     private Boolean hasUsed;
     private Integer level;
-    private Float price;
+    private Double price;
     private String thumbnailPath;
     private String sourceImagePath;
     private String downloadNumber;
@@ -40,4 +40,5 @@ public class DataItem extends BasicItem {
     private Long statusType;
     private Date begin;
     private Date end;
+    private Boolean subScribe;
 }

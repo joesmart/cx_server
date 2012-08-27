@@ -207,4 +207,21 @@ public class BasicService {
     public String thumbnailImageURL(String resourceId){
         return  this.imageShowURL+resourceId+"&"+this.thumbnailSize;
     }
+
+    public String generateHolidaySubscribeGraphicItemURL(String imsi, Boolean isImmediate) {
+        return generateURL(imsi, "/holidayMGraphics?subscribe=true&&immediate=" + isImmediate);
+    }
+
+    public String generateStatusSubscribeGraphicItemURL(String imsi, Boolean isImmediate) {
+        return generateURL(imsi, "/statusMGraphics?subscribe=true&&immediate=" + isImmediate);
+    }
+    
+    public String generateCustomSubscribeGraphicItemURL(String imsi) {
+        return generateURL(imsi, "/customMGraphics?subscribe=true");
+    }
+    
+    public String generateSubscribeGraphicItem(String imsi) {
+        return generateURL(imsi, "/mGraphics?subscribe=true");
+    }
+
 }

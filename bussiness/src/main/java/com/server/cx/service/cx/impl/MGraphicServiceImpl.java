@@ -1,5 +1,10 @@
 package com.server.cx.service.cx.impl;
 
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
@@ -16,13 +21,8 @@ import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.HistoryMGraphicService;
 import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.QueryMGraphicService;
+import com.server.cx.service.cx.UserSubscribeGraphicItemService;
 import com.server.cx.service.util.BusinessFunctions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * User: yanjianzou
@@ -42,6 +42,9 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     private HistoryMGraphicService historyMGraphicService;
     @Autowired
     private MGraphicDao mGraphicDao;
+    
+    @Autowired
+    private UserSubscribeGraphicItemService userSubscribeGraphicItemService;
 
     @Autowired
     private BusinessFunctions businessFunctions;
@@ -63,9 +66,17 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     }
 
     @Override
-    public OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO) throws RuntimeException {
+    public OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO, Boolean subscribe) throws RuntimeException {
         checkAndInitializeContext(imsi, mGraphicDTO);
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
+        
+        if(subscribe) {
+            userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
+        } else {
+            userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+        }
+        mGraphicDTO.setSubscribe(true);
+        
         historyPreviousMGraphic();
         createAndSaveNewUserCommonMGraphic(mGraphicDTO);
         return new OperationResult("createUserCommonMGraphic", "success");
@@ -84,7 +95,8 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     public OperationResult edit(String imsi, MGraphicDTO mGraphicDTO) {
         checkAndInitializeContext(imsi, mGraphicDTO);
         mGraphicIdMustBeExists(mGraphicDTO);
-
+        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+        
         UserCommonMGraphic mGraphic = userCommonMGraphicDao.findOne(mGraphicDTO.getId());
         if (mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0) {
             historyPreviousMGraphic();

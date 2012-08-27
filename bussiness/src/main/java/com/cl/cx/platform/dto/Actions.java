@@ -39,7 +39,5 @@ public class Actions {
     private Action uploadContactsURL;
     private Action getContactsURL;
     private Action uploadCommonMGraphicURL;
-    private Action subscribeHolidayURL;
-    private Action subscribeStatusURL;
-    private Action subscribeCustomURL;
+    private Action subscribeURL;
 }

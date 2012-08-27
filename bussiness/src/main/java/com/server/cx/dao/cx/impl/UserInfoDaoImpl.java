@@ -74,15 +74,5 @@ public class UserInfoDaoImpl extends BasicDao implements UserInfoCustomDao {
             return true;
         throw new MoneyNotEnoughException("余额不足");
     }
-
-    @Override
-    public void minusMoneyByPrice(String id, Double price) {
-        String hql = "update UserInfo info set info.totleMoney = ? where id = ?";
-        Query query = em.createQuery(hql);
-        query.setParameter(1, 35d);
-        query.setParameter(2, id);
-        query.executeUpdate();
-    }
-    
-    
+        
 }

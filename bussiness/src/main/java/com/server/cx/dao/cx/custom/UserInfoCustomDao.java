@@ -16,6 +16,4 @@ public interface UserInfoCustomDao {
     
     public boolean checkCurrentMoneyValidate(String id, Double price);
     
-    public void minusMoneyByPrice(String id, Double price);
-
 }
