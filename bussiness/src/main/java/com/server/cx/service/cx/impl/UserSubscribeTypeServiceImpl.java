@@ -77,7 +77,8 @@ public class UserSubscribeTypeServiceImpl extends UserCheckService implements Us
         }
 
     }
-
+    
+    @Transactional(readOnly = false)
     @Override
     public void cancelSubscribeType(String imsi, String type) throws SystemException {
         LOGGER.info("Into   imsi = " + imsi);
@@ -87,7 +88,9 @@ public class UserSubscribeTypeServiceImpl extends UserCheckService implements Us
         if (userSubscribeTypes != null && !userSubscribeTypes.isEmpty()) {
             UserSubscribeType userSubscribeType = userSubscribeTypes.get(0);
             //取消用户订购
-            userSubscribeTypeDao.delete(userSubscribeType);
+            userSubscribeType.setSubscribeStatus(SubscribeStatus.UNSUBSCRIBED);
+            userSubscribeTypeDao.saveAndFlush(userSubscribeType);
+            
             //生成订购记录
             UserSubscribeRecord record = ObjectFactory.buildUserCancelSubscribeRecord(userSubscribeType);
             userSubscribeRecordDao.save(record);

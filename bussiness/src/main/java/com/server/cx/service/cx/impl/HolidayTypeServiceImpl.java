@@ -105,4 +105,9 @@ public class HolidayTypeServiceImpl extends UserCheckService implements HolidayT
         return Lists.transform(holidayTypes,businessFunctions.holidayTypeTransformToDataItem(imsi,holidayTypeList,userHolidayMGraphicMap));
     }
 
+    @Override
+    public void cancelSubscribeHolidayType(String imsi) {
+        userSubscribeTypeService.cancelSubscribeType(imsi, "holiday");
+    }
+
 }

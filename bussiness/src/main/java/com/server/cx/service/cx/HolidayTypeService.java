@@ -11,4 +11,6 @@ public interface HolidayTypeService {
     public GraphicInfo getFirstChild(Long holidayTypeId);
 
     public abstract DataPage subscribeAndQueryHoliayTypes(String imsi);
+
+    public void cancelSubscribeHolidayType(String imsi);
 }

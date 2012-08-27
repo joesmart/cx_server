@@ -2,6 +2,7 @@ package com.server.cx.webservice.rs.server;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -9,6 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import lombok.Delegate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,5 +92,26 @@ public class HolidayTypeResource {
         }
 
     }
+    
+    @DELETE
+    public Response cancelSubscribeHolidayType(@PathParam("imsi") String imsi) {
+        LOGGER.info("Into cancelSubscribeHolidayType imsi = " + imsi);
+        try {
+            ValidationUtil.checkParametersNotNull(imsi);
+            holidayTypeService.cancelSubscribeHolidayType(imsi);
+            
+        } catch(Exception e) {
+            LOGGER.error("cancelSubscribeHolidayType error", e);
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), "subscribeFunctionType", "服务器内部错误");
+            return Response.ok(operationDescription).build();
+        }
+        OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
+            Response.Status.NO_CONTENT.getStatusCode(), "cancelSubscribeHolidayType", "成功取消订购");
+        return Response.ok(operationDescription).build();
+        
+    }
+    
+    
 
 }
