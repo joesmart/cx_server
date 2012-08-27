@@ -4,7 +4,16 @@
     <option name="ANALYSIS_IN_BACKGROUND" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="updated" />
+    <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="updated">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business.iml" afterPath="$PROJECT_DIR$/business.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/constants/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/constants/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/sql/schema.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/schema.sql" />
+    </list>
     <ignored path="bussiness.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.ids" />
@@ -31,6 +40,7 @@
   <component name="DatabaseView">
     <flatten value="false" />
     <groupTables value="false" />
+    <sortChildren value="true" />
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
@@ -108,13 +118,28 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="exception_breakpoints_groupByClasses" value="true" />
+      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="bussiness" />
+    <favorites_list name="Current task" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="Constants.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/constants/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="24" selection-start="320" selection-end="320" vertical-scroll-proportion="0.026499303">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -147,7 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/cl/cx/platform/dto/RegisterDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/RegisterService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cl/cx/platform/dto/Actions.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/BasicService.java" />
@@ -163,6 +187,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/util/Logging.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/constants/Constants.java" />
       </list>
     </option>
   </component>
@@ -170,7 +195,6 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="userSettingsFile" value="D:\apache-maven-3.0.3\conf\settings.xml" />
-        <option name="workOffline" value="true" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -646,7 +670,7 @@
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
-      <showMembers />
+      <showMembers ProjectPane="true" />
       <showModules />
       <showLibraryContents />
       <hideEmptyPackages />
@@ -656,39 +680,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Default" />
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="business" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -720,130 +711,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -860,28 +727,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -945,87 +790,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
+              <option name="myItemId" value="constants" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1055,18 +820,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="business" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Default" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1075,18 +859,19 @@
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="173" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="OverrideImplement.combined" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="173" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="173" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="173" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="173" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="175" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="841" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="841" />
@@ -1096,39 +881,28 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="173" />
     <property name="Database.TableEditor.Splitter" value="1.0" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="DefaultCfmlFileTemplate" value="ColdFusion File" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="DefaultCfmlFileTemplate" value="ColdFusion File" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/com/server/cx" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="options.lastSelected" value="http.proxy" />
+    <property name="options.lastSelected" value="reference.settings.project.maven.repository.indices" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
-  </component>
-  <component name="PublishConfig">
-    <servers>
-      <server id="f3d6f22d-3fe2-4f51-a356-600c3caa6001">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </server>
-    </servers>
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -1285,12 +1059,7 @@
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
       <option name="PROGRAM_PARAMETERS" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
@@ -1311,12 +1080,7 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -1324,11 +1088,20 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -1356,30 +1129,7 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -1394,12 +1144,14 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -1420,46 +1172,20 @@
       </option>
       <envs />
       <patterns />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
     </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local">
       <deployment />
       <server-settings />
       <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="false" name="GraphicInfoServiceTest.should_get_graphicInfos_when_query_by_categoryId" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
@@ -1736,15 +1462,15 @@
       <item index="0" class="java.lang.String" itemvalue="JUnit.FinallyTest.testException" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.FinallyTest.testCatchException" />
       <item index="2" class="java.lang.String" itemvalue="Query Language Console.Default" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.GraphicInfoServiceTest.should_get_graphicInfos_when_query_by_categoryId" />
-      <item index="4" class="java.lang.String" itemvalue="Maven.clean_compile" />
-      <item index="5" class="java.lang.String" itemvalue="Maven.run" />
-      <item index="6" class="java.lang.String" itemvalue="Maven.refresh_db" />
-      <item index="7" class="java.lang.String" itemvalue="Maven.export-db-schema" />
-      <item index="8" class="java.lang.String" itemvalue="JUnit.ActionBuilderTest.testBuildGraphicItemAction" />
-      <item index="9" class="java.lang.String" itemvalue="JUnit.DAOSuiteTest" />
-      <item index="10" class="java.lang.String" itemvalue="JUnit.InsertTestData.should_insert_ten_thousands_data" />
-      <item index="11" class="java.lang.String" itemvalue="JUnit.InsertTestData.should_insert_ten_thousands_userinfo" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.DAOSuiteTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.InsertTestData.should_insert_ten_thousands_userinfo" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.GraphicInfoServiceTest.should_get_graphicInfos_when_query_by_categoryId" />
+      <item index="6" class="java.lang.String" itemvalue="Maven.clean_compile" />
+      <item index="7" class="java.lang.String" itemvalue="Maven.run" />
+      <item index="8" class="java.lang.String" itemvalue="Maven.refresh_db" />
+      <item index="9" class="java.lang.String" itemvalue="Maven.export-db-schema" />
+      <item index="10" class="java.lang.String" itemvalue="JUnit.ActionBuilderTest.testBuildGraphicItemAction" />
+      <item index="11" class="java.lang.String" itemvalue="JUnit.InsertTestData.should_insert_ten_thousands_data" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -1953,42 +1679,43 @@
     <frame x="1358" y="-140" width="1456" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20833333" sideWeight="0.13720317" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6794195" sideWeight="0.4939302" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="22" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31492108" sideWeight="0.24538259" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24886191" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="jenkinsBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32686782" sideWeight="0.5237467" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32701063" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="JavaRebel Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64116096" sideWeight="0.56824714" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30144268" sideWeight="0.6409396" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6266491" sideWeight="0.42672414" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Kahlua" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5013193" sideWeight="0.49712643" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JavaRebel" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="BuildWatcher" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="RESTClient" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.86279684" sideWeight="0.9165402" order="21" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32717678" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23275863" sideWeight="0.62137204" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23347701" sideWeight="0.35883906" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27873564" sideWeight="0.32453826" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.67546177" sideWeight="0.47413793" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="554" />
-      <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6262626" sideWeight="0.42672414" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30144268" sideWeight="0.6409396" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5013193" sideWeight="0.49712643" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32717678" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23275863" sideWeight="0.62137204" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22126436" sideWeight="0.37373737" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39939255" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26293105" sideWeight="0.37373737" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.67546177" sideWeight="0.47413793" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="554" />
+      <window_info id="jenkinsBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32686782" sideWeight="0.5237467" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="JavaRebel Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Kahlua" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="JavaRebel" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17672414" sideWeight="0.37335092" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45646438" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20833333" sideWeight="0.13720317" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48416886" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6134565" sideWeight="0.4969651" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39939255" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="RESTClient" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.86279684" sideWeight="0.9165402" order="21" side_tool="false" content_ui="tabs" />
+      <window_info id="BuildWatcher" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39973614" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2016,7 +1743,6 @@
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
@@ -2026,7 +1752,6 @@
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
@@ -2112,16 +1837,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar!/org/apache/commons/lang/RandomStringUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="25" selection-start="2783" selection-end="2783" vertical-scroll-proportion="0.3328786" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/server/cx/InsertTestData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="0" selection-start="4016" selection-end="4016" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserCheckService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="16" selection-start="657" selection-end="657" vertical-scroll-proportion="0.0" />
@@ -2166,9 +1881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
-      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-        <state />
-      </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/13.0/guava-13.0-sources.jar!/com/google/common/base/Preconditions.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2193,6 +1905,54 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="20" selection-start="667" selection-end="691" vertical-scroll-proportion="1.8914027" />
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/4a84daa6-74af-43e3-ab71-1a1a1e5fe854.schema:BUSSINESS4.PUBLIC">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>4a84daa6-74af-43e3-ab71-1a1a1e5fe854.schema:BUSSINESS4.PUBLIC</OriginalElement>
+          <nodes>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.TYPE</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.MGRAPHIC</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.STATUS_TYPE</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.ACCT_GROUP_PERMISSION</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.HOLIDAY</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.GRAPHIC_RESOURCE</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.USER_CATACTS</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.SMS_MESSAGE</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.USERINFO</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.SIGNATURE</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.USER_FAVORITES</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.CATEGORY</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.ACCT_USER</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.HOLIDAY_TYPE</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.HISTORY_MGRAPHIC</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.ACCT_USER_GROUP</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.MGRAPHIC_PHONE_NO</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.VERSIONINFO</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.SUGGESTION</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.ACCT_GROUP</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.GRAPHIC_INFOS</node>
+            <node x="" y="">4a84daa6-74af-43e3-ab71-1a1a1e5fe854.table:BUSSINESS4.PUBLIC.USER_DIY_GRAPHIC</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.3284848484848485" x="865.0" y="815.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Columns</Category>
+            <Category>Key columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/constants/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="24" selection-start="320" selection-end="320" vertical-scroll-proportion="0.026499303">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

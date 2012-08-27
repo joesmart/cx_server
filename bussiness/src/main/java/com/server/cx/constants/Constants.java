@@ -6,7 +6,6 @@ public class Constants {
     public static final String PHONE_NO_STR = "phoneNo";
     public static final String IMAGE_ID_STR = "cx_imageId";
     public static final String CXINFO_PHONE_NO_STR = "cx_phoneNo";
-
     // 服务器接口地址 being
     public static final String REGISTER_URL = "registration";
     public static final String CALLING_USERCXINFO_URL = "registration/call";

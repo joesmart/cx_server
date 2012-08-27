@@ -100,7 +100,7 @@ public class ContactsServiceImpl implements ContactsServcie {
     }
 
     private void convertContactPeopleListToContactsList(List<ContactInfoDTO> contactPeopleInfos) {
-        Preconditions.checkState(contactPeopleInfos==null||contactPeopleInfos.size() ==0,"上传联系人为空");
+        Preconditions.checkState(contactPeopleInfos!=null&&contactPeopleInfos.size() >0,"上传联系人为空");
         contactsList = Lists.newArrayList();
         mobiles = Lists.newArrayList();
 
