@@ -180,4 +180,23 @@ public class CustomMGraphicResources extends OperationResources {
         }
 
     }
+    
+    @DELETE
+    public Response cancelSubscribeCustomType(@PathParam("imsi") String imsi) {
+        LOGGER.info("Into cancelSubscribeCustomType imsi = " + imsi);
+        try {
+            ValidationUtil.checkParametersNotNull(imsi);
+            userSubscribeTypeService.cancelSubscribeType(imsi, "custom");
+            
+        } catch(Exception e) {
+            LOGGER.error("cancelSubscribeCustomType error", e);
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), "cancelSubscribeCustomType", "服务器内部错误");
+            return Response.ok(operationDescription).build();
+        }
+        OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
+            Response.Status.NO_CONTENT.getStatusCode(), "cancelSubscribeCustomType", "成功取消订购");
+        return Response.ok(operationDescription).build();
+        
+    }
 }

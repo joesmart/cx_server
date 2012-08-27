@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.OperationDescription;
-import com.server.cx.constants.Constants;
 import com.server.cx.service.cx.UserCommonMGraphicService;
 import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
@@ -40,11 +39,11 @@ public class UserCommonMGraphicResource {
             InputStream fileStream = req.getInputStream();
             userCommonMGraphicService.addFileStreamToResourceServer(imsi, fileStream);
             OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
-                HttpServletResponse.SC_CREATED, "uploadImage", Constants.SUCCESS_FLAG);
+                HttpServletResponse.SC_CREATED, "uploadImage");
             return Response.ok(operationDescription).build();
         } catch (Exception e) {
             e.printStackTrace();
-            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "uploadImage", Constants.ERROR_FLAG);
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "uploadImage");
             return Response.ok(operationDescription).build();
         }
         

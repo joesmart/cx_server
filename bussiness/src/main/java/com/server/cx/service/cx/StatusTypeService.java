@@ -10,4 +10,6 @@ public interface StatusTypeService {
     public GraphicInfo getFirstChild(Long statusType);
 
     public abstract DataPage subscribeAndQueryStatusTypes(String imsi);
+
+    public void cancelSubscribeStatusType(String imsi);
 }

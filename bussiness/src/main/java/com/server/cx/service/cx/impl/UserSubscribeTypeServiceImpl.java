@@ -54,8 +54,9 @@ public class UserSubscribeTypeServiceImpl extends UserCheckService implements Us
         UserSubscribeType userSubscribeItem = userSubscribeTypeDao.findMonthValidateAndNotSubscribedType(userInfo,
             type);
         if (userSubscribeItem != null) {
+            LOGGER.info("userSubscribeItem  = " + userSubscribeItem);
             userSubscribeItem.setSubscribeStatus(SubscribeStatus.SUBSCRIBED);
-            userSubscribeTypeDao.save(userSubscribeItem);
+            userSubscribeTypeDao.saveAndFlush(userSubscribeItem);
             UserSubscribeRecord record = ObjectFactory.buildUserSubscribeRecord(userSubscribeItem);
             userSubscribeRecordDao.save(record);
         } else {
@@ -103,6 +104,7 @@ public class UserSubscribeTypeServiceImpl extends UserCheckService implements Us
     public boolean checkSubscribeType(UserInfo userInfo, String type) throws NotSubscribeTypeException {
         LOGGER.info("Into checkExistSubscribeHolidayType userInfo = " + userInfo);
         List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, type);
+        System.out.println("userSubscribeTypes size = " + userSubscribeTypes.size());
         if (userSubscribeTypes != null && !userSubscribeTypes.isEmpty())
             return true;
         throw new NotSubscribeTypeException("用户未订购");
