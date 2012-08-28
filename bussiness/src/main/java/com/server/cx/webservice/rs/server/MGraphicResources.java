@@ -48,8 +48,8 @@ public class MGraphicResources extends OperationResources {
 
     @POST
     public Response create(@PathParam("imsi") String imsi,
+                           @QueryParam("immediate") boolean immediate,
                            @DefaultValue("false") @QueryParam("subscribe") Boolean subscribe,
-                           @QueryParam("immediate")Boolean immediate,
                            MGraphicDTO mGraphicDTO) {
 
         operationDescription = new OperationDescription();
