@@ -15,6 +15,7 @@ import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
+import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.UserCustomMGraphicDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.spec.UserCustomMGraphicSpecifications;
@@ -117,7 +118,7 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         mGraphicDTO.setSubscribe(true);
         
         createAndSaveNewUserCommonMGraphic(mGraphicDTO);
-        return new OperationResult("createUserHolidayMGraphic", "success");
+        return new OperationResult("createUserHolidayMGraphic", Constants.SUCCESS_FLAG);
     }
 
 
@@ -141,7 +142,7 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
             updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
         }
         userCustomMGraphicDao.save(mGraphic);
-        return new OperationResult("editUserCommonMGraphic", "success");
+        return new OperationResult("editUserCommonMGraphic", Constants.SUCCESS_FLAG);
     }
 
     @Override
@@ -153,7 +154,7 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         if (mGraphic != null) {
             userCustomMGraphicDao.delete(mGraphic);
         }
-        return new OperationResult("deleteHolidayMGraphic", "success");
+        return new OperationResult("deleteHolidayMGraphic", Constants.SUCCESS_FLAG);
     }
 
     @Override

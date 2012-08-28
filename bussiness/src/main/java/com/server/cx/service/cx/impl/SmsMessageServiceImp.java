@@ -1,18 +1,18 @@
 package com.server.cx.service.cx.impl;
 
-import com.google.common.base.Preconditions;
-import com.server.cx.dao.cx.SmsMessageDao;
-import com.server.cx.model.OperationResult;
-import com.server.cx.entity.cx.UserInfo;
-import com.server.cx.exception.CXServerBusinessException;
-import com.server.cx.exception.SystemException;
-import com.server.cx.service.cx.SmsMessageService;
-import com.server.cx.util.business.SmsMessageServiceUtil;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
+import com.google.common.base.Preconditions;
+import com.server.cx.constants.Constants;
+import com.server.cx.dao.cx.SmsMessageDao;
+import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.exception.CXServerBusinessException;
+import com.server.cx.exception.SystemException;
+import com.server.cx.model.OperationResult;
+import com.server.cx.service.cx.SmsMessageService;
+import com.server.cx.util.business.SmsMessageServiceUtil;
 
 @Service("smsMessageService")
 @Transactional
@@ -41,7 +41,7 @@ public class SmsMessageServiceImp implements SmsMessageService {
         List<String> contentList = SmsMessageServiceUtil.generateSmsContent(notRegisteredPhoneNoList, phoneNo);
         smsMessageDao.batchInsertSmsMessage(contentList, notRegisteredPhoneNoList, phoneNo);
 
-        return new OperationResult("inviteFriends","success");
+        return new OperationResult("inviteFriends",Constants.SUCCESS_FLAG);
     }
 
 

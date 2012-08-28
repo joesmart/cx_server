@@ -1,9 +1,6 @@
 package com.server.cx.service.cx.impl;
 
 import java.util.List;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -13,6 +10,7 @@ import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
+import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.MGraphicDao;
 import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.spec.MGraphicSpecifications;
@@ -82,7 +80,7 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         
         historyPreviousMGraphic();
         createAndSaveNewUserCommonMGraphic(mGraphicDTO);
-        return new OperationResult("createUserCommonMGraphic", "success");
+        return new OperationResult("createUserCommonMGraphic", Constants.SUCCESS_FLAG);
     }
 
     private void historyPreviousMGraphic() {
@@ -122,7 +120,7 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         }
 
 
-        return new OperationResult("editUserCommonMGraphic", "success");
+        return new OperationResult("editUserCommonMGraphic", Constants.SUCCESS_FLAG);
     }
 
     @Override
@@ -135,7 +133,7 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
             historyPreviousUserCommonMGraphic(userCommonMGraphic);
             userCommonMGraphicDao.delete(userCommonMGraphic);
         }
-        return new OperationResult("disableUserCommonMGraphic", "success");
+        return new OperationResult("disableUserCommonMGraphic", Constants.SUCCESS_FLAG);
     }
 
     @Override

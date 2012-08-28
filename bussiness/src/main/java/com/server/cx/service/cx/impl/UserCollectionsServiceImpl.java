@@ -83,7 +83,7 @@ public class UserCollectionsServiceImpl extends UserCheckService implements User
         userFavoritesDao.save(userFavorites);
 
         OperationDescription operationDescription = new OperationDescription();
-        operationDescription.setDealResult("success");
+        operationDescription.setDealResult(Constants.SUCCESS_FLAG);
         operationDescription.setActionName("addNewUserFavorites");
         return operationDescription;
     }
@@ -108,7 +108,7 @@ public class UserCollectionsServiceImpl extends UserCheckService implements User
         }
 
         OperationDescription operationDescription = new OperationDescription();
-        operationDescription.setDealResult("success");
+        operationDescription.setDealResult(Constants.SUCCESS_FLAG);
         operationDescription.setActionName("deleteUserFavorites");
         return operationDescription;
     }
@@ -126,7 +126,7 @@ public class UserCollectionsServiceImpl extends UserCheckService implements User
         userFavoritesDao.delete(userFavoriteId);
 
         OperationDescription operationDescription = new OperationDescription();
-        operationDescription.setDealResult("success");
+        operationDescription.setDealResult(Constants.SUCCESS_FLAG);
         operationDescription.setActionName("deleteUserFavorites");
         return operationDescription;
     }
