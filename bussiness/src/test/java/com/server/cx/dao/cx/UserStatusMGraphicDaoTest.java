@@ -39,4 +39,14 @@ public class UserStatusMGraphicDaoTest  extends SpringTransactionalTestCase {
         List<UserStatusMGraphic> userStatusMGraphics = userStatusMGraphicDao.findByUserInfoAndStatusType(userInfo, statusType);
         assertThat(userStatusMGraphics).isEmpty();
     }
+    
+    @Test
+    public void test_delete_all() {
+        List<UserStatusMGraphic> userStatusMGraphics = userStatusMGraphicDao.findAll();
+        assertThat(userStatusMGraphics).isNotNull();
+        assertThat(userStatusMGraphics.size()).isGreaterThan(1);
+        userStatusMGraphicDao.deleteAll();
+        List<UserStatusMGraphic> userStatusMGraphics2 = userStatusMGraphicDao.findAll();
+        assertThat(userStatusMGraphics2.size()).isEqualTo(0);
+    }
 }
