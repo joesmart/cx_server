@@ -1,21 +1,21 @@
 package com.server.cx.service.cx.impl;
 
-import com.cl.cx.platform.dto.DataItem;
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
-import com.server.cx.dao.cx.HistoryMGraphicDao;
-import com.server.cx.dao.cx.spec.HistoryMGraphicSpecifications;
-import com.server.cx.model.OperationResult;
-import com.server.cx.entity.cx.HistoryMGraphic;
-import com.server.cx.entity.cx.UserInfo;
-import com.server.cx.service.cx.HistoryMGraphicService;
-import com.server.cx.service.util.BusinessFunctions;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
+import com.cl.cx.platform.dto.DataItem;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
+import com.server.cx.constants.Constants;
+import com.server.cx.dao.cx.HistoryMGraphicDao;
+import com.server.cx.dao.cx.spec.HistoryMGraphicSpecifications;
+import com.server.cx.entity.cx.HistoryMGraphic;
+import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.model.OperationResult;
+import com.server.cx.service.cx.HistoryMGraphicService;
+import com.server.cx.service.util.BusinessFunctions;
 
 /**
  * User: yanjianzou
@@ -50,7 +50,7 @@ public class HistoryMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         checkAndSetUserInfoExists(imsi);
         Preconditions.checkNotNull(historyMGraphicId,"historyMGraphicId 为空");
         historyMGraphicDao.delete(historyMGraphicId);
-        return new OperationResult("deleteHistoryMGraphic","success");
+        return new OperationResult("deleteHistoryMGraphic",Constants.SUCCESS_FLAG);
     }
 
 }

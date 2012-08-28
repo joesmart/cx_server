@@ -1,8 +1,14 @@
 package com.server.cx.service.cx.impl;
 
+import java.util.List;
+import org.joda.time.LocalDate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
+import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.StatusTypeDao;
 import com.server.cx.dao.cx.UserStatusMGraphicDao;
 import com.server.cx.entity.cx.StatusType;
@@ -11,12 +17,6 @@ import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.StatusTypeService;
 import com.server.cx.service.cx.UserSubscribeGraphicItemService;
-import org.joda.time.LocalDate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * User: yanjianzou
@@ -46,13 +46,12 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
         checkParameters(imsi, mGraphicDTO);
         checkAndSetUserInfoExists(imsi);
-        
-        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
 
         if(isImmediate){
             graphicInfo = statusTypeService.getFirstChild(mGraphicDTO.getStatusType());
             mGraphicDTO.setGraphicInfoId(graphicInfo.getId());
         }else {
+            userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
             if(subscribe) {
                 userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
             } else {
@@ -64,7 +63,7 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
         historyPreviousUserCommonMGraphic();
         String mgraphicId = createAndSaveNewUserCommonMGraphic(mGraphicDTO);
-        OperationResult operationResult = new OperationResult("createUserStatusMGraphic", "success");
+        OperationResult operationResult = new OperationResult("createUserStatusMGraphic", Constants.SUCCESS_FLAG);
         if(isImmediate){
             Actions actions = actionBuilder.buildStatusMGraphicItemCreatedAction(imsi, mgraphicId);
             operationResult.setActions(actions);
@@ -85,7 +84,7 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
         userStatusMGraphicDao.save(mGraphic);
 
-        return new OperationResult("editUserStatusMGraphic", "success");
+        return new OperationResult("editUserStatusMGraphic", Constants.SUCCESS_FLAG);
     }
 
     @Override
@@ -98,7 +97,7 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
             historyPreviousUserCommonMGraphic(userCommonMGraphic);
             userStatusMGraphicDao.delete(userCommonMGraphic);
         }
-        return new OperationResult("disableUserCommonMGraphic", "success");
+        return new OperationResult("disableUserCommonMGraphic", Constants.SUCCESS_FLAG);
     }
 
     private void historyPreviousUserCommonMGraphic() {

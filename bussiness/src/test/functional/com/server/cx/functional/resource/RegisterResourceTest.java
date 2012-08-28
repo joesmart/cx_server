@@ -6,6 +6,7 @@ import org.junit.Test;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.cl.cx.platform.dto.RegisterDTO;
+import com.server.cx.constants.Constants;
 import com.sun.jersey.api.client.ClientResponse;
 
 public class RegisterResourceTest extends BasicJerseyTest {
@@ -17,7 +18,7 @@ public class RegisterResourceTest extends BasicJerseyTest {
         ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, contactInfoDTO);
         assertThat(response.getStatus()).isEqualTo(200);
         OperationDescription operationDescription = response.getEntity(OperationDescription.class);
-        assertThat(operationDescription.getDealResult()).isEqualTo("success");
+        assertThat(operationDescription.getDealResult()).isEqualTo(Constants.SUCCESS_FLAG);
     }
     
     @Test
@@ -30,6 +31,6 @@ public class RegisterResourceTest extends BasicJerseyTest {
         ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, registerDTO);
         assertThat(response.getStatus()).isEqualTo(200);
         OperationDescription operationDescription = response.getEntity(OperationDescription.class);
-        assertThat(operationDescription.getDealResult()).isEqualTo("success");
+        assertThat(operationDescription.getDealResult()).isEqualTo(Constants.SUCCESS_FLAG);
     }
 }

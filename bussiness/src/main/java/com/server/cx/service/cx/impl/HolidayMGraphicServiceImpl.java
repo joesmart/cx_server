@@ -3,6 +3,7 @@ package com.server.cx.service.cx.impl;
 import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
+import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.HolidayTypeDao;
 import com.server.cx.dao.cx.UserHolidayMGraphicDao;
 import com.server.cx.entity.cx.HolidayType;
@@ -90,7 +91,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
         historyPreviousUserCommonMGraphic();
         String mgraphicId = createAndSaveNewUserCommonMGraphic(mGraphicDTO);
-        OperationResult operationResult = new OperationResult("createUserHolidayMGraphic", "success");
+        OperationResult operationResult = new OperationResult("createUserHolidayMGraphic", Constants.SUCCESS_FLAG);
         if (isImmediate) {
             Actions actions = actionBuilder.buildHolidayMGraphicItemCreatedAction(imsi, mgraphicId);
             operationResult.setActions(actions);
@@ -124,7 +125,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
             updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
             userHolidayMGraphicDao.save(mGraphic);
         }
-        return new OperationResult("editUserCommonMGraphic", "success");
+        return new OperationResult("editUserCommonMGraphic", Constants.SUCCESS_FLAG);
     }
 
     @Override
@@ -136,7 +137,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         if (holidayMGraphic != null) {
             userHolidayMGraphicDao.delete(holidayMGraphic);
         }
-        return new OperationResult("deleteHolidayMGraphic", "success");
+        return new OperationResult("deleteHolidayMGraphic", Constants.SUCCESS_FLAG);
     }
 
 }
