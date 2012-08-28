@@ -47,8 +47,6 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         checkParameters(imsi, mGraphicDTO);
         checkAndSetUserInfoExists(imsi);
         
-        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
-        
         if(subscribe) {
             userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
         } else {

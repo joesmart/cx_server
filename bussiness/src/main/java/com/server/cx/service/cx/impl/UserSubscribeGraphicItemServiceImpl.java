@@ -35,10 +35,12 @@ public class UserSubscribeGraphicItemServiceImpl extends UserCheckService implem
     @Transactional(readOnly=false)
     @Override
     public void subscribeGraphicItem(String imsi, String graphicInfoId) throws MoneyNotEnoughException {
-        checkAndSetUserInfoExists(imsi);
-        GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
-        if (!hasSubscribedGraphicItem(userInfo, graphicInfo)) {
-            subscribeGraphicItem(userInfo, graphicInfo);
+        if(graphicInfoId != null) {
+            checkAndSetUserInfoExists(imsi);
+            GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
+            if (!hasSubscribedGraphicItem(userInfo, graphicInfo)) {
+                subscribeGraphicItem(userInfo, graphicInfo);
+            }
         }
     }
 
@@ -71,21 +73,25 @@ public class UserSubscribeGraphicItemServiceImpl extends UserCheckService implem
 
     @Override
     public void checkUserSubscribeGraphicItem(UserInfo userInfo, String graphicInfoId) throws NotSubscribeTypeException {
-        GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
-        if (!hasSubscribedGraphicItem(userInfo, graphicInfo))
-            throw new NotSubscribeTypeException("用户未订购");
+        if(graphicInfoId != null) {
+            GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
+            if (!hasSubscribedGraphicItem(userInfo, graphicInfo))
+                throw new NotSubscribeTypeException("用户未订购");
+        }
     }
 
     //TODO： 测试方法，方便客户端取消订购，以后需要删掉
     @Transactional(readOnly=false)
     @Override
     public void deleteSubscribeItem(String imsi, String graphicInfoId) {
-        checkAndSetUserInfoExists(imsi);
-        GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
-        List<UserSubscribeGraphicItem> userSubscribeGraphicItems = userSubscribeGraphicItemDao
-            .findByUserInfoAndGraphicInfo(userInfo, graphicInfo);
-        if (userSubscribeGraphicItems != null && !userSubscribeGraphicItems.isEmpty())
-            userSubscribeGraphicItemDao.delete(userSubscribeGraphicItems.get(0));
+        if(graphicInfoId != null) {
+            checkAndSetUserInfoExists(imsi);
+            GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
+            List<UserSubscribeGraphicItem> userSubscribeGraphicItems = userSubscribeGraphicItemDao
+                .findByUserInfoAndGraphicInfo(userInfo, graphicInfo);
+            if (userSubscribeGraphicItems != null && !userSubscribeGraphicItems.isEmpty())
+                userSubscribeGraphicItemDao.delete(userSubscribeGraphicItems.get(0));
+        }
     }
 
 }
