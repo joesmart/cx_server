@@ -10,4 +10,6 @@ public interface UserSubscribeGraphicItemService {
     public void subscribeGraphicItem(UserInfo userInfo, GraphicInfo graphicInfo);
 
     public void checkUserSubscribeGraphicItem(UserInfo userInfo, String graphicInfoId) throws NotSubscribeTypeException;
+
+    public void deleteSubscribeItem(String imsi, String graphicInfoId);
 }

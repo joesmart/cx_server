@@ -3,6 +3,7 @@ package com.server.cx.service.cx.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import com.server.cx.dao.cx.GraphicInfoDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.UserSubscribeGraphicItemDao;
@@ -17,6 +18,7 @@ import com.server.cx.service.cx.UserSubscribeGraphicItemService;
 import com.server.cx.util.ObjectFactory;
 
 @Component
+@Transactional(readOnly=true)
 public class UserSubscribeGraphicItemServiceImpl extends UserCheckService implements UserSubscribeGraphicItemService {
     @Autowired
     private GraphicInfoDao graphicInfoDao;
@@ -30,6 +32,7 @@ public class UserSubscribeGraphicItemServiceImpl extends UserCheckService implem
     @Autowired
     private UserSubscribeGraphicItemDao userSubscribeGraphicItemDao;
 
+    @Transactional(readOnly=false)
     @Override
     public void subscribeGraphicItem(String imsi, String graphicInfoId) throws MoneyNotEnoughException {
         checkAndSetUserInfoExists(imsi);
@@ -47,18 +50,19 @@ public class UserSubscribeGraphicItemServiceImpl extends UserCheckService implem
         }
         return true;
     }
-
+    
+    @Transactional(readOnly=false)
     @Override
     public void subscribeGraphicItem(UserInfo userInfo, GraphicInfo graphicInfo) throws MoneyNotEnoughException {
         //扣钱
         userInfoDao.checkCurrentMoneyValidate(userInfo.getId(), graphicInfo.getPrice());
         userInfo.setTotleMoney(userInfo.getTotleMoney() - graphicInfo.getPrice());
         userInfoDao.save(userInfo);
-        
+
         //添加用户订购item
         UserSubscribeGraphicItem userSubscribeGraphicItem = new UserSubscribeGraphicItem(userInfo, graphicInfo);
         userSubscribeGraphicItemDao.save(userSubscribeGraphicItem);
-        
+
         //添加用户订购记录
         UserSubscribeRecord userSubscribeRecord = ObjectFactory.buildUserGraphicItemSubscribeRecord(userInfo);
         userSubscribeRecord.setExpenses(graphicInfo.getPrice());
@@ -68,8 +72,20 @@ public class UserSubscribeGraphicItemServiceImpl extends UserCheckService implem
     @Override
     public void checkUserSubscribeGraphicItem(UserInfo userInfo, String graphicInfoId) throws NotSubscribeTypeException {
         GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
-        if(!hasSubscribedGraphicItem(userInfo, graphicInfo))
+        if (!hasSubscribedGraphicItem(userInfo, graphicInfo))
             throw new NotSubscribeTypeException("用户未订购");
+    }
+
+    //TODO： 测试方法，方便客户端取消订购，以后需要删掉
+    @Transactional(readOnly=false)
+    @Override
+    public void deleteSubscribeItem(String imsi, String graphicInfoId) {
+        checkAndSetUserInfoExists(imsi);
+        GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
+        List<UserSubscribeGraphicItem> userSubscribeGraphicItems = userSubscribeGraphicItemDao
+            .findByUserInfoAndGraphicInfo(userInfo, graphicInfo);
+        if (userSubscribeGraphicItems != null && !userSubscribeGraphicItems.isEmpty())
+            userSubscribeGraphicItemDao.delete(userSubscribeGraphicItems.get(0));
     }
 
 }

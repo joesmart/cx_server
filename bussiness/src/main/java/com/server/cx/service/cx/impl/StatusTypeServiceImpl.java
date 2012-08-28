@@ -23,6 +23,7 @@ import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.entity.cx.StatusType;
 import com.server.cx.entity.cx.UserStatusMGraphic;
 import com.server.cx.exception.CXServerBusinessException;
+import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.StatusTypeService;
 import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.service.util.BusinessFunctions;
@@ -53,6 +54,9 @@ public class StatusTypeServiceImpl extends UserCheckService implements StatusTyp
     @Autowired
     private UserInfoDao userInfoDao;
     
+    @Autowired
+    private ActionBuilder actionBuilder;
+    
     @Override
     public DataPage queryAllStatusTypes(String imsi) {
         checkAndSetUserInfoExists(imsi);
@@ -67,6 +71,7 @@ public class StatusTypeServiceImpl extends UserCheckService implements StatusTyp
         dataPage.setTotal(1);
         dataPage.setHref(baseHref);
         dataPage.setItems(statusTypeList);
+        dataPage.setActions(actionBuilder.buildCancelSubscribeStatusAction(imsi));
         return dataPage;
     }
 
@@ -101,6 +106,11 @@ public class StatusTypeServiceImpl extends UserCheckService implements StatusTyp
         userSubscribeTypeService.checkUserUnSubscribeType(userInfo, "status");
         userSubscribeTypeService.subscribeType(userInfo, "status");
         return queryAllStatusTypes(imsi);
+    }
+
+    @Override
+    public void cancelSubscribeStatusType(String imsi) {
+        userSubscribeTypeService.cancelSubscribeType(imsi, "status");
     }
 
 }

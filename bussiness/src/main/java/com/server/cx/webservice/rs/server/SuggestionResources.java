@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -33,10 +32,10 @@ public class SuggestionResources {
         try {
             suggestionService.addSuggestion(imsi, content);
             operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,
-                "addSuggestion", Constants.SUCCESS_FLAG);
+                "addSuggestion");
         } catch (SystemException e) {
             operationDescription = ObjectFactory.buildErrorOperationDescription(
-                HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "addSuggestion", Constants.ERROR_FLAG);
+                HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "addSuggestion");
             e.printStackTrace();
         }
         return Response.ok(operationDescription).build();
@@ -49,7 +48,7 @@ public class SuggestionResources {
         if (suggestions == null || suggestions.isEmpty()) {
             return Response.noContent().build();
         }
-//        hideSuggestionUserInfo(suggestions);
+        //        hideSuggestionUserInfo(suggestions);
         List<SuggestionDTO> suggestionDTOs = ObjectFactory.buildAllSuggestionDTOFromSuggestion(suggestions);
         return Response.ok(suggestionDTOs).build();
     }

@@ -198,6 +198,12 @@ public class ActionBuilder {
         actions.setSubscribeURL(action);
         return this;
     }
+    
+    private ActionBuilder cancelSubscribeURL(String url) {
+        Action action = new Action(url, "DELETE");
+        actions.setCancelSubscribeURL(action);
+        return this;
+    }
 
     public Actions build() {
         return actions;
@@ -307,6 +313,19 @@ public class ActionBuilder {
     public Actions buildSubscribeGraphicItemAction(String imsi) {
         return actions().subscribeURL(basicService.generateSubscribeGraphicItem(imsi)).build();
     }
+    
+    public Actions buildCancelSubscribeHolidayAction(String imsi) {
+        return actions().cancelSubscribeURL(basicService.generateCancelSubscribeHolidayURL(imsi)).build();
+    }
+    
+    public Actions buildCancelSubscribeStatusAction(String imsi) {
+        return actions().cancelSubscribeURL(basicService.generateCancelSubscribeStatusURL(imsi)).build();
+    }
+    
+    public Actions buildCancelSubscribeCustomAction(String imsi) {
+        return actions().cancelSubscribeURL(basicService.generateCancelSubscribeCustomURL(imsi)).build();
+    }
+    
 
     public Actions buildUserOperableActions(String imsi) {
         return actions().recommendUrl(basicService.generateRecommendGraphicInfoVisitURL(imsi))

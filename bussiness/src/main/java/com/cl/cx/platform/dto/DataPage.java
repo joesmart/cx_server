@@ -19,7 +19,7 @@ public class DataPage {
     private String next;
     private String previous;
     private List<DataItem> items;
-    private Boolean isSubscribed;
+    private Actions actions;
 
     public String getFirst() {
         return first;
@@ -93,11 +93,11 @@ public class DataPage {
         this.total = total;
     }
 
-    public Boolean isSubscribed() {
-        return isSubscribed;
+    public Actions getActions() {
+        return actions;
     }
 
-    public void setSubscribed(Boolean isSubscribed) {
-        this.isSubscribed = isSubscribed;
+    public void setActions(Actions actions) {
+        this.actions = actions;
     }
 }

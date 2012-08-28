@@ -223,5 +223,17 @@ public class BasicService {
     public String generateSubscribeGraphicItem(String imsi) {
         return generateURL(imsi, "/mGraphics?subscribe=true");
     }
-
+    
+    public String generateCancelSubscribeHolidayURL(String imsi) {
+        return generateURL(imsi, "/holidayTypes");
+    }
+    
+    public String generateCancelSubscribeStatusURL(String imsi) {
+        return generateURL(imsi, "/statusTypes");
+    }
+    
+    public String generateCancelSubscribeCustomURL(String imsi) {
+        return generateURL(imsi, "/customMGraphics");
+    }
+    
 }

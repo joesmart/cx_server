@@ -1,5 +1,23 @@
 package com.server.cx.webservice.rs.server;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.cl.cx.platform.dto.OperationDescription;
@@ -10,16 +28,8 @@ import com.server.cx.model.ActionBuilder;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.QueryMGraphicService;
+import com.server.cx.service.cx.UserSubscribeGraphicItemService;
 import com.server.cx.util.ObjectFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 /**
  * User: yanjianzou Date: 12-8-6 Time: 上午10:29 FileName:UserCommonMGraphicResources
@@ -40,6 +50,9 @@ public class MGraphicResources extends OperationResources {
 
     @Autowired
     private ActionBuilder actionBuilder;
+
+    @Autowired
+    private UserSubscribeGraphicItemService userSubscribeGraphicItemService;
 
     @POST
     public Response create(@PathParam("imsi") String imsi,
@@ -121,5 +134,23 @@ public class MGraphicResources extends OperationResources {
     public Response getAll(@PathParam("imsi") String imsi) {
         DataPage dataPage = queryMGraphicService.queryUserMGraphic(imsi);
         return Response.ok(dataPage).build();
+    }
+
+    //test method, it just provide convient method to cancel subscribe graphic item
+    @DELETE
+    @Path("/graphicInfo/{graphicInfoId}")
+    public Response cancelSubscribeGraphicItem(@PathParam("imsi") String imsi,
+                                               @PathParam("graphicInfoId") String graphicInfoId) {
+        try {
+            userSubscribeGraphicItemService.deleteSubscribeItem(imsi, graphicInfoId);
+            OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
+                HttpServletResponse.SC_NO_CONTENT, "cancelSubscribeGraphicItem");
+            return Response.ok(operationDescription).build();
+        } catch (Exception e) {
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(500,
+                "cancelSubscribeGraphicItem", "取消订购失败");
+            return Response.ok(operationDescription).build();
+        }
+
     }
 }

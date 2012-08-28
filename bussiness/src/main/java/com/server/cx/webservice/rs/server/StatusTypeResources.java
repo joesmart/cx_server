@@ -2,6 +2,7 @@ package com.server.cx.webservice.rs.server;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -94,5 +95,24 @@ public class StatusTypeResources {
         }
 
     
+    }
+    
+    @DELETE
+    public Response cancelSubscribeStatusType(@PathParam("imsi") String imsi) {
+        LOGGER.info("Into cancelSubscribeStatusType imsi = " + imsi);
+        try {
+            ValidationUtil.checkParametersNotNull(imsi);
+            statusTypeService.cancelSubscribeStatusType(imsi);
+            
+        } catch(Exception e) {
+            LOGGER.error("cancelSubscribeStatusType error", e);
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), "cancelSubscribeStatusType", "服务器内部错误");
+            return Response.ok(operationDescription).build();
+        }
+        OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
+            Response.Status.NO_CONTENT.getStatusCode(), "cancelSubscribeStatusType", "成功取消订购");
+        return Response.ok(operationDescription).build();
+        
     }
 }

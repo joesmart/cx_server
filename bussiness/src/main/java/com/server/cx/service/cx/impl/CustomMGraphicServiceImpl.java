@@ -171,6 +171,7 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         dataPage.setLimit(mGraphicDataItems.size());
         dataPage.setTotal(1);
         dataPage.setHref(basicService.generateCustomMGraphicsVisitURL(imsi));
+        dataPage.setActions(actionBuilder.buildCancelSubscribeCustomAction(imsi));
         return dataPage;
     }
 

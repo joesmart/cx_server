@@ -40,4 +40,5 @@ public class Actions {
     private Action getContactsURL;
     private Action uploadCommonMGraphicURL;
     private Action subscribeURL;
+    private Action cancelSubscribeURL;
 }

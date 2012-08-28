@@ -17,13 +17,13 @@ import com.google.common.collect.Maps;
 import com.server.cx.dao.cx.GraphicInfoDao;
 import com.server.cx.dao.cx.HolidayTypeDao;
 import com.server.cx.dao.cx.UserHolidayMGraphicDao;
-import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.spec.GraphicInfoSpecifications;
 import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.entity.cx.HolidayType;
 import com.server.cx.entity.cx.UserHolidayMGraphic;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.exception.NotSubscribeTypeException;
+import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.HolidayTypeService;
 import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.service.util.BusinessFunctions;
@@ -49,7 +49,7 @@ public class HolidayTypeServiceImpl extends UserCheckService implements HolidayT
     private UserSubscribeTypeService userSubscribeTypeService;
 
     @Autowired
-    private UserInfoDao userInfoDao;
+    private ActionBuilder actionBuilder;
 
     @Override
     public DataPage queryAllHolidayTypes(String imsi) throws NotSubscribeTypeException {
@@ -66,6 +66,7 @@ public class HolidayTypeServiceImpl extends UserCheckService implements HolidayT
         dataPage.setTotal(1);
         dataPage.setHref(baseHref);
         dataPage.setItems(holidayTypeList);
+        dataPage.setActions(actionBuilder.buildCancelSubscribeHolidayAction(imsi));
         return dataPage;
 
     }
@@ -103,6 +104,11 @@ public class HolidayTypeServiceImpl extends UserCheckService implements HolidayT
         });
 
         return Lists.transform(holidayTypes,businessFunctions.holidayTypeTransformToDataItem(imsi,holidayTypeList,userHolidayMGraphicMap));
+    }
+
+    @Override
+    public void cancelSubscribeHolidayType(String imsi) {
+        userSubscribeTypeService.cancelSubscribeType(imsi, "holiday");
     }
 
 }
