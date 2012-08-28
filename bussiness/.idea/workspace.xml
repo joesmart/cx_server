@@ -4,7 +4,7 @@
     <option name="ANALYSIS_IN_BACKGROUND" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="update enable UserDiyGraphic inherit from GraphicInfo">
+    <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business.iml" afterPath="$PROJECT_DIR$/business.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/HolidayMGraphicServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/HolidayMGraphicServiceImpl.java" />
@@ -1926,7 +1926,11 @@
       <created>1346034240697</created>
       <updated>1346034240697</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="fix the Holiday and Status MGraphic immediate create error">
+      <created>1346121494791</created>
+      <updated>1346121494791</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <option name="createChangelist" value="false" />
     <servers />
   </component>
@@ -2035,7 +2039,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="update enable UserDiyGraphic inherit from GraphicInfo" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the Holiday and Status MGraphic immediate create error" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -2048,7 +2052,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.47111112" />
-    <MESSAGE value="commit the GraphicInfo dao layer support" />
     <MESSAGE value="support the category id query" />
     <MESSAGE value="cx repository 4 restful interface 90% complete" />
     <MESSAGE value="graphicResource add type property" />
@@ -2073,6 +2076,7 @@
     <MESSAGE value="fix some code issues" />
     <MESSAGE value="updated" />
     <MESSAGE value="update enable UserDiyGraphic inherit from GraphicInfo" />
+    <MESSAGE value="fix the Holiday and Status MGraphic immediate create error" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
