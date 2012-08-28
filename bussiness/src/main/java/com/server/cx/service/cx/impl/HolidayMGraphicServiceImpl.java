@@ -1,10 +1,5 @@
 package com.server.cx.service.cx.impl;
 
-import java.util.Date;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
@@ -17,6 +12,12 @@ import com.server.cx.service.cx.HolidayService;
 import com.server.cx.service.cx.HolidayTypeService;
 import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.UserSubscribeGraphicItemService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.List;
 
 @Service(value = "holidayMGraphicService")
 @Transactional
@@ -75,19 +76,18 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         checkParameters(imsi, mGraphicDTO);
         checkAndSetUserInfoExists(imsi);
 
-        if(subscribe) {
-            userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
-        } else {
-            userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
-        }
-        mGraphicDTO.setSubscribe(true);
-
         if (isImmediate) {
             graphicInfo = holidayTypeService.getFirstChild(mGraphicDTO.getHolidayType());
             mGraphicDTO.setGraphicInfoId(graphicInfo.getId());
+        }else {
+            if(subscribe) {
+                userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
+            } else {
+                userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+            }
+            mGraphicDTO.setSubscribe(true);
         }
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
-
         historyPreviousUserCommonMGraphic();
         String mgraphicId = createAndSaveNewUserCommonMGraphic(mGraphicDTO);
         OperationResult operationResult = new OperationResult("createUserHolidayMGraphic", "success");
