@@ -376,4 +376,9 @@ public class ActionBuilder {
         return actions().useURL(basicService.generateMGraphicsURL(imsi))
             .removeURL(basicService.generateHistoryMGraphicRemoveURL(imsi, id)).build();
     }
+
+    public Actions buildUserDIYGraphicActions(String imsi,String id){
+        return actions().useURL(basicService.generateImmediateMGraphicURL(imsi))
+                .removeURL(basicService.generateUserDIYGraphicDeleteURL(imsi, id)).build();
+    }
 }

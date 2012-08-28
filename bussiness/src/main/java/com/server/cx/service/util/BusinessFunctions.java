@@ -446,18 +446,18 @@ public class BusinessFunctions {
         };
     }
 
-    public Function<GraphicResource, DataItem> transformDiyGraphicToDataItem(final String imsi, final UserDiyGraphic userDiyGraphic) {
+    public Function<UserDiyGraphic, DataItem> transformDiyGraphicToDataItem(final String imsi) {
 
-        return new Function<GraphicResource, DataItem>() {
+        return new Function<UserDiyGraphic, DataItem>() {
             @Override
-            public DataItem apply(@Nullable GraphicResource input) {
+            public DataItem apply(@Nullable UserDiyGraphic input) {
                 DataItem dataItem = new DataItem();
-                dataItem.setName(userDiyGraphic.getName() );
-                dataItem.setSignature(userDiyGraphic.getSignature() );
+                dataItem.setName(input.getName() );
+                dataItem.setSignature(input.getSignature() );
                 dataItem.setId(input.getId());
                 dataItem.setInUsing(false);
-                setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem,input);
-                dataItem.setActions(actionBuilder.buildHistoryMGraphicActions(imsi, input.getId()));
+                setUpSourceAndThumbnailImagePath(dataItem,input);
+                dataItem.setActions(actionBuilder.buildUserDIYGraphicActions(imsi, input.getId()));
                 return dataItem;
             }
         };

@@ -7,6 +7,7 @@ import com.server.cx.dao.cx.HistoryMGraphicDao;
 import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.entity.cx.HistoryMGraphic;
 import com.server.cx.entity.cx.MGraphic;
+import com.server.cx.entity.cx.UserDiyGraphic;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.GraphicInfoService;
@@ -84,9 +85,14 @@ public class CheckAndHistoryMGraphicService extends UserCheckService {
     protected void getAndCheckGraphicInfo(MGraphicDTO mGraphicDTO) {
         graphicInfo  = graphicInfoDao.findOne(mGraphicDTO.getGraphicInfoId());
         Preconditions.checkNotNull(graphicInfo, "图像对象不存在");
-        if(!AuditStatus.PASSED.equals(graphicInfo.getAuditStatus())){
-            throw new CXServerBusinessException("图像审核中,或审核未通过");
+        if(graphicInfo instanceof UserDiyGraphic){
+            //
+        }else {
+            if(!AuditStatus.PASSED.equals(graphicInfo.getAuditStatus())){
+                throw new CXServerBusinessException("图像审核中,或审核未通过");
+            }
         }
+
     }
 
     protected void checkAndInitializeContext(String imsi, MGraphicDTO mGraphicDTO) {

@@ -1030,11 +1030,13 @@
       <column name="UPDATED_BY" sqlType="VARCHAR" length="64" precision="0" nullable="true" jdbcType="12" />
       <column name="UPDATED_ON" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="DEVICE_ID" sqlType="VARCHAR" length="60" precision="0" nullable="true" jdbcType="12" />
-      <column name="IMSI" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
-      <column name="PHONE_NO" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="IMSI" sqlType="VARCHAR" length="40" precision="0" nullable="true" jdbcType="12" />
+      <column name="PHONE_NO" sqlType="VARCHAR" length="20" precision="0" nullable="true" jdbcType="12" />
       <column name="TOTLE_MONEY" sqlType="DOUBLE" length="17" precision="0" nullable="true" jdbcType="8" />
       <column name="USER_AGENT" sqlType="VARCHAR" length="60" precision="0" nullable="true" jdbcType="12" />
-      <primary-key name="CONSTRAINT_1" columns="id" />
+      <primary-key name="CONSTRAINT_1EC" columns="id" />
+      <index name="USER_IMSI" unique="false" columns="IMSI" />
+      <index name="USER_PHONE_NO" unique="false" columns="PHONE_NO" />
     </table>
     <table name="USER_CATACTS" schema="PUBLIC" catalog="BUSSINESS4" type="TABLE">
       <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfRTc5OTMxNzBfNjMyRV80OTc5Xzk3NTNfNTcwMEEzM0I3NDU3KQ==" autoIncrement="true" />

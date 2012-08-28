@@ -1,16 +1,19 @@
 package com.server.cx.service.cx.impl;
 
-import com.google.common.collect.Lists;
 import com.google.common.io.ByteStreams;
 import com.server.cx.constants.Constants;
+import com.server.cx.dao.cx.GraphicResourceDao;
 import com.server.cx.dao.cx.UserDiyGraphicDao;
 import com.server.cx.entity.cx.FileMeta;
 import com.server.cx.entity.cx.GraphicResource;
 import com.server.cx.entity.cx.UserDiyGraphic;
 import com.server.cx.exception.CXServerBusinessException;
+import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.UserDiyGraphicService;
 import com.server.cx.service.util.BusinessFunctions;
+import com.server.cx.util.business.AuditStatus;
 import com.server.cx.util.business.JerseyResourceUtil;
+import com.server.cx.util.business.ValidationUtil;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
@@ -39,6 +42,9 @@ public class UserDiyGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
     @Autowired
     private UserDiyGraphicDao userDiyGraphicDao;
+
+    @Autowired
+    private GraphicResourceDao graphicResourceDao;
     @Autowired
     @Qualifier("fileUploadUrl")
     private String fileUploadUrl;
@@ -48,22 +54,26 @@ public class UserDiyGraphicServiceImpl extends CheckAndHistoryMGraphicService im
     public void addFileStreamToResourceServer(String imsi, InputStream fileStream) throws IOException {
         checkAndSetUserInfoExists(imsi);
         FileMeta fileMeta = uploadToResourceServer(imsi, fileStream);
-        UserDiyGraphic userDiyGraphic = userDiyGraphicDao.findByUserInfo(userInfo);
+        UserDiyGraphic userDiyGraphic = null;// userDiyGraphicDao.findByUserInfo(userInfo);
         if(userDiyGraphic == null){
             userDiyGraphic = new UserDiyGraphic();
             userDiyGraphic.setName("自定义");
             userDiyGraphic.setSignature("自定义");
             userDiyGraphic.setUserInfo(userInfo);
+            userDiyGraphic.setAuditStatus(AuditStatus.CHECKING);
             userDiyGraphic = userDiyGraphicDao.save(userDiyGraphic);
         }
         GraphicResource graphicResource = businessFunctions.fileMetaTransformToGraphicInfo(userDiyGraphic).apply(fileMeta);
-        List<GraphicResource> graphicResources = userDiyGraphic.getGraphicResources();
-        if(graphicResources == null){
-            graphicResources = Lists.newArrayList();
-        }
-        graphicResources.add(graphicResource);
-        userDiyGraphic.setGraphicResources(graphicResources);
-        userDiyGraphicDao.save(userDiyGraphic);
+        graphicResource.setGraphicInfo(userDiyGraphic);
+        graphicResourceDao.save(graphicResource);
+    }
+
+    @Override
+    public OperationResult delete(String id) {
+        ValidationUtil.checkParametersNotNull(id);
+//        graphicResourceDao.delete(id);
+        userDiyGraphicDao.delete(id);
+        return new OperationResult("deleteUserDIYGraphic","Success");
     }
 
 

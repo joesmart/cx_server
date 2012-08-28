@@ -267,11 +267,11 @@
         signature varchar(255),
         subscribe bit,
         common bit,
-        holiday datetime,
         begin datetime,
         end datetime,
-        valid_date datetime,
+        holiday datetime,
         special_phone_no varchar(20),
+        valid_date datetime,
         graphic_info_id varchar(32),
         user_id varchar(32),
         holiday_type_id bigint,
@@ -440,12 +440,11 @@
         updated_by varchar(64),
         updated_on datetime,
         device_id varchar(60),
-        imsi varchar(255),
-        phone_no varchar(255),
+        imsi varchar(40) unique,
+        phone_no varchar(20) unique,
         totle_money double precision,
         user_agent varchar(60),
-        primary key (id),
-        unique (phone_no)
+        primary key (id)
     );
 
     create table versioninfo (
@@ -608,3 +607,7 @@
         add constraint FK44373C039E7BF8A6 
         foreign key (subscribe_type_id) 
         references subscribe_type (id);
+
+    create index user_phone_no on userinfo (phone_no);
+
+    create index user_imsi on userinfo (imsi);

@@ -7,6 +7,8 @@ import com.server.cx.entity.basic.AuditableStringEntity;
 import lombok.ToString;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Index;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,13 +17,11 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "userinfo", uniqueConstraints = @UniqueConstraint(columnNames = {"phoneNo"}))
+@Table(name = "userinfo")
 @ToString(callSuper = true)
 public class UserInfo extends AuditableStringEntity {
 
-    @Column(unique = true, nullable = false)
     private String phoneNo;
-    @Column(unique = true, nullable = false)
     private String imsi;
     private List<UserFavorites> userFavorites;
 
@@ -50,10 +50,14 @@ public class UserInfo extends AuditableStringEntity {
         return deviceId;
     }
 
+    @Index(name = "user_imsi")
+    @Column(length = 40 ,unique = true)
     public String getImsi() {
         return imsi;
     }
 
+    @Index(name = "user_phone_no")
+    @Column(length = 20 ,unique = true)
     public String getPhoneNo() {
         return phoneNo;
     }

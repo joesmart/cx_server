@@ -81,7 +81,7 @@ public class BasicService {
     }
 
     public String generateUserDIYMGraphicUploadURL(String imsi) {
-        return generateURL(imsi, "/userCommonMGraphic/upload");
+        return generateURL(imsi, "/diyGraphics/upload");
     }
 
     public String generateContactsUploadURL(String imsi) {
@@ -150,6 +150,10 @@ public class BasicService {
 
     public String generateMGraphicsURL(String imsi) {
         return generateURL(imsi, "/mGraphics");
+    }
+
+    public String generateImmediateMGraphicURL(String imsi){
+        return generateURL(imsi, "/mGraphics?immediate=true");
     }
 
     public String generateHolidayMGraphicRemoveURL(String imsi, String mgraphicId) {
@@ -235,5 +239,8 @@ public class BasicService {
     public String generateCancelSubscribeCustomURL(String imsi) {
         return generateURL(imsi, "/customMGraphics");
     }
-    
+
+    public String generateUserDIYGraphicDeleteURL(String imsi, String id) {
+        return generateURL(imsi,"/diyGraphics/"+id);
+    }
 }

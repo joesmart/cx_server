@@ -3,15 +3,13 @@ package com.server.cx.util;
 import com.google.common.base.Joiner;
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.Lists;
-import com.server.cx.service.cx.impl.BasicService;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * User: yanjianzou
@@ -21,20 +19,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Aspect
 public class Logging {
-
-    @Autowired
-    private BasicService basicService;
     private Stopwatch stopwatch;
     private Logger logger;
     private Class clazz;
     private String methodName;
     private Object[] messageObjects;
 
-    @Before(value = "execution( * com.server.cx.webservice.rs.server.*.*(..))",argNames = "joinPoint")
-    public void beforeRun(JoinPoint joinPoint) {
-        initializeContext(joinPoint);
-        initializeMessageObjects(joinPoint);
-        logger.info("Usage:{}.{}.({}) start",messageObjects);
+
+    private void startStopwatch() {
         if (stopwatch == null) {
             stopwatch = new Stopwatch();
         } else {
@@ -45,24 +37,33 @@ public class Logging {
         stopwatch.start();
     }
 
-    @AfterReturning(pointcut = "execution( * com.server.cx.webservice.rs.server.*.*(..))",argNames = "joinPoint")
-    public void log(JoinPoint joinPoint) {
-        initializeContext(joinPoint);
-        initializeMessageObjects(joinPoint);
+    private void stopStopwatch() {
         if(stopwatch != null && stopwatch.isRunning()){
             stopwatch.stop();
-            logger.info("Execute Time:{}.{}.({}) Spend time:"+stopwatch,messageObjects);
+            logger.info("Execute:{}.{}.({}) Spend time:"+stopwatch,messageObjects);
             stopwatch.reset();
         }
-        logger.info("Usage:{}.{}.({}) end",messageObjects);
     }
 
     @AfterThrowing(value = "execution( * com.server.cx.service.cx.*.*(..))",throwing = "throwable",argNames = "joinPoint,throwable")
     public void logError(JoinPoint joinPoint,Throwable throwable){
         initializeContext(joinPoint);
         initializeMessageObjects(joinPoint);
-        logger.error("Service Method Execute Error:{}.{}.({})",messageObjects);
+        logger.error("Service Method Execute Error:{}.{}.({})", messageObjects);
+        logger.error(throwable.getMessage());
         logger.error("Detail Error:",throwable);
+    }
+
+    @Around(value = "execution( * com.server.cx.webservice.rs.server.*.*(..))",argNames = "joinPoint")
+    public Object estimateTime(ProceedingJoinPoint joinPoint) throws Throwable {
+        initializeContext(joinPoint);
+        initializeMessageObjects(joinPoint);
+        logger.info("Usage:{}.{}.({}) start", messageObjects);
+        startStopwatch();
+        Object object = joinPoint.proceed();
+        stopStopwatch();
+        logger.info("Usage:{}.{}.({}) end",messageObjects);
+        return object;
     }
 
     private void initializeContext(JoinPoint joinPoint) {
