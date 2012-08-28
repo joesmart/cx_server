@@ -138,7 +138,7 @@ public class MGraphicResources extends OperationResources {
 
     //test method, it just provide convient method to cancel subscribe graphic item
     @DELETE
-    @Path("{graphicInfoId}")
+    @Path("/graphicInfo/{graphicInfoId}")
     public Response cancelSubscribeGraphicItem(@PathParam("imsi") String imsi,
                                                @PathParam("graphicInfoId") String graphicInfoId) {
         try {
