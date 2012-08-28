@@ -1,21 +1,19 @@
 package com.server.cx.service.cx.impl;
 
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
+import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.MGraphicDao;
 import com.server.cx.dao.cx.UserCommonMGraphicDao;
+import com.server.cx.dao.cx.UserDiyGraphicDao;
 import com.server.cx.dao.cx.spec.MGraphicSpecifications;
 import com.server.cx.dao.cx.spec.UserCommonMGraphicSpecifications;
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserCommonMGraphic;
+import com.server.cx.entity.cx.UserDiyGraphic;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.HistoryMGraphicService;
@@ -23,6 +21,12 @@ import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.QueryMGraphicService;
 import com.server.cx.service.cx.UserSubscribeGraphicItemService;
 import com.server.cx.service.util.BusinessFunctions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * User: yanjianzou
@@ -42,6 +46,9 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     private HistoryMGraphicService historyMGraphicService;
     @Autowired
     private MGraphicDao mGraphicDao;
+
+    @Autowired
+    private UserDiyGraphicDao userDiyGraphicDao;
     
     @Autowired
     private UserSubscribeGraphicItemService userSubscribeGraphicItemService;
@@ -76,13 +83,19 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
             userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
         }
         mGraphicDTO.setSubscribe(true);
-        
-        historyPreviousMGraphic();
+        Long dataRowNumber = userCommonMGraphicDao.count(UserCommonMGraphicSpecifications.userCommonMGraphicCount(userInfo));
+        if (dataRowNumber >= 5) {
+            throw new CXServerBusinessException("指定号码用户设置彩像最多允许5个");
+        }
+        if(mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0){
+            historyPreviousMGraphic();
+        }
         createAndSaveNewUserCommonMGraphic(mGraphicDTO);
         return new OperationResult("createUserCommonMGraphic", "success");
     }
 
     private void historyPreviousMGraphic() {
+
         List<UserCommonMGraphic> previousUserCommonMGraphics = userCommonMGraphicDao.findByUserInfoAndModeTypeAndCommon(userInfo, 2, true);
         for (UserCommonMGraphic userCommonMGraphic : previousUserCommonMGraphics) {
             historyPreviousUserCommonMGraphic(userCommonMGraphic);
@@ -136,14 +149,28 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     }
 
     @Override
-    public DataPage queryUserMGraphic(String imsi) {
+    public DataPage queryUserMGraphic(final String imsi) {
         Preconditions.checkNotNull(imsi, "imsi 不能为空");
         checkAndSetUserInfoExists(imsi);
         List<MGraphic> mGraphics = mGraphicDao.findAll(MGraphicSpecifications.userMGraphic(userInfo), new Sort(new Sort.Order(Sort.Direction.ASC, "modeType"), new Sort.Order(Sort.Direction.DESC, "createdOn")));
-        List<DataItem> mGraphicDataItems = Lists.transform(mGraphics, businessFunctions.mGraphicTransformToDataItem(imsi, "mGraphics") );
+        List<DataItem> mGraphicDataItems = Lists.transform(mGraphics, businessFunctions.mGraphicTransformToDataItem(imsi, "mGraphics"));
+        final UserDiyGraphic userDiyGraphic = userDiyGraphicDao.findByUserInfo(userInfo);
+        Optional<UserDiyGraphic> userDiyGraphicOptional = Optional.fromNullable(userDiyGraphic);
+        List<DataItem> userDiyGraphicDataItems;
+
+
         List<DataItem> historyMGraphicDataItems = historyMGraphicService.queryHistoryMGraphicsByUserInfo(userInfo);
+
+
         List<DataItem> dataItems = Lists.newArrayListWithCapacity(mGraphicDataItems.size() + historyMGraphicDataItems.size());
         dataItems.addAll(mGraphicDataItems);
+
+        if(userDiyGraphicOptional.isPresent()){
+            final Integer Mi= 1;
+            userDiyGraphicDataItems = Lists.transform(userDiyGraphic.getGraphicResources(), businessFunctions.transformDiyGraphicToDataItem(imsi, userDiyGraphic));
+            dataItems.addAll(userDiyGraphicDataItems);
+        }
+
         dataItems.addAll(historyMGraphicDataItems);
 
         DataPage dataPage = new DataPage();
@@ -154,4 +181,5 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         dataPage.setHref(basicService.generateMGraphicsURL(imsi));
         return dataPage;
     }
+
 }

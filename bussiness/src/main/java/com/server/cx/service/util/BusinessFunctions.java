@@ -323,11 +323,15 @@ public class BusinessFunctions {
         List<GraphicResource> graphicResources = graphicInfo.getGraphicResources();
         if (graphicResources.size() > 0) {
             GraphicResource graphicResource = graphicResources.get(0);
-            dataItem.setThumbnailPath(basicService.thumbnailImageURL(graphicResource.getResourceId()));
-            dataItem.setSourceImagePath(basicService.imageURL(graphicResource.getResourceId()));
-            dataItem.setMediaType(graphicResource.getType());
-            dataItem.setResourceType(graphicResource.getType());
+            setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem, graphicResource);
         }
+    }
+
+    private void setUpSourceAndThumbnailImagePathFromGraphicResource(DataItem dataItem, GraphicResource graphicResource) {
+        dataItem.setThumbnailPath(basicService.thumbnailImageURL(graphicResource.getResourceId()));
+        dataItem.setSourceImagePath(basicService.imageURL(graphicResource.getResourceId()));
+        dataItem.setMediaType(graphicResource.getType());
+        dataItem.setResourceType(graphicResource.getType());
     }
 
     public Function<HistoryMGraphic, DataItem> historyMGraphicTransformToDataItem(final String imsi) {
@@ -424,7 +428,7 @@ public class BusinessFunctions {
                     graphicResource.setAuditPassed(null);
                 }
                 graphicResource.setType(input.getType());
-                graphicResource.setUserDiyGraphic(userDiyGraphic);
+                graphicResource.setGraphicInfo(userDiyGraphic);
                 return graphicResource;
             }
         };
@@ -442,4 +446,20 @@ public class BusinessFunctions {
         };
     }
 
+    public Function<GraphicResource, DataItem> transformDiyGraphicToDataItem(final String imsi, final UserDiyGraphic userDiyGraphic) {
+
+        return new Function<GraphicResource, DataItem>() {
+            @Override
+            public DataItem apply(@Nullable GraphicResource input) {
+                DataItem dataItem = new DataItem();
+                dataItem.setName(userDiyGraphic.getName() );
+                dataItem.setSignature(userDiyGraphic.getSignature() );
+                dataItem.setId(input.getId());
+                dataItem.setInUsing(false);
+                setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem,input);
+                dataItem.setActions(actionBuilder.buildHistoryMGraphicActions(imsi, input.getId()));
+                return dataItem;
+            }
+        };
+    }
 }

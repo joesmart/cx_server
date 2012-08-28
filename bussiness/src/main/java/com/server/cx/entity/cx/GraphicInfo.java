@@ -10,6 +10,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "graphic_infos")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name = "cast_type", discriminatorType = DiscriminatorType.STRING, length = 10)
+@DiscriminatorValue("basic")
 public class GraphicInfo extends AuditableStringEntity {
     private String name;
     private String signature;
