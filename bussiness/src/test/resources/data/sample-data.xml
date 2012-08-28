@@ -38,25 +38,25 @@
     <status_type id="8" name="购物" graphic_resource_id="503c291fe4b0070fe88c9630" ></status_type>
     <status_type id="9" name="上班" graphic_resource_id="503c2920e4b0070fe88c963b" ></status_type>
 
-    <holiday_type id="1" name="七夕" download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="2" name="教师节 " download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="3" name="中秋节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="4" name="国庆节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="5" name="万圣节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="6" name="光棍节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="7" name="平安夜" download_num="100000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="8" name="圣诞节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="9" name="除夕" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="10" name="春节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="11" name="元宵节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="12" name="妇女节" download_num="1" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="13" name="愚人节" download_num="10" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="14" name="劳动节" download_num="100" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="15" name="青年节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="16" name="母亲节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="17" name="儿童节" download_num="100000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="18" name="端午节" download_num="10000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
-    <holiday_type id="19" name="父亲节" download_num="1000" graphic_resource_id="500797b7e4b06f4f79efbf5a" level="5"></holiday_type>
+    <holiday_type id="1" name="七夕" download_num="1" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="2" name="教师节 " download_num="1" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="3" name="中秋节" download_num="10" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="4" name="国庆节" download_num="100" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="5" name="万圣节" download_num="1000" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="6" name="光棍节" download_num="10000" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="7" name="平安夜" download_num="100000" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="8" name="圣诞节" download_num="10000" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="9" name="除夕" download_num="1000" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="10" name="春节" download_num="100" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="11" name="元宵节" download_num="10" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="12" name="妇女节" download_num="1" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="13" name="愚人节" download_num="10" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="14" name="劳动节" download_num="100" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="15" name="青年节" download_num="1000" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="16" name="母亲节" download_num="10000" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="17" name="儿童节" download_num="100000" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="18" name="端午节" download_num="10000" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
+    <holiday_type id="19" name="父亲节" download_num="1000" graphic_resource_id="50208811e4b07efd76d72441" level="5"></holiday_type>
 
 
     <category id="1" name="心情物语" description="心情物语测试测试车上" download_num="1000" graphic_resource_id="50039d9ee4b09ed787af7143" />
