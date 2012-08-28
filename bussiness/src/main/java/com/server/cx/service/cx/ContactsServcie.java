@@ -11,6 +11,6 @@ public interface ContactsServcie {
 
     public String retrieveContactUserCXInfo(String imsi) throws SystemException;
 
-    public abstract List<Contacts> queryCXAppConactsByImsi(String imsi) throws SystemException;
+    public abstract List<Contacts> queryCXAppContactsByImsi(String imsi) throws SystemException;
 
 }

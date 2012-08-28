@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
  */
 //TODO 需要增加返回处理结果处理 方法 by Zou YanJian.
 @Component
-@Path("/{imsi}/myCollections")
+@Path("{imsi}/myCollections")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class MyCollectionsResources {

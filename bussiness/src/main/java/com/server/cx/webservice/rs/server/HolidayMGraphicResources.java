@@ -23,7 +23,7 @@ import javax.ws.rs.core.Response;
  * User: yanjianzou Date: 12-8-13 Time: 下午12:23 FileName:HolidayMGraphicURL
  */
 @Component
-@Path("/{imsi}/holidayMGraphics")
+@Path("{imsi}/holidayMGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class HolidayMGraphicResources extends OperationResources {

@@ -19,6 +19,7 @@ public class DataItem extends BasicItem {
     private String name;
     private String signature;
     private Boolean auditPassed;
+    private String auditStatus;
     private Boolean purchased;
     private Boolean collected;
     private Boolean hasUsed;

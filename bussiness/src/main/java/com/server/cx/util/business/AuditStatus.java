@@ -8,6 +8,6 @@ package com.server.cx.util.business;
  */
 public enum AuditStatus {
     PASSED,
-    PASSING,
+    CHECKING,
     UNPASS
 }

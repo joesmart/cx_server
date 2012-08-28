@@ -29,7 +29,7 @@ import com.server.cx.util.business.ValidationUtil;
  * @author calvin
  */
 @Component
-@Path("/register")
+@Path("register")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class RegisterResources {

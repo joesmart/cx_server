@@ -28,7 +28,7 @@ import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
 
 @Component
-@Path("/{imsi}/holidayTypes")
+@Path("{imsi}/holidayTypes")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class HolidayTypeResource {

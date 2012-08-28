@@ -22,7 +22,7 @@ import javax.ws.rs.core.Response;
  * User: yanjianzou Date: 12-8-14 Time: 下午1:23 FileName:StatusMGraphicResources
  */
 @Component
-@Path("/{imsi}/statusMGraphics")
+@Path("{imsi}/statusMGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class StatusMGraphicResources extends OperationResources {

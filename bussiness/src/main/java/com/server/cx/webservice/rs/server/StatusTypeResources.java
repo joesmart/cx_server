@@ -28,7 +28,7 @@ import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
 
 @Component
-@Path("/{imsi}/statusTypes")
+@Path("{imsi}/statusTypes")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class StatusTypeResources {

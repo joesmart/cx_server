@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Component
-@Path("/{imsi}/suggestion")
+@Path("{imsi}/suggestion")
 @Produces({MediaType.APPLICATION_JSON})
 public class SuggestionResources {
     private final static Logger LOGGER = LoggerFactory.getLogger(SuggestionResources.class);

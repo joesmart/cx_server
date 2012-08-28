@@ -15,7 +15,6 @@ import javax.persistence.*;
 public class GraphicResource extends AuditableStringEntity {
     private GraphicInfo graphicInfo;
     private String resourceId;
-    private String graphicId;
     private String type;
     private Boolean auditPassed;
 
@@ -24,15 +23,8 @@ public class GraphicResource extends AuditableStringEntity {
     @Transient
     private String sourcePath;
 
-    public String getGraphicId() {
-        return graphicId;
-    }
 
-    public void setGraphicId(String graphicId) {
-        this.graphicId = graphicId;
-    }
-
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, optional = true)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH},optional = true)
     @JoinColumn(name = "graphicinfo_id")
     public GraphicInfo getGraphicInfo() {
         return graphicInfo;
@@ -42,6 +34,7 @@ public class GraphicResource extends AuditableStringEntity {
         this.graphicInfo = graphicInfo;
     }
 
+    @Column(length = 40)
     public String getResourceId() {
         return resourceId;
     }
@@ -74,6 +67,7 @@ public class GraphicResource extends AuditableStringEntity {
         this.auditPassed = auditPassed;
     }
 
+    @Column(length = 10)
     public String getType() {
         return type;
     }

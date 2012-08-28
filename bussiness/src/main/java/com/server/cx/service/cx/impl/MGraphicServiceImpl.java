@@ -13,10 +13,12 @@ import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.MGraphicDao;
 import com.server.cx.dao.cx.UserCommonMGraphicDao;
+import com.server.cx.dao.cx.UserDiyGraphicDao;
 import com.server.cx.dao.cx.spec.MGraphicSpecifications;
 import com.server.cx.dao.cx.spec.UserCommonMGraphicSpecifications;
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserCommonMGraphic;
+import com.server.cx.entity.cx.UserDiyGraphic;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.HistoryMGraphicService;
@@ -24,6 +26,12 @@ import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.QueryMGraphicService;
 import com.server.cx.service.cx.UserSubscribeGraphicItemService;
 import com.server.cx.service.util.BusinessFunctions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * User: yanjianzou
@@ -43,6 +51,9 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     private HistoryMGraphicService historyMGraphicService;
     @Autowired
     private MGraphicDao mGraphicDao;
+
+    @Autowired
+    private UserDiyGraphicDao userDiyGraphicDao;
     
     @Autowired
     private UserSubscribeGraphicItemService userSubscribeGraphicItemService;
@@ -70,20 +81,27 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     public OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO, Boolean subscribe) throws RuntimeException {
         checkAndInitializeContext(imsi, mGraphicDTO);
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
-        
-        if(subscribe) {
-            userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
-        } else {
-            userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+        if(!isImmediate){
+            if(subscribe) {
+                userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
+            } else {
+                userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+            }
+            mGraphicDTO.setSubscribe(true);
         }
-        mGraphicDTO.setSubscribe(true);
-        
-        historyPreviousMGraphic();
+        Long dataRowNumber = userCommonMGraphicDao.count(UserCommonMGraphicSpecifications.userCommonMGraphicCount(userInfo));
+        if (dataRowNumber >= 5) {
+            throw new CXServerBusinessException("指定号码用户设置彩像最多允许5个");
+        }
+        if(mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0){
+            historyPreviousMGraphic();
+        }
         createAndSaveNewUserCommonMGraphic(mGraphicDTO);
         return new OperationResult("createUserCommonMGraphic", Constants.SUCCESS_FLAG);
     }
 
     private void historyPreviousMGraphic() {
+
         List<UserCommonMGraphic> previousUserCommonMGraphics = userCommonMGraphicDao.findByUserInfoAndModeTypeAndCommon(userInfo, 2, true);
         for (UserCommonMGraphic userCommonMGraphic : previousUserCommonMGraphics) {
             historyPreviousUserCommonMGraphic(userCommonMGraphic);
@@ -137,15 +155,27 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     }
 
     @Override
-    public DataPage queryUserMGraphic(String imsi) {
+    public DataPage queryUserMGraphic(final String imsi) {
         Preconditions.checkNotNull(imsi, "imsi 不能为空");
         checkAndSetUserInfoExists(imsi);
         List<MGraphic> mGraphics = mGraphicDao.findAll(MGraphicSpecifications.userMGraphic(userInfo), new Sort(new Sort.Order(Sort.Direction.ASC, "modeType"), new Sort.Order(Sort.Direction.DESC, "createdOn")));
-        List<DataItem> mGraphicDataItems = Lists.transform(mGraphics, businessFunctions.mGraphicTransformToDataItem(imsi, "mGraphics") );
+        List<DataItem> mGraphicDataItems = Lists.transform(mGraphics, businessFunctions.mGraphicTransformToDataItem(imsi, "mGraphics"));
+        final List<UserDiyGraphic> userDiyGraphicList = userDiyGraphicDao.findByUserInfo(userInfo);
+
+        List<DataItem> userDiyGraphicDataItems;
+
         List<DataItem> historyMGraphicDataItems = historyMGraphicService.queryHistoryMGraphicsByUserInfo(userInfo);
+
         List<DataItem> dataItems = Lists.newArrayListWithCapacity(mGraphicDataItems.size() + historyMGraphicDataItems.size());
         dataItems.addAll(mGraphicDataItems);
+
+        if(userDiyGraphicList!=null && userDiyGraphicList.size()>0){
+            final Integer Mi= 1;
+            userDiyGraphicDataItems = Lists.transform(userDiyGraphicList, businessFunctions.transformDiyGraphicToDataItem(imsi));
+            dataItems.addAll(userDiyGraphicDataItems);
+        }
         dataItems.addAll(historyMGraphicDataItems);
+
 
         DataPage dataPage = new DataPage();
         dataPage.setItems(dataItems);
@@ -155,5 +185,5 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         dataPage.setHref(basicService.generateMGraphicsURL(imsi));
         return dataPage;
     }
-    
+
 }

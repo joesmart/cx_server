@@ -1,14 +1,5 @@
 package com.server.cx.service.cx.impl;
 
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.google.common.base.Function;
@@ -27,6 +18,16 @@ import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.StatusTypeService;
 import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.service.util.BusinessFunctions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
 
 @Component
 @Transactional(readOnly = true)
@@ -79,10 +80,13 @@ public class StatusTypeServiceImpl extends UserCheckService implements StatusTyp
     public GraphicInfo getFirstChild(Long statusType) {
         List<GraphicInfo> graphicInfos = graphicInfoDao.findAll(GraphicInfoSpecifications.statusTypeGraphicInfoExcludedUsed(statusType, null),new Sort(Sort.Direction.DESC,"createdOn"));
         if(graphicInfos != null && graphicInfos.size()>0){
-            return graphicInfos.get(0);
-        }else {
-            throw new CXServerBusinessException("该状态包下没有数据!");
+            for(GraphicInfo graphicInfo : graphicInfos){
+                if(graphicInfo.getPrice() == 0.0D){
+                    return graphicInfo;
+                }
+            }
         }
+        throw new CXServerBusinessException("该状态包下没有数据!");
     }
 
     private List<DataItem> generateStatusTypeList(List<StatusType> statusTypes, String imsi) {

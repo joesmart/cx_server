@@ -36,7 +36,7 @@ import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
 
 @Component
-@Path("/{imsi}/customMGraphics")
+@Path("{imsi}/customMGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class CustomMGraphicResources extends OperationResources {

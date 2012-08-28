@@ -18,7 +18,7 @@ import javax.ws.rs.core.MediaType;
  * FileName:CategoryResources
  */
 @Component
-@Path("/{imsi}/categories")
+@Path("{imsi}/categories")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class CategoryResources {

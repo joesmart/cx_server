@@ -46,17 +46,18 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
         checkParameters(imsi, mGraphicDTO);
         checkAndSetUserInfoExists(imsi);
-        
-        if(subscribe) {
-            userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
-        } else {
-            userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
-        }
-        mGraphicDTO.setSubscribe(true);
-        
+
         if(isImmediate){
             graphicInfo = statusTypeService.getFirstChild(mGraphicDTO.getStatusType());
             mGraphicDTO.setGraphicInfoId(graphicInfo.getId());
+        }else {
+            userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+            if(subscribe) {
+                userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
+            } else {
+                userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+            }
+            mGraphicDTO.setSubscribe(true);
         }
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
 

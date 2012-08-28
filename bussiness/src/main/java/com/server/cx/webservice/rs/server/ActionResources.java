@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Component
-@Path("/actions")
+@Path("actions")
 @Produces({MediaType.APPLICATION_JSON})
 public class ActionResources {
     public static final Logger LOGGER = LoggerFactory.getLogger(CategoryResources.class);
@@ -36,7 +36,7 @@ public class ActionResources {
     @Path("{imsi}")
     public Response queryAllActions(@PathParam("imsi") String imsi) {
         try {
-            userCheckService.checkAndSetUserInfoExists(imsi);
+//            userCheckService.checkAndSetUserInfoExists(imsi);
             return Response.ok(actionBuilder.buildUserOperableActions(imsi)).build();
         } catch (CXServerBusinessException e) {
             LOGGER.error("Error:",e);

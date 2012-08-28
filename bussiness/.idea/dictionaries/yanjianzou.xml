@@ -2,6 +2,7 @@
   <dictionary name="yanjianzou">
     <words>
       <w>cxserver</w>
+      <w>graphicinfo</w>
       <w>graphicinfos</w>
       <w>imsi</w>
       <w>infoes</w>
@@ -10,8 +11,10 @@
       <w>joesmart</w>
       <w>mgraphic</w>
       <w>mgraphics</w>
+      <w>reloadable</w>
       <w>shiro</w>
       <w>smsdto</w>
+      <w>springframework</w>
       <w>yyyy</w>
     </words>
   </dictionary>

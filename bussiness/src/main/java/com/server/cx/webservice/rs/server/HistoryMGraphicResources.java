@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
  * FileName:HistoryMGraphicResources
  */
 @Component
-@Path("/{imsi}/historyMGraphics")
+@Path("{imsi}/historyMGraphics")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class HistoryMGraphicResources {
