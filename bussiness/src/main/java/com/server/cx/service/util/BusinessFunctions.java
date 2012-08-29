@@ -292,9 +292,8 @@ public class BusinessFunctions {
         DataItem dataItem = new DataItem();
         dataItem.setName(input.getName());
         dataItem.setSignature(input.getSignature());
-        dataItem.setId(input.getGraphicInfo().getId());
+        dataItem.setId(input.getId());
         dataItem.setMGraphicId(input.getId());
-        dataItem.setLevel(input.getGraphicInfo().getLevel());
         dataItem.setSubScribe(input.getSubscribe());
         dataItem.setModeType(input.getModeType());
         if (input instanceof UserCommonMGraphic) {
@@ -310,11 +309,7 @@ public class BusinessFunctions {
                 dataItem.setEnd(((UserCustomMGraphic) input).getEnd());
             }
         }
-
-
-        GraphicInfo graphicInfo = input.getGraphicInfo();
-
-        setUpSourceAndThumbnailImagePath(dataItem, graphicInfo);
+        setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem,input.getGraphicResource());
         dataItem.setInUsing(true);
         return dataItem;
     }

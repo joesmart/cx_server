@@ -11,6 +11,7 @@ import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.UserDiyGraphicDao;
 import com.server.cx.dao.cx.spec.MGraphicSpecifications;
 import com.server.cx.dao.cx.spec.UserCommonMGraphicSpecifications;
+import com.server.cx.entity.cx.GraphicResource;
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserDiyGraphic;
@@ -58,7 +59,11 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
 
     private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
         UserCommonMGraphic userCommonMGraphic = new UserCommonMGraphic();
-        userCommonMGraphic.setGraphicInfo(graphicInfo);
+
+        List<GraphicResource> graphicResourceList = graphicInfo.getGraphicResources();
+        if(graphicResourceList !=null && graphicResourceList.size() > 0){
+            userCommonMGraphic.setGraphicResource(graphicResourceList.get(0));
+        }
         userCommonMGraphic.setUserInfo(userInfo);
         userCommonMGraphic.setCommon(true);
 

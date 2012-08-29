@@ -1,22 +1,24 @@
 package com.server.cx.service.cx.impl;
 
-import java.util.List;
-import org.joda.time.LocalDate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.StatusTypeDao;
 import com.server.cx.dao.cx.UserStatusMGraphicDao;
+import com.server.cx.entity.cx.GraphicResource;
 import com.server.cx.entity.cx.StatusType;
 import com.server.cx.entity.cx.UserStatusMGraphic;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.MGraphicService;
 import com.server.cx.service.cx.StatusTypeService;
 import com.server.cx.service.cx.UserSubscribeGraphicItemService;
+import org.joda.time.LocalDate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * User: yanjianzou
@@ -111,7 +113,10 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         StatusType statusType = statusTypeDao.findOne(mGraphicDTO.getStatusType());
         deletePreviousMGraphic(statusType);
         UserStatusMGraphic userStatusMGraphic = new UserStatusMGraphic();
-        userStatusMGraphic.setGraphicInfo(graphicInfo);
+        List<GraphicResource> graphicResourceList = graphicInfo.getGraphicResources();
+        if(graphicResourceList !=null && graphicResourceList.size()>0){
+            userStatusMGraphic.setGraphicResource(graphicResourceList.get(0));
+        }
         userStatusMGraphic.setUserInfo(userInfo);
         userStatusMGraphic.setSubscribe(mGraphicDTO.getSubscribe());
         userStatusMGraphic.setStatusType(statusType);

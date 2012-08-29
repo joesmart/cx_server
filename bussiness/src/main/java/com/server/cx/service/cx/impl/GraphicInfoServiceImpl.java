@@ -166,20 +166,20 @@ public class GraphicInfoServiceImpl  implements GraphicInfoService {
         String queryCondition = "statusTypeId=" + statusTypeId;
         UserInfo userInfo = userInfoDao.findByImsi(imsi);
         StatusType statusType = statusTypeDao.findOne(statusTypeId);
-        List<UserStatusMGraphic> userStatusGraphicInfos = userStatusMGraphicDao.findByUserInfoAndStatusType(userInfo,
+        List<UserStatusMGraphic> statusMGraphic = userStatusMGraphicDao.findByUserInfoAndStatusType(userInfo,
             statusType);
 
         boolean existUserGraphicInfo = false;
         UserStatusMGraphic userStatusMGraphic ;
-        GraphicInfo graphicInfo ;
+        GraphicInfo graphicInfo = null;
         String usedId = null;
         Map<String, MGraphic> usedGraphicInfos = null;
-        if (userStatusGraphicInfos != null && userStatusGraphicInfos.size() > 0) {
-            userStatusMGraphic = userStatusGraphicInfos.get(0);
-            graphicInfo = userStatusMGraphic.getGraphicInfo();
+
+        if (statusMGraphic != null && statusMGraphic.size() > 0) {
+            userStatusMGraphic = statusMGraphic.get(0);
+            graphicInfo = userStatusMGraphic.getGraphicResource().getGraphicInfo();
             usedId = graphicInfo.getId();
             existUserGraphicInfo = true;
-            LOGGER.info(graphicInfo.getName());
             usedGraphicInfos = Maps.newHashMap();
             usedGraphicInfos.put(graphicInfo.getId(), userStatusMGraphic);
         }
@@ -190,7 +190,7 @@ public class GraphicInfoServiceImpl  implements GraphicInfoService {
         List<GraphicInfo> statusGraphicInfos = Lists.newArrayList(page.getContent().iterator());
 
         if (existUserGraphicInfo) {
-            statusGraphicInfos.add(0, userStatusGraphicInfos.get(0).getGraphicInfo());
+            statusGraphicInfos.add(0, graphicInfo);
         }
 
         List<DataItem> dataItems = transformToGraphicItemList(imsi, statusGraphicInfos, usedGraphicInfos,
@@ -206,10 +206,11 @@ public class GraphicInfoServiceImpl  implements GraphicInfoService {
     @Override
     public DataPage findHolidayGraphicInfosByImsi(String imsi, Long holidayTypeId, Integer offset, Integer limit)
         throws ExecutionException {
-
-        String queryCondition = "holidayTypeId=" + holidayTypeId;
         LOGGER.info("imsi = " + imsi);
         LOGGER.info("holidayTypeId = " + holidayTypeId);
+
+        String queryCondition = "holidayTypeId=" + holidayTypeId;
+
         UserInfo userInfo = userInfoDao.findByImsi(imsi);
         HolidayType holidayType = holidayTypeDao.findOne(holidayTypeId);
         List<UserHolidayMGraphic> userHolidayGraphicInfos = userHolidayMGraphicDao.findByUserInfoAndHolidayType(
@@ -221,7 +222,7 @@ public class GraphicInfoServiceImpl  implements GraphicInfoService {
         Map<String, MGraphic> usedGraphicInfos = null;
         if (userHolidayGraphicInfos != null && userHolidayGraphicInfos.size() > 0) {
             userHolidayMGraphic = userHolidayGraphicInfos.get(0);
-            graphicInfo = userHolidayMGraphic.getGraphicInfo();
+            graphicInfo = userHolidayMGraphic.getGraphicResource().getGraphicInfo();
             usedId = graphicInfo.getId();
             existUserGraphicInfo = true;
             LOGGER.info(graphicInfo.getName());
