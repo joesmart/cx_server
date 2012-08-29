@@ -156,6 +156,10 @@ public class BasicService {
         return generateURL(imsi, "/mGraphics?immediate=true");
     }
 
+    public String generateDiyMGraphicUseURL(String imsi){
+        return generateURL(imsi,"/diyGraphics");
+    }
+
     public String generateHolidayMGraphicRemoveURL(String imsi, String mgraphicId) {
         return getBaseURL() + imsi + "/holidayMGraphics/"+mgraphicId;
     }

@@ -9,6 +9,7 @@ import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.UserCustomMGraphicDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.spec.UserCustomMGraphicSpecifications;
+import com.server.cx.entity.cx.GraphicResource;
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.UserCustomMGraphic;
 import com.server.cx.exception.CXServerBusinessException;
@@ -68,7 +69,10 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         checkPreviousMGraphicCount();
         UserCustomMGraphic userCustomMGraphic = new UserCustomMGraphic();
         userCustomMGraphic.setSubscribe(mGraphicDTO.getSubscribe());
-        userCustomMGraphic.setGraphicInfo(graphicInfo);
+        List<GraphicResource> graphicResourceList = graphicInfo.getGraphicResources();
+        if(graphicResourceList != null && graphicResourceList.size() > 0){
+            userCustomMGraphic.setGraphicResource(graphicResourceList.get(0));
+        }
         userCustomMGraphic.setUserInfo(userInfo);
         userCustomMGraphic.setCommon(true);
         userCustomMGraphic.setPhoneNos(null);
@@ -135,12 +139,12 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
             mGraphic.setPhoneNos(null);
             mGraphic.setCommon(true);
             mGraphic.setPriority(5);
-            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
         } else {
             mGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
             mGraphic.setPriority(6);
             mGraphic.setCommon(false);
-            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
         }
         userCustomMGraphicDao.save(mGraphic);
         return new OperationResult("editUserCommonMGraphic", Constants.SUCCESS_FLAG);

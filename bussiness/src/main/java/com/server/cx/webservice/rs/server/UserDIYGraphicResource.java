@@ -1,6 +1,8 @@
 package com.server.cx.webservice.rs.server;
 
+import com.cl.cx.platform.dto.MGraphicDTO;
 import com.cl.cx.platform.dto.OperationDescription;
+import com.server.cx.exception.MoneyNotEnoughException;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.UserDiyGraphicService;
 import com.server.cx.util.ObjectFactory;
@@ -62,5 +64,28 @@ public class UserDIYGraphicResource extends OperationResources {
             operationDescription.setErrorMessage(e.getMessage());
             return Response.ok(operationDescription).build();
         }
+    }
+
+    @POST
+    public Response createMGraphic(@PathParam("imsi")String imsi,MGraphicDTO mGraphicDTO){
+        operationDescription = new OperationDescription();
+        try {
+            OperationResult operationResult;
+            operationResult = userDiyGraphicService.create(imsi, mGraphicDTO);
+            updateOperationDescription(operationResult);
+        } catch (MoneyNotEnoughException e) {
+            LOGGER.info("create MoneyNotEnoughException", e);
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                    Response.Status.NOT_ACCEPTABLE.getStatusCode(), "create", "余额不足");
+            return Response.ok(operationDescription).build();
+
+        } catch (Exception ex) {
+            errorMessage(ex);
+            actionName = "createCommonMGraphic";
+            operationDescription.setActionName(actionName);
+            operationDescription.setErrorCode(403);
+            return Response.ok(operationDescription).build();
+        }
+        return Response.ok(operationDescription).status(Response.Status.ACCEPTED).build();
     }
 }

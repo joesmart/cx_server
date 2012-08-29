@@ -1,14 +1,16 @@
 package com.server.cx.dao.cx;
 
-import static org.fest.assertions.Assertions.assertThat;
-import java.util.List;
+import com.server.cx.entity.cx.HolidayType;
+import com.server.cx.entity.cx.UserHolidayMGraphic;
+import com.server.cx.entity.cx.UserInfo;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
-import com.server.cx.entity.cx.HolidayType;
-import com.server.cx.entity.cx.UserHolidayMGraphic;
-import com.server.cx.entity.cx.UserInfo;
+
+import java.util.List;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 public class UserHolidayMGraphicDaoTest extends SpringTransactionalTestCase {
@@ -27,8 +29,6 @@ public class UserHolidayMGraphicDaoTest extends SpringTransactionalTestCase {
         HolidayType holidayType = holidayTypeDao.findOne(1L);
         List<UserHolidayMGraphic> userHolidayMGraphic = userHolidayMGraphicDao.findByUserInfoAndHolidayType(userInfo, holidayType);
         assertThat(userHolidayMGraphic.size()).isEqualTo(1);
-        assertThat(userHolidayMGraphic.get(0).getGraphicInfo().getName()).isEqualTo("彩像93");
-        assertThat(userHolidayMGraphic.get(0).getGraphicInfo().getSignature()).isEqualTo("男儿当自强83");
     }
 
     @Test

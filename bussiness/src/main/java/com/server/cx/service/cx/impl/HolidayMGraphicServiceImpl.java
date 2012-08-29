@@ -6,6 +6,7 @@ import com.google.common.base.Preconditions;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.HolidayTypeDao;
 import com.server.cx.dao.cx.UserHolidayMGraphicDao;
+import com.server.cx.entity.cx.GraphicResource;
 import com.server.cx.entity.cx.HolidayType;
 import com.server.cx.entity.cx.UserHolidayMGraphic;
 import com.server.cx.model.OperationResult;
@@ -44,7 +45,11 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         HolidayType holidayType = holidayTypeDao.findOne(mGraphicDTO.getHolidayType());
         deletePreviousHolidayMGraphic(holidayType);
         UserHolidayMGraphic holidayMGraphic = new UserHolidayMGraphic();
-        holidayMGraphic.setGraphicInfo(graphicInfo);
+
+        List<GraphicResource> graphicResourceList = graphicInfo.getGraphicResources();
+        if(graphicResourceList != null && graphicResourceList.size() >0){
+            holidayMGraphic.setGraphicResource(graphicResourceList.get(0));
+        }
         holidayMGraphic.setUserInfo(userInfo);
         holidayMGraphic.setCommon(true);
         holidayMGraphic.setSubscribe(mGraphicDTO.getSubscribe());
@@ -108,21 +113,22 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
     @Override
     public OperationResult edit(String imsi, MGraphicDTO mGraphicDTO) {
         checkAndInitializeContext(imsi, mGraphicDTO);
+        checkAndInitializeUserInfo(imsi);
         mGraphicIdMustBeExists(mGraphicDTO);
-        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+//        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
         
         UserHolidayMGraphic mGraphic = userHolidayMGraphicDao.findOne(mGraphicDTO.getId());
         if (mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0) {
             mGraphic.setPhoneNos(null);
             mGraphic.setCommon(true);
             mGraphic.setPriority(7);
-            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
             userHolidayMGraphicDao.save(mGraphic);
         } else {
             mGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
             mGraphic.setPriority(8);
             mGraphic.setCommon(false);
-            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
             userHolidayMGraphicDao.save(mGraphic);
         }
         return new OperationResult("editUserCommonMGraphic", Constants.SUCCESS_FLAG);
