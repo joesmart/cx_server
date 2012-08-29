@@ -287,15 +287,15 @@ public class ActionBuilder {
     }
 
     public Actions buildSubscribeHolidayAction(String imsi) {
-        return actions().subscribeHolidayURL(basicService.generateHolidayTypesVisitURL(imsi)).build();
+        return actions().subscribeHolidayURL(basicService.generateSubscribeFunctionType(imsi, "holiday")).build();
     }
 
     public Actions buildSubscribeStatusAction(String imsi) {
-        return actions().subscribeStatusURL(basicService.generateStatusTypeVisitURL(imsi)).build();
+        return actions().subscribeStatusURL(basicService.generateSubscribeFunctionType(imsi, "status")).build();
     }
 
     public Actions buildSubscribeCustomAction(String imsi) {
-        return actions().subscribeCustomURL(basicService.generateCustomMGraphicsVisitURL(imsi)).build();
+        return actions().subscribeCustomURL(basicService.generateSubscribeFunctionType(imsi, "custom")).build();
     }
 
     public Actions buildHolidaySubscribeGraphicItemAction(String imsi, Boolean isImmediate) {
