@@ -76,7 +76,7 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
     public OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO, Boolean subscribe) throws RuntimeException {
         checkAndInitializeContext(imsi, mGraphicDTO);
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
-        if(isImmediate == null && !isImmediate){
+        if(isImmediate == null || !isImmediate){
             if(subscribe) {
                 userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
             } else {

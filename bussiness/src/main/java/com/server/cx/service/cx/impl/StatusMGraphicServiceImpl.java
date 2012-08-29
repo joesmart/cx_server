@@ -51,7 +51,6 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
             graphicInfo = statusTypeService.getFirstChild(mGraphicDTO.getStatusType());
             mGraphicDTO.setGraphicInfoId(graphicInfo.getId());
         }else {
-            userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
             if(subscribe) {
                 userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
             } else {
