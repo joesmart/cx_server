@@ -57,60 +57,6 @@ public class HolidayTypeResource {
         }
     }
 
-    @PUT
-    public Response subscribeHolidayType(@PathParam("imsi") String imsi) {
-        LOGGER.info("Into subscribeFunctionType imsi = " + imsi);
-
-        try {
-            ValidationUtil.checkParametersNotNull(imsi);
-            DataPage dataPage = holidayTypeService.subscribeAndQueryHoliayTypes(imsi);
-            return Response.ok(dataPage).build();
-
-        } catch (InvalidParameterException e) {
-            LOGGER.error("subscribeFunctionType InvalidParameterException error", e);
-            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                Response.Status.BAD_REQUEST.getStatusCode(), "subscribeFunctionType", "请求参数异常");
-            return Response.ok(operationDescription).build();
-
-        } catch (MoneyNotEnoughException e) {
-            LOGGER.info("subscribeFunctionType MoneyNotEnoughException", e);
-            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "subscribeFunctionType", "余额不足");
-            return Response.ok(operationDescription).build();
-
-        } catch (UserHasSubscribedException e) {
-            LOGGER.error("subscribeFunctionType error", e);
-            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "subscribeFunctionType", "用户已经订购");
-            return Response.ok(operationDescription).build();
-
-        } catch (Exception e) {
-            LOGGER.error("subscribeFunctionType error", e);
-            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), "subscribeFunctionType", "服务器内部错误");
-            return Response.ok(operationDescription).build();
-        }
-
-    }
-    
-    @DELETE
-    public Response cancelSubscribeHolidayType(@PathParam("imsi") String imsi) {
-        LOGGER.info("Into cancelSubscribeHolidayType imsi = " + imsi);
-        try {
-            ValidationUtil.checkParametersNotNull(imsi);
-            holidayTypeService.cancelSubscribeHolidayType(imsi);
-            
-        } catch(Exception e) {
-            LOGGER.error("cancelSubscribeHolidayType error", e);
-            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), "subscribeFunctionType", "服务器内部错误");
-            return Response.ok(operationDescription).build();
-        }
-        OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
-            Response.Status.NO_CONTENT.getStatusCode(), "cancelSubscribeHolidayType", "成功取消订购");
-        return Response.ok(operationDescription).build();
-        
-    }
     
     
 

@@ -243,4 +243,8 @@ public class BasicService {
     public String generateUserDIYGraphicDeleteURL(String imsi, String id) {
         return generateURL(imsi,"/diyGraphics/"+id);
     }
+
+    public String generateSubscribeFunctionType(String imsi, String type) {
+        return generateURL(imsi, "/subscribe?type=" + type);
+    }
 }
