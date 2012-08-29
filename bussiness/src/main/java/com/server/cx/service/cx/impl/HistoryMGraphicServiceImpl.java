@@ -1,10 +1,5 @@
 package com.server.cx.service.cx.impl;
 
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
@@ -16,6 +11,12 @@ import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.HistoryMGraphicService;
 import com.server.cx.service.util.BusinessFunctions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * User: yanjianzou
@@ -41,8 +42,11 @@ public class HistoryMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
     @Override
     public List<DataItem> queryHistoryMGraphicsByUserInfo(UserInfo userInfo) {
         List<HistoryMGraphic> historyMGraphics = historyMGraphicDao.findAll(HistoryMGraphicSpecifications.userHistMGraphics(userInfo), new Sort(new Sort.Order(Sort.Direction.DESC, "createdOn")));
-        List<DataItem> dataItems = Lists.transform(historyMGraphics, businessFunctions.historyMGraphicTransformToDataItem(userInfo.getImsi()));
-        return dataItems;
+        if(historyMGraphics != null){
+            List<DataItem> dataItems = Lists.transform(historyMGraphics, businessFunctions.historyMGraphicTransformToDataItem(userInfo.getImsi()));
+            return dataItems;
+        }
+        return null;
     }
 
     @Override

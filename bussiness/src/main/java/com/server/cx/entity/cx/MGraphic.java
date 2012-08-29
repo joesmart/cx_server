@@ -24,18 +24,21 @@ public class MGraphic extends AuditableStringEntity {
     private String signature;
     private String name;
     private GraphicInfo graphicInfo;
+    private GraphicResource graphicResource;
     private Integer priority;
     private Boolean subscribe;
 
+
+
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @Fetch(FetchMode.SELECT)
-    @JoinColumn(name = "graphic_info_id")
-    public GraphicInfo getGraphicInfo() {
-        return graphicInfo;
+    @JoinColumn(name = "graphic_resource_id")
+    public GraphicResource getGraphicResource() {
+        return graphicResource;
     }
 
-    public void setGraphicInfo(GraphicInfo graphicInfo) {
-        this.graphicInfo = graphicInfo;
+    public void setGraphicResource(GraphicResource graphicResource) {
+        this.graphicResource = graphicResource;
     }
 
     public Integer getModeType() {

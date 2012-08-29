@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Table(name = "graphic_resource")
 public class GraphicResource extends AuditableStringEntity {
     private GraphicInfo graphicInfo;
+    private UserDiyGraphic diyGraphic;
     private String resourceId;
     private String type;
     private Boolean auditPassed;
@@ -32,6 +33,16 @@ public class GraphicResource extends AuditableStringEntity {
 
     public void setGraphicInfo(GraphicInfo graphicInfo) {
         this.graphicInfo = graphicInfo;
+    }
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH},optional = true)
+    @JoinColumn(name = "diy_id")
+    public UserDiyGraphic getDiyGraphic() {
+        return diyGraphic;
+    }
+
+    public void setDiyGraphic(UserDiyGraphic diyGraphic) {
+        this.diyGraphic = diyGraphic;
     }
 
     @Column(length = 40)

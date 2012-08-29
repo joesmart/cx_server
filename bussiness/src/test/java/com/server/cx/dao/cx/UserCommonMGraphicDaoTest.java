@@ -1,6 +1,7 @@
 package com.server.cx.dao.cx;
 
 import com.server.cx.entity.cx.GraphicInfo;
+import com.server.cx.entity.cx.GraphicResource;
 import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserInfo;
 import org.junit.After;
@@ -9,6 +10,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
+
+import java.util.List;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -47,7 +50,10 @@ public class UserCommonMGraphicDaoTest extends SpringTransactionalTestCase {
         GraphicInfo graphicInfo = graphicInfoDao.findOne("4028b88138d5e5e50138d5e5f2800003");
         UserCommonMGraphic userCommonMGraphic = new UserCommonMGraphic();
         userCommonMGraphic.setCommon(true);
-        userCommonMGraphic.setGraphicInfo(graphicInfo);
+        List<GraphicResource> graphicResourceList = graphicInfo.getGraphicResources();
+        if(graphicResourceList != null && graphicResourceList.size()>0){
+            userCommonMGraphic.setGraphicResource(graphicResourceList.get(0));
+        }
         userCommonMGraphic.setName("abc");
         userCommonMGraphic.setSignature("abcdefg");
         userCommonMGraphic.setUserInfo(userInfo);

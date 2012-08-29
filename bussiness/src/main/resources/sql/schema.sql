@@ -23,9 +23,21 @@
         drop 
         foreign key FKA2E5796ECDC4AB82;
 
+    alter table graphic_resource 
+        drop 
+        foreign key FK4F320785A8BFB6AE;
+
+    alter table graphic_resource 
+        drop 
+        foreign key FK4F320785E231CA91;
+
     alter table history_mgraphic 
         drop 
         foreign key FK73D101266C146C11;
+
+    alter table history_mgraphic 
+        drop 
+        foreign key FK73D101268EBB0422;
 
     alter table holiday 
         drop 
@@ -37,11 +49,15 @@
 
     alter table mgraphic 
         drop 
-        foreign key FK4B95CDDBCDC4AB82;
+        foreign key FK4B95CDDB9CE57422;
 
     alter table mgraphic 
         drop 
         foreign key FK4B95CDDBEBB54FE8;
+
+    alter table mgraphic 
+        drop 
+        foreign key FK4B95CDDBCDC4AB82;
 
     alter table mgraphic_phone_no 
         drop 
@@ -61,27 +77,23 @@
 
     alter table user_diy_graphic 
         drop 
-        foreign key FKA2E5796EE36BFFE3b013fbc9;
-
-    alter table user_diy_graphic 
-        drop 
         foreign key FKB013FBC96C146C11;
-
-    alter table user_diy_graphic 
-        drop 
-        foreign key FKA2E5796ECDC4AB82b013fbc9;
-
-    alter table user_diy_graphic 
-        drop 
-        foreign key FKA2E5796EEBB54FE8b013fbc9;
 
     alter table user_favorites 
         drop 
         foreign key FKF2FF4EE36C146C11;
 
+    alter table user_favorites 
+        drop 
+        foreign key FKF2FF4EE38EBB0422;
+
     alter table user_subscribe_graphic_item 
         drop 
         foreign key FK10A9E5D36C146C11;
+
+    alter table user_subscribe_graphic_item 
+        drop 
+        foreign key FK10A9E5D38EBB0422;
 
     alter table user_subscribe_record 
         drop 
@@ -217,6 +229,7 @@
         source_path varchar(255),
         thumbnail_path varchar(255),
         type varchar(10),
+        diy_id varchar(32),
         graphicinfo_id varchar(32),
         primary key (id)
     );
@@ -267,15 +280,15 @@
         signature varchar(255),
         subscribe bit,
         common bit,
-        valid_date datetime,
         holiday datetime,
-        special_phone_no varchar(20),
+        valid_date datetime,
         begin datetime,
         end datetime,
-        graphic_info_id varchar(32),
+        special_phone_no varchar(20),
+        graphic_resource_id varchar(32),
         user_id varchar(32),
-        status_type_id bigint,
         holiday_type_id bigint,
+        status_type_id bigint,
         primary key (id)
     );
 
@@ -368,17 +381,9 @@
         created_on datetime,
         updated_by varchar(64),
         updated_on datetime,
-        audit_status varchar(20),
-        level integer,
+        audit_status integer,
         name varchar(40),
-        owner varchar(40),
-        price double precision,
-        recommend bit,
-        signature varchar(60),
-        use_count integer,
-        category_id bigint,
-        holiday_type_id bigint,
-        status_type_id bigint,
+        signature varchar(40),
         user_id varchar(32),
         primary key (id)
     );
@@ -494,11 +499,29 @@
         foreign key (holiday_type_id) 
         references holiday_type (id);
 
+    alter table graphic_resource 
+        add index FK4F320785A8BFB6AE (diy_id), 
+        add constraint FK4F320785A8BFB6AE 
+        foreign key (diy_id) 
+        references user_diy_graphic (id);
+
+    alter table graphic_resource 
+        add index FK4F320785E231CA91 (graphicinfo_id), 
+        add constraint FK4F320785E231CA91 
+        foreign key (graphicinfo_id) 
+        references graphic_infos (id);
+
     alter table history_mgraphic 
         add index FK73D101266C146C11 (user_id), 
         add constraint FK73D101266C146C11 
         foreign key (user_id) 
         references userinfo (id);
+
+    alter table history_mgraphic 
+        add index FK73D101268EBB0422 (graphic_info_id), 
+        add constraint FK73D101268EBB0422 
+        foreign key (graphic_info_id) 
+        references graphic_infos (id);
 
     alter table holiday 
         add index FK411528586F516363 (type), 
@@ -513,16 +536,22 @@
         references userinfo (id);
 
     alter table mgraphic 
-        add index FK4B95CDDBCDC4AB82 (holiday_type_id), 
-        add constraint FK4B95CDDBCDC4AB82 
-        foreign key (holiday_type_id) 
-        references holiday_type (id);
+        add index FK4B95CDDB9CE57422 (graphic_resource_id), 
+        add constraint FK4B95CDDB9CE57422 
+        foreign key (graphic_resource_id) 
+        references graphic_resource (id);
 
     alter table mgraphic 
         add index FK4B95CDDBEBB54FE8 (status_type_id), 
         add constraint FK4B95CDDBEBB54FE8 
         foreign key (status_type_id) 
         references status_type (id);
+
+    alter table mgraphic 
+        add index FK4B95CDDBCDC4AB82 (holiday_type_id), 
+        add constraint FK4B95CDDBCDC4AB82 
+        foreign key (holiday_type_id) 
+        references holiday_type (id);
 
     alter table mgraphic_phone_no 
         add index FK6F8CE016A4886B19 (mgraphic_id), 
@@ -549,28 +578,10 @@
         references userinfo (id);
 
     alter table user_diy_graphic 
-        add index FKA2E5796EE36BFFE3b013fbc9 (category_id), 
-        add constraint FKA2E5796EE36BFFE3b013fbc9 
-        foreign key (category_id) 
-        references category (id);
-
-    alter table user_diy_graphic 
         add index FKB013FBC96C146C11 (user_id), 
         add constraint FKB013FBC96C146C11 
         foreign key (user_id) 
         references userinfo (id);
-
-    alter table user_diy_graphic 
-        add index FKA2E5796ECDC4AB82b013fbc9 (holiday_type_id), 
-        add constraint FKA2E5796ECDC4AB82b013fbc9 
-        foreign key (holiday_type_id) 
-        references holiday_type (id);
-
-    alter table user_diy_graphic 
-        add index FKA2E5796EEBB54FE8b013fbc9 (status_type_id), 
-        add constraint FKA2E5796EEBB54FE8b013fbc9 
-        foreign key (status_type_id) 
-        references status_type (id);
 
     alter table user_favorites 
         add index FKF2FF4EE36C146C11 (user_id), 
@@ -578,11 +589,23 @@
         foreign key (user_id) 
         references userinfo (id);
 
+    alter table user_favorites 
+        add index FKF2FF4EE38EBB0422 (graphic_info_id), 
+        add constraint FKF2FF4EE38EBB0422 
+        foreign key (graphic_info_id) 
+        references graphic_infos (id);
+
     alter table user_subscribe_graphic_item 
         add index FK10A9E5D36C146C11 (user_id), 
         add constraint FK10A9E5D36C146C11 
         foreign key (user_id) 
         references userinfo (id);
+
+    alter table user_subscribe_graphic_item 
+        add index FK10A9E5D38EBB0422 (graphic_info_id), 
+        add constraint FK10A9E5D38EBB0422 
+        foreign key (graphic_info_id) 
+        references graphic_infos (id);
 
     alter table user_subscribe_record 
         add index FKECF0ADA6C146C11 (user_id), 

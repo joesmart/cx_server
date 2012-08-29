@@ -1,13 +1,14 @@
 package com.server.cx.dao.cx;
 
-import java.util.List;
+import com.server.cx.entity.cx.StatusType;
+import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.entity.cx.UserStatusMGraphic;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
-import com.server.cx.entity.cx.StatusType;
-import com.server.cx.entity.cx.UserInfo;
-import com.server.cx.entity.cx.UserStatusMGraphic;
+
+import java.util.List;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -28,8 +29,6 @@ public class UserStatusMGraphicDaoTest  extends SpringTransactionalTestCase {
         StatusType statusType = statusTypeDao.findOne(1L);
         List<UserStatusMGraphic> userStatusMGraphics = userStatusMGraphicDao.findByUserInfoAndStatusType(userInfo, statusType);
         assertThat(userStatusMGraphics.size()).isEqualTo(1);
-        assertThat(userStatusMGraphics.get(0).getGraphicInfo().getName()).isEqualTo("彩像83");
-        assertThat(userStatusMGraphics.get(0).getGraphicInfo().getSignature()).isEqualTo("男儿当自强73");
     }
     
     @Test
