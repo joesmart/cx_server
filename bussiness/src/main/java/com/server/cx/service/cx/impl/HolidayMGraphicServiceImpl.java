@@ -113,21 +113,22 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
     @Override
     public OperationResult edit(String imsi, MGraphicDTO mGraphicDTO) {
         checkAndInitializeContext(imsi, mGraphicDTO);
+        checkAndInitializeUserInfo(imsi);
         mGraphicIdMustBeExists(mGraphicDTO);
-        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+//        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
         
         UserHolidayMGraphic mGraphic = userHolidayMGraphicDao.findOne(mGraphicDTO.getId());
         if (mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0) {
             mGraphic.setPhoneNos(null);
             mGraphic.setCommon(true);
             mGraphic.setPriority(7);
-            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
             userHolidayMGraphicDao.save(mGraphic);
         } else {
             mGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
             mGraphic.setPriority(8);
             mGraphic.setCommon(false);
-            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
             userHolidayMGraphicDao.save(mGraphic);
         }
         return new OperationResult("editUserCommonMGraphic", Constants.SUCCESS_FLAG);

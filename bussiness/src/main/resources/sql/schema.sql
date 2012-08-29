@@ -17,8 +17,17 @@
     alter table graphic_infos 
         drop constraint FKA2E5796ECDC4AB82;
 
+    alter table graphic_resource 
+        drop constraint FK4F320785A8BFB6AE;
+
+    alter table graphic_resource 
+        drop constraint FK4F320785E231CA91;
+
     alter table history_mgraphic 
         drop constraint FK73D101266C146C11;
+
+    alter table history_mgraphic 
+        drop constraint FK73D101268EBB0422;
 
     alter table holiday 
         drop constraint FK411528586F516363;
@@ -30,10 +39,10 @@
         drop constraint FK4B95CDDB9CE57422;
 
     alter table mgraphic 
-        drop constraint FK4B95CDDBEBB54FE8;
+        drop constraint FK4B95CDDBCDC4AB82;
 
     alter table mgraphic 
-        drop constraint FK4B95CDDBCDC4AB82;
+        drop constraint FK4B95CDDBEBB54FE8;
 
     alter table mgraphic_phone_no 
         drop constraint FK6F8CE016A4886B19;
@@ -48,22 +57,19 @@
         drop constraint FK7C0ED6834DEBD61E;
 
     alter table user_diy_graphic 
-        drop constraint FKA2E5796EE36BFFE3b013fbc9;
-
-    alter table user_diy_graphic 
         drop constraint FKB013FBC96C146C11;
-
-    alter table user_diy_graphic 
-        drop constraint FKA2E5796ECDC4AB82b013fbc9;
-
-    alter table user_diy_graphic 
-        drop constraint FKA2E5796EEBB54FE8b013fbc9;
 
     alter table user_favorites 
         drop constraint FKF2FF4EE36C146C11;
 
+    alter table user_favorites 
+        drop constraint FKF2FF4EE38EBB0422;
+
     alter table user_subscribe_graphic_item 
         drop constraint FK10A9E5D36C146C11;
+
+    alter table user_subscribe_graphic_item 
+        drop constraint FK10A9E5D38EBB0422;
 
     alter table user_subscribe_record 
         drop constraint FKECF0ADA6C146C11;
@@ -195,6 +201,7 @@
         source_path varchar(255),
         thumbnail_path varchar(255),
         type varchar(10),
+        diy_id varchar(32),
         graphicinfo_id varchar(32),
         primary key (id)
     );
@@ -245,15 +252,15 @@
         signature varchar(255),
         subscribe boolean,
         common boolean,
+        valid_date timestamp,
+        holiday timestamp,
         begin timestamp,
         end timestamp,
-        holiday timestamp,
         special_phone_no varchar(20),
-        valid_date timestamp,
         graphic_resource_id varchar(32),
         user_id varchar(32),
-        holiday_type_id bigint,
         status_type_id bigint,
+        holiday_type_id bigint,
         primary key (id)
     );
 
@@ -346,17 +353,9 @@
         created_on timestamp,
         updated_by varchar(64),
         updated_on timestamp,
-        audit_status varchar(20),
-        level integer,
+        audit_status integer,
         name varchar(40),
-        owner varchar(40),
-        price double,
-        recommend boolean,
-        signature varchar(60),
-        use_count integer,
-        category_id bigint,
-        holiday_type_id bigint,
-        status_type_id bigint,
+        signature varchar(40),
         user_id varchar(32),
         primary key (id)
     );
@@ -466,10 +465,25 @@
         foreign key (holiday_type_id) 
         references holiday_type;
 
+    alter table graphic_resource 
+        add constraint FK4F320785A8BFB6AE 
+        foreign key (diy_id) 
+        references user_diy_graphic;
+
+    alter table graphic_resource 
+        add constraint FK4F320785E231CA91 
+        foreign key (graphicinfo_id) 
+        references graphic_infos;
+
     alter table history_mgraphic 
         add constraint FK73D101266C146C11 
         foreign key (user_id) 
         references userinfo;
+
+    alter table history_mgraphic 
+        add constraint FK73D101268EBB0422 
+        foreign key (graphic_info_id) 
+        references graphic_infos;
 
     alter table holiday 
         add constraint FK411528586F516363 
@@ -487,14 +501,14 @@
         references graphic_resource;
 
     alter table mgraphic 
-        add constraint FK4B95CDDBEBB54FE8 
-        foreign key (status_type_id) 
-        references status_type;
-
-    alter table mgraphic 
         add constraint FK4B95CDDBCDC4AB82 
         foreign key (holiday_type_id) 
         references holiday_type;
+
+    alter table mgraphic 
+        add constraint FK4B95CDDBEBB54FE8 
+        foreign key (status_type_id) 
+        references status_type;
 
     alter table mgraphic_phone_no 
         add constraint FK6F8CE016A4886B19 
@@ -517,34 +531,29 @@
         references userinfo;
 
     alter table user_diy_graphic 
-        add constraint FKA2E5796EE36BFFE3b013fbc9 
-        foreign key (category_id) 
-        references category;
-
-    alter table user_diy_graphic 
         add constraint FKB013FBC96C146C11 
         foreign key (user_id) 
         references userinfo;
-
-    alter table user_diy_graphic 
-        add constraint FKA2E5796ECDC4AB82b013fbc9 
-        foreign key (holiday_type_id) 
-        references holiday_type;
-
-    alter table user_diy_graphic 
-        add constraint FKA2E5796EEBB54FE8b013fbc9 
-        foreign key (status_type_id) 
-        references status_type;
 
     alter table user_favorites 
         add constraint FKF2FF4EE36C146C11 
         foreign key (user_id) 
         references userinfo;
 
+    alter table user_favorites 
+        add constraint FKF2FF4EE38EBB0422 
+        foreign key (graphic_info_id) 
+        references graphic_infos;
+
     alter table user_subscribe_graphic_item 
         add constraint FK10A9E5D36C146C11 
         foreign key (user_id) 
         references userinfo;
+
+    alter table user_subscribe_graphic_item 
+        add constraint FK10A9E5D38EBB0422 
+        foreign key (graphic_info_id) 
+        references graphic_infos;
 
     alter table user_subscribe_record 
         add constraint FKECF0ADA6C146C11 

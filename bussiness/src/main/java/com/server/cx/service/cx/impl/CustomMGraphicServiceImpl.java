@@ -139,12 +139,12 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
             mGraphic.setPhoneNos(null);
             mGraphic.setCommon(true);
             mGraphic.setPriority(5);
-            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
         } else {
             mGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
             mGraphic.setPriority(6);
             mGraphic.setCommon(false);
-            updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+            updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
         }
         userCustomMGraphicDao.save(mGraphic);
         return new OperationResult("editUserCommonMGraphic", Constants.SUCCESS_FLAG);

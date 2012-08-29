@@ -1,12 +1,13 @@
 package com.server.cx.service.cx.impl;
 
+import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.io.ByteStreams;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.GraphicResourceDao;
+import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.UserDiyGraphicDao;
-import com.server.cx.entity.cx.FileMeta;
-import com.server.cx.entity.cx.GraphicResource;
-import com.server.cx.entity.cx.UserDiyGraphic;
+import com.server.cx.dao.cx.spec.UserCommonMGraphicSpecifications;
+import com.server.cx.entity.cx.*;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.UserDiyGraphicService;
@@ -49,12 +50,16 @@ public class UserDiyGraphicServiceImpl extends CheckAndHistoryMGraphicService im
     @Qualifier("fileUploadUrl")
     private String fileUploadUrl;
 
+    @Autowired
+    private UserCommonMGraphicDao userCommonMGraphicDao;
+    private UserDiyGraphic userDiyGraphic;
+
     @Transactional(readOnly=false)
     @Override
     public void addFileStreamToResourceServer(String imsi, InputStream fileStream) throws IOException {
         checkAndSetUserInfoExists(imsi);
         FileMeta fileMeta = uploadToResourceServer(imsi, fileStream);
-        UserDiyGraphic userDiyGraphic = null;// userDiyGraphicDao.findByUserInfo(userInfo);
+        UserDiyGraphic userDiyGraphic = userDiyGraphicDao.findByUserInfo(userInfo);
         if(userDiyGraphic == null){
             userDiyGraphic = new UserDiyGraphic();
             userDiyGraphic.setName("自定义");
@@ -64,16 +69,73 @@ public class UserDiyGraphicServiceImpl extends CheckAndHistoryMGraphicService im
             userDiyGraphic = userDiyGraphicDao.save(userDiyGraphic);
         }
         GraphicResource graphicResource = businessFunctions.fileMetaTransformToGraphicInfo(userDiyGraphic).apply(fileMeta);
-        graphicResource.setGraphicInfo(userDiyGraphic);
+        graphicResource.setDiyGraphic(userDiyGraphic);
         graphicResourceDao.save(graphicResource);
     }
 
     @Override
     public OperationResult delete(String id) {
         ValidationUtil.checkParametersNotNull(id);
-//        graphicResourceDao.delete(id);
-        userDiyGraphicDao.delete(id);
+        GraphicResource graphicResource = graphicResourceDao.findOne(id);
+        graphicResource.setDiyGraphic(null);
+        graphicResourceDao.save(graphicResource);
+//        userDiyGraphicDao.delete(id);
         return new OperationResult("deleteUserDIYGraphic","Success");
+    }
+
+    @Override
+    public OperationResult create(String imsi, MGraphicDTO mGraphicDTO) {
+        checkAndInitializeUserInfo(imsi);
+        checkMGraphicIdMustBeNotExists(mGraphicDTO);
+
+        Long dataRowNumber = userCommonMGraphicDao.count(UserCommonMGraphicSpecifications.userCommonMGraphicCount(userInfo));
+        if (dataRowNumber >= 5) {
+            throw new CXServerBusinessException("指定号码用户设置彩像最多允许5个");
+        }
+        if(mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0){
+            historyPreviousMGraphic();
+        }
+        createAndSaveNewUserCommonMGraphic(mGraphicDTO);
+        return new OperationResult("createUserCommonMGraphic", Constants.SUCCESS_FLAG);
+    }
+
+    //TODO Many Many code duplicate ....By Zou YanJian
+    private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
+        UserCommonMGraphic userCommonMGraphic = new UserCommonMGraphic();
+        GraphicResource graphicResource = graphicResourceDao.findOne(mGraphicDTO.getGraphicInfoId());
+        userCommonMGraphic.setUserInfo(userInfo);
+        userCommonMGraphic.setCommon(true);
+        userCommonMGraphic.setGraphicResource(graphicResource);
+        if(mGraphicDTO.getPhoneNos() != null && mGraphicDTO.getPhoneNos().size() > 0){
+            userCommonMGraphic.setCommon(false);
+            userCommonMGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
+            userCommonMGraphic.setPriority(4);
+        }
+        userDiyGraphic = graphicResource.getDiyGraphic();
+        updateMGraphicNameAndSignature(mGraphicDTO, userCommonMGraphic);
+        userCommonMGraphicDao.save(userCommonMGraphic);
+    }
+    @Override
+    protected void updateMGraphicNameAndSignature(MGraphicDTO mGraphicDTO, MGraphic mgraphic) {
+        mgraphic.setName(judgeString(mGraphicDTO.getName(), userDiyGraphic.getName()));
+        mgraphic.setSignature(judgeString(mGraphicDTO.getSignature(), userDiyGraphic.getSignature()));
+    }
+
+    private void historyPreviousMGraphic() {
+        historyPreviousMGraphic(null);
+    }
+
+    private void historyPreviousMGraphic(MGraphic mGraphic) {
+        List<UserCommonMGraphic> previousUserCommonMGraphics = userCommonMGraphicDao.findByUserInfoAndModeTypeAndCommon(userInfo, 2, true);
+        for (UserCommonMGraphic userCommonMGraphic : previousUserCommonMGraphics) {
+            if(mGraphic!=null && userCommonMGraphic.getId().equals(mGraphic.getId())){
+                continue;
+            }
+            if(userCommonMGraphic.getGraphicResource().getGraphicInfo() != null){
+                historyPreviousUserCommonMGraphic(userCommonMGraphic);
+            }
+            userCommonMGraphicDao.delete(userCommonMGraphic);
+        }
     }
 
 

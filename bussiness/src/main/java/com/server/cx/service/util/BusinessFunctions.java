@@ -292,7 +292,7 @@ public class BusinessFunctions {
         DataItem dataItem = new DataItem();
         dataItem.setName(input.getName());
         dataItem.setSignature(input.getSignature());
-        dataItem.setId(input.getId());
+        dataItem.setId(input.getGraphicResource().getId());
         dataItem.setMGraphicId(input.getId());
         dataItem.setSubScribe(input.getSubscribe());
         dataItem.setModeType(input.getModeType());
@@ -423,7 +423,7 @@ public class BusinessFunctions {
                     graphicResource.setAuditPassed(null);
                 }
                 graphicResource.setType(input.getType());
-                graphicResource.setGraphicInfo(userDiyGraphic);
+                graphicResource.setDiyGraphic(userDiyGraphic);
                 return graphicResource;
             }
         };
@@ -441,17 +441,17 @@ public class BusinessFunctions {
         };
     }
 
-    public Function<UserDiyGraphic, DataItem> transformDiyGraphicToDataItem(final String imsi) {
+    public Function<GraphicResource, DataItem> transformDiyGraphicToDataItem(final String imsi, final UserDiyGraphic userDiyGraphic) {
 
-        return new Function<UserDiyGraphic, DataItem>() {
+        return new Function<GraphicResource, DataItem>() {
             @Override
-            public DataItem apply(@Nullable UserDiyGraphic input) {
+            public DataItem apply(@Nullable GraphicResource input) {
                 DataItem dataItem = new DataItem();
-                dataItem.setName(input.getName() );
-                dataItem.setSignature(input.getSignature() );
+                dataItem.setName(userDiyGraphic.getName() );
+                dataItem.setSignature(userDiyGraphic.getSignature() );
                 dataItem.setId(input.getId());
                 dataItem.setInUsing(false);
-                setUpSourceAndThumbnailImagePath(dataItem,input);
+                setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem,input);
                 dataItem.setActions(actionBuilder.buildUserDIYGraphicActions(imsi, input.getId()));
                 return dataItem;
             }

@@ -7,6 +7,7 @@ import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.StatusTypeDao;
 import com.server.cx.dao.cx.UserStatusMGraphicDao;
 import com.server.cx.entity.cx.GraphicResource;
+import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.StatusType;
 import com.server.cx.entity.cx.UserStatusMGraphic;
 import com.server.cx.model.OperationResult;
@@ -62,7 +63,7 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         }
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
 
-        historyPreviousUserCommonMGraphic();
+        historyPreviousMGraphic();
         String mgraphicId = createAndSaveNewUserCommonMGraphic(mGraphicDTO);
         OperationResult operationResult = new OperationResult("createUserStatusMGraphic", Constants.SUCCESS_FLAG);
         if(isImmediate){
@@ -74,15 +75,13 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
     @Override
     public OperationResult edit(String imsi, MGraphicDTO mGraphicDTO) {
-        checkAndInitializeContext(imsi, mGraphicDTO);
+        checkAndInitializeUserInfo(imsi);
         checkParameters(imsi, mGraphicDTO);
         checkAndSetUserInfoExists(imsi);
-        
         mGraphicIdMustBeExists(mGraphicDTO);
-        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
-        
+
         UserStatusMGraphic mGraphic = userStatusMGraphicDao.findOne(mGraphicDTO.getId());
-        updateMGraphicNameAndSignature(mGraphicDTO, mGraphic);
+        updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
         userStatusMGraphicDao.save(mGraphic);
 
         return new OperationResult("editUserStatusMGraphic", Constants.SUCCESS_FLAG);
@@ -101,9 +100,16 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         return new OperationResult("disableUserCommonMGraphic", Constants.SUCCESS_FLAG);
     }
 
-    private void historyPreviousUserCommonMGraphic() {
+    private void historyPreviousMGraphic() {
+        historyPreviousMGraphic(null);
+    }
+
+    private void historyPreviousMGraphic(MGraphic mGraphic){
         List<UserStatusMGraphic> previousUserCommonMGraphics = userStatusMGraphicDao.findByUserInfoAndModeType(userInfo, 5);
         for (UserStatusMGraphic statusMGraphic : previousUserCommonMGraphics) {
+            if(mGraphic !=null && mGraphic.getId().equals(statusMGraphic.getId())){
+                continue;
+            }
             userStatusMGraphicDao.delete(statusMGraphic);
         }
     }
