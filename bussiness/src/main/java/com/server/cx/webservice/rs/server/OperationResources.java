@@ -28,6 +28,6 @@ public class OperationResources {
         dealResult = operationResult.getDealResult();
         operationDescription.setActionName(actionName);
         operationDescription.setDealResult(dealResult);
-        operationResult.setActions(operationResult.getActions());
+        operationDescription.setActions(operationResult.getActions());
     }
 }
