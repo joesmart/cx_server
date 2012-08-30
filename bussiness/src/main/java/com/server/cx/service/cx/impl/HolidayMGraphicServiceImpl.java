@@ -101,10 +101,10 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
         String mgraphicId = createAndSaveNewUserCommonMGraphic(mGraphicDTO);
         OperationResult operationResult = new OperationResult("createUserHolidayMGraphic", Constants.SUCCESS_FLAG);
-        if (isImmediate) {
+//        if (isImmediate) {
             Actions actions = actionBuilder.buildHolidayMGraphicItemCreatedAction(imsi, mgraphicId);
             operationResult.setActions(actions);
-        }
+//        }
         return operationResult;
     }
 

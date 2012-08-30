@@ -72,10 +72,11 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         historyPreviousMGraphic();
         String mgraphicId = createAndSaveNewUserCommonMGraphic(mGraphicDTO);
         OperationResult operationResult = new OperationResult("createUserStatusMGraphic", Constants.SUCCESS_FLAG);
-        if(isImmediate){
+        //use或者立即使用，都返回removeUrl
+//        if(isImmediate){
             Actions actions = actionBuilder.buildStatusMGraphicItemCreatedAction(imsi, mgraphicId);
             operationResult.setActions(actions);
-        }
+//        }
         return operationResult;
     }
 
