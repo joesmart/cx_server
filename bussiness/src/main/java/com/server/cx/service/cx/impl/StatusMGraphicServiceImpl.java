@@ -4,8 +4,10 @@ import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
 import com.server.cx.constants.Constants;
+import com.server.cx.dao.cx.GraphicResourceDao;
 import com.server.cx.dao.cx.StatusTypeDao;
 import com.server.cx.dao.cx.UserStatusMGraphicDao;
+import com.server.cx.dao.cx.spec.GraphicResourceSpecifications;
 import com.server.cx.entity.cx.GraphicResource;
 import com.server.cx.entity.cx.MGraphic;
 import com.server.cx.entity.cx.StatusType;
@@ -40,13 +42,15 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
     @Autowired
     private StatusTypeService statusTypeService;
+
+    @Autowired
+    private GraphicResourceDao graphicResourceDao;
     
     @Autowired
     private UserSubscribeGraphicItemService userSubscribeGraphicItemService;
 
     @Override
     public OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO, Boolean subscribe) {
-
         checkParameters(imsi, mGraphicDTO);
         checkAndSetUserInfoExists(imsi);
 
@@ -54,6 +58,7 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
             graphicInfo = statusTypeService.getFirstChild(mGraphicDTO.getStatusType());
             mGraphicDTO.setGraphicInfoId(graphicInfo.getId());
         }else {
+            checkAndInitializeContext(imsi,mGraphicDTO);
             if(subscribe) {
                 userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
             } else {
@@ -119,7 +124,7 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         StatusType statusType = statusTypeDao.findOne(mGraphicDTO.getStatusType());
         deletePreviousMGraphic(statusType);
         UserStatusMGraphic userStatusMGraphic = new UserStatusMGraphic();
-        List<GraphicResource> graphicResourceList = graphicInfo.getGraphicResources();
+        List<GraphicResource> graphicResourceList = graphicResourceDao.findAll(GraphicResourceSpecifications.findGraphicResourceByGraphicinfo(graphicInfo));
         if(graphicResourceList !=null && graphicResourceList.size()>0){
             userStatusMGraphic.setGraphicResource(graphicResourceList.get(0));
         }

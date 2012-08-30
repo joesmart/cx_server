@@ -451,6 +451,8 @@ public class BusinessFunctions {
                 dataItem.setSignature(userDiyGraphic.getSignature() );
                 dataItem.setId(input.getId());
                 dataItem.setInUsing(false);
+                dataItem.setResourceType(input.getType());
+                dataItem.setMediaType(input.getType());
                 setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem,input);
                 dataItem.setActions(actionBuilder.buildUserDIYGraphicActions(imsi, input.getId()));
                 return dataItem;

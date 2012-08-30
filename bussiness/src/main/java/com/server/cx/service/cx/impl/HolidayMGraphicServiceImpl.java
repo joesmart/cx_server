@@ -4,8 +4,10 @@ import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
 import com.server.cx.constants.Constants;
+import com.server.cx.dao.cx.GraphicResourceDao;
 import com.server.cx.dao.cx.HolidayTypeDao;
 import com.server.cx.dao.cx.UserHolidayMGraphicDao;
+import com.server.cx.dao.cx.spec.GraphicResourceSpecifications;
 import com.server.cx.entity.cx.GraphicResource;
 import com.server.cx.entity.cx.HolidayType;
 import com.server.cx.entity.cx.UserHolidayMGraphic;
@@ -33,6 +35,8 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
 
     @Autowired
     private HolidayTypeDao holidayTypeDao;
+    @Autowired
+    private GraphicResourceDao graphicResourceDao;
 
     @Autowired
     private HolidayService holidayService;
@@ -46,7 +50,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         deletePreviousHolidayMGraphic(holidayType);
         UserHolidayMGraphic holidayMGraphic = new UserHolidayMGraphic();
 
-        List<GraphicResource> graphicResourceList = graphicInfo.getGraphicResources();
+        List<GraphicResource> graphicResourceList = graphicResourceDao.findAll(GraphicResourceSpecifications.findGraphicResourceByGraphicinfo(graphicInfo));
         if(graphicResourceList != null && graphicResourceList.size() >0){
             holidayMGraphic.setGraphicResource(graphicResourceList.get(0));
         }
@@ -80,12 +84,12 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
     @Override
     public OperationResult create(String imsi, Boolean isImmediate, MGraphicDTO mGraphicDTO, Boolean subscribe) throws RuntimeException {
         checkParameters(imsi, mGraphicDTO);
-        checkAndSetUserInfoExists(imsi);
 
         if (isImmediate) {
             graphicInfo = holidayTypeService.getFirstChild(mGraphicDTO.getHolidayType());
             mGraphicDTO.setGraphicInfoId(graphicInfo.getId());
         }else {
+            checkAndInitializeContext(imsi,mGraphicDTO);
             if(subscribe) {
                 userSubscribeGraphicItemService.subscribeGraphicItem(imsi, mGraphicDTO.getGraphicInfoId());
             } else {
@@ -94,7 +98,6 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
             mGraphicDTO.setSubscribe(true);
         }
         checkMGraphicIdMustBeNotExists(mGraphicDTO);
-        historyPreviousUserCommonMGraphic();
         String mgraphicId = createAndSaveNewUserCommonMGraphic(mGraphicDTO);
         OperationResult operationResult = new OperationResult("createUserHolidayMGraphic", Constants.SUCCESS_FLAG);
         if (isImmediate) {
@@ -104,11 +107,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         return operationResult;
     }
 
-    private void historyPreviousUserCommonMGraphic() {
-        List<UserHolidayMGraphic> previousUserCommonMGraphics = userHolidayMGraphicDao
-            .findByUserInfoAndModeTypeAndCommon(userInfo, 4, true);
-        userHolidayMGraphicDao.delete(previousUserCommonMGraphics);
-    }
+
 
     @Override
     public OperationResult edit(String imsi, MGraphicDTO mGraphicDTO) {

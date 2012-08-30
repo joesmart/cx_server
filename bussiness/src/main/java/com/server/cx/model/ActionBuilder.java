@@ -122,7 +122,11 @@ public class ActionBuilder {
     }
 
     public ActionBuilder customMGraphicsUrl(String url) {
-        Action action = new Action(url, "GET");
+        return customMGraphicsUrl(url,"GET");
+    }
+
+    public ActionBuilder customMGraphicsUrl(String url,String method) {
+        Action action = new Action(url, method);
         actions.setCustomMGraphicsURL(action);
         return this;
     }
@@ -211,7 +215,9 @@ public class ActionBuilder {
 
     public Actions buildGraphicItemAction(String imsi) {
         return actions().collectURL(basicService.generateMyCollectionsVisitURL(imsi))
-            .purchaseURL(basicService.generateImagePurchaseURL(imsi)).useURL(basicService.generateMGraphicsURL(imsi))
+            .purchaseURL(basicService.generateImagePurchaseURL(imsi))
+            .useURL(basicService.generateMGraphicsURL(imsi))
+            .customMGraphicsUrl(basicService.generateCustomMGraphicsVisitURL(imsi),"POST")
             .build();
     }
 

@@ -152,10 +152,6 @@ public class BasicService {
         return generateURL(imsi, "/mGraphics");
     }
 
-    public String generateImmediateMGraphicURL(String imsi){
-        return generateURL(imsi, "/mGraphics?immediate=true");
-    }
-
     public String generateDiyMGraphicUseURL(String imsi){
         return generateURL(imsi,"/diyGraphics");
     }

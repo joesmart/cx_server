@@ -6,8 +6,10 @@ import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
+import com.server.cx.dao.cx.GraphicResourceDao;
 import com.server.cx.dao.cx.UserCustomMGraphicDao;
 import com.server.cx.dao.cx.UserInfoDao;
+import com.server.cx.dao.cx.spec.GraphicResourceSpecifications;
 import com.server.cx.dao.cx.spec.UserCustomMGraphicSpecifications;
 import com.server.cx.entity.cx.GraphicResource;
 import com.server.cx.entity.cx.MGraphic;
@@ -55,7 +57,10 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
     @Autowired
     private BasicService basicService;
-    
+
+    @Autowired
+    private GraphicResourceDao graphicResourceDao;
+
     @Autowired
     private UserInfoDao userInfoDao;
     
@@ -69,7 +74,7 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         checkPreviousMGraphicCount();
         UserCustomMGraphic userCustomMGraphic = new UserCustomMGraphic();
         userCustomMGraphic.setSubscribe(mGraphicDTO.getSubscribe());
-        List<GraphicResource> graphicResourceList = graphicInfo.getGraphicResources();
+        List<GraphicResource> graphicResourceList = graphicResourceDao.findAll(GraphicResourceSpecifications.findGraphicResourceByGraphicinfo(graphicInfo));
         if(graphicResourceList != null && graphicResourceList.size() > 0){
             userCustomMGraphic.setGraphicResource(graphicResourceList.get(0));
         }
