@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutionException;
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class GraphicInfoResources {
-    public static final Logger LOGGER = LoggerFactory.getLogger(GraphicInfoResources.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GraphicInfoResources.class);
 
     @Autowired
     private GraphicInfoService graphicInfoService;

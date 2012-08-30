@@ -100,7 +100,13 @@
     <show-object-properties value="true" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-list connection-id="5819896e-5c0e-43dc-b382-3d112fb94f92" dataset="business_d.mgraphic" active-filter-id="EMPTY_FILTER" />
     <filter-list connection-id="5819896e-5c0e-43dc-b382-3d112fb94f92" dataset="business.acct_group" active-filter-id="" />
+    <filter-list connection-id="5819896e-5c0e-43dc-b382-3d112fb94f92" dataset="business_d.graphic_resource" active-filter-id="">
+      <filter id="876f7e84-d7cf-49a9-9a76-ee970a3af3f8" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-list>
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <group-history-entries value="false" />

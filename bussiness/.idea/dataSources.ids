@@ -937,24 +937,23 @@
       <column name="NAME" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
       <column name="PRIORITY" sqlType="INTEGER" length="10" precision="0" nullable="true" jdbcType="4" />
       <column name="SIGNATURE" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12" />
-      <column name="SUBSCRIBE" sqlType="BOOLEAN" length="1" precision="0" nullable="true" jdbcType="16" />
       <column name="COMMON" sqlType="BOOLEAN" length="1" precision="0" nullable="true" jdbcType="16" />
-      <column name="BEGIN" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
-      <column name="END" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="HOLIDAY" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
       <column name="SPECIAL_PHONE_NO" sqlType="VARCHAR" length="20" precision="0" nullable="true" jdbcType="12" />
       <column name="VALID_DATE" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
-      <column name="GRAPHIC_RESOURCE_ID" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
+      <column name="BEGIN" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
+      <column name="END" sqlType="TIMESTAMP" length="23" precision="10" nullable="true" jdbcType="93" />
+      <column name="GRAPHIC_INFO_ID" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
       <column name="USER_ID" sqlType="VARCHAR" length="32" precision="0" nullable="true" jdbcType="12" />
       <column name="HOLIDAY_TYPE_ID" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
       <column name="STATUS_TYPE_ID" sqlType="BIGINT" length="19" precision="0" nullable="true" jdbcType="-5" />
       <primary-key name="CONSTRAINT_7" columns="id" />
-      <foreign-key name="FK4B95CDDB9CE57422" columns="GRAPHIC_RESOURCE_ID" ref-table="GRAPHIC_RESOURCE" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
+      <foreign-key name="FK4B95CDDB8EBB0422" columns="GRAPHIC_INFO_ID" ref-table="GRAPHIC_INFOS" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
       <foreign-key name="FK4B95CDDBCDC4AB82" columns="HOLIDAY_TYPE_ID" ref-table="HOLIDAY_TYPE" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
       <foreign-key name="FK4B95CDDBEBB54FE8" columns="STATUS_TYPE_ID" ref-table="STATUS_TYPE" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
       <foreign-key name="FK4B95CDDB6C146C11" columns="USER_ID" ref-table="USERINFO" ref-schema="PUBLIC" ref-catalog="BUSSINESS4" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2" />
       <index name="FK4B95CDDB6C146C11_INDEX_7" unique="false" columns="USER_ID" />
-      <index name="FK4B95CDDB9CE57422_INDEX_7" unique="false" columns="GRAPHIC_RESOURCE_ID" />
+      <index name="FK4B95CDDB8EBB0422_INDEX_7" unique="false" columns="GRAPHIC_INFO_ID" />
       <index name="FK4B95CDDBCDC4AB82_INDEX_7" unique="false" columns="HOLIDAY_TYPE_ID" />
       <index name="FK4B95CDDBEBB54FE8_INDEX_7" unique="false" columns="STATUS_TYPE_ID" />
     </table>

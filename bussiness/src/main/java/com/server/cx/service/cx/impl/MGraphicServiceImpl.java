@@ -173,6 +173,8 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         List<DataItem> dataItems = Lists.newArrayListWithCapacity(mGraphicDataItems.size() + historyMGraphicDataItems.size());
         dataItems.addAll(mGraphicDataItems);
 
+
+
         final UserDiyGraphic userDiyGraphic = userDiyGraphicDao.findByUserInfo(userInfo);
         List<DataItem> userDiyGraphicDataItems;
         if(userDiyGraphic!=null ){

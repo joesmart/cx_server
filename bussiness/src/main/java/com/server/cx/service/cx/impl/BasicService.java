@@ -112,6 +112,10 @@ public class BasicService {
         return generateURL(imsi, "/customMGraphics");
     }
 
+    public String generateCustomMGraphicsOperateURL(String imsi,String mgraphicId) {
+        return generateURL(imsi, "/customMGraphics/"+mgraphicId);
+    }
+
     public String generateCategoriesVisitURL(String imsi) {
         return generateURL(imsi, "/categories");
     }

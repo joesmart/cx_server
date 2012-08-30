@@ -86,6 +86,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         checkParameters(imsi, mGraphicDTO);
 
         if (isImmediate) {
+            checkAndInitializeUserInfo(imsi);
             graphicInfo = holidayTypeService.getFirstChild(mGraphicDTO.getHolidayType());
             mGraphicDTO.setGraphicInfoId(graphicInfo.getId());
         }else {
@@ -115,7 +116,7 @@ public class HolidayMGraphicServiceImpl extends CheckAndHistoryMGraphicService i
         checkAndInitializeUserInfo(imsi);
         mGraphicIdMustBeExists(mGraphicDTO);
 //        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
-        
+
         UserHolidayMGraphic mGraphic = userHolidayMGraphicDao.findOne(mGraphicDTO.getId());
         if (mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0) {
             mGraphic.setPhoneNos(null);

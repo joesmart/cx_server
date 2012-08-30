@@ -55,6 +55,7 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         checkAndSetUserInfoExists(imsi);
 
         if(isImmediate){
+            checkAndInitializeUserInfo(imsi);
             graphicInfo = statusTypeService.getFirstChild(mGraphicDTO.getStatusType());
             mGraphicDTO.setGraphicInfoId(graphicInfo.getId());
         }else {

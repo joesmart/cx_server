@@ -1,5 +1,6 @@
 package com.server.cx.service.cx.impl;
 
+import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.MGraphicDTO;
@@ -70,7 +71,7 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
     @Autowired
     private UserSubscribeGraphicItemService userSubscribeGraphicItemService;
 
-    private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
+    private String createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
         checkPreviousMGraphicCount();
         UserCustomMGraphic userCustomMGraphic = new UserCustomMGraphic();
         userCustomMGraphic.setSubscribe(mGraphicDTO.getSubscribe());
@@ -90,6 +91,7 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         updateMGraphicNameAndSignature(mGraphicDTO, userCustomMGraphic);
         userCustomMGraphicDao.save(userCustomMGraphic);
         graphicInfoService.updateGraphicInfoUseCount(graphicInfo);
+        return userCustomMGraphic.getId();
     }
 
     private void convertBeginAndEndDate(MGraphicDTO mGraphicDTO, UserCustomMGraphic userCustomMGraphic) {
@@ -127,8 +129,11 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         }
         mGraphicDTO.setSubscribe(true);
         
-        createAndSaveNewUserCommonMGraphic(mGraphicDTO);
-        return new OperationResult("createUserHolidayMGraphic", Constants.SUCCESS_FLAG);
+        String mgraphicId = createAndSaveNewUserCommonMGraphic(mGraphicDTO);
+        OperationResult operationResult = new OperationResult("createUserHolidayMGraphic", Constants.SUCCESS_FLAG);
+        Actions actions = actionBuilder.buildCustomMGraphicItemCreatedAction(imsi, mgraphicId);
+        operationResult.setActions(actions);
+        return operationResult;
     }
 
 

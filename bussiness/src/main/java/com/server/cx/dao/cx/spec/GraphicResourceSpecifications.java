@@ -2,6 +2,7 @@ package com.server.cx.dao.cx.spec;
 
 import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.entity.cx.GraphicResource;
+import com.server.cx.entity.cx.UserDiyGraphic;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -21,6 +22,15 @@ public class GraphicResourceSpecifications {
             @Override
             public Predicate toPredicate(Root<GraphicResource> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 return cb.equal(root.get("graphicInfo"),graphicInfo);
+            }
+        };
+    }
+
+    public static Specification<GraphicResource> findGraphicResourceByUserDiyGraphic(final UserDiyGraphic userDiyGraphic){
+        return  new Specification<GraphicResource>() {
+            @Override
+            public Predicate toPredicate(Root<GraphicResource> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                return cb.equal(root.get("diyGraphic"),userDiyGraphic);
             }
         };
     }

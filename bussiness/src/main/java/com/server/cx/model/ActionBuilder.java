@@ -244,6 +244,13 @@ public class ActionBuilder {
         return actions().removeURL(basicService.generateHolidayMGraphicRemoveURL(imsi, mGraphicId)).build();
     }
 
+    public Actions buildCustomMGraphicItemCreatedAction(String imsi, String mGraphicId) {
+        return actions()
+                .removeURL(basicService.generateCustomMGraphicsOperateURL(imsi, mGraphicId))
+                .editURL(basicService.generateCustomMGraphicsOperateURL(imsi,mGraphicId))
+                .build();
+    }
+
     public Actions buildStatusMGraphicItemEditAction(String imsi, String mGraphicId) {
         return actions().collectURL(basicService.generateMyCollectionsVisitURL(imsi))
             .purchaseURL(basicService.generateImagePurchaseURL(imsi))
