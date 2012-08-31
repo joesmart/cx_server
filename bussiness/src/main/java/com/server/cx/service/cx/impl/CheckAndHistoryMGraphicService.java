@@ -1,5 +1,10 @@
 package com.server.cx.service.cx.impl;
 
+import java.util.List;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
 import com.server.cx.dao.cx.GraphicInfoDao;
@@ -7,15 +12,12 @@ import com.server.cx.dao.cx.HistoryMGraphicDao;
 import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.entity.cx.HistoryMGraphic;
 import com.server.cx.entity.cx.MGraphic;
+import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.GraphicInfoService;
 import com.server.cx.util.business.AuditStatus;
 import com.server.cx.util.business.ValidationUtil;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * User: yanjianzou
@@ -33,6 +35,8 @@ public class CheckAndHistoryMGraphicService extends UserCheckService {
     @Autowired
     protected GraphicInfoService graphicInfoService;
     protected GraphicInfo graphicInfo;
+    
+    protected String historyMGraphicId;
 
     @Autowired
     protected ActionBuilder actionBuilder;
@@ -109,5 +113,14 @@ public class CheckAndHistoryMGraphicService extends UserCheckService {
     protected void updateMGraphicNameAndSignatureInEditMode(MGraphicDTO mGraphicDTO,MGraphic mgraphic){
         mgraphic.setName(mGraphicDTO.getName());
         mgraphic.setSignature(mGraphicDTO.getSignature());
+    }
+    
+    protected boolean existHistoryMGraphic(GraphicInfo graphicInfo, UserInfo userInfo) {
+        List<HistoryMGraphic> historyMGraphics = historyMGraphicDao.findByGraphicInfoAndUserInfo(graphicInfo, userInfo);
+        if(historyMGraphics == null || historyMGraphics.isEmpty()) {
+            return false;
+        }
+        historyMGraphicId = historyMGraphics.get(0).getId();
+        return true;
     }
 }

@@ -129,22 +129,4 @@ public class MGraphicResources extends OperationResources {
         DataPage dataPage = queryMGraphicService.queryUserMGraphic(imsi);
         return Response.ok(dataPage).build();
     }
-
-    //test method, it just provide convient method to cancel subscribe graphic item
-    @DELETE
-    @Path("/graphicInfo/{graphicInfoId}")
-    public Response cancelSubscribeGraphicItem(@PathParam("imsi") String imsi,
-                                               @PathParam("graphicInfoId") String graphicInfoId) {
-        try {
-            userSubscribeGraphicItemService.deleteSubscribeItem(imsi, graphicInfoId);
-            OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
-                HttpServletResponse.SC_NO_CONTENT, "cancelSubscribeGraphicItem");
-            return Response.ok(operationDescription).build();
-        } catch (Exception e) {
-            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(500,
-                "cancelSubscribeGraphicItem", "取消订购失败");
-            return Response.ok(operationDescription).build();
-        }
-
-    }
 }

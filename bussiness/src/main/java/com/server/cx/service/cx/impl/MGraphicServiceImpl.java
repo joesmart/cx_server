@@ -74,6 +74,10 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         }
         updateMGraphicNameAndSignature(mGraphicDTO, userCommonMGraphic);
         userCommonMGraphicDao.save(userCommonMGraphic);
+        //如果从历史中选择，同时删除历史中的记录
+        if(existHistoryMGraphic(graphicInfo, userInfo)) {
+            historyMGraphicService.deleteHistoryMGraphic(userInfo.getImsi(), historyMGraphicId);
+        }
         graphicInfoService.updateGraphicInfoUseCount(graphicInfo);
     }
 

@@ -1,5 +1,6 @@
 package com.server.cx.webservice.rs.server;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
@@ -21,6 +22,7 @@ import com.server.cx.exception.UserHasSubscribedException;
 import com.server.cx.service.cx.HolidayTypeService;
 import com.server.cx.service.cx.StatusTypeService;
 import com.server.cx.service.cx.UserCustomTypeService;
+import com.server.cx.service.cx.UserSubscribeGraphicItemService;
 import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
@@ -43,6 +45,9 @@ public class SubscribeResource {
 
     @Autowired
     private UserSubscribeTypeService userSubscribeTypeService;
+    
+    @Autowired
+    private UserSubscribeGraphicItemService userSubscribeGraphicItemService;
 
     @PUT
     public Response subscribeFunctionType(@PathParam("imsi") String imsi, @QueryParam("type") String type) {
@@ -119,6 +124,24 @@ public class SubscribeResource {
         OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
             Response.Status.NO_CONTENT.getStatusCode(), "cancelSubscribeCustomType", "成功取消订购");
         return Response.ok(operationDescription).build();
+
+    }
+    
+    //test method, it just provide convient method to cancel subscribe graphic item
+    @DELETE
+    @Path("/graphicInfo/{graphicInfoId}")
+    public Response cancelSubscribeGraphicItem(@PathParam("imsi") String imsi,
+                                               @PathParam("graphicInfoId") String graphicInfoId) {
+        try {
+            userSubscribeGraphicItemService.deleteSubscribeItem(imsi, graphicInfoId);
+            OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
+                HttpServletResponse.SC_NO_CONTENT, "cancelSubscribeGraphicItem");
+            return Response.ok(operationDescription).build();
+        } catch (Exception e) {
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(500,
+                "cancelSubscribeGraphicItem", "取消订购失败");
+            return Response.ok(operationDescription).build();
+        }
 
     }
 
