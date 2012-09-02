@@ -7,6 +7,7 @@ import com.google.common.base.Function;
 import com.server.cx.entity.cx.*;
 import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.impl.BasicService;
+import com.server.cx.util.business.AuditStatus;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -165,7 +166,7 @@ public class BusinessFunctions {
         item.setName(input.getName());
         item.setSignature(input.getSignature());
         item.setDownloadNumber(String.valueOf(input.getUseCount()));
-        item.setAuditPassed(true);
+        item.setAuditStatus(AuditStatus.PASSED.toString());
         item.setPrice(input.getPrice());
         if (input.getPrice() > 0.0F) {
             item.setPurchased(false);
@@ -292,7 +293,9 @@ public class BusinessFunctions {
         DataItem dataItem = new DataItem();
         dataItem.setName(input.getName());
         dataItem.setSignature(input.getSignature());
-        dataItem.setId(input.getGraphicResource().getId());
+        if(input.getGraphicResource() != null){
+            dataItem.setId(input.getGraphicResource().getId());
+        }
         dataItem.setMGraphicId(input.getId());
         dataItem.setSubScribe(input.getSubscribe());
         dataItem.setModeType(input.getModeType());
@@ -323,6 +326,8 @@ public class BusinessFunctions {
     }
 
     private void setUpSourceAndThumbnailImagePathFromGraphicResource(DataItem dataItem, GraphicResource graphicResource) {
+        if (graphicResource == null)
+            return;
         dataItem.setThumbnailPath(basicService.thumbnailImageURL(graphicResource.getResourceId()));
         dataItem.setSourceImagePath(basicService.imageURL(graphicResource.getResourceId()));
         dataItem.setMediaType(graphicResource.getType());
@@ -448,11 +453,22 @@ public class BusinessFunctions {
             @Override
             public DataItem apply(@Nullable GraphicResource input) {
                 DataItem dataItem = new DataItem();
-                dataItem.setName(userDiyGraphic.getName() );
-                dataItem.setSignature(userDiyGraphic.getSignature() );
+                dataItem.setName(userDiyGraphic.getName());
+                dataItem.setSignature(userDiyGraphic.getSignature());
                 dataItem.setId(input.getId());
-                dataItem.setInUsing(false);
                 dataItem.setResourceType(input.getType());
+                if(input.getAuditPassed() == null){
+                    dataItem.setAuditStatus("CHECKING");
+                }else{
+                    if(true == input.getAuditPassed()){
+                        dataItem.setAuditStatus("PASSED");
+                    }
+
+                    if(false == input.getAuditPassed()){
+                        dataItem.setAuditStatus("UNPASS");
+                    }
+                }
+                
                 dataItem.setMediaType(input.getType());
                 setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem,input);
                 dataItem.setActions(actionBuilder.buildUserDIYGraphicActions(imsi, input.getId()));

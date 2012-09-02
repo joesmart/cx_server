@@ -30,7 +30,7 @@ public class MGraphic extends AuditableStringEntity {
 
 
 
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
     @JoinColumn(name = "graphic_resource_id")
     public GraphicResource getGraphicResource() {

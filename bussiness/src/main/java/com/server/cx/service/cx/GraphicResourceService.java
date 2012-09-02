@@ -1,9 +1,8 @@
 package com.server.cx.service.cx;
 
-import com.server.cx.entity.cx.GraphicResource;
-import com.server.cx.entity.cx.UserDiyGraphic;
+import com.server.cx.util.business.AuditStatus;
 
-import java.util.Map;
+import java.util.List;
 
 /**
  * User: ZouYanjian
@@ -12,5 +11,5 @@ import java.util.Map;
  * FileName:GraphicResourceService
  */
 public interface GraphicResourceService {
-    public  abstract Map<String,GraphicResource> findCheckedGraphicResourceByUserDiyGraphic(UserDiyGraphic userDiyGraphic);
+    public abstract void updateGraphicResourcesAuditStatus(List<String> ids,AuditStatus auditStatus);
 }
