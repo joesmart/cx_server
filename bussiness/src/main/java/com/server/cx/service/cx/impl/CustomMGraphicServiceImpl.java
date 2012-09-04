@@ -142,7 +142,7 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 //        checkAndInitializeContext(imsi, mGraphicDTO);
         checkAndInitializeUserInfo(imsi);
         mGraphicIdMustBeExists(mGraphicDTO);
-        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
+//        userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
         
         UserCustomMGraphic mGraphic = userCustomMGraphicDao.findOne(mGraphicDTO.getId());
         convertBeginAndEndDate(mGraphicDTO,mGraphic);
