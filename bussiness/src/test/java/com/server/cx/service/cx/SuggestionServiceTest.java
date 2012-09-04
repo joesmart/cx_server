@@ -15,7 +15,7 @@ import com.server.cx.entity.cx.Suggestion;
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 @ActiveProfiles(profiles = {"test"})
 public class SuggestionServiceTest extends SpringTransactionalTestCase {
-    public static final Logger LOGGER = LoggerFactory.getLogger(ContactsServcieTest.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(ContactsServiceTest.class);
     @Autowired
     private SuggestionService suggestionService;
 

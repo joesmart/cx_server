@@ -1,27 +1,24 @@
 package com.server.cx.webservice.rs.server;
 
-import java.util.List;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.ContactsDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.google.common.collect.Lists;
 import com.server.cx.entity.cx.Contacts;
-import com.server.cx.service.cx.ContactsServcie;
+import com.server.cx.service.cx.ContactsService;
 import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.ValidationUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Component
 @Path("{imsi}/contacts")
@@ -31,7 +28,7 @@ public class ContactsResources {
     private final static Logger LOGGER = LoggerFactory.getLogger(ContactsResources.class);
 
     @Autowired
-    private ContactsServcie contactsServcie;
+    private ContactsService contactsService;
 
     @Autowired
     private BusinessFunctions businessFunctions;
@@ -44,7 +41,7 @@ public class ContactsResources {
         OperationDescription operationDescription = new OperationDescription();
         try {
             ValidationUtil.checkParametersNotNull(uploadContactDTO);
-            contactsServcie.uploadContacts(uploadContactDTO.getContactInfos(), imsi);
+            contactsService.uploadContacts(uploadContactDTO.getContactInfos(), imsi);
             operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,
                 "uploadContacts");
         } catch (Exception e) {
@@ -59,7 +56,7 @@ public class ContactsResources {
     public ContactsDTO getContactsByImsi(@PathParam("imsi") String imsi) {
         LOGGER.info("imsi:" + imsi);
 
-        List<Contacts> contacts = contactsServcie.queryCXAppContactsByImsi(imsi);
+        List<Contacts> contacts = contactsService.queryCXAppContactsByImsi(imsi);
         ContactsDTO contactDTO = new ContactsDTO();
         List<ContactInfoDTO> contactInfoDTOList = Lists.transform(contacts,
             businessFunctions.contactsTransformToContactInfoDTO());

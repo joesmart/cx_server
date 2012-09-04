@@ -5,7 +5,7 @@ import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.server.cx.entity.cx.Contacts;
 import com.server.cx.exception.SystemException;
 
-public interface ContactsServcie {
+public interface ContactsService {
 
     public void uploadContacts(List<ContactInfoDTO> contactPeopleInfos, String imsi) throws SystemException;
 

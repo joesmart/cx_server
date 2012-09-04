@@ -163,25 +163,21 @@
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjrt</artifactId>
 				<version>1.7.0</version>
-                <scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjweaver</artifactId>
 				<version>1.7.0</version>
-                <scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>cglib</groupId>
 				<artifactId>cglib</artifactId>
 				<version>2.2.2</version>
-                <scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>asm</groupId>
 				<artifactId>asm</artifactId>
 				<version>3.3.1</version>
-                <scope>runtime</scope>
 			</dependency>
 			<!-- SPRING end -->
 
@@ -244,7 +240,6 @@
 				<groupId>commons-dbcp</groupId>
 				<artifactId>commons-dbcp</artifactId>
 				<version>1.4</version>
-                <scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>commons-pool</groupId>
@@ -271,7 +266,6 @@
 				<groupId>opensymphony</groupId>
 				<artifactId>sitemesh</artifactId>
 				<version>2.4.2</version>
-                <scope>runtime</scope>
 			</dependency>
 
 			<!-- j2ee web spec -->
@@ -472,7 +466,6 @@
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j.version}</version>
-                <scope>runtime</scope>
 			</dependency>
 
 			<!-- slf4j-log4j绑定 -->
@@ -480,7 +473,6 @@
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-log4j12</artifactId>
 				<version>${slf4j.version}</version>
-                <scope>runtime</scope>
 			</dependency>
 
 			<!-- common-logging 實際調用 slf4j -->
@@ -488,7 +480,6 @@
 				<groupId>org.slf4j</groupId>
 				<artifactId>jcl-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
-                <scope>runtime</scope>
 			</dependency>
 
 			<!-- log4j -->
@@ -503,7 +494,6 @@
 				<groupId>org.lazyluke</groupId>
 				<artifactId>log4jdbc-remix</artifactId>
 				<version>0.2.8-SNAPSHOT</version>
-                <scope>runtime</scope>
 			</dependency>
 			<!-- LOGGING end -->
 
