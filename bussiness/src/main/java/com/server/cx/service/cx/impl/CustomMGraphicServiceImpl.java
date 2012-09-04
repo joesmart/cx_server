@@ -139,7 +139,8 @@ public class CustomMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
 
     @Override
     public OperationResult edit(String imsi, MGraphicDTO mGraphicDTO) {
-        checkAndInitializeContext(imsi, mGraphicDTO);
+        // checkAndInitializeContext(imsi, mGraphicDTO);
+        checkAndSetUserInfoExists(imsi);
         mGraphicIdMustBeExists(mGraphicDTO);
         userSubscribeGraphicItemService.checkUserSubscribeGraphicItem(userInfo, mGraphicDTO.getGraphicInfoId());
         

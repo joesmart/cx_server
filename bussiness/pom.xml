@@ -506,7 +506,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <warName>callface</warName>
+                    <warName>CXServer</warName>
                 </configuration>
             </plugin>
             <!--jrebel plug in-->

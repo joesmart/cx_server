@@ -200,7 +200,7 @@
         </bean>
 
         <bean id="baseHostAddress" class="java.lang.String">
-            <constructor-arg value="http://10.90.3.122:38183/callface/"/>
+            <constructor-arg value="http://10.90.3.122:38183/CXServer/"/>
         </bean>
 
         <!-- 数据源配置,使用应用服务器的数据库连接池 -->
