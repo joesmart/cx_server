@@ -18,7 +18,7 @@ import com.server.cx.exception.SystemException;
 import com.server.cx.model.CXInfo;
 import com.server.cx.model.Result;
 import com.server.cx.model.UserCXInfo;
-import com.server.cx.service.cx.ContactsServcie;
+import com.server.cx.service.cx.ContactsService;
 import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.StringUtil;
 import com.server.cx.util.business.ValidationUtil;
@@ -31,7 +31,7 @@ import java.util.Map;
 
 @Service("contactsServcie")
 @Transactional
-public class ContactsServiceImpl implements ContactsServcie {
+public class ContactsServiceImpl implements ContactsService {
     @Autowired
     private UserInfoDao userInfoDao;
     @Autowired

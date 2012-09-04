@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CheckStyle-IDEA">
+    <option name="configuration">
+      <map>
+        <entry key="active-configuration" value="file:$PROJECT_DIR$/checkstyle.xml:project" />
+        <entry key="check-nonjava-files" value="false" />
+        <entry key="check-test-classes" value="false" />
+        <entry key="location-0" value="CLASSPATH:/sun_checks.xml:The default CheckStyle rules" />
+        <entry key="location-1" value="file:$PROJECT_DIR$/checkstyle.xml:project" />
+        <entry key="property-1.com.puppycrawl.tools.checkstyle.checks.sizes.LineLength.ignorePattern" value="" />
+        <entry key="property-1.com.puppycrawl.tools.checkstyle.checks.sizes.LineLength.max" value="" />
+        <entry key="thirdparty-classpath" value="" />
+      </map>
+    </option>
+  </component>
   <component name="DBNavigator.Project.ConnectionManager">
     <connections>
       <connection driver-library="F:\.m2\repository\mysql\mysql-connector-java\5.1.21\mysql-connector-java-5.1.21.jar" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://10.90.3.122:3306/business?useUnicode=true&amp;characterEncoding=utf-8" active="true" os-authentication="false" id="5819896e-5c0e-43dc-b382-3d112fb94f92" name="mysql" description="mysql" database-type="MYSQL" user="root" password="root">
@@ -38,7 +52,7 @@
           <object-name-filters />
         </object-filters>
       </connection>
-      <connection driver-library="F:\.m2\repository\com\h2database\h2\1.3.168\h2-1.3.168.jar" driver="org.h2.Driver" url="jdbc:h2:file:~/bussiness4;AUTO_SERVER=TRUE" active="true" os-authentication="false" id="59232ccb-6042-4cb9-afd3-e968e8782c8b" name="h2" description="h2" database-type="UNKNOWN" user="sa" password="">
+      <connection driver-library="F:\.m2\repository\com\h2database\h2\1.3.168\h2-1.3.168.jar" driver="org.h2.Driver" url="jdbc:h2:file:///C:/Users/ZouYanjian/bussiness4;AUTO_SERVER=TRUE" active="true" os-authentication="false" id="59232ccb-6042-4cb9-afd3-e968e8782c8b" name="h2" description="h2" database-type="UNKNOWN" user="sa" password="">
         <details>
           <charset value="UTF-8" />
           <auto-commit value="false" />
@@ -97,7 +111,7 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="true" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
+    <show-object-properties value="false" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-list connection-id="5819896e-5c0e-43dc-b382-3d112fb94f92" dataset="business_d.mgraphic" active-filter-id="EMPTY_FILTER" />
@@ -139,7 +153,7 @@
     </general-settings>
     <browser-settings>
       <general>
-        <display-mode value="TABBED" />
+        <display-mode value="SIMPLE" />
         <navigation-history-size value="100" />
         <show-object-details value="true" />
       </general>

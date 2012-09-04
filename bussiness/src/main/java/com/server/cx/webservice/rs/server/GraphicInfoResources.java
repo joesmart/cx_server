@@ -42,7 +42,7 @@ public class GraphicInfoResources {
                                                            @QueryParam("holidayTypeId")Long holidayTypeId,
                                                            @QueryParam("statusTypeId") Long statusTypeId,
                                                            @DefaultValue("0") @QueryParam("offset") Integer offset,
-                                                           @DefaultValue("5") @QueryParam("limit") Integer limit
+                                                           @DefaultValue("8") @QueryParam("limit") Integer limit
     ) {
         LOGGER.info("imsi:" + imsi);
         LOGGER.info("id:" + categoryId);

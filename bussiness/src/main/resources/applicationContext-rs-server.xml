@@ -21,5 +21,6 @@
     <bean class="com.server.cx.webservice.rs.server.StatusTypeResources" />
     <bean class="com.server.cx.webservice.rs.server.SuggestionResources" />
     <bean class="com.server.cx.webservice.rs.server.UserDIYGraphicResource" />
+    <bean class="com.server.cx.webservice.rs.server.UserInfoResources" />
     <bean class="com.server.cx.webservice.rs.server.VersionInfoResources" />
 </beans>
