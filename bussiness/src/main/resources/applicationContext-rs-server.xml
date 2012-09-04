@@ -15,7 +15,6 @@
     <bean class="com.server.cx.webservice.rs.server.MGraphicResources" />
     <bean class="com.server.cx.webservice.rs.server.MyCollectionsResources" />
     <bean class="com.server.cx.webservice.rs.server.RegisterResources" />
-    <bean class="com.server.cx.webservice.rs.server.ShiroExceptionMapper" scope="singleton"/>
     <bean class="com.server.cx.webservice.rs.server.SMSResources" />
     <bean class="com.server.cx.webservice.rs.server.StatusMGraphicResources" />
     <bean class="com.server.cx.webservice.rs.server.StatusTypeResources" />
