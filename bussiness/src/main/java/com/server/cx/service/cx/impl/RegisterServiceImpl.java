@@ -3,12 +3,19 @@
  */
 package com.server.cx.service.cx.impl;
 
+import java.util.UUID;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.cl.cx.platform.dto.RegisterDTO;
+import com.cl.cx.platform.dto.RegisterOperationDescription;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.service.cx.RegisterService;
 import com.server.cx.util.ObjectFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -16,6 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
+
+import com.server.cx.util.StringUtil;
+
 
 /**
  * implement of RegisterService interface. Briefly describe what this class does.
@@ -37,11 +47,19 @@ public class RegisterServiceImpl implements RegisterService {
             addNewUserInfo(registerDTO);
             operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED, "register");
         } else {
-            operationDescription = ObjectFactory.buildErrorOperationDescription(HttpServletResponse.SC_CONFLICT,
-                "register", "registered");
+            operationDescription = ObjectFactory.buildErrorRegisterOperationDescription(
+                HttpServletResponse.SC_CONFLICT, "register", "registered");
+            if (isPhoneNoValidate(userinfo.getPhoneNo())) {
+                operationDescription.setForceSMS(false);
+                operationDescription.setSendSMS(false);
+            } else {
+                operationDescription.setForceSMS(getForceFlag(userinfo.getForceSMS()));
+                operationDescription.setSendSMS(true);
+            }
         }
         return operationDescription;
     }
+
 
     private void addNewUserInfo(RegisterDTO registerDTO) {
         userinfo = new UserInfo();
@@ -52,9 +70,18 @@ public class RegisterServiceImpl implements RegisterService {
         //TODO 这里默认是50个,但是每个item价格设定的较高，先用100
         userinfo.setTotleMoney(100D);
         userInfoDao.save(userinfo);
+
+    }
+
+    private Boolean getForceFlag(Boolean forceSMS) {
+        if (forceSMS == null || forceSMS == Boolean.FALSE) {
+            return Boolean.FALSE;
+        }
+        return Boolean.TRUE;
     }
 
     @Override
+    @Transactional(readOnly = false)
     public OperationDescription update(RegisterDTO registerDTO) {
         userinfo = userInfoDao.getUserInfoByImsi(registerDTO.getImsi());
         OperationDescription operationDescription;
@@ -81,5 +108,23 @@ public class RegisterServiceImpl implements RegisterService {
             phoneNo = String.valueOf(UUID.randomUUID().getMostSignificantBits());
         }
         return phoneNo;
+    }
+
+    private boolean isPhoneNoValidate(String phoneNo) {
+        if (StringUtil.notNull(phoneNo)) {
+            return true;
+        }
+        return false;
+    }
+
+    @Transactional(readOnly = false)
+    @Override
+    public OperationDescription updateSMSFlag(RegisterDTO registerDTO) {
+        UserInfo userInfo = userInfoDao.findByImsi(registerDTO.getImsi());
+        userInfo.setForceSMS(registerDTO.getForceSMS());
+        userInfoDao.save(userInfo);
+        OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
+            HttpServletResponse.SC_NO_CONTENT, "updateSMSFlag");
+        return operationDescription;
     }
 }

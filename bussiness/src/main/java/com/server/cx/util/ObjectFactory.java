@@ -3,6 +3,7 @@ package com.server.cx.util;
 import java.util.List;
 import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.OperationDescription;
+import com.cl.cx.platform.dto.RegisterOperationDescription;
 import com.cl.cx.platform.dto.SuggestionDTO;
 import com.cl.cx.platform.dto.VersionInfoDTO;
 import com.google.common.collect.Lists;
@@ -26,7 +27,11 @@ public class ObjectFactory {
         versionInfoDTO.setUrl(url);
         return versionInfoDTO;
     }
-
+    
+    public static OperationDescription buildOperationDescription(int statusCode, String actionName) {
+        return buildOperationDescription(statusCode, actionName, null);
+    }
+    
     public static OperationDescription buildOperationDescription(int statusCode, String actionName, String message) {
         OperationDescription operationDescription = new OperationDescription();
         operationDescription.setDealResult(Constants.SUCCESS_FLAG);
@@ -36,8 +41,30 @@ public class ObjectFactory {
         return operationDescription;
     }
     
-    public static OperationDescription buildOperationDescription(int statusCode, String actionName) {
-        return buildOperationDescription(statusCode, actionName, null);
+    public static RegisterOperationDescription buildRegisterOperationDescription(int statusCode, String actionName) {
+        return buildRegisterOperationDescription(statusCode, actionName, null);
+    }
+    
+    public static RegisterOperationDescription buildRegisterOperationDescription(int errorCode, String actionName, String flag) {
+        RegisterOperationDescription operationDescription = new RegisterOperationDescription();
+        operationDescription.setDealResult(Constants.SUCCESS_FLAG);
+        operationDescription.setStatusCode(errorCode);
+        operationDescription.setActionName(actionName);
+        operationDescription.setDevelopMessage(flag);
+        return operationDescription;
+    }
+    
+    public static RegisterOperationDescription buildErrorRegisterOperationDescription(int errorCode, String actionName, String flag) {
+        RegisterOperationDescription operationDescription = new RegisterOperationDescription();
+        operationDescription.setDealResult(Constants.ERROR_FLAG);
+        operationDescription.setErrorCode(errorCode);
+        operationDescription.setActionName(actionName);
+        operationDescription.setErrorMessage(flag);
+        return operationDescription;
+    }
+    
+    public static RegisterOperationDescription buildErrorRegisterOperationDescription(int errorCode, String actionName) {
+        return buildErrorRegisterOperationDescription(errorCode, actionName, null);
     }
 
     public static OperationDescription buildErrorOperationDescription(int errorCode, String actionName, String flag) {

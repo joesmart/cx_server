@@ -5,6 +5,7 @@ package com.server.cx.service.cx;
 
 import com.cl.cx.platform.dto.OperationDescription;
 import com.cl.cx.platform.dto.RegisterDTO;
+import com.cl.cx.platform.dto.RegisterOperationDescription;
 
 
 /**
@@ -12,6 +13,8 @@ import com.cl.cx.platform.dto.RegisterDTO;
  */
 public interface RegisterService {
 
-    public abstract OperationDescription register(RegisterDTO registerDTO, String phoneNo);
+    public abstract RegisterOperationDescription register(RegisterDTO registerDTO, String phoneNo);
     public abstract OperationDescription update(RegisterDTO registerDTO);
+    public abstract OperationDescription updateSMSFlag(RegisterDTO registerDTO);
+
 }

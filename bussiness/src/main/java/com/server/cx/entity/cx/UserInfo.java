@@ -8,7 +8,6 @@ import lombok.ToString;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Index;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -28,8 +27,10 @@ public class UserInfo extends AuditableStringEntity {
     private String deviceId;
 
     private String userAgent;
-    
+
     private Double totleMoney;
+
+    private Boolean forceSMS;
 
     public UserInfo() {
     }
@@ -51,13 +52,13 @@ public class UserInfo extends AuditableStringEntity {
     }
 
     @Index(name = "user_imsi")
-    @Column(length = 40 ,unique = true)
+    @Column(length = 40, unique = true)
     public String getImsi() {
         return imsi;
     }
 
     @Index(name = "user_phone_no")
-    @Column(length = 20 ,unique = true)
+    @Column(length = 20, unique = true)
     public String getPhoneNo() {
         return phoneNo;
     }
@@ -66,11 +67,13 @@ public class UserInfo extends AuditableStringEntity {
     public String getUserAgent() {
         return userAgent;
     }
+
     @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "user", fetch = FetchType.LAZY)
     @Fetch(FetchMode.SELECT)
     public List<UserFavorites> getUserFavorites() {
         return userFavorites;
     }
+
     public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
     }
@@ -97,5 +100,13 @@ public class UserInfo extends AuditableStringEntity {
 
     public void setTotleMoney(Double totleMoney) {
         this.totleMoney = totleMoney;
+    }
+
+    public Boolean getForceSMS() {
+        return forceSMS;
+    }
+
+    public void setForceSMS(Boolean forceSMS) {
+        this.forceSMS = forceSMS;
     }
 }

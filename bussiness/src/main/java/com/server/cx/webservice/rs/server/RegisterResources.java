@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.cl.cx.platform.dto.RegisterDTO;
+import com.cl.cx.platform.dto.RegisterOperationDescription;
 import com.google.common.base.Preconditions;
 import com.server.cx.exception.InvalidParameterException;
 import com.server.cx.service.cx.RegisterService;
@@ -34,7 +35,7 @@ import com.server.cx.util.business.ValidationUtil;
 @Produces({MediaType.APPLICATION_JSON})
 public class RegisterResources {
     private static final Logger LOGGER = LoggerFactory.getLogger(VersionInfoResources.class);
-    
+
     @Autowired
     private RegisterService registerService;
 
@@ -43,22 +44,41 @@ public class RegisterResources {
         try {
             ValidationUtil.checkParametersNotNull(registerDTO, registerDTO.getImsi());
             Preconditions.checkNotNull(registerDTO.getImsi());
-            OperationDescription operationDescription = registerService.register(registerDTO, null);
-            return Response.ok(operationDescription).build();
+            RegisterOperationDescription registerOperationDescription = registerService.register(registerDTO, null);
+            return Response.ok(registerOperationDescription).build();
         } catch (InvalidParameterException e) {
-            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                HttpServletResponse.SC_NOT_ACCEPTABLE, "register", "IMSI数据为空");
-            return Response.ok(operationDescription).build();
+            RegisterOperationDescription registerOperationDescription = ObjectFactory
+                .buildErrorRegisterOperationDescription(HttpServletResponse.SC_NOT_ACCEPTABLE, "register", "IMSI数据为空");
+            return Response.ok(registerOperationDescription).build();
         }
     }
 
     @PUT
     @Path("/{imsi}")
-    public Response update(@PathParam("imsi")String imsi,RegisterDTO registerDTO){
-        ValidationUtil.checkParametersNotNull(registerDTO,registerDTO.getPhoneNo());
+    public Response update(@PathParam("imsi") String imsi, RegisterDTO registerDTO) {
+        ValidationUtil.checkParametersNotNull(registerDTO, registerDTO.getPhoneNo());
         registerDTO.setImsi(imsi);
         OperationDescription operationDescription = registerService.update(registerDTO);
         return Response.ok(operationDescription).build();
+    }
+
+    @PUT
+    @Path("{imsi}/sms")
+    public Response updateSMSFlag(@PathParam("imsi") String imsi, RegisterDTO registerDTO) {
+        LOGGER.info("Into updateSMSFlag imsi = " + imsi);
+        LOGGER.info("Into updateSMSFlag registerDTO = " + registerDTO);
+
+        try {
+            ValidationUtil.checkParametersNotNull(imsi, registerDTO);
+            registerDTO.setImsi(imsi);
+            OperationDescription operationDescription = registerService.updateSMSFlag(registerDTO);
+            return Response.ok(operationDescription).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "updateSMSFlag", e.getMessage());
+            return Response.ok(operationDescription).build();
+        }
     }
 
     private String getPhoneNoFromContactInfo(ContactInfoDTO contactInfoDTO) {
