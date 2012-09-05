@@ -551,7 +551,7 @@
 					<useTestClasspath>true</useTestClasspath>
 
 					<webAppConfig>
-						<contextPath>/${app_name}</contextPath>
+						<contextPath>/CXServer</contextPath>
 					</webAppConfig>
 				</configuration>
 			</plugin>

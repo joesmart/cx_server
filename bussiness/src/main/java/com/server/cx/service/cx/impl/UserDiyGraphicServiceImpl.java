@@ -24,6 +24,7 @@ import com.sun.jersey.multipart.FormDataBodyPart;
 import com.sun.jersey.multipart.FormDataMultiPart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +38,7 @@ import java.util.List;
 
 @Component
 @Transactional
+@Scope("request")
 public class UserDiyGraphicServiceImpl extends CheckAndHistoryMGraphicService implements UserDiyGraphicService {
     @Autowired
     private BusinessFunctions businessFunctions;

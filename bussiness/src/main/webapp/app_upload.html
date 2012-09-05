@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload app</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="static/uploadify/uploadify.css" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="static/uploadify/jquery.uploadify-3.1.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#file_upload').uploadify({
+                'swf'      : './static/uploadify/uploadify.swf',
+                'uploader' : 'uploadify.php',
+                'buttonText':'浏览',
+                'auto':false
+                // Your options here
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="file" name="file_upload" id="file_upload" />
+</body>
+</html>

@@ -1,176 +1,147 @@
 
     alter table acct_group_permission 
-        drop 
-        foreign key FK19C1023BEFE35BA9;
+        drop constraint FK19C1023BEFE35BA9;
 
     alter table acct_user_group 
-        drop 
-        foreign key FKD19A04B7274F65AB;
+        drop constraint FKD19A04B7274F65AB;
 
     alter table acct_user_group 
-        drop 
-        foreign key FKD19A04B7EFE35BA9;
+        drop constraint FKD19A04B7EFE35BA9;
 
     alter table graphic_infos 
-        drop 
-        foreign key FKA2E5796EE36BFFE3;
+        drop constraint FKA2E5796EE36BFFE3;
 
     alter table graphic_infos 
-        drop 
-        foreign key FKA2E5796EEBB54FE8;
+        drop constraint FKA2E5796EEBB54FE8;
 
     alter table graphic_infos 
-        drop 
-        foreign key FKA2E5796ECDC4AB82;
+        drop constraint FKA2E5796ECDC4AB82;
 
     alter table graphic_resource 
-        drop 
-        foreign key FK4F320785A8BFB6AE;
+        drop constraint FK4F320785A8BFB6AE;
 
     alter table graphic_resource 
-        drop 
-        foreign key FK4F320785E231CA91;
+        drop constraint FK4F320785E231CA91;
 
     alter table history_mgraphic 
-        drop 
-        foreign key FK73D101266C146C11;
+        drop constraint FK73D101266C146C11;
 
     alter table history_mgraphic 
-        drop 
-        foreign key FK73D101268EBB0422;
+        drop constraint FK73D101268EBB0422;
 
     alter table history_mgraphic_phone_no 
-        drop 
-        foreign key FK8CBF312B12DC9BFD;
+        drop constraint FK8CBF312B12DC9BFD;
 
     alter table holiday 
-        drop 
-        foreign key FK411528586F516363;
+        drop constraint FK411528586F516363;
 
     alter table mgraphic 
-        drop 
-        foreign key FK4B95CDDB6C146C11;
+        drop constraint FK4B95CDDB6C146C11;
 
     alter table mgraphic 
-        drop 
-        foreign key FK4B95CDDB9CE57422;
+        drop constraint FK4B95CDDB9CE57422;
 
     alter table mgraphic 
-        drop 
-        foreign key FK4B95CDDBCDC4AB82;
+        drop constraint FK4B95CDDBCDC4AB82;
 
     alter table mgraphic 
-        drop 
-        foreign key FK4B95CDDBEBB54FE8;
+        drop constraint FK4B95CDDBEBB54FE8;
 
     alter table mgraphic_phone_no 
-        drop 
-        foreign key FK6F8CE016A4886B19;
+        drop constraint FK6F8CE016A4886B19;
 
     alter table suggestion 
-        drop 
-        foreign key FK4763CA0473976E23;
+        drop constraint FK4763CA0473976E23;
 
     alter table user_catacts 
-        drop 
-        foreign key FK7C0ED6836C146C11;
+        drop constraint FK7C0ED6836C146C11;
 
     alter table user_catacts 
-        drop 
-        foreign key FK7C0ED6834DEBD61E;
+        drop constraint FK7C0ED6834DEBD61E;
 
     alter table user_diy_graphic 
-        drop 
-        foreign key FKB013FBC96C146C11;
+        drop constraint FKB013FBC96C146C11;
 
     alter table user_favorites 
-        drop 
-        foreign key FKF2FF4EE36C146C11;
+        drop constraint FKF2FF4EE36C146C11;
 
     alter table user_favorites 
-        drop 
-        foreign key FKF2FF4EE38EBB0422;
+        drop constraint FKF2FF4EE38EBB0422;
 
     alter table user_subscribe_graphic_item 
-        drop 
-        foreign key FK10A9E5D36C146C11;
+        drop constraint FK10A9E5D36C146C11;
 
     alter table user_subscribe_graphic_item 
-        drop 
-        foreign key FK10A9E5D38EBB0422;
+        drop constraint FK10A9E5D38EBB0422;
 
     alter table user_subscribe_record 
-        drop 
-        foreign key FKECF0ADA6C146C11;
+        drop constraint FKECF0ADA6C146C11;
 
     alter table user_subscribe_record 
-        drop 
-        foreign key FKECF0ADA9E7BF8A6;
+        drop constraint FKECF0ADA9E7BF8A6;
 
     alter table user_subscribe_type 
-        drop 
-        foreign key FK44373C036C146C11;
+        drop constraint FK44373C036C146C11;
 
     alter table user_subscribe_type 
-        drop 
-        foreign key FK44373C039E7BF8A6;
+        drop constraint FK44373C039E7BF8A6;
 
-    drop table if exists acct_group;
+    drop table acct_group if exists;
 
-    drop table if exists acct_group_permission;
+    drop table acct_group_permission if exists;
 
-    drop table if exists acct_user;
+    drop table acct_user if exists;
 
-    drop table if exists acct_user_group;
+    drop table acct_user_group if exists;
 
-    drop table if exists category;
+    drop table category if exists;
 
-    drop table if exists graphic_infos;
+    drop table graphic_infos if exists;
 
-    drop table if exists graphic_resource;
+    drop table graphic_resource if exists;
 
-    drop table if exists history_mgraphic;
+    drop table history_mgraphic if exists;
 
-    drop table if exists history_mgraphic_phone_no;
+    drop table history_mgraphic_phone_no if exists;
 
-    drop table if exists holiday;
+    drop table holiday if exists;
 
-    drop table if exists holiday_type;
+    drop table holiday_type if exists;
 
-    drop table if exists mgraphic;
+    drop table mgraphic if exists;
 
-    drop table if exists mgraphic_phone_no;
+    drop table mgraphic_phone_no if exists;
 
-    drop table if exists signature;
+    drop table signature if exists;
 
-    drop table if exists sms_message;
+    drop table sms_message if exists;
 
-    drop table if exists status_type;
+    drop table status_type if exists;
 
-    drop table if exists subscribe_type;
+    drop table subscribe_type if exists;
 
-    drop table if exists suggestion;
+    drop table suggestion if exists;
 
-    drop table if exists type;
+    drop table type if exists;
 
-    drop table if exists user_catacts;
+    drop table user_catacts if exists;
 
-    drop table if exists user_diy_graphic;
+    drop table user_diy_graphic if exists;
 
-    drop table if exists user_favorites;
+    drop table user_favorites if exists;
 
-    drop table if exists user_subscribe_graphic_item;
+    drop table user_subscribe_graphic_item if exists;
 
-    drop table if exists user_subscribe_record;
+    drop table user_subscribe_record if exists;
 
-    drop table if exists user_subscribe_type;
+    drop table user_subscribe_type if exists;
 
-    drop table if exists userinfo;
+    drop table userinfo if exists;
 
-    drop table if exists versioninfo;
+    drop table versioninfo if exists;
 
     create table acct_group (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         name varchar(255) not null unique,
         primary key (id)
     );
@@ -181,12 +152,12 @@
     );
 
     create table acct_user (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         email varchar(255),
         login_name varchar(255),
         name varchar(255),
         password varchar(255),
-        status bit,
+        status boolean,
         primary key (id)
     );
 
@@ -196,7 +167,7 @@
     );
 
     create table category (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         description varchar(180),
         download_num integer,
         graphic_resource_id varchar(255),
@@ -207,15 +178,15 @@
     create table graphic_infos (
         id varchar(32) not null,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         audit_status varchar(20),
         level integer,
         name varchar(40),
         owner varchar(40),
-        price double precision,
-        recommend bit,
+        price double,
+        recommend boolean,
         signature varchar(60),
         use_count integer,
         category_id bigint,
@@ -227,10 +198,10 @@
     create table graphic_resource (
         id varchar(32) not null,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
-        audit_passed bit,
+        updated_on timestamp,
+        audit_passed boolean,
         resource_id varchar(40),
         source_path varchar(255),
         thumbnail_path varchar(255),
@@ -243,11 +214,11 @@
     create table history_mgraphic (
         id varchar(32) not null,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         mode_type integer,
-        modify_time datetime,
+        modify_time timestamp,
         name varchar(255),
         priority integer,
         signature varchar(255),
@@ -262,14 +233,14 @@
     );
 
     create table holiday (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         holiday_day date,
         type bigint,
         primary key (id)
     );
 
     create table holiday_type (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         download_num integer,
         graphic_resource_id varchar(255),
         level integer,
@@ -281,21 +252,21 @@
         cast_type varchar(10) not null,
         id varchar(32) not null,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         mode_type integer,
-        modify_time datetime,
+        modify_time timestamp,
         name varchar(255),
         priority integer,
         signature varchar(255),
-        subscribe bit,
+        subscribe boolean,
+        common boolean,
+        valid_date timestamp,
+        holiday timestamp,
         special_phone_no varchar(20),
-        common bit,
-        valid_date datetime,
-        holiday datetime,
-        begin datetime,
-        end datetime,
+        begin timestamp,
+        end timestamp,
         graphic_resource_id varchar(32),
         user_id varchar(32),
         status_type_id bigint,
@@ -309,11 +280,11 @@
     );
 
     create table signature (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         content varchar(255),
         level Integer default '-1',
         type Integer default '-1',
@@ -321,20 +292,20 @@
     );
 
     create table sms_message (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         from_mobile_no varchar(255),
-        is_send bit,
+        is_send boolean,
         sms varchar(255),
         to_mobile_no varchar(255),
         primary key (id)
     );
 
     create table status_type (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         graphic_resource_id varchar(255),
         name varchar(255),
         primary key (id)
@@ -342,43 +313,43 @@
 
     create table subscribe_type (
         cast_type varchar(10) not null,
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         name varchar(255),
-        price double precision,
+        price double,
         primary key (id)
     );
 
     create table suggestion (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
-        content longtext,
+        updated_on timestamp,
+        content varchar(500),
         userinfo_id varchar(32),
         primary key (id)
     );
 
     create table type (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         name varchar(255),
         primary key (id)
     );
 
     create table user_catacts (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         name varchar(255),
         phone_no varchar(255),
         self_user_id varchar(32),
@@ -389,9 +360,9 @@
     create table user_diy_graphic (
         id varchar(32) not null,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         audit_status integer,
         name varchar(40),
         signature varchar(40),
@@ -402,46 +373,46 @@
     create table user_favorites (
         id varchar(32) not null,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         graphic_info_id varchar(32),
         user_id varchar(32),
         primary key (id)
     );
 
     create table user_subscribe_graphic_item (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
-        validate_time datetime,
+        updated_on timestamp,
+        validate_time timestamp,
         graphic_info_id varchar(32),
         user_id varchar(32),
         primary key (id)
     );
 
     create table user_subscribe_record (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         description varchar(200),
-        expenses double precision,
-        income double precision,
+        expenses double,
+        income double,
         subscribe_type_id bigint,
         user_id varchar(32),
         primary key (id)
     );
 
     create table user_subscribe_type (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         subscribe_status varchar(20),
         validate_month integer,
         subscribe_type_id bigint,
@@ -452,201 +423,172 @@
     create table userinfo (
         id varchar(32) not null,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         device_id varchar(60),
         imsi varchar(40) unique,
         phone_no varchar(20) unique,
-        totle_money double precision,
+        totle_money double,
         user_agent varchar(60),
         primary key (id)
     );
 
     create table versioninfo (
-        id bigint not null auto_increment,
+        id bigint generated by default as identity,
         created_by varchar(64),
-        created_on datetime,
+        created_on timestamp,
         updated_by varchar(64),
-        updated_on datetime,
+        updated_on timestamp,
         url varchar(255),
         version varchar(255),
         primary key (id)
     );
 
     alter table acct_group_permission 
-        add index FK19C1023BEFE35BA9 (group_id), 
         add constraint FK19C1023BEFE35BA9 
         foreign key (group_id) 
-        references acct_group (id);
+        references acct_group;
 
     alter table acct_user_group 
-        add index FKD19A04B7274F65AB (user_id), 
         add constraint FKD19A04B7274F65AB 
         foreign key (user_id) 
-        references acct_user (id);
+        references acct_user;
 
     alter table acct_user_group 
-        add index FKD19A04B7EFE35BA9 (group_id), 
         add constraint FKD19A04B7EFE35BA9 
         foreign key (group_id) 
-        references acct_group (id);
+        references acct_group;
 
     alter table graphic_infos 
-        add index FKA2E5796EE36BFFE3 (category_id), 
         add constraint FKA2E5796EE36BFFE3 
         foreign key (category_id) 
-        references category (id);
+        references category;
 
     alter table graphic_infos 
-        add index FKA2E5796EEBB54FE8 (status_type_id), 
         add constraint FKA2E5796EEBB54FE8 
         foreign key (status_type_id) 
-        references status_type (id);
+        references status_type;
 
     alter table graphic_infos 
-        add index FKA2E5796ECDC4AB82 (holiday_type_id), 
         add constraint FKA2E5796ECDC4AB82 
         foreign key (holiday_type_id) 
-        references holiday_type (id);
+        references holiday_type;
 
     alter table graphic_resource 
-        add index FK4F320785A8BFB6AE (diy_id), 
         add constraint FK4F320785A8BFB6AE 
         foreign key (diy_id) 
-        references user_diy_graphic (id);
+        references user_diy_graphic;
 
     alter table graphic_resource 
-        add index FK4F320785E231CA91 (graphicinfo_id), 
         add constraint FK4F320785E231CA91 
         foreign key (graphicinfo_id) 
-        references graphic_infos (id);
+        references graphic_infos;
 
     alter table history_mgraphic 
-        add index FK73D101266C146C11 (user_id), 
         add constraint FK73D101266C146C11 
         foreign key (user_id) 
-        references userinfo (id);
+        references userinfo;
 
     alter table history_mgraphic 
-        add index FK73D101268EBB0422 (graphic_info_id), 
         add constraint FK73D101268EBB0422 
         foreign key (graphic_info_id) 
-        references graphic_infos (id);
+        references graphic_infos;
 
     alter table history_mgraphic_phone_no 
-        add index FK8CBF312B12DC9BFD (hmgraphic_id), 
         add constraint FK8CBF312B12DC9BFD 
         foreign key (hmgraphic_id) 
-        references history_mgraphic (id);
+        references history_mgraphic;
 
     alter table holiday 
-        add index FK411528586F516363 (type), 
         add constraint FK411528586F516363 
         foreign key (type) 
-        references holiday_type (id);
+        references holiday_type;
 
     alter table mgraphic 
-        add index FK4B95CDDB6C146C11 (user_id), 
         add constraint FK4B95CDDB6C146C11 
         foreign key (user_id) 
-        references userinfo (id);
+        references userinfo;
 
     alter table mgraphic 
-        add index FK4B95CDDB9CE57422 (graphic_resource_id), 
         add constraint FK4B95CDDB9CE57422 
         foreign key (graphic_resource_id) 
-        references graphic_resource (id);
+        references graphic_resource;
 
     alter table mgraphic 
-        add index FK4B95CDDBCDC4AB82 (holiday_type_id), 
         add constraint FK4B95CDDBCDC4AB82 
         foreign key (holiday_type_id) 
-        references holiday_type (id);
+        references holiday_type;
 
     alter table mgraphic 
-        add index FK4B95CDDBEBB54FE8 (status_type_id), 
         add constraint FK4B95CDDBEBB54FE8 
         foreign key (status_type_id) 
-        references status_type (id);
+        references status_type;
 
     alter table mgraphic_phone_no 
-        add index FK6F8CE016A4886B19 (mgraphic_id), 
         add constraint FK6F8CE016A4886B19 
         foreign key (mgraphic_id) 
-        references mgraphic (id);
+        references mgraphic;
 
     alter table suggestion 
-        add index FK4763CA0473976E23 (userinfo_id), 
         add constraint FK4763CA0473976E23 
         foreign key (userinfo_id) 
-        references userinfo (id);
+        references userinfo;
 
     alter table user_catacts 
-        add index FK7C0ED6836C146C11 (user_id), 
         add constraint FK7C0ED6836C146C11 
         foreign key (user_id) 
-        references userinfo (id);
+        references userinfo;
 
     alter table user_catacts 
-        add index FK7C0ED6834DEBD61E (self_user_id), 
         add constraint FK7C0ED6834DEBD61E 
         foreign key (self_user_id) 
-        references userinfo (id);
+        references userinfo;
 
     alter table user_diy_graphic 
-        add index FKB013FBC96C146C11 (user_id), 
         add constraint FKB013FBC96C146C11 
         foreign key (user_id) 
-        references userinfo (id);
+        references userinfo;
 
     alter table user_favorites 
-        add index FKF2FF4EE36C146C11 (user_id), 
         add constraint FKF2FF4EE36C146C11 
         foreign key (user_id) 
-        references userinfo (id);
+        references userinfo;
 
     alter table user_favorites 
-        add index FKF2FF4EE38EBB0422 (graphic_info_id), 
         add constraint FKF2FF4EE38EBB0422 
         foreign key (graphic_info_id) 
-        references graphic_infos (id);
+        references graphic_infos;
 
     alter table user_subscribe_graphic_item 
-        add index FK10A9E5D36C146C11 (user_id), 
         add constraint FK10A9E5D36C146C11 
         foreign key (user_id) 
-        references userinfo (id);
+        references userinfo;
 
     alter table user_subscribe_graphic_item 
-        add index FK10A9E5D38EBB0422 (graphic_info_id), 
         add constraint FK10A9E5D38EBB0422 
         foreign key (graphic_info_id) 
-        references graphic_infos (id);
+        references graphic_infos;
 
     alter table user_subscribe_record 
-        add index FKECF0ADA6C146C11 (user_id), 
         add constraint FKECF0ADA6C146C11 
         foreign key (user_id) 
-        references userinfo (id);
+        references userinfo;
 
     alter table user_subscribe_record 
-        add index FKECF0ADA9E7BF8A6 (subscribe_type_id), 
         add constraint FKECF0ADA9E7BF8A6 
         foreign key (subscribe_type_id) 
-        references subscribe_type (id);
+        references subscribe_type;
 
     alter table user_subscribe_type 
-        add index FK44373C036C146C11 (user_id), 
         add constraint FK44373C036C146C11 
         foreign key (user_id) 
-        references userinfo (id);
+        references userinfo;
 
     alter table user_subscribe_type 
-        add index FK44373C039E7BF8A6 (subscribe_type_id), 
         add constraint FK44373C039E7BF8A6 
         foreign key (subscribe_type_id) 
-        references subscribe_type (id);
+        references subscribe_type;
 
     create index user_phone_no on userinfo (phone_no);
 

@@ -44,6 +44,7 @@ public class UserInfoResources {
             RegisterDTO registerDTO = new RegisterDTO();
             registerDTO.setImsi(imsi);
             registerDTO.setPhoneNo(phoneNo);
+
             registerService.update(registerDTO);
         } catch (SystemException e) {
             return Response.status(Response.Status.NOT_FOUND).build();

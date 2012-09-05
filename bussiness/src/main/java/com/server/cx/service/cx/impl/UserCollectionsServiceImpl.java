@@ -20,6 +20,7 @@ import com.server.cx.service.cx.UserCollectionsService;
 import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.business.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -31,6 +32,7 @@ import java.util.concurrent.ExecutionException;
 
 @Service("userCollectionsService")
 @Transactional
+@Scope("request")
 public class UserCollectionsServiceImpl extends UserCheckService implements UserCollectionsService {
 
     @Autowired

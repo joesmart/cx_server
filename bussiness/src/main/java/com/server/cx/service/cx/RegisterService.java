@@ -14,5 +14,4 @@ public interface RegisterService {
 
     public abstract OperationDescription register(RegisterDTO registerDTO, String phoneNo);
     public abstract OperationDescription update(RegisterDTO registerDTO);
-
 }

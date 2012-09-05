@@ -12,6 +12,8 @@ import com.server.cx.util.business.AuditStatus;
 import com.server.cx.util.business.ValidationUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +27,7 @@ import java.util.List;
  */
 @Component
 @Transactional
+@Scope(value = "request",proxyMode = ScopedProxyMode.INTERFACES)
 public class CheckAndHistoryMGraphicService extends UserCheckService {
     @Autowired
     protected HistoryMGraphicDao historyMGraphicDao;

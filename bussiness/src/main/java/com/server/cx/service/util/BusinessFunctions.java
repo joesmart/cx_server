@@ -116,6 +116,9 @@ public class BusinessFunctions {
                             item.setSignature(mgraphic.getSignature());
                             item.setInUsing(true);
                             if (ActionNames.HOLIDAY_MGRAPHIC_ACTION.equals(actionNames)) {
+                                if(mgraphic instanceof  UserHolidayMGraphic){
+                                    item.setPhoneNos(((UserHolidayMGraphic) mgraphic).getPhoneNos());
+                                }
                                 actions = actionBuilder.buildHolidayMGraphicItemEditAction(imsi, id);
                                 item.setActions(actions);
                             } else if (ActionNames.STATUS_MGRAPHIC_ACTION.equals(actionNames)) {

@@ -5,6 +5,7 @@ import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.CXServerBusinessException;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ import java.util.List;
 @Component
 @Data
 @Transactional
+@Scope("request")
 public class UserCheckService {
     @Autowired
     private UserInfoDao userInfoDao;

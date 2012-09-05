@@ -4,11 +4,92 @@
     <option name="ANALYSIS_IN_BACKGROUND" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="Remove same Spring singleton bean issue.....">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/uploadify/uploadify-cancel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/uploadify/uploadify.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/app_upload.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/app_upload.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/uploadify/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/uploadify/Change Log.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/uploadify/check-exists.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/uploadify/jquery.uploadify-3.1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/uploadify/jquery.uploadify-3.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/uploadify/license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/uploadify/uploadify.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/uploadify/uploadify.php" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\WEB-INF\views\menu\filetest.jsp" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\WEB-INF\views\menu\menu_category_add.jsp" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\WEB-INF\views\menu\menu_category_form.jsp" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\WEB-INF\views\menu\menu_category_list.jsp" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\WEB-INF\views\menu\menu_dish_modify.jsp" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\WEB-INF\views\menu\menu_main_view.jsp" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\WEB-INF\views\menu\tableForm.jsp" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\WEB-INF\views\menu\tableList.jsp" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.3\css\bootstrap-responsive.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.3\css\bootstrap-responsive.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.3\css\bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.3\css\bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.3\img\glyphicons-halflings-white.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.3\img\glyphicons-halflings.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.3\js\bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.3\js\bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.4\css\bootstrap-responsive.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.4\css\bootstrap-responsive.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.4\css\bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.4\css\bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.4\img\glyphicons-halflings-white.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.4\img\glyphicons-halflings.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.4\js\bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.0.4\js\bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\app.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\demo_table_jui.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-bg_flat_0_aaaaaa_40x100.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-bg_flat_55_fbec88_40x100.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-bg_glass_75_d0e5f5_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-bg_glass_85_dfeffc_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-bg_glass_95_fef1ec_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-icons_217bc0_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-icons_2e83ff_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-icons_469bdd_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-icons_6da8d5_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-icons_cd0a0a_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-icons_d8e7f3_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\images\ui-icons_f9bd01_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\jquery-ui-1.8.20.custom.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\jquery.dataTables.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\jquery.dataTables_themeroller.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\jquery.wijmo-open.2.0.8.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\css\menu_category_add.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\js\FixedHeader.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\js\app.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\js\httputil.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\js\jquery.dataTables.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\js\jquery.wijmo-open.all.2.0.8.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\js\json2.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\js\menu_main.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\menu\js\util.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business.iml" afterPath="$PROJECT_DIR$/business.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/RegisterService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/RegisterService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CheckAndHistoryMGraphicService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CheckAndHistoryMGraphicService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserCheckService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserCheckService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserCollectionsServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserCollectionsServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserDiyGraphicServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserDiyGraphicServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.local.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.local.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/sql/schema.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/schema.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/default.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/default.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/default_main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/default_main.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
     </list>
     <ignored path="bussiness.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -93,19 +174,6 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CheckAndHistoryMGraphicService.java" line="86" class="com.server.cx.service.cx.impl.CheckAndHistoryMGraphicService" package="com.server.cx.service.cx.impl">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/CustomMGraphicResources.java" line="120" class="com.server.cx.webservice.rs.server.CustomMGraphicResources" package="com.server.cx.webservice.rs.server">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
@@ -119,7 +187,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserDiyGraphicServiceImpl.java" line="77" class="com.server.cx.service.cx.impl.UserDiyGraphicServiceImpl" package="com.server.cx.service.cx.impl">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserDiyGraphicServiceImpl.java" line="79" class="com.server.cx.service.cx.impl.UserDiyGraphicServiceImpl" package="com.server.cx.service.cx.impl">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -132,7 +200,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserDiyGraphicServiceImpl.java" line="133" class="com.server.cx.service.cx.impl.UserDiyGraphicServiceImpl" package="com.server.cx.service.cx.impl">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserDiyGraphicServiceImpl.java" line="135" class="com.server.cx.service.cx.impl.UserDiyGraphicServiceImpl" package="com.server.cx.service.cx.impl">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -145,7 +213,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserDiyGraphicServiceImpl.java" line="104" class="com.server.cx.service.cx.impl.UserDiyGraphicServiceImpl" package="com.server.cx.service.cx.impl">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserDiyGraphicServiceImpl.java" line="106" class="com.server.cx.service.cx.impl.UserDiyGraphicServiceImpl" package="com.server.cx.service.cx.impl">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -158,7 +226,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserDiyGraphicServiceImpl.java" line="94" class="com.server.cx.service.cx.impl.UserDiyGraphicServiceImpl" package="com.server.cx.service.cx.impl">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserDiyGraphicServiceImpl.java" line="96" class="com.server.cx.service.cx.impl.UserDiyGraphicServiceImpl" package="com.server.cx.service.cx.impl">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -198,6 +266,32 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/GraphicResourceServiceImpl.java" line="33" class="com.server.cx.service.cx.impl.GraphicResourceServiceImpl" package="com.server.cx.service.cx.impl">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" line="58" class="com.server.cx.service.cx.impl.RegisterServiceImpl" package="com.server.cx.service.cx.impl">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" line="37" class="com.server.cx.service.cx.impl.RegisterServiceImpl" package="com.server.cx.service.cx.impl">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -269,43 +363,115 @@
       <file leaf-file-name="UserInfoResources.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0">
+            <state line="25" column="13" selection-start="711" selection-end="711" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.local.properties" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.local.properties">
+      <file leaf-file-name="GraphicInfoServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/GraphicInfoServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="471" selection-end="471" vertical-scroll-proportion="0.5961801">
+            <state line="83" column="106" selection-start="3329" selection-end="3366" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <file leaf-file-name="BusinessFunctions.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="64" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
+            <state line="123" column="47" selection-start="5765" selection-end="5765" vertical-scroll-proportion="5.8450704">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sample-data.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/data/sample-data.xml">
+      <file leaf-file-name="HolidayTypeServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/HolidayTypeServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="280" column="143" selection-start="57163" selection-end="57174" vertical-scroll-proportion="-6.785714">
+            <state line="61" column="41" selection-start="2417" selection-end="2417" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterResources.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/RegisterResources.java">
+      <file leaf-file-name="GraphicResourceServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/GraphicResourceServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="67" selection-start="2253" selection-end="2268" vertical-scroll-proportion="0.0">
+            <state line="23" column="13" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HistoryMGraphicServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/HistoryMGraphicServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="13" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app_upload.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/app_upload.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="0" selection-start="219" selection-end="312" vertical-scroll-proportion="-4.75">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="decorators.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="18" selection-start="236" selection-end="236" vertical-scroll-proportion="-6.107143">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HistoryMGraphic.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HistoryMGraphic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="22" selection-start="362" selection-end="377" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HolidayMGraphicServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/HolidayMGraphicServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="113" column="41" selection-start="5076" selection-end="5076" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HolidayTypeResource.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/HolidayTypeResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="48" column="71" selection-start="1710" selection-end="1730" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserHolidayMGraphic.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserHolidayMGraphic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="20" selection-start="345" selection-end="364" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserCommonMGraphic.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCommonMGraphic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="13" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -323,7 +489,7 @@
       <file leaf-file-name="RegisterServiceImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="32" selection-start="1995" selection-end="1995" vertical-scroll-proportion="0.0">
+            <state line="57" column="32" selection-start="2172" selection-end="2172" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -362,22 +528,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/ContactsResources.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/applicationContext-rs-server.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/exception/InvalidParameterException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HistoryMGraphic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CheckAndHistoryMGraphicService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java" />
-        <option value="$PROJECT_DIR$/src/test/resources/data/sample-data.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/MGraphicServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/war.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/war-real.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/war-test.properties" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/ContactsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CheckAndHistoryMGraphicService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.local.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/default.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/default_main.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/RegisterService.java" />
+        <option value="$PROJECT_DIR$/../parent/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserDiyGraphicServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserCollectionsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/UserCheckService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java" />
       </list>
     </option>
   </component>
@@ -385,6 +551,7 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="userSettingsFile" value="D:\apache-maven-3.0.3\conf\settings.xml" />
+        <option name="workOffline" value="true" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -894,16 +1061,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Default" />
         <subPane subId="Project Files">
@@ -929,50 +1086,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="bussiness" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: com.sun.jersey:jersey-core:1.13" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jersey-core-1.13.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: com.sun.jersey:jersey-core:1.13" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jersey-core-1.13.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1005,69 +1118,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bussiness" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1083,6 +1134,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1109,7 +1170,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="833" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="174" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="GoToClass.includeJavaFiles" value="true" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="171" />
     <property name="Database.TableEditor.Splitter" value="1.0" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -1126,8 +1187,9 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="options.lastSelected" value="com.zeroturnaround.javarebel.idea.plugin.PluginSettingsComponent" />
+    <property name="options.lastSelected" value="reference.settings.ide.settings.web.browsers" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="Html" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
@@ -1163,11 +1225,11 @@
       <recent name="com.server.cx.dao.cx" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static" />
+      <recent name="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp" />
       <recent name="F:\workspaces\idea\xtxt_csvn\bussiness\src\test\java\com\server\cx\tools" />
       <recent name="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\dto" />
       <recent name="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\xml\adapter" />
-      <recent name="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\xml\util" />
-      <recent name="F:\workspaces\idea\xtxt\bussiness\src\main\java\com\server\cx\xml" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.server.cx.service.cx" />
@@ -1182,8 +1244,11 @@
       <recent name="com.server.cx.functional" />
       <recent name="com.server.cx.dao.cx" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\workspaces\idea\xtxt_csvn\bussiness\src\main\webapp\static\bootstrap\2.1.1" />
+    </key>
   </component>
-  <component name="RunManager" selected="Remote.remote_debug">
+  <component name="RunManager" selected="Maven.run">
     <configuration default="false" name="DAOSuiteTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -2104,7 +2169,11 @@
       <created>1346813660902</created>
       <updated>1346813660902</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="update&#10;1.let maven only need to modify the application.local.properties and war anywhere&#10; 2.publish the UserInfo update restful interface;">
+      <created>1346822606222</created>
+      <updated>1346822606222</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <option name="createChangelist" value="false" />
     <servers />
   </component>
@@ -2130,9 +2199,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1456" height="916" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6741425" sideWeight="0.4939302" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.8562005" sideWeight="0.4939302" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3125" sideWeight="0.6081794" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24856322" sideWeight="0.21372032" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="jenkinsBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32686782" sideWeight="0.58970976" order="12" side_tool="false" content_ui="tabs" />
@@ -2143,23 +2212,24 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5" sideWeight="0.49712643" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JavaRebel" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32717678" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26005748" sideWeight="0.53957784" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="DB Browser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28520116" sideWeight="0.53957784" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2974138" sideWeight="0.14379947" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="DB Browser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30121395" sideWeight="0.14261745" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4058908" sideWeight="0.51846963" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46701846" sideWeight="0.46813354" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25417298" sideWeight="0.33377308" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25359195" sideWeight="0.43799472" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="23" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48153034" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46042216" sideWeight="0.54097116" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5620053" sideWeight="0.54097116" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30028737" sideWeight="0.17617449" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6081794" sideWeight="0.4969651" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="RESTClient" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.9459103" sideWeight="0.9165402" order="22" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.60686016" sideWeight="0.4969651" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="RESTClient" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.65567285" sideWeight="0.9165402" order="22" side_tool="false" content_ui="tabs" />
       <window_info id="BuildWatcher" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32718122" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28304598" sideWeight="0.60422164" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2112069" sideWeight="0.5385906" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2112069" sideWeight="0.5329815" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="554" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31205165" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Aspects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -2167,7 +2237,6 @@
       <window_info id="IDEtalk" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Cloverage" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2801724" sideWeight="0.5171504" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Test Runs" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45646438" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2216,7 +2285,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix the HistoryMGraphic also need store the PhoneNos info&#10;fix the UserCommonMGraphic add failed issue when the special phoneNos UserCommonMGraphic count already over 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove same Spring singleton bean issue....." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -2229,8 +2298,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.47111112" />
-    <MESSAGE value="to support userSpecialMGraphic  create update delete RestFul Interface" />
-    <MESSAGE value="calling interface support done" />
     <MESSAGE value="modify the com.server.cx.dto package name to com.server.cx.model" />
     <MESSAGE value="remove useless java class" />
     <MESSAGE value="enable GraphicInfos contain the Collected sign.&#10;Start the UserStatusMGraphic setting develop;" />
@@ -2254,6 +2321,8 @@
     <MESSAGE value="remove the ShiroExceptionMapper.java file to support the SpringSide4 GA version" />
     <MESSAGE value="Idea workspace update" />
     <MESSAGE value="fix the HistoryMGraphic also need store the PhoneNos info&#10;fix the UserCommonMGraphic add failed issue when the special phoneNos UserCommonMGraphic count already over 5" />
+    <MESSAGE value="update&#10;1.let maven only need to modify the application.local.properties and war anywhere&#10; 2.publish the UserInfo update restful interface;" />
+    <MESSAGE value="Remove same Spring singleton bean issue....." />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -2297,72 +2366,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/HolidayServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/rebel.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="24" column="13" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$MAVEN_REPOSITORY$/org/apache/maven/plugins/maven-war-plugin/2.2/maven-war-plugin-2.2.pom">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="22" selection-start="614" selection-end="614" vertical-scroll-proportion="-26.699709">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../parent/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="19" selection-start="415" selection-end="415" vertical-scroll-proportion="-4.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/sun/jersey/jersey-core/1.13/jersey-core-1.13-sources.jar!/com/sun/jersey/core/reflection/AnnotatedMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="8" selection-start="3534" selection-end="3534" vertical-scroll-proportion="-4.7291665">
-          <folding>
-            <element signature="e#0#9690#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#2815#2845#0" expanded="false" />
-            <element signature="e#2995#3025#0" expanded="false" />
-            <element signature="e#3234#3264#0" expanded="false" />
-            <element signature="e#3762#3791#0" expanded="false" />
-            <element signature="e#6860#6878#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/sun/jersey/jersey-core/1.13/jersey-core-1.13-sources.jar!/javax/ws/rs/QueryParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="18" selection-start="2264" selection-end="2264" vertical-scroll-proportion="0.31770834">
-          <folding>
-            <element signature="e#0#2775#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/sun/jersey/jersey-core/1.13/jersey-core-1.13-sources.jar!/javax/ws/rs/HeaderParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="24" selection-start="2183" selection-end="2194" vertical-scroll-proportion="0.7109375">
+        <state line="57" column="32" selection-start="2172" selection-end="2172" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -2374,49 +2387,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/RegisterResources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="67" selection-start="2253" selection-end="2268" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="32" selection-start="1995" selection-end="1995" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="64" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/data/sample-data.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="143" selection-start="57163" selection-end="57174" vertical-scroll-proportion="-6.785714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="db://5819896e-5c0e-43dc-b382-3d112fb94f92/business.userinfo.sql">
-      <provider selected="true" editor-type-id="Data">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0">
+        <state line="25" column="13" selection-start="711" selection-end="711" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.local.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/GraphicResourceServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="471" selection-end="471" vertical-scroll-proportion="0.5961801">
+        <state line="23" column="13" selection-start="709" selection-end="709" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/HistoryMGraphicServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="13" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/app_upload.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="219" selection-end="312" vertical-scroll-proportion="-4.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="18" selection-start="236" selection-end="236" vertical-scroll-proportion="-6.107143">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HistoryMGraphic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="22" selection-start="362" selection-end="377" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserCommonMGraphic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/UserHolidayMGraphic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="20" selection-start="345" selection-end="364" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/HolidayTypeServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="41" selection-start="2417" selection-end="2417" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/HolidayMGraphicServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="41" selection-start="5076" selection-end="5076" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/HolidayTypeResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="71" selection-start="1710" selection-end="1730" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/GraphicInfoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="106" selection-start="3329" selection-end="3366" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="47" selection-start="5765" selection-end="5765" vertical-scroll-proportion="5.8450704">
           <folding />
         </state>
       </provider>

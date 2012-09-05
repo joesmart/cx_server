@@ -10,8 +10,10 @@ import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.service.cx.RegisterService;
 import com.server.cx.util.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
@@ -20,24 +22,19 @@ import java.util.UUID;
  */
 @Service("registerService")
 @Transactional(readOnly = true)
+@Scope(value = "request")
 public class RegisterServiceImpl implements RegisterService {
     @Autowired
     private UserInfoDao userInfoDao;
+    private UserInfo userinfo;
 
     @Override
     @Transactional(readOnly = false)
     public OperationDescription register(RegisterDTO registerDTO, String phoneNo) {
-        UserInfo userinfo = userInfoDao.getUserInfoByImsi(registerDTO.getImsi());
+        userinfo = userInfoDao.getUserInfoByImsi(registerDTO.getImsi());
         OperationDescription operationDescription;
         if (userinfo == null) {
-            userinfo = new UserInfo();
-            userinfo.setImsi(registerDTO.getImsi());
-            userinfo.setPhoneNo(dealWithPhoneNo(registerDTO.getImsi()));
-            userinfo.setUserAgent(registerDTO.getUserAgent());
-            userinfo.setDeviceId(registerDTO.getDeviceId());
-            //TODO 这里默认是50个,但是每个item价格设定的较高，先用100
-            userinfo.setTotleMoney(100D);
-            userInfoDao.save(userinfo);
+            addNewUserInfo(registerDTO);
             operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED, "register");
         } else {
             operationDescription = ObjectFactory.buildErrorOperationDescription(HttpServletResponse.SC_CONFLICT,
@@ -46,32 +43,42 @@ public class RegisterServiceImpl implements RegisterService {
         return operationDescription;
     }
 
+    private void addNewUserInfo(RegisterDTO registerDTO) {
+        userinfo = new UserInfo();
+        userinfo.setImsi(registerDTO.getImsi());
+        userinfo.setPhoneNo(dealWithPhoneNo(registerDTO.getImsi()));
+        userinfo.setUserAgent(registerDTO.getUserAgent());
+        userinfo.setDeviceId(registerDTO.getDeviceId());
+        //TODO 这里默认是50个,但是每个item价格设定的较高，先用100
+        userinfo.setTotleMoney(100D);
+        userInfoDao.save(userinfo);
+    }
+
     @Override
     public OperationDescription update(RegisterDTO registerDTO) {
-        UserInfo userinfo = userInfoDao.getUserInfoByImsi(registerDTO.getImsi());
+        userinfo = userInfoDao.getUserInfoByImsi(registerDTO.getImsi());
         OperationDescription operationDescription;
         if (userinfo != null) {
-            userinfo.setPhoneNo(registerDTO.getPhoneNo());
-            userInfoDao.saveAndFlush(userinfo);
+            updateUserInfo(registerDTO);
             operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED,
                 "updateUserInfo");
         } else {
-            operationDescription = ObjectFactory.buildErrorOperationDescription(HttpServletResponse.SC_CONFLICT,
-                "updateUserInfo", "failed");
+            addNewUserInfo(registerDTO);
+            operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED, "register");
         }
         return operationDescription;
+    }
+
+
+    private void updateUserInfo(RegisterDTO registerDTO) {
+        userinfo.setPhoneNo(registerDTO.getPhoneNo());
+        userInfoDao.saveAndFlush(userinfo);
     }
 
     private String dealWithPhoneNo(String imsi) {
         String phoneNo = null;
         if (imsi == null || "".equals(imsi)) {
             phoneNo = String.valueOf(UUID.randomUUID().getMostSignificantBits());
-        } else if ("460025581509188".equals(imsi)) {
-            phoneNo = "18358163576";
-        } else if ("460025581509189".equals(imsi)) {
-            phoneNo = "18358163577";
-        } else if ("460025581509187".equals(imsi)) {
-            phoneNo = "18358163575";
         }
         return phoneNo;
     }
