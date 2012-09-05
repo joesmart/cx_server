@@ -50,5 +50,15 @@ public class RegisterResourceTest extends BasicJerseyTest {
         assertThat(operationDescription.getForceSMS()).isEqualTo(true);
     }
     
+    @Test
+    public void test_update_sms_flag() {
+        resource = resource.path("/register/111122223333/sms");
+        RegisterDTO registerDTO = new RegisterDTO();
+        registerDTO.setForceSMS(true);
+        ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).put(ClientResponse.class, registerDTO);
+        assertThat(response.getStatus()).isEqualTo(200);
+        String reuslt = response.getEntity(String.class);
+        System.out.println("result = " + reuslt);
+    }
     
 }
