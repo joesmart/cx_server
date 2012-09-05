@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -16,8 +18,8 @@ import javax.ws.rs.core.Response;
  */
 @Component
 @Path("userInfos/{imsi}")
-@Consumes({MediaType.APPLICATION_JSON})
-@Produces({MediaType.APPLICATION_JSON})
+@Consumes({MediaType.TEXT_XML})
+@Produces({MediaType.APPLICATION_XML})
 public class UserInfoResources {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(UserInfoResources.class);
@@ -29,9 +31,13 @@ public class UserInfoResources {
     }
 
     @POST
-    public Response update(@PathParam("imsi")String imsi,String phoneNo){
+    public Response update(@PathParam("imsi")String imsi,String phoneNo,@Context HttpServletRequest request,@HeaderParam("imsi") String userAgent){
         LOGGER.info(phoneNo);
         LOGGER.info(imsi);
+        while (request.getParameterNames().hasMoreElements()){
+            LOGGER.info(String.valueOf(request.getParameterNames().nextElement()));
+        }
+        LOGGER.info(request.getHeader("imsi"));
         return Response.ok().build();
     }
 

@@ -347,6 +347,7 @@ public class BusinessFunctions {
                 dataItem.setLevel(input.getGraphicInfo().getLevel());
                 dataItem.setModeType(input.getModeType());
                 dataItem.setInUsing(false);
+                dataItem.setPhoneNos(input.getPhoneNos());
 
                 GraphicInfo graphicInfo = input.getGraphicInfo();
                 setUpSourceAndThumbnailImagePath(dataItem, graphicInfo);

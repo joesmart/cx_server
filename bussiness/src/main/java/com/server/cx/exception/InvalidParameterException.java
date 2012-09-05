@@ -1,8 +1,10 @@
 package com.server.cx.exception;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class InvalidParameterException extends SystemException {
 
     public InvalidParameterException(){

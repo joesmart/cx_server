@@ -125,17 +125,11 @@
         <constructor-arg value="rs/"/>
     </bean>
 
-    <bean id="imageShowURL" class="java.lang.String">
-        <constructor-arg value="http://10.90.3.122:38183/resources/rs/graphics/show?id="/>
-    </bean>
-    
-    <bean id="fileUploadUrl" class="java.lang.String">
-    	<constructor-arg value="http://10.90.3.122:38183/resources/rs/file" />
-    </bean>
-
     <bean id="thumbnailSize" class="java.lang.String">
         <constructor-arg value="size=128X128"/>
     </bean>
+
+
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
     <bean id="logging" class="com.server.cx.util.Logging"></bean>
     <bean id="customizableTraceInterceptor" class="org.springframework.aop.interceptor.CustomizableTraceInterceptor">
@@ -169,8 +163,16 @@
             <property name="minEvictableIdleTimeMillis" value="3600000"/>
         </bean>
 
+        <bean id="imageShowURL" class="java.lang.String">
+            <constructor-arg value="http://${develop_ip}:${test_port}/resources/rs/graphics/show?id="/>
+        </bean>
+
+        <bean id="fileUploadUrl" class="java.lang.String">
+            <constructor-arg value="http://${test_ip}:${test_port}/resources/rs/file" />
+        </bean>
+
         <bean id="baseHostAddress" class="java.lang.String">
-            <constructor-arg value="http://localhost:8080/CXServer/"/>
+            <constructor-arg value="http://${develop_ip}:${develop_port}/${app_name}/"/>
         </bean>
 
         <!-- 数据源配置,使用应用服务器的数据库连接池 -->
@@ -199,8 +201,16 @@
             <property name="minEvictableIdleTimeMillis" value="3600000"/>
         </bean>
 
+        <bean id="imageShowURL" class="java.lang.String">
+            <constructor-arg value="http://${product_resource_ip}:${product_resource_port}/resources/rs/graphics/show?id="/>
+        </bean>
+
+        <bean id="fileUploadUrl" class="java.lang.String">
+            <constructor-arg value="http://${product_resource_ip}:${product_resource_port}/resources/rs/file" />
+        </bean>
+
         <bean id="baseHostAddress" class="java.lang.String">
-            <constructor-arg value="http://10.90.3.122:38183/CXServer/"/>
+            <constructor-arg value="http://${product_ip}:${product_port}/${app_name}/"/>
         </bean>
 
         <!-- 数据源配置,使用应用服务器的数据库连接池 -->
@@ -226,8 +236,16 @@
             <property name="dataFile" value="/data/sample-data.xml"/>
         </bean>
 
+        <bean id="imageShowURL" class="java.lang.String">
+            <constructor-arg value="http://${test_resource_ip}:${product_resource_port}/resources/rs/graphics/show?id="/>
+        </bean>
+
+        <bean id="fileUploadUrl" class="java.lang.String">
+            <constructor-arg value="http://${test_resource_ip}:${product_resource_port}/resources/rs/file" />
+        </bean>
+
         <bean id="baseHostAddress" class="java.lang.String">
-            <constructor-arg value="http://localhost:8080/CXServer/"/>
+            <constructor-arg value="http://${develop_ip}:${develop_port}/${app_name}/"/>
         </bean>
     </beans>
 
@@ -258,8 +276,16 @@
             <property name="dataFile" value="/data/sample-data.xml"/>
         </bean>
 
+        <bean id="imageShowURL" class="java.lang.String">
+            <constructor-arg value="http://${test_resource_ip}:${product_resource_port}/resources/rs/graphics/show?id="/>
+        </bean>
+
+        <bean id="fileUploadUrl" class="java.lang.String">
+            <constructor-arg value="http://${test_resource_ip}:${product_resource_port}/resources/rs/file" />
+        </bean>
+
         <bean id="baseHostAddress" class="java.lang.String">
-            <constructor-arg value="http://localhost:8080/CXServer/"/>
+            <constructor-arg value="http://${develop_ip}:${develop_port}/${app_name}/"/>
         </bean>
     </beans>
 </beans>

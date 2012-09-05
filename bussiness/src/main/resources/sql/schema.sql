@@ -39,6 +39,10 @@
         drop 
         foreign key FK73D101268EBB0422;
 
+    alter table history_mgraphic_phone_no 
+        drop 
+        foreign key FK8CBF312B12DC9BFD;
+
     alter table holiday 
         drop 
         foreign key FK411528586F516363;
@@ -126,6 +130,8 @@
     drop table if exists graphic_resource;
 
     drop table if exists history_mgraphic;
+
+    drop table if exists history_mgraphic_phone_no;
 
     drop table if exists holiday;
 
@@ -250,6 +256,11 @@
         primary key (id)
     );
 
+    create table history_mgraphic_phone_no (
+        hmgraphic_id varchar(32) not null,
+        phone_number varchar(255)
+    );
+
     create table holiday (
         id bigint not null auto_increment,
         holiday_day date,
@@ -279,12 +290,12 @@
         priority integer,
         signature varchar(255),
         subscribe bit,
-        common bit,
         special_phone_no varchar(20),
-        begin datetime,
-        end datetime,
+        common bit,
         valid_date datetime,
         holiday datetime,
+        begin datetime,
+        end datetime,
         graphic_resource_id varchar(32),
         user_id varchar(32),
         status_type_id bigint,
@@ -522,6 +533,12 @@
         add constraint FK73D101268EBB0422 
         foreign key (graphic_info_id) 
         references graphic_infos (id);
+
+    alter table history_mgraphic_phone_no 
+        add index FK8CBF312B12DC9BFD (hmgraphic_id), 
+        add constraint FK8CBF312B12DC9BFD 
+        foreign key (hmgraphic_id) 
+        references history_mgraphic (id);
 
     alter table holiday 
         add index FK411528586F516363 (type), 
