@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="571a96d2-1557-4ded-9cee-39b1cb6f7021" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/business_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/business_war.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business.iml" afterPath="$PROJECT_DIR$/business.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HistoryMGraphic.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HistoryMGraphic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/exception/InvalidParameterException.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/exception/InvalidParameterException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CheckAndHistoryMGraphicService.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CheckAndHistoryMGraphicService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/MGraphicServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/MGraphicServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java" afterPath="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/sql/schema.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/schema.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/data/sample-data.xml" afterPath="$PROJECT_DIR$/src/test/resources/data/sample-data.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.local.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.local.properties" />
     </list>
     <ignored path="bussiness.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -233,32 +223,6 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java" line="27" class="com.server.cx.webservice.rs.server.UserInfoResources" package="com.server.cx.webservice.rs.server">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java" line="34" class="com.server.cx.webservice.rs.server.UserInfoResources" package="com.server.cx.webservice.rs.server">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
     </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
@@ -302,32 +266,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HistoryMGraphic.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HistoryMGraphic.java">
+      <file leaf-file-name="UserInfoResources.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="33" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0">
+            <state line="33" column="0" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheckAndHistoryMGraphicService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CheckAndHistoryMGraphicService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="46" selection-start="2568" selection-end="2568" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BusinessFunctions.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="284" column="0" selection-start="13113" selection-end="13113" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#15699#16694#0" expanded="true" />
-                <element signature="e#16683#16684#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -335,64 +278,16 @@
       <file leaf-file-name="application.local.properties" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.local.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="17" selection-start="295" selection-end="295" vertical-scroll-proportion="0.9099099">
+            <state line="23" column="0" selection-start="471" selection-end="471" vertical-scroll-proportion="0.5961801">
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MGraphicServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/MGraphicServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="13" selection-start="4322" selection-end="4322" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomMGraphicServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CustomMGraphicServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="16" selection-start="2676" selection-end="2702" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../parent/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="19" selection-start="415" selection-end="415" vertical-scroll-proportion="-4.75">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="applicationContext.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="application.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="0" selection-start="1042" selection-end="1133" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rebel.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/rebel.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="25" column="64" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -401,25 +296,34 @@
       <file leaf-file-name="sample-data.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/resources/data/sample-data.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="292" column="148" selection-start="60295" selection-end="60295" vertical-scroll-proportion="-19.0">
+            <state line="280" column="143" selection-start="57163" selection-end="57174" vertical-scroll-proportion="-6.785714">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file leaf-file-name="RegisterResources.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/RegisterResources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="22" selection-start="614" selection-end="614" vertical-scroll-proportion="327.07144">
+            <state line="59" column="67" selection-start="2253" selection-end="2268" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="maven-war-plugin-2.2.pom" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$MAVEN_REPOSITORY$/org/apache/maven/plugins/maven-war-plugin/2.2/maven-war-plugin-2.2.pom">
+      <file leaf-file-name="RegisterService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/RegisterService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="15" column="41" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegisterServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="32" selection-start="1995" selection-end="1995" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -462,7 +366,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext-rs-server.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/exception/InvalidParameterException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HistoryMGraphic.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CheckAndHistoryMGraphicService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java" />
@@ -472,8 +375,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/war-real.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/war-test.properties" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.local.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.local.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java" />
       </list>
     </option>
   </component>
@@ -1026,6 +930,50 @@
               <option name="myItemId" value="bussiness" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: com.sun.jersey:jersey-core:1.13" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jersey-core-1.13.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bussiness" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: com.sun.jersey:jersey-core:1.13" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jersey-core-1.13.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1235,7 +1183,7 @@
       <recent name="com.server.cx.dao.cx" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.war">
+  <component name="RunManager" selected="Remote.remote_debug">
     <configuration default="false" name="DAOSuiteTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -2152,7 +2100,11 @@
       <created>1346813624125</created>
       <updated>1346813624125</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="fix the HistoryMGraphic also need store the PhoneNos info&#10;fix the UserCommonMGraphic add failed issue when the special phoneNos UserCommonMGraphic count already over 5">
+      <created>1346813660902</created>
+      <updated>1346813660902</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <option name="createChangelist" value="false" />
     <servers />
   </component>
@@ -2178,9 +2130,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1456" height="916" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.6741425" sideWeight="0.4939302" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6741425" sideWeight="0.4939302" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3125" sideWeight="0.6081794" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24856322" sideWeight="0.21372032" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="jenkinsBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32686782" sideWeight="0.58970976" order="12" side_tool="false" content_ui="tabs" />
@@ -2191,8 +2143,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5" sideWeight="0.49712643" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JavaRebel" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32717678" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26005748" sideWeight="0.32585752" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="DB Browser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28528073" sideWeight="0.33557048" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26005748" sideWeight="0.53957784" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="DB Browser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28520116" sideWeight="0.53957784" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46701846" sideWeight="0.46813354" order="3" side_tool="false" content_ui="tabs" />
@@ -2345,65 +2297,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CheckAndHistoryMGraphicService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="46" selection-start="2568" selection-end="2568" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/entity/cx/HistoryMGraphic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="33" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/data/sample-data.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="292" column="148" selection-start="60295" selection-end="60295" vertical-scroll-proportion="-19.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/util/BusinessFunctions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="284" column="0" selection-start="13113" selection-end="13113" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#15699#16694#0" expanded="true" />
-            <element signature="e#16683#16684#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/maven/lib/maven.jar!/schemas/maven-4.0.0.xsd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1586" column="28" selection-start="77355" selection-end="77359" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/MGraphicServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="13" selection-start="4322" selection-end="4322" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/CustomMGraphicServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="16" selection-start="2676" selection-end="2702" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../parent/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="19" selection-start="415" selection-end="415" vertical-scroll-proportion="-4.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -2430,21 +2323,100 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="22" selection-start="614" selection-end="614" vertical-scroll-proportion="327.07144">
+        <state line="13" column="22" selection-start="614" selection-end="614" vertical-scroll-proportion="-26.699709">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../parent/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="19" selection-start="415" selection-end="415" vertical-scroll-proportion="-4.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/sun/jersey/jersey-core/1.13/jersey-core-1.13-sources.jar!/com/sun/jersey/core/reflection/AnnotatedMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="8" selection-start="3534" selection-end="3534" vertical-scroll-proportion="-4.7291665">
+          <folding>
+            <element signature="e#0#9690#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2815#2845#0" expanded="false" />
+            <element signature="e#2995#3025#0" expanded="false" />
+            <element signature="e#3234#3264#0" expanded="false" />
+            <element signature="e#3762#3791#0" expanded="false" />
+            <element signature="e#6860#6878#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/sun/jersey/jersey-core/1.13/jersey-core-1.13-sources.jar!/javax/ws/rs/QueryParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="18" selection-start="2264" selection-end="2264" vertical-scroll-proportion="0.31770834">
+          <folding>
+            <element signature="e#0#2775#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/sun/jersey/jersey-core/1.13/jersey-core-1.13-sources.jar!/javax/ws/rs/HeaderParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="24" selection-start="2183" selection-end="2194" vertical-scroll-proportion="0.7109375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/RegisterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="41" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/RegisterResources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="67" selection-start="2253" selection-end="2268" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/service/cx/impl/RegisterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="32" selection-start="1995" selection-end="1995" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1042" selection-end="1133" vertical-scroll-proportion="0.0">
+        <state line="25" column="64" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/data/sample-data.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="280" column="143" selection-start="57163" selection-end="57174" vertical-scroll-proportion="-6.785714">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="db://5819896e-5c0e-43dc-b382-3d112fb94f92/business.userinfo.sql">
+      <provider selected="true" editor-type-id="Data">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/server/cx/webservice/rs/server/UserInfoResources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.local.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="17" selection-start="295" selection-end="295" vertical-scroll-proportion="0.9099099">
+        <state line="23" column="0" selection-start="471" selection-end="471" vertical-scroll-proportion="0.5961801">
           <folding />
         </state>
       </provider>
