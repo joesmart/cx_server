@@ -15,5 +15,6 @@ public interface RegisterService {
 
     public abstract RegisterOperationDescription register(RegisterDTO registerDTO, String phoneNo);
     public abstract OperationDescription update(RegisterDTO registerDTO);
+    public abstract OperationDescription updateSMSFlag(RegisterDTO registerDTO);
 
 }

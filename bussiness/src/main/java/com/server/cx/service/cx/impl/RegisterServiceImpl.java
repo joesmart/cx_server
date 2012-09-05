@@ -37,22 +37,32 @@ public class RegisterServiceImpl implements RegisterService {
             userinfo.setPhoneNo(dealWithPhoneNo(registerDTO.getImsi()));
             userinfo.setUserAgent(registerDTO.getUserAgent());
             userinfo.setDeviceId(registerDTO.getDeviceId());
-            //TODO 这里默认是50个,但是每个item价格设定的较高，先用100
-            userinfo.setTotleMoney(100D);
+            userinfo.setTotleMoney(50D);
+            userinfo.setForceSMS(false);
             userInfoDao.save(userinfo);
             operationDescription = ObjectFactory.buildRegisterOperationDescription(HttpServletResponse.SC_CREATED,
                 "register");
-            operationDescription.setForceSMS(true);
+            operationDescription.setForceSMS(false);
+            operationDescription.setSendSMS(true);
         } else {
             operationDescription = ObjectFactory.buildErrorRegisterOperationDescription(
                 HttpServletResponse.SC_CONFLICT, "register", "registered");
             if (isPhoneNoValidate(userinfo.getPhoneNo())) {
                 operationDescription.setForceSMS(false);
+                operationDescription.setSendSMS(false);
             } else {
-                operationDescription.setForceSMS(true);
+                operationDescription.setForceSMS(getForceFlag(userinfo.getForceSMS()));
+                operationDescription.setSendSMS(true);
             }
         }
         return operationDescription;
+    }
+
+    private Boolean getForceFlag(Boolean forceSMS) {
+        if (forceSMS == null || forceSMS == Boolean.FALSE) {
+            return Boolean.FALSE;
+        }
+        return Boolean.TRUE;
     }
 
     @Override
@@ -91,5 +101,16 @@ public class RegisterServiceImpl implements RegisterService {
             return true;
         }
         return false;
+    }
+
+    @Transactional(readOnly = false)
+    @Override
+    public OperationDescription updateSMSFlag(RegisterDTO registerDTO) {
+        UserInfo userInfo = userInfoDao.findByImsi(registerDTO.getImsi());
+        userInfo.setForceSMS(registerDTO.getForceSMS());
+        userInfoDao.save(userInfo);
+        OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
+            HttpServletResponse.SC_NO_CONTENT, "updateSMSFlag");
+        return operationDescription;
     }
 }

@@ -7,4 +7,5 @@ import lombok.Data;
 @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property= "@type")
 public class RegisterOperationDescription extends OperationDescription {
     private Boolean forceSMS;
+    private Boolean sendSMS;
 }

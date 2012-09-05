@@ -16,4 +16,5 @@ public class RegisterDTO {
     private String deviceId;
     private String userAgent;
     private String phoneNo;
+    private Boolean forceSMS;
 }
