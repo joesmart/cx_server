@@ -23,6 +23,8 @@ import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.StringUtil;
 import com.server.cx.util.business.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +33,7 @@ import java.util.Map;
 
 @Service("contactsServcie")
 @Transactional
+@Scope(value = "request",proxyMode = ScopedProxyMode.INTERFACES)
 public class ContactsServiceImpl implements ContactsService {
     @Autowired
     private UserInfoDao userInfoDao;

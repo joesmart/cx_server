@@ -93,12 +93,14 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
             }
             mGraphicDTO.setSubscribe(true);
         }
-        Long dataRowNumber = userCommonMGraphicDao.count(UserCommonMGraphicSpecifications.userCommonMGraphicCount(userInfo));
-        if (dataRowNumber >= 5) {
-            throw new CXServerBusinessException("指定号码用户设置彩像最多允许5个");
-        }
+
         if(mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0){
             historyPreviousMGraphic();
+        }else{
+            Long dataRowNumber = userCommonMGraphicDao.count(UserCommonMGraphicSpecifications.userCommonMGraphicCount(userInfo));
+            if (dataRowNumber >= 5) {
+                throw new CXServerBusinessException("指定号码用户设置彩像最多允许5个");
+            }
         }
         createAndSaveNewUserCommonMGraphic(mGraphicDTO);
         return new OperationResult("createUserCommonMGraphic", Constants.SUCCESS_FLAG);

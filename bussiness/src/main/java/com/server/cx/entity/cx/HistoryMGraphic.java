@@ -1,11 +1,11 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableStringEntity;
-import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: yanjianzou
@@ -15,11 +15,12 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "history_mgraphic")
-@ToString(callSuper = true) @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class HistoryMGraphic extends AuditableStringEntity {
     private Date modifyTime;
     private Integer modeType; // 1--common 2-special user 3--Custom 4-- holiday 5-- status
     private String signature;
+    private List<String> phoneNos;
     private String name;
     private Integer priority;
     private GraphicInfo graphicInfo;
@@ -84,5 +85,16 @@ public class HistoryMGraphic extends AuditableStringEntity {
 
     public void setUserInfo(UserInfo userInfo) {
         this.userInfo = userInfo;
+    }
+
+    @ElementCollection
+    @CollectionTable(name = "history_mgraphic_phone_no", joinColumns = {@JoinColumn(name = "hmgraphic_id")})
+    @Column(name = "phone_number")
+    public List<String> getPhoneNos() {
+        return phoneNos;
+    }
+
+    public void setPhoneNos(List<String> phoneNos) {
+        this.phoneNos = phoneNos;
     }
 }

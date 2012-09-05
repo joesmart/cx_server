@@ -1,23 +1,23 @@
 package com.server.cx.service.cx.impl;
 
-import java.util.List;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
 import com.server.cx.dao.cx.GraphicInfoDao;
 import com.server.cx.dao.cx.HistoryMGraphicDao;
-import com.server.cx.entity.cx.GraphicInfo;
-import com.server.cx.entity.cx.HistoryMGraphic;
-import com.server.cx.entity.cx.MGraphic;
-import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.entity.cx.*;
 import com.server.cx.exception.CXServerBusinessException;
 import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.GraphicInfoService;
 import com.server.cx.util.business.AuditStatus;
 import com.server.cx.util.business.ValidationUtil;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * User: yanjianzou
@@ -27,6 +27,7 @@ import com.server.cx.util.business.ValidationUtil;
  */
 @Component
 @Transactional
+@Scope(value = "request",proxyMode = ScopedProxyMode.INTERFACES)
 public class CheckAndHistoryMGraphicService extends UserCheckService {
     @Autowired
     protected HistoryMGraphicDao historyMGraphicDao;
@@ -79,6 +80,9 @@ public class CheckAndHistoryMGraphicService extends UserCheckService {
         historyMGraphic.setUserInfo(userInfo);
         historyMGraphic.setName(mGraphic.getName());
         historyMGraphic.setSignature(mGraphic.getSignature());
+        if(mGraphic instanceof UserCommonMGraphic){
+            historyMGraphic.setPhoneNos(((UserCommonMGraphic) mGraphic).getPhoneNos());
+        }
         historyMGraphicDao.save(historyMGraphic);
     }
 

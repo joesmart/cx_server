@@ -6,6 +6,9 @@
     <excludes>
         <pattern>/cx/*</pattern>
     </excludes>
+    <excludes>
+        <pattern>/</pattern>
+    </excludes>
 	<decorator name="default" page="default.jsp">
 		<pattern>/*</pattern>
 	</decorator>
