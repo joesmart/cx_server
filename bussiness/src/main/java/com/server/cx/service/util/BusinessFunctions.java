@@ -1,17 +1,18 @@
 package com.server.cx.service.util;
 
 import com.cl.cx.platform.dto.Actions;
+import com.cl.cx.platform.dto.CXCoinAccountDTO;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
 import com.server.cx.entity.cx.*;
 import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.impl.BasicService;
+import com.server.cx.util.DateUtil;
 import com.server.cx.util.business.AuditStatus;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,8 @@ public class BusinessFunctions {
         return new Function<UserFavorites, DataItem>() {
             @Override
             public DataItem apply(@Nullable UserFavorites input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 GraphicInfo graphicInfo = input.getGraphicInfo();
 
                 DataItem item = generateBasicDataItem(graphicInfo, imsi, null);
@@ -63,7 +65,8 @@ public class BusinessFunctions {
         return new Function<Category, DataItem>() {
             @Override
             public DataItem apply(@javax.annotation.Nullable Category input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 DataItem categoryItem = new DataItem();
                 categoryItem.setName(input.getName());
                 categoryItem.setDescription(input.getDescription());
@@ -84,7 +87,8 @@ public class BusinessFunctions {
         return new Function<GraphicInfo, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicInfo input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 DataItem item = generateBasicDataItem(input, imsi, graphicIds);
                 item.setHref(basicService.generateGraphicInfosOperateURL(imsi, input.getId()));
 
@@ -142,7 +146,8 @@ public class BusinessFunctions {
         return new Function<GraphicInfo, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicInfo input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 DataItem item = generateBasicDataItem(input, imsi, collectedGraphicInfos);
                 item.setHref(basicService.generateGraphicInfosOperateURL(imsi, input.getId()));
 
@@ -202,7 +207,8 @@ public class BusinessFunctions {
         return new Function<Contacts, ContactInfoDTO>() {
             @Override
             public ContactInfoDTO apply(@javax.annotation.Nullable Contacts input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 ContactInfoDTO contactInfoDTO = new ContactInfoDTO();
                 contactInfoDTO.setContactName(input.getName());
                 contactInfoDTO.setPhoneNo(input.getPhoneNo());
@@ -217,7 +223,8 @@ public class BusinessFunctions {
         return new Function<HolidayType, DataItem>() {
             @Override
             public DataItem apply(@Nullable HolidayType input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 DataItem dataItem = new DataItem();
                 dataItem.setId(String.valueOf(input.getId()));
                 dataItem.setName(input.getName());
@@ -234,7 +241,8 @@ public class BusinessFunctions {
                     dataItem.setHasUsed(hasUsed);
                     if (hasUsed) {
                         UserHolidayMGraphic userHolidayMGraphic = userHolidayMGraphicMap.get(input.getId());
-                        actions = actionBuilder.buildHolidayTypeHasUsedActions(imsi, input.getId(), userHolidayMGraphic.getId());
+                        actions = actionBuilder.buildHolidayTypeHasUsedActions(imsi, input.getId(),
+                            userHolidayMGraphic.getId());
                         dataItem.setActions(actions);
                     }
                 } else {
@@ -252,7 +260,8 @@ public class BusinessFunctions {
         return new Function<StatusType, DataItem>() {
             @Override
             public DataItem apply(@Nullable StatusType input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 DataItem dataItem = new DataItem();
                 dataItem.setId(String.valueOf(input.getId()));
                 dataItem.setName(input.getName());
@@ -267,7 +276,8 @@ public class BusinessFunctions {
                     dataItem.setHasUsed(hasUsed);
                     if (hasUsed) {
                         UserStatusMGraphic userStatusMGraphic = userStatusMGraphicMap.get(input.getId());
-                        actions = actionBuilder.buildStatusTypeHasUsedActions(imsi, input.getId(), userStatusMGraphic.getId());
+                        actions = actionBuilder.buildStatusTypeHasUsedActions(imsi, input.getId(),
+                            userStatusMGraphic.getId());
                         dataItem.setActions(actions);
                     }
                 } else {
@@ -279,12 +289,12 @@ public class BusinessFunctions {
         };
     }
 
-
     public Function<MGraphic, DataItem> mGraphicTransformToDataItem(final String imsi, final String conditions) {
         return new Function<MGraphic, DataItem>() {
             @Override
             public DataItem apply(@Nullable MGraphic input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 DataItem dataItem = generateBasicMGraphicDataItem(input);
                 dataItem.setActions(actionBuilder.buildMGraphicActions(imsi, input.getId(), conditions));
                 return dataItem;
@@ -296,7 +306,7 @@ public class BusinessFunctions {
         DataItem dataItem = new DataItem();
         dataItem.setName(input.getName());
         dataItem.setSignature(input.getSignature());
-        if(input.getGraphicResource() != null){
+        if (input.getGraphicResource() != null) {
             dataItem.setId(input.getGraphicResource().getId());
         }
         dataItem.setMGraphicId(input.getId());
@@ -307,15 +317,16 @@ public class BusinessFunctions {
         }
 
         if (input instanceof UserCustomMGraphic) {
-            if (((UserCustomMGraphic) input).getBegin() != null && ((UserCustomMGraphic) input).getBegin().getTime() == (LocalDate.parse("1900-1-1").toDate().getTime())) {
+            if (((UserCustomMGraphic) input).getBegin() != null
+                && ((UserCustomMGraphic) input).getBegin().getTime() == (LocalDate.parse("1900-1-1").toDate().getTime())) {
                 ((UserCustomMGraphic) input).setBegin(null);
                 ((UserCustomMGraphic) input).setEnd(null);
-            }else{
+            } else {
                 dataItem.setBegin(((UserCustomMGraphic) input).getBegin());
                 dataItem.setEnd(((UserCustomMGraphic) input).getEnd());
             }
         }
-        setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem,input.getGraphicResource());
+        setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem, input.getGraphicResource());
         dataItem.setInUsing(true);
         return dataItem;
     }
@@ -341,7 +352,8 @@ public class BusinessFunctions {
         return new Function<HistoryMGraphic, DataItem>() {
             @Override
             public DataItem apply(@Nullable HistoryMGraphic input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 DataItem dataItem = new DataItem();
                 dataItem.setName(input.getName());
                 dataItem.setSignature(input.getSignature());
@@ -364,7 +376,8 @@ public class BusinessFunctions {
         return new Function<GraphicInfo, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicInfo input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 DataItem dataItem = new DataItem();
                 dataItem.setName(input.getName());
                 dataItem.setDownloadNumber(String.valueOf(input.getUseCount()));
@@ -379,7 +392,8 @@ public class BusinessFunctions {
         return new Function<GraphicInfo, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicInfo input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 DataItem dataItem = new DataItem();
                 dataItem.setName(input.getName());
                 dataItem.setDownloadNumber(String.valueOf(input.getUseCount()));
@@ -415,7 +429,8 @@ public class BusinessFunctions {
         return new Function<UserStatusMGraphic, StatusType>() {
             @Override
             public StatusType apply(@Nullable UserStatusMGraphic input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 return input.getStatusType();
             }
         };
@@ -425,7 +440,8 @@ public class BusinessFunctions {
         return new Function<FileMeta, GraphicResource>() {
             @Override
             public GraphicResource apply(@Nullable FileMeta input) {
-                if (input == null) return null;
+                if (input == null)
+                    return null;
                 GraphicResource graphicResource = new GraphicResource();
                 graphicResource.setResourceId(input.getResourceId());
                 if (CheckStatusDesc.CHECKING.equals(input.getCheckStatusDesc())) {
@@ -451,7 +467,8 @@ public class BusinessFunctions {
         };
     }
 
-    public Function<GraphicResource, DataItem> transformDiyGraphicToDataItem(final String imsi, final UserDiyGraphic userDiyGraphic) {
+    public Function<GraphicResource, DataItem> transformDiyGraphicToDataItem(final String imsi,
+                                                                             final UserDiyGraphic userDiyGraphic) {
 
         return new Function<GraphicResource, DataItem>() {
             @Override
@@ -461,22 +478,53 @@ public class BusinessFunctions {
                 dataItem.setSignature(userDiyGraphic.getSignature());
                 dataItem.setId(input.getId());
                 dataItem.setResourceType(input.getType());
-                if(input.getAuditPassed() == null){
+                if (input.getAuditPassed() == null) {
                     dataItem.setAuditStatus("CHECKING");
-                }else{
-                    if(true == input.getAuditPassed()){
+                } else {
+                    if (true == input.getAuditPassed()) {
                         dataItem.setAuditStatus("PASSED");
                     }
 
-                    if(false == input.getAuditPassed()){
+                    if (false == input.getAuditPassed()) {
                         dataItem.setAuditStatus("UNPASS");
                     }
                 }
-                
+
                 dataItem.setMediaType(input.getType());
-                setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem,input);
+                setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem, input);
                 dataItem.setActions(actionBuilder.buildUserDIYGraphicActions(imsi, input.getId()));
                 return dataItem;
+            }
+        };
+    }
+
+    public Function<CXCoinAccount, CXCoinAccountDTO> cxCoinAccountToCXCoinAccountDTO() {
+        return new Function<CXCoinAccount, CXCoinAccountDTO>() {
+            @Override
+            public CXCoinAccountDTO apply(@Nullable CXCoinAccount input) {
+                CXCoinAccountDTO cxCoinAccountDTO = new CXCoinAccountDTO();
+                cxCoinAccountDTO.setName(input.getName());
+                cxCoinAccountDTO.setCoin(input.getCoin());
+                return cxCoinAccountDTO;
+            }
+        };
+    }
+
+    public Function<? super UserSubscribeRecord, ? extends DataItem> subscribeRecordTransferormToDataItem() {
+        return new Function<UserSubscribeRecord, DataItem>() {
+            @Override
+            public DataItem apply(@Nullable UserSubscribeRecord input) {
+                if (input.getIncome() != null || input.getExpenses() != null) {
+                    DataItem dataItem = new DataItem();
+                    dataItem.setTime(DateUtil.formateDate(input.getCreatedOn()));
+                    if (input.getIncome() != null) {
+                        dataItem.setCxCoin(String.valueOf(input.getIncome()));
+                    } else {
+                        dataItem.setCxCoin(String.valueOf(input.getExpenses() * -1));
+                    }
+                    return dataItem;
+                }
+                return null;
             }
         };
     }

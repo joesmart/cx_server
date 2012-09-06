@@ -14,6 +14,4 @@ public interface UserInfoCustomDao {
 
     public List<UserInfo> getUserInfosByPhoneNos(List<String> phoneNos);
     
-    public boolean checkCurrentMoneyValidate(String id, Double price);
-    
 }

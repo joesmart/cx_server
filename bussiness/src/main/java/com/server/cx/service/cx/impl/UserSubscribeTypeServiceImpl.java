@@ -28,7 +28,7 @@ import com.server.cx.util.business.SubscribeStatus;
 
 @Component
 @Transactional(readOnly = true)
-public class UserSubscribeTypeServiceImpl extends UserCheckService implements UserSubscribeTypeService {
+public class UserSubscribeTypeServiceImpl extends CXCoinBasicService implements UserSubscribeTypeService {
     private final static Logger LOGGER = LoggerFactory.getLogger(UserSubscribeTypeServiceImpl.class);
 
     @Autowired
@@ -39,9 +39,6 @@ public class UserSubscribeTypeServiceImpl extends UserCheckService implements Us
 
     @Autowired
     private BusinessFunctions businessFunctions;
-
-    @Autowired
-    private UserInfoDao userInfoDao;
 
     @Autowired
     private UserSubscribeRecordDao userSubscribeRecordDao;
@@ -61,22 +58,29 @@ public class UserSubscribeTypeServiceImpl extends UserCheckService implements Us
             userSubscribeRecordDao.save(record);
         } else {
             SubscribeType subscribeType = subscribeTypeDao.findSubscribeType(type);
-            //检查账户余额
-            userInfoDao.checkCurrentMoneyValidate(userInfo.getId(), subscribeType.getPrice());
+            //检查账户余额&&扣钱
+            checkUserRegisterCXCoinAccount(userInfo);
+            checkUserCXCoinEnough(cxCoinAccount.getCoin(), subscribeType.getPrice());
+            cxCoinAccount.setCoin(cxCoinAccount.getCoin() - subscribeType.getPrice());
+            cxCoinAccountDao.save(cxCoinAccount);
+            
             UserSubscribeType userSubscribeType = businessFunctions.holidaySubscribeTypeTransformToUserSubscribeType(
                 userInfo).apply(subscribeType);
             userSubscribeType.setValidateMonth(DateUtil.getCurrentMonth());
             userSubscribeType.setSubscribeStatus(SubscribeStatus.SUBSCRIBED);
             userSubscribeTypeDao.save(userSubscribeType);
-            //扣除订购的钱
-            userInfo.setTotleMoney(userInfo.getTotleMoney() - subscribeType.getPrice());
-            userInfoDao.save(userInfo);
             //生成购买记录
             UserSubscribeRecord record = ObjectFactory.buildUserSubscribeRecord(userSubscribeType);
             record.setExpenses(record.getSubscribeType().getPrice());
             userSubscribeRecordDao.save(record);
         }
 
+    }
+    
+    private void checkUserCXCoinEnough(Double coin, Double price) {
+        if(price != null && coin.doubleValue() < price.doubleValue()) {
+            throw new SystemException("用户余额不足");
+        }
     }
     
     @Transactional(readOnly = false)

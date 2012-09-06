@@ -24,6 +24,4 @@ public interface GraphicInfoService {
 
     public abstract DataPage findHolidayGraphicInfosByImsi(String imsi, Long holidayTypeId, Integer offset,
                                                            Integer limit) throws ExecutionException;
-    
-    public abstract void subscribeGraphicInfo(String imsi, String graphicInfoId);
 }

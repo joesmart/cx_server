@@ -64,15 +64,4 @@ public class UserInfoDaoImpl extends BasicDao implements UserInfoCustomDao {
         List<UserInfo> userinfos = criteria.getExecutableCriteria(getSession()).list();
         return userinfos;
     }
-
-    @Override
-    public boolean checkCurrentMoneyValidate(String id, Double price) {
-        DetachedCriteria criteria = DetachedCriteria.forClass(UserInfo.class);
-        criteria.add(Restrictions.idEq(id)).add(Restrictions.gt("totleMoney", price));
-        List<UserInfo> userInfos = criteria.getExecutableCriteria(getSession()).list();
-        if(userInfos != null && !userInfos.isEmpty()) 
-            return true;
-        throw new MoneyNotEnoughException("余额不足");
-    }
-        
 }

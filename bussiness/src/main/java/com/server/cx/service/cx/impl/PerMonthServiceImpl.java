@@ -19,7 +19,7 @@ import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.business.SubscribeStatus;
 
 @Transactional(readOnly = true)
-public class PerMonthServiceImpl implements PerMonthService {
+public class PerMonthServiceImpl extends CXCoinBasicService implements PerMonthService {
     private static final Logger LOGGER = LoggerFactory.getLogger(PerMonthServiceImpl.class);
 
     @Autowired
@@ -47,11 +47,13 @@ public class PerMonthServiceImpl implements PerMonthService {
     public void doSingleSubscribeTask(UserSubscribeType userSubscribeType) throws SystemException {
         try {
             UserInfo userInfo = userSubscribeType.getUserInfo();
-
-            userInfoDao.checkCurrentMoneyValidate(userInfo.getId(), userSubscribeType.getSubscribeType().getPrice());
+            checkUserRegisterCXCoinAccount(userInfo);
+            
             //扣除订购的钱
-            userInfo.setTotleMoney(userInfo.getTotleMoney() - userSubscribeType.getSubscribeType().getPrice());
-            userInfoDao.save(userInfo);
+            checkUserCXCoinEnough(cxCoinAccount.getCoin(), userSubscribeType.getSubscribeType().getPrice());
+            cxCoinAccount.setCoin(cxCoinAccount.getCoin() - userSubscribeType.getSubscribeType().getPrice());
+            cxCoinAccountDao.save(cxCoinAccount);
+            
             //更新有效的月份
             userSubscribeType.setValidateMonth(DateUtil.getCurrentMonth());
             userSubscribeType.setSubscribeStatus(SubscribeStatus.SUBSCRIBED);
@@ -67,6 +69,12 @@ public class PerMonthServiceImpl implements PerMonthService {
             userSubscribeTypeDao.save(userSubscribeType);
         } catch (Exception e) {
             LOGGER.error("doSingleSubscribeTask error", e);
+        }
+    }
+    
+    private void checkUserCXCoinEnough(Double coin, Double price) {
+        if(price != null && coin.doubleValue() < price.doubleValue()) {
+            throw new SystemException("用户余额不足");
         }
     }
 }

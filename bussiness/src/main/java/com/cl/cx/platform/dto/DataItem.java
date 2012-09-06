@@ -42,4 +42,6 @@ public class DataItem extends BasicItem {
     private Date begin;
     private Date end;
     private Boolean subScribe;
+    private String time;
+    private String cxCoin;
 }

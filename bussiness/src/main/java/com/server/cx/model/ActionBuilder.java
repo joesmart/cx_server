@@ -254,7 +254,8 @@ public class ActionBuilder {
     public Actions buildStatusMGraphicItemEditAction(String imsi, String mGraphicId) {
         return actions().collectURL(basicService.generateMyCollectionsVisitURL(imsi))
             .purchaseURL(basicService.generateImagePurchaseURL(imsi))
-            .editURL(basicService.generateStatusMGraphicRemoveURL(imsi, mGraphicId))
+//            .editURL(basicService.generateStatusMGraphicRemoveURL(imsi, mGraphicId))
+            .useURL(basicService.generateStatusMGraphicUseURL(imsi))
             .removeURL(basicService.generateStatusMGraphicRemoveURL(imsi, mGraphicId)).build();
     }
 
