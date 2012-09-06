@@ -3,11 +3,6 @@
  */
 package com.server.cx.service.cx.impl;
 
-import java.util.UUID;
-import javax.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.cl.cx.platform.dto.RegisterDTO;
 import com.cl.cx.platform.dto.RegisterOperationDescription;
@@ -15,7 +10,7 @@ import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.service.cx.RegisterService;
 import com.server.cx.util.ObjectFactory;
-
+import com.server.cx.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -23,8 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
-
-import com.server.cx.util.StringUtil;
 
 
 /**
@@ -40,12 +33,12 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     @Transactional(readOnly = false)
-    public OperationDescription register(RegisterDTO registerDTO, String phoneNo) {
+    public RegisterOperationDescription register(RegisterDTO registerDTO, String phoneNo) {
         userinfo = userInfoDao.getUserInfoByImsi(registerDTO.getImsi());
-        OperationDescription operationDescription;
+        RegisterOperationDescription operationDescription;
         if (userinfo == null) {
             addNewUserInfo(registerDTO);
-            operationDescription = ObjectFactory.buildOperationDescription(HttpServletResponse.SC_CREATED, "register");
+            operationDescription = ObjectFactory.buildRegisterOperationDescription(HttpServletResponse.SC_CREATED, "register");
         } else {
             operationDescription = ObjectFactory.buildErrorRegisterOperationDescription(
                 HttpServletResponse.SC_CONFLICT, "register", "registered");
