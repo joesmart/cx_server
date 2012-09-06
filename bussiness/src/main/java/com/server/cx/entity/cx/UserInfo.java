@@ -28,8 +28,6 @@ public class UserInfo extends AuditableStringEntity {
 
     private String userAgent;
 
-    private Double totleMoney;
-
     private Boolean forceSMS;
 
     public UserInfo() {
@@ -92,14 +90,6 @@ public class UserInfo extends AuditableStringEntity {
 
     public void setUserFavorites(List<UserFavorites> userFavorites) {
         this.userFavorites = userFavorites;
-    }
-
-    public Double getTotleMoney() {
-        return totleMoney;
-    }
-
-    public void setTotleMoney(Double totleMoney) {
-        this.totleMoney = totleMoney;
     }
 
     public Boolean getForceSMS() {

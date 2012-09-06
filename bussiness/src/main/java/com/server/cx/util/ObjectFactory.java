@@ -92,7 +92,15 @@ public class ObjectFactory {
         }
         return suggestionDTOs;
     }
-
+    
+    public static UserSubscribeRecord buildUserCXCoinIncomeRecord(UserInfo userInfo, Double income, String description) {
+        UserSubscribeRecord userSubscribeRecord = new UserSubscribeRecord();
+        userSubscribeRecord.setUserInfo(userInfo);
+        userSubscribeRecord.setDescription(description);
+        userSubscribeRecord.setIncome(income);
+        return userSubscribeRecord;
+    }
+    
     public static UserSubscribeRecord buildUserSubscribeRecord(UserSubscribeType userSubscribeType) {
         UserSubscribeRecord userSubscribeRecord = new UserSubscribeRecord();
         userSubscribeRecord.setSubscribeType(userSubscribeType.getSubscribeType());

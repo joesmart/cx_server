@@ -7,9 +7,11 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
+import com.server.cx.dao.cx.CXCoinAccountDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.UserSubscribeRecordDao;
 import com.server.cx.dao.cx.UserSubscribeTypeDao;
+import com.server.cx.entity.cx.CXCoinAccount;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.entity.cx.UserSubscribeRecord;
 import com.server.cx.entity.cx.UserSubscribeType;
@@ -25,13 +27,17 @@ public class PerMonthTaskTest extends SpringTransactionalTestCase {
     private UserSubscribeRecordDao userSubscribeRecordDao;
     @Autowired
     private UserSubscribeTypeDao userSubscribeTypeDao;
+    
+    @Autowired
+    private CXCoinAccountDao cxCoinAccountDao;
 
     @Test
     public void test_do_task_successful() {
         perMonthService.doTask();
         //check user1
         UserInfo userInfo = userInfoDao.findOne("1");
-        assertEquals(25d, userInfo.getTotleMoney().doubleValue(), 1e-3);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo);
+        assertEquals(25d, cxCoinAccount.getCoin(), 1e-3);
         
         List<UserSubscribeType> list1 = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, "holiday");
         Assertions.assertThat(list1.size()).isEqualTo(1);
@@ -44,7 +50,8 @@ public class PerMonthTaskTest extends SpringTransactionalTestCase {
         
         //check user2
         UserInfo userInfo2 = userInfoDao.findOne("2");
-        assertEquals(25d, userInfo2.getTotleMoney().doubleValue(), 1e-3);
+        cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo2);
+        assertEquals(25d, cxCoinAccount.getCoin().doubleValue(), 1e-3);
         
         List<UserSubscribeType> list3 = userSubscribeTypeDao.findUserSubscribeTypes(userInfo2, "holiday");
         Assertions.assertThat(list3.size()).isEqualTo(1);
@@ -56,7 +63,8 @@ public class PerMonthTaskTest extends SpringTransactionalTestCase {
         
         //check user3
         UserInfo userInfo3 = userInfoDao.findOne("3");
-        assertEquals(30d, userInfo3.getTotleMoney().doubleValue(), 1e-3);
+        cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo3);
+        assertEquals(30d, cxCoinAccount.getCoin().doubleValue(), 1e-3);
         
         
         List<UserSubscribeType> list5 = userSubscribeTypeDao.findUserSubscribeTypes(userInfo3, "custom");
@@ -65,7 +73,8 @@ public class PerMonthTaskTest extends SpringTransactionalTestCase {
         
         //check user6
         UserInfo userInfo6 = userInfoDao.findOne("6");
-        assertEquals(10d, userInfo6.getTotleMoney().doubleValue(), 1e-3);
+        cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo6);
+        assertEquals(10d, cxCoinAccount.getCoin().doubleValue(), 1e-3);
         
         UserSubscribeType userSubscribeType = userSubscribeTypeDao.findMonthValidateAndNotSubscribedType(userInfo6, "holiday");
         Assertions.assertThat(userSubscribeType.getSubscribeStatus()).isEqualTo(SubscribeStatus.MONEYNOTENOUGH);

@@ -62,21 +62,4 @@ public class UserInfoDaoTest extends SpringTransactionalTestCase {
         assertThat(info).isEqualTo(dbInfo);
     }
     
-    @Test
-    public void test_check_current_money_validate() {
-        UserInfo userInfo = userInfoDao.findOne("1");
-        boolean result = userInfoDao.checkCurrentMoneyValidate(userInfo.getId(), 15d);
-        assertThat(result).isEqualTo(true);
-    }
-    
-    @Test
-    public void test_check_current_money_not_enough() {
-        UserInfo userInfo = userInfoDao.findOne("1");
-        try  {
-            userInfoDao.checkCurrentMoneyValidate(userInfo.getId(), 55d);
-            fail("没有抛出异常");
-        } catch(MoneyNotEnoughException e) {
-            assertTrue(true);
-        }
-    }
 }

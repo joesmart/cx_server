@@ -1,19 +1,8 @@
 package com.server.cx.service.cx.impl;
 
-import com.cl.cx.platform.dto.DataItem;
-import com.cl.cx.platform.dto.DataPage;
-import com.google.common.base.Function;
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.math.IntMath;
-import com.server.cx.dao.cx.*;
-import com.server.cx.dao.cx.spec.GraphicInfoSpecifications;
-import com.server.cx.entity.cx.*;
-import com.server.cx.service.cx.GraphicInfoService;
-import com.server.cx.service.util.ActionNames;
-import com.server.cx.service.util.BusinessFunctions;
-import com.server.cx.util.ObjectFactory;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +11,37 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
+import com.cl.cx.platform.dto.DataItem;
+import com.cl.cx.platform.dto.DataPage;
+import com.google.common.base.Function;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.math.IntMath;
+import com.server.cx.dao.cx.GraphicInfoDao;
+import com.server.cx.dao.cx.HolidayTypeDao;
+import com.server.cx.dao.cx.StatusTypeDao;
+import com.server.cx.dao.cx.UserHolidayMGraphicDao;
+import com.server.cx.dao.cx.UserInfoDao;
+import com.server.cx.dao.cx.UserStatusMGraphicDao;
+import com.server.cx.dao.cx.spec.GraphicInfoSpecifications;
+import com.server.cx.entity.cx.GraphicInfo;
+import com.server.cx.entity.cx.HolidayType;
+import com.server.cx.entity.cx.MGraphic;
+import com.server.cx.entity.cx.StatusType;
+import com.server.cx.entity.cx.UserHolidayMGraphic;
+import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.entity.cx.UserStatusMGraphic;
+import com.server.cx.service.cx.GraphicInfoService;
+import com.server.cx.service.util.ActionNames;
+import com.server.cx.service.util.BusinessFunctions;
 
 /**
  * User: yanjianzou Date: 12-7-30 Time: 下午5:35 FileName:GraphicInfoServiceImpl
  */
 @Service("graphicInfoService")
 @Transactional
-public class GraphicInfoServiceImpl  implements GraphicInfoService {
+public class GraphicInfoServiceImpl  extends CXCoinBasicService implements GraphicInfoService {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(GraphicInfoServiceImpl.class);
 
@@ -61,9 +71,6 @@ public class GraphicInfoServiceImpl  implements GraphicInfoService {
 
     @Autowired
     private UserHolidayMGraphicDao userHolidayMGraphicDao;
-    
-    @Autowired
-    private UserSubscribeRecordDao userSubscribeRecordDao;
     
     @Override
     public DataPage findGraphicInfoDataPageByCategoryId(final String imsi, Long categoryId, Integer offset,
@@ -199,10 +206,6 @@ public class GraphicInfoServiceImpl  implements GraphicInfoService {
         return generateDataPage(imsi, offset, limit, page, dataItems, queryCondition, page.getTotalPages());
     }
 
-    private List<DataItem> transformToStatusGraphicInfoList(List<GraphicInfo> usingStatusGraphicInfos) {
-        return Lists.transform(usingStatusGraphicInfos, businessFunctions.statusGraphicInfoTransformToDataItem());
-    }
-
     @Override
     public DataPage findHolidayGraphicInfosByImsi(String imsi, Long holidayTypeId, Integer offset, Integer limit)
         throws ExecutionException {
@@ -244,19 +247,5 @@ public class GraphicInfoServiceImpl  implements GraphicInfoService {
         DataPage dataPage = generateDataPage(imsi, offset, limit, page, dataItems, queryCondition, page.getTotalPages());
 
         return dataPage;
-    }
-
-    @Override
-    public void subscribeGraphicInfo(String imsi, String graphicInfoId) {
-        GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
-        UserInfo userInfo = userInfoDao.findByImsi(imsi);
-        userInfoDao.checkCurrentMoneyValidate(userInfo.getId(), graphicInfo.getPrice());
-        //订购
-        //扣钱
-        userInfo.setTotleMoney(userInfo.getTotleMoney() - graphicInfo.getPrice());
-        userInfoDao.save(userInfo);
-        //生成记录
-        UserSubscribeRecord userSubscribeRecord = ObjectFactory.buildUserGraphicItemSubscribeRecord(userInfo);
-        userSubscribeRecordDao.save(userSubscribeRecord);
     }
 }

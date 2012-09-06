@@ -3,6 +3,12 @@
  */
 package com.server.cx.service.cx.impl;
 
+import java.util.UUID;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.cl.cx.platform.dto.RegisterDTO;
 import com.cl.cx.platform.dto.RegisterOperationDescription;
@@ -11,14 +17,6 @@ import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.service.cx.RegisterService;
 import com.server.cx.util.ObjectFactory;
 import com.server.cx.util.StringUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.servlet.http.HttpServletResponse;
-import java.util.UUID;
-
 
 /**
  * implement of RegisterService interface. Briefly describe what this class does.
@@ -60,8 +58,6 @@ public class RegisterServiceImpl implements RegisterService {
         userinfo.setPhoneNo(dealWithPhoneNo(registerDTO.getImsi()));
         userinfo.setUserAgent(registerDTO.getUserAgent());
         userinfo.setDeviceId(registerDTO.getDeviceId());
-        //TODO 这里默认是50个,但是每个item价格设定的较高，先用100
-        userinfo.setTotleMoney(100D);
         userInfoDao.save(userinfo);
 
     }

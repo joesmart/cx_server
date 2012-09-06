@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
+import com.server.cx.dao.cx.CXCoinAccountDao;
 import com.server.cx.dao.cx.GraphicInfoDao;
 import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.UserSubscribeRecordDao;
+import com.server.cx.entity.cx.CXCoinAccount;
 import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.entity.cx.UserSubscribeRecord;
@@ -33,13 +35,17 @@ public class UserSubscribeGraphicItemServiceTest extends SpringTransactionalTest
     @Autowired
     private UserSubscribeRecordDao userSubscribeRecordDao;
     
+    @Autowired
+    private CXCoinAccountDao cxCoinAccountDao;
+    
     @Test
     public void test_subscribeGraphicItem() {
         List<UserSubscribeRecord> records1 = (List<UserSubscribeRecord>) userSubscribeRecordDao.findAll();
         UserInfo userInfo = userInfoDao.findOne("2");
         userSubscribeGraphicItemService.subscribeGraphicItem(userInfo.getImsi(), "4028b88138d5e5e50138d5e5f2800093");
         UserInfo userInfo2 = userInfoDao.findOne("2");
-        assertEquals(30d, userInfo2.getTotleMoney().doubleValue(), 1e-3);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo2);
+        assertEquals(30d, cxCoinAccount.getCoin().doubleValue(), 1e-3);
         List<UserSubscribeRecord> records2 = (List<UserSubscribeRecord>) userSubscribeRecordDao.findAll();
         Assertions.assertThat(records1.size()).isEqualTo(records2.size() - 1);
         Assertions.assertThat(records2.get(records2.size() - 1).getDescription()).isEqualTo("订购");
@@ -62,7 +68,8 @@ public class UserSubscribeGraphicItemServiceTest extends SpringTransactionalTest
         GraphicInfo graphicInfo = graphicInfoDao.findOne("4028b88138d5e5e50138d5e5f2800093");
         userSubscribeGraphicItemService.subscribeGraphicItem(userInfo, graphicInfo);
         UserInfo userInfo2 = userInfoDao.findOne("2");
-        assertEquals(30d, userInfo2.getTotleMoney().doubleValue(), 1e-3);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo2);
+        assertEquals(30d, cxCoinAccount.getCoin().doubleValue(), 1e-3);
         List<UserSubscribeRecord> records2 = (List<UserSubscribeRecord>) userSubscribeRecordDao.findAll();
         Assertions.assertThat(records1.size()).isEqualTo(records2.size() - 1);
         Assertions.assertThat(records2.get(records2.size() - 1).getDescription()).isEqualTo("订购");
