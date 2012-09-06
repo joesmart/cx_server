@@ -123,7 +123,7 @@ public class ContactsServiceImpl implements ContactsService {
     public List<Contacts> queryCXAppContactsByImsi(String imsi) throws SystemException {
         ValidationUtil.checkParametersNotNull(imsi);
         UserInfo userInfo = userInfoDao.findByImsi(imsi);
-        List<Contacts> contacts = (List<Contacts>) contactsDao.getContactsByUserIdAndSelfUserInfoNotNull(userInfo.getId());
+        List<Contacts> contacts = contactsDao.getContactsByUserIdAndSelfUserInfoNotNull(userInfo.getId());
         return contacts;
     }
 

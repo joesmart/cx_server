@@ -102,17 +102,13 @@
 	</bean>
 	
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize">
-            <value>100000</value>
-        </property>
+        <property name="maxUploadSize" value="100000"/>
     </bean>
 
     <!-- message resource beans -->
     <bean id="messageSource"
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="fallbackToSystemLocale">
-            <value>false</value>
-        </property>
+        <property name="fallbackToSystemLocale" value="false"/>
         <property name="basenames">
             <list>
                 <value>classpath:resources/message</value>

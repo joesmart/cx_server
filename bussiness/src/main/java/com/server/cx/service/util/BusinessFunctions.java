@@ -406,6 +406,8 @@ public class BusinessFunctions {
         return new Function<UserHolidayMGraphic, HolidayType>() {
             @Override
             public HolidayType apply(@Nullable UserHolidayMGraphic input) {
+                if(input == null)
+                    return null;
                 return input.getHolidayType();
             }
         };
@@ -456,6 +458,9 @@ public class BusinessFunctions {
         return new Function<GraphicResource, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicResource input) {
+                if(input == null){
+                    return  null;
+                }
                 DataItem dataItem = new DataItem();
                 dataItem.setName(userDiyGraphic.getName());
                 dataItem.setSignature(userDiyGraphic.getSignature());
