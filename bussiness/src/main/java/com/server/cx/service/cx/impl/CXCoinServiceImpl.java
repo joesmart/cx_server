@@ -38,7 +38,7 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
     
     @Autowired
     private BasicService basicService;
-
+    
     @Override
     @Transactional(readOnly = false)
     public OperationDescription register(String imsi, CXCoinAccountDTO coinAccountDTO) throws SystemException {
@@ -94,6 +94,7 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
     @Transactional(readOnly = false)
     public OperationDescription consumeCXCoin(String imsi, CXCoinAccountDTO cxCoinAccountDTO) throws SystemException {
         checkUserRegisterCXCoinAccount(imsi);
+        checkUserUnConsumeCXCoin(userInfo);
         CXCoinTotalItem cxCoinTotalItem = findCXCoinTotalItem();
         checkCXCoinTotalEnough(cxCoinTotalItem.getCxCoinCount(), 5D);
         cxCoinTotalItem.setCxCoinCount(cxCoinTotalItem.getCxCoinCount() - 5D);

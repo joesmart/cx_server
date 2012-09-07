@@ -1,18 +1,28 @@
 package com.server.cx.service.cx.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import com.server.cx.dao.cx.CXCoinAccountDao;
+import com.server.cx.dao.cx.CXCoinConsumeRecordDao;
 import com.server.cx.entity.cx.CXCoinAccount;
+import com.server.cx.entity.cx.CXCoinConsumeRecord;
 import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.exception.MoneyNotEnoughException;
 import com.server.cx.exception.SystemException;
 
 @Component
+@Scope("request")
+@Transactional(readOnly = true)
 public class CXCoinBasicService extends UserCheckService {
     @Autowired
     protected CXCoinAccountDao cxCoinAccountDao;
     
     protected CXCoinAccount cxCoinAccount;
+    
+    @Autowired
+    protected CXCoinConsumeRecordDao cxCoinConsumeRecordDao;
     
     public void checkUserRegisterCXCoinAccount(String imsi) {
         checkAndSetUserInfoExists(imsi);
@@ -38,6 +48,19 @@ public class CXCoinBasicService extends UserCheckService {
             }
         } else {
             throw new SystemException("用户不存在");
+        }
+    }
+    
+    public void checkUserUnConsumeCXCoin(UserInfo userInfo) {
+        CXCoinConsumeRecord cxCoinConsumeRecord = cxCoinConsumeRecordDao.findByUserInfo(userInfo);
+        if(cxCoinConsumeRecord != null) {
+            throw new SystemException("用户已经抢购过酷币");
+        }
+    }
+    
+    public void checkUserCXCoinEnough(Double coin, Double price) {
+        if(price != null && coin.doubleValue() < price.doubleValue()) {
+            throw new MoneyNotEnoughException("用户余额不足");
         }
     }
     

@@ -1,16 +1,12 @@
 package com.server.cx.dao.cx.impl;
 
 import java.util.List;
-import javax.persistence.Query;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import com.server.cx.dao.cx.custom.UserInfoCustomDao;
 import com.server.cx.entity.cx.UserInfo;
-import com.server.cx.exception.MoneyNotEnoughException;
 
 
 //@Repository("userInfoDao")

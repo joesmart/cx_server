@@ -19,7 +19,7 @@ import com.server.cx.service.cx.UserSubscribeGraphicItemService;
 import com.server.cx.util.ObjectFactory;
 
 @Component
-@Transactional(readOnly=true)
+@Transactional(readOnly = true)
 public class UserSubscribeGraphicItemServiceImpl extends CXCoinBasicService implements UserSubscribeGraphicItemService {
     @Autowired
     private GraphicInfoDao graphicInfoDao;
@@ -29,12 +29,12 @@ public class UserSubscribeGraphicItemServiceImpl extends CXCoinBasicService impl
 
     @Autowired
     private UserSubscribeGraphicItemDao userSubscribeGraphicItemDao;
-    
-    @Transactional(readOnly=false)
+
+    @Transactional(readOnly = false)
     @Override
     public void subscribeGraphicItem(String imsi, String graphicInfoId) throws MoneyNotEnoughException {
-        if(graphicInfoId != null) {
-            checkAndSetUserInfoExists(imsi);
+        if (graphicInfoId != null) {
+            checkUserRegisterCXCoinAccount(imsi);
             GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
             if (!hasSubscribedGraphicItem(userInfo, graphicInfo)) {
                 subscribeGraphicItem(userInfo, graphicInfo);
@@ -50,8 +50,8 @@ public class UserSubscribeGraphicItemServiceImpl extends CXCoinBasicService impl
         }
         return true;
     }
-    
-    @Transactional(readOnly=false)
+
+    @Transactional(readOnly = false)
     @Override
     public void subscribeGraphicItem(UserInfo userInfo, GraphicInfo graphicInfo) throws MoneyNotEnoughException {
         //扣钱
@@ -70,26 +70,27 @@ public class UserSubscribeGraphicItemServiceImpl extends CXCoinBasicService impl
         userSubscribeRecordDao.save(userSubscribeRecord);
     }
 
-    private void checkUserCXCoinEnough(Double coin, Double price) {
-        if(price != null && coin.doubleValue() < price.doubleValue()) {
-            throw new SystemException("用户余额不足");
-        }
-    }
-
     @Override
     public void checkUserSubscribeGraphicItem(UserInfo userInfo, String graphicInfoId) throws NotSubscribeTypeException {
-        if(graphicInfoId != null) {
+        if (graphicInfoId != null) {
             GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
-            if (!hasSubscribedGraphicItem(userInfo, graphicInfo))
+            if (!isGraphicInfoFree(graphicInfo) && !hasSubscribedGraphicItem(userInfo, graphicInfo))
                 throw new NotSubscribeTypeException("用户未订购");
         }
     }
 
+    private boolean isGraphicInfoFree(GraphicInfo graphicInfo) {
+        if (graphicInfo.getPrice() == null || graphicInfo.getPrice().doubleValue() < 1e-3) {
+            return true;
+        }
+        return false;
+    }
+
     //TODO： 测试方法，方便客户端取消订购，以后需要删掉
-    @Transactional(readOnly=false)
+    @Transactional(readOnly = false)
     @Override
     public void deleteSubscribeItem(String imsi, String graphicInfoId) {
-        if(graphicInfoId != null) {
+        if (graphicInfoId != null) {
             checkAndSetUserInfoExists(imsi);
             GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
             List<UserSubscribeGraphicItem> userSubscribeGraphicItems = userSubscribeGraphicItemDao

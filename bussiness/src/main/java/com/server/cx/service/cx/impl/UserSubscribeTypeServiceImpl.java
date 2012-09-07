@@ -4,11 +4,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import com.server.cx.dao.cx.SubscribeTypeDao;
-import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.UserSubscribeRecordDao;
 import com.server.cx.dao.cx.UserSubscribeTypeDao;
 import com.server.cx.entity.cx.SubscribeType;
@@ -19,7 +17,6 @@ import com.server.cx.exception.MoneyNotEnoughException;
 import com.server.cx.exception.NotSubscribeTypeException;
 import com.server.cx.exception.SystemException;
 import com.server.cx.exception.UserHasSubscribedException;
-import com.server.cx.service.cx.QueryMGraphicService;
 import com.server.cx.service.cx.UserSubscribeTypeService;
 import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.DateUtil;
@@ -75,12 +72,6 @@ public class UserSubscribeTypeServiceImpl extends CXCoinBasicService implements 
             userSubscribeRecordDao.save(record);
         }
 
-    }
-    
-    private void checkUserCXCoinEnough(Double coin, Double price) {
-        if(price != null && coin.doubleValue() < price.doubleValue()) {
-            throw new SystemException("用户余额不足");
-        }
     }
     
     @Transactional(readOnly = false)
