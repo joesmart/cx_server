@@ -841,6 +841,10 @@
                 <version>5.1.21</version>
             </dependency>
             <dependency>
+                <groupId>com.microsoft.sqlserver</groupId>
+                <artifactId></artifactId>
+            </dependency>
+            <dependency>
 	            <groupId>com.sun.jersey.jersey-test-framework</groupId>
 				<artifactId>jersey-test-framework-grizzly2</artifactId>
 				<version>${jersey-test-framework.version}</version>
