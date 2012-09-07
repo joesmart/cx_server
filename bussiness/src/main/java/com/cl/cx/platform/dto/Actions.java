@@ -41,4 +41,8 @@ public class Actions {
     private Action uploadCommonMGraphicURL;
     private Action subscribeURL;
     private Action cancelSubscribeURL;
+    private Action cxCoinAccountURL;
+    private Action cxCoinRegisterURL;
+    private Action cxCoinRecordsURL;
+    private Action cxCoinConsumeURL;
 }

@@ -233,15 +233,15 @@ public class BasicService {
     }
     
     public String generateCancelSubscribeHolidayURL(String imsi) {
-        return generateURL(imsi, "/holidayTypes");
+        return generateURL(imsi, "/subscribe?type=holiday");
     }
     
     public String generateCancelSubscribeStatusURL(String imsi) {
-        return generateURL(imsi, "/statusTypes");
+        return generateURL(imsi, "/subscribe?type=status");
     }
     
     public String generateCancelSubscribeCustomURL(String imsi) {
-        return generateURL(imsi, "/customMGraphics");
+        return generateURL(imsi, "/subscribe?type=custom");
     }
 
     public String generateUserDIYGraphicDeleteURL(String imsi, String id) {

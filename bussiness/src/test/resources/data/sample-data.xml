@@ -59,13 +59,13 @@
     <holiday_type id="19" name="父亲节" download_num="1000" graphic_resource_id="503ed30de4b06138faf1b5b0" level="5"></holiday_type>
 
 
-    <category id="1" name="心情物语" description="心情物语测试测试车上" download_num="1000" graphic_resource_id="50039d9ee4b09ed787af7143" />
-    <category id="2" name="精品资讯" description="精品资讯测试测试车上" download_num="1000" graphic_resource_id="50039d92e4b09ed787af7107" />
-    <category id="3" name="动漫天地" description="动漫天地测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" />
-    <category id="4" name="健康贴士" description="健康贴士测试测试车上" download_num="1000" graphic_resource_id="50039d9ae4b09ed787af7127" />
-    <category id="5" name="节日祝福" description="节日祝福测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" />
-    <category id="6" name="新闻摘要" description="新闻摘要测试测试车上" download_num="1000" graphic_resource_id="50039d9de4b09ed787af7133" />
-    <category id="7" name="GIF"      description="新闻摘要测试测试车上" download_num="1000" graphic_resource_id="50039d9de4b09ed787af7133" />
+    <category id="1" name="心情物语" description="心情物语测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee68f" />
+    <category id="2" name="精品资讯" description="精品资讯测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee69f" />
+    <category id="3" name="动漫天地" description="动漫天地测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee693" />
+    <category id="4" name="健康贴士" description="健康贴士测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee697" />
+    <category id="5" name="节日祝福" description="节日祝福测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee69b" />
+    <category id="6" name="新闻摘要" description="新闻摘要测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee68b" />
+    <category id="7" name="GIF"      description="新闻摘要测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee68b" />
 
 
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800001" name="彩像11" signature="男儿当自强1 " audit_status="PASSED" level="3" recommend="false" use_count="12" price="2" owner="system" category_id="1" created_by="Anonymous" created_on="2012-08-01 12:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
@@ -296,6 +296,7 @@
     <user_catacts id="2" name="Steve Nash" phone_no="1512581472" self_user_id="3" user_id="1"></user_catacts>
     <user_catacts id="3" name="Jordon" phone_no="1512581473" self_user_id="4" user_id="1"></user_catacts>
     <user_catacts id="4" name="Avril" phone_no="1512581098" user_id="1"></user_catacts>
+    <user_catacts id="5" name="Avril" phone_no="1512581476" user_id="1"></user_catacts>
 
     <user_favorites id="4028b88138e5cc440138e5ccab220000" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" user_id="2" graphic_info_id="4028b88138d5e5e50138d5e5f2800001"></user_favorites>
     <user_favorites id="4028b88138e5cc440138e5ccab220001" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" user_id="2" graphic_info_id="4028b88138d5e5e50138d5e5f2800002"></user_favorites>

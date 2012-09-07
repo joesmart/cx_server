@@ -208,7 +208,31 @@ public class ActionBuilder {
         actions.setCancelSubscribeURL(action);
         return this;
     }
-
+    
+    private ActionBuilder cxCoinAccountURL(String url) {
+        Action action = new Action(url, "GET");
+        actions.setCxCoinAccountURL(action);
+        return this;
+    }
+    
+    private ActionBuilder cxCoinRegisterURL(String url) {
+        Action action = new Action(url, "POST");
+        actions.setCxCoinRegisterURL(action);
+        return this;
+    }
+    
+    private ActionBuilder cxCoinRecordsURL(String url) {
+        Action action = new Action(url, "GET");
+        actions.setCxCoinRecordsURL(action);
+        return this;
+     }
+    
+    private ActionBuilder cxCoinConsumeURL(String url) {
+        Action action = new Action(url, "PUT");
+        actions.setCxCoinConsumeURL(action);
+        return this;
+    }
+    
     public Actions build() {
         return actions;
     }
@@ -359,15 +383,18 @@ public class ActionBuilder {
             .getContactsURL(basicService.generateContactsUploadURL(imsi))
             .uploadCommonMGraphicURL(basicService.generateUserDIYMGraphicUploadURL(imsi))
             .uploadContactsURL(basicService.generateContactsUploadURL(imsi)).build();
-
     }
-
+    
     public Actions buildAnonymousActions() {
         String replaceImsi = "none";
         Actions actions = buildUserOperableActions(replaceImsi);
         hiddenTheNeedRegisteredActions(actions);
         return actions;
     }
+    
+//    public Actions buildCXCoinRegisteredActions(Actions actions) {
+//        actions.cxCoinAccountURL();
+//    }
 
     private void hiddenTheNeedRegisteredActions(Actions actions) {
         actions.setCollectionsURL(null);
@@ -380,7 +407,7 @@ public class ActionBuilder {
         actions.setGetContactsURL(null);
         actions.setUploadCommonMGraphicURL(null);
     }
-
+    
     public Actions buildMGraphicActions(String imsi, String id, String conditions) {
         return actions().editURL(basicService.getBaseURL() + imsi + "/" + conditions + "/" + id)
             .removeURL(basicService.getBaseURL() + imsi + "/" + conditions + "/" + id).build();
