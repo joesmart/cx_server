@@ -391,6 +391,6 @@
 	<cxcoin_account id="2" name="Account2" password="123456" coin="50" user_id="2"></cxcoin_account>
 	<cxcoin_account id="3" name="Account3" password="123456" coin="50" user_id="3"></cxcoin_account>
 	<cxcoin_account id="4" name="Account7" password="123456" coin="50" user_id="7"></cxcoin_account>
-	
+	<cxcoin_consume_record id="1" user_id="3" cx_coin="5"></cxcoin_consume_record>
 	<cxcoin_total_item id="1" cx_coin_count="1000000"></cxcoin_total_item>
 </dataset>

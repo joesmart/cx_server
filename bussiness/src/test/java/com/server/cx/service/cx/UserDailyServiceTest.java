@@ -12,9 +12,9 @@ import com.server.cx.entity.cx.UserStatusMGraphic;
 
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 @ActiveProfiles(profiles = {"test"})
-public class UserStatusDismissServiceTest extends SpringTransactionalTestCase {
+public class UserDailyServiceTest extends SpringTransactionalTestCase {
     @Autowired
-    private UserStatusDismissService userStatusDismissService;
+    private UserDailyService userDailyService;
 
     @Autowired
     private UserStatusMGraphicDao userStatusMGraphicDao;
@@ -24,7 +24,7 @@ public class UserStatusDismissServiceTest extends SpringTransactionalTestCase {
         List<UserStatusMGraphic> userStatusMGraphics = userStatusMGraphicDao.findAll();
         assertThat(userStatusMGraphics).isNotNull();
         assertThat(userStatusMGraphics.size()).isGreaterThan(1);
-        userStatusDismissService.clearUserStatusMGraphic();
+        userDailyService.doDailyTask();
         List<UserStatusMGraphic> userStatusMGraphics2 = userStatusMGraphicDao.findAll();
         assertThat(userStatusMGraphics2.size()).isEqualTo(0);
     }
