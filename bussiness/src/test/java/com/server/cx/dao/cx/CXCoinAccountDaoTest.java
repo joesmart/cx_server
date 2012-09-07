@@ -19,7 +19,7 @@ public class CXCoinAccountDaoTest extends SpringTransactionalTestCase {
     @Test
     public void test_find_by_user_info() {
         UserInfo userInfo = userInfoDao.findOne("1");
-        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo.getImsi());
         assertThat(cxCoinAccount.getName()).isEqualTo("Account1");
     }
    
@@ -29,7 +29,7 @@ public class CXCoinAccountDaoTest extends SpringTransactionalTestCase {
         cxCoinAccount.setName("Account4");
         cxCoinAccount.setPassword("1123456");
         cxCoinAccount.setCoin(100D);
-        cxCoinAccount.setUserInfo(userInfoDao.findOne("4"));
+        cxCoinAccount.setImsi(userInfoDao.findOne("4").getImsi());
         cxCoinAccountDao.save(cxCoinAccount);
         
         CXCoinAccount cxCoinAccount2 = cxCoinAccountDao.findOne(cxCoinAccount.getId());
@@ -39,7 +39,7 @@ public class CXCoinAccountDaoTest extends SpringTransactionalTestCase {
     @Test
     public void test_find_byNameAndPasswordAndUserInfo() {
         UserInfo userInfo = userInfoDao.findOne("1");
-        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByNameAndPasswordAndUserInfo("Account1", "123456", userInfo);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByNameAndPasswordAndImsi("Account1", "123456", userInfo.getImsi());
         assertThat(cxCoinAccount).isNotNull();
         assertThat(cxCoinAccount.getName()).isEqualTo("Account1");
     }

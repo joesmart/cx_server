@@ -56,7 +56,7 @@ public class UserSubscribeTypeServiceImpl extends CXCoinBasicService implements 
         } else {
             SubscribeType subscribeType = subscribeTypeDao.findSubscribeType(type);
             //检查账户余额&&扣钱
-            checkUserRegisterCXCoinAccount(userInfo);
+            checkUserRegisterCXCoinAccount(userInfo.getImsi());
             checkUserCXCoinEnough(cxCoinAccount.getCoin(), subscribeType.getPrice());
             cxCoinAccount.setCoin(cxCoinAccount.getCoin() - subscribeType.getPrice());
             cxCoinAccountDao.save(cxCoinAccount);

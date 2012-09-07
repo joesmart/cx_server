@@ -55,7 +55,7 @@ public class UserSubscribeGraphicItemServiceImpl extends CXCoinBasicService impl
     @Override
     public void subscribeGraphicItem(UserInfo userInfo, GraphicInfo graphicInfo) throws MoneyNotEnoughException {
         //扣钱
-        checkUserRegisterCXCoinAccount(userInfo);
+        checkUserRegisterCXCoinAccount(userInfo.getImsi());
         checkUserCXCoinEnough(cxCoinAccount.getCoin(), graphicInfo.getPrice());
         cxCoinAccount.setCoin(cxCoinAccount.getCoin() - graphicInfo.getPrice());
         cxCoinAccountDao.save(cxCoinAccount);

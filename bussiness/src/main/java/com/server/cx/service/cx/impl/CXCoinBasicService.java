@@ -18,50 +18,47 @@ import com.server.cx.exception.SystemException;
 public class CXCoinBasicService extends UserCheckService {
     @Autowired
     protected CXCoinAccountDao cxCoinAccountDao;
-    
+
     protected CXCoinAccount cxCoinAccount;
-    
+
     @Autowired
     protected CXCoinConsumeRecordDao cxCoinConsumeRecordDao;
-    
+
     public void checkUserRegisterCXCoinAccount(String imsi) {
         checkAndSetUserInfoExists(imsi);
-        cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo);
-        if(cxCoinAccount == null) {
+        cxCoinAccount = cxCoinAccountDao.findByImsi(imsi);
+        if (cxCoinAccount == null) {
             throw new SystemException("用户未注册过酷币帐号");
         }
     }
-    
+
     public void checkUserUnRegisterCXCoinAccount(String imsi) {
         checkAndSetUserInfoExists(imsi);
-        cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo);
-        if(cxCoinAccount != null) {
+        cxCoinAccount = cxCoinAccountDao.findByImsi(imsi);
+        if (cxCoinAccount != null) {
             throw new SystemException("用户已经注册过酷币帐号");
         }
     }
-    
-    public void checkUserRegisterCXCoinAccount(UserInfo userInfo) {
-        if(userInfo != null) {
-            cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo);
-            if(cxCoinAccount == null) {
-                throw new SystemException("用户未注册过酷币帐号");
-            }
-        } else {
-            throw new SystemException("用户不存在");
-        }
-    }
-    
+
     public void checkUserUnConsumeCXCoin(UserInfo userInfo) {
         CXCoinConsumeRecord cxCoinConsumeRecord = cxCoinConsumeRecordDao.findByUserInfo(userInfo);
-        if(cxCoinConsumeRecord != null) {
+        if (cxCoinConsumeRecord != null) {
             throw new SystemException("用户已经抢购过酷币");
         }
     }
-    
+
     public void checkUserCXCoinEnough(Double coin, Double price) {
-        if(price != null && coin.doubleValue() < price.doubleValue()) {
+        if (price != null && coin.doubleValue() < price.doubleValue()) {
             throw new MoneyNotEnoughException("用户余额不足");
         }
     }
-    
+
+    public boolean hasRegisteredCXCoinAccount(String imsi) {
+        cxCoinAccount = cxCoinAccountDao.findByImsi(imsi);
+        if (cxCoinAccount != null) {
+            return true;
+        }
+        return false;
+    }
+
 }

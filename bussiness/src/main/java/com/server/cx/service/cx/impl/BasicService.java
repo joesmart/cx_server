@@ -251,4 +251,16 @@ public class BasicService {
     public String generateSubscribeFunctionType(String imsi, String type) {
         return generateURL(imsi, "/subscribe?type=" + type);
     }
+
+    public String generateCXCoinAccountURL(String imsi) {
+        return generateURL(imsi, "/cxCoin/account");
+    }
+
+    public String generateCXCoinConsumeURL(String imsi) {
+        return generateURL(imsi, "/cxCoin/consume");
+    }
+
+    public String generateCXCoinRecordsURL(String imsi) {
+        return generateURL(imsi, "/cxCoin/records");
+    }
 }

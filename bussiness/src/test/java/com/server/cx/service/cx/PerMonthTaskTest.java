@@ -36,7 +36,7 @@ public class PerMonthTaskTest extends SpringTransactionalTestCase {
         perMonthService.doTask();
         //check user1
         UserInfo userInfo = userInfoDao.findOne("1");
-        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo.getImsi());
         assertEquals(25d, cxCoinAccount.getCoin(), 1e-3);
         
         List<UserSubscribeType> list1 = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, "holiday");
@@ -50,7 +50,7 @@ public class PerMonthTaskTest extends SpringTransactionalTestCase {
         
         //check user2
         UserInfo userInfo2 = userInfoDao.findOne("2");
-        cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo2);
+        cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo2.getImsi());
         assertEquals(25d, cxCoinAccount.getCoin().doubleValue(), 1e-3);
         
         List<UserSubscribeType> list3 = userSubscribeTypeDao.findUserSubscribeTypes(userInfo2, "holiday");
@@ -63,7 +63,7 @@ public class PerMonthTaskTest extends SpringTransactionalTestCase {
         
         //check user3
         UserInfo userInfo3 = userInfoDao.findOne("3");
-        cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo3);
+        cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo3.getImsi());
         assertEquals(30d, cxCoinAccount.getCoin().doubleValue(), 1e-3);
         
         
@@ -73,7 +73,7 @@ public class PerMonthTaskTest extends SpringTransactionalTestCase {
         
         //check user6
         UserInfo userInfo6 = userInfoDao.findOne("6");
-        cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo6);
+        cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo6.getImsi());
         assertEquals(10d, cxCoinAccount.getCoin().doubleValue(), 1e-3);
         
         UserSubscribeType userSubscribeType = userSubscribeTypeDao.findMonthValidateAndNotSubscribedType(userInfo6, "holiday");

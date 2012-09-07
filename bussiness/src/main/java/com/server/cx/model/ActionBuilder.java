@@ -382,7 +382,10 @@ public class ActionBuilder {
             .registerUpDateURL(basicService.generateMobileRegisterUpdateURL(imsi))
             .getContactsURL(basicService.generateContactsUploadURL(imsi))
             .uploadCommonMGraphicURL(basicService.generateUserDIYMGraphicUploadURL(imsi))
-            .uploadContactsURL(basicService.generateContactsUploadURL(imsi)).build();
+            .uploadContactsURL(basicService.generateContactsUploadURL(imsi))
+            .cxCoinAccountURL(basicService.generateCXCoinAccountURL(imsi))
+            .cxCoinConsumeURL(basicService.generateCXCoinConsumeURL(imsi))
+            .cxCoinRecordsURL(basicService.generateCXCoinRecordsURL(imsi)).build();
     }
     
     public Actions buildAnonymousActions() {
@@ -392,9 +395,15 @@ public class ActionBuilder {
         return actions;
     }
     
-//    public Actions buildCXCoinRegisteredActions(Actions actions) {
-//        actions.cxCoinAccountURL();
-//    }
+    public void hiddenCXCoinRegisterURL(Actions actions) {
+        actions.setCxCoinRegisterURL(null);
+    }
+    
+    public void hiddenCXCoinOtherURL(Actions actions) {
+        actions.setCxCoinAccountURL(null);
+        actions.setCxCoinConsumeURL(null);
+        actions.setCxCoinRecordsURL(null);
+    }
 
     private void hiddenTheNeedRegisteredActions(Actions actions) {
         actions.setCollectionsURL(null);
