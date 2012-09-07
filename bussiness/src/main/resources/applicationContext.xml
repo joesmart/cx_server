@@ -66,7 +66,7 @@
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 	
 	<bean id="perMonthService" class="com.server.cx.service.cx.impl.PerMonthServiceImpl" />
-	<bean id="userStatusDismissService" class="com.server.cx.service.cx.impl.UserStatusDismissServiceImpl" />
+	<bean id="userDailyService" class="com.server.cx.service.cx.impl.UserDailyServiceImpl" />
 	
 	 <bean id="jobDetail"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -75,10 +75,10 @@
 		<property name="concurrent" value="false" />
 	</bean>
 	
-	<bean id="clearUserStatusTask"
+	<bean id="doDailyTask"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<property name="targetObject" ref="userStatusDismissService" />
-		<property name="targetMethod" value="clearUserStatusMGraphic" />
+		<property name="targetObject" ref="userDailyService" />
+		<property name="targetMethod" value="doDailyTask" />
 		<property name="concurrent" value="false" />
 	</bean>
 		
@@ -87,8 +87,8 @@
 		<property name="cronExpression" value="0 0 0 1 * ?" />
 	</bean> 
 	
-	<bean id="clearUserStatus" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="clearUserStatusTask" />
+	<bean id="doDailyTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="doDailyTask" />
 		<property name="cronExpression" value="0 0 0 * * ?" />
 	</bean> 
 	
@@ -96,7 +96,7 @@
 		<property name="triggers">
 			<list>
 				<ref bean="cronTrigger" />
-				<ref bean="clearUserStatus" />
+				<ref bean="doDailyTaskTrigger" />
 			</list>
 		</property>
 	</bean>
