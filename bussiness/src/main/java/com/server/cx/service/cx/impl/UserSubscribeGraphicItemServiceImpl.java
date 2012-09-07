@@ -70,12 +70,6 @@ public class UserSubscribeGraphicItemServiceImpl extends CXCoinBasicService impl
         userSubscribeRecordDao.save(userSubscribeRecord);
     }
 
-    private void checkUserCXCoinEnough(Double coin, Double price) {
-        if(price != null && coin.doubleValue() < price.doubleValue()) {
-            throw new SystemException("用户余额不足");
-        }
-    }
-
     @Override
     public void checkUserSubscribeGraphicItem(UserInfo userInfo, String graphicInfoId) throws NotSubscribeTypeException {
         if(graphicInfoId != null) {

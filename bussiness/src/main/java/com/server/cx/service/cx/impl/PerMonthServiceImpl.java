@@ -71,10 +71,4 @@ public class PerMonthServiceImpl extends CXCoinBasicService implements PerMonthS
             LOGGER.error("doSingleSubscribeTask error", e);
         }
     }
-    
-    private void checkUserCXCoinEnough(Double coin, Double price) {
-        if(price != null && coin.doubleValue() < price.doubleValue()) {
-            throw new SystemException("用户余额不足");
-        }
-    }
 }

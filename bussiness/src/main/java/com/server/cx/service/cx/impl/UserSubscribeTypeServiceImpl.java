@@ -77,12 +77,6 @@ public class UserSubscribeTypeServiceImpl extends CXCoinBasicService implements 
 
     }
     
-    private void checkUserCXCoinEnough(Double coin, Double price) {
-        if(price != null && coin.doubleValue() < price.doubleValue()) {
-            throw new SystemException("用户余额不足");
-        }
-    }
-    
     @Transactional(readOnly = false)
     @Override
     public void cancelSubscribeType(String imsi, String type) throws SystemException {

@@ -9,6 +9,7 @@ import com.server.cx.dao.cx.CXCoinConsumeRecordDao;
 import com.server.cx.entity.cx.CXCoinAccount;
 import com.server.cx.entity.cx.CXCoinConsumeRecord;
 import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.exception.MoneyNotEnoughException;
 import com.server.cx.exception.SystemException;
 
 @Component
@@ -54,6 +55,12 @@ public class CXCoinBasicService extends UserCheckService {
         CXCoinConsumeRecord cxCoinConsumeRecord = cxCoinConsumeRecordDao.findByUserInfo(userInfo);
         if(cxCoinConsumeRecord != null) {
             throw new SystemException("用户已经抢购过酷币");
+        }
+    }
+    
+    public void checkUserCXCoinEnough(Double coin, Double price) {
+        if(price != null && coin.doubleValue() < price.doubleValue()) {
+            throw new MoneyNotEnoughException("用户余额不足");
         }
     }
     
