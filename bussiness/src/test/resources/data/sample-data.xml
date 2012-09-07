@@ -33,7 +33,7 @@
     <status_type id="3" name="会议中" graphic_resource_id="503c2920e4b0070fe88c9641" ></status_type>
     <status_type id="4" name="睡觉" graphic_resource_id="503c291fe4b0070fe88c9633" ></status_type>
     <status_type id="5" name="烧饭" graphic_resource_id="503c2920e4b0070fe88c9649" ></status_type>
-    <status_type id="6" name="WC" graphic_resource_id="503c28fce4b0070fe88c9629" ></status_type>
+    <status_type id="6" name="WC" graphic_resource_id="504998a9e4b06b6b0e5ee6a3" ></status_type>
     <status_type id="7" name="游泳"  graphic_resource_id="503c2920e4b0070fe88c9648" ></status_type>
     <status_type id="8" name="购物" graphic_resource_id="503c291fe4b0070fe88c9630" ></status_type>
     <status_type id="9" name="上班" graphic_resource_id="503c2920e4b0070fe88c963b" ></status_type>
