@@ -393,4 +393,14 @@
 	<cxcoin_account id="4" name="Account7" password="123456" coin="50" user_id="7"></cxcoin_account>
 	<cxcoin_consume_record id="1" user_id="3" cx_coin="5"></cxcoin_consume_record>
 	<cxcoin_total_item id="1" cx_coin_count="1000000"></cxcoin_total_item>
+    <!-- sms table -->
+    <sms_message id="1" sms="12312312" from_mobile_no="123123" to_mobile_no="12341" is_send="false"/>
+    <sms_message id="2" sms="12312312" from_mobile_no="123123" to_mobile_no="12342" is_send="false"/>
+    <sms_message id="3" sms="12312312" from_mobile_no="123123" to_mobile_no="12343" is_send="false"/>
+    <sms_message id="4" sms="12312312" from_mobile_no="123123" to_mobile_no="12344" is_send="false"/>
+    <sms_message id="5" sms="12312312" from_mobile_no="123123" to_mobile_no="12345" is_send="false"/>
+    <sms_message id="6" sms="12312312" from_mobile_no="123123" to_mobile_no="12346" is_send="false"/>
+    <sms_message id="7" sms="12312312" from_mobile_no="123123" to_mobile_no="12347" is_send="false"/>
+    <sms_message id="8" sms="12312312" from_mobile_no="123123" to_mobile_no="12348" is_send="false"/>
+    <sms_message id="9" sms="12312312" from_mobile_no="123123" to_mobile_no="12349" is_send="true"/>
 </dataset>
