@@ -69,7 +69,7 @@ public class UserSubscribeTypeServiceTest extends SpringTransactionalTestCase {
     public void test_subscribe_holiday_type_unsubscribed_month_invalidate_money_enough() {
         int recordSize = ((List<UserSubscribeRecord>) userSubscribeRecordDao.findAll()).size();
         UserInfo userInfo = userInfoDao.findOne("7");
-        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo.getImsi());
         double totleMoney = cxCoinAccount.getCoin();
         userSubscribeTypeService.subscribeType(userInfo, "holiday");
         List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, "holiday");
@@ -84,7 +84,7 @@ public class UserSubscribeTypeServiceTest extends SpringTransactionalTestCase {
         assertThat(record.getUserInfo()).isEqualTo(userInfo);
         assertThat(record.getDescription()).isEqualTo("订购");
         assertThat(record.getSubscribeType().getName()).isEqualTo("节日包");
-        cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo);
+        cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo.getImsi());
         assertEquals(cxCoinAccount.getCoin().doubleValue(), totleMoney - 15, 1e-3);
     }
 

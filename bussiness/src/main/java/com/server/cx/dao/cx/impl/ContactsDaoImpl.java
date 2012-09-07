@@ -30,27 +30,27 @@ public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
         final int size = contacts.size();
         try {
             jdbcTemplate.batchUpdate(
-                    "insert into user_catacts(name,phone_no,user_id,self_user_id,created_on) values(?,?,?,?,?)",
-                    new BatchPreparedStatementSetter() {
-                        @Override
-                        public void setValues(PreparedStatement ps, int index) throws SQLException {
-                            Contacts contact = contacts.get(index);
-                            ps.setString(1, contact.getName());
-                            ps.setString(2, contact.getPhoneNo());
-                            ps.setString(3, contact.getUserInfo().getId()) ;
-                            if (contact.getSelfUserInfo() != null) {
-                                ps.setString(4, contact.getSelfUserInfo().getId());
-                            } else {
-                                ps.setNull(4, Types.INTEGER);
-                            }
-                            ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+                "insert into user_catacts(name,phone_no,user_id,self_user_id,created_on) values(?,?,?,?,?)",
+                new BatchPreparedStatementSetter() {
+                    @Override
+                    public void setValues(PreparedStatement ps, int index) throws SQLException {
+                        Contacts contact = contacts.get(index);
+                        ps.setString(1, contact.getName());
+                        ps.setString(2, contact.getPhoneNo());
+                        ps.setString(3, contact.getUserInfo().getId());
+                        if (contact.getSelfUserInfo() != null) {
+                            ps.setString(4, contact.getSelfUserInfo().getId());
+                        } else {
+                            ps.setNull(4, Types.INTEGER);
                         }
+                        ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+                    }
 
-                        @Override
-                        public int getBatchSize() {
-                            return size;
-                        }
-                    });
+                    @Override
+                    public int getBatchSize() {
+                        return size;
+                    }
+                });
         } catch (DataAccessException e) {
             throw new SystemException(e);
         }
@@ -68,8 +68,8 @@ public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
 
     public List<String> retrieveExistsMobiles(String userId, List<String> phoneNos) {
         DetachedCriteria criteria = DetachedCriteria.forClass(Contacts.class);
-        criteria.add(Restrictions.eq("userInfo.id", userId))
-                .add(Restrictions.in("phoneNo", phoneNos)).setProjection(Projections.property("phoneNo"));
+        criteria.add(Restrictions.eq("userInfo.id", userId)).add(Restrictions.in("phoneNo", phoneNos))
+            .setProjection(Projections.property("phoneNo"));
         Session session = (Session) em.getDelegate();
 
         List<String> mobiles = criteria.getExecutableCriteria(session).list();
@@ -79,8 +79,7 @@ public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
     @Override
     public List<Contacts> getContactsByUserIdAndSelfUserInfoNotNull(String userId) throws SystemException {
         DetachedCriteria criteria = DetachedCriteria.forClass(Contacts.class);
-        criteria.add(Restrictions.eq("userInfo.id", userId))
-                .add(Restrictions.isNotNull("selfUserInfo"));
+        criteria.add(Restrictions.eq("userInfo.id", userId)).add(Restrictions.isNotNull("selfUserInfo"));
         Session session = (Session) em.getDelegate();
         List<Contacts> contacts = criteria.getExecutableCriteria(session).list();
         return contacts;
@@ -93,5 +92,33 @@ public class ContactsDaoImpl extends BasicDao implements ContactsCustomDao {
         query.setParameter(1, userinfo.getId());
         query.setParameter(2, userinfo.getPhoneNo());
         query.executeUpdate();
+    }
+
+    @Override
+    public void batchUpdateContactsPhoneNo(final List<Contacts> contacts) {
+        if (contacts == null || contacts.isEmpty()) {
+            return;
+        }
+        final int size = contacts.size();
+        try {
+            jdbcTemplate.batchUpdate("update user_catacts set self_user_id = ? ,created_on = ? where id = ?",
+                new BatchPreparedStatementSetter() {
+                    @Override
+                    public void setValues(PreparedStatement ps, int index) throws SQLException {
+                        Contacts contact = contacts.get(index);
+                        ps.setString(1, contact.getSelfUserInfo().getId());
+                        ps.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+                        ps.setLong(3, contact.getId());
+                    }
+
+                    @Override
+                    public int getBatchSize() {
+                        return size;
+                    }
+                });
+        } catch (DataAccessException e) {
+            throw new SystemException(e);
+        }
+
     }
 }

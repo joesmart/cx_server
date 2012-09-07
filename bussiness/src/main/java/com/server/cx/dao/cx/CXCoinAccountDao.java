@@ -6,8 +6,8 @@ import com.server.cx.entity.cx.CXCoinAccount;
 import com.server.cx.entity.cx.UserInfo;
 
 public interface CXCoinAccountDao extends JpaRepository<CXCoinAccount, String>, JpaSpecificationExecutor<CXCoinAccount> {
-    public CXCoinAccount findByUserInfo(UserInfo userInfo);
+    public CXCoinAccount findByImsi(String imsi);
 
-    public CXCoinAccount findByNameAndPasswordAndUserInfo(String name, String password, UserInfo userInfo);
+    public CXCoinAccount findByNameAndPasswordAndImsi(String name, String password, String imsi);
 
 }

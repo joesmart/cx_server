@@ -80,8 +80,8 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
     @Override
     public OperationDescription login(String imsi, CXCoinAccountDTO coinAccountDTO) throws SystemException {
         checkAndSetUserInfoExists(imsi);
-        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByNameAndPasswordAndUserInfo(coinAccountDTO.getName(),
-            coinAccountDTO.getPassword(), userInfo);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByNameAndPasswordAndImsi(coinAccountDTO.getName(),
+            coinAccountDTO.getPassword(), imsi);
         if (cxCoinAccount != null) {
             OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
                 HttpServletResponse.SC_NO_CONTENT, "login");

@@ -13,17 +13,7 @@ public class CXCoinAccount extends AuditableStringEntity {
     private String name;
     private String password;
     private Double coin;
-    private UserInfo userInfo;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    public UserInfo getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
-    }
+    private String imsi;
 
     public String getName() {
         return name;
@@ -47,5 +37,13 @@ public class CXCoinAccount extends AuditableStringEntity {
 
     public void setCoin(Double coin) {
         this.coin = coin;
+    }
+
+    public String getImsi() {
+        return imsi;
+    }
+
+    public void setImsi(String imsi) {
+        this.imsi = imsi;
     }
 }

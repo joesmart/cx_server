@@ -1,14 +1,12 @@
 package com.server.cx.dao.cx;
 
-import javax.jws.soap.SOAPBinding.Use;
+import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 import com.server.cx.entity.cx.CXCoinAccount;
 import com.server.cx.entity.cx.UserInfo;
-
-import static org.fest.assertions.Assertions.assertThat;
 
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 public class CXCoinAccountDaoTest extends SpringTransactionalTestCase {
@@ -21,7 +19,7 @@ public class CXCoinAccountDaoTest extends SpringTransactionalTestCase {
     @Test
     public void test_find_by_user_info() {
         UserInfo userInfo = userInfoDao.findOne("1");
-        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo.getImsi());
         assertThat(cxCoinAccount.getName()).isEqualTo("Account1");
     }
    
@@ -31,7 +29,7 @@ public class CXCoinAccountDaoTest extends SpringTransactionalTestCase {
         cxCoinAccount.setName("Account4");
         cxCoinAccount.setPassword("1123456");
         cxCoinAccount.setCoin(100D);
-        cxCoinAccount.setUserInfo(userInfoDao.findOne("4"));
+        cxCoinAccount.setImsi(userInfoDao.findOne("4").getImsi());
         cxCoinAccountDao.save(cxCoinAccount);
         
         CXCoinAccount cxCoinAccount2 = cxCoinAccountDao.findOne(cxCoinAccount.getId());
@@ -41,7 +39,7 @@ public class CXCoinAccountDaoTest extends SpringTransactionalTestCase {
     @Test
     public void test_find_byNameAndPasswordAndUserInfo() {
         UserInfo userInfo = userInfoDao.findOne("1");
-        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByNameAndPasswordAndUserInfo("Account1", "123456", userInfo);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByNameAndPasswordAndImsi("Account1", "123456", userInfo.getImsi());
         assertThat(cxCoinAccount).isNotNull();
         assertThat(cxCoinAccount.getName()).isEqualTo("Account1");
     }

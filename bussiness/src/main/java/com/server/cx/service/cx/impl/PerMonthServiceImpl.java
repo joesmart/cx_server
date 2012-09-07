@@ -47,7 +47,7 @@ public class PerMonthServiceImpl extends CXCoinBasicService implements PerMonthS
     public void doSingleSubscribeTask(UserSubscribeType userSubscribeType) throws SystemException {
         try {
             UserInfo userInfo = userSubscribeType.getUserInfo();
-            checkUserRegisterCXCoinAccount(userInfo);
+            checkUserRegisterCXCoinAccount(userInfo.getImsi());
             
             //扣除订购的钱
             checkUserCXCoinEnough(cxCoinAccount.getCoin(), userSubscribeType.getSubscribeType().getPrice());

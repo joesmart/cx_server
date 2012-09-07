@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
-	<acct_group id="1" name="管理员" />
+<!-- 	<acct_group id="1" name="管理员" />
 	<acct_group id="2" name="用户" />
-
+ -->
   <!--   <acct_group_permission group_id="1" permission="user:view" />
 	<acct_group_permission group_id="1" permission="user:edit" />
 	<acct_group_permission group_id="1" permission="group:view" />
@@ -13,12 +13,12 @@
 	<acct_group_permission group_id="2" permission="user:view" />
 	<acct_group_permission group_id="2" permission="group:view" /> -->
 
-    <acct_user id="1" email="admin@springside.org.cn" login_name="admin" name="Admin" password="admin" />
+<!--     <acct_user id="1" email="admin@springside.org.cn" login_name="admin" name="Admin" password="admin" />
 	<acct_user id="2" email="user@springside.org.cn" login_name="user" name="User" password="user" />
 	<acct_user id="3" email="jack@springside.org.cn" login_name="user2" name="Jack" password="user2" />
 	<acct_user id="4" email="kate@springside.org.cn" login_name="user3" name="Kate" password="user3" />
 	<acct_user id="5" email="sawyer@springside.org.cn" login_name="user4" name="Sawyer" password="user4" />
-	<acct_user id="6" email="ben@springside.org.cn" login_name="user5" name="Ben" password="user5" />
+	<acct_user id="6" email="ben@springside.org.cn" login_name="user5" name="Ben" password="user5" /> -->
 
 <!--     <acct_user_group user_id="1" group_id="1" />
 	<acct_user_group user_id="1" group_id="2" />
@@ -33,7 +33,7 @@
     <status_type id="3" name="会议中" graphic_resource_id="503c2920e4b0070fe88c9641" ></status_type>
     <status_type id="4" name="睡觉" graphic_resource_id="503c291fe4b0070fe88c9633" ></status_type>
     <status_type id="5" name="烧饭" graphic_resource_id="503c2920e4b0070fe88c9649" ></status_type>
-    <status_type id="6" name="WC" graphic_resource_id="503c28fce4b0070fe88c9629" ></status_type>
+    <status_type id="6" name="WC" graphic_resource_id="504998a9e4b06b6b0e5ee6a3" ></status_type>
     <status_type id="7" name="游泳"  graphic_resource_id="503c2920e4b0070fe88c9648" ></status_type>
     <status_type id="8" name="购物" graphic_resource_id="503c291fe4b0070fe88c9630" ></status_type>
     <status_type id="9" name="上班" graphic_resource_id="503c2920e4b0070fe88c963b" ></status_type>
@@ -59,13 +59,13 @@
     <holiday_type id="19" name="父亲节" download_num="1000" graphic_resource_id="503ed30de4b06138faf1b5b0" level="5"></holiday_type>
 
 
-    <category id="1" name="心情物语" description="心情物语测试测试车上" download_num="1000" graphic_resource_id="50039d9ee4b09ed787af7143" />
-    <category id="2" name="精品资讯" description="精品资讯测试测试车上" download_num="1000" graphic_resource_id="50039d92e4b09ed787af7107" />
-    <category id="3" name="动漫天地" description="动漫天地测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" />
-    <category id="4" name="健康贴士" description="健康贴士测试测试车上" download_num="1000" graphic_resource_id="50039d9ae4b09ed787af7127" />
-    <category id="5" name="节日祝福" description="节日祝福测试测试车上" download_num="1000" graphic_resource_id="50038f3ee4b0e0f489f26539" />
-    <category id="6" name="新闻摘要" description="新闻摘要测试测试车上" download_num="1000" graphic_resource_id="50039d9de4b09ed787af7133" />
-    <category id="7" name="GIF"      description="新闻摘要测试测试车上" download_num="1000" graphic_resource_id="50039d9de4b09ed787af7133" />
+    <category id="1" name="心情物语" description="心情物语测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee68f" />
+    <category id="2" name="精品资讯" description="精品资讯测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee69f" />
+    <category id="3" name="动漫天地" description="动漫天地测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee693" />
+    <category id="4" name="健康贴士" description="健康贴士测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee697" />
+    <category id="5" name="节日祝福" description="节日祝福测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee69b" />
+    <category id="6" name="新闻摘要" description="新闻摘要测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee68b" />
+    <category id="7" name="GIF"      description="新闻摘要测试测试车上" download_num="1000" graphic_resource_id="504995c2e4b06b6b0e5ee68b" />
 
 
     <graphic_infos id="4028b88138d5e5e50138d5e5f2800001" name="彩像11" signature="男儿当自强1 " audit_status="PASSED" level="3" recommend="false" use_count="12" price="2" owner="system" category_id="1" created_by="Anonymous" created_on="2012-08-01 12:13:35.0" updated_by="Anonymous" updated_on="2012-08-01 12:13:35.0"></graphic_infos>
@@ -296,6 +296,7 @@
     <user_catacts id="2" name="Steve Nash" phone_no="1512581472" self_user_id="3" user_id="1"></user_catacts>
     <user_catacts id="3" name="Jordon" phone_no="1512581473" self_user_id="4" user_id="1"></user_catacts>
     <user_catacts id="4" name="Avril" phone_no="1512581098" user_id="1"></user_catacts>
+    <user_catacts id="5" name="Avril" phone_no="1512581476" user_id="1"></user_catacts>
 
     <user_favorites id="4028b88138e5cc440138e5ccab220000" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" user_id="2" graphic_info_id="4028b88138d5e5e50138d5e5f2800001"></user_favorites>
     <user_favorites id="4028b88138e5cc440138e5ccab220001" created_by="gavin" created_on="2012-08-01 21:57:10.0" updated_by="gavin" updated_on="2012-08-01 21:57:10.0" user_id="2" graphic_info_id="4028b88138d5e5e50138d5e5f2800002"></user_favorites>
@@ -369,6 +370,39 @@
     <user_subscribe_record id="4" expenses="2.0" description="订购" user_id="3" created_on="2012-09-01 12:13:35.0"></user_subscribe_record>
     <user_subscribe_record id="5" expenses="2.0" description="订购" user_id="3" created_on="2012-09-02 12:13:35.0"></user_subscribe_record>
     <user_subscribe_record id="6" expenses="2.0" description="订购" user_id="3" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="7" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="8" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="9" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="10" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="11" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="12" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="13" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="14" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="15" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="16" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="17" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="18" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="19" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="20" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="21" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="22" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="23" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="24" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="25" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="26" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="27" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="28" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="29" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="30" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="31" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="32" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="33" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="35" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="36" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="37" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="38" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="39" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
+    <user_subscribe_record id="40" expenses="2.0" description="订购" user_id="1" created_on="2012-09-03 12:13:35.0"></user_subscribe_record>
     
     <user_subscribe_type id="1" user_id="1" subscribe_status="SUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
     <user_subscribe_type id="2" user_id="1" subscribe_status="SUBSCRIBED" subscribe_type_id="2" validate_month="8"></user_subscribe_type>
@@ -387,10 +421,10 @@
 	<user_subscribe_graphic_item user_id="1" graphic_info_id="4028b88138d5e5e50138d5e5f2800004"></user_subscribe_graphic_item>
 	<user_subscribe_graphic_item user_id="1" graphic_info_id="4028b88138d5e5e50138d5e5f2800005"></user_subscribe_graphic_item>
 	
-	<cxcoin_account id="1" name="Account1" password="123456" coin="50" user_id="1"></cxcoin_account>
-	<cxcoin_account id="2" name="Account2" password="123456" coin="50" user_id="2"></cxcoin_account>
-	<cxcoin_account id="3" name="Account3" password="123456" coin="50" user_id="3"></cxcoin_account>
-	<cxcoin_account id="4" name="Account7" password="123456" coin="50" user_id="7"></cxcoin_account>
+	<cxcoin_account id="1" name="Account1" password="123456" coin="50" imsi="13146001000"></cxcoin_account>
+	<cxcoin_account id="2" name="Account2" password="123456" coin="50" imsi="13146001001"></cxcoin_account>
+	<cxcoin_account id="3" name="Account3" password="123456" coin="50" imsi="13146001003"></cxcoin_account>
+	<cxcoin_account id="4" name="Account7" password="123456" coin="50" imsi="13146001007"></cxcoin_account>
 	<cxcoin_consume_record id="1" user_id="3" cx_coin="5"></cxcoin_consume_record>
 	<cxcoin_total_item id="1" cx_coin_count="1000000"></cxcoin_total_item>
     <!-- sms table -->

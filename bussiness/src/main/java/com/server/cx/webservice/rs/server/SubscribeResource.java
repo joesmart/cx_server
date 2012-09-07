@@ -74,25 +74,25 @@ public class SubscribeResource {
         } catch (InvalidParameterException e) {
             LOGGER.error("subscribeFunctionType InvalidParameterException error", e);
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                Response.Status.BAD_REQUEST.getStatusCode(), "subscribeFunctionType", "请求参数异常");
+                Response.Status.BAD_REQUEST.getStatusCode(), "subscribeFunctionType", e.getMessage());
             return Response.ok(operationDescription).build();
 
         } catch (MoneyNotEnoughException e) {
             LOGGER.info("subscribeFunctionType MoneyNotEnoughException", e);
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "subscribeFunctionType", "余额不足");
+                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "subscribeFunctionType", e.getMessage());
             return Response.ok(operationDescription).build();
 
         } catch (UserHasSubscribedException e) {
             LOGGER.error("subscribeFunctionType error", e);
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "subscribeFunctionType", "用户已经订购");
+                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "subscribeFunctionType", e.getMessage());
             return Response.ok(operationDescription).build();
 
         } catch (Exception e) {
             LOGGER.error("subscribeFunctionType error", e);
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), "subscribeFunctionType", "服务器内部错误");
+                Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), "subscribeFunctionType", e.getMessage());
             return Response.ok(operationDescription).build();
         }
 

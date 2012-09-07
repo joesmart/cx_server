@@ -44,7 +44,7 @@ public class UserSubscribeGraphicItemServiceTest extends SpringTransactionalTest
         UserInfo userInfo = userInfoDao.findOne("2");
         userSubscribeGraphicItemService.subscribeGraphicItem(userInfo.getImsi(), "4028b88138d5e5e50138d5e5f2800093");
         UserInfo userInfo2 = userInfoDao.findOne("2");
-        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo2);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo2.getImsi());
         assertEquals(30d, cxCoinAccount.getCoin().doubleValue(), 1e-3);
         List<UserSubscribeRecord> records2 = (List<UserSubscribeRecord>) userSubscribeRecordDao.findAll();
         Assertions.assertThat(records1.size()).isEqualTo(records2.size() - 1);
@@ -68,7 +68,7 @@ public class UserSubscribeGraphicItemServiceTest extends SpringTransactionalTest
         GraphicInfo graphicInfo = graphicInfoDao.findOne("4028b88138d5e5e50138d5e5f2800093");
         userSubscribeGraphicItemService.subscribeGraphicItem(userInfo, graphicInfo);
         UserInfo userInfo2 = userInfoDao.findOne("2");
-        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByUserInfo(userInfo2);
+        CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo2.getImsi());
         assertEquals(30d, cxCoinAccount.getCoin().doubleValue(), 1e-3);
         List<UserSubscribeRecord> records2 = (List<UserSubscribeRecord>) userSubscribeRecordDao.findAll();
         Assertions.assertThat(records1.size()).isEqualTo(records2.size() - 1);
