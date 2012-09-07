@@ -34,7 +34,7 @@ public class UserSubscribeGraphicItemServiceImpl extends CXCoinBasicService impl
     @Override
     public void subscribeGraphicItem(String imsi, String graphicInfoId) throws MoneyNotEnoughException {
         if(graphicInfoId != null) {
-            checkAndSetUserInfoExists(imsi);
+            checkUserRegisterCXCoinAccount(imsi);
             GraphicInfo graphicInfo = graphicInfoDao.findOne(graphicInfoId);
             if (!hasSubscribedGraphicItem(userInfo, graphicInfo)) {
                 subscribeGraphicItem(userInfo, graphicInfo);
