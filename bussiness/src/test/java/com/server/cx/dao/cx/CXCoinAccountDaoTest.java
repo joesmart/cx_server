@@ -1,14 +1,12 @@
 package com.server.cx.dao.cx;
 
-import javax.jws.soap.SOAPBinding.Use;
+import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 import com.server.cx.entity.cx.CXCoinAccount;
 import com.server.cx.entity.cx.UserInfo;
-
-import static org.fest.assertions.Assertions.assertThat;
 
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 public class CXCoinAccountDaoTest extends SpringTransactionalTestCase {

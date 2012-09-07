@@ -97,7 +97,7 @@ public class InsertTestData extends AbstractTransactionalJUnit4SpringContextTest
             userInfo.setImsi(Objects.hashCode(userInfo.getDeviceId(), RandomStringUtils.randomNumeric(3)) + "");
             userInfo.setUserAgent("test" + RandomStringUtils.randomNumeric(6));
             userInfo.setPhoneNo("" + Objects.hashCode(userInfo.getDeviceId(), userInfo.getUserAgent()));
-            userInfo.setTotleMoney(123D);
+//            userInfo.setTotleMoney(123D);
             userInfoDao.save(userInfo);
             System.out.println("XXXXX:"+userInfo.toString());
             logger.info("XXXXX:"+userInfo.toString());
