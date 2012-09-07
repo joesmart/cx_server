@@ -16,4 +16,6 @@ public interface ContactsCustomDao {
     public List<Contacts> getContactsByUserIdAndSelfUserInfoNotNull(String userId) throws SystemException;
     
     public void updateContactsSelfUserInfo(UserInfo userinfo) throws SystemException;
+    
+    public void batchUpdateContactsPhoneNo(List<Contacts> contacts);
 }

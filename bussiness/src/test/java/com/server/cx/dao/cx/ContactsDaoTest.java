@@ -44,4 +44,10 @@ public class ContactsDaoTest extends SpringTransactionalTestCase {
         assertThat(contacts.size()).isEqualTo(3);
         assertThat(contacts.get(0).getName()).isEqualTo("Lebron James");
     }
+    
+    @Test
+    public void test_find_by_userinfo_null() {
+        List<Contacts> contacts = contactsDao.findBySelfUserInfo(null);
+        System.out.println("contacts = " + contacts.size());
+    }
 }
