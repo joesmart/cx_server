@@ -414,6 +414,7 @@
     <user_subscribe_type id="9" user_id="4" subscribe_status="MONEYNOTENOUGH" subscribe_type_id="3"></user_subscribe_type>
     <user_subscribe_type id="10" user_id="6" subscribe_status="SUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
     <user_subscribe_type id="11" user_id="7" subscribe_status="UNSUBSCRIBED" subscribe_type_id="1" validate_month="8"></user_subscribe_type>
+    <user_subscribe_type id="12" user_id="7" subscribe_status="UNSUBSCRIBED" subscribe_type_id="2" validate_month="9"></user_subscribe_type>
 	
 	<user_subscribe_graphic_item user_id="1" graphic_info_id="4028b88138d5e5e50138d5e5f2800001"></user_subscribe_graphic_item>
 	<user_subscribe_graphic_item user_id="1" graphic_info_id="4028b88138d5e5e50138d5e5f2800002"></user_subscribe_graphic_item>

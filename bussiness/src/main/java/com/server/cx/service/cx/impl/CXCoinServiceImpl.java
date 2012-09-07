@@ -46,6 +46,7 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
         CXCoinAccount cxCoinAccount = new CXCoinAccount();
         cxCoinAccount.setName(coinAccountDTO.getName());
         cxCoinAccount.setPassword(coinAccountDTO.getPassword());
+        cxCoinAccount.setImsi(imsi);
         
         CXCoinTotalItem cxCoinTotalItem = findCXCoinTotalItem();
         checkCXCoinTotalEnough(cxCoinTotalItem.getCxCoinCount(), 50D);

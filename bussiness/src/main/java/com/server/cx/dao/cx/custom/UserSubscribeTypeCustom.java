@@ -12,5 +12,7 @@ public interface UserSubscribeTypeCustom {
     public List<UserSubscribeType> findUserSubscribeTypes(UserInfo userInfo, String type);
 
     public List<UserSubscribeType> findAllSubscribeTypes();
+    
+    public UserSubscribeType findCurrentValidateSubscribeTypes(UserInfo userInfo, String type);
 
 }

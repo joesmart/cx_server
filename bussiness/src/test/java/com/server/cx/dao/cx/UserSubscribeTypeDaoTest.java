@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
+import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.entity.cx.UserSubscribeType;
 import com.server.cx.util.business.SubscribeStatus;
 
@@ -108,6 +109,14 @@ public class UserSubscribeTypeDaoTest extends SpringTransactionalTestCase {
         UserSubscribeType userSubscribeType2 = userSubscribeTypeDao.findMonthValidateAndNotSubscribedType(userInfoDao.findOne("4"), "status");
         assertThat(userSubscribeType2).isNotNull();
         assertThat(userSubscribeType2.getSubscribeType().getName()).isEqualTo("状态包");
+    }
+    
+    @Test
+    public void test_findCurrentValidateSubscribeTypes() {
+        UserInfo userInfo = userInfoDao.findOne("7");
+        UserSubscribeType userSubscribeType = userSubscribeTypeDao.findCurrentValidateSubscribeTypes(userInfo, "status");
+        assertThat(userSubscribeType).isNotNull();
+        assertThat(userSubscribeType.getSubscribeStatus()).isEqualTo(SubscribeStatus.UNSUBSCRIBED);
     }
 
 }
