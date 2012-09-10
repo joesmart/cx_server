@@ -3,8 +3,6 @@ package com.server.cx.webservice.rs.server;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.HistoryMGraphicService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +21,6 @@ import javax.ws.rs.core.Response;
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class HistoryMGraphicResources {
-    public static final Logger LOGGER = LoggerFactory.getLogger(MyCollectionsResources.class);
 
     @Autowired
     private HistoryMGraphicService historyMGraphicService;

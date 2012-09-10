@@ -31,7 +31,7 @@ import javax.ws.rs.core.Response;
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class MGraphicResources extends OperationResources {
-    public static final Logger LOGGER = LoggerFactory.getLogger(MGraphicResources.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MGraphicResources.class);
 
     @Autowired
     private MGraphicService mgraphicService;
@@ -60,14 +60,14 @@ public class MGraphicResources extends OperationResources {
         } catch (MoneyNotEnoughException e) {
             LOGGER.info("create MoneyNotEnoughException", e);
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "create", "余额不足");
+                    Response.Status.NOT_ACCEPTABLE.getStatusCode(), "create", "余额不足");
             return Response.ok(operationDescription).build();
 
         } catch (NotSubscribeTypeException e) {
             LOGGER.error("create NotSubscribeTypeException error", e);
             OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
-                HttpServletResponse.SC_OK, "create", Constants.SUCCESS_FLAG,
-                actionBuilder.buildSubscribeGraphicItemAction(imsi));
+                    HttpServletResponse.SC_OK, "create", Constants.SUCCESS_FLAG,
+                    actionBuilder.buildSubscribeGraphicItemAction(imsi));
             return Response.ok(operationDescription).build();
 
         } catch (Exception ex) {
@@ -93,7 +93,7 @@ public class MGraphicResources extends OperationResources {
         } catch (NotSubscribeTypeException e) {
             LOGGER.error("create NotSubscribeTypeException error", e);
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                Response.Status.NOT_ACCEPTABLE.getStatusCode(), "create", "用户未订购");
+                    Response.Status.NOT_ACCEPTABLE.getStatusCode(), "create", "用户未订购");
             return Response.ok(operationDescription).build();
 
         } catch (Exception e) {
@@ -126,7 +126,17 @@ public class MGraphicResources extends OperationResources {
 
     @GET
     public Response getAll(@PathParam("imsi") String imsi) {
-        DataPage dataPage = queryMGraphicService.queryUserMGraphic(imsi);
-        return Response.ok(dataPage).build();
+        operationDescription = new OperationDescription();
+        try {
+            DataPage dataPage = queryMGraphicService.queryUserMGraphic(imsi);
+            return Response.ok(dataPage).build();
+        } catch (Exception e) {
+            errorMessage(e);
+            actionName = "queryMGraphics";
+            operationDescription.setActionName(actionName);
+            operationDescription.setErrorCode(403);
+            return Response.ok(operationDescription).build();
+        }
+
     }
 }
