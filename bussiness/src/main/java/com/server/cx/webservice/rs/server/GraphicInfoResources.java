@@ -1,21 +1,5 @@
 package com.server.cx.webservice.rs.server;
 
-import java.util.concurrent.ExecutionException;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.OperationDescription;
@@ -23,6 +7,14 @@ import com.server.cx.entity.cx.GraphicInfo;
 import com.server.cx.service.cx.GraphicInfoService;
 import com.server.cx.service.cx.UserSubscribeGraphicItemService;
 import com.server.cx.util.ObjectFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.concurrent.ExecutionException;
 
 /**
  * User: yanjianzou
@@ -36,7 +28,6 @@ import com.server.cx.util.ObjectFactory;
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
 public class GraphicInfoResources {
-    private static final Logger LOGGER = LoggerFactory.getLogger(GraphicInfoResources.class);
 
     @Autowired
     private GraphicInfoService graphicInfoService;
@@ -54,12 +45,6 @@ public class GraphicInfoResources {
                                                            @DefaultValue("0") @QueryParam("offset") Integer offset,
                                                            @DefaultValue("8") @QueryParam("limit") Integer limit
     ) {
-        LOGGER.info("imsi:" + imsi);
-        LOGGER.info("id:" + categoryId);
-        LOGGER.info("isHot:" + isHot);
-        LOGGER.info("recommend:" + recommend);
-        LOGGER.info("offset:" + offset);
-        LOGGER.info("limit:" + limit);
 
 
         try {
@@ -84,7 +69,6 @@ public class GraphicInfoResources {
                 return Response.ok(dataPage).build();
             }
         } catch (ExecutionException e) {
-            LOGGER.error("GraphicInfos cache error",e);
             OperationDescription operationDescription = new OperationDescription();
             operationDescription.setActionName("getGraphicInfosByCategoryAndPagination");
             operationDescription.setErrorCode(500);
@@ -98,7 +82,7 @@ public class GraphicInfoResources {
 
     @POST
     public Response addGraphicInfo(DataItem dataItem) {
-        LOGGER.info("Into addGraphicInfo dataItem = " + dataItem);
+
         try {
             GraphicInfo graphicInfo = ObjectFactory.buildGraphicInfoFromDataItem(dataItem);
             graphicInfoService.addGraphicInfo(graphicInfo);

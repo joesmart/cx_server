@@ -1,5 +1,6 @@
 package com.server.cx.webservice.rs.server;
 
+import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.dto.GraphicCheckDTO;
 import com.server.cx.service.cx.GraphicResourceService;
 import com.server.cx.util.business.AuditStatus;
@@ -24,22 +25,27 @@ import javax.ws.rs.core.MediaType;
 @Path("graphicResources")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-public class GraphicResources {
+public class GraphicResources extends OperationResources {
     @Autowired
     private GraphicResourceService graphicResourceService;
 
     public static final Logger LOGGER = LoggerFactory.getLogger(GraphicResources.class);
+
     @POST
-    public void auditGraphicResource(GraphicCheckDTO graphicCheckDTO){
-        LOGGER.info(graphicCheckDTO.toString());
-        AuditStatus auditStatus = AuditStatus.CHECKING;
-        String result =  graphicCheckDTO.getCheckResult();
-        if("PASS".equalsIgnoreCase(result)){
-            auditStatus = AuditStatus.PASSED;
+    public void auditGraphicResource(GraphicCheckDTO graphicCheckDTO) {
+        operationDescription = new OperationDescription();
+        try {
+            AuditStatus auditStatus = AuditStatus.CHECKING;
+            String result = graphicCheckDTO.getCheckResult();
+            if ("PASS".equalsIgnoreCase(result)) {
+                auditStatus = AuditStatus.PASSED;
+            }
+            if ("UNPASS".equalsIgnoreCase(result)) {
+                auditStatus = AuditStatus.UNPASS;
+            }
+            graphicResourceService.updateGraphicResourcesAuditStatus(graphicCheckDTO.getGraphicIds(), auditStatus);
+        } catch (Exception e) {
+            LOGGER.error("resource server audit error:",e);
         }
-        if("UNPASS".equalsIgnoreCase(result)){
-            auditStatus = AuditStatus.UNPASS;
-        }
-        graphicResourceService.updateGraphicResourcesAuditStatus(graphicCheckDTO.getGraphicIds(),auditStatus);
     }
 }
