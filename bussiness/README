@@ -1,1 +1,4 @@
 This file was created by IntelliJ IDEA (Nika.1) IU-117.747 for binding GitHub repository
+1.the steps for install 3rd jar into the local maven repository
+  1.)cd bussiness\bin
+  2.)execute "install_3rd_lib.bat"

@@ -66,15 +66,23 @@
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 	
 	<bean id="perMonthService" class="com.server.cx.service.cx.impl.PerMonthServiceImpl" />
+
 	<bean id="userDailyService" class="com.server.cx.service.cx.impl.UserDailyServiceImpl" />
 	
+
 	 <bean id="jobDetail"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="perMonthService" />
 		<property name="targetMethod" value="doTask" />
 		<property name="concurrent" value="false" />
 	</bean>
-	
+
+
+ 	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobDetail" />
+		<property name="cronExpression" value="0 0 0 1 * ?" />
+	</bean>
+
 	<bean id="doDailyTask"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="userDailyService" />
@@ -91,6 +99,7 @@
 		<property name="jobDetail" ref="doDailyTask" />
 		<property name="cronExpression" value="0 0 0 * * ?" />
 	</bean> 
+
 	
  	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
@@ -116,6 +125,21 @@
         </property>
     </bean>
 
+    <bean id="sqlServerDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <!-- Connection Info -->
+        <property name="driverClassName" value="${sqlserver.jdbc.driver}"/>
+        <property name="url" value="${sqlserver.jdbc.url}"/>
+        <property name="username" value="${sqlserver.jdbc.username}"/>
+        <property name="password" value="${sqlserver.jdbc.password}"/>
+
+        <!-- Connection Pooling Info -->
+        <property name="maxActive" value="${dbcp.maxActive}"/>
+        <property name="maxIdle" value="${dbcp.maxIdle}"/>
+        <property name="defaultAutoCommit" value="false"/>
+        <!-- 连接Idle一个小时后超时 -->
+        <property name="timeBetweenEvictionRunsMillis" value="3600000"/>
+        <property name="minEvictableIdleTimeMillis" value="3600000"/>
+    </bean>
 
     <bean id="restURL" class="java.lang.String">
         <constructor-arg value="rs/"/>
