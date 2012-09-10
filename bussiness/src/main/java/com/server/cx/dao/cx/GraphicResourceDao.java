@@ -1,6 +1,7 @@
 package com.server.cx.dao.cx;
 
 import com.server.cx.entity.cx.GraphicResource;
+import com.server.cx.entity.cx.UserDiyGraphic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -14,4 +15,5 @@ import java.util.List;
  */
 public interface GraphicResourceDao extends JpaRepository<GraphicResource, String>,JpaSpecificationExecutor<GraphicResource> {
     public List<GraphicResource> findByResourceIdIn(List<String> resourceIds);
+    public List<GraphicResource> findByDiyGraphicOrderByAuditStatusAscCreatedOnDesc(UserDiyGraphic diyGraphic);
 }

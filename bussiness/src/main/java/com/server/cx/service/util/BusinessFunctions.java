@@ -448,6 +448,7 @@ public class BusinessFunctions {
                 graphicResource.setResourceId(input.getResourceId());
                 if (CheckStatusDesc.CHECKING.equals(input.getCheckStatusDesc())) {
                     graphicResource.setAuditPassed(null);
+                    graphicResource.setAuditStatus(AuditStatus.CHECKING);
                 }
                 //TODO need dynamic determine the File extend file type. by Zou YanJian.
                 graphicResource.setType("jpg");
@@ -483,7 +484,8 @@ public class BusinessFunctions {
                 dataItem.setSignature(userDiyGraphic.getSignature());
                 dataItem.setId(input.getId());
                 dataItem.setResourceType(input.getType());
-                if (input.getAuditPassed() == null) {
+                dataItem.setAuditStatus(input.getAuditStatus().toString());
+                /*if (input.getAuditPassed() == null) {
                     dataItem.setAuditStatus("CHECKING");
                 } else {
                     if (true == input.getAuditPassed()) {
@@ -493,7 +495,7 @@ public class BusinessFunctions {
                     if (false == input.getAuditPassed()) {
                         dataItem.setAuditStatus("UNPASS");
                     }
-                }
+                }*/
 
                 dataItem.setMediaType(input.getType());
                 setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem, input);
