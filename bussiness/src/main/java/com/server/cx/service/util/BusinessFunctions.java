@@ -491,7 +491,7 @@ public class BusinessFunctions {
                     dataItem.setActions(actionBuilder.buildUserDIYGraphicActions(imsi, input.getId()));
                 }
                 if(AuditStatus.UNPASS.equals(input.getAuditStatus())){
-                    dataItem.setActions(actionBuilder.buildUserDIYGraphicActions(imsi, input.getId()));
+                    dataItem.setActions(actionBuilder.buildUserDIYGraphicRemoveActions(imsi, input.getId()));
                 }
                 if(AuditStatus.CHECKING.equals(input.getAuditStatus())){
                     dataItem.setActions(null);
