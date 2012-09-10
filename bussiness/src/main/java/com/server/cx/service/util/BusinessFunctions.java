@@ -447,7 +447,6 @@ public class BusinessFunctions {
                 GraphicResource graphicResource = new GraphicResource();
                 graphicResource.setResourceId(input.getResourceId());
                 if (CheckStatusDesc.CHECKING.equals(input.getCheckStatusDesc())) {
-                    graphicResource.setAuditPassed(null);
                     graphicResource.setAuditStatus(AuditStatus.CHECKING);
                 }
                 //TODO need dynamic determine the File extend file type. by Zou YanJian.
@@ -485,21 +484,18 @@ public class BusinessFunctions {
                 dataItem.setId(input.getId());
                 dataItem.setResourceType(input.getType());
                 dataItem.setAuditStatus(input.getAuditStatus().toString());
-                /*if (input.getAuditPassed() == null) {
-                    dataItem.setAuditStatus("CHECKING");
-                } else {
-                    if (true == input.getAuditPassed()) {
-                        dataItem.setAuditStatus("PASSED");
-                    }
-
-                    if (false == input.getAuditPassed()) {
-                        dataItem.setAuditStatus("UNPASS");
-                    }
-                }*/
 
                 dataItem.setMediaType(input.getType());
                 setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem, input);
-                dataItem.setActions(actionBuilder.buildUserDIYGraphicActions(imsi, input.getId()));
+                if(AuditStatus.PASSED.equals(input.getAuditStatus())){
+                    dataItem.setActions(actionBuilder.buildUserDIYGraphicActions(imsi, input.getId()));
+                }
+                if(AuditStatus.UNPASS.equals(input.getAuditStatus())){
+                    dataItem.setActions(actionBuilder.buildUserDIYGraphicActions(imsi, input.getId()));
+                }
+                if(AuditStatus.CHECKING.equals(input.getAuditStatus())){
+                    dataItem.setActions(null);
+                }
                 return dataItem;
             }
         };
