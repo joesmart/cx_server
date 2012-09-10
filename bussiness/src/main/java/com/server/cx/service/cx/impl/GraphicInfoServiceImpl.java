@@ -248,4 +248,10 @@ public class GraphicInfoServiceImpl  extends CXCoinBasicService implements Graph
 
         return dataPage;
     }
+
+    @Transactional(readOnly=false)
+    @Override
+    public void addGraphicInfo(GraphicInfo graphicInfo) {
+        graphicInfoDao.save(graphicInfo);
+    }
 }

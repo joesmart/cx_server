@@ -175,7 +175,7 @@ public class BusinessFunctions {
         item.setSignature(input.getSignature());
         item.setDownloadNumber(String.valueOf(input.getUseCount()));
         item.setAuditStatus(AuditStatus.PASSED.toString());
-        item.setPrice(input.getPrice());
+        item.setPrice((int)(input.getPrice().doubleValue()));
         if (input.getPrice() > 0.0F) {
             item.setPurchased(false);
         }
