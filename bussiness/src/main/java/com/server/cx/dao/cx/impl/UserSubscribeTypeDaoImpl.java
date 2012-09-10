@@ -37,6 +37,17 @@ public class UserSubscribeTypeDaoImpl extends BasicDao implements UserSubscribeT
         return query.getResultList();
     }
     
+    @Override
+    public UserSubscribeType findCurrentValidateSubscribeTypes(UserInfo userInfo, String type) {
+        String hql = "select u from UserSubscribeType u inner join u.subscribeType item where cast_type = ? and u.validateMonth = ? and u.userInfo = ?";
+        Query query = em.createQuery(hql);
+        query.setParameter(1, type);
+        query.setParameter(2, DateUtil.getCurrentMonth());
+        query.setParameter(3, userInfo);
+        List<UserSubscribeType> userSubscribeTypes = query.getResultList();
+        return (userSubscribeTypes == null || userSubscribeTypes.isEmpty()) ? null : userSubscribeTypes.get(0);
+    }
+    
     @SuppressWarnings("unchecked")
     @Override
     public UserSubscribeType findMonthValidateAndNotSubscribedType(UserInfo userInfo, String queryCondition) {

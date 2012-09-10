@@ -67,23 +67,45 @@
 	
 	<bean id="perMonthService" class="com.server.cx.service.cx.impl.PerMonthServiceImpl" />
 
+	<bean id="userDailyService" class="com.server.cx.service.cx.impl.UserDailyServiceImpl" />
+	
+
 	 <bean id="jobDetail"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="perMonthService" />
 		<property name="targetMethod" value="doTask" />
 		<property name="concurrent" value="false" />
 	</bean>
-	
+
 
  	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="jobDetail" />
 		<property name="cronExpression" value="0 0 0 1 * ?" />
 	</bean>
+
+	<bean id="doDailyTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="userDailyService" />
+		<property name="targetMethod" value="doDailyTask" />
+		<property name="concurrent" value="false" />
+	</bean>
+		
+ 	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobDetail" />
+		<property name="cronExpression" value="0 0 0 1 * ?" />
+	</bean> 
+	
+	<bean id="doDailyTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="doDailyTask" />
+		<property name="cronExpression" value="0 0 0 * * ?" />
+	</bean> 
+
 	
  	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
 				<ref bean="cronTrigger" />
+				<ref bean="doDailyTaskTrigger" />
 			</list>
 		</property>
 	</bean>

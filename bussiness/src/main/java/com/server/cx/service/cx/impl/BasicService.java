@@ -263,4 +263,8 @@ public class BasicService {
     public String generateCXCoinRecordsURL(String imsi) {
         return generateURL(imsi, "/cxCoin/records");
     }
+
+    public String generateCXCoinRegisterURL(String imsi) {
+        return generateURL(imsi, "/cxCoin/register");
+    }
 }

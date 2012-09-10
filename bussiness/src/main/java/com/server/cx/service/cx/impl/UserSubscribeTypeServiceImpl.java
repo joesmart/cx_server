@@ -98,9 +98,9 @@ public class UserSubscribeTypeServiceImpl extends CXCoinBasicService implements 
     @Override
     public boolean checkSubscribeType(UserInfo userInfo, String type) throws NotSubscribeTypeException {
         LOGGER.info("Into checkExistSubscribeHolidayType userInfo = " + userInfo);
-        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, type);
-        System.out.println("userSubscribeTypes size = " + userSubscribeTypes.size());
-        if (userSubscribeTypes != null && !userSubscribeTypes.isEmpty())
+//        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, type);
+        UserSubscribeType userSubscribeTypes = userSubscribeTypeDao.findCurrentValidateSubscribeTypes(userInfo, type);
+        if (userSubscribeTypes != null)
             return true;
         throw new NotSubscribeTypeException("用户未订购");
     }

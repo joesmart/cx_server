@@ -122,10 +122,10 @@ public class ActionBuilder {
     }
 
     public ActionBuilder customMGraphicsUrl(String url) {
-        return customMGraphicsUrl(url,"GET");
+        return customMGraphicsUrl(url, "GET");
     }
 
-    public ActionBuilder customMGraphicsUrl(String url,String method) {
+    public ActionBuilder customMGraphicsUrl(String url, String method) {
         Action action = new Action(url, method);
         actions.setCustomMGraphicsURL(action);
         return this;
@@ -202,47 +202,45 @@ public class ActionBuilder {
         actions.setSubscribeURL(action);
         return this;
     }
-    
+
     private ActionBuilder cancelSubscribeURL(String url) {
         Action action = new Action(url, "DELETE");
         actions.setCancelSubscribeURL(action);
         return this;
     }
-    
+
     private ActionBuilder cxCoinAccountURL(String url) {
         Action action = new Action(url, "GET");
         actions.setCxCoinAccountURL(action);
         return this;
     }
-    
+
     private ActionBuilder cxCoinRegisterURL(String url) {
         Action action = new Action(url, "POST");
         actions.setCxCoinRegisterURL(action);
         return this;
     }
-    
+
     private ActionBuilder cxCoinRecordsURL(String url) {
         Action action = new Action(url, "GET");
         actions.setCxCoinRecordsURL(action);
         return this;
-     }
-    
+    }
+
     private ActionBuilder cxCoinConsumeURL(String url) {
         Action action = new Action(url, "PUT");
         actions.setCxCoinConsumeURL(action);
         return this;
     }
-    
+
     public Actions build() {
         return actions;
     }
 
     public Actions buildGraphicItemAction(String imsi) {
         return actions().collectURL(basicService.generateMyCollectionsVisitURL(imsi))
-            .purchaseURL(basicService.generateImagePurchaseURL(imsi))
-            .useURL(basicService.generateMGraphicsURL(imsi))
-            .customMGraphicsUrl(basicService.generateCustomMGraphicsVisitURL(imsi),"POST")
-            .build();
+            .purchaseURL(basicService.generateImagePurchaseURL(imsi)).useURL(basicService.generateMGraphicsURL(imsi))
+            .customMGraphicsUrl(basicService.generateCustomMGraphicsVisitURL(imsi), "POST").build();
     }
 
     public Actions buildHolidayMGraphicItemAction(String imsi) {
@@ -269,16 +267,14 @@ public class ActionBuilder {
     }
 
     public Actions buildCustomMGraphicItemCreatedAction(String imsi, String mGraphicId) {
-        return actions()
-                .removeURL(basicService.generateCustomMGraphicsOperateURL(imsi, mGraphicId))
-                .editURL(basicService.generateCustomMGraphicsOperateURL(imsi,mGraphicId))
-                .build();
+        return actions().removeURL(basicService.generateCustomMGraphicsOperateURL(imsi, mGraphicId))
+            .editURL(basicService.generateCustomMGraphicsOperateURL(imsi, mGraphicId)).build();
     }
 
     public Actions buildStatusMGraphicItemEditAction(String imsi, String mGraphicId) {
         return actions().collectURL(basicService.generateMyCollectionsVisitURL(imsi))
             .purchaseURL(basicService.generateImagePurchaseURL(imsi))
-//            .editURL(basicService.generateStatusMGraphicRemoveURL(imsi, mGraphicId))
+            //            .editURL(basicService.generateStatusMGraphicRemoveURL(imsi, mGraphicId))
             .useURL(basicService.generateStatusMGraphicUseURL(imsi))
             .removeURL(basicService.generateStatusMGraphicRemoveURL(imsi, mGraphicId)).build();
     }
@@ -339,31 +335,30 @@ public class ActionBuilder {
     public Actions buildHolidaySubscribeGraphicItemAction(String imsi, Boolean isImmediate) {
         return actions().subscribeURL(basicService.generateHolidaySubscribeGraphicItemURL(imsi, isImmediate)).build();
     }
-    
+
     public Actions buildStatusSubscribeGraphicItemAction(String imsi, Boolean isImmediate) {
         return actions().subscribeURL(basicService.generateStatusSubscribeGraphicItemURL(imsi, isImmediate)).build();
     }
-    
+
     public Actions buildCustomSubscribeGraphicItemAction(String imsi) {
         return actions().subscribeURL(basicService.generateCustomSubscribeGraphicItemURL(imsi)).build();
     }
-    
+
     public Actions buildSubscribeGraphicItemAction(String imsi) {
         return actions().subscribeURL(basicService.generateSubscribeGraphicItem(imsi)).build();
     }
-    
+
     public Actions buildCancelSubscribeHolidayAction(String imsi) {
         return actions().cancelSubscribeURL(basicService.generateCancelSubscribeHolidayURL(imsi)).build();
     }
-    
+
     public Actions buildCancelSubscribeStatusAction(String imsi) {
         return actions().cancelSubscribeURL(basicService.generateCancelSubscribeStatusURL(imsi)).build();
     }
-    
+
     public Actions buildCancelSubscribeCustomAction(String imsi) {
         return actions().cancelSubscribeURL(basicService.generateCancelSubscribeCustomURL(imsi)).build();
     }
-    
 
     public Actions buildUserOperableActions(String imsi) {
         return actions().recommendUrl(basicService.generateRecommendGraphicInfoVisitURL(imsi))
@@ -383,26 +378,33 @@ public class ActionBuilder {
             .getContactsURL(basicService.generateContactsUploadURL(imsi))
             .uploadCommonMGraphicURL(basicService.generateUserDIYMGraphicUploadURL(imsi))
             .uploadContactsURL(basicService.generateContactsUploadURL(imsi))
+            .cxCoinRegisterURL(basicService.generateCXCoinRegisterURL(imsi))
             .cxCoinAccountURL(basicService.generateCXCoinAccountURL(imsi))
             .cxCoinConsumeURL(basicService.generateCXCoinConsumeURL(imsi))
             .cxCoinRecordsURL(basicService.generateCXCoinRecordsURL(imsi)).build();
     }
-    
+
     public Actions buildAnonymousActions() {
         String replaceImsi = "none";
         Actions actions = buildUserOperableActions(replaceImsi);
         hiddenTheNeedRegisteredActions(actions);
         return actions;
     }
-    
+
     public void hiddenCXCoinRegisterURL(Actions actions) {
         actions.setCxCoinRegisterURL(null);
     }
-    
+
     public void hiddenCXCoinOtherURL(Actions actions) {
         actions.setCxCoinAccountURL(null);
         actions.setCxCoinConsumeURL(null);
         actions.setCxCoinRecordsURL(null);
+    }
+
+    public Actions buildCXCoinRegisteredURL(String imsi) {
+        return actions().cxCoinAccountURL(basicService.generateCXCoinAccountURL(imsi))
+            .cxCoinConsumeURL(basicService.generateCXCoinConsumeURL(imsi))
+            .cxCoinRecordsURL(basicService.generateCXCoinRecordsURL(imsi)).build();
     }
 
     private void hiddenTheNeedRegisteredActions(Actions actions) {
@@ -416,7 +418,7 @@ public class ActionBuilder {
         actions.setGetContactsURL(null);
         actions.setUploadCommonMGraphicURL(null);
     }
-    
+
     public Actions buildMGraphicActions(String imsi, String id, String conditions) {
         return actions().editURL(basicService.getBaseURL() + imsi + "/" + conditions + "/" + id)
             .removeURL(basicService.getBaseURL() + imsi + "/" + conditions + "/" + id).build();
@@ -427,8 +429,8 @@ public class ActionBuilder {
             .removeURL(basicService.generateHistoryMGraphicRemoveURL(imsi, id)).build();
     }
 
-    public Actions buildUserDIYGraphicActions(String imsi,String id){
+    public Actions buildUserDIYGraphicActions(String imsi, String id) {
         return actions().useURL(basicService.generateDiyMGraphicUseURL(imsi))
-                .removeURL(basicService.generateUserDIYGraphicDeleteURL(imsi, id)).build();
+            .removeURL(basicService.generateUserDIYGraphicDeleteURL(imsi, id)).build();
     }
 }

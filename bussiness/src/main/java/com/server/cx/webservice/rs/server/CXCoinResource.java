@@ -1,13 +1,16 @@
 package com.server.cx.webservice.rs.server;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +20,7 @@ import com.cl.cx.platform.dto.CXCoinAccountDTO;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.entity.cx.CXCoinAccount;
+import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.CXCoinService;
 import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.ObjectFactory;
@@ -24,6 +28,8 @@ import com.server.cx.util.business.ValidationUtil;
 
 @Component
 @Path("/{imsi}/cxCoin")
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 public class CXCoinResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(CXCoinResource.class);
 
@@ -32,7 +38,10 @@ public class CXCoinResource {
 
     @Autowired
     private BusinessFunctions businessFunctions;
-
+    
+    @Autowired
+    private ActionBuilder actionBuilder;
+    
     @Path("account")
     @GET
     public Response getCXCoinAccount(@PathParam("imsi") String imsi) {
@@ -60,6 +69,7 @@ public class CXCoinResource {
         try {
             ValidationUtil.checkParametersNotNull(imsi, coinAccountDTO.getName(), coinAccountDTO.getPassword());
             OperationDescription operationDescription = cxCoinService.register(imsi, coinAccountDTO);
+            operationDescription.setActions(actionBuilder.buildCXCoinRegisteredURL(imsi));
             return Response.ok(operationDescription).build();
         } catch (Exception e) {
             e.printStackTrace();
