@@ -6,6 +6,7 @@ import com.cl.cx.platform.dto.MGraphicDTO;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.server.cx.constants.Constants;
+import com.server.cx.dao.cx.GraphicResourceDao;
 import com.server.cx.dao.cx.MGraphicDao;
 import com.server.cx.dao.cx.UserCommonMGraphicDao;
 import com.server.cx.dao.cx.UserDiyGraphicDao;
@@ -56,6 +57,9 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
 
     @Autowired
     private BusinessFunctions businessFunctions;
+
+    @Autowired
+    private GraphicResourceDao graphicResourceDao;
 
     private void createAndSaveNewUserCommonMGraphic(MGraphicDTO mGraphicDTO) {
         UserCommonMGraphic userCommonMGraphic = new UserCommonMGraphic();
@@ -181,10 +185,10 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
 
 
 
-        final UserDiyGraphic userDiyGraphic = userDiyGraphicDao.findByUserInfo(userInfo);
+        final UserDiyGraphic userDiyGraphic = userDiyGraphicDao.findByUserInfoOrderByAuditStatusDescCreatedOnDesc(userInfo);
         List<DataItem> userDiyGraphicDataItems;
         if(userDiyGraphic!=null ){
-            userDiyGraphicDataItems = Lists.transform(userDiyGraphic.getGraphicResources(), businessFunctions.transformDiyGraphicToDataItem(imsi,userDiyGraphic));
+            userDiyGraphicDataItems = Lists.transform(graphicResourceDao.findByDiyGraphicOrderByAuditStatusAscCreatedOnDesc(userDiyGraphic), businessFunctions.transformDiyGraphicToDataItem(imsi,userDiyGraphic));
             dataItems.addAll(userDiyGraphicDataItems);
         }
 

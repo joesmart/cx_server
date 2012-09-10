@@ -2,7 +2,9 @@ package com.server.cx.service.cx.impl;
 
 import com.google.common.collect.Lists;
 import com.server.cx.dao.cx.GraphicResourceDao;
+import com.server.cx.dao.cx.UserDiyGraphicDao;
 import com.server.cx.entity.cx.GraphicResource;
+import com.server.cx.entity.cx.UserDiyGraphic;
 import com.server.cx.service.cx.GraphicResourceService;
 import com.server.cx.util.business.AuditStatus;
 import org.slf4j.Logger;
@@ -26,7 +28,8 @@ public class GraphicResourceServiceImpl implements GraphicResourceService {
     public static final Logger LOGGER = LoggerFactory.getLogger(GraphicResourceServiceImpl.class);
     @Autowired
     private GraphicResourceDao graphicResourceDao;
-
+    @Autowired
+    private UserDiyGraphicDao userDiyGraphicDao;
 
 
     @Override
@@ -50,8 +53,23 @@ public class GraphicResourceServiceImpl implements GraphicResourceService {
 
         for(GraphicResource graphicResource :graphicResources){
             graphicResource.setAuditPassed(result);
+            graphicResource.setAuditStatus(auditStatus);
         }
         List<GraphicResource> graphicResourceList =  graphicResourceDao.save(graphicResources);
+      //  updateRelateUserDiyGraphics(graphicResourceList, auditStatus);
+
         LOGGER.info(graphicResourceList.toString());
+    }
+
+    private void updateRelateUserDiyGraphics(List<GraphicResource> graphicResourceList, AuditStatus auditStatus) {
+        List<UserDiyGraphic> userDiyGraphics = Lists.newArrayListWithCapacity(graphicResourceList.size());
+        for(GraphicResource tempGraphicResource:graphicResourceList){
+            UserDiyGraphic userDiyGraphic = tempGraphicResource.getDiyGraphic();
+            if(userDiyGraphic != null){
+                userDiyGraphic.setAuditStatus(auditStatus);
+                userDiyGraphics.add(userDiyGraphic);
+            }
+        }
+        userDiyGraphicDao.save(userDiyGraphics);
     }
 }

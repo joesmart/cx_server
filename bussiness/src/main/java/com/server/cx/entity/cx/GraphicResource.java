@@ -1,6 +1,7 @@
 package com.server.cx.entity.cx;
 
 import com.server.cx.entity.basic.AuditableStringEntity;
+import com.server.cx.util.business.AuditStatus;
 
 import javax.persistence.*;
 
@@ -18,6 +19,7 @@ public class GraphicResource extends AuditableStringEntity {
     private String resourceId;
     private String type;
     private Boolean auditPassed;
+    private AuditStatus auditStatus;
 
     @Transient
     private String thumbnailPath;
@@ -85,5 +87,13 @@ public class GraphicResource extends AuditableStringEntity {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public AuditStatus getAuditStatus() {
+        return auditStatus;
+    }
+
+    public void setAuditStatus(AuditStatus auditStatus) {
+        this.auditStatus = auditStatus;
     }
 }

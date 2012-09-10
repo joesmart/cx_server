@@ -13,4 +13,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  */
 public interface UserDiyGraphicDao extends JpaRepository<UserDiyGraphic, String>,JpaSpecificationExecutor<UserDiyGraphic> {
     public UserDiyGraphic findByUserInfo(UserInfo userInfo);
+    public UserDiyGraphic findByUserInfoOrderByAuditStatusDescCreatedOnDesc(UserInfo userInfo);
 }

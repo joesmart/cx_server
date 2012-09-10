@@ -77,12 +77,6 @@
 		<property name="concurrent" value="false" />
 	</bean>
 
-
- 	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="jobDetail" />
-		<property name="cronExpression" value="0 0 0 1 * ?" />
-	</bean>
-
 	<bean id="doDailyTask"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="userDailyService" />
