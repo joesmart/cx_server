@@ -1,18 +1,28 @@
 package com.server.cx.webservice.rs.server;
 
-import com.cl.cx.platform.dto.DataPage;
-import com.cl.cx.platform.dto.OperationDescription;
-import com.server.cx.service.cx.GraphicInfoService;
-import com.server.cx.service.cx.UserSubscribeGraphicItemService;
+import java.util.concurrent.ExecutionException;
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.util.concurrent.ExecutionException;
+import com.cl.cx.platform.dto.DataItem;
+import com.cl.cx.platform.dto.DataPage;
+import com.cl.cx.platform.dto.OperationDescription;
+import com.server.cx.entity.cx.GraphicInfo;
+import com.server.cx.service.cx.GraphicInfoService;
+import com.server.cx.service.cx.UserSubscribeGraphicItemService;
+import com.server.cx.util.ObjectFactory;
 
 /**
  * User: yanjianzou
@@ -83,5 +93,23 @@ public class GraphicInfoResources {
             return Response.ok(operationDescription).build();
         }
         return Response.noContent().build();
+    }
+    
+
+    @POST
+    public Response addGraphicInfo(DataItem dataItem) {
+        LOGGER.info("Into addGraphicInfo dataItem = " + dataItem);
+        try {
+            GraphicInfo graphicInfo = ObjectFactory.buildGraphicInfoFromDataItem(dataItem);
+            graphicInfoService.addGraphicInfo(graphicInfo);
+            OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
+                HttpServletResponse.SC_CREATED, "addGraphicInfo");
+            return Response.ok(operationDescription).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "addGraphicInfo", e.getMessage());
+            return Response.ok(operationDescription).build();
+        }
     }
 }
