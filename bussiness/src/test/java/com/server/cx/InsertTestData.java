@@ -74,7 +74,7 @@ public class InsertTestData extends AbstractTransactionalJUnit4SpringContextTest
             graphicResource.setGraphicInfo(graphicInfo);
             graphicResource.setType("jpg");
             graphicResource.setResourceId("5003a546e4b09ed787af714f");
-            graphicResource.setAuditPassed(true);
+            graphicResource.setAuditStatus(AuditStatus.PASSED);
 
             List<GraphicResource> graphicResourceList = graphicInfo.getGraphicResources();
             if (graphicResourceList == null) {

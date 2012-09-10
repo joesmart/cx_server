@@ -18,7 +18,6 @@ public class GraphicResource extends AuditableStringEntity {
     private UserDiyGraphic diyGraphic;
     private String resourceId;
     private String type;
-    private Boolean auditPassed;
     private AuditStatus auditStatus;
 
     @Transient
@@ -70,14 +69,6 @@ public class GraphicResource extends AuditableStringEntity {
 
     public void setThumbnailPath(String thumbnailPath) {
         this.thumbnailPath = thumbnailPath;
-    }
-
-    public Boolean getAuditPassed() {
-        return auditPassed;
-    }
-
-    public void setAuditPassed(Boolean auditPassed) {
-        this.auditPassed = auditPassed;
     }
 
     @Column(length = 10)

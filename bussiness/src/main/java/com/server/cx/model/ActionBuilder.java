@@ -433,4 +433,8 @@ public class ActionBuilder {
         return actions().useURL(basicService.generateDiyMGraphicUseURL(imsi))
             .removeURL(basicService.generateUserDIYGraphicDeleteURL(imsi, id)).build();
     }
+
+    public Actions buildUserDIYGraphicRemoveActions(String imsi, String id) {
+        return actions().removeURL(basicService.generateUserDIYGraphicDeleteURL(imsi, id)).build();
+    }
 }

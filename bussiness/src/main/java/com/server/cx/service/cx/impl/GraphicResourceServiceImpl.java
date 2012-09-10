@@ -38,21 +38,8 @@ public class GraphicResourceServiceImpl implements GraphicResourceService {
         if(graphicResources == null || graphicResources.size() == 0){
             return;
         }
-        Boolean result = false;
-        if(auditStatus.equals(AuditStatus.PASSED)){
-            result = true;
-        }
-
-        if(auditStatus.equals(AuditStatus.UNPASS)){
-            result = false;
-        }
-
-        if(auditStatus.equals(AuditStatus.CHECKING)){
-            result = null;
-        }
 
         for(GraphicResource graphicResource :graphicResources){
-            graphicResource.setAuditPassed(result);
             graphicResource.setAuditStatus(auditStatus);
         }
         List<GraphicResource> graphicResourceList =  graphicResourceDao.save(graphicResources);
