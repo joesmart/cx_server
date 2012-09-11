@@ -59,7 +59,7 @@ public class InsertTestData extends AbstractTransactionalJUnit4SpringContextTest
         int i = 0;
         while (i++ < 10000) {
             logger.info("i:"+i);
-            Long id = new Long(nextInt(5) + 1);
+            Long id = (long) (nextInt(5) + 1);
             Category category = categoryDao.findOne(id);
             GraphicInfo graphicInfo = new GraphicInfo();
             graphicInfo.setAuditStatus(AuditStatus.PASSED);

@@ -48,7 +48,7 @@ public class CXCoinBasicService extends UserCheckService {
     }
 
     public void checkUserCXCoinEnough(Double coin, Double price) {
-        if (price != null && coin.doubleValue() < price.doubleValue()) {
+        if (price != null && coin < price) {
             throw new MoneyNotEnoughException("用户余额不足");
         }
     }

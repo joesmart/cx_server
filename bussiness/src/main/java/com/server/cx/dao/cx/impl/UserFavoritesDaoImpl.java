@@ -33,10 +33,7 @@ public class UserFavoritesDaoImpl extends BasicDao implements UserFavoritesCusto
         if (queryResult == null || queryResult == 0) {
             return false;
         }
-        if (queryResult > 0) {
-            return true;
-        }
-        return false;
+        return queryResult > 0;
 
     }
 
@@ -44,7 +41,7 @@ public class UserFavoritesDaoImpl extends BasicDao implements UserFavoritesCusto
     @Override
     public List<UserFavorites> getAllUserFavorites(String userid, final int requestPage, final int requesPageSize) {
         int perPageSize = requesPageSize == 0 ? Constants.DEFAULT_SIZE : requesPageSize;
-        int begineRecord = (requestPage == 0 ? 1 : requestPage - 1) * perPageSize;
+        int beginRecord = (requestPage == 0 ? 1 : requestPage - 1) * perPageSize;
 
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(UserFavorites.class);
         Criteria criteria = detachedCriteria.getExecutableCriteria(getSession());
@@ -52,7 +49,7 @@ public class UserFavoritesDaoImpl extends BasicDao implements UserFavoritesCusto
                 .addOrder(Property.forName("id").desc());
         // 通过createCriteria("cxInfo") 创建表级关联查询.
         // .createCriteria("cxInfo").add(Restrictions.eq("type", typeId));
-        criteria.setFirstResult(begineRecord).setMaxResults(perPageSize);
+        criteria.setFirstResult(beginRecord).setMaxResults(perPageSize);
         List<UserFavorites> result = criteria.list();
         return result;
     }

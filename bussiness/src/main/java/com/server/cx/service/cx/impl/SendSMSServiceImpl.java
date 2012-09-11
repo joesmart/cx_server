@@ -39,10 +39,7 @@ public class SendSMSServiceImpl implements SendSMSService {
                                                                  .addValue("message",smsMessage.getSms());
         }
         int[] row = simpleJdbcInsert.executeBatch(sqlParameterSources);
-        if(row != null && row.length>0){
-            return true;
-        }
-        return false;
+        return row != null && row.length > 0;
     }
 
 

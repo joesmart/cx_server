@@ -85,7 +85,7 @@ public class UserSubscribeTypeServiceTest extends SpringTransactionalTestCase {
         assertThat(record.getDescription()).isEqualTo("订购");
         assertThat(record.getSubscribeType().getName()).isEqualTo("节日包");
         cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo.getImsi());
-        assertEquals(cxCoinAccount.getCoin().doubleValue(), totleMoney - 15, 1e-3);
+        assertEquals(cxCoinAccount.getCoin(), totleMoney - 15, 1e-3);
     }
 
     @Test

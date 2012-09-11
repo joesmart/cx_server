@@ -45,10 +45,7 @@ public class UserSubscribeGraphicItemServiceImpl extends CXCoinBasicService impl
     private boolean hasSubscribedGraphicItem(UserInfo userInfo, GraphicInfo graphicInfo) {
         List<UserSubscribeGraphicItem> graphicItems = userSubscribeGraphicItemDao.findByUserInfoAndGraphicInfo(
             userInfo, graphicInfo);
-        if (graphicItems == null || graphicItems.isEmpty()) {
-            return false;
-        }
-        return true;
+        return !(graphicItems == null || graphicItems.isEmpty());
     }
 
     @Transactional(readOnly = false)
@@ -80,10 +77,7 @@ public class UserSubscribeGraphicItemServiceImpl extends CXCoinBasicService impl
     }
 
     private boolean isGraphicInfoFree(GraphicInfo graphicInfo) {
-        if (graphicInfo.getPrice() == null || graphicInfo.getPrice().doubleValue() < 1e-3) {
-            return true;
-        }
-        return false;
+        return graphicInfo.getPrice() == null || graphicInfo.getPrice() < 1e-3;
     }
 
     //TODO： 测试方法，方便客户端取消订购，以后需要删掉

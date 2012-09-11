@@ -64,7 +64,7 @@ public class ValidationUtil {
         // '分');
 
         // WORKAROUND for test
-        if (isContainHour == false && isContainMinuter == false) {
+        if (!isContainHour && !isContainMinuter) {
             isContainHour = validTime.contains("H");
             isContainMinuter = validTime.contains("M");
         }

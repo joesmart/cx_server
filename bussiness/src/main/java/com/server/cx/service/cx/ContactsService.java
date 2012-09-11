@@ -9,8 +9,6 @@ public interface ContactsService {
 
     public void uploadContacts(List<ContactInfoDTO> contactPeopleInfos, String imsi) throws SystemException;
 
-    public String retrieveContactUserCXInfo(String imsi) throws SystemException;
-
     public abstract List<Contacts> queryCXAppContactsByImsi(String imsi) throws SystemException;
 
 }

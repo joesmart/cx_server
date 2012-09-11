@@ -15,7 +15,7 @@ public class VersionInfoResourceTest extends BasicJerseyTest{
         ClientResponse response = resource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
         assertThat(response.getStatus()).isEqualTo(200);
         VersionInfoDTO versionInfoDTO = response.getEntity(VersionInfoDTO.class);
-        assertThat(versionInfoDTO.getFlag()).isEqualTo(Constants.SERVER_HAVE_NEWVERION);
+        assertThat(versionInfoDTO.getFlag()).isEqualTo(Constants.SERVER_HAVE_NEW_VERSION);
     }
     
 }
