@@ -160,11 +160,7 @@ public class GraphicInfoServiceImpl  extends CXCoinBasicService implements Graph
         Preconditions.checkNotNull(graphicInfo.getId());
         graphicInfo.setUseCount(graphicInfo.getUseCount() != null ? graphicInfo.getUseCount() + 1 : 1);
         GraphicInfo afterSavedGraphicInfo = graphicInfoDao.save(graphicInfo);
-        if (afterSavedGraphicInfo.getId() != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return afterSavedGraphicInfo.getId() != null;
     }
 
     @Override

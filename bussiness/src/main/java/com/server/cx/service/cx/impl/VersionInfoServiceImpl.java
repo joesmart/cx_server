@@ -36,7 +36,7 @@ public class VersionInfoServiceImpl implements VersionInfoService {
             boolean isForceUpdate = versionUtil.isNeedToForceUpgrade();
 
             if (isNeedUpgrade) {
-                return ObjectFactory.buildVersionInfoDTO(Constants.SERVER_HAVE_NEWVERION, "服务器端软件版本最新",
+                return ObjectFactory.buildVersionInfoDTO(Constants.SERVER_HAVE_NEW_VERSION, "服务器端软件版本最新",
                     String.valueOf(isForceUpdate), serverVersionInfo.getUrl());
             } else {
                 return ObjectFactory.buildVersionInfoDTO(Constants.APP_IS_NEWEST, "客户端APP版本为最新版本");

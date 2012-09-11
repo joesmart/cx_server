@@ -100,10 +100,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     private boolean isPhoneNoValidate(String phoneNo) {
-        if (StringUtil.notNull(phoneNo)) {
-            return true;
-        }
-        return false;
+        return StringUtil.notNull(phoneNo);
     }
 
     @Transactional(readOnly = false)
