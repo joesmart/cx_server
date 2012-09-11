@@ -849,6 +849,7 @@
 	            <groupId>com.sun.jersey.jersey-test-framework</groupId>
 				<artifactId>jersey-test-framework-grizzly2</artifactId>
 				<version>${jersey-test-framework.version}</version>
+                <scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

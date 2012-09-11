@@ -107,12 +107,6 @@
         <url-pattern>/rs/*</url-pattern>
     </servlet-mapping>
 
-
-    <servlet-mapping>
-        <servlet-name>UserCXInfoAddServlet</servlet-name>
-        <url-pattern>/cx/addOrUpdateUserCXInfo/*</url-pattern>
-    </servlet-mapping>
-
 	<!-- session超时定义,单位为分钟 -->
 	<session-config>
 		<session-timeout>20</session-timeout>
