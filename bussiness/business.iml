@@ -221,19 +221,19 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.jetty.orbit:org.eclipse.jdt.core:3.7.1" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.21" level="project" />
     <orderEntry type="library" name="Maven: com.microsoft.sqlserver:sqljdbc4:3.0" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.jersey.jersey-test-framework:jersey-test-framework-grizzly2:1.13" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.jersey.jersey-test-framework:jersey-test-framework-core:1.13" level="project" />
-    <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.jersey:jersey-grizzly2-servlet:1.13" level="project" />
-    <orderEntry type="library" name="Maven: org.glassfish.grizzly:grizzly-http-servlet:2.2.4" level="project" />
-    <orderEntry type="library" name="Maven: org.glassfish.grizzly:grizzly-http-server:2.2.4" level="project" />
-    <orderEntry type="library" name="Maven: org.glassfish.grizzly:grizzly-http:2.2.4" level="project" />
-    <orderEntry type="library" name="Maven: org.glassfish.grizzly:grizzly-framework:2.2.4" level="project" />
-    <orderEntry type="library" name="Maven: org.glassfish.gmbal:gmbal-api-only:3.0.0-b023" level="project" />
-    <orderEntry type="library" name="Maven: org.glassfish.external:management-api:3.0.0-b012" level="project" />
-    <orderEntry type="library" name="Maven: org.glassfish.grizzly:grizzly-rcm:2.2.4" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.jersey:jersey-grizzly2:1.13" level="project" />
-    <orderEntry type="library" name="Maven: org.glassfish:javax.servlet:3.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.sun.jersey.jersey-test-framework:jersey-test-framework-grizzly2:1.13" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.sun.jersey.jersey-test-framework:jersey-test-framework-core:1.13" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: javax.servlet:javax.servlet-api:3.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.sun.jersey:jersey-grizzly2-servlet:1.13" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.glassfish.grizzly:grizzly-http-servlet:2.2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.glassfish.grizzly:grizzly-http-server:2.2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.glassfish.grizzly:grizzly-http:2.2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.glassfish.grizzly:grizzly-framework:2.2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.glassfish.gmbal:gmbal-api-only:3.0.0-b023" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.glassfish.external:management-api:3.0.0-b012" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.glassfish.grizzly:grizzly-rcm:2.2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.sun.jersey:jersey-grizzly2:1.13" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.glassfish:javax.servlet:3.1" level="project" />
   </component>
 </module>
 

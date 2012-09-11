@@ -505,6 +505,9 @@ public class BusinessFunctions {
         return new Function<CXCoinAccount, CXCoinAccountDTO>() {
             @Override
             public CXCoinAccountDTO apply(@Nullable CXCoinAccount input) {
+                if(input == null){
+                    return  null;
+                }
                 CXCoinAccountDTO cxCoinAccountDTO = new CXCoinAccountDTO();
                 cxCoinAccountDTO.setName(input.getName());
                 cxCoinAccountDTO.setCoin(input.getCoin());
@@ -517,6 +520,9 @@ public class BusinessFunctions {
         return new Function<UserSubscribeRecord, DataItem>() {
             @Override
             public DataItem apply(@Nullable UserSubscribeRecord input) {
+                if(input == null){
+                    return null;
+                }
                 if (input.getIncome() != null || input.getExpenses() != null) {
                     DataItem dataItem = new DataItem();
                     dataItem.setTime(DateUtil.formateDate(input.getCreatedOn()));

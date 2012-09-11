@@ -45,7 +45,7 @@ public class UserSubscribeGraphicItemServiceTest extends SpringTransactionalTest
         userSubscribeGraphicItemService.subscribeGraphicItem(userInfo.getImsi(), "4028b88138d5e5e50138d5e5f2800093");
         UserInfo userInfo2 = userInfoDao.findOne("2");
         CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByImsi(userInfo2.getImsi());
-        assertEquals(30d, cxCoinAccount.getCoin().doubleValue(), 1e-3);
+        assertEquals(30d, cxCoinAccount.getCoin(), 1e-3);
         List<UserSubscribeRecord> records2 = (List<UserSubscribeRecord>) userSubscribeRecordDao.findAll();
         Assertions.assertThat(records1.size()).isEqualTo(records2.size() - 1);
         Assertions.assertThat(records2.get(records2.size() - 1).getDescription()).isEqualTo("订购");

@@ -37,8 +37,8 @@ public class PerMonthServiceImpl extends CXCoinBasicService implements PerMonthS
         LOGGER.info("Into doTask");
         List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findAllSubscribeTypes();
         if (userSubscribeTypes != null) {
-            for (int i = 0; i < userSubscribeTypes.size(); i++) {
-                doSingleSubscribeTask(userSubscribeTypes.get(i));
+            for (UserSubscribeType userSubscribeType : userSubscribeTypes) {
+                doSingleSubscribeTask(userSubscribeType);
             }
         }
     }

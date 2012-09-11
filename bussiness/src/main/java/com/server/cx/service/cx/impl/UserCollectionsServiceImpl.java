@@ -71,8 +71,8 @@ public class UserCollectionsServiceImpl extends UserCheckService implements User
         }
 
         Integer totalCountOfUserFavorites = userFavoritesDao.getUserFavoritesTotalCount(userId);
-        if (totalCountOfUserFavorites >= Constants.TOTAL_USERFAVORITES_COUNT) {
-            throw new CXServerBusinessException("用户收藏已经超出限制的" + Constants.TOTAL_USERFAVORITES_COUNT + "条!");
+        if (totalCountOfUserFavorites >= Constants.TOTAL_USER_FAVORITES_COUNT) {
+            throw new CXServerBusinessException("用户收藏已经超出限制的" + Constants.TOTAL_USER_FAVORITES_COUNT + "条!");
         }
 
         UserFavorites userFavorites = new UserFavorites();
