@@ -26,7 +26,7 @@ public class UserCommonMGraphicSpecifications {
         return  new Specification<UserCommonMGraphic>() {
             @Override
             public Predicate toPredicate(Root<UserCommonMGraphic> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                return  cb.and(cb.equal(root.get("userInfo"),userInfo),cb.equal(root.get("common"),false));
+                return  cb.and(cb.equal(root.get("userInfo"),userInfo),cb.equal(root.get("common"),false),cb.equal(root.get("modeType"),2));
             }
         };
     }
