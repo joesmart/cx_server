@@ -15,7 +15,8 @@ public class SubscribeRecordSpecifications {
             @Override
             public Predicate toPredicate(Root<UserSubscribeRecord> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 return cb.and(cb.isNotNull(root.get("userInfo")),
-                    cb.equal(root.get("userInfo").<String> get("id"), userInfo.getId()));
+                    cb.equal(root.get("userInfo").<String> get("id"), userInfo.getId()),
+                    cb.or(cb.isNotNull(root.get("income")), cb.isNotNull(root.get("expenses"))));
             }
         };
     }

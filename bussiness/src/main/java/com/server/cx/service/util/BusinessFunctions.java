@@ -1,10 +1,12 @@
 package com.server.cx.service.util;
 
 import com.cl.cx.platform.dto.Actions;
+import com.cl.cx.platform.dto.BasicDataItem;
 import com.cl.cx.platform.dto.CXCoinAccountDTO;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
+import com.server.cx.dao.cx.StatusTypeDao;
 import com.server.cx.entity.cx.*;
 import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.impl.BasicService;
@@ -27,6 +29,9 @@ public class BusinessFunctions {
     private BasicService basicService;
     @Autowired
     private ActionBuilder actionBuilder;
+    
+    @Autowired
+    private StatusTypeDao statusTypeDao;
 
     public Function<UserFavorites, DataItem> userFavoriteTransformToCollectedGraphicInfoItem(final String imsi) {
         return new Function<UserFavorites, DataItem>() {
@@ -120,7 +125,7 @@ public class BusinessFunctions {
                             item.setSignature(mgraphic.getSignature());
                             item.setInUsing(true);
                             if (ActionNames.HOLIDAY_MGRAPHIC_ACTION.equals(actionNames)) {
-                                if(mgraphic instanceof  UserHolidayMGraphic){
+                                if (mgraphic instanceof UserHolidayMGraphic) {
                                     item.setPhoneNos(((UserHolidayMGraphic) mgraphic).getPhoneNos());
                                 }
                                 actions = actionBuilder.buildHolidayMGraphicItemEditAction(imsi, id);
@@ -175,7 +180,7 @@ public class BusinessFunctions {
         item.setSignature(input.getSignature());
         item.setDownloadNumber(String.valueOf(input.getUseCount()));
         item.setAuditStatus(AuditStatus.PASSED.toString());
-        item.setPrice((int)(input.getPrice().doubleValue()));
+        item.setPrice((int) (input.getPrice().doubleValue()));
         if (input.getPrice() > 0.0F) {
             item.setPurchased(false);
         }
@@ -420,7 +425,7 @@ public class BusinessFunctions {
         return new Function<UserHolidayMGraphic, HolidayType>() {
             @Override
             public HolidayType apply(@Nullable UserHolidayMGraphic input) {
-                if(input == null)
+                if (input == null)
                     return null;
                 return input.getHolidayType();
             }
@@ -475,8 +480,8 @@ public class BusinessFunctions {
         return new Function<GraphicResource, DataItem>() {
             @Override
             public DataItem apply(@Nullable GraphicResource input) {
-                if(input == null){
-                    return  null;
+                if (input == null) {
+                    return null;
                 }
                 DataItem dataItem = new DataItem();
                 dataItem.setName(userDiyGraphic.getName());
@@ -487,13 +492,13 @@ public class BusinessFunctions {
 
                 dataItem.setMediaType(input.getType());
                 setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem, input);
-                if(AuditStatus.PASSED.equals(input.getAuditStatus())){
+                if (AuditStatus.PASSED.equals(input.getAuditStatus())) {
                     dataItem.setActions(actionBuilder.buildUserDIYGraphicActions(imsi, input.getId()));
                 }
-                if(AuditStatus.UNPASS.equals(input.getAuditStatus())){
+                if (AuditStatus.UNPASS.equals(input.getAuditStatus())) {
                     dataItem.setActions(actionBuilder.buildUserDIYGraphicRemoveActions(imsi, input.getId()));
                 }
-                if(AuditStatus.CHECKING.equals(input.getAuditStatus())){
+                if (AuditStatus.CHECKING.equals(input.getAuditStatus())) {
                     dataItem.setActions(null);
                 }
                 return dataItem;
@@ -534,6 +539,68 @@ public class BusinessFunctions {
                     return dataItem;
                 }
                 return null;
+            }
+        };
+    }
+
+    public Function<? super BasicDataItem, ? extends SubscribeType> transferBasicDataItemToSubscribeType() {
+        return new Function<BasicDataItem, SubscribeType>() {
+            @Override
+            public SubscribeType apply(@Nullable BasicDataItem input) {
+                SubscribeType subscribeType = new SubscribeType();
+                subscribeType.setName(input.getName());
+                subscribeType.setPrice(Double.valueOf(input.getPrice()));
+                return subscribeType;
+            }
+        };
+    }
+
+    public Function<? super BasicDataItem, ? extends StatusType> transferBasicDataItemToStatusType() {
+        return new Function<BasicDataItem, StatusType>() {
+            @Override
+            public StatusType apply(@Nullable BasicDataItem input) {
+                StatusType statusType = new StatusType();
+                statusType.setName(input.getName());
+                statusType.setGraphicResourceId(input.getResourceId());
+                return statusType;
+            }
+        };
+    }
+
+    public Function<? super BasicDataItem, ? extends GraphicResource> transferBasicDataItemToGraphicResource() {
+        return new Function<BasicDataItem, GraphicResource>() {
+            @Override
+            public GraphicResource apply(BasicDataItem input) {
+                GraphicInfo graphicInfo = new GraphicInfo();
+                graphicInfo.setPrice(Double.valueOf(input.getPrice()));
+                graphicInfo.setLevel(input.getLevel());
+                graphicInfo.setSignature(input.getSignature());
+                graphicInfo.setAuditStatus(AuditStatus.PASSED);
+                graphicInfo.setOwner("system");
+                graphicInfo.setUseCount(0);
+                StatusType statusType = statusTypeDao.findByName(input.getName());
+                graphicInfo.setStatusType(statusType);
+                
+                GraphicResource graphicResource = new GraphicResource();
+                graphicResource.setResourceId(input.getResourceId());
+                graphicResource.setType(input.getFileType());
+                graphicResource.setAuditStatus(AuditStatus.PASSED);
+                graphicResource.setGraphicInfo(graphicInfo);
+                return graphicResource;
+            }
+        };
+    }
+
+    public Function<? super BasicDataItem, ? extends HolidayType> transferBasicDataItemToHolidayType() {
+        return new Function<BasicDataItem, HolidayType>() {
+            @Override
+            public HolidayType apply(@Nullable BasicDataItem input) {
+                HolidayType holidayType = new HolidayType();
+                holidayType.setName(input.getName());
+                holidayType.setGraphicResourceId(input.getResourceId());
+                holidayType.setDownloadNum(input.getDownloadNum());
+                holidayType.setLevel(input.getLevel());
+                return holidayType;
             }
         };
     }
