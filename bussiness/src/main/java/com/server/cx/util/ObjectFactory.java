@@ -150,4 +150,22 @@ public class ObjectFactory {
         graphicInfo.getGraphicResources().get(0).setAuditStatus(AuditStatus.valueOf(dataItem.getAuditStatus()));
         return graphicInfo;
     }
+
+    public static GraphicResource buildSpecailGraphicResource(BasicDataItem basicDataItem) {
+        GraphicResource graphicResource = new GraphicResource();
+        graphicResource.setResourceId(basicDataItem.getResourceId());
+        graphicResource.setType(basicDataItem.getFileType());
+        graphicResource.setAuditStatus(AuditStatus.PASSED);
+        return graphicResource;
+    }
+
+    public static DefaultMGraphic buildDefaultMGraphic(BasicDataItem basicDataItem) {
+        DefaultMGraphic defaultMGraphic = new DefaultMGraphic();
+        defaultMGraphic.setModeType(basicDataItem.getModelType());
+        defaultMGraphic.setName(basicDataItem.getName());
+        defaultMGraphic.setPriority(basicDataItem.getPriority());
+        defaultMGraphic.setSignature(basicDataItem.getSignature());
+        defaultMGraphic.setSpecialPhoneNo(basicDataItem.getSpecialNo());
+        return defaultMGraphic;
+    }
 }

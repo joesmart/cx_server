@@ -17,4 +17,8 @@ public class BasicDataItem {
     private String sourcePath;
     private String thumbnailPath;
     private String signature;
+    private String description;
+    private String specialNo;
+    private Integer priority;
+    private Integer modelType;
 }

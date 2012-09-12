@@ -10,4 +10,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * FileName:CategoryDao
  */
 public interface CategoryDao extends PagingAndSortingRepository<Category, Long> {
+
+    public Category findByName(String name);
 }
