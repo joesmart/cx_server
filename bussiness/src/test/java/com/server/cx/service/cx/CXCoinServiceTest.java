@@ -151,7 +151,7 @@ public class CXCoinServiceTest extends SpringTransactionalTestCase {
     
     @Test
     public void test_get_user_cxCoinRecords() {
-        DataPage dataPage = cxCoinService.getUserCXCoinRecords("13146001003", 0, 2);
+        DataPage dataPage = cxCoinService.getUserCXCoinRecords("name", "pwd", "13146001003", 0, 2);
         System.out.println("dataPage = " + dataPage);
     }
 }

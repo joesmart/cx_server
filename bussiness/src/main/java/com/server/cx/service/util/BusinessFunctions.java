@@ -523,6 +523,7 @@ public class BusinessFunctions {
                 }
                 CXCoinAccountDTO cxCoinAccountDTO = new CXCoinAccountDTO();
                 cxCoinAccountDTO.setName(input.getName());
+                cxCoinAccountDTO.setPassword(input.getPassword());
                 cxCoinAccountDTO.setCoin(input.getCoin());
                 return cxCoinAccountDTO;
             }

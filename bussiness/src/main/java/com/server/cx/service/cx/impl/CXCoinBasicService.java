@@ -31,7 +31,14 @@ public class CXCoinBasicService extends UserCheckService {
             throw new SystemException("用户未注册过酷币帐号");
         }
     }
-
+    
+    public void checkCXCoinAccountCorrect(String name, String password) {
+        cxCoinAccount = cxCoinAccountDao.findByNameAndPassword(name, password);
+        if(cxCoinAccount == null) {
+            throw new SystemException("用户登录信息不对");
+        }
+    }
+    
     public void checkUserUnRegisterCXCoinAccount(String imsi) {
         checkAndSetUserInfoExists(imsi);
         cxCoinAccount = cxCoinAccountDao.findByImsi(imsi);
