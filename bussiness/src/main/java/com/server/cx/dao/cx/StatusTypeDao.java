@@ -5,4 +5,6 @@ import com.server.cx.entity.cx.StatusType;
 
 public interface StatusTypeDao extends PagingAndSortingRepository<StatusType, Long>{
 
+    public StatusType findByName(String name);
+
 }

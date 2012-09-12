@@ -417,6 +417,10 @@ public class ActionBuilder {
         actions.setUploadContactsURL(null);
         actions.setGetContactsURL(null);
         actions.setUploadCommonMGraphicURL(null);
+        actions.setCxCoinRegisterURL(null);
+        actions.setCxCoinAccountURL(null);
+        actions.setCxCoinConsumeURL(null);
+        actions.setCxCoinRecordsURL(null);
     }
 
     public Actions buildMGraphicActions(String imsi, String id, String conditions) {
