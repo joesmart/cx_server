@@ -1,1 +1,1 @@
-com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider
+com.server.cx.config.FastJsonProvider

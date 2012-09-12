@@ -555,7 +555,7 @@
 					<useTestClasspath>true</useTestClasspath>
 
 					<webAppConfig>
-						<contextPath>/CXServer</contextPath>
+						<contextPath>/callface</contextPath>
 					</webAppConfig>
 				</configuration>
 			</plugin>
