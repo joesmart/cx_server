@@ -6,6 +6,8 @@ import com.cl.cx.platform.dto.CXCoinAccountDTO;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
+import com.server.cx.dao.cx.CategoryDao;
+import com.server.cx.dao.cx.HolidayTypeDao;
 import com.server.cx.dao.cx.StatusTypeDao;
 import com.server.cx.entity.cx.*;
 import com.server.cx.model.ActionBuilder;
@@ -29,9 +31,15 @@ public class BusinessFunctions {
     private BasicService basicService;
     @Autowired
     private ActionBuilder actionBuilder;
-    
+
     @Autowired
     private StatusTypeDao statusTypeDao;
+    
+    @Autowired
+    private HolidayTypeDao holidayTypeDao;
+    
+    @Autowired
+    private CategoryDao categoryDao;
 
     public Function<UserFavorites, DataItem> userFavoriteTransformToCollectedGraphicInfoItem(final String imsi) {
         return new Function<UserFavorites, DataItem>() {
@@ -510,11 +518,12 @@ public class BusinessFunctions {
         return new Function<CXCoinAccount, CXCoinAccountDTO>() {
             @Override
             public CXCoinAccountDTO apply(@Nullable CXCoinAccount input) {
-                if(input == null){
-                    return  null;
+                if (input == null) {
+                    return null;
                 }
                 CXCoinAccountDTO cxCoinAccountDTO = new CXCoinAccountDTO();
                 cxCoinAccountDTO.setName(input.getName());
+                cxCoinAccountDTO.setPassword(input.getPassword());
                 cxCoinAccountDTO.setCoin(input.getCoin());
                 return cxCoinAccountDTO;
             }
@@ -525,7 +534,7 @@ public class BusinessFunctions {
         return new Function<UserSubscribeRecord, DataItem>() {
             @Override
             public DataItem apply(@Nullable UserSubscribeRecord input) {
-                if(input == null){
+                if (input == null) {
                     return null;
                 }
                 if (input.getIncome() != null || input.getExpenses() != null) {
@@ -567,28 +576,45 @@ public class BusinessFunctions {
         };
     }
 
-    public Function<? super BasicDataItem, ? extends GraphicResource> transferBasicDataItemToGraphicResource() {
+    public Function<? super BasicDataItem, ? extends GraphicResource> transferBasicDataItemToStatusGraphicResource() {
         return new Function<BasicDataItem, GraphicResource>() {
             @Override
             public GraphicResource apply(BasicDataItem input) {
-                GraphicInfo graphicInfo = new GraphicInfo();
-                graphicInfo.setPrice(Double.valueOf(input.getPrice()));
-                graphicInfo.setLevel(input.getLevel());
-                graphicInfo.setSignature(input.getSignature());
-                graphicInfo.setAuditStatus(AuditStatus.PASSED);
-                graphicInfo.setOwner("system");
-                graphicInfo.setUseCount(0);
+                GraphicResource graphicResource = generateGraphicResource(input);
                 StatusType statusType = statusTypeDao.findByName(input.getName());
-                graphicInfo.setStatusType(statusType);
-                
-                GraphicResource graphicResource = new GraphicResource();
-                graphicResource.setResourceId(input.getResourceId());
-                graphicResource.setType(input.getFileType());
-                graphicResource.setAuditStatus(AuditStatus.PASSED);
-                graphicResource.setGraphicInfo(graphicInfo);
+                graphicResource.getGraphicInfo().setStatusType(statusType);
                 return graphicResource;
             }
         };
+    }
+    
+    public Function<? super BasicDataItem, ? extends GraphicResource> transferBasicDataItemToHolidayGraphicResource() {
+        return new Function<BasicDataItem, GraphicResource>() {
+            @Override
+            public GraphicResource apply(BasicDataItem input) {
+                GraphicResource graphicResource = generateGraphicResource(input);
+                HolidayType holidayType = holidayTypeDao.findByName(input.getName());
+                graphicResource.getGraphicInfo().setHolidayType(holidayType);
+                return graphicResource;
+            }
+        };
+    }
+
+    public GraphicResource generateGraphicResource(BasicDataItem input) {
+        GraphicInfo graphicInfo = new GraphicInfo();
+        graphicInfo.setPrice(Double.valueOf(input.getPrice()));
+        graphicInfo.setLevel(input.getLevel());
+        graphicInfo.setSignature(input.getSignature());
+        graphicInfo.setAuditStatus(AuditStatus.PASSED);
+        graphicInfo.setOwner("system");
+        graphicInfo.setUseCount(0);
+
+        GraphicResource graphicResource = new GraphicResource();
+        graphicResource.setResourceId(input.getResourceId());
+        graphicResource.setType(input.getFileType());
+        graphicResource.setAuditStatus(AuditStatus.PASSED);
+        graphicResource.setGraphicInfo(graphicInfo);
+        return graphicResource;
     }
 
     public Function<? super BasicDataItem, ? extends HolidayType> transferBasicDataItemToHolidayType() {
@@ -601,6 +627,34 @@ public class BusinessFunctions {
                 holidayType.setDownloadNum(input.getDownloadNum());
                 holidayType.setLevel(input.getLevel());
                 return holidayType;
+            }
+        };
+    }
+
+    public Function<? super BasicDataItem, ? extends Category> transferBasicDataItemToCategoryItem() {
+        return new Function<BasicDataItem, Category>() {
+            @Override
+            public Category apply(@Nullable BasicDataItem input) {
+                Category category = new Category();
+                category.setName(input.getName());
+                category.setGraphicResourceId(input.getResourceId());
+                category.setDownloadNum(input.getDownloadNum());
+                category.setDescription(input.getDescription());
+                return category;
+            }
+        };
+    }
+
+    public Function<? super BasicDataItem, ? extends GraphicResource> transferBasicDataItemToCategoryGraphicResource() {
+        return new Function<BasicDataItem, GraphicResource>() {
+            @Override
+            public GraphicResource apply(@Nullable BasicDataItem input) {
+                GraphicResource graphicResource = generateGraphicResource(input);
+                System.out.println("----> input name = " + input.getName());
+                Category category = categoryDao.findByName(input.getName());
+                System.out.println("category = " + category);
+                graphicResource.getGraphicInfo().setCategory(category);
+                return graphicResource;
             }
         };
     }

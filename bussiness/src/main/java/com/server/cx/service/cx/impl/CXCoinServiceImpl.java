@@ -95,6 +95,7 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
     @Transactional(readOnly = false)
     public OperationDescription consumeCXCoin(String imsi, CXCoinAccountDTO cxCoinAccountDTO) throws SystemException {
         checkUserRegisterCXCoinAccount(imsi);
+        checkCXCoinAccountCorrect(cxCoinAccountDTO.getName(), cxCoinAccountDTO.getPassword());
         checkUserUnConsumeCXCoin(userInfo);
         CXCoinTotalItem cxCoinTotalItem = findCXCoinTotalItem();
         checkCXCoinTotalEnough(cxCoinTotalItem.getCxCoinCount(), 5D);
@@ -119,8 +120,9 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
     
 
     @Override
-    public DataPage getUserCXCoinRecords(String imsi, Integer offset, Integer limit) {
+    public DataPage getUserCXCoinRecords(String name, String password, String imsi, Integer offset, Integer limit) {
         checkUserRegisterCXCoinAccount(imsi);
+        checkCXCoinAccountCorrect(name, password);
         PageRequest pageRequest = new PageRequest(offset, limit, Sort.Direction.DESC, "createdOn");
         Page page = userSubscribeRecordDao.findAll(SubscribeRecordSpecifications.userSubscribeRecord(userInfo),
             pageRequest);

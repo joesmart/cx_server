@@ -5,4 +5,6 @@ import com.server.cx.entity.cx.HolidayType;
 
 public interface HolidayTypeDao extends PagingAndSortingRepository<HolidayType, Long>{
 
+    public HolidayType findByName(String name);
+
 }

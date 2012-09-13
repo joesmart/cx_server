@@ -16,6 +16,6 @@ public interface CXCoinService {
 
     public CXCoinAccount getCXCoinAccount(String imsi) throws SystemException;
 
-    public abstract DataPage getUserCXCoinRecords(String imsi, Integer offset, Integer limit);
+    public abstract DataPage getUserCXCoinRecords(String name, String password, String imsi, Integer offset, Integer limit);
 
 }

@@ -10,4 +10,6 @@ public interface CXCoinAccountDao extends JpaRepository<CXCoinAccount, String>, 
 
     public CXCoinAccount findByNameAndPasswordAndImsi(String name, String password, String imsi);
 
+    public CXCoinAccount findByNameAndPassword(String name, String password);
+
 }
