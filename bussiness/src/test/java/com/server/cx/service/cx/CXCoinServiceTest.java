@@ -103,10 +103,10 @@ public class CXCoinServiceTest extends SpringTransactionalTestCase {
         cxCoinAccountDTO.setPassword("123456");
         CXCoinAccount cxCoinAccount = cxCoinAccountDao.findByNameAndPasswordAndImsi("Account1", "123456", userInfo.getImsi());
         Double before = cxCoinAccount.getCoin();
-        OperationDescription operationDescription = cxCoinService.consumeCXCoin(userInfo.getImsi(), cxCoinAccountDTO);
-        System.out.println("operationDescription = " + operationDescription);
-        assertThat(operationDescription.getDealResult()).isEqualTo(Constants.SUCCESS_FLAG);
-        CXCoinAccount cxCoinAccount2 = cxCoinAccountDao.findByNameAndPasswordAndImsi("Account1", "123456", userInfo.getImsi());
+        CXCoinAccount cxCoinAccount2 = cxCoinService.consumeCXCoin(userInfo.getImsi(), cxCoinAccountDTO);
+        System.out.println("cxCoinAccount2 = " + cxCoinAccount2);
+//        assertThat(operationDescription.getDealResult()).isEqualTo(Constants.SUCCESS_FLAG);
+//        CXCoinAccount cxCoinAccount2 = cxCoinAccountDao.findByNameAndPasswordAndImsi("Account1", "123456", userInfo.getImsi());
         Double after = cxCoinAccount2.getCoin();
         assertEquals(before, after - 5, 1e-3);
     }

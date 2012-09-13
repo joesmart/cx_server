@@ -93,7 +93,7 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
 
     @Override
     @Transactional(readOnly = false)
-    public OperationDescription consumeCXCoin(String imsi, CXCoinAccountDTO cxCoinAccountDTO) throws SystemException {
+    public CXCoinAccount consumeCXCoin(String imsi, CXCoinAccountDTO cxCoinAccountDTO) throws SystemException {
         checkUserRegisterCXCoinAccount(imsi);
         checkCXCoinAccountCorrect(cxCoinAccountDTO.getName(), cxCoinAccountDTO.getPassword());
         checkUserUnConsumeCXCoin(userInfo);
@@ -107,9 +107,8 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
         
         cxCoinAccount.setCoin(cxCoinAccount.getCoin() + 5);
         cxCoinAccountDao.save(cxCoinAccount);
-        OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
-            HttpServletResponse.SC_NO_CONTENT, "consumeCXCoin");
-        return operationDescription;
+        
+        return cxCoinAccount;
     }
 
     @Override

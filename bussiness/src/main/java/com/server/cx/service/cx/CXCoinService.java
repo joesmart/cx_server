@@ -12,7 +12,7 @@ public interface CXCoinService {
 
     public OperationDescription login(String imsi, CXCoinAccountDTO coinAccountDTO) throws SystemException;
 
-    public OperationDescription consumeCXCoin(String imsi, CXCoinAccountDTO cxCoinAccountDTO) throws SystemException;
+    public CXCoinAccount consumeCXCoin(String imsi, CXCoinAccountDTO cxCoinAccountDTO) throws SystemException;
 
     public CXCoinAccount getCXCoinAccount(String imsi) throws SystemException;
 
