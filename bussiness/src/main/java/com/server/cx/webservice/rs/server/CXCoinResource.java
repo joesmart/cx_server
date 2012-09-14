@@ -125,7 +125,9 @@ public class CXCoinResource {
         try {
             ValidationUtil.checkParametersNotNull(imsi, coinAccountDTO.getName(), coinAccountDTO.getPassword());
             CXCoinAccount cxCoinAccount = cxCoinService.consumeCXCoin(imsi, coinAccountDTO);
-            return Response.ok(cxCoinAccount).build();
+            CXCoinAccountDTO cxCoinAccountDTO = businessFunctions.cxCoinAccountToCXCoinAccountDTO()
+                .apply(cxCoinAccount);
+            return Response.ok(cxCoinAccountDTO).build();
         } catch (Exception e) {
             e.printStackTrace();
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
