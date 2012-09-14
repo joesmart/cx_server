@@ -3,9 +3,12 @@ package com.server.cx.config;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.fasterxml.jackson.jaxrs.json.util.ClassKey;
+import com.google.common.base.Stopwatch;
 import com.google.common.io.ByteStreams;
 import com.google.common.io.CharStreams;
 import com.google.common.io.OutputSupplier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
@@ -22,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * User: yanjianzou
@@ -34,6 +38,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyWriter<Object> {
 
+    private static Logger logger = LoggerFactory.getLogger(FastJsonProvider.class);
     /**
      * Looks like we need to worry about accidental
      * data binding for types we shouldn't be handling. This is
@@ -229,12 +234,18 @@ public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyW
     @Override
     public Object readFrom(Class<Object> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, String> httpHeaders, InputStream entityStream) throws IOException, WebApplicationException {
 //        StringBuffer stringBuffer = Files
+
         List<String> strings = CharStreams.readLines(new BufferedReader(new InputStreamReader(entityStream)));
         StringBuffer stringBuffer =new StringBuffer();
         for(String temp:strings){
             stringBuffer.append(temp);
         }
-        return  JSON.parseObject(stringBuffer.toString(),genericType);
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.start();
+        Object result = JSON.parseObject(stringBuffer.toString(), genericType);
+        stopwatch.stop();
+        logger.info("FastJson deserialize time:"+stopwatch.elapsedTime(TimeUnit.MICROSECONDS));
+        return result;
     }
 
     @Override
@@ -270,7 +281,10 @@ public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyW
 
     @Override
     public void writeTo(Object o, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, final OutputStream entityStream) throws IOException, WebApplicationException {
-        String jsonString = JSON.toJSONString(o, SerializerFeature.PrettyFormat,SerializerFeature.WriteClassName,SerializerFeature.SortField);
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.start();
+        String jsonString = JSON.toJSONString(o,SerializerFeature.WriteClassName);
+
         httpHeaders.putSingle("Content-Type","application/json; charset=UTF-8");
         ByteStreams.write(jsonString.getBytes(),new OutputSupplier<OutputStream>() {
             @Override
@@ -278,6 +292,9 @@ public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyW
                 return entityStream;
             }
         });
+
+        stopwatch.stop();
+        logger.info("Fast Json Convert time:"+stopwatch.elapsedTime(TimeUnit.MICROSECONDS));
     }
 
 }

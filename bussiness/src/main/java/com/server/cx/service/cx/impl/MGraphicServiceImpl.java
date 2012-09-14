@@ -131,6 +131,7 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         mGraphicIdMustBeExists(mGraphicDTO);
 
         UserCommonMGraphic mGraphic = userCommonMGraphicDao.findOne(mGraphicDTO.getId());
+
         if (mGraphicDTO.getPhoneNos() == null || mGraphicDTO.getPhoneNos().size() == 0) {
             historyPreviousMGraphic(mGraphic);
             mGraphic.setPhoneNos(null);
@@ -138,21 +139,27 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
             mGraphic.setCommon(true);
             updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
             userCommonMGraphicDao.save(mGraphic);
-        } else {
+        } else if(mGraphic.getCommon()) {
             Long dataRowNumber = userCommonMGraphicDao.count(UserCommonMGraphicSpecifications.userCommonMGraphicCount(userInfo));
             if (dataRowNumber >= 5) {
                 throw new CXServerBusinessException("指定号码用户设置彩像最多允许5个");
             }
-            mGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
-            mGraphic.setModeType(2);
-            mGraphic.setPriority(4);
-            mGraphic.setCommon(false);
-            updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
-            userCommonMGraphicDao.save( mGraphic);
+            createSpeicalPhoneNosMGrpahic(mGraphicDTO, mGraphic);
+        }else if (!mGraphic.getCommon()){
+            createSpeicalPhoneNosMGrpahic(mGraphicDTO,mGraphic);
         }
 
 
         return new OperationResult("editUserCommonMGraphic", Constants.SUCCESS_FLAG);
+    }
+
+    private void createSpeicalPhoneNosMGrpahic(MGraphicDTO mGraphicDTO, UserCommonMGraphic mGraphic) {
+        mGraphic.setPhoneNos(mGraphicDTO.getPhoneNos());
+        mGraphic.setModeType(2);
+        mGraphic.setPriority(4);
+        mGraphic.setCommon(false);
+        updateMGraphicNameAndSignatureInEditMode(mGraphicDTO, mGraphic);
+        userCommonMGraphicDao.save( mGraphic);
     }
 
     @Override
