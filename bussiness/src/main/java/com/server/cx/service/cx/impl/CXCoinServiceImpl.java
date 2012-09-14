@@ -17,6 +17,7 @@ import com.server.cx.dao.cx.CXCoinTotalItemDao;
 import com.server.cx.dao.cx.UserSubscribeRecordDao;
 import com.server.cx.dao.cx.spec.SubscribeRecordSpecifications;
 import com.server.cx.entity.cx.CXCoinAccount;
+import com.server.cx.entity.cx.CXCoinConsumeRecord;
 import com.server.cx.entity.cx.CXCoinTotalItem;
 import com.server.cx.entity.cx.UserSubscribeRecord;
 import com.server.cx.exception.SystemException;
@@ -107,7 +108,10 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
         
         cxCoinAccount.setCoin(cxCoinAccount.getCoin() + 5);
         cxCoinAccountDao.save(cxCoinAccount);
-        
+        CXCoinConsumeRecord cxCoinConsumeRecord = new CXCoinConsumeRecord();
+        cxCoinConsumeRecord.setCxCoin(5D);
+        cxCoinConsumeRecord.setUserInfo(userInfo);
+        cxCoinConsumeRecordDao.save(cxCoinConsumeRecord);
         return cxCoinAccount;
     }
 
