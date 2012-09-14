@@ -124,8 +124,8 @@ public class CXCoinResource {
         LOGGER.info("Into getCXCoinAccount coinAccountDTO = " + coinAccountDTO);
         try {
             ValidationUtil.checkParametersNotNull(imsi, coinAccountDTO.getName(), coinAccountDTO.getPassword());
-            OperationDescription operationDescription = cxCoinService.consumeCXCoin(imsi, coinAccountDTO);
-            return Response.ok(operationDescription).build();
+            CXCoinAccount cxCoinAccount = cxCoinService.consumeCXCoin(imsi, coinAccountDTO);
+            return Response.ok(cxCoinAccount).build();
         } catch (Exception e) {
             e.printStackTrace();
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(

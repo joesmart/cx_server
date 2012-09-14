@@ -45,6 +45,10 @@ public class RegisterServiceImpl implements RegisterService {
                 operationDescription.setSendSMS(false);
             } else {
                 operationDescription.setForceSMS(getForceFlag(userinfo.getForceSMS()));
+                if(operationDescription.getForceSMS()) {
+                    userinfo.setForceSMS(Boolean.FALSE);
+                    userInfoDao.save(userinfo);
+                }
                 operationDescription.setSendSMS(true);
             }
         }
