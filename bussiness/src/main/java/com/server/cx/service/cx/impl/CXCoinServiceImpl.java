@@ -44,6 +44,9 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
     @Transactional(readOnly = false)
     public OperationDescription register(String imsi, CXCoinAccountDTO coinAccountDTO) throws SystemException {
         checkUserUnRegisterCXCoinAccount(imsi);
+        checkEmailValid(coinAccountDTO.getName());
+        checkEmailUnRegistered(coinAccountDTO.getName());
+        
         CXCoinAccount cxCoinAccount = new CXCoinAccount();
         cxCoinAccount.setName(coinAccountDTO.getName());
         cxCoinAccount.setPassword(coinAccountDTO.getPassword());
