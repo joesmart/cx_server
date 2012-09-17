@@ -1,5 +1,6 @@
 package com.server.cx.entity.cx;
 
+import com.server.cx.service.util.CheckResult;
 import com.server.cx.service.util.CheckStatusDesc;
 import lombok.Data;
 
@@ -14,5 +15,6 @@ public class FileMeta {
     private String delete_type;
     private String type;
     private CheckStatusDesc checkStatusDesc;
+    private CheckResult checkResult;
 
 }
