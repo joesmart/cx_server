@@ -267,4 +267,8 @@ public class BasicService {
     public String generateCXCoinRegisterURL(String imsi) {
         return generateURL(imsi, "/cxCoin/register");
     }
+
+    public String generateCXCoinPurchaseURL(String imsi) {
+        return generateURL(imsi, "/cxCoin/purchase");
+    }
 }

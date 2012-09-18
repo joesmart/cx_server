@@ -7,6 +7,7 @@ import com.cl.cx.platform.dto.CXCoinAccountDTO;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
+import com.server.cx.functional.resource.BasicJerseyTest;
 import com.sun.jersey.api.client.ClientResponse;
 
 public class CXCoinResourceTest extends BasicJerseyTest {
@@ -68,5 +69,13 @@ public class CXCoinResourceTest extends BasicJerseyTest {
         OperationDescription operationDescription = response.getEntity(OperationDescription.class);
         System.out.println("operationDescription = " + operationDescription);
         assertThat(operationDescription.getDealResult()).isEqualTo(Constants.SUCCESS_FLAG);
+    }
+    
+    @Test
+    public void test_purchase_success() {
+        resource = resource.path("/13146001000/cxCoin/purchase").queryParam("notify_data", "gavin").queryParam("sign", "sign");
+        ClientResponse response = resource.type(MediaType.APPLICATION_XML).accept(MediaType.APPLICATION_JSON).post(ClientResponse.class);
+        String result = response.getEntity(String.class);
+        System.out.println("result = " + result);
     }
 }
