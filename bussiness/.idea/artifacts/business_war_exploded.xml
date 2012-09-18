@@ -58,7 +58,7 @@
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-web:1.2.1" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.6" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
-          <element id="library" level="project" name="Maven: org.lazyluke:log4jdbc-remix:0.2.8-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: org.lazyluke:log4jdbc-remix:0.2.7" />
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-frontend-jaxws:2.6.2" />
           <element id="library" level="project" name="Maven: xml-resolver:xml-resolver:1.2" />
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-api:2.6.2" />
