@@ -31,7 +31,8 @@ public class UserDailyServiceImpl implements UserDailyService {
     
     @Autowired
     private ContactsDao contactsDao;
-
+    
+    @Transactional(readOnly = false)
     @Override
     public void doDailyTask() throws SystemException {
         clearUserStatusMGraphic();
@@ -39,7 +40,6 @@ public class UserDailyServiceImpl implements UserDailyService {
         updateContactSelfUserInfo();
     }
     
-    @Transactional(readOnly = false)
     private void updateContactSelfUserInfo() {
         List<Contacts> foundContacts = Lists.newArrayList();
         List<Contacts> contacts = contactsDao.findBySelfUserInfo(null);
@@ -53,13 +53,11 @@ public class UserDailyServiceImpl implements UserDailyService {
         contactsDao.batchUpdateContactsPhoneNo(foundContacts);
     }
 
-    @Transactional(readOnly = false)
     private void clearCXCoinConsumeRecord() {
         LOGGER.info("Into clearCXCoinConsumeRecord");
         cxCoinConsumeRecordDao.deleteAll();
     }
     
-    @Transactional(readOnly = false)
     private void clearUserStatusMGraphic() {
         LOGGER.info("Into clearUserStatusMGraphic");
         userStatusMGraphicDao.deleteAll();

@@ -11,6 +11,7 @@ import com.server.cx.entity.cx.CXCoinConsumeRecord;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.MoneyNotEnoughException;
 import com.server.cx.exception.SystemException;
+import com.server.cx.util.StringUtil;
 
 @Component
 @Scope("request")
@@ -66,6 +67,17 @@ public class CXCoinBasicService extends UserCheckService {
             return true;
         }
         return false;
+    }
+    
+    public void checkEmailValid(String email) {
+        StringUtil.checkEmailFormatValid(email);
+    }
+    
+    public void checkEmailUnRegistered(String email) {
+        cxCoinAccount = cxCoinAccountDao.findByName(email);
+        if (cxCoinAccount != null) {
+            throw new SystemException("邮箱已经被注册过");
+        }
     }
 
 }
