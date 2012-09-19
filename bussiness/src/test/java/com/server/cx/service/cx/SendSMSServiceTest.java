@@ -31,7 +31,7 @@ public class SendSMSServiceTest extends SpringTransactionalTestCase {
 
     @Test
     public void testSendSMS() throws Exception {
-        boolean  result = sendSMSService.sendSMS("123123");
-        assertThat(result).isTrue();
+        Long[]  result = sendSMSService.sendSMS("123123");
+        assertThat(result).isNotNull();
     }
 }

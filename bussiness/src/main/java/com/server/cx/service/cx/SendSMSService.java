@@ -7,5 +7,5 @@ package com.server.cx.service.cx;
  * FileName:SendSMSService
  */
 public interface SendSMSService {
-    public boolean sendSMS(String fromMobileNo);
+    public Long[] sendSMS(String fromMobileNo);
 }

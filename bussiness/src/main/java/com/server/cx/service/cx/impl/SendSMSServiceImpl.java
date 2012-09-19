@@ -27,25 +27,34 @@ public class SendSMSServiceImpl implements SendSMSService {
     private SmsMessageDao smsMessageDao;
 
     @Override
-    public boolean sendSMS(String fromMobileNo) {
-        List<SmsMessage> smsMessageList = smsMessageDao.findByIsSendAndFromMobileNo(false,fromMobileNo);
+    public Long[] sendSMS(String fromMobileNo) {
+      //  setDataSource();
+        List<SmsMessage> smsMessageList = smsMessageDao.findByIsSendAndFromMobileNo(false, fromMobileNo);
         if(smsMessageList == null || smsMessageList.size() == 0){
-            return false;
+            return null;
         }
+        Long[] ids = new Long[smsMessageList.size()];
         SqlParameterSource[] sqlParameterSources = new SqlParameterSource[smsMessageList.size()];
         int i=0;
         for(SmsMessage smsMessage:smsMessageList){
-            sqlParameterSources[i++]=new MapSqlParameterSource().addValue("senderName",smsMessage.getFromMobileNo())
-                                                                 .addValue("message",smsMessage.getSms());
+            sqlParameterSources[i]=new MapSqlParameterSource().addValue("addresses",smsMessage.getToMobileNo())
+                                                                 .addValue("senderName",smsMessage.getFromMobileNo())
+                                                                 .addValue("message", smsMessage.getSms());
+            ids[i]= smsMessage.getId();
+            i = i+1;
         }
         int[] row = simpleJdbcInsert.executeBatch(sqlParameterSources);
-        return row != null && row.length > 0;
+        if( row != null && row.length > 0){
+            return ids;
+        }else{
+            return null;
+        }
     }
 
 
     @Autowired
-    @Qualifier(value = "sqlServerDataSource")
+    @Qualifier("sqlServerDataSource")
     public void setDataSource(DataSource dataSource) {
-      this.simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("send_sms");
+        this.simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("sendSms").usingColumns("addresses","senderName","message");
     }
 }
