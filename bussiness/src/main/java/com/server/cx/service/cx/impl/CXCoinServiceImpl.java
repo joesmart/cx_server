@@ -13,6 +13,7 @@ import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.google.common.collect.Lists;
+import com.server.cx.dao.cx.CXCoinNotfiyDataDao;
 import com.server.cx.dao.cx.CXCoinTotalItemDao;
 import com.server.cx.dao.cx.UserSubscribeRecordDao;
 import com.server.cx.dao.cx.spec.SubscribeRecordSpecifications;
@@ -40,6 +41,9 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
 
     @Autowired
     private BasicService basicService;
+    
+    @Autowired
+    private CXCoinNotfiyDataDao cxCoinNotfiyDataDao;
 
     @Override
     @Transactional(readOnly = false)
@@ -171,6 +175,7 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
     public void handleCXCoinPurchaseCallback(CXCoinNotfiyData cxCoinNotfiyData) throws SystemException {
         String subject = cxCoinNotfiyData.getSubject();
         checkCXCoinAccountNameExist(subject);
+        cxCoinNotfiyDataDao.save(cxCoinNotfiyData);
         cxCoinAccount.setCoin(cxCoinAccount.getCoin() + caculateCXCoin(cxCoinNotfiyData.getTotalFee()));
         cxCoinAccountDao.save(cxCoinAccount);
     }
