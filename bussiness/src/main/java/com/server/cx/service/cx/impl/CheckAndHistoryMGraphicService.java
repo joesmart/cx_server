@@ -74,8 +74,9 @@ public class CheckAndHistoryMGraphicService extends UserCheckService {
 
     protected void historyPreviousUserCommonMGraphic(MGraphic mGraphic) {
         if (mGraphic == null) return;
-        HistoryMGraphic historyMGraphic = new HistoryMGraphic();
         GraphicInfo graphicInfo = mGraphic.getGraphicResource().getGraphicInfo();
+        if(graphicInfo == null) return;
+        HistoryMGraphic historyMGraphic = new HistoryMGraphic();
         historyMGraphic.setGraphicInfo(graphicInfo);
         historyMGraphic.setUserInfo(userInfo);
         historyMGraphic.setName(mGraphic.getName());

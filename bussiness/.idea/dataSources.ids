@@ -5064,4 +5064,1114 @@
       <column name="ab" sqlType="VARCHAR" length="50" precision="0" nullable="true" jdbcType="12" />
     </table>
   </data-source>
+  <data-source source="LOCAL" name="Data Source [2]" product="Microsoft SQL Server" version="8.00.194" jdbc-version="4.0" driver-name="Microsoft SQL Server JDBC Driver 3.0" driver-version="3.0.1301.101" uuid="fd7d229d-c6ac-4aa8-8b84-f6f8a7de1415">
+    <extra-name-characters>$#@</extra-name-characters>
+    <identifier-quote-string>"</identifier-quote-string>
+    <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+    <jdbc-url>jdbc:sqlserver://10.90.3.47:1433;databaseName=Ismp</jdbc-url>
+    <user-name>abc</user-name>
+    <user-password>df9bdf98df99df9edf9fdf9cdf9ddf92df93</user-password>
+    <schema-pattern>*.dbo</schema-pattern>
+    <default-dialect>TSQL</default-dialect>
+    <libraries>
+      <library>
+        <url>jar://$MAVEN_REPOSITORY$/com/microsoft/sqlserver/sqljdbc4/3.0/sqljdbc4-3.0.jar!/</url>
+      </library>
+    </libraries>
+    <table name="SMGP30_DELIVER" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordId" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="moDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <column name="MsgID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="IsReport" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="MsgFormat" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="RecvTime" sqlType="varchar" length="14" precision="0" nullable="true" jdbcType="12" />
+      <column name="SrcTermID" sqlType="varchar" length="21" precision="0" nullable="true" jdbcType="12" />
+      <column name="DestTermID" sqlType="varchar" length="21" precision="0" nullable="true" jdbcType="12" />
+      <column name="MsgLength" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="MsgContent" sqlType="varchar" length="300" precision="0" nullable="true" jdbcType="12" />
+      <column name="Reserve" sqlType="varchar" length="8" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_TP_pid" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_TP_udhi" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_LinkID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SrcTermType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SrcTermPseudo" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SubmitMsgType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SPDealResult" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PK_SMGP30_DELIVER" columns="recordid" />
+    </table>
+    <table name="SMGP30_SUBMIT" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordId" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="mtSequenceID" sqlType="bigint" length="19" precision="0" nullable="true" jdbcType="-5" def="KCgtMSkp" />
+      <column name="mtSendCount" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" def="KDAp" />
+      <column name="mtHash" sqlType="bigint" length="19" precision="0" nullable="true" jdbcType="-5" def="KDAp" />
+      <column name="mtDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <column name="MsgType" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="NeedReport" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDAp" />
+      <column name="Priority" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDUp" />
+      <column name="ServiceID" sqlType="varchar" length="10" precision="0" nullable="true" jdbcType="12" />
+      <column name="FeeType" sqlType="varchar" length="2" precision="0" nullable="true" jdbcType="12" />
+      <column name="FeeCode" sqlType="varchar" length="6" precision="0" nullable="true" jdbcType="12" def="JygwKSc=" />
+      <column name="FixedFee" sqlType="varchar" length="6" precision="0" nullable="true" jdbcType="12" def="JygwKSc=" />
+      <column name="MsgFormat" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDE1KQ==" />
+      <column name="ValidTime" sqlType="varchar" length="17" precision="0" nullable="true" jdbcType="12" />
+      <column name="AtTime" sqlType="varchar" length="17" precision="0" nullable="true" jdbcType="12" />
+      <column name="SrcTermID" sqlType="varchar" length="21" precision="0" nullable="true" jdbcType="12" />
+      <column name="ChargeTermID" sqlType="varchar" length="21" precision="0" nullable="true" jdbcType="12" />
+      <column name="DestTermID" sqlType="varchar" length="21" precision="0" nullable="true" jdbcType="12" />
+      <column name="MsgContent" sqlType="varchar" length="252" precision="0" nullable="true" jdbcType="12" />
+      <column name="Reserve" sqlType="varchar" length="8" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_TP_pid" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_TP_udhi" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_LinkID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_MsgSrc" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_ChargeUserType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_ChargeTermType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_ChargeTermPseudo" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_DestTermType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_DestTermPseudo" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_PkTotal" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_PkNumber" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SubmitMsgType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SPDealResult" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_MServiceID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SrcTermType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SrcTermPseudo" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_NodesCount" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SrcType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PK_SMGP30_SUBMIT" columns="recordid" />
+    </table>
+    <table name="SMGP30_SUBMIT_HISTORY" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordId" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="mtSequenceID" sqlType="bigint" length="19" precision="0" nullable="true" jdbcType="-5" def="KCgtMSkp" />
+      <column name="mtSendCount" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" def="KDAp" />
+      <column name="mtHash" sqlType="bigint" length="19" precision="0" nullable="true" jdbcType="-5" def="KDAp" />
+      <column name="mtDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <column name="MsgType" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="NeedReport" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDAp" />
+      <column name="Priority" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDUp" />
+      <column name="ServiceID" sqlType="varchar" length="10" precision="0" nullable="true" jdbcType="12" />
+      <column name="FeeType" sqlType="varchar" length="2" precision="0" nullable="true" jdbcType="12" />
+      <column name="FeeCode" sqlType="varchar" length="6" precision="0" nullable="true" jdbcType="12" def="JygwKSc=" />
+      <column name="FixedFee" sqlType="varchar" length="6" precision="0" nullable="true" jdbcType="12" def="JygwKSc=" />
+      <column name="MsgFormat" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDE1KQ==" />
+      <column name="ValidTime" sqlType="varchar" length="17" precision="0" nullable="true" jdbcType="12" />
+      <column name="AtTime" sqlType="varchar" length="17" precision="0" nullable="true" jdbcType="12" />
+      <column name="SrcTermID" sqlType="varchar" length="21" precision="0" nullable="true" jdbcType="12" />
+      <column name="ChargeTermID" sqlType="varchar" length="21" precision="0" nullable="true" jdbcType="12" />
+      <column name="DestTermID" sqlType="varchar" length="21" precision="0" nullable="true" jdbcType="12" />
+      <column name="MsgContent" sqlType="varchar" length="252" precision="0" nullable="true" jdbcType="12" />
+      <column name="Reserve" sqlType="varchar" length="8" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_TP_pid" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_TP_udhi" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_LinkID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_MsgSrc" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_ChargeUserType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_ChargeTermType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_ChargeTermPseudo" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_DestTermType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_DestTermPseudo" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_PkTotal" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_PkNumber" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SubmitMsgType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SPDealResult" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_MServiceID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SrcTermType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SrcTermPseudo" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_NodesCount" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SrcType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="RESP_MsgId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="RESP_Status" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <primary-key name="PK_SMGP30_SUBMIT_HISTORY" columns="recordid" />
+    </table>
+    <table name="SMGP30_SUBMIT_REPORT" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordId" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="moDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <column name="MsgID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="IsReport" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="MsgFormat" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="RecvTime" sqlType="varchar" length="14" precision="0" nullable="true" jdbcType="12" />
+      <column name="SrcTermID" sqlType="varchar" length="21" precision="0" nullable="true" jdbcType="12" />
+      <column name="DestTermID" sqlType="varchar" length="21" precision="0" nullable="true" jdbcType="12" />
+      <column name="MsgLength" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="MsgContent" sqlType="varchar" length="300" precision="0" nullable="true" jdbcType="12" />
+      <column name="Reserve" sqlType="varchar" length="8" precision="0" nullable="true" jdbcType="12" />
+      <column name="id" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="sub" sqlType="varchar" length="3" precision="0" nullable="true" jdbcType="12" />
+      <column name="dlvrd" sqlType="varchar" length="3" precision="0" nullable="true" jdbcType="12" />
+      <column name="Submit_date" sqlType="varchar" length="10" precision="0" nullable="true" jdbcType="12" />
+      <column name="done_date" sqlType="varchar" length="10" precision="0" nullable="true" jdbcType="12" />
+      <column name="Stat" sqlType="varchar" length="7" precision="0" nullable="true" jdbcType="12" />
+      <column name="Err" sqlType="varchar" length="3" precision="0" nullable="true" jdbcType="12" />
+      <column name="Txt" sqlType="varchar" length="20" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_TP_pid" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_TP_udhi" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_LinkID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SrcTermType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SrcTermPseudo" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SubmitMsgType" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="TLV_SPDealResult" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PK_SMGP30_SUBMIT_REPORT" columns="recordid" />
+    </table>
+    <table name="dtproperties" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="id" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="objectid" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="property" sqlType="varchar" length="64" precision="0" nullable="false" jdbcType="12" />
+      <column name="value" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="uvalue" sqlType="nvarchar" length="255" precision="0" nullable="true" jdbcType="-9" />
+      <column name="lvalue" sqlType="image" length="2147483647" precision="0" nullable="true" jdbcType="-4" />
+      <column name="version" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" def="KDAp" />
+      <primary-key name="pk_dtproperties" columns="id,property" />
+    </table>
+    <table name="notifyManagementInfo" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="streamingNo" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="ID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="IDType" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="status" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="moDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <primary-key name="PK_notifyManagementInfo" columns="recordid" />
+    </table>
+    <table name="notifySmsDeliveryReceipt" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="spRevId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="spRevpassword" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="spId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SAN" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="transactionId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="linkId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="correlator" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="address" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="deliveryStatus" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="moDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <primary-key name="PK_notifySmsDeliveryReceipt" columns="recordid" />
+    </table>
+    <table name="notifySmsReception" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="spRevId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="spRevpassword" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="spId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SAN" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="transactionId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="linkId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="registrationIdentifier" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="message" sqlType="varchar" length="160" precision="0" nullable="true" jdbcType="12" />
+      <column name="senderAddress" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="smsServiceActivationNumber" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="moDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <primary-key name="PK_notifySmsReception" columns="recordid" />
+    </table>
+    <table name="orderRelationUpdateNotifyReq" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="streamingNo" sqlType="varchar" length="100" precision="0" nullable="true" jdbcType="12" />
+      <column name="productID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="packageID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="userID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="userIDType" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="OPType" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="moDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <primary-key name="PK_orderRelationUpdateNotifyReq" columns="recordid" />
+    </table>
+    <table name="sendMms" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="mtDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <column name="mtHashCode" sqlType="bigint" length="19" precision="0" nullable="true" jdbcType="-5" def="KDAp" />
+      <column name="mtSendCount" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDAp" />
+      <column name="SH_productId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_SAN" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transactionId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transEnd" sqlType="varchar" length="2" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_linkID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_OA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_FA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_description" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_currency" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_amount" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_code" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="addresses" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="senderAddress" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="subject" sqlType="varchar" length="100" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_endpoint" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_interfaceName" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_correlator" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="smilfile" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PK_sendMms" columns="recordid" />
+    </table>
+    <table name="sendMmsHistory" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="mtDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <column name="mtHashCode" sqlType="bigint" length="19" precision="0" nullable="true" jdbcType="-5" def="KDAp" />
+      <column name="mtSendCount" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDAp" />
+      <column name="SH_productId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_SAN" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transactionId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transEnd" sqlType="varchar" length="2" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_linkID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_OA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_FA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_description" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_currency" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_amount" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_code" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="addresses" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="senderAddress" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="subject" sqlType="varchar" length="100" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_endpoint" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_interfaceName" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_correlator" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="smilfile" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="mtResult" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="mtMessageId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="mtText" sqlType="varchar" length="500" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PK_sendMmsHistory" columns="recordid" />
+    </table>
+    <table name="sendPush" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="mtDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <column name="mtHashCode" sqlType="bigint" length="19" precision="0" nullable="true" jdbcType="-5" def="KDAp" />
+      <column name="mtSendCount" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDAp" />
+      <column name="SH_productId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_SAN" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transactionId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transEnd" sqlType="varchar" length="2" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_linkID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_OA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_FA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="addresses" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="senderAddress" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="targetURL" sqlType="varchar" length="100" precision="0" nullable="true" jdbcType="12" />
+      <column name="subject" sqlType="varchar" length="100" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_endpoint" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_interfaceName" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_correlator" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PK_sendPush" columns="recordid" />
+    </table>
+    <table name="sendPushHistory" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="mtDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <column name="mtHashCode" sqlType="bigint" length="19" precision="0" nullable="true" jdbcType="-5" def="KDAp" />
+      <column name="mtSendCount" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDAp" />
+      <column name="SH_productId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_SAN" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transactionId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transEnd" sqlType="varchar" length="2" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_linkID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_OA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_FA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="addresses" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="senderAddress" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="targetURL" sqlType="varchar" length="100" precision="0" nullable="true" jdbcType="12" />
+      <column name="subject" sqlType="varchar" length="100" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_endpoint" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_interfaceName" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_correlator" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="mtResult" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="mtMessageId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="mtText" sqlType="varchar" length="500" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PK_sendPushHistory" columns="recordid" />
+    </table>
+    <table name="sendSms" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="mtDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <column name="mtHashCode" sqlType="bigint" length="19" precision="0" nullable="true" jdbcType="-5" def="KDAp" />
+      <column name="mtSendCount" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDAp" />
+      <column name="SH_productId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_SAN" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transactionId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transEnd" sqlType="varchar" length="2" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_linkID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_OA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_FA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="addresses" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="senderName" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_description" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_currency" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_amount" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_code" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="message" sqlType="varchar" length="160" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_endpoint" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_interfaceName" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_correlator" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PK_sendSms" columns="recordid" />
+    </table>
+    <table name="sendSmsHistory" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="mtDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <column name="mtHashCode" sqlType="bigint" length="19" precision="0" nullable="true" jdbcType="-5" def="KDAp" />
+      <column name="mtSendCount" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" def="KDAp" />
+      <column name="SH_productId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_SAN" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transactionId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_transEnd" sqlType="varchar" length="2" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_linkID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_OA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SH_FA" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="addresses" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="senderName" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_description" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_currency" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_amount" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="CI_code" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="message" sqlType="varchar" length="160" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_endpoint" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_interfaceName" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="SR_correlator" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="mtResult" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="mtMessageId" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="mtText" sqlType="varchar" length="500" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PK_sendSmsHistroy" columns="recordid" />
+    </table>
+    <table name="serviceConsumeNotifyReq" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="streamingNo" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="userID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="userIDType" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="productID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="linkID" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="featureStr" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <column name="moDate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" def="JyhnZXRkYXRlKCkpJw==" />
+      <primary-key name="PK_serviceConsumeNotifyReq" columns="recordid" />
+    </table>
+    <table name="syscolumns" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="name" sqlType="sysname" length="128" precision="0" nullable="false" jdbcType="-9" />
+      <column name="id" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="xtype" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="typestat" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="xusertype" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="length" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="xprec" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="xscale" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="colid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="xoffset" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="bitpos" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="reserved" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="colstat" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="cdefault" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="domain" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="number" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="colorder" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="autoval" sqlType="varbinary" length="8000" precision="0" nullable="true" jdbcType="-3" />
+      <column name="offset" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="collationid" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="language" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="status" sqlType="tinyint" length="3" precision="0" nullable="true" jdbcType="-6" />
+      <column name="type" sqlType="tinyint" length="3" precision="0" nullable="true" jdbcType="-6" />
+      <column name="usertype" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="printfmt" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="prec" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="scale" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="iscomputed" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="isoutparam" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="isnullable" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="collation" sqlType="sysname" length="128" precision="0" nullable="true" jdbcType="-9" />
+      <column name="tdscollation" sqlType="binary" length="5" precision="0" nullable="true" jdbcType="-2" />
+      <index name="syscolumns" unique="true" columns="id,colid,number" />
+      <index name="ncsyscolumns" unique="true" columns="id,name,number" />
+    </table>
+    <table name="syscomments" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="id" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="number" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="colid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="status" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="ctext" sqlType="varbinary" length="8000" precision="0" nullable="false" jdbcType="-3" />
+      <column name="texttype" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="language" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="encrypted" sqlType="bit" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <column name="compressed" sqlType="bit" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <column name="text" sqlType="nvarchar" length="4000" precision="0" nullable="true" jdbcType="-9" />
+      <index name="syscomments" unique="true" columns="id,number,colid" />
+    </table>
+    <table name="sysconstraints" schema="dbo" catalog="Ismp" type="VIEW">
+      <column name="constid" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="id" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="colid" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="spare1" sqlType="tinyint" length="3" precision="0" nullable="true" jdbcType="-6" />
+      <column name="status" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="actions" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="error" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+    </table>
+    <table name="sysdepends" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="id" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="depid" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="number" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="depnumber" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="status" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="deptype" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="depdbid" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="depsiteid" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="selall" sqlType="bit" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <column name="resultobj" sqlType="bit" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <column name="readobj" sqlType="bit" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <index name="sysdepends" unique="true" columns="deptype,depid,id,depnumber,number" />
+      <index name="ncsysdepends1" unique="true" columns="id,number,deptype,depid,depnumber" />
+    </table>
+    <table name="sysfilegroups" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="groupid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="allocpolicy" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="status" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="groupname" sqlType="sysname" length="128" precision="0" nullable="false" jdbcType="-9" />
+      <index name="sysfilegroups" unique="true" columns="groupid" />
+      <index name="sysfilegroupsnc" unique="true" columns="groupname" />
+    </table>
+    <table name="sysfiles" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="fileid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="groupid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="size" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="maxsize" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="growth" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="status" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="perf" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="name" sqlType="nchar" length="128" precision="0" nullable="false" jdbcType="-15" />
+      <column name="filename" sqlType="nchar" length="260" precision="0" nullable="false" jdbcType="-15" />
+    </table>
+    <table name="sysfiles1" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="status" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="fileid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="name" sqlType="nchar" length="128" precision="0" nullable="false" jdbcType="-15" />
+      <column name="filename" sqlType="nchar" length="260" precision="0" nullable="false" jdbcType="-15" />
+    </table>
+    <table name="sysforeignkeys" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="constid" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="fkeyid" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="rkeyid" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="fkey" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="rkey" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="keyno" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+    </table>
+    <table name="sysfulltextcatalogs" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="ftcatid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="name" sqlType="sysname" length="128" precision="0" nullable="false" jdbcType="-9" />
+      <column name="status" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="path" sqlType="nvarchar" length="260" precision="0" nullable="true" jdbcType="-9" />
+      <index name="sysfulltextcatalogs" unique="true" columns="ftcatid" />
+      <index name="ncsysfulltextcatalogs" unique="true" columns="name" />
+    </table>
+    <table name="sysfulltextnotify" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="tableid" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="rowinfo" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="ftkey" sqlType="varbinary" length="896" precision="0" nullable="false" jdbcType="-3" />
+      <index name="sysfulltextnotify" unique="true" columns="tableid,ftkey" />
+    </table>
+    <table name="sysindexes" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="id" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="status" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="first" sqlType="binary" length="6" precision="0" nullable="false" jdbcType="-2" />
+      <column name="indid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="root" sqlType="binary" length="6" precision="0" nullable="false" jdbcType="-2" />
+      <column name="minlen" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="keycnt" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="groupid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="dpages" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="reserved" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="used" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="rowcnt" sqlType="bigint" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="rowmodctr" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="reserved3" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="reserved4" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="xmaxlen" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="maxirow" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="OrigFillFactor" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="StatVersion" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="reserved2" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="FirstIAM" sqlType="binary" length="6" precision="0" nullable="false" jdbcType="-2" />
+      <column name="impid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="lockflags" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="pgmodctr" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="keys" sqlType="varbinary" length="1088" precision="0" nullable="true" jdbcType="-3" />
+      <column name="name" sqlType="sysname" length="128" precision="0" nullable="false" jdbcType="-9" />
+      <column name="statblob" sqlType="image" length="2147483647" precision="0" nullable="true" jdbcType="-4" />
+      <column name="maxlen" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="rows" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <index name="sysindexes" unique="true" columns="id,indid" />
+    </table>
+    <table name="sysindexkeys" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="id" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="indid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="colid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="keyno" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+    </table>
+    <table name="sysmembers" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="memberuid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="groupuid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+    </table>
+    <table name="sysobjects" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="name" sqlType="sysname" length="128" precision="0" nullable="false" jdbcType="-9" />
+      <column name="id" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="xtype" sqlType="char" length="2" precision="0" nullable="false" jdbcType="1" />
+      <column name="uid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="info" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="status" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="base_schema_ver" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="replinfo" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="parent_obj" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="crdate" sqlType="datetime" length="23" precision="3" nullable="false" jdbcType="93" />
+      <column name="ftcatid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="schema_ver" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="stats_schema_ver" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="type" sqlType="char" length="2" precision="0" nullable="true" jdbcType="1" />
+      <column name="userstat" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="sysstat" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="indexdel" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="refdate" sqlType="datetime" length="23" precision="3" nullable="true" jdbcType="93" />
+      <column name="version" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="deltrig" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="instrig" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="updtrig" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="seltrig" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="category" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="cache" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <index name="sysobjects" unique="true" columns="id" />
+      <index name="ncsysobjects" unique="true" columns="name,uid" />
+      <index name="ncsysobjects2" unique="false" columns="parent_obj" />
+    </table>
+    <table name="syspermissions" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="id" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="grantee" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="grantor" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="actadd" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="actmod" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="seladd" sqlType="varbinary" length="4000" precision="0" nullable="true" jdbcType="-3" />
+      <column name="selmod" sqlType="varbinary" length="4000" precision="0" nullable="true" jdbcType="-3" />
+      <column name="updadd" sqlType="varbinary" length="4000" precision="0" nullable="true" jdbcType="-3" />
+      <column name="updmod" sqlType="varbinary" length="4000" precision="0" nullable="true" jdbcType="-3" />
+      <column name="refadd" sqlType="varbinary" length="4000" precision="0" nullable="true" jdbcType="-3" />
+      <column name="refmod" sqlType="varbinary" length="4000" precision="0" nullable="true" jdbcType="-3" />
+      <index name="syspermissions" unique="true" columns="id,grantee,grantor" />
+    </table>
+    <table name="sysproperties" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="id" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="smallid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="type" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="name" sqlType="sysname" length="128" precision="0" nullable="false" jdbcType="-9" />
+      <column name="value" sqlType="sql_variant" length="0" precision="0" nullable="true" jdbcType="-150" />
+      <index name="sysproperties" unique="true" columns="id,type,smallid,name" />
+    </table>
+    <table name="sysprotects" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="id" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="uid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="action" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="protecttype" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="columns" sqlType="varbinary" length="4000" precision="0" nullable="true" jdbcType="-3" />
+      <column name="grantor" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+    </table>
+    <table name="sysreferences" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="constid" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="fkeyid" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="rkeyid" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="rkeyindid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="keycnt" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="forkeys" sqlType="varbinary" length="32" precision="0" nullable="false" jdbcType="-3" />
+      <column name="refkeys" sqlType="varbinary" length="32" precision="0" nullable="false" jdbcType="-3" />
+      <column name="fkeydbid" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkeydbid" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey1" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey2" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey3" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey4" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey5" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey6" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey7" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey8" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey9" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey10" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey11" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey12" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey13" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey14" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey15" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="fkey16" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey1" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey2" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey3" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey4" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey5" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey6" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey7" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey8" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey9" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey10" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey11" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey12" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey13" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey14" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey15" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="rkey16" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <index name="ucsysreferences" unique="true" columns="constid" />
+      <index name="nc1sysreferences" unique="false" columns="fkeyid" />
+      <index name="nc2sysreferences" unique="false" columns="rkeyid" />
+    </table>
+    <table name="syssegments" schema="dbo" catalog="Ismp" type="VIEW">
+      <column name="segment" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="name" sqlType="varchar" length="10" precision="0" nullable="false" jdbcType="12" />
+      <column name="status" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+    </table>
+    <table name="systemBadWord" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="Badword" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PK_systemBadWord" columns="recordid" />
+    </table>
+    <table name="systemBlackList" schema="dbo" catalog="Ismp" type="TABLE">
+      <column name="RecordID" sqlType="int identity" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="Address" sqlType="varchar" length="50" precision="0" nullable="true" jdbcType="12" />
+      <primary-key name="PK_systemBlackList" columns="recordid" />
+    </table>
+    <table name="systypes" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="name" sqlType="sysname" length="128" precision="0" nullable="false" jdbcType="-9" />
+      <column name="xtype" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="status" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="xusertype" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="length" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="xprec" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="xscale" sqlType="tinyint" length="3" precision="0" nullable="false" jdbcType="-6" />
+      <column name="tdefault" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="domain" sqlType="int" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="uid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="reserved" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="collationid" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="usertype" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="variable" sqlType="bit" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <column name="allownulls" sqlType="bit" length="1" precision="0" nullable="true" jdbcType="-7" />
+      <column name="type" sqlType="tinyint" length="3" precision="0" nullable="true" jdbcType="-6" />
+      <column name="printfmt" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="prec" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="scale" sqlType="tinyint" length="3" precision="0" nullable="true" jdbcType="-6" />
+      <column name="collation" sqlType="sysname" length="128" precision="0" nullable="true" jdbcType="-9" />
+      <index name="systypes" unique="true" columns="name" />
+      <index name="ncsystypes" unique="true" columns="xusertype" />
+    </table>
+    <table name="sysusers" schema="dbo" catalog="Ismp" type="SYSTEM TABLE">
+      <column name="uid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="status" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="name" sqlType="sysname" length="128" precision="0" nullable="false" jdbcType="-9" />
+      <column name="sid" sqlType="varbinary" length="85" precision="0" nullable="true" jdbcType="-3" />
+      <column name="roles" sqlType="varbinary" length="2048" precision="0" nullable="false" jdbcType="-3" />
+      <column name="createdate" sqlType="datetime" length="23" precision="3" nullable="false" jdbcType="93" />
+      <column name="updatedate" sqlType="datetime" length="23" precision="3" nullable="false" jdbcType="93" />
+      <column name="altuid" sqlType="smallint" length="5" precision="0" nullable="false" jdbcType="5" />
+      <column name="password" sqlType="varbinary" length="256" precision="0" nullable="true" jdbcType="-3" />
+      <column name="gid" sqlType="smallint" length="5" precision="0" nullable="true" jdbcType="5" />
+      <column name="environ" sqlType="varchar" length="255" precision="0" nullable="true" jdbcType="12" />
+      <column name="hasdbaccess" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="islogin" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="isntname" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="isntgroup" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="isntuser" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="issqluser" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="isaliased" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="issqlrole" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <column name="isapprole" sqlType="int" length="10" precision="0" nullable="true" jdbcType="4" />
+      <index name="sysusers" unique="true" columns="sid,uid" />
+      <index name="ncsysusers1" unique="true" columns="name" />
+      <index name="ncsysusers2" unique="true" columns="uid" />
+    </table>
+    <procedure name="dt_addtosourcecontrol" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@vchSourceSafeINI" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@vchProjectName" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@vchComment" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="3" />
+        <parameter name="@vchLoginName" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="4" />
+        <parameter name="@vchPassword" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="5" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_addtosourcecontrol_u" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@vchSourceSafeINI" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="1" />
+        <parameter name="@vchProjectName" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="2" />
+        <parameter name="@vchComment" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="3" />
+        <parameter name="@vchLoginName" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="4" />
+        <parameter name="@vchPassword" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="5" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_adduserobject" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_adduserobject_vcs" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@vchProperty" sqlType="varchar" length="64" precision="64" nullable="true" jdbcType="12" type="1" index="1" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_checkinobject" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@chObjectType" sqlType="char" length="4" precision="4" nullable="true" jdbcType="1" type="1" index="1" />
+        <parameter name="@vchObjectName" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@vchComment" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="3" />
+        <parameter name="@vchLoginName" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="4" />
+        <parameter name="@vchPassword" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="5" />
+        <parameter name="@iVCSFlags" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="6" />
+        <parameter name="@iActionFlag" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="7" />
+        <parameter name="@txStream1" sqlType="text" length="2147483647" precision="2147483647" nullable="true" jdbcType="-1" type="1" index="8" />
+        <parameter name="@txStream2" sqlType="text" length="2147483647" precision="2147483647" nullable="true" jdbcType="-1" type="1" index="9" />
+        <parameter name="@txStream3" sqlType="text" length="2147483647" precision="2147483647" nullable="true" jdbcType="-1" type="1" index="10" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_checkinobject_u" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@chObjectType" sqlType="char" length="4" precision="4" nullable="true" jdbcType="1" type="1" index="1" />
+        <parameter name="@vchObjectName" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="2" />
+        <parameter name="@vchComment" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="3" />
+        <parameter name="@vchLoginName" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="4" />
+        <parameter name="@vchPassword" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="5" />
+        <parameter name="@iVCSFlags" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="6" />
+        <parameter name="@iActionFlag" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="7" />
+        <parameter name="@txStream1" sqlType="text" length="2147483647" precision="2147483647" nullable="true" jdbcType="-1" type="1" index="8" />
+        <parameter name="@txStream2" sqlType="text" length="2147483647" precision="2147483647" nullable="true" jdbcType="-1" type="1" index="9" />
+        <parameter name="@txStream3" sqlType="text" length="2147483647" precision="2147483647" nullable="true" jdbcType="-1" type="1" index="10" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_checkoutobject" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@chObjectType" sqlType="char" length="4" precision="4" nullable="true" jdbcType="1" type="1" index="1" />
+        <parameter name="@vchObjectName" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@vchComment" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="3" />
+        <parameter name="@vchLoginName" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="4" />
+        <parameter name="@vchPassword" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="5" />
+        <parameter name="@iVCSFlags" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="6" />
+        <parameter name="@iActionFlag" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="7" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_checkoutobject_u" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@chObjectType" sqlType="char" length="4" precision="4" nullable="true" jdbcType="1" type="1" index="1" />
+        <parameter name="@vchObjectName" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="2" />
+        <parameter name="@vchComment" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="3" />
+        <parameter name="@vchLoginName" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="4" />
+        <parameter name="@vchPassword" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="5" />
+        <parameter name="@iVCSFlags" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="6" />
+        <parameter name="@iActionFlag" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="7" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_displayoaerror" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@iObject" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="1" />
+        <parameter name="@iresult" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="2" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_displayoaerror_u" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@iObject" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="1" />
+        <parameter name="@iresult" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="2" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_droppropertiesbyid" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@id" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="1" />
+        <parameter name="@property" sqlType="varchar" length="64" precision="64" nullable="true" jdbcType="12" type="1" index="2" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_dropuserobjectbyid" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@id" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="1" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_generateansiname" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@name" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="2" index="1" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_getobjwithprop" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@property" sqlType="varchar" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@value" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="2" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_getobjwithprop_u" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@property" sqlType="varchar" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@uvalue" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="2" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_getpropertiesbyid" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@id" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="1" />
+        <parameter name="@property" sqlType="varchar" length="64" precision="64" nullable="true" jdbcType="12" type="1" index="2" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_getpropertiesbyid_u" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@id" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="1" />
+        <parameter name="@property" sqlType="varchar" length="64" precision="64" nullable="true" jdbcType="12" type="1" index="2" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_getpropertiesbyid_vcs" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@id" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="1" />
+        <parameter name="@property" sqlType="varchar" length="64" precision="64" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@value" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="2" index="3" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_getpropertiesbyid_vcs_u" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@id" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="1" />
+        <parameter name="@property" sqlType="varchar" length="64" precision="64" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@value" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="2" index="3" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_isundersourcecontrol" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@vchLoginName" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@vchPassword" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@iWhoToo" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="3" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_isundersourcecontrol_u" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@vchLoginName" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="1" />
+        <parameter name="@vchPassword" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="2" />
+        <parameter name="@iWhoToo" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="3" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_removefromsourcecontrol" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_setpropertybyid" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@id" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="1" />
+        <parameter name="@property" sqlType="varchar" length="64" precision="64" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@value" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="3" />
+        <parameter name="@lvalue" sqlType="image" length="2147483647" precision="2147483647" nullable="true" jdbcType="-4" type="1" index="4" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_setpropertybyid_u" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@id" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="1" />
+        <parameter name="@property" sqlType="varchar" length="64" precision="64" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@uvalue" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="3" />
+        <parameter name="@lvalue" sqlType="image" length="2147483647" precision="2147483647" nullable="true" jdbcType="-4" type="1" index="4" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_validateloginparams" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@vchLoginName" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@vchPassword" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="2" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_validateloginparams_u" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@vchLoginName" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="1" />
+        <parameter name="@vchPassword" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="2" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_vcsenabled" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_verstamp006" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_whocheckedout" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@chObjectType" sqlType="char" length="4" precision="4" nullable="true" jdbcType="1" type="1" index="1" />
+        <parameter name="@vchObjectName" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@vchLoginName" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="3" />
+        <parameter name="@vchPassword" sqlType="varchar" length="255" precision="255" nullable="true" jdbcType="12" type="1" index="4" />
+      </prototype>
+    </procedure>
+    <procedure name="dt_whocheckedout_u" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@chObjectType" sqlType="char" length="4" precision="4" nullable="true" jdbcType="1" type="1" index="1" />
+        <parameter name="@vchObjectName" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="2" />
+        <parameter name="@vchLoginName" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="3" />
+        <parameter name="@vchPassword" sqlType="nvarchar" length="510" precision="255" nullable="true" jdbcType="-9" type="1" index="4" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_SMGP30_DELIVER" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@MsgID" sqlType="varchar" length="21" precision="21" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@IsReport" sqlType="smallint" length="2" precision="5" nullable="true" jdbcType="5" type="1" index="2" />
+        <parameter name="@MsgFormat" sqlType="smallint" length="2" precision="5" nullable="true" jdbcType="5" type="1" index="3" />
+        <parameter name="@RecvTime" sqlType="varchar" length="14" precision="14" nullable="true" jdbcType="12" type="1" index="4" />
+        <parameter name="@SrcTermID" sqlType="varchar" length="21" precision="21" nullable="true" jdbcType="12" type="1" index="5" />
+        <parameter name="@DestTermID" sqlType="varchar" length="21" precision="21" nullable="true" jdbcType="12" type="1" index="6" />
+        <parameter name="@MsgLength" sqlType="smallint" length="2" precision="5" nullable="true" jdbcType="5" type="1" index="7" />
+        <parameter name="@MsgContent" sqlType="varchar" length="300" precision="300" nullable="true" jdbcType="12" type="1" index="8" />
+        <parameter name="@Reserve" sqlType="varchar" length="8" precision="8" nullable="true" jdbcType="12" type="1" index="9" />
+        <parameter name="@TLV_TP_pid" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="10" />
+        <parameter name="@TLV_TP_udhi" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="11" />
+        <parameter name="@TLV_LinkID" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="12" />
+        <parameter name="@TLV_SrcTermType" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="13" />
+        <parameter name="@TLV_SrcTermPseudo" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="14" />
+        <parameter name="@TLV_SubmitMsgType" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="15" />
+        <parameter name="@TLV_SPDealResult" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="16" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_SMGP30_SUBMIT" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@RecordID" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="1" />
+        <parameter name="@mtHash" sqlType="bigint" length="8" precision="19" nullable="true" jdbcType="-5" type="1" index="2" />
+        <parameter name="@mtSequenceID" sqlType="bigint" length="8" precision="19" nullable="true" jdbcType="-5" type="1" index="3" />
+        <parameter name="@mtSendCount" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="4" />
+        <parameter name="@IsBlackMobile" sqlType="char" length="1" precision="1" nullable="true" jdbcType="1" type="1" index="5" />
+        <parameter name="@HasBadword" sqlType="char" length="1" precision="1" nullable="true" jdbcType="1" type="1" index="6" />
+        <parameter name="@AutoClearError" sqlType="char" length="1" precision="1" nullable="true" jdbcType="1" type="1" index="7" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_SMGP30_SUBMIT_HISTORY" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@SequenceID" sqlType="bigint" length="8" precision="19" nullable="true" jdbcType="-5" type="1" index="1" />
+        <parameter name="@MsgID" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@Status" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="3" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_SMGP30_SUBMIT_REPORT" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@MsgID" sqlType="varchar" length="21" precision="21" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@IsReport" sqlType="smallint" length="2" precision="5" nullable="true" jdbcType="5" type="1" index="2" />
+        <parameter name="@MsgFormat" sqlType="smallint" length="2" precision="5" nullable="true" jdbcType="5" type="1" index="3" />
+        <parameter name="@RecvTime" sqlType="varchar" length="14" precision="14" nullable="true" jdbcType="12" type="1" index="4" />
+        <parameter name="@SrcTermID" sqlType="varchar" length="21" precision="21" nullable="true" jdbcType="12" type="1" index="5" />
+        <parameter name="@DestTermID" sqlType="varchar" length="21" precision="21" nullable="true" jdbcType="12" type="1" index="6" />
+        <parameter name="@MsgLength" sqlType="smallint" length="2" precision="5" nullable="true" jdbcType="5" type="1" index="7" />
+        <parameter name="@MsgContent" sqlType="varchar" length="300" precision="300" nullable="true" jdbcType="12" type="1" index="8" />
+        <parameter name="@Reserve" sqlType="varchar" length="8" precision="8" nullable="true" jdbcType="12" type="1" index="9" />
+        <parameter name="@id" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="10" />
+        <parameter name="@sub" sqlType="varchar" length="3" precision="3" nullable="true" jdbcType="12" type="1" index="11" />
+        <parameter name="@dlvrd" sqlType="varchar" length="3" precision="3" nullable="true" jdbcType="12" type="1" index="12" />
+        <parameter name="@Submit_date" sqlType="varchar" length="10" precision="10" nullable="true" jdbcType="12" type="1" index="13" />
+        <parameter name="@done_date" sqlType="varchar" length="10" precision="10" nullable="true" jdbcType="12" type="1" index="14" />
+        <parameter name="@Stat" sqlType="varchar" length="7" precision="7" nullable="true" jdbcType="12" type="1" index="15" />
+        <parameter name="@Err" sqlType="varchar" length="3" precision="3" nullable="true" jdbcType="12" type="1" index="16" />
+        <parameter name="@Txt" sqlType="varchar" length="20" precision="20" nullable="true" jdbcType="12" type="1" index="17" />
+        <parameter name="@TLV_TP_pid" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="18" />
+        <parameter name="@TLV_TP_udhi" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="19" />
+        <parameter name="@TLV_LinkID" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="20" />
+        <parameter name="@TLV_SrcTermType" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="21" />
+        <parameter name="@TLV_SrcTermPseudo" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="22" />
+        <parameter name="@TLV_SubmitMsgType" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="23" />
+        <parameter name="@TLV_SPDealResult" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="24" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_notifyManagementInfo" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@streamingNo" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@ID" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@IDType" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="3" />
+        <parameter name="@status" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="4" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_notifySmsDeliveryReceipt" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@spRevId" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@spRevpassword" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@spId" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="3" />
+        <parameter name="@SAN" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="4" />
+        <parameter name="@transactionId" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="5" />
+        <parameter name="@linkId" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="6" />
+        <parameter name="@correlator" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="7" />
+        <parameter name="@address" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="8" />
+        <parameter name="@deliveryStatus" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="9" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_notifySmsReception" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@spRevId" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@spRevpassword" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@spId" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="3" />
+        <parameter name="@SAN" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="4" />
+        <parameter name="@transactionId" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="5" />
+        <parameter name="@linkId" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="6" />
+        <parameter name="@registrationIdentifier" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="7" />
+        <parameter name="@message" sqlType="varchar" length="160" precision="160" nullable="true" jdbcType="12" type="1" index="8" />
+        <parameter name="@senderAddress" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="9" />
+        <parameter name="@smsServiceActivationNumber" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="10" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_orderRelationUpdateNotifyReq" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@streamingNo" sqlType="varchar" length="100" precision="100" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@productID" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@packageID" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="3" />
+        <parameter name="@userID" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="4" />
+        <parameter name="@userIDType" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="5" />
+        <parameter name="@OPType" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="6" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_sendHistory" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@mtSendType" sqlType="varchar" length="10" precision="10" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@RecordID" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="2" />
+        <parameter name="@mtResult" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="3" />
+        <parameter name="@mtMessageId" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="4" />
+        <parameter name="@mtText" sqlType="varchar" length="500" precision="500" nullable="true" jdbcType="12" type="1" index="5" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_sendLoading" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@mtSendType" sqlType="varchar" length="10" precision="10" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@mtSendCount" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="2" />
+        <parameter name="@mtRetrySendTime" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="3" />
+        <parameter name="@mtAutoClearError" sqlType="char" length="1" precision="1" nullable="true" jdbcType="1" type="1" index="4" />
+        <parameter name="@mtHashCode" sqlType="bigint" length="8" precision="19" nullable="true" jdbcType="-5" type="1" index="5" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_sendUpdate" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@mtSendType" sqlType="varchar" length="10" precision="10" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@RecordID" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="2" />
+        <parameter name="@mtHashCode" sqlType="bigint" length="8" precision="19" nullable="true" jdbcType="-5" type="1" index="3" />
+        <parameter name="@IsBlackMobile" sqlType="char" length="1" precision="1" nullable="true" jdbcType="1" type="1" index="4" />
+        <parameter name="@HasBadword" sqlType="char" length="1" precision="1" nullable="true" jdbcType="1" type="1" index="5" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_serviceConsumeNotifyReq" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@streamingNo" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@userID" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="2" />
+        <parameter name="@userIDType" sqlType="int" length="4" precision="10" nullable="true" jdbcType="4" type="1" index="3" />
+        <parameter name="@productID" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="4" />
+        <parameter name="@linkID" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="5" />
+        <parameter name="@featureStr" sqlType="varchar" length="50" precision="50" nullable="true" jdbcType="12" type="1" index="6" />
+      </prototype>
+    </procedure>
+    <procedure name="sp_update_phone_no" schema="dbo" catalog="Ismp" type="2">
+      <prototype return="true">
+        <parameter name="@RETURN_VALUE" sqlType="int" length="4" precision="10" nullable="false" jdbcType="4" type="5" index="0" />
+        <parameter name="@mobileNO" sqlType="varchar" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="1" />
+        <parameter name="@imsi" sqlType="varchar" length="30" precision="30" nullable="true" jdbcType="12" type="1" index="2" />
+      </prototype>
+    </procedure>
+  </data-source>
 </component>

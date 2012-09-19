@@ -21,7 +21,7 @@ import com.server.cx.entity.cx.HolidayType;
 import com.server.cx.entity.cx.StatusType;
 import com.server.cx.entity.cx.SubscribeType;
 import com.server.cx.service.cx.GraphicResourceService;
-import com.server.cx.service.cx.impl.DataService;
+import com.server.cx.service.cx.DataService;
 import com.server.cx.service.util.BusinessFunctions;
 import com.server.cx.util.ObjectFactory;
 

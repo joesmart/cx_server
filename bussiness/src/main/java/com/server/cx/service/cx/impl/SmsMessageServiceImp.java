@@ -1,6 +1,8 @@
 package com.server.cx.service.cx.impl;
 
 import java.util.List;
+
+import com.server.cx.service.cx.SendSMSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,9 @@ public class SmsMessageServiceImp implements SmsMessageService {
     @Autowired
     private UserCheckService userCheckService;
 
+    @Autowired
+    private SendSMSService sendSMSService;
+
     @Override
     public OperationResult inviteFriends(String imsi, List<String> mobiles, String smsContent) throws SystemException {
         Preconditions.checkNotNull(imsi);
@@ -40,7 +45,10 @@ public class SmsMessageServiceImp implements SmsMessageService {
 
         List<String> contentList = SmsMessageServiceUtil.generateSmsContent(notRegisteredPhoneNoList, phoneNo);
         smsMessageDao.batchInsertSmsMessage(contentList, notRegisteredPhoneNoList, phoneNo);
-
+        Long[] ids = sendSMSService.sendSMS(phoneNo);
+        if(ids != null){
+            smsMessageDao.updateSmsMessageSentStatus(ids);
+        }
         return new OperationResult("inviteFriends",Constants.SUCCESS_FLAG);
     }
 
