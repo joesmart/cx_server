@@ -4,6 +4,7 @@ import com.cl.cx.platform.dto.CXCoinAccountDTO;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.entity.cx.CXCoinAccount;
+import com.server.cx.entity.cx.CXCoinNotfiyData;
 import com.server.cx.exception.SystemException;
 
 public interface CXCoinService {
@@ -16,6 +17,9 @@ public interface CXCoinService {
 
     public CXCoinAccount getCXCoinAccount(String imsi) throws SystemException;
 
-    public abstract DataPage getUserCXCoinRecords(String name, String password, String imsi, Integer offset, Integer limit);
+    public abstract DataPage getUserCXCoinRecords(String name, String password, String imsi, Integer offset,
+                                                  Integer limit);
+
+    public void handleCXCoinPurchaseCallback(CXCoinNotfiyData cxCoinNotfiyData) throws SystemException;
 
 }

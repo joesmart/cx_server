@@ -50,6 +50,9 @@
             </props>
         </property>
     </bean>
+	
+    
+    <bean name="ProxyBean" class="com.server.cx.webservice.servlet.RSANotifyReceiver"/> 
 
     <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
 

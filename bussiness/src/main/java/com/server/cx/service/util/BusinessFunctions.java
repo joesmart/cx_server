@@ -1,25 +1,49 @@
 package com.server.cx.service.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.joda.time.LocalDate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.Actions;
 import com.cl.cx.platform.dto.BasicDataItem;
 import com.cl.cx.platform.dto.CXCoinAccountDTO;
+import com.cl.cx.platform.dto.CXCoinNotfiyDataDTO;
 import com.cl.cx.platform.dto.ContactInfoDTO;
 import com.cl.cx.platform.dto.DataItem;
 import com.google.common.base.Function;
 import com.server.cx.dao.cx.CategoryDao;
 import com.server.cx.dao.cx.HolidayTypeDao;
 import com.server.cx.dao.cx.StatusTypeDao;
-import com.server.cx.entity.cx.*;
+import com.server.cx.entity.cx.CXCoinAccount;
+import com.server.cx.entity.cx.CXCoinNotfiyData;
+import com.server.cx.entity.cx.Category;
+import com.server.cx.entity.cx.Contacts;
+import com.server.cx.entity.cx.FileMeta;
+import com.server.cx.entity.cx.GraphicInfo;
+import com.server.cx.entity.cx.GraphicResource;
+import com.server.cx.entity.cx.HistoryMGraphic;
+import com.server.cx.entity.cx.HolidayType;
+import com.server.cx.entity.cx.MGraphic;
+import com.server.cx.entity.cx.StatusType;
+import com.server.cx.entity.cx.SubscribeType;
+import com.server.cx.entity.cx.UserCommonMGraphic;
+import com.server.cx.entity.cx.UserCustomMGraphic;
+import com.server.cx.entity.cx.UserDiyGraphic;
+import com.server.cx.entity.cx.UserFavorites;
+import com.server.cx.entity.cx.UserHolidayMGraphic;
+import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.entity.cx.UserStatusMGraphic;
+import com.server.cx.entity.cx.UserSubscribeRecord;
+import com.server.cx.entity.cx.UserSubscribeType;
 import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.impl.BasicService;
 import com.server.cx.util.DateUtil;
 import com.server.cx.util.business.AuditStatus;
-import org.joda.time.LocalDate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Map;
 
 /**
  * User: yanjianzou Date: 12-8-2 Time: 上午11:30 FileName:BusinessFunctions
@@ -34,10 +58,10 @@ public class BusinessFunctions {
 
     @Autowired
     private StatusTypeDao statusTypeDao;
-    
+
     @Autowired
     private HolidayTypeDao holidayTypeDao;
-    
+
     @Autowired
     private CategoryDao categoryDao;
 
@@ -463,11 +487,11 @@ public class BusinessFunctions {
                 graphicResource.setResourceId(input.getResourceId());
                 if (CheckStatusDesc.CHECKING.equals(input.getCheckStatusDesc())) {
                     graphicResource.setAuditStatus(AuditStatus.CHECKING);
-                }else if(CheckStatusDesc.CHECKED.equals(input.getCheckStatusDesc())){
-                    if(CheckResult.PASS.equals(input.getCheckResult())){
+                } else if (CheckStatusDesc.CHECKED.equals(input.getCheckStatusDesc())) {
+                    if (CheckResult.PASS.equals(input.getCheckResult())) {
                         graphicResource.setAuditStatus(AuditStatus.PASSED);
                     }
-                    if(CheckResult.UNPASS.equals(input.getCheckResult())){
+                    if (CheckResult.UNPASS.equals(input.getCheckResult())) {
                         graphicResource.setAuditStatus(AuditStatus.UNPASS);
                     }
                 }
@@ -506,9 +530,9 @@ public class BusinessFunctions {
                 dataItem.setSignature(userDiyGraphic.getSignature());
                 dataItem.setId(input.getId());
                 dataItem.setResourceType(input.getType());
-                if(input.getAuditStatus() == null){
+                if (input.getAuditStatus() == null) {
                     dataItem.setAuditStatus(AuditStatus.CHECKING.toString());
-                }else{
+                } else {
                     dataItem.setAuditStatus(input.getAuditStatus().toString());
                 }
 
@@ -601,7 +625,7 @@ public class BusinessFunctions {
             }
         };
     }
-    
+
     public Function<? super BasicDataItem, ? extends GraphicResource> transferBasicDataItemToHolidayGraphicResource() {
         return new Function<BasicDataItem, GraphicResource>() {
             @Override
@@ -669,6 +693,41 @@ public class BusinessFunctions {
                 System.out.println("category = " + category);
                 graphicResource.getGraphicInfo().setCategory(category);
                 return graphicResource;
+            }
+        };
+    }
+
+    public Function<CXCoinNotfiyDataDTO, CXCoinNotfiyData> transferCXCoinNotfiyDataDTOToCXCoinNotifyData() {
+        return new Function<CXCoinNotfiyDataDTO, CXCoinNotfiyData>() {
+            @Override
+            public CXCoinNotfiyData apply(@Nullable CXCoinNotfiyDataDTO input) {
+                if (input == null)
+                    return null;
+                CXCoinNotfiyData cxCoinNotfiyData = new CXCoinNotfiyData();
+                cxCoinNotfiyData.setBuyerEmail(input.getBuyerEmail());
+                cxCoinNotfiyData.setBuyerId(input.getBuyerId());
+                cxCoinNotfiyData.setDiscount(input.getDiscount());
+                cxCoinNotfiyData.setOutTradeNo(input.getOutTradeNo());
+                cxCoinNotfiyData.setPartner(input.getPartner());
+                cxCoinNotfiyData.setPaymentType(input.getPaymentType());
+                cxCoinNotfiyData.setPrice(input.getPrice());
+                cxCoinNotfiyData.setQuantity(input.getQuantity());
+                cxCoinNotfiyData.setSellerEmail(input.getSellerEmail());
+                cxCoinNotfiyData.setSellerId(input.getSellerId());
+                cxCoinNotfiyData.setSubject(input.getSubject());
+                cxCoinNotfiyData.setTotalFee(input.getTotalFee());
+                cxCoinNotfiyData.setTradeNo(input.getTradeNo());
+                cxCoinNotfiyData.setTradeStatus(input.getTradeStatus());
+                cxCoinNotfiyData.setUseCoupon(input.getUseCoupon());
+                cxCoinNotfiyData.setIsTotalFeeAdjust(input.getIsTotalFeeAdjust());
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:MM:ss");
+                try {
+                    Date date = simpleDateFormat.parse(input.getGmtCreate());
+                    cxCoinNotfiyData.setGmtCreate(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return cxCoinNotfiyData;
             }
         };
     }

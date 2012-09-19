@@ -40,6 +40,13 @@ public class CXCoinBasicService extends UserCheckService {
         }
     }
     
+    public void checkCXCoinAccountNameExist(String name) {
+        cxCoinAccount = cxCoinAccountDao.findByName(name);
+        if(cxCoinAccount == null) {
+            throw new SystemException("无法找到该帐号");
+        }
+    }
+    
     public void checkUserUnRegisterCXCoinAccount(String imsi) {
         checkAndSetUserInfoExists(imsi);
         cxCoinAccount = cxCoinAccountDao.findByImsi(imsi);

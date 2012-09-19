@@ -135,5 +135,4 @@ public class CXCoinResource {
             return Response.ok(operationDescription).build();
         }
     }
-
 }
