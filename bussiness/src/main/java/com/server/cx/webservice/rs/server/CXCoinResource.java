@@ -1,11 +1,5 @@
 package com.server.cx.webservice.rs.server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
@@ -16,7 +10,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
@@ -141,49 +134,5 @@ public class CXCoinResource {
                 HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "register", e.getMessage());
             return Response.ok(operationDescription).build();
         }
-    }
-
-    @Path("purchase")
-    @POST
-    @Consumes({MediaType.APPLICATION_XML})
-    public String purchaseCXCoin(@PathParam("imsi") String imsi, @Context HttpServletRequest request,
-                                 @Context HttpServletResponse response) throws IOException {
-        LOGGER.info("Into purchaseCXCoin imsi = " + imsi);
-        Map map = request.getParameterMap();
-        String sign = (String) ((Object[]) map.get("sign"))[0];
-        String verifyData = getVerifyData(map);
-        LOGGER.info("sign = " + sign);
-        LOGGER.info("verifyData = " + verifyData);
-        boolean verified = false;
-        return "success";
-
-        //        try {
-        //            verified = RSASignature.doCheck(verifyData, sign, PartnerConfig.RSA_ALIPAY_PUBLIC);
-        //        } catch (Exception e) {
-        //            e.printStackTrace();
-        //        }
-        //        PrintWriter out = response.getWriter();
-        //        if (verified) {
-        //            out.print("success");
-        //        } else {
-        //            System.out.println("����֧����ϵͳ֪ͨ��֤ǩ��ʧ�ܣ����飡");
-        //            out.print("fail");
-        //        }
-    }
-
-    @SuppressWarnings("unchecked")
-    private String getVerifyData(Map map) {
-        String notify_data = (String) ((Object[]) map.get("notify_data"))[0];
-        return "notify_data=" + notify_data;
-    }
-
-    public String getResponseMessage(InputStream inputStream) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-        String line = null;
-        StringBuffer sb = new StringBuffer();
-        while ((line = br.readLine()) != null) {
-            sb.append(line);
-        }
-        return sb.toString();
     }
 }

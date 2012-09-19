@@ -388,7 +388,7 @@ public class ActionBuilder {
             .cxCoinAccountURL(basicService.generateCXCoinAccountURL(imsi))
             .cxCoinConsumeURL(basicService.generateCXCoinConsumeURL(imsi))
             .cxCoinRecordsURL(basicService.generateCXCoinRecordsURL(imsi))
-            .cxCoinPurchaseURL(basicService.generateCXCoinPurchaseURL(imsi)).build();
+            .cxCoinPurchaseURL(basicService.generateCXCoinPurchaseURL()).build();
     }
 
     public Actions buildAnonymousActions() {
@@ -411,7 +411,9 @@ public class ActionBuilder {
     public Actions buildCXCoinRegisteredURL(String imsi) {
         return actions().cxCoinAccountURL(basicService.generateCXCoinAccountURL(imsi))
             .cxCoinConsumeURL(basicService.generateCXCoinConsumeURL(imsi))
-            .cxCoinRecordsURL(basicService.generateCXCoinRecordsURL(imsi)).build();
+            .cxCoinRecordsURL(basicService.generateCXCoinRecordsURL(imsi))
+            .cxCoinPurchaseURL(basicService.generateCXCoinPurchaseURL()).build();
+        
     }
 
     private void hiddenTheNeedRegisteredActions(Actions actions) {

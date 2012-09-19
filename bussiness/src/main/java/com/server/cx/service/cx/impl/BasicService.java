@@ -11,15 +11,11 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * User: yanjianzou
- * Date: 12-7-30
- * Time: 下午5:41
- * FileName:BasicService
+ * User: yanjianzou Date: 12-7-30 Time: 下午5:41 FileName:BasicService
  */
 @Component(value = "basicService")
 @Data
@@ -59,17 +55,18 @@ public class BasicService {
 
     @Getter
     LoadingCache<String, List<String>> userCollectionsCache = CacheBuilder.newBuilder().maximumSize(100)
-            .expireAfterAccess(5, TimeUnit.SECONDS).build(new CacheLoader<String, List<String>>() {
-                @Override
-                public List<String> load(String key) throws Exception {
-                    if (key == null) return null;
-                    UserInfo userInfo = userInfoDao.findByImsi(key);
-                    return userFavoritesDao.getGraphicIdListByUserInfo(userInfo);
-                }
-            });
+        .expireAfterAccess(5, TimeUnit.SECONDS).build(new CacheLoader<String, List<String>>() {
+            @Override
+            public List<String> load(String key) throws Exception {
+                if (key == null)
+                    return null;
+                UserInfo userInfo = userInfoDao.findByImsi(key);
+                return userFavoritesDao.getGraphicIdListByUserInfo(userInfo);
+            }
+        });
 
-    public String getBaseURL(){
-        return baseHostAddress+restURL;
+    public String getBaseURL() {
+        return baseHostAddress + restURL;
     }
 
     public String generateURL(String imsi, String condition) {
@@ -93,7 +90,7 @@ public class BasicService {
     }
 
     public String generateMobileRegisterUpdateURL(String imsi) {
-        return getBaseURL() + "register/"+imsi;
+        return getBaseURL() + "register/" + imsi;
     }
 
     public String generateVersionVisitURL() {
@@ -112,24 +109,24 @@ public class BasicService {
         return generateURL(imsi, "/customMGraphics");
     }
 
-    public String generateCustomMGraphicsOperateURL(String imsi,String mgraphicId) {
-        return generateURL(imsi, "/customMGraphics/"+mgraphicId);
+    public String generateCustomMGraphicsOperateURL(String imsi, String mgraphicId) {
+        return generateURL(imsi, "/customMGraphics/" + mgraphicId);
     }
 
     public String generateCategoriesVisitURL(String imsi) {
         return generateURL(imsi, "/categories");
     }
 
-    public String generateCategoriesOperateURL(String imsi,Long categoryId) {
-        return generateURL(imsi, "/categories/"+categoryId);
+    public String generateCategoriesOperateURL(String imsi, Long categoryId) {
+        return generateURL(imsi, "/categories/" + categoryId);
     }
 
     public String generateHotGraphicInfosVisitURL(String imsi) {
         return generateURL(imsi, "/graphicInfos?hot=true");
     }
 
-    public String generateGraphicInfosOperateURL(String imsi,String id) {
-        return generateURL(imsi, "/graphicInfos/"+id);
+    public String generateGraphicInfosOperateURL(String imsi, String id) {
+        return generateURL(imsi, "/graphicInfos/" + id);
     }
 
     public String generateRecommendGraphicInfoVisitURL(String imsi) {
@@ -137,14 +134,14 @@ public class BasicService {
     }
 
     public String generateHolidayTypeGraphicInfosVisitURL(String imsi, Long holidayTypeId) {
-        return generateURL(imsi,"/graphicInfos?holidayTypeId=" + holidayTypeId);
+        return generateURL(imsi, "/graphicInfos?holidayTypeId=" + holidayTypeId);
     }
 
     public String generateGraphicInfosZoneInURL(String imsi, Long categoryId) {
-        return generateURL(imsi,"/graphicInfos?categoryId=" + categoryId);
+        return generateURL(imsi, "/graphicInfos?categoryId=" + categoryId);
     }
 
-   public String generateHolidayTypesVisitURL(String imsi) {
+    public String generateHolidayTypesVisitURL(String imsi) {
         return generateURL(imsi, "/holidayTypes");
     }
 
@@ -156,12 +153,12 @@ public class BasicService {
         return generateURL(imsi, "/mGraphics");
     }
 
-    public String generateDiyMGraphicUseURL(String imsi){
-        return generateURL(imsi,"/diyGraphics");
+    public String generateDiyMGraphicUseURL(String imsi) {
+        return generateURL(imsi, "/diyGraphics");
     }
 
     public String generateHolidayMGraphicRemoveURL(String imsi, String mgraphicId) {
-        return getBaseURL() + imsi + "/holidayMGraphics/"+mgraphicId;
+        return getBaseURL() + imsi + "/holidayMGraphics/" + mgraphicId;
     }
 
     public String generateImmediateUseHolidayMGraphicURL(String imsi) {
@@ -197,23 +194,23 @@ public class BasicService {
     }
 
     public String generateMyCollectionsOperateURL(String imsi, String userFavoriteId) {
-        return generateURL(imsi,"/myCollections/" + userFavoriteId);
+        return generateURL(imsi, "/myCollections/" + userFavoriteId);
     }
 
     public String generateStatusMGraphicRemoveURL(String imsi, String mGraphicId) {
-        return generateURL(imsi,"/statusMGraphics/" + mGraphicId);
-    }
-    
-    public String generateSubscribeURL(String imsi) {
-        return generateURL(imsi,"/holidayTypes");
-    }
-    
-    public String imageURL(String resourceId){
-        return  this.imageShowURL+resourceId;
+        return generateURL(imsi, "/statusMGraphics/" + mGraphicId);
     }
 
-    public String thumbnailImageURL(String resourceId){
-        return  this.imageShowURL+resourceId+"&"+this.thumbnailSize;
+    public String generateSubscribeURL(String imsi) {
+        return generateURL(imsi, "/holidayTypes");
+    }
+
+    public String imageURL(String resourceId) {
+        return this.imageShowURL + resourceId;
+    }
+
+    public String thumbnailImageURL(String resourceId) {
+        return this.imageShowURL + resourceId + "&" + this.thumbnailSize;
     }
 
     public String generateHolidaySubscribeGraphicItemURL(String imsi, Boolean isImmediate) {
@@ -223,29 +220,29 @@ public class BasicService {
     public String generateStatusSubscribeGraphicItemURL(String imsi, Boolean isImmediate) {
         return generateURL(imsi, "/statusMGraphics?subscribe=true&&immediate=" + isImmediate);
     }
-    
+
     public String generateCustomSubscribeGraphicItemURL(String imsi) {
         return generateURL(imsi, "/customMGraphics?subscribe=true");
     }
-    
+
     public String generateSubscribeGraphicItem(String imsi) {
         return generateURL(imsi, "/mGraphics?subscribe=true");
     }
-    
+
     public String generateCancelSubscribeHolidayURL(String imsi) {
         return generateURL(imsi, "/subscribe?type=holiday");
     }
-    
+
     public String generateCancelSubscribeStatusURL(String imsi) {
         return generateURL(imsi, "/subscribe?type=status");
     }
-    
+
     public String generateCancelSubscribeCustomURL(String imsi) {
         return generateURL(imsi, "/subscribe?type=custom");
     }
 
     public String generateUserDIYGraphicDeleteURL(String imsi, String id) {
-        return generateURL(imsi,"/diyGraphics/"+id);
+        return generateURL(imsi, "/diyGraphics/" + id);
     }
 
     public String generateSubscribeFunctionType(String imsi, String type) {
@@ -268,7 +265,7 @@ public class BasicService {
         return generateURL(imsi, "/cxCoin/register");
     }
 
-    public String generateCXCoinPurchaseURL(String imsi) {
-        return generateURL(imsi, "/cxCoin/purchase");
+    public String generateCXCoinPurchaseURL() {
+        return getBaseURL() + "cxCoin/purchase";
     }
 }

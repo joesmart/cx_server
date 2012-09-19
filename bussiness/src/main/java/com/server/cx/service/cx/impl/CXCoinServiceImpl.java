@@ -18,6 +18,7 @@ import com.server.cx.dao.cx.UserSubscribeRecordDao;
 import com.server.cx.dao.cx.spec.SubscribeRecordSpecifications;
 import com.server.cx.entity.cx.CXCoinAccount;
 import com.server.cx.entity.cx.CXCoinConsumeRecord;
+import com.server.cx.entity.cx.CXCoinNotfiyData;
 import com.server.cx.entity.cx.CXCoinTotalItem;
 import com.server.cx.entity.cx.UserSubscribeRecord;
 import com.server.cx.exception.SystemException;
@@ -30,36 +31,36 @@ import com.server.cx.util.ObjectFactory;
 public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinService {
     @Autowired
     private CXCoinTotalItemDao cxCoinTotalItemDao;
-    
+
     @Autowired
     private UserSubscribeRecordDao userSubscribeRecordDao;
-    
+
     @Autowired
     private BusinessFunctions businessFunctions;
-    
+
     @Autowired
     private BasicService basicService;
-    
+
     @Override
     @Transactional(readOnly = false)
     public OperationDescription register(String imsi, CXCoinAccountDTO coinAccountDTO) throws SystemException {
         checkUserUnRegisterCXCoinAccount(imsi);
         checkEmailValid(coinAccountDTO.getName());
         checkEmailUnRegistered(coinAccountDTO.getName());
-        
+
         CXCoinAccount cxCoinAccount = new CXCoinAccount();
         cxCoinAccount.setName(coinAccountDTO.getName());
         cxCoinAccount.setPassword(coinAccountDTO.getPassword());
         cxCoinAccount.setImsi(imsi);
-        
+
         CXCoinTotalItem cxCoinTotalItem = findCXCoinTotalItem();
         checkCXCoinTotalEnough(cxCoinTotalItem.getCxCoinCount(), 50D);
         cxCoinTotalItem.setCxCoinCount(cxCoinTotalItem.getCxCoinCount() - 5D);
         cxCoinTotalItemDao.save(cxCoinTotalItem);
-        
+
         UserSubscribeRecord userSubscribeRecord = ObjectFactory.buildUserCXCoinIncomeRecord(userInfo, 50D, "用户注册");
         userSubscribeRecordDao.save(userSubscribeRecord);
-        
+
         cxCoinAccount.setCoin(50D);
         cxCoinAccountDao.save(cxCoinAccount);
         OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
@@ -105,10 +106,10 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
         checkCXCoinTotalEnough(cxCoinTotalItem.getCxCoinCount(), 5D);
         cxCoinTotalItem.setCxCoinCount(cxCoinTotalItem.getCxCoinCount() - 5D);
         cxCoinTotalItemDao.save(cxCoinTotalItem);
-        
+
         UserSubscribeRecord userSubscribeRecord = ObjectFactory.buildUserCXCoinIncomeRecord(userInfo, 5D, "抢酷币");
         userSubscribeRecordDao.save(userSubscribeRecord);
-        
+
         cxCoinAccount.setCoin(cxCoinAccount.getCoin() + 5);
         cxCoinAccountDao.save(cxCoinAccount);
         CXCoinConsumeRecord cxCoinConsumeRecord = new CXCoinConsumeRecord();
@@ -123,7 +124,6 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
         checkUserRegisterCXCoinAccount(imsi);
         return cxCoinAccount;
     }
-    
 
     @Override
     public DataPage getUserCXCoinRecords(String name, String password, String imsi, Integer offset, Integer limit) {
@@ -163,9 +163,20 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
     }
 
     private String generatePageURL(String imsi, int offset, Integer limit) {
-        return basicService.generateURL(imsi,"/cxCoin/records?" + "&offset=" + offset + "&limit="  + limit);
+        return basicService.generateURL(imsi, "/cxCoin/records?" + "&offset=" + offset + "&limit=" + limit);
     }
-    
-    
+
+    @Transactional(readOnly = false)
+    @Override
+    public void handleCXCoinPurchaseCallback(CXCoinNotfiyData cxCoinNotfiyData) throws SystemException {
+        String subject = cxCoinNotfiyData.getSubject();
+        checkCXCoinAccountNameExist(subject);
+        cxCoinAccount.setCoin(cxCoinAccount.getCoin() + caculateCXCoin(cxCoinNotfiyData.getTotalFee()));
+        cxCoinAccountDao.save(cxCoinAccount);
+    }
+
+    private Double caculateCXCoin(Double totalFee) {
+        return totalFee * 10;
+    }
 
 }
