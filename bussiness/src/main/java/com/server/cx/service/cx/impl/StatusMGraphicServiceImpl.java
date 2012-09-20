@@ -99,7 +99,6 @@ public class StatusMGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         checkAndSetUserInfoExists(imsi);
         UserStatusMGraphic userCommonMGraphic = userStatusMGraphicDao.findOne(mgraphicId);
         if (userCommonMGraphic != null) {
-            historyPreviousUserCommonMGraphic(userCommonMGraphic);
             userStatusMGraphicDao.delete(userCommonMGraphic);
         }
         return new OperationResult("disableUserCommonMGraphic", Constants.SUCCESS_FLAG);

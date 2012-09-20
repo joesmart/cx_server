@@ -115,6 +115,8 @@ public class UserDiyGraphicServiceImpl extends CheckAndHistoryMGraphicService im
             userCommonMGraphic.setPriority(4);
         }
         userDiyGraphic = graphicResource.getDiyGraphic();
+        graphicResource.setDiyGraphic(null);
+        graphicResourceDao.save(graphicResource);
         updateMGraphicNameAndSignature(mGraphicDTO, userCommonMGraphic);
         userCommonMGraphicDao.save(userCommonMGraphic);
     }

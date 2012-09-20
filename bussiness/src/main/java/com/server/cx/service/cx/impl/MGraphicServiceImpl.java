@@ -148,8 +148,6 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         }else if (!mGraphic.getCommon()){
             createSpeicalPhoneNosMGrpahic(mGraphicDTO,mGraphic);
         }
-
-
         return new OperationResult("editUserCommonMGraphic", Constants.SUCCESS_FLAG);
     }
 
@@ -184,13 +182,10 @@ public class MGraphicServiceImpl extends CheckAndHistoryMGraphicService implemen
         List<MGraphic> mGraphics = mGraphicDao.findAll(MGraphicSpecifications.userMGraphic(userInfo), new Sort(new Sort.Order(Sort.Direction.ASC, "modeType"), new Sort.Order(Sort.Direction.DESC, "updatedOn")));
         List<DataItem> mGraphicDataItems = Lists.transform(mGraphics, businessFunctions.mGraphicTransformToDataItem(imsi, "mGraphics"));
 
-
         List<DataItem> historyMGraphicDataItems = historyMGraphicService.queryHistoryMGraphicsByUserInfo(userInfo);
 
         List<DataItem> dataItems = Lists.newArrayListWithCapacity(mGraphicDataItems.size() + historyMGraphicDataItems.size());
         dataItems.addAll(mGraphicDataItems);
-
-
 
         final UserDiyGraphic userDiyGraphic = userDiyGraphicDao.findByUserInfoOrderByAuditStatusDescCreatedOnDesc(userInfo);
         List<DataItem> userDiyGraphicDataItems;

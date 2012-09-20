@@ -1,49 +1,25 @@
 package com.server.cx.service.util;
 
+import com.cl.cx.platform.dto.*;
+import com.google.common.base.Function;
+import com.server.cx.dao.cx.CategoryDao;
+import com.server.cx.dao.cx.HolidayTypeDao;
+import com.server.cx.dao.cx.StatusTypeDao;
+import com.server.cx.entity.cx.*;
+import com.server.cx.model.ActionBuilder;
+import com.server.cx.service.cx.impl.BasicService;
+import com.server.cx.util.DateUtil;
+import com.server.cx.util.business.AuditStatus;
+import org.joda.time.LocalDate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Nullable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
-import org.joda.time.LocalDate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import com.cl.cx.platform.dto.Actions;
-import com.cl.cx.platform.dto.BasicDataItem;
-import com.cl.cx.platform.dto.CXCoinAccountDTO;
-import com.cl.cx.platform.dto.CXCoinNotfiyDataDTO;
-import com.cl.cx.platform.dto.ContactInfoDTO;
-import com.cl.cx.platform.dto.DataItem;
-import com.google.common.base.Function;
-import com.server.cx.dao.cx.CategoryDao;
-import com.server.cx.dao.cx.HolidayTypeDao;
-import com.server.cx.dao.cx.StatusTypeDao;
-import com.server.cx.entity.cx.CXCoinAccount;
-import com.server.cx.entity.cx.CXCoinNotfiyData;
-import com.server.cx.entity.cx.Category;
-import com.server.cx.entity.cx.Contacts;
-import com.server.cx.entity.cx.FileMeta;
-import com.server.cx.entity.cx.GraphicInfo;
-import com.server.cx.entity.cx.GraphicResource;
-import com.server.cx.entity.cx.HistoryMGraphic;
-import com.server.cx.entity.cx.HolidayType;
-import com.server.cx.entity.cx.MGraphic;
-import com.server.cx.entity.cx.StatusType;
-import com.server.cx.entity.cx.SubscribeType;
-import com.server.cx.entity.cx.UserCommonMGraphic;
-import com.server.cx.entity.cx.UserCustomMGraphic;
-import com.server.cx.entity.cx.UserDiyGraphic;
-import com.server.cx.entity.cx.UserFavorites;
-import com.server.cx.entity.cx.UserHolidayMGraphic;
-import com.server.cx.entity.cx.UserInfo;
-import com.server.cx.entity.cx.UserStatusMGraphic;
-import com.server.cx.entity.cx.UserSubscribeRecord;
-import com.server.cx.entity.cx.UserSubscribeType;
-import com.server.cx.model.ActionBuilder;
-import com.server.cx.service.cx.impl.BasicService;
-import com.server.cx.util.DateUtil;
-import com.server.cx.util.business.AuditStatus;
 
 /**
  * User: yanjianzou Date: 12-8-2 Time: 上午11:30 FileName:BusinessFunctions
@@ -279,7 +255,7 @@ public class BusinessFunctions {
                     if (hasUsed) {
                         UserHolidayMGraphic userHolidayMGraphic = userHolidayMGraphicMap.get(input.getId());
                         actions = actionBuilder.buildHolidayTypeHasUsedActions(imsi, input.getId(),
-                            userHolidayMGraphic.getId());
+                                userHolidayMGraphic.getId());
                         dataItem.setActions(actions);
                     }
                 } else {
@@ -314,7 +290,7 @@ public class BusinessFunctions {
                     if (hasUsed) {
                         UserStatusMGraphic userStatusMGraphic = userStatusMGraphicMap.get(input.getId());
                         actions = actionBuilder.buildStatusTypeHasUsedActions(imsi, input.getId(),
-                            userStatusMGraphic.getId());
+                                userStatusMGraphic.getId());
                         dataItem.setActions(actions);
                     }
                 } else {
@@ -343,27 +319,42 @@ public class BusinessFunctions {
         DataItem dataItem = new DataItem();
         dataItem.setName(input.getName());
         dataItem.setSignature(input.getSignature());
-        if (input.getGraphicResource() != null) {
-            dataItem.setId(input.getGraphicResource().getId());
+        GraphicResource graphicResource = input.getGraphicResource();
+        if (graphicResource != null) {
+            dataItem.setId(graphicResource.getId());
+            GraphicInfo graphicInfo = graphicResource.getGraphicInfo();
+            if (graphicInfo != null) {
+                dataItem.setDownloadNumber(graphicInfo.getUseCount().toString());
+            } else {
+                //DIY MGraphic auditStatus
+                dataItem.setDownloadNumber("0");
+                dataItem.setAuditStatus(graphicResource.getAuditStatus().toString());
+            }
+            setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem, graphicResource);
         }
         dataItem.setMGraphicId(input.getId());
         dataItem.setSubScribe(input.getSubscribe());
         dataItem.setModeType(input.getModeType());
+
         if (input instanceof UserCommonMGraphic) {
             dataItem.setPhoneNos(((UserCommonMGraphic) input).getPhoneNos());
         }
 
         if (input instanceof UserCustomMGraphic) {
             if (((UserCustomMGraphic) input).getBegin() != null
-                && ((UserCustomMGraphic) input).getBegin().getTime() == (LocalDate.parse("1900-1-1").toDate().getTime())) {
+                    && ((UserCustomMGraphic) input).getBegin().getTime() == (LocalDate.parse("1900-1-1").toDate().getTime())) {
                 ((UserCustomMGraphic) input).setBegin(null);
                 ((UserCustomMGraphic) input).setEnd(null);
-            } else {
-                dataItem.setBegin(((UserCustomMGraphic) input).getBegin());
-                dataItem.setEnd(((UserCustomMGraphic) input).getEnd());
+            } else{
+                if(((UserCustomMGraphic) input).getBegin() != null && ((UserCustomMGraphic) input).getEnd() != null){
+                    Date beginDate = new Date(((UserCustomMGraphic) input).getBegin().getTime());
+                    Date endDate = new Date(((UserCustomMGraphic) input).getEnd().getTime());
+                    dataItem.setBegin(beginDate);
+                    dataItem.setEnd(endDate);
+                }
             }
         }
-        setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem, input.getGraphicResource());
+
         dataItem.setInUsing(true);
         return dataItem;
     }
