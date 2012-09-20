@@ -7,6 +7,7 @@ import com.cl.cx.platform.dto.CXCoinAccountDTO;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
+import com.server.cx.entity.cx.CXCoinAccount;
 import com.server.cx.functional.resource.BasicJerseyTest;
 import com.sun.jersey.api.client.ClientResponse;
 
@@ -72,9 +73,11 @@ public class CXCoinResourceTest extends BasicJerseyTest {
     }
     
     @Test
-    public void test_purchase_success() {
-        resource = resource.path("/13146001000/cxCoin/purchase").queryParam("notify_data", "gavin").queryParam("sign", "sign");
-        ClientResponse response = resource.type(MediaType.APPLICATION_XML).accept(MediaType.APPLICATION_JSON).post(ClientResponse.class);
+    public void test_confirm_purchase() {
+        resource = resource.path("/13146001000/cxCoin/confirmPurchase").queryParam("tradeNo", "123abc");
+        CXCoinAccount cxCoinAccount = new CXCoinAccount();
+        cxCoinAccount.setName("Account1");
+        ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, cxCoinAccount);
         String result = response.getEntity(String.class);
         System.out.println("result = " + result);
     }

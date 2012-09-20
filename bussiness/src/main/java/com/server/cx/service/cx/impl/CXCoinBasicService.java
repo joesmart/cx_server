@@ -6,8 +6,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import com.server.cx.dao.cx.CXCoinAccountDao;
 import com.server.cx.dao.cx.CXCoinConsumeRecordDao;
+import com.server.cx.dao.cx.CXCoinNotfiyDataDao;
 import com.server.cx.entity.cx.CXCoinAccount;
 import com.server.cx.entity.cx.CXCoinConsumeRecord;
+import com.server.cx.entity.cx.CXCoinNotfiyData;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.MoneyNotEnoughException;
 import com.server.cx.exception.SystemException;
@@ -21,6 +23,11 @@ public class CXCoinBasicService extends UserCheckService {
     protected CXCoinAccountDao cxCoinAccountDao;
 
     protected CXCoinAccount cxCoinAccount;
+    
+    @Autowired
+    protected CXCoinNotfiyDataDao cxCoinNotfiyDataDao;
+    
+    protected CXCoinNotfiyData cxCoinNotfiyData;
 
     @Autowired
     protected CXCoinConsumeRecordDao cxCoinConsumeRecordDao;
@@ -85,6 +92,17 @@ public class CXCoinBasicService extends UserCheckService {
         if (cxCoinAccount != null) {
             throw new SystemException("邮箱已经被注册过");
         }
+    }
+    
+    public void checkValidTradeNoExists(String tradeNo) {
+        cxCoinNotfiyData = cxCoinNotfiyDataDao.findByTradeNo(tradeNo);
+        if(cxCoinNotfiyData == null) {
+            throw new SystemException("无法找到该订单号");
+        }
+        if(Boolean.TRUE.equals(cxCoinNotfiyData.getStatus())) {
+            throw new SystemException("该订单已经被处理");
+        }
+        
     }
 
 }

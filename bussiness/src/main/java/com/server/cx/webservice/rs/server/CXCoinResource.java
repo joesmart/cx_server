@@ -131,7 +131,24 @@ public class CXCoinResource {
         } catch (Exception e) {
             e.printStackTrace();
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
-                HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "register", e.getMessage());
+                HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "consumeCXCoin", e.getMessage());
+            return Response.ok(operationDescription).build();
+        }
+    }
+    
+    @Path("confirmPurchase")
+    @POST
+    public Response confirmPurchase(@PathParam("imsi") String imsi, @QueryParam("tradeNo") String tradeNo, CXCoinAccount cxCoinAccount) {
+        LOGGER.info("Into confirmPurchase imsi = " + imsi);
+        LOGGER.info("tradeNo = " + tradeNo);
+        LOGGER.info("cxCoinAccount = " + cxCoinAccount);
+        try {
+            CXCoinAccount cxAccount = cxCoinService.confirmPurchase(imsi, tradeNo, cxCoinAccount);
+            return Response.ok(cxAccount).build();
+        } catch(Exception e) {
+            e.printStackTrace();
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "confirmPurchase", e.getMessage());
             return Response.ok(operationDescription).build();
         }
     }

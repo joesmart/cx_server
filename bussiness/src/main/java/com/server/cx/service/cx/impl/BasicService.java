@@ -268,4 +268,8 @@ public class BasicService {
     public String generateCXCoinPurchaseURL() {
         return getBaseURL() + "cxCoin/purchase";
     }
+
+    public String generateCXCoinConfirmPurchaseURL(String imsi) {
+        return generateURL(imsi, "/cxCoin/confirmPurchase");
+    }
 }
