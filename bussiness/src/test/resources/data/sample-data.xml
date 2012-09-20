@@ -439,4 +439,5 @@
     <sms_message id="7" sms="12312312" from_mobile_no="123123" to_mobile_no="12347" is_send="false"/>
     <sms_message id="8" sms="12312312" from_mobile_no="123123" to_mobile_no="12348" is_send="false"/>
     <sms_message id="9" sms="12312312" from_mobile_no="123123" to_mobile_no="12349" is_send="true"/>
+    <cxcoin_notfiy_data id="1" seller_email="gavin@hotmail.com" partner="partner" payment_type="1" buyer_email="gavin@hotmail.com" trade_no="123abc" total_fee="1"></cxcoin_notfiy_data>
 </dataset>

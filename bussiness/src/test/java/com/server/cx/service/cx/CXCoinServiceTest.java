@@ -1,5 +1,8 @@
 package com.server.cx.service.cx;
 
+import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+import java.util.List;
 import org.fest.assertions.Fail;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +14,16 @@ import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.CXCoinAccountDao;
+import com.server.cx.dao.cx.CXCoinNotfiyDataDao;
+import com.server.cx.dao.cx.CXCoinTotalItemDao;
 import com.server.cx.dao.cx.UserInfoDao;
+import com.server.cx.dao.cx.UserSubscribeRecordDao;
 import com.server.cx.entity.cx.CXCoinAccount;
+import com.server.cx.entity.cx.CXCoinNotfiyData;
+import com.server.cx.entity.cx.CXCoinTotalItem;
 import com.server.cx.entity.cx.UserInfo;
+import com.server.cx.entity.cx.UserSubscribeRecord;
 import com.server.cx.exception.SystemException;
-import static org.fest.assertions.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
 
 @ContextConfiguration(locations = {"/applicationContext.xml"})
 @ActiveProfiles(profiles = {"test"})
@@ -29,6 +36,15 @@ public class CXCoinServiceTest extends SpringTransactionalTestCase {
     
     @Autowired
     private CXCoinAccountDao cxCoinAccountDao;
+    
+    @Autowired
+    private CXCoinNotfiyDataDao cxCoinNotfiyDataDao;
+    
+    @Autowired
+    private CXCoinTotalItemDao cxCoinTotalItemDao;
+    
+    @Autowired
+    private UserSubscribeRecordDao userSubscribeRecordDao;
     
     @Test
     public void test_has_registered_exception() {
@@ -153,5 +169,26 @@ public class CXCoinServiceTest extends SpringTransactionalTestCase {
     public void test_get_user_cxCoinRecords() {
         DataPage dataPage = cxCoinService.getUserCXCoinRecords("name", "pwd", "13146001003", 0, 2);
         System.out.println("dataPage = " + dataPage);
+    }
+    
+    @Test
+    public void test_confirm_purchase_successful() {
+        String imsi = "13146001000";
+        String tradeNo = "123abc";
+        CXCoinAccount cxCoinAccount = new CXCoinAccount();
+        cxCoinAccount.setName("Account1");
+        cxCoinAccount.setPassword("123456");
+        CXCoinAccount dbCoinAccount = cxCoinService.confirmPurchase(imsi, tradeNo, cxCoinAccount);
+        assertThat(dbCoinAccount.getCoin() - 60).isLessThan(1e-3);
+        
+        CXCoinNotfiyData cxCoinNotfiyData = cxCoinNotfiyDataDao.findOne(1L);
+        assertThat(cxCoinNotfiyData.getStatus()).isEqualTo(Boolean.TRUE);
+        
+        CXCoinTotalItem cxCoinTotalItem = cxCoinTotalItemDao.findOne(1L);
+        assertThat(cxCoinTotalItem.getCxCoinCount() - 1000010).isLessThan(1e-3);
+        
+        List<UserSubscribeRecord> userSubscribeRecords = userSubscribeRecordDao.findAll();
+        System.out.println(userSubscribeRecords.get(userSubscribeRecords.size() - 1));
+        
     }
 }

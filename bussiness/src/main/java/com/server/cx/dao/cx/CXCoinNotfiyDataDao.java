@@ -6,5 +6,7 @@ import com.server.cx.entity.cx.CXCoinNotfiyData;
 
 public interface CXCoinNotfiyDataDao extends JpaRepository<CXCoinNotfiyData, Long>,
     JpaSpecificationExecutor<CXCoinNotfiyData> {
+    
+    public CXCoinNotfiyData findByTradeNo(String tradeNo);
 
 }

@@ -41,7 +41,7 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
 
     @Autowired
     private BasicService basicService;
-    
+
     @Autowired
     private CXCoinNotfiyDataDao cxCoinNotfiyDataDao;
 
@@ -173,15 +173,36 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
     @Transactional(readOnly = false)
     @Override
     public void handleCXCoinPurchaseCallback(CXCoinNotfiyData cxCoinNotfiyData) throws SystemException {
-        String subject = cxCoinNotfiyData.getSubject();
-        checkCXCoinAccountNameExist(subject);
         cxCoinNotfiyDataDao.save(cxCoinNotfiyData);
-        cxCoinAccount.setCoin(cxCoinAccount.getCoin() + caculateCXCoin(cxCoinNotfiyData.getTotalFee()));
-        cxCoinAccountDao.save(cxCoinAccount);
     }
 
     private Double caculateCXCoin(Double totalFee) {
         return totalFee * 10;
     }
 
+    @Transactional(readOnly = false)
+    @Override
+    public CXCoinAccount confirmPurchase(String imsi, String tradeNo, CXCoinAccount baseCXCoinAccount)
+        throws SystemException {
+        checkAndSetUserInfoExists(imsi);
+        checkCXCoinAccountNameExist(baseCXCoinAccount.getName());
+        checkValidTradeNoExists(tradeNo);
+        System.out.println("cxCoinAccount = " + cxCoinAccount.getCoin());
+        System.out.println("cxCoinNotfiyData = " + caculateCXCoin(cxCoinNotfiyData.getTotalFee()));
+        cxCoinAccount.setCoin(cxCoinAccount.getCoin() + caculateCXCoin(cxCoinNotfiyData.getTotalFee()));
+        cxCoinAccountDao.save(cxCoinAccount);
+        cxCoinNotfiyData.setStatus(Boolean.TRUE);
+        cxCoinNotfiyDataDao.save(cxCoinNotfiyData);
+
+        //酷币总额数量增加
+        CXCoinTotalItem cxCoinTotalItem = findCXCoinTotalItem();
+        cxCoinTotalItem.setCxCoinCount(cxCoinTotalItem.getCxCoinCount()
+            + caculateCXCoin(cxCoinNotfiyData.getTotalFee()));
+        cxCoinTotalItemDao.save(cxCoinTotalItem);
+        //添加充值记录
+        UserSubscribeRecord userSubscribeRecord = ObjectFactory.buildUserCXCoinIncomeRecord(userInfo,
+            caculateCXCoin(cxCoinNotfiyData.getTotalFee()), "用户充值");
+        userSubscribeRecordDao.save(userSubscribeRecord);
+        return cxCoinAccount;
+    }
 }

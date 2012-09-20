@@ -14,7 +14,6 @@ import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.impl.CXCoinBasicService;
 
 @ContextConfiguration(locations = {"/applicationContext.xml"})
-@Scope(value="request")
 public class CXCoinBasicServiceTest extends SpringTransactionalTestCase {
     @Autowired
     @Qualifier("CXCoinBasicService")
@@ -65,4 +64,5 @@ public class CXCoinBasicServiceTest extends SpringTransactionalTestCase {
             
         }
     }
+    
 }
