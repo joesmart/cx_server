@@ -1,11 +1,5 @@
 package com.server.cx.service.cx.impl;
 
-import java.util.List;
-
-import com.server.cx.service.cx.SendSMSService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.google.common.base.Preconditions;
 import com.server.cx.constants.Constants;
 import com.server.cx.dao.cx.SmsMessageDao;
@@ -15,6 +9,11 @@ import com.server.cx.exception.SystemException;
 import com.server.cx.model.OperationResult;
 import com.server.cx.service.cx.SmsMessageService;
 import com.server.cx.util.business.SmsMessageServiceUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service("smsMessageService")
 @Transactional
@@ -24,8 +23,8 @@ public class SmsMessageServiceImp implements SmsMessageService {
     @Autowired
     private UserCheckService userCheckService;
 
-    @Autowired
-    private SendSMSService sendSMSService;
+//    @Autowired
+//    private SendSMSService sendSMSService;
 
     @Override
     public OperationResult inviteFriends(String imsi, List<String> mobiles, String smsContent) throws SystemException {
@@ -45,10 +44,10 @@ public class SmsMessageServiceImp implements SmsMessageService {
 
         List<String> contentList = SmsMessageServiceUtil.generateSmsContent(notRegisteredPhoneNoList, phoneNo);
         smsMessageDao.batchInsertSmsMessage(contentList, notRegisteredPhoneNoList, phoneNo);
-        Long[] ids = sendSMSService.sendSMS(phoneNo);
+        /*Long[] ids = sendSMSService.sendSMS(phoneNo);
         if(ids != null){
-            smsMessageDao.updateSmsMessageSentStatus(ids);
-        }
+        //      smsMessageDao.updateSmsMessageSentStatus(ids);
+        }*/
         return new OperationResult("inviteFriends",Constants.SUCCESS_FLAG);
     }
 

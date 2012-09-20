@@ -161,6 +161,7 @@ userInfoCriteria.add(Property.forName("imsi").in(contactsCriteria))
                 "or  ( :callPhoneNo in elements(a.phoneNos) and a.modeType =3 and :currentDate between  a.begin and a.end ) " +
                 "or  ( :callPhoneNo in elements(a.phoneNos) and a.modeType !=3) " +
                 "or (a.modeType=2 and a.common=true) " +
+                "or (a.modeType=3 and a.common=true) " +
                 "or (a.validDate = :currentDate and a.modeType =5) " +
                 "or (a.holiday = :currentDate and a.modeType=4) " +
                 ") and a.priority = :maxPriority order by a.modeType desc,a.end ";

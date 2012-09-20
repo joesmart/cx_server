@@ -2,7 +2,6 @@ package com.server.cx.dao.cx.impl;
 
 import com.server.cx.dao.cx.custom.MGraphicCustomDao;
 import com.server.cx.entity.cx.MGraphic;
-import com.server.cx.entity.cx.UserCommonMGraphic;
 import com.server.cx.entity.cx.UserInfo;
 import org.joda.time.LocalDate;
 
@@ -26,6 +25,7 @@ public class MGraphicDaoImpl extends BasicDao implements MGraphicCustomDao {
                 "or  ( :callPhoneNo in elements(a.phoneNos) and a.modeType =3 and :currentDate between  a.begin and a.end )" +
                 "or  ( :callPhoneNo in elements(a.phoneNos) and a.modeType !=3)" +
                 "or (a.modeType=2 and a.common=true) " +
+                "or (a.modeType=3 and a.common=true) " +
                 "or (a.validDate = :currentDate and a.modeType =5) " +
                 "or (a.holiday = :currentDate and a.modeType=4)" +
                 ") ";

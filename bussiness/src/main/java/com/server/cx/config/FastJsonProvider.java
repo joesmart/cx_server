@@ -283,7 +283,7 @@ public class FastJsonProvider implements MessageBodyReader<Object>, MessageBodyW
     public void writeTo(Object o, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, final OutputStream entityStream) throws IOException, WebApplicationException {
         Stopwatch stopwatch = new Stopwatch();
         stopwatch.start();
-        String jsonString = JSON.toJSONString(o,SerializerFeature.WriteClassName);
+        String jsonString = JSON.toJSONString(o,SerializerFeature.WriteClassName,SerializerFeature.PrettyFormat);
 
         httpHeaders.putSingle("Content-Type","application/json; charset=UTF-8");
         ByteStreams.write(jsonString.getBytes(),new OutputSupplier<OutputStream>() {
