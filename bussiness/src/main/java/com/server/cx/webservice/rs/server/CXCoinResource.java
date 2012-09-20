@@ -138,12 +138,13 @@ public class CXCoinResource {
     
     @Path("confirmPurchase")
     @POST
-    public Response confirmPurchase(@PathParam("imsi") String imsi, @QueryParam("tradeNo") String tradeNo, CXCoinAccount cxCoinAccount) {
+    public Response confirmPurchase(@PathParam("imsi") String imsi, @QueryParam("tradeNo") String tradeNo, CXCoinAccountDTO cxCoinAccountDTO) {
         LOGGER.info("Into confirmPurchase imsi = " + imsi);
         LOGGER.info("tradeNo = " + tradeNo);
-        LOGGER.info("cxCoinAccount = " + cxCoinAccount);
+        LOGGER.info("cxCoinAccountDTO = " + cxCoinAccountDTO);
         try {
-            CXCoinAccount cxAccount = cxCoinService.confirmPurchase(imsi, tradeNo, cxCoinAccount);
+            ValidationUtil.checkParametersNotNull(imsi, cxCoinAccountDTO);
+            CXCoinAccount cxAccount = cxCoinService.confirmPurchase(imsi, tradeNo, cxCoinAccountDTO);
             return Response.ok(cxAccount).build();
         } catch(Exception e) {
             e.printStackTrace();

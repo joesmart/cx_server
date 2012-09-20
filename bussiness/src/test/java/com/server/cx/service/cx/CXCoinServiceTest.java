@@ -175,7 +175,7 @@ public class CXCoinServiceTest extends SpringTransactionalTestCase {
     public void test_confirm_purchase_successful() {
         String imsi = "13146001000";
         String tradeNo = "123abc";
-        CXCoinAccount cxCoinAccount = new CXCoinAccount();
+        CXCoinAccountDTO cxCoinAccount = new CXCoinAccountDTO();
         cxCoinAccount.setName("Account1");
         cxCoinAccount.setPassword("123456");
         CXCoinAccount dbCoinAccount = cxCoinService.confirmPurchase(imsi, tradeNo, cxCoinAccount);
