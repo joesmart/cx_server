@@ -135,18 +135,21 @@ public class CXCoinResource {
             return Response.ok(operationDescription).build();
         }
     }
-    
+
     @Path("confirmPurchase")
     @POST
-    public Response confirmPurchase(@PathParam("imsi") String imsi, @QueryParam("tradeNo") String tradeNo, CXCoinAccountDTO cxCoinAccountDTO) {
+    public Response confirmPurchase(@PathParam("imsi") String imsi, @QueryParam("tradeNo") String tradeNo,
+                                    CXCoinAccountDTO cxCoinAccountDTO) {
         LOGGER.info("Into confirmPurchase imsi = " + imsi);
         LOGGER.info("tradeNo = " + tradeNo);
         LOGGER.info("cxCoinAccountDTO = " + cxCoinAccountDTO);
         try {
             ValidationUtil.checkParametersNotNull(imsi, cxCoinAccountDTO);
             CXCoinAccount cxAccount = cxCoinService.confirmPurchase(imsi, tradeNo, cxCoinAccountDTO);
-            return Response.ok(cxAccount).build();
-        } catch(Exception e) {
+            CXCoinAccountDTO responseCxCoinAccountDTO = businessFunctions.cxCoinAccountToCXCoinAccountDTO().apply(
+                cxAccount);
+            return Response.ok(responseCxCoinAccountDTO).build();
+        } catch (Exception e) {
             e.printStackTrace();
             OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
                 HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "confirmPurchase", e.getMessage());
