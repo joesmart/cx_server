@@ -182,7 +182,7 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
 
     @Transactional(readOnly = false)
     @Override
-    public CXCoinAccount confirmPurchase(String imsi, String tradeNo, CXCoinAccount baseCXCoinAccount)
+    public CXCoinAccount confirmPurchase(String imsi, String tradeNo, CXCoinAccountDTO baseCXCoinAccount)
         throws SystemException {
         checkAndSetUserInfoExists(imsi);
         checkCXCoinAccountNameExist(baseCXCoinAccount.getName());

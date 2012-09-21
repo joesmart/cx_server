@@ -22,7 +22,7 @@ public interface CXCoinService {
 
     public void handleCXCoinPurchaseCallback(CXCoinNotfiyData cxCoinNotfiyData) throws SystemException;
 
-    public CXCoinAccount confirmPurchase(String imsi, String tradeNo, CXCoinAccount cxCoinAccount)
+    public CXCoinAccount confirmPurchase(String imsi, String tradeNo, CXCoinAccountDTO cxCoinAccountDTO)
         throws SystemException;
 
 }
