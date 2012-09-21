@@ -422,7 +422,6 @@ public class ActionBuilder {
         actions.setCxCoinRecordsURL(null);
         actions.setCxCoinPurchaseURL(null);
         actions.setCxCoinPreparePurchaseURL(null);
-        actions.setCxCoinLoginURL(null);
     }
 
     public Actions buildCXCoinRegisteredURL(String imsi) {
@@ -430,8 +429,7 @@ public class ActionBuilder {
             .cxCoinConsumeURL(basicService.generateCXCoinConsumeURL(imsi))
             .cxCoinRecordsURL(basicService.generateCXCoinRecordsURL(imsi))
             .cxCoinPurchaseURL(basicService.generateCXCoinPurchaseURL())
-            .cxCoinPreparePurchaseURL(basicService.generateCXCoinPreparePurchaseURL(imsi))
-            .cxCoinLoginURL(basicService.generateCXCoinLoginURL(imsi)).build();
+            .cxCoinPreparePurchaseURL(basicService.generateCXCoinPreparePurchaseURL(imsi)).build();
 
     }
 
