@@ -232,26 +232,25 @@ public class ActionBuilder {
         actions.setCxCoinConsumeURL(action);
         return this;
     }
-    
+
     private ActionBuilder cxCoinPurchaseURL(String url) {
         Action action = new Action(url, "POST");
         actions.setCxCoinPurchaseURL(action);
         return this;
     }
-    
+
     private ActionBuilder cxCoinPreparePurchaseURL(String url) {
         Action action = new Action(url, "POST");
         actions.setCxCoinPreparePurchaseURL(action);
         return this;
     }
-    
+
     private ActionBuilder cxCoinLoginURL(String url) {
         Action action = new Action(url, "POST");
         actions.setCxCoinLoginURL(action);
         return this;
     }
 
-    
     public Actions build() {
         return actions;
     }
@@ -421,6 +420,9 @@ public class ActionBuilder {
         actions.setCxCoinAccountURL(null);
         actions.setCxCoinConsumeURL(null);
         actions.setCxCoinRecordsURL(null);
+        actions.setCxCoinPurchaseURL(null);
+        actions.setCxCoinPreparePurchaseURL(null);
+        actions.setCxCoinLoginURL(null);
     }
 
     public Actions buildCXCoinRegisteredURL(String imsi) {
@@ -428,10 +430,10 @@ public class ActionBuilder {
             .cxCoinConsumeURL(basicService.generateCXCoinConsumeURL(imsi))
             .cxCoinRecordsURL(basicService.generateCXCoinRecordsURL(imsi))
             .cxCoinPurchaseURL(basicService.generateCXCoinPurchaseURL())
-            .cxCoinPreparePurchaseURL(basicService.generateCXCoinPreparePurchaseURL(imsi)).build();
-        
-    }
+            .cxCoinPreparePurchaseURL(basicService.generateCXCoinPreparePurchaseURL(imsi))
+            .cxCoinLoginURL(basicService.generateCXCoinLoginURL(imsi)).build();
 
+    }
 
     private void hiddenTheNeedRegisteredActions(Actions actions) {
         actions.setCollectionsURL(null);
@@ -449,6 +451,7 @@ public class ActionBuilder {
         actions.setCxCoinRecordsURL(null);
         actions.setCxCoinPurchaseURL(null);
         actions.setCxCoinPreparePurchaseURL(null);
+        actions.setCxCoinLoginURL(null);
     }
 
     public Actions buildMGraphicActions(String imsi, String id, String conditions) {
