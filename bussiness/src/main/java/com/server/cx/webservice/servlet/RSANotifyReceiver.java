@@ -33,7 +33,6 @@ public class RSANotifyReceiver extends HttpServlet {
         PrintWriter out = null;
         try {
             LOGGER.info("Into RSANotifyReceiver doPost bussineFunctions = " + bussineFunctions);
-            out = response.getWriter();
             Map map = request.getParameterMap();
             LOGGER.info("map = " + map);
             String sign = (String) ((Object[]) map.get("sign"))[0];
@@ -47,6 +46,7 @@ public class RSANotifyReceiver extends HttpServlet {
                 e.printStackTrace();
             }
             handleNotifyData(getNotfiyData(map));
+            out = response.getWriter();
             if (verified) {
                 out.print("success");
             } else {

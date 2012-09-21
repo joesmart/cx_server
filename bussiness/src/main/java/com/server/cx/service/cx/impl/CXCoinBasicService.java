@@ -7,9 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.server.cx.dao.cx.CXCoinAccountDao;
 import com.server.cx.dao.cx.CXCoinConsumeRecordDao;
 import com.server.cx.dao.cx.CXCoinNotfiyDataDao;
+import com.server.cx.dao.cx.UserCXCoinNotifyDataDao;
 import com.server.cx.entity.cx.CXCoinAccount;
 import com.server.cx.entity.cx.CXCoinConsumeRecord;
 import com.server.cx.entity.cx.CXCoinNotfiyData;
+import com.server.cx.entity.cx.UserCXCoinNotifyData;
 import com.server.cx.entity.cx.UserInfo;
 import com.server.cx.exception.MoneyNotEnoughException;
 import com.server.cx.exception.SystemException;
@@ -28,6 +30,11 @@ public class CXCoinBasicService extends UserCheckService {
     protected CXCoinNotfiyDataDao cxCoinNotfiyDataDao;
     
     protected CXCoinNotfiyData cxCoinNotfiyData;
+    
+    @Autowired
+    protected UserCXCoinNotifyDataDao userCXCoinNotifyDataDao;
+    
+    protected UserCXCoinNotifyData userCXCoinNotifyData;
 
     @Autowired
     protected CXCoinConsumeRecordDao cxCoinConsumeRecordDao;
@@ -94,8 +101,8 @@ public class CXCoinBasicService extends UserCheckService {
         }
     }
     
-    public void checkValidTradeNoExists(String tradeNo) {
-        cxCoinNotfiyData = cxCoinNotfiyDataDao.findByTradeNo(tradeNo);
+    public void checkValidOutTradeNoExists(String outTradeNo) {
+        cxCoinNotfiyData = cxCoinNotfiyDataDao.findByOutTradeNo(outTradeNo);
         if(cxCoinNotfiyData == null) {
             throw new SystemException("无法找到该订单号");
         }
@@ -103,6 +110,16 @@ public class CXCoinBasicService extends UserCheckService {
             throw new SystemException("该订单已经被处理");
         }
         
+    }
+    
+    public void checkUserValidOutTradeNoExists(String outTradeNo) {
+        userCXCoinNotifyData = userCXCoinNotifyDataDao.findByOutTradeNo(outTradeNo);
+        if(userCXCoinNotifyData == null) {
+            throw new SystemException("无法找到该订单号");
+        }
+        if(Boolean.TRUE.equals(userCXCoinNotifyData.getStatus())) {
+            throw new SystemException("该订单已经被处理");
+        }
     }
 
 }

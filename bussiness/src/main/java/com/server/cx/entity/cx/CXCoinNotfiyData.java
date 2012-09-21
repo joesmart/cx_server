@@ -1,13 +1,21 @@
 package com.server.cx.entity.cx;
 
 import java.util.Date;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import lombok.ToString;
 import com.server.cx.entity.basic.AuditableEntity;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "cast_type", discriminatorType = DiscriminatorType.STRING, length = 10)
+@DiscriminatorValue("basic")
 @ToString
 public class CXCoinNotfiyData extends AuditableEntity {
     private String sellerEmail;

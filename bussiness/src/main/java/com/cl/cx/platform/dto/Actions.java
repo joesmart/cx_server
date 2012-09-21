@@ -46,5 +46,6 @@ public class Actions {
     private Action cxCoinRecordsURL;
     private Action cxCoinConsumeURL;
     private Action cxCoinPurchaseURL;
-    private Action cxCoinConfirmPurchaseURL;
+    private Action cxCoinPreparePurchaseURL;
+    private Action cxCoinLoginURL;
 }

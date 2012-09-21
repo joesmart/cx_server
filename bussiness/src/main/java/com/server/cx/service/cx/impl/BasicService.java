@@ -269,7 +269,11 @@ public class BasicService {
         return getBaseURL() + "cxCoin/purchase";
     }
 
-    public String generateCXCoinConfirmPurchaseURL(String imsi) {
-        return generateURL(imsi, "/cxCoin/confirmPurchase");
+    public String generateCXCoinPreparePurchaseURL(String imsi) {
+        return generateURL(imsi, "/cxCoin/preparePurchase?accountName=");
+    }
+
+    public String generateCXCoinLoginURL(String imsi) {
+        return generateURL(imsi, "/cxCoin/login");
     }
 }

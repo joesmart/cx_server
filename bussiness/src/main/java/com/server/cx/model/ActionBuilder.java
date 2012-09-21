@@ -239,9 +239,15 @@ public class ActionBuilder {
         return this;
     }
     
-    private ActionBuilder cxCoinConfirmPurchaseURL(String url) {
+    private ActionBuilder cxCoinPreparePurchaseURL(String url) {
         Action action = new Action(url, "POST");
-        actions.setCxCoinConfirmPurchaseURL(action);
+        actions.setCxCoinPreparePurchaseURL(action);
+        return this;
+    }
+    
+    private ActionBuilder cxCoinLoginURL(String url) {
+        Action action = new Action(url, "POST");
+        actions.setCxCoinLoginURL(action);
         return this;
     }
 
@@ -396,7 +402,8 @@ public class ActionBuilder {
             .cxCoinConsumeURL(basicService.generateCXCoinConsumeURL(imsi))
             .cxCoinRecordsURL(basicService.generateCXCoinRecordsURL(imsi))
             .cxCoinPurchaseURL(basicService.generateCXCoinPurchaseURL())
-            .cxCoinConfirmPurchaseURL(basicService.generateCXCoinConfirmPurchaseURL(imsi)).build();
+            .cxCoinLoginURL(basicService.generateCXCoinLoginURL(imsi))
+            .cxCoinPreparePurchaseURL(basicService.generateCXCoinPreparePurchaseURL(imsi)).build();
     }
 
     public Actions buildAnonymousActions() {
@@ -421,7 +428,7 @@ public class ActionBuilder {
             .cxCoinConsumeURL(basicService.generateCXCoinConsumeURL(imsi))
             .cxCoinRecordsURL(basicService.generateCXCoinRecordsURL(imsi))
             .cxCoinPurchaseURL(basicService.generateCXCoinPurchaseURL())
-            .cxCoinConfirmPurchaseURL(basicService.generateCXCoinConfirmPurchaseURL(imsi)).build();
+            .cxCoinPreparePurchaseURL(basicService.generateCXCoinPreparePurchaseURL(imsi)).build();
         
     }
 
@@ -441,7 +448,7 @@ public class ActionBuilder {
         actions.setCxCoinConsumeURL(null);
         actions.setCxCoinRecordsURL(null);
         actions.setCxCoinPurchaseURL(null);
-        actions.setCxCoinConfirmPurchaseURL(null);
+        actions.setCxCoinPreparePurchaseURL(null);
     }
 
     public Actions buildMGraphicActions(String imsi, String id, String conditions) {
