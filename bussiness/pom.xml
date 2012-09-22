@@ -581,67 +581,37 @@
 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
-                <artifactId>hibernate3-maven-plugin</artifactId>
-                <version>3.0</version>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>1.3.1</version>
+            </plugin>
 
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <id>generate-create-schema-ddl</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-
-                    <hibernatetool destdir="${project.basedir}/src/main/resources/sql/">
-                        <classpath>
-                            <path location="${project.build.directory}/classes" />
-                            <path location="${project.basedir}/src/main/resources/META-INF/" />
-                        </classpath>
-                        <jpaconfiguration persistenceunit="defaultPU"
-                                          propertyfile="src/main/resources/application.properties"
-                                          >
-                                </jpaconfiguration>
-
-                        <hbm2ddl create="true" export="false" drop="true" outputfilename="schema.sql"
-                                 format="true" console="true"/>
-                    </hibernatetool>
+                    <mainClass>com.server.cx.util.SchemaExport</mainClass>
+                    <arguments>
+                        <argument>--create</argument>
+                        <argument>--drop</argument>
+                        <argument>--properties=application.properties</argument>
+                        <argument>--output=${project.basedir}/src/main/resources/sql/schema.sql</argument>
+                        <argument>defaultPU</argument>
+                    </arguments>
                 </configuration>
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>Generate hbm.xml mappings</id>-->
-                        <!--<phase>generate-sources</phase>-->
-                        <!--<configuration>-->
-                            <!--<hibernatetool destdir="target/classes">-->
-                                <!--<jpaconfiguration persistenceunit="defaultPU"  propertyfile="src/main/resources/application.properties"/>-->
-
-                                <!--<classpath>-->
-                                    <!--<path location="target/classes"/>-->
-                                    <!--<path location="${project.basedir}/src/main/resources/META-INF/" />-->
-                                <!--</classpath>-->
-                                <!--<hbm2ddl export="false" create="true"-->
-                                         <!--update="true" format="format" outputfilename="schemaDiff.ddl" />-->
-                            <!--</hibernatetool>-->
-                        <!--</configuration>-->
-                        <!--<goals>-->
-                            <!--<goal>run</goal>-->
-                        <!--</goals>-->
-
-                    <!--</execution>-->
-                <!--</executions>-->
-
-                <dependencies>
-                    <dependency>
-                        <groupId>org.hibernate</groupId>
-                        <artifactId>hibernate-core</artifactId>
-                        <version>3.6.8.Final</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.hibernate.javax.persistence</groupId>
-                        <artifactId>hibernate-jpa-2.0-api</artifactId>
-                        <version>1.0.1.Final</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.hibernate</groupId>
-                        <artifactId>hibernate-entitymanager</artifactId>
-                        <version>3.6.8.Final</version>
-                    </dependency>
-                </dependencies>
 
             </plugin>
+
+
 		</plugins>
 	</build>
 	

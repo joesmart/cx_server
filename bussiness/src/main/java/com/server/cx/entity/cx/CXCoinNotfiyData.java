@@ -1,13 +1,14 @@
 package com.server.cx.entity.cx;
 
-import java.util.Date;
-import javax.persistence.Entity;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import lombok.ToString;
 import com.server.cx.entity.basic.AuditableEntity;
+import lombok.ToString;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
+@Table(name = "cxcoin_notfiy_data")
 @ToString
 public class CXCoinNotfiyData extends AuditableEntity {
     private String sellerEmail;
