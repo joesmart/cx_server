@@ -39,25 +39,28 @@ public class RSANotifyReceiver extends HttpServlet {
             LOGGER.info("sign = " + sign);
             String verifyData = getVerifyData(map);
             LOGGER.info("verifyData = " + verifyData);
-            boolean verified = false;
-            try {
-                verified = RSASignature.doCheck(verifyData, sign, PartnerConfig.RSA_ALIPAY_PUBLIC);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            boolean verified = false;
+//            try {
+//                verified = RSASignature.doCheck(verifyData, sign, PartnerConfig.RSA_ALIPAY_PUBLIC);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
             handleNotifyData(getNotfiyData(map));
             out = response.getWriter();
-            if (verified) {
-                out.print("success");
-            } else {
-                out.print("fail");
-            }
+            out.print("success");
+//            if (verified) {
+//                out.print("success");
+//            } else {
+//                out.print("fail");
+//            }
         } catch (IOException e) {
             e.printStackTrace();
             throw e;
         } catch (JAXBException e) {
             e.printStackTrace();
-            out.print("fail");
+            if(out != null) {
+                out.print("fail");
+            }
         } finally {
             if (out != null) {
                 out.close();
