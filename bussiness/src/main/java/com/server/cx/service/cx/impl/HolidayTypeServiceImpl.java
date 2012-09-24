@@ -72,6 +72,7 @@ public class HolidayTypeServiceImpl extends UserCheckService implements HolidayT
 
     }
     
+    @Transactional(readOnly = false)
     @Override
     public DataPage subscribeAndQueryHoliayTypes(String imsi) {
         LOGGER.info("Into subscribeAndQueryHoliayTypes imsi = " + imsi);
