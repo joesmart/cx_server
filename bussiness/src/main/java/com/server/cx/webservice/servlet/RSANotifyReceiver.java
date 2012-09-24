@@ -33,31 +33,34 @@ public class RSANotifyReceiver extends HttpServlet {
         PrintWriter out = null;
         try {
             LOGGER.info("Into RSANotifyReceiver doPost bussineFunctions = " + bussineFunctions);
-            out = response.getWriter();
             Map map = request.getParameterMap();
             LOGGER.info("map = " + map);
             String sign = (String) ((Object[]) map.get("sign"))[0];
             LOGGER.info("sign = " + sign);
             String verifyData = getVerifyData(map);
             LOGGER.info("verifyData = " + verifyData);
-            boolean verified = false;
-            try {
-                verified = RSASignature.doCheck(verifyData, sign, PartnerConfig.RSA_ALIPAY_PUBLIC);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            boolean verified = false;
+//            try {
+//                verified = RSASignature.doCheck(verifyData, sign, PartnerConfig.RSA_ALIPAY_PUBLIC);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
             handleNotifyData(getNotfiyData(map));
-            if (verified) {
-                out.print("success");
-            } else {
-                out.print("fail");
-            }
+            out = response.getWriter();
+            out.print("success");
+//            if (verified) {
+//                out.print("success");
+//            } else {
+//                out.print("fail");
+//            }
         } catch (IOException e) {
             e.printStackTrace();
             throw e;
         } catch (JAXBException e) {
             e.printStackTrace();
-            out.print("fail");
+            if(out != null) {
+                out.print("fail");
+            }
         } finally {
             if (out != null) {
                 out.close();

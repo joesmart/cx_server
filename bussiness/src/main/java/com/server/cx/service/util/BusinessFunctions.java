@@ -13,7 +13,6 @@ import com.server.cx.util.business.AuditStatus;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.Nullable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -255,7 +254,7 @@ public class BusinessFunctions {
                     if (hasUsed) {
                         UserHolidayMGraphic userHolidayMGraphic = userHolidayMGraphicMap.get(input.getId());
                         actions = actionBuilder.buildHolidayTypeHasUsedActions(imsi, input.getId(),
-                                userHolidayMGraphic.getId());
+                            userHolidayMGraphic.getId());
                         dataItem.setActions(actions);
                     }
                 } else {
@@ -290,7 +289,7 @@ public class BusinessFunctions {
                     if (hasUsed) {
                         UserStatusMGraphic userStatusMGraphic = userStatusMGraphicMap.get(input.getId());
                         actions = actionBuilder.buildStatusTypeHasUsedActions(imsi, input.getId(),
-                                userStatusMGraphic.getId());
+                            userStatusMGraphic.getId());
                         dataItem.setActions(actions);
                     }
                 } else {
@@ -342,11 +341,11 @@ public class BusinessFunctions {
 
         if (input instanceof UserCustomMGraphic) {
             if (((UserCustomMGraphic) input).getBegin() != null
-                    && ((UserCustomMGraphic) input).getBegin().getTime() == (LocalDate.parse("1900-1-1").toDate().getTime())) {
+                && ((UserCustomMGraphic) input).getBegin().getTime() == (LocalDate.parse("1900-1-1").toDate().getTime())) {
                 ((UserCustomMGraphic) input).setBegin(null);
                 ((UserCustomMGraphic) input).setEnd(null);
-            } else{
-                if(((UserCustomMGraphic) input).getBegin() != null && ((UserCustomMGraphic) input).getEnd() != null){
+            } else {
+                if (((UserCustomMGraphic) input).getBegin() != null && ((UserCustomMGraphic) input).getEnd() != null) {
                     Date beginDate = new Date(((UserCustomMGraphic) input).getBegin().getTime());
                     Date endDate = new Date(((UserCustomMGraphic) input).getEnd().getTime());
                     dataItem.setBegin(beginDate);
@@ -695,30 +694,48 @@ public class BusinessFunctions {
                 if (input == null)
                     return null;
                 CXCoinNotfiyData cxCoinNotfiyData = new CXCoinNotfiyData();
-                cxCoinNotfiyData.setBuyerEmail(input.getBuyerEmail());
-                cxCoinNotfiyData.setBuyerId(input.getBuyerId());
-                cxCoinNotfiyData.setDiscount(input.getDiscount());
-                cxCoinNotfiyData.setOutTradeNo(input.getOutTradeNo());
-                cxCoinNotfiyData.setPartner(input.getPartner());
-                cxCoinNotfiyData.setPaymentType(input.getPaymentType());
-                cxCoinNotfiyData.setPrice(input.getPrice());
-                cxCoinNotfiyData.setQuantity(input.getQuantity());
-                cxCoinNotfiyData.setSellerEmail(input.getSellerEmail());
-                cxCoinNotfiyData.setSellerId(input.getSellerId());
-                cxCoinNotfiyData.setSubject(input.getSubject());
-                cxCoinNotfiyData.setTotalFee(input.getTotalFee());
-                cxCoinNotfiyData.setTradeNo(input.getTradeNo());
-                cxCoinNotfiyData.setTradeStatus(input.getTradeStatus());
-                cxCoinNotfiyData.setUseCoupon(input.getUseCoupon());
-                cxCoinNotfiyData.setIsTotalFeeAdjust(input.getIsTotalFeeAdjust());
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:MM:ss");
-                try {
-                    Date date = simpleDateFormat.parse(input.getGmtCreate());
-                    cxCoinNotfiyData.setGmtCreate(date);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                initCXCoinNotifyData(input, cxCoinNotfiyData);
                 return cxCoinNotfiyData;
+            }
+
+        };
+    }
+
+    private void initCXCoinNotifyData(CXCoinNotfiyDataDTO input, CXCoinNotfiyData cxCoinNotfiyData) {
+        cxCoinNotfiyData.setBuyerEmail(input.getBuyerEmail());
+        cxCoinNotfiyData.setBuyerId(input.getBuyerId());
+        cxCoinNotfiyData.setDiscount(input.getDiscount());
+        cxCoinNotfiyData.setOutTradeNo(input.getOutTradeNo());
+        cxCoinNotfiyData.setPartner(input.getPartner());
+        cxCoinNotfiyData.setPaymentType(input.getPaymentType());
+        cxCoinNotfiyData.setPrice(input.getPrice());
+        cxCoinNotfiyData.setQuantity(input.getQuantity());
+        cxCoinNotfiyData.setSellerEmail(input.getSellerEmail());
+        cxCoinNotfiyData.setSellerId(input.getSellerId());
+        cxCoinNotfiyData.setSubject(input.getSubject());
+        cxCoinNotfiyData.setTotalFee(input.getTotalFee());
+        cxCoinNotfiyData.setTradeNo(input.getTradeNo());
+        cxCoinNotfiyData.setTradeStatus(input.getTradeStatus());
+        cxCoinNotfiyData.setUseCoupon(input.getUseCoupon());
+        cxCoinNotfiyData.setIsTotalFeeAdjust(input.getIsTotalFeeAdjust());
+        if (input.getGmtCreate() != null) {
+            try {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:MM:ss");
+                Date date = simpleDateFormat.parse(input.getGmtCreate());
+                cxCoinNotfiyData.setGmtCreate(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public Function<? super CXCoinNotfiyDataDTO, ? extends UserCXCoinNotifyData> transferCXCoinNotfiyDataDTOToUserCXCoinNotifyData() {
+        return new Function<CXCoinNotfiyDataDTO, UserCXCoinNotifyData>() {
+            @Override
+            public UserCXCoinNotifyData apply(CXCoinNotfiyDataDTO input) {
+                UserCXCoinNotifyData userCXCoinNotifyData = new UserCXCoinNotifyData();
+                initCXCoinNotifyData(input, userCXCoinNotifyData);
+                return userCXCoinNotifyData;
             }
         };
     }

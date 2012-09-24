@@ -17,9 +17,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.cl.cx.platform.dto.CXCoinAccountDTO;
+import com.cl.cx.platform.dto.CXCoinNotfiyDataDTO;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.entity.cx.CXCoinAccount;
+import com.server.cx.entity.cx.CXCoinNotfiyData;
 import com.server.cx.model.ActionBuilder;
 import com.server.cx.service.cx.CXCoinService;
 import com.server.cx.service.util.BusinessFunctions;
@@ -138,7 +140,7 @@ public class CXCoinResource {
 
     @Path("confirmPurchase")
     @POST
-    public Response confirmPurchase(@PathParam("imsi") String imsi, @QueryParam("tradeNo") String tradeNo,
+    public Response confirmPurchase(@PathParam("imsi") String imsi, @QueryParam("outTradeNo") String tradeNo,
                                     CXCoinAccountDTO cxCoinAccountDTO) {
         LOGGER.info("Into confirmPurchase imsi = " + imsi);
         LOGGER.info("tradeNo = " + tradeNo);
@@ -156,4 +158,25 @@ public class CXCoinResource {
             return Response.ok(operationDescription).build();
         }
     }
+
+    @Path("preparePurchase")
+    @POST
+    public Response prepareConfirm(@PathParam("imsi") String imsi, @QueryParam("accountName") String accountName,
+                                   CXCoinNotfiyDataDTO cxCoinAccountDTO) {
+        LOGGER.info("Into prepareConfirm imsi = " + imsi);
+        LOGGER.info("accountName = " + accountName);
+        LOGGER.info("cxCoinAccountDTO = " + cxCoinAccountDTO);
+        try {
+            ValidationUtil.checkParametersNotNull(imsi, accountName, cxCoinAccountDTO);
+            OperationDescription operationDescription = cxCoinService.preparePurchase(imsi, accountName,
+                cxCoinAccountDTO);
+            return Response.ok(operationDescription).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            OperationDescription operationDescription = ObjectFactory.buildErrorOperationDescription(
+                HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "confirmPurchase", e.getMessage());
+            return Response.ok(operationDescription).build();
+        }
+    }
+
 }

@@ -25,14 +25,14 @@ public class CXCoinNotfiyDataDaoTest extends SpringTransactionalTestCase {
     
     @Test
     public void test_find_by_trade_no_successful() {
-        CXCoinNotfiyData cxCoinNotfiyData = cxCoinNotfiyDataDao.findByTradeNo("123abc");
+        CXCoinNotfiyData cxCoinNotfiyData = cxCoinNotfiyDataDao.findByOutTradeNo("111123");
         Assert.assertNotNull(cxCoinNotfiyData);
         Assert.assertEquals(cxCoinNotfiyData.getBuyerEmail(), "gavin@hotmail.com");
     }
     
     @Test
     public void test_find_by_trade_no_exception() {
-        CXCoinNotfiyData cxCoinNotfiyData = cxCoinNotfiyDataDao.findByTradeNo("123abcd");
+        CXCoinNotfiyData cxCoinNotfiyData = cxCoinNotfiyDataDao.findByOutTradeNo("111123");
         Assert.assertNull(cxCoinNotfiyData);
     }
 }

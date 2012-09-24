@@ -4,11 +4,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import javax.ws.rs.core.MediaType;
 import org.junit.Test;
 import com.cl.cx.platform.dto.CXCoinAccountDTO;
+import com.cl.cx.platform.dto.CXCoinNotfiyDataDTO;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.server.cx.constants.Constants;
 import com.server.cx.entity.cx.CXCoinAccount;
-import com.server.cx.functional.resource.BasicJerseyTest;
 import com.sun.jersey.api.client.ClientResponse;
 
 public class CXCoinResourceTest extends BasicJerseyTest {
@@ -78,6 +78,16 @@ public class CXCoinResourceTest extends BasicJerseyTest {
         CXCoinAccount cxCoinAccount = new CXCoinAccount();
         cxCoinAccount.setName("Account1");
         ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, cxCoinAccount);
+        String result = response.getEntity(String.class);
+        System.out.println("result = " + result);
+    }
+    
+    @Test
+    public void test_prepare_purchase() {
+        resource = resource.path("/13146001000/cxCoin/preparePurchase").queryParam("accountName", "Account1");
+        CXCoinNotfiyDataDTO cxCoinNotfiyData = new CXCoinNotfiyDataDTO();
+        cxCoinNotfiyData.setOutTradeNo("123dbe");
+        ClientResponse response = resource.type(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(ClientResponse.class, cxCoinNotfiyData);
         String result = response.getEntity(String.class);
         System.out.println("result = " + result);
     }

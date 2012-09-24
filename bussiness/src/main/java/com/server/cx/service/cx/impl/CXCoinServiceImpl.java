@@ -2,6 +2,8 @@ package com.server.cx.service.cx.impl;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -9,11 +11,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import com.cl.cx.platform.dto.CXCoinAccountDTO;
+import com.cl.cx.platform.dto.CXCoinNotfiyDataDTO;
 import com.cl.cx.platform.dto.DataItem;
 import com.cl.cx.platform.dto.DataPage;
 import com.cl.cx.platform.dto.OperationDescription;
 import com.google.common.collect.Lists;
-import com.server.cx.dao.cx.CXCoinNotfiyDataDao;
 import com.server.cx.dao.cx.CXCoinTotalItemDao;
 import com.server.cx.dao.cx.UserSubscribeRecordDao;
 import com.server.cx.dao.cx.spec.SubscribeRecordSpecifications;
@@ -21,6 +23,7 @@ import com.server.cx.entity.cx.CXCoinAccount;
 import com.server.cx.entity.cx.CXCoinConsumeRecord;
 import com.server.cx.entity.cx.CXCoinNotfiyData;
 import com.server.cx.entity.cx.CXCoinTotalItem;
+import com.server.cx.entity.cx.UserCXCoinNotifyData;
 import com.server.cx.entity.cx.UserSubscribeRecord;
 import com.server.cx.exception.SystemException;
 import com.server.cx.service.cx.CXCoinService;
@@ -30,6 +33,7 @@ import com.server.cx.util.ObjectFactory;
 @Component
 @Transactional(readOnly = true)
 public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CXCoinServiceImpl.class);
     @Autowired
     private CXCoinTotalItemDao cxCoinTotalItemDao;
 
@@ -41,9 +45,6 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
 
     @Autowired
     private BasicService basicService;
-
-    @Autowired
-    private CXCoinNotfiyDataDao cxCoinNotfiyDataDao;
 
     @Override
     @Transactional(readOnly = false)
@@ -173,7 +174,26 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
     @Transactional(readOnly = false)
     @Override
     public void handleCXCoinPurchaseCallback(CXCoinNotfiyData cxCoinNotfiyData) throws SystemException {
+        LOGGER.info("Into handleCXCoinPurchaseCallback cxCoinNotfiyData = " + cxCoinNotfiyData);
         cxCoinNotfiyDataDao.save(cxCoinNotfiyData);
+        //更新userCXCoinNotifyData的状态
+        checkUserValidOutTradeNoExists(cxCoinNotfiyData.getOutTradeNo());
+        cxCoinAccount = userCXCoinNotifyData.getCxCoinAccount();
+        System.out.println("cxCoinAccount = " + cxCoinAccount);
+        cxCoinAccount.setCoin(cxCoinAccount.getCoin() + caculateCXCoin(cxCoinNotfiyData.getTotalFee()));
+        cxCoinAccountDao.save(cxCoinAccount);
+        userCXCoinNotifyData.setStatus(Boolean.TRUE);
+        userCXCoinNotifyDataDao.save(userCXCoinNotifyData);
+
+        //酷币总额数量增加
+        CXCoinTotalItem cxCoinTotalItem = findCXCoinTotalItem();
+        cxCoinTotalItem.setCxCoinCount(cxCoinTotalItem.getCxCoinCount()
+            + caculateCXCoin(cxCoinNotfiyData.getTotalFee()));
+        cxCoinTotalItemDao.save(cxCoinTotalItem);
+        //添加充值记录
+        UserSubscribeRecord userSubscribeRecord = ObjectFactory.buildUserCXCoinIncomeRecord(userInfo,
+            caculateCXCoin(cxCoinNotfiyData.getTotalFee()), "用户充值");
+        userSubscribeRecordDao.save(userSubscribeRecord);
     }
 
     private Double caculateCXCoin(Double totalFee) {
@@ -182,13 +202,11 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
 
     @Transactional(readOnly = false)
     @Override
-    public CXCoinAccount confirmPurchase(String imsi, String tradeNo, CXCoinAccountDTO baseCXCoinAccount)
+    public CXCoinAccount confirmPurchase(String imsi, String outTradeNo, CXCoinAccountDTO baseCXCoinAccount)
         throws SystemException {
         checkAndSetUserInfoExists(imsi);
         checkCXCoinAccountNameExist(baseCXCoinAccount.getName());
-        checkValidTradeNoExists(tradeNo);
-        System.out.println("cxCoinAccount = " + cxCoinAccount.getCoin());
-        System.out.println("cxCoinNotfiyData = " + caculateCXCoin(cxCoinNotfiyData.getTotalFee()));
+        checkValidOutTradeNoExists(outTradeNo);
         cxCoinAccount.setCoin(cxCoinAccount.getCoin() + caculateCXCoin(cxCoinNotfiyData.getTotalFee()));
         cxCoinAccountDao.save(cxCoinAccount);
         cxCoinNotfiyData.setStatus(Boolean.TRUE);
@@ -204,5 +222,19 @@ public class CXCoinServiceImpl extends CXCoinBasicService implements CXCoinServi
             caculateCXCoin(cxCoinNotfiyData.getTotalFee()), "用户充值");
         userSubscribeRecordDao.save(userSubscribeRecord);
         return cxCoinAccount;
+    }
+
+    @Transactional(readOnly = false)
+    @Override
+    public OperationDescription preparePurchase(String imsi, String accountName, CXCoinNotfiyDataDTO cxCoinNotfiyDataDTO) {
+        checkAndSetUserInfoExists(imsi);
+        checkCXCoinAccountNameExist(accountName);
+        UserCXCoinNotifyData userCXCoinNotifyData = businessFunctions
+            .transferCXCoinNotfiyDataDTOToUserCXCoinNotifyData().apply(cxCoinNotfiyDataDTO);
+        userCXCoinNotifyData.setCxCoinAccount(cxCoinAccount);
+        userCXCoinNotifyDataDao.save(userCXCoinNotifyData);
+        OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
+            HttpServletResponse.SC_CREATED, "preparePurchase");
+        return operationDescription;
     }
 }

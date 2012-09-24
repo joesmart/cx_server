@@ -1,5 +1,6 @@
 package com.server.cx.entity.cx;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -14,11 +15,12 @@ public class CXCoinAccount extends AuditableStringEntity {
     private String password;
     private Double coin;
     private String imsi;
-
+    
+    @Column(unique = true)
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }

@@ -1,6 +1,5 @@
 package com.cl.cx.platform.dto;
 
-import java.util.Date;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import lombok.ToString;
