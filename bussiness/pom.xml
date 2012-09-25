@@ -589,7 +589,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
-                <executions>
+                <!--<executions>
                     <execution>
                         <id>generate-create-schema-ddl</id>
                         <phase>process-classes</phase>
@@ -597,7 +597,7 @@
                             <goal>java</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions>-->
                 <configuration>
                     <mainClass>com.server.cx.util.SchemaExport</mainClass>
                     <arguments>

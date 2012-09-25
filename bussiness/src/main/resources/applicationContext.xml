@@ -174,11 +174,11 @@
         </bean>
 
         <bean id="imageShowURL" class="java.lang.String">
-            <constructor-arg value="http://${develop_ip}:${test_port}/resources/rs/graphics/show?id="/>
+            <constructor-arg value="http://${product_resource_ip}:${product_resource_port}/resources/rs/graphics/show?id="/>
         </bean>
 
         <bean id="fileUploadUrl" class="java.lang.String">
-            <constructor-arg value="http://${test_ip}:${test_port}/resources/rs/file" />
+            <constructor-arg value="http://${product_resource_ip}:${product_resource_port}/resources/rs/file" />
         </bean>
 
         <bean id="baseHostAddress" class="java.lang.String">

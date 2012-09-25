@@ -158,7 +158,8 @@ userInfoCriteria.add(Property.forName("imsi").in(contactsCriteria))
                 "where a.userInfo = :userInfo " +
                 "and ( " +
                 "( :currentDate between  a.begin and a.end and a.modeType=3)  " +
-                "or  ( :callPhoneNo in elements(a.phoneNos) and a.modeType =3 and :currentDate between  a.begin and a.end ) " +
+                "or  ( :callPhoneNo in elements(a.phoneNos)  " +
+                "and ( (:currentDate between  a.begin and a.end) or a.begin is null or a.holiday = :currentDate or a.holiday is null or a.validDate =  :currentDate or a.validDate is null ) )" +
                 "or  ( :callPhoneNo in elements(a.phoneNos) and a.modeType !=3) " +
                 "or (a.modeType=2 and a.common=true) " +
                 "or (a.modeType=3 and a.common=true) " +
