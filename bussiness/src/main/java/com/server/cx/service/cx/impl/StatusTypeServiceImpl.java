@@ -103,6 +103,7 @@ public class StatusTypeServiceImpl extends UserCheckService implements StatusTyp
         return Lists.transform(statusTypes, businessFunctions.statusTypeTransformToDataItem(imsi,statusTypeList,userStatusMGraphicMap));
     }
     
+    @Transactional(readOnly = false)
     @Override
     public DataPage subscribeAndQueryStatusTypes(String imsi) {
         LOGGER.info("Into subscribeAndQueryStatusTypes imsi = " + imsi);
