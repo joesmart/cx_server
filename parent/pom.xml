@@ -84,18 +84,18 @@
 	    </repository>
 	</repositories>
 
-	<!-- 设定插件仓库 如有Nexus私服, 取消注释并指向正确的服务器地址. 
+	<!-- 设定插件仓库 如有Nexus私服, 取消注释并指向正确的服务器地址. -->
 	<pluginRepositories> 
 		<pluginRepository> 
-			<id>nexus</id>
-			<name>Team Nexus Repository</name>
-			<url>http://localhost:8081/nexus/content/groups/public</url> 
+			<id>archiva</id>
+			<name>archiva</name>
+			<url>http://10.90.3.122:8084/archiva/repository/internal/</url> 
 			<snapshots>
-				<enabled>false</enabled>
+				<enabled>true</enabled>
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-	-->
+	
 	
 	<!-- 预定义依赖项的version,scope与exclusions,子项目中只需定义groupId 和 artifactId 即可 -->
 	<dependencyManagement>
