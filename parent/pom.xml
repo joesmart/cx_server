@@ -1055,7 +1055,7 @@
                         <!--<configuration>-->
                             <!--<includedGroups>org.springside.modules.test.category.Smoke</includedGroups>-->
                         <!--</configuration>-->
-                        <version>2.9</version>
+                        <version>2.12.3</version>
                     </plugin>
                 </plugins>
             </build>
