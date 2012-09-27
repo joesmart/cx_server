@@ -57,7 +57,8 @@ public class HolidayTypeServiceImpl extends UserCheckService implements HolidayT
         checkAndSetUserInfoExists(imsi);
         //检查是否订购了节日包
         userSubscribeTypeService.checkSubscribeType(userInfo, "holiday");
-        List<HolidayType> holidayTypes = Lists.newArrayList(holidayTypeDao.findAll());
+//        List<HolidayType> holidayTypes = Lists.newArrayList( holidayTypeDao.findAll(new Sort(Sort.Direction.ASC,"num")));
+        List<HolidayType> holidayTypes = Lists.newArrayList( holidayTypeDao.findAll());
         final String baseHref = basicService.generateHolidayTypesVisitURL(imsi);
         List<DataItem> holidayTypeList = generateHolidayTypeList(imsi, holidayTypes);
 
