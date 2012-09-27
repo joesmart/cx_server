@@ -20,6 +20,7 @@ public class HolidayType extends LongTypeIdBaseEntity {
     private Integer downloadNum;
     private String graphicResourceId;
     private Integer level;
+    private Integer num;
     
     
     public HolidayType() {
@@ -58,6 +59,13 @@ public class HolidayType extends LongTypeIdBaseEntity {
 
     public void setLevel(Integer level) {
         this.level = level;
-    }  
-    
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
 }

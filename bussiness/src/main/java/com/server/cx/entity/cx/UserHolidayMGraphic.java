@@ -27,7 +27,7 @@ public class UserHolidayMGraphic extends UserCommonMGraphic {
 
 
     public UserHolidayMGraphic() {
-        this.setPriority(6);
+        this.setPriority(7);
         this.setModeType(4);
     }
 

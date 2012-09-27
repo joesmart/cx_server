@@ -16,7 +16,7 @@ public class UserCommonMGraphic extends MGraphic {
         this.setPriority(3);
         this.setModeType(2);
     }
-    private Boolean common;
+    private Boolean common;  //true 无特殊号码设定 false 指定特殊号码
     private List<String> phoneNos;
 
     @ElementCollection
