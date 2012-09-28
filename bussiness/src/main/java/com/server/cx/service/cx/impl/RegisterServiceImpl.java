@@ -37,6 +37,12 @@ public class RegisterServiceImpl implements RegisterService {
         if (userinfo == null) {
             addNewUserInfo(registerDTO);
             operationDescription = ObjectFactory.buildRegisterOperationDescription(HttpServletResponse.SC_CREATED, "register");
+            operationDescription.setForceSMS(false);
+            if(StringUtil.notNull(registerDTO.getPhoneNo())) {
+                operationDescription.setSendSMS(false);
+            } else {
+                operationDescription.setSendSMS(true);
+            }
         } else {
             operationDescription = ObjectFactory.buildErrorRegisterOperationDescription(
                 HttpServletResponse.SC_CONFLICT, "register", "registered");
