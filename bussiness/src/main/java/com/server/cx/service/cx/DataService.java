@@ -19,4 +19,6 @@ public interface DataService {
 
     public void batchSaveCategoryItems(List<Category> categories);
 
+    public void saveGraphicResource(BasicDataItem basicDataItem, String type);
+
 }

@@ -99,11 +99,12 @@ public class DataResource {
 
     @Path("graphicData")
     @POST
-    public Response addGraphicInfos(@QueryParam("type") String type, List<BasicDataItem> basicDataItems) {
+    public Response addGraphicInfos(@QueryParam("type") String type, BasicDataItem basicDataItem) {
         LOGGER.info("Into addGraphicInfos type = " + type);
-        LOGGER.info("basicDataItems = " + basicDataItems);
+        LOGGER.info("basicDataItem = " + basicDataItem);
         try {
-            dataService.batchSaveGraphicResources(basicDataItems, type);
+//            dataService.batchSaveGraphicResources(basicDataItems, type);
+            dataService.saveGraphicResource(basicDataItem, type);
             OperationDescription operationDescription = ObjectFactory.buildOperationDescription(
                 HttpServletResponse.SC_CREATED, "addGraphicInfos");
             return Response.ok(operationDescription).build();
