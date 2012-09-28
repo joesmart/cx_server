@@ -1,7 +1,6 @@
 package com.server.cx.service.cx.impl;
 
 import java.util.List;
-
 import com.server.cx.service.cx.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,19 +30,19 @@ public class DataServiceImpl implements DataService {
 
     @Autowired
     private StatusTypeDao statusTypeDao;
-    
+
     @Autowired
     private HolidayTypeDao holidayTypeDao;
 
     @Autowired
     private BusinessFunctions businessFunctions;
-    
+
     @Autowired
     private GraphicResourceDao graphicResourceDao;
-    
+
     @Autowired
     private CategoryDao categoryDao;
-    
+
     @Autowired
     private MGraphicDao mGraphicDao;
 
@@ -64,18 +63,20 @@ public class DataServiceImpl implements DataService {
     @Override
     public void batchSaveGraphicResources(List<BasicDataItem> basicDataItems, String type) {
         List<GraphicResource> graphicResources = null;
-        if("status".equalsIgnoreCase(type)) {
+        if ("status".equalsIgnoreCase(type)) {
             graphicResources = Lists.transform(basicDataItems,
                 businessFunctions.transferBasicDataItemToStatusGraphicResource());
             graphicResourceDao.save(graphicResources);
-        } else if("holiday".equalsIgnoreCase(type)) {
-            graphicResources = Lists.transform(basicDataItems, businessFunctions.transferBasicDataItemToHolidayGraphicResource());
+        } else if ("holiday".equalsIgnoreCase(type)) {
+            graphicResources = Lists.transform(basicDataItems,
+                businessFunctions.transferBasicDataItemToHolidayGraphicResource());
             graphicResourceDao.save(graphicResources);
-        } else if("category".equalsIgnoreCase(type)) {
-            graphicResources = Lists.transform(basicDataItems, businessFunctions.transferBasicDataItemToCategoryGraphicResource());
+        } else if ("category".equalsIgnoreCase(type)) {
+            graphicResources = Lists.transform(basicDataItems,
+                businessFunctions.transferBasicDataItemToCategoryGraphicResource());
             graphicResourceDao.save(graphicResources);
-        } else if("specialNo".equalsIgnoreCase(type) || "systemDefault".equalsIgnoreCase(type)) {
-            for(int i = 0; i < basicDataItems.size(); i ++) {
+        } else if ("specialNo".equalsIgnoreCase(type) || "systemDefault".equalsIgnoreCase(type)) {
+            for (int i = 0; i < basicDataItems.size(); i++) {
                 GraphicResource graphicResource = ObjectFactory.buildSpecailGraphicResource(basicDataItems.get(i));
                 DefaultMGraphic defaultMGraphic = ObjectFactory.buildDefaultMGraphic(basicDataItems.get(i));
                 graphicResourceDao.save(graphicResource);
@@ -84,17 +85,42 @@ public class DataServiceImpl implements DataService {
             }
         }
     }
-    
+
     @Transactional(readOnly = false)
     @Override
     public void batchSaveHolidayType(List<HolidayType> holidayTypes) {
         holidayTypeDao.save(holidayTypes);
     }
-    
+
     @Transactional(readOnly = false)
     @Override
     public void batchSaveCategoryItems(List<Category> categories) {
         categoryDao.save(categories);
     }
 
+    @Override
+    public void saveGraphicResource(BasicDataItem basicDataItem, String type) {
+        if ("status".equalsIgnoreCase(type)) {
+            GraphicResource graphicResource = businessFunctions.transferBasicDataItemToStatusGraphicResource().apply(
+                basicDataItem);
+            graphicResourceDao.save(graphicResource);
+        } else if ("holiday".equalsIgnoreCase(type)) {
+            GraphicResource graphicResource = businessFunctions.transferBasicDataItemToHolidayGraphicResource().apply(
+                basicDataItem);
+            graphicResourceDao.save(graphicResource);
+        } else if ("category".equalsIgnoreCase(type)) {
+            GraphicResource graphicResource = businessFunctions.transferBasicDataItemToCategoryGraphicResource().apply(
+                basicDataItem);
+            graphicResourceDao.save(graphicResource);
+        } else if ("specialNo".equalsIgnoreCase(type) || "systemDefault".equalsIgnoreCase(type)) {
+            //            for(int i = 0; i < basicDataItems.size(); i ++) {
+            GraphicResource graphicResource = ObjectFactory.buildSpecailGraphicResource(basicDataItem);
+            DefaultMGraphic defaultMGraphic = ObjectFactory.buildDefaultMGraphic(basicDataItem);
+            graphicResourceDao.save(graphicResource);
+            defaultMGraphic.setGraphicResource(graphicResource);
+            mGraphicDao.save(defaultMGraphic);
+            //            }
+        }
+
+    }
 }
