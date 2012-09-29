@@ -37,6 +37,7 @@ public class UserSubscribeTypeDaoImpl extends BasicDao implements UserSubscribeT
         return query.getResultList();
     }
     
+    
     @Override
     public UserSubscribeType findCurrentValidateSubscribeTypes(UserInfo userInfo, String type) {
         String hql = "select u from UserSubscribeType u inner join u.subscribeType item where cast_type = ? and u.validateMonth = ? and u.userInfo = ?";
@@ -67,6 +68,15 @@ public class UserSubscribeTypeDaoImpl extends BasicDao implements UserSubscribeT
         String hql = "select u from UserSubscribeType u inner join u.subscribeType item where u.subscribeStatus = ? order by u.createdOn asc";
         Query query = em.createQuery(hql);
         query.setParameter(1, SubscribeStatus.SUBSCRIBED);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<UserSubscribeType> findUserAllStatusItemsByType(UserInfo userInfo, String type) {
+        String hql = "select u from UserSubscribeType u inner join u.subscribeType item where cast_type = ? and u.userInfo = ?";
+        Query query = em.createQuery(hql);
+        query.setParameter(1, type);
+        query.setParameter(2, userInfo);
         return query.getResultList();
     }
 

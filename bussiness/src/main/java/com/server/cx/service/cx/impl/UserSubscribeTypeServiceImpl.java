@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import com.server.cx.dao.cx.SubscribeTypeDao;
+import com.server.cx.dao.cx.UserInfoDao;
 import com.server.cx.dao.cx.UserSubscribeRecordDao;
 import com.server.cx.dao.cx.UserSubscribeTypeDao;
 import com.server.cx.entity.cx.SubscribeType;
@@ -45,8 +46,8 @@ public class UserSubscribeTypeServiceImpl extends CXCoinBasicService implements 
     public void subscribeType(UserInfo userInfo, String type) throws MoneyNotEnoughException {
         LOGGER.info("Into subscribeHolidayType userInfo = " + userInfo);
         //检查本月是否有效
-        UserSubscribeType userSubscribeItem = userSubscribeTypeDao.findMonthValidateAndNotSubscribedType(userInfo,
-            type);
+        UserSubscribeType userSubscribeItem = userSubscribeTypeDao
+            .findMonthValidateAndNotSubscribedType(userInfo, type);
         if (userSubscribeItem != null) {
             LOGGER.info("userSubscribeItem  = " + userSubscribeItem);
             userSubscribeItem.setSubscribeStatus(SubscribeStatus.SUBSCRIBED);
@@ -60,12 +61,21 @@ public class UserSubscribeTypeServiceImpl extends CXCoinBasicService implements 
             checkUserCXCoinEnough(cxCoinAccount.getCoin(), subscribeType.getPrice());
             cxCoinAccount.setCoin(cxCoinAccount.getCoin() - subscribeType.getPrice());
             cxCoinAccountDao.save(cxCoinAccount);
-            
-            UserSubscribeType userSubscribeType = businessFunctions.holidaySubscribeTypeTransformToUserSubscribeType(
-                userInfo).apply(subscribeType);
-            userSubscribeType.setValidateMonth(DateUtil.getCurrentMonth());
-            userSubscribeType.setSubscribeStatus(SubscribeStatus.SUBSCRIBED);
-            userSubscribeTypeDao.save(userSubscribeType);
+
+            UserSubscribeType userSubscribeType = null;
+            List<UserSubscribeType> userSubscribeItems = userSubscribeTypeDao.findUserAllStatusItemsByType(userInfo, type);
+            if (userSubscribeItems == null || userSubscribeItems.isEmpty()) {
+                userSubscribeType = businessFunctions.holidaySubscribeTypeTransformToUserSubscribeType(userInfo).apply(
+                    subscribeType);
+                userSubscribeType.setValidateMonth(DateUtil.getCurrentMonth());
+                userSubscribeType.setSubscribeStatus(SubscribeStatus.SUBSCRIBED);
+                userSubscribeTypeDao.save(userSubscribeType);
+            } else {
+                userSubscribeType = userSubscribeItems.get(0);
+                userSubscribeType.setValidateMonth(DateUtil.getCurrentMonth());
+                userSubscribeType.setSubscribeStatus(SubscribeStatus.SUBSCRIBED);
+                userSubscribeTypeDao.save(userSubscribeType);
+            }
             //生成购买记录
             UserSubscribeRecord record = ObjectFactory.buildUserSubscribeRecord(userSubscribeType);
             record.setExpenses(record.getSubscribeType().getPrice());
@@ -73,7 +83,7 @@ public class UserSubscribeTypeServiceImpl extends CXCoinBasicService implements 
         }
 
     }
-    
+
     @Transactional(readOnly = false)
     @Override
     public void cancelSubscribeType(String imsi, String type) throws SystemException {
@@ -86,7 +96,7 @@ public class UserSubscribeTypeServiceImpl extends CXCoinBasicService implements 
             //取消用户订购
             userSubscribeType.setSubscribeStatus(SubscribeStatus.UNSUBSCRIBED);
             userSubscribeTypeDao.saveAndFlush(userSubscribeType);
-            
+
             //生成订购记录
             UserSubscribeRecord record = ObjectFactory.buildUserCancelSubscribeRecord(userSubscribeType);
             userSubscribeRecordDao.save(record);
@@ -98,18 +108,17 @@ public class UserSubscribeTypeServiceImpl extends CXCoinBasicService implements 
     @Override
     public boolean checkSubscribeType(UserInfo userInfo, String type) throws NotSubscribeTypeException {
         LOGGER.info("Into checkExistSubscribeHolidayType userInfo = " + userInfo);
-//        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, type);
+        //        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, type);
         UserSubscribeType userSubscribeTypes = userSubscribeTypeDao.findCurrentValidateSubscribeTypes(userInfo, type);
         if (userSubscribeTypes != null)
             return true;
         throw new NotSubscribeTypeException("用户未订购");
     }
-    
-    
+
     @Override
     public boolean checkUserUnSubscribeType(UserInfo userInfo, String type) throws UserHasSubscribedException {
-        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserSubscribeTypes(userInfo, type);
-        if (userSubscribeTypes != null && !userSubscribeTypes.isEmpty()) {
+        UserSubscribeType userSubscribeType = userSubscribeTypeDao.findCurrentValidateSubscribeTypes(userInfo, type);
+        if (userSubscribeType != null) {
             throw new UserHasSubscribedException("用户已经订购");
         }
         return true;
