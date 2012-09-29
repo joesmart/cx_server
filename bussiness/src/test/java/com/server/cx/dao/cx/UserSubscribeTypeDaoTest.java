@@ -118,5 +118,14 @@ public class UserSubscribeTypeDaoTest extends SpringTransactionalTestCase {
         assertThat(userSubscribeType).isNotNull();
         assertThat(userSubscribeType.getSubscribeStatus()).isEqualTo(SubscribeStatus.UNSUBSCRIBED);
     }
+    
+    @Test
+    public void test_findAllSubscribeItemsByType() {
+        List<UserSubscribeType> userSubscribeTypes = userSubscribeTypeDao.findUserAllStatusItemsByType(userInfoDao.findOne("7"), "status");
+        System.out.println("userSubscribeType = " + (UserSubscribeType)userSubscribeTypes.get(0));
+        assertThat(userSubscribeTypes).isNotNull();
+        assertThat(userSubscribeTypes.size()).isEqualTo(1);
+        assertThat(userSubscribeTypes.get(0).getSubscribeType().getName()).isEqualTo("状态包");
+    }
 
 }
