@@ -65,7 +65,7 @@ public class UserDiyGraphicServiceImpl extends CheckAndHistoryMGraphicService im
         if(userDiyGraphic == null){
             userDiyGraphic = new UserDiyGraphic();
             userDiyGraphic.setName("自定义");
-            userDiyGraphic.setSignature("自定义");
+            userDiyGraphic.setSignature("");
             userDiyGraphic.setUserInfo(userInfo);
             userDiyGraphic.setAuditStatus(AuditStatus.CHECKING);
             userDiyGraphic = userDiyGraphicDao.save(userDiyGraphic);
