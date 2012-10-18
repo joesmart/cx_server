@@ -636,6 +636,7 @@ public class BusinessFunctions {
         graphicInfo.setAuditStatus(AuditStatus.PASSED);
         graphicInfo.setOwner("system");
         graphicInfo.setUseCount(0);
+        graphicInfo.setSignature(input.getSignature());
 
         GraphicResource graphicResource = new GraphicResource();
         graphicResource.setResourceId(input.getResourceId());
