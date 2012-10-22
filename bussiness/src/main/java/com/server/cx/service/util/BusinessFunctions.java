@@ -571,9 +571,9 @@ public class BusinessFunctions {
                     DataItem dataItem = new DataItem();
                     dataItem.setTime(DateUtil.formateDate(input.getCreatedOn()));
                     if (input.getIncome() != null) {
-                        dataItem.setCxCoin(String.valueOf(input.getIncome()));
+                        dataItem.setCxCoin(String.valueOf(input.getIncome().intValue()));
                     } else {
-                        dataItem.setCxCoin(String.valueOf(input.getExpenses() * -1));
+                        dataItem.setCxCoin(String.valueOf(input.getExpenses().intValue() * -1));
                     }
                     return dataItem;
                 }

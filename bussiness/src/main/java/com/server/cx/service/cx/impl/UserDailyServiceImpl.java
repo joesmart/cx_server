@@ -22,16 +22,16 @@ public class UserDailyServiceImpl implements UserDailyService {
     private final static Logger LOGGER = LoggerFactory.getLogger(UserDailyServiceImpl.class);
     @Autowired
     private UserStatusMGraphicDao userStatusMGraphicDao;
-    
+
     @Autowired
     private CXCoinConsumeRecordDao cxCoinConsumeRecordDao;
-    
+
     @Autowired
     private UserInfoDao userInfoDao;
-    
+
     @Autowired
     private ContactsDao contactsDao;
-    
+
     @Transactional(readOnly = false)
     @Override
     public void doDailyTask() throws SystemException {
@@ -39,28 +39,44 @@ public class UserDailyServiceImpl implements UserDailyService {
         clearCXCoinConsumeRecord();
         updateContactSelfUserInfo();
     }
-    
+
     private void updateContactSelfUserInfo() {
-        List<Contacts> foundContacts = Lists.newArrayList();
-        List<Contacts> contacts = contactsDao.findBySelfUserInfo(null);
-        for(Contacts c : contacts) {
-            UserInfo userInfo = userInfoDao.findByPhoneNo(c.getPhoneNo());
-            if(userInfo != null) {
-                c.setSelfUserInfo(userInfo);
-                foundContacts.add(c);
+        LOGGER.info("Into updateContactSelfUserInfo");
+        try {
+            List<Contacts> foundContacts = Lists.newArrayList();
+            List<Contacts> contacts = contactsDao.findBySelfUserInfo(null);
+            for (Contacts c : contacts) {
+                UserInfo userInfo = userInfoDao.findByPhoneNo(c.getPhoneNo());
+                if (userInfo != null) {
+                    c.setSelfUserInfo(userInfo);
+                    foundContacts.add(c);
+                }
             }
+            contactsDao.batchUpdateContactsPhoneNo(foundContacts);
+        } catch (SystemException e) {
+            e.printStackTrace();
+            LOGGER.error("updateContactSelfUserInfo error", e);
         }
-        contactsDao.batchUpdateContactsPhoneNo(foundContacts);
     }
 
     private void clearCXCoinConsumeRecord() {
         LOGGER.info("Into clearCXCoinConsumeRecord");
-        cxCoinConsumeRecordDao.deleteAll();
+        try {
+            cxCoinConsumeRecordDao.deleteAll();
+        } catch (SystemException e) {
+            e.printStackTrace();
+            LOGGER.error("updateContactSelfUserInfo error", e);
+        }
     }
-    
+
     private void clearUserStatusMGraphic() {
         LOGGER.info("Into clearUserStatusMGraphic");
-        userStatusMGraphicDao.deleteAll();
+        try {
+            userStatusMGraphicDao.deleteAll();
+        } catch (SystemException e) {
+            e.printStackTrace();
+            LOGGER.error("updateContactSelfUserInfo error", e);
+        }
     }
 
 }
