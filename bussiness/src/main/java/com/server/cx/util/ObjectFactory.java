@@ -140,7 +140,7 @@ public class ObjectFactory {
 
         GraphicInfo graphicInfo = new GraphicInfo();
         graphicInfo.setName(dataItem.getName());
-        graphicInfo.setPrice(Double.valueOf(dataItem.getPrice()));
+        graphicInfo.setPrice(dataItem.getPrice());
         graphicInfo.setLevel(dataItem.getLevel());
         graphicInfo.setGraphicResources(graphicResources);
         graphicResource.setGraphicInfo(graphicInfo);

@@ -187,7 +187,7 @@ public class BusinessFunctions {
         item.setSignature(input.getSignature());
         item.setDownloadNumber(String.valueOf(input.getUseCount()));
         item.setAuditStatus(AuditStatus.PASSED.toString());
-        item.setPrice((int) (input.getPrice().doubleValue()));
+        item.setPrice(input.getPrice().doubleValue());
         if (input.getPrice() > 0.0F) {
             item.setPurchased(false);
         }
@@ -324,9 +324,11 @@ public class BusinessFunctions {
             GraphicInfo graphicInfo = graphicResource.getGraphicInfo();
             if (graphicInfo != null) {
                 dataItem.setDownloadNumber(graphicInfo.getUseCount().toString());
+                dataItem.setPrice(graphicInfo.getPrice());
             } else {
                 //DIY MGraphic auditStatus
                 dataItem.setDownloadNumber("0");
+                dataItem.setPrice(0.0D);
                 dataItem.setAuditStatus(graphicResource.getAuditStatus().toString());
             }
             setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem, graphicResource);

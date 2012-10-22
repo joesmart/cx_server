@@ -24,7 +24,7 @@ public class DataItem extends BasicItem {
     private Boolean collected;
     private Boolean hasUsed;
     private Integer level;
-    private Integer price;
+    private Double price;
     private String thumbnailPath;
     private String sourceImagePath;
     private String downloadNumber;
