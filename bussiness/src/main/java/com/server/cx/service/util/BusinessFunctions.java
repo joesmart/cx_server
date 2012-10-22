@@ -328,7 +328,7 @@ public class BusinessFunctions {
             } else {
                 //DIY MGraphic auditStatus
                 dataItem.setDownloadNumber("0");
-                dataItem.setPrice(0.0D);
+                dataItem.setPrice(0D);
                 dataItem.setAuditStatus(graphicResource.getAuditStatus().toString());
             }
             setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem, graphicResource);
@@ -384,16 +384,18 @@ public class BusinessFunctions {
                 if (input == null)
                     return null;
                 DataItem dataItem = new DataItem();
+                GraphicInfo graphicInfo = input.getGraphicInfo();
                 dataItem.setName(input.getName());
                 dataItem.setSignature(input.getSignature());
-                dataItem.setId(input.getGraphicInfo().getId());
+                dataItem.setId(graphicInfo.getId());
                 dataItem.setMGraphicId(input.getId());
-                dataItem.setLevel(input.getGraphicInfo().getLevel());
+                dataItem.setLevel(graphicInfo.getLevel());
+                dataItem.setPrice(graphicInfo.getPrice());
                 dataItem.setModeType(input.getModeType());
                 dataItem.setInUsing(false);
                 dataItem.setPhoneNos(input.getPhoneNos());
 
-                GraphicInfo graphicInfo = input.getGraphicInfo();
+
                 setUpSourceAndThumbnailImagePath(dataItem, graphicInfo);
                 dataItem.setActions(actionBuilder.buildHistoryMGraphicActions(imsi, input.getId()));
                 return dataItem;
@@ -527,7 +529,7 @@ public class BusinessFunctions {
                 } else {
                     dataItem.setAuditStatus(input.getAuditStatus().toString());
                 }
-
+                dataItem.setPrice(0D);
                 dataItem.setMediaType(input.getType());
                 setUpSourceAndThumbnailImagePathFromGraphicResource(dataItem, input);
                 if (AuditStatus.PASSED.equals(input.getAuditStatus())) {
