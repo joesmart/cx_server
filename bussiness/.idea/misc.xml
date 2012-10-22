@@ -509,6 +509,7 @@
     <option name="enableJobAutoRefresh" value="true" />
     <option name="enableRssAutoRefresh" value="true" />
     <option name="jobRefreshPeriod" value="5" />
+    <option name="lastSelectedView" value="All" />
     <option name="passwordFile" value="F:\JetBrains\pwd" />
     <option name="rssRefreshPeriod" value="10" />
     <option name="securityMode" value="BASIC" />
