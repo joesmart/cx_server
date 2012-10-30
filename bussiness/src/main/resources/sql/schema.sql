@@ -65,11 +65,11 @@
 
     alter table mgraphic 
         drop 
-        foreign key FK4B95CDDBEBB54FE8;
+        foreign key FK4B95CDDBCDC4AB82;
 
     alter table mgraphic 
         drop 
-        foreign key FK4B95CDDBCDC4AB82;
+        foreign key FK4B95CDDBEBB54FE8;
 
     alter table mgraphic_phone_no 
         drop 
@@ -370,16 +370,16 @@
         priority integer,
         signature varchar(255),
         subscribe boolean,
+        special_phone_no varchar(20),
         common boolean,
+        valid_date datetime,
         holiday datetime,
         begin datetime,
         end datetime,
-        valid_date datetime,
-        special_phone_no varchar(20),
         graphic_resource_id varchar(32),
         user_id varchar(32),
-        holiday_type_id bigint,
         status_type_id bigint,
+        holiday_type_id bigint,
         primary key (id)
     );
 
@@ -651,16 +651,16 @@
         references graphic_resource (id);
 
     alter table mgraphic 
-        add index FK4B95CDDBEBB54FE8 (status_type_id), 
-        add constraint FK4B95CDDBEBB54FE8 
-        foreign key (status_type_id) 
-        references status_type (id);
-
-    alter table mgraphic 
         add index FK4B95CDDBCDC4AB82 (holiday_type_id), 
         add constraint FK4B95CDDBCDC4AB82 
         foreign key (holiday_type_id) 
         references holiday_type (id);
+
+    alter table mgraphic 
+        add index FK4B95CDDBEBB54FE8 (status_type_id), 
+        add constraint FK4B95CDDBEBB54FE8 
+        foreign key (status_type_id) 
+        references status_type (id);
 
     alter table mgraphic_phone_no 
         add index FK6F8CE016A4886B19 (mgraphic_id), 
