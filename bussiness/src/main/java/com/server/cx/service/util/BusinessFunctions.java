@@ -255,6 +255,7 @@ public class BusinessFunctions {
                         UserHolidayMGraphic userHolidayMGraphic = userHolidayMGraphicMap.get(input.getId());
                         actions = actionBuilder.buildHolidayTypeHasUsedActions(imsi, input.getId(),
                             userHolidayMGraphic.getId());
+                        dataItem.setGraphicURL(basicService.thumbnailImageURL(userHolidayMGraphic.getGraphicResource().getResourceId()));
                         dataItem.setActions(actions);
                     }
                 } else {
