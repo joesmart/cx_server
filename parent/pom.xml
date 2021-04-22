@@ -19,7 +19,7 @@
         <spring-data-jpa.version>1.1.2.RELEASE</spring-data-jpa.version>
         <quartz.version>2.1.6</quartz.version>
         <hibernate.version>4.1.7.Final</hibernate.version>
-        <mybatis.version>3.1.1</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
         <cxf.version>2.6.2</cxf.version>
         <activemq.version>5.6.0</activemq.version>
         <ehcache.version>2.6.0</ehcache.version>
