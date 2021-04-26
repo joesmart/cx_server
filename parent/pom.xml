@@ -29,7 +29,7 @@
         <jolokia.version>1.0.5</jolokia.version>
         <guava.version>13.0.1</guava.version>
         <commons-lang3.version>3.1</commons-lang3.version>
-        <commons-io.version>2.4</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <joda-time.version>2.1</joda-time.version>
         <dozer.version>5.3.2</dozer.version>
         <freemarker.version>2.3.19</freemarker.version>
